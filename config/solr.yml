@@ -1,7 +1,7 @@
 development:
-  url: http://sulwebappdev1.stanford.edu:8100/salt_solr
+  url: http://localhost:8080/bl_solr
 test:
-  url: http://sulwebappdev1.stanford.edu:8100/salt_solr
+  url: http://localhost:8080/bl_solr
 production:
   url: http://sulwebappdev1.stanford.edu:8100/salt_solr
     

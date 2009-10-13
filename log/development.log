@@ -23502,3 +23502,69 @@ Rendered catalog/_home (306.4ms)
 Rendered _user_util_links (0.9ms)
 Rendered _flash_msg (0.1ms)
 Completed in 1379ms (View: 313, DB: 0) | 200 OK [http://localhost/]
+BLACKLIGHT: initialized with Blacklight.solr_config: {:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}
+BLACKLIGHT: initialized with Blacklight.solr: #<RSolr::Connection:0x25c8db4 @opts={:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}, @adapter=#<RSolr::Adapter::HTTP:0x25c9d68 @opts={:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}, @connector=#<RSolr::HTTPClient::Connector:0x25c8274 @adapter_name=:curb>>>
+BLACKLIGHT: initialized with Blacklight.config: {:facet=>{:field_names=>["technology_facet", "person_facet", "title_facet", "city_facet", "organization_facet", "company_facet", "year_facet", "state_facet"], :labels=>{"year_facet"=>"Year", "company_facet"=>"Company", "state_facet"=>"State", "organization_facet"=>"Organization", "city_facet"=>"City", "person_facet"=>"Person", "title_facet"=>"Title", "technology_facet"=>"Technology"}}, :raw_storage_field=>"marc_display", :sort_fields=>[["relevance", "score desc"]], :spell_max=>5, :default_qt=>"dismax", :show=>{:display_type=>"id", :heading=>"id", :html_title=>"id"}, :search_fields=>[["All Fields", "dismax"]], :index_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}, :index=>{:show_link=>"id", :num_per_page=>10, :record_display_type=>"id"}, :raw_storage_type=>"marc21", :show_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}}
+BLACKLIGHT: initialized with Blacklight.solr_config: {:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}
+BLACKLIGHT: initialized with Blacklight.solr: #<RSolr::Connection:0x25d1504 @opts={:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}, @adapter=#<RSolr::Adapter::HTTP:0x25d24b8 @opts={:adapter=>:http, :url=>"http://sulwebappdev1.stanford.edu:8100/salt_solr"}, @connector=#<RSolr::HTTPClient::Connector:0x25d09c4 @adapter_name=:curb>>>
+BLACKLIGHT: initialized with Blacklight.config: {:facet=>{:field_names=>["technology_facet", "person_facet", "title_facet", "city_facet", "organization_facet", "company_facet", "year_facet", "state_facet"], :labels=>{"year_facet"=>"Year", "company_facet"=>"Company", "state_facet"=>"State", "organization_facet"=>"Organization", "city_facet"=>"City", "person_facet"=>"Person", "title_facet"=>"Title", "technology_facet"=>"Technology"}}, :raw_storage_field=>"marc_display", :sort_fields=>[["relevance", "score desc"]], :spell_max=>5, :default_qt=>"dismax", :show=>{:display_type=>"id", :heading=>"id", :html_title=>"id"}, :search_fields=>[["All Fields", "dismax"]], :index_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}, :index=>{:show_link=>"id", :num_per_page=>10, :record_display_type=>"id"}, :raw_storage_type=>"marc21", :show_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}}
+BLACKLIGHT: initialized with Blacklight.solr_config: {:url=>"http://localhost:8080/bl_solr", :adapter=>:http}
+BLACKLIGHT: initialized with Blacklight.solr: #<RSolr::Connection:0x2795994 @adapter=#<RSolr::Adapter::HTTP:0x2796948 @connector=#<RSolr::HTTPClient::Connector:0x2794e54 @adapter_name=:curb>, @opts={:url=>"http://localhost:8080/bl_solr", :adapter=>:http}>, @opts={:url=>"http://localhost:8080/bl_solr", :adapter=>:http}>
+BLACKLIGHT: initialized with Blacklight.config: {:raw_storage_type=>"marc21", :show=>{:display_type=>"id", :heading=>"id", :html_title=>"id"}, :default_qt=>"dismax", :raw_storage_field=>"marc_display", :search_fields=>[["All Fields", "dismax"]], :spell_max=>5, :index_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}, :index=>{:show_link=>"id", :num_per_page=>10, :record_display_type=>"id"}, :show_fields=>{:field_names=>["text"], :labels=>{"text"=>"Text:"}}, :facet=>{:field_names=>["technology_facet", "person_facet", "title_facet", "city_facet", "organization_facet", "company_facet", "year_facet", "state_facet"], :labels=>{"year_facet"=>"Year", "company_facet"=>"Company", "state_facet"=>"State", "organization_facet"=>"Organization", "city_facet"=>"City", "person_facet"=>"Person", "title_facet"=>"Title", "technology_facet"=>"Technology"}}, :sort_fields=>[["relevance", "score desc"]]}
+
+
+Processing CatalogController#index (for ::1 at 2009-10-13 14:37:57) [GET]
+  Parameters: {"action"=>"index", "controller"=>"catalog"}
+Rendering template within layouts/application
+Rendering catalog/index
+Rendered catalog/_hidden_filters (1.2ms)
+Rendered catalog/_search_form (6.9ms)
+Rendered catalog/_home_text (1.1ms)
+Rendered catalog/_facets (133.6ms)
+Rendered catalog/_home (164.3ms)
+Rendered _user_util_links (34.2ms)
+Rendered _flash_msg (1.3ms)
+Completed in 2966ms (View: 403, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing CatalogController#index (for ::1 at 2009-10-13 14:38:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"catalog"}
+Rendering template within layouts/application
+Rendering catalog/index
+Rendered catalog/_hidden_filters (0.1ms)
+Rendered catalog/_search_form (1.4ms)
+Rendered catalog/_home_text (0.1ms)
+Rendered catalog/_facets (228.3ms)
+Rendered catalog/_home (231.3ms)
+Rendered _user_util_links (0.9ms)
+Rendered _flash_msg (0.1ms)
+Completed in 660ms (View: 237, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing CatalogController#index (for ::1 at 2009-10-13 14:38:31) [GET]
+  Parameters: {"action"=>"index", "f"=>{"technology_facet"=>["integrated circuit"]}, "controller"=>"catalog"}
+  [4;36;1mSearch Create (1.2ms)[0m   [0;1mINSERT INTO "searches" ("created_at", "updated_at", "user_id", "query_params") VALUES('2009-10-13 19:38:32', '2009-10-13 19:38:32', NULL, '--- 
+:f: !map:HashWithIndifferentAccess 
+ technology_facet: 
+ - integrated circuit
+:total: 168
+')[0m
+Rendering template within layouts/application
+Rendering catalog/index
+Rendered catalog/_hidden_filters (0.2ms)
+Rendered catalog/_search_form (1.4ms)
+Rendered catalog/_did_you_mean (39.0ms)
+Rendered catalog/_constraints (13.6ms)
+Rendered catalog/_hidden_filters (0.2ms)
+Rendered catalog/_hidden_filters (0.2ms)
+Rendered catalog/_sort_and_per_page (4.5ms)
+Rendered catalog/_bookmark_control (2.4ms)
+Rendered catalog/_index_partials/_default (4.0ms)
+Rendered catalog/_bookmark_control (0.1ms)
+Rendered catalog/_index_partials/_default (0.9ms)
+Rendered catalog/_document_list (16.6ms)
+Rendered catalog/_facets (224.9ms)
+Rendered catalog/_solr_request (11.3ms)
+Rendered _user_util_links (0.2ms)
+Rendered _flash_msg (0.1ms)
+Completed in 909ms (View: 335, DB: 1) | 200 OK [http://localhost/?f%5Btechnology_facet%5D%5B%5D=integrated+circuit]
