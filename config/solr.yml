@@ -1,0 +1,7 @@
+development:
+  url: http://sulwebappdev1.stanford.edu:8100/salt_solr
+test:
+  url: http://sulwebappdev1.stanford.edu:8100/salt_solr
+production:
+  url: http://sulwebappdev1.stanford.edu:8100/salt_solr
+    
