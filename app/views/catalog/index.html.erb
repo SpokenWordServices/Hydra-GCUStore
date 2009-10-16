@@ -1,6 +1,5 @@
-<% if params[:q].to_s.empty? and params[:f].to_s.empty? %>
-  <%#= render 'home' -%>
-<% else %>
+
+<%# In Searchworks, this is only displayed if you're not on the home page.  Different "home page" stuff is displayed otherwise-%>
 <% @page_title = "#{application_name} Search Results" %>
   <%= render :partial=>'did_you_mean', :locals => {:query => params[:q]} %>
   <div id="searchMods">
@@ -15,7 +14,6 @@
     <noscript>
       <%= submit_tag 'submit', :id => 'per_page_submit' %>
     </noscript>
-  <% end %>
 
 
   
