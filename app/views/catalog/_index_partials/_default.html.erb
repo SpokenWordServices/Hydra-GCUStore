@@ -1,0 +1,5 @@
+<%# default partial to display solr document fields in catalog index view -%>
+<div class="<%= params[:action]%>_details">
+  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
+</div>
+<div style="clear:both;"></div>

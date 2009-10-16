@@ -1,0 +1,4 @@
+<img alt="Book Cover" src="/images/spacer.png" id="<%= "ISBN#{doc[:isbn_display].join('ISBN')}" unless doc[:isbn_display].nil? %><%= "LCCN#{doc[:lccn].gsub(' ','')}" unless doc[:lccn].nil? %><%= "OCLC#{doc[:oclc].join('OCLC')}" unless doc[:oclc].nil? %>" name="<%= params[:action] == 'show' ? 'large' : 'small' %>_cover" class="cover_image" style="display:none;"/>
+<script type="text/javascript">
+  standard_nums.push("<%= "ISBN:#{doc[:isbn_display].join(',ISBN:')}" unless doc[:isbn_display].nil? %><%= doc[:isbn_display].nil? ? "" : "," %><%= "LCCN:#{doc[:lccn].gsub(' ','')}" unless doc[:lccn].nil? %><%= (doc[:isbn_display].nil? and doc[:lccn].nil?) ? "" : "," %><%= "OCLC:#{doc[:oclc].join(',OCLC:')}" unless doc[:oclc].nil? %>");
+</script>

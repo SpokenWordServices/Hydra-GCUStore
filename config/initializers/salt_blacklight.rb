@@ -87,10 +87,13 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:index_fields] = {
     :field_names => [
-      "text"
+      "text",
+      "title_facet",
+      "type"
     ],
     :labels => {
-      "text" => "Text:"
+      "text" => "Text:",
+      "title_facet" => "Title:",
     }
   }
 
@@ -98,10 +101,12 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:show_fields] = {
     :field_names => [
-      "text"
+      "text",
+      "title_facet"
     ],
     :labels => {
-      "text" => "Text:"
+      "text" => "Text:",
+      "title_facet" => "Title:"
     }
   }
 
