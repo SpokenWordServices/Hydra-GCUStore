@@ -866,6 +866,30 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
   background-color:#FCF9F4;
   font-size:0.9em;
 }
+
+#documents {
+	position: relative;
+	float: left;
+}
+
+#documents .thumbnail {
+	display: inline;
+	float: left;
+	width: 130px;
+	height: 150px;
+	padding: 10px;
+	text-align: center;
+	border: none;
+}
+
+#documents .thumbnail a {
+	display: block;
+}
+
+.thumbnail-grid {
+	padding: 0 5px;
+}
+
 @media print {
 
  

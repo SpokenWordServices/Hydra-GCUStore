@@ -40,16 +40,14 @@
   <%= will_paginate @response.docs, :container => false %>
 </div>
 
-<%= render :partial=>'document_list' %>
+<%#= render :partial=>'document_list' %>
+
+<%= render :partial=>'document_gallery' %>
 
 <% sidebar_items << capture do %>
   <%= render :partial=>'facets' %>
 <% end %>
 
-<div class="pagination">
-  <%= will_paginate @response.docs, :page_links => false, :class => 'prev_next_links' %>
-  <%= will_paginate @response.docs, :container => false %>
-</div>
 <script type="text/javascript">
   printGBSCall(standard_nums);
 </script>
