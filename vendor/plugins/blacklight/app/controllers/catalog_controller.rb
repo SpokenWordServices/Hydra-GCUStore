@@ -46,7 +46,8 @@ class CatalogController < ApplicationController
      logger.error("Attempt to access invalid id: #{params[:id]}") 
      flash[:notice] = "Sorry, I can't find the item you requested." 
      redirect_to :action => 'index' 
-  rescue 
+  rescue => x
+       raise x
        logger.error("Error encountered when trying to access: #{params[:id]}") 
        flash[:notice] = "Sorry, you seem to have encountered an error." 
        redirect_to :action => 'index', :q => nil , :f => nil

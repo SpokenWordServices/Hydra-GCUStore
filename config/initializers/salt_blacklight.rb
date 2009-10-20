@@ -89,11 +89,16 @@ Blacklight.configure(:shared) do |config|
     :field_names => [
       "text",
       "title_facet",
-      "type"
+      "date_t",
+      "medium_t",
+      "location_t"
     ],
     :labels => {
       "text" => "Text:",
       "title_facet" => "Title:",
+      "date_t" => "Date:",
+      "medium_t" => "Document Type:",
+      "location_t" => "Location:"
     }
   }
 
@@ -102,11 +107,19 @@ Blacklight.configure(:shared) do |config|
   config[:show_fields] = {
     :field_names => [
       "text",
-      "title_facet"
+      "title_facet",
+      "date_t",
+      "medium_t",
+      "location_t",
+      "rights_t"
     ],
     :labels => {
       "text" => "Text:",
-      "title_facet" => "Title:"
+      "title_facet" => "Title:",
+      "date_t" => "Date:",
+      "medium_t" => "Document Type:",
+      "location_t" => "Location:",
+      "rights_t"  => "Copyright:"
     }
   }
 

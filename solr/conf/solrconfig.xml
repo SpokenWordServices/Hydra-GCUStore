@@ -390,7 +390,7 @@
         ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
      </str>
      <str name="fl">
-        id,text,title_facet,year_facet
+        id,text,title_facet,date_t,medium_t,location_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%

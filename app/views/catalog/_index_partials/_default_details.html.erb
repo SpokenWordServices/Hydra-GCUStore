@@ -1,34 +1,12 @@
 <%# default partial to display solr document fields in catalog index view -%>
 <dl class="defList">
   <%#= get_relevance_bar(document[:score],"Relevance:") %>
+  <%= get_data_with_label(document, "Date:", 'date_t') %>  
   <%= get_data_with_label(document, "Title:", 'title_facet') %>
-  <%= get_data_with_label(document, "Year:", 'year_facet')%>
+  <%= get_data_with_label(document, "Document Type:", 'medium_t') %>
+  <%= get_data_with_label(document, "Location:", 'location_t') %>
   <% callnums = get_callnum(document) %>
-  <% unless callnums.empty?  %>
-    <dt>At the Library:</dt>
-      <dd class="availability_lookup">
-        <% callnums.each do |lib,loc| %>
-          <% loc.each do |location,item_detial| %>
-            <% item_detial.each do |cnum_bcode| %>
-              <span id="avail_<%= cnum_bcode[1] %>">
-                <span class="lib"><%= lib %></span> &raquo; 
-                <span class="loc"><%= location %></span> &raquo; 
-                <span class="cnum"><%= cnum_bcode[0]%></span>
-              </span>
-              <br/>
-            <% end %>
-          <% end %>
-        <% end %>
-      </dd>
-  <% end %>
-  <% if document['url_sfx'] %>
-    <dt>Online:</dt>
-    <dd>
-      <span class="sfx"><a href="<%= document['url_sfx'] %>">Find full text</a></span>
-    </dd>
-  <% else %>
-    <%= get_suppl_urls(document) %>  
-  <% end %>
+  <%= get_suppl_urls(document) %>  
   <%= show_formats(document['format']) %>
 </dl>
 <script type="text/javascript">
