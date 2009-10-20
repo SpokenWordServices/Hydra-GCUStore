@@ -20,7 +20,7 @@ Blacklight.configure(:shared) do |config|
   
   # default params for the SolrDocument.search method
   SolrDocument.default_params[:search] = {
-    :qt=>:dismax,
+    :qt=>:search,
     :per_page => 10,
     :facets => {:fields=>
       ["technology_facet",
@@ -41,7 +41,7 @@ Blacklight.configure(:shared) do |config|
   ##############################
   
   
-  config[:default_qt] = "dismax"
+  config[:default_qt] = "search"
   
 
   # solr field values given special treatment in the show (single result) view
