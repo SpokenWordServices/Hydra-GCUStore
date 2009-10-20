@@ -1,0 +1,9 @@
+<div id="documents" class="thumbnail-grid">
+  <%- @response.docs.each do |document| -%>
+  <div class="document thumbnail">
+    <%= link_to(image_tag('default_thumbnail.gif'), catalog_path(document[:id])) %>
+    <%= link_to(truncate(document.get('title_facet'), :length => 20, :omission => "..."), catalog_path(document[:id])) -%>
+    <%= document['date_t'] %>
+  </div>
+  <%- end -%>
+</div>
