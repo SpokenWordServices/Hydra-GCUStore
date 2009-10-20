@@ -1,0 +1,24 @@
+<%# default partial to display solr document fields in catalog show view -%>
+
+<div class="<%= params[:action]%>_details">
+  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
+</div>
+<div class="book_cover" id="cover_container">
+  <%= render :partial => "catalog/book_cover" , :locals => {:doc => document}%>
+</div>
+<div style="clear:left;"></div>
+<div class="access_data">
+  <%#= render :partial => "catalog/access_data", :locals => {:doc => document} %>
+</div>
+<div style="clear:both;"></div>
+  <div id="tech_details">
+    <h2>Tech Details</h2>
+    <ul>
+      <li>Catkey: <%= document[:id] %></li>
+      <li><a href="http://library.stanford.edu/searchcat?ckey=<%= @document.id %>">Compare in Socrates</a></li>
+      <li><%= link_to "View MARC XML", catalog_path(document.id, :format => 'xml') %></li>
+    </ul>
+  </div>
+<div style="clear:both;"></div>
+
+
