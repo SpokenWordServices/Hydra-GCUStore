@@ -410,6 +410,12 @@
       <str name="fl">*</str>
       <str name="rows">1</str>
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+      
+      <str name="facet">on</str>
+			<str name="facet.mincount">1</str>
+			<str name="facet.limit">10</str>
+			
+      <str name="facet.field">technology_facet</str>
     </lst>
   </requestHandler>
   
