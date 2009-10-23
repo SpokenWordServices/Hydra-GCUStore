@@ -3,9 +3,14 @@
 <div class="<%= params[:action]%>_details">
   <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
-<div class="book_cover" id="cover_container">
-  <%= render :partial => "catalog/book_cover" , :locals => {:doc => document}%>
+<div class="document_viewer" id="cover_container">
+  <%= render :partial => "document/viewer" , :locals => {:doc => document}%>
 </div>
+<dl class="defList" id="rights_info">
+  <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
+</dl>
+
+
 <div style="clear:left;"></div>
 <div class="access_data">
   <%#= render :partial => "catalog/access_data", :locals => {:doc => document} %>

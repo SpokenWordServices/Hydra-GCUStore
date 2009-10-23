@@ -224,6 +224,10 @@ div#yui-main div#mid_content {
   border-bottom:1px dotted #cccccc;
   height:20px;
 }
+#showUtils .back_to_cat {
+  float:left; 
+  padding-right:50px;
+}
 ul.tools {
   margin:0;
   float:right;
@@ -342,14 +346,11 @@ div#preview_info {
   width:18% !important;
 }
 .show_details {
-  width:500px;
+  width:400px;
   float:right;
 }
 .show_details dl.defList {
   margin:0;
-}
-.show_details dl.defList dt {
-  width:20%;
 }
 .show_details dl.defList dd {
   width:72%;
@@ -362,12 +363,20 @@ dl.defList {
 }
 dl.defList dt {
   text-align:left;
+  width:100%;
+  font-weight: bold;
 }
-dl.defList dt {
-  width:130px;
+dl.defList dd {
+  width:90%;
 }
 dl.defList dt, dl.defList dd {
   margin:2px 0;
+  padding:0px;
+}
+
+#rights_info {
+  width:320px;
+  margin-left:10px;
 }
 #marc_view .ind1, #marc_view .ind2 {
   padding:0 5px;

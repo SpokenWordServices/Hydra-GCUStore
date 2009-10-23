@@ -40,9 +40,9 @@
   <%= will_paginate @response.docs, :container => false %>
 </div>
 
-<%#= render :partial=>'document_list' %>
+<%= render :partial=>'document_list' %>
 
-<%= render :partial=>'document_gallery' %>
+<%#= render :partial=>'document_gallery' %>
 
 <% sidebar_items << capture do %>
   <%= render :partial=>'facets' %>
