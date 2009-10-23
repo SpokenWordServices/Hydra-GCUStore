@@ -896,7 +896,7 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
 }
 
 .thumbnail-grid {
-	padding: 0 5px;
+	padding: 0px 0px;
 }
 
 @media print {
