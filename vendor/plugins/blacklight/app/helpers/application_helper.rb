@@ -306,7 +306,7 @@ module ApplicationHelper
       end
 
       href_attr = "href=\"#{url}\"" unless href
-      "<a #{href_attr}#{tag_options}>#{h(name) || h(url)}</a>"
+      "<a #{href_attr}#{tag_options}>#{name || url}</a>"
     end
   end
 
