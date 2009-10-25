@@ -7,18 +7,6 @@
   <h2>Results navigation</h2>
   <%= will_paginate @response.docs, :renderer => 'PrevNextLinks', :class => 'prev_next_links' %>
   <%= will_paginate @response.docs, :class => 'windowed_links' %>
-  <div class="list_gallery_toggle">
-    <%=
-      link_to_unless(params[:view] == 'list', 'List', {:view => 'list'}, {:class => 'list_toggle'}) do |name|
-        content_tag(:span, name, {:class => 'list_toggle'})
-      end
-    %>
-    <%=
-      link_to_unless(params[:view].blank?, 'Gallery', {:view => nil}, {:class => 'gallery_toggle'}) do |name|
-        content_tag(:span, name, {:class => 'gallery_toggle'})
-      end
-    %>
-  </div>
   <% form_tag root_path, :method=>:get, :class=>'sort' do %>
     <label>Sort by:</label>
     <%= select_tag(:sort, options_for_select(Blacklight.config[:sort_fields], h(params[:sort])), :onchange => 'this.form.submit()') %>
@@ -31,6 +19,18 @@
       <%= submit_tag 'submit', :id => 'sort_submit' %>
     </noscript>
   <% end %>
+  <div class="list_gallery_toggle">
+    <%=
+      link_to_unless(params[:view] == 'list', 'List', params.merge({:view => 'list'}), {:class => 'list_toggle'}) do |name|
+        content_tag(:span, name, {:class => 'list_toggle'})
+      end
+    %>
+    <%=
+      link_to_unless(params[:view].blank?, 'Gallery', params.merge({:view => nil}), {:class => 'gallery_toggle'}) do |name|
+        content_tag(:span, name, {:class => 'gallery_toggle'})
+      end
+    %>
+  </div>
 </div>
 
 <%- if params[:view] == 'list' -%>

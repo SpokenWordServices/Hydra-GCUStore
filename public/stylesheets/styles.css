@@ -276,7 +276,7 @@ ul.toc {
   border-bottom:none;
   text-decoration:underline;
 }
-div.prev_next_links, div.windowed_links, div.list_gallery_toggle {
+div.prev_next_links, div.windowed_links {
   float:left;
 }
 
@@ -284,8 +284,13 @@ div.prev_next_links, div.windowed_links {
   margin-top: 20px;
 }
 
-div.windowed_links, div.list_gallery_toggle {
+div.windowed_links {
   margin-left: 15px;
+}
+
+div.list_gallery_toggle {
+  float: right;
+  margin-right: 15px;
 }
 
 div.list_gallery_toggle a, div.list_gallery_toggle span {
