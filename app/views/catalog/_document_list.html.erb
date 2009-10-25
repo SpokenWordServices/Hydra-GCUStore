@@ -18,16 +18,16 @@
       <% # container for a single doc -%>
       <tr class="document <%= cycle("even","odd")%>">
         <td>
-          <%= link_to_document(document, :label => :date_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+          <%= document.get(:date_t) %>
         </td>
         <td>
           <%= link_to_document(document, :label => :title_facet, :counter => (counter + 1 + @response.params[:start].to_i)) %>
         </td>
         <td>
-          <%= link_to_document(document, :label => :medium_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+          <%= document.get(:medium_t) %>
         </td>
         <td>
-          <%= link_to_document(document, :label => :location_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+          <%= document.get(:location_t) %>
         </td>
       </tr>
     
