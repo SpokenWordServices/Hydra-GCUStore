@@ -25,30 +25,30 @@ a {
 
 /* Top Red Banner */
 .sul-banner {
-	width: 100%;
-/*  Possible fix for red banner issue IE compatible */	
-/*	min-width: 73.076em; */
-/*	*width:expression(document.body.clientWidth < 950? "73.076em": "auto" ); */
-	background-color: #990000;
-	color: #FFFFFF;
-	height: 25px;
+  width: 100%;
+/*  Possible fix for red banner issue IE compatible */  
+/*  min-width: 73.076em; */
+/*  *width:expression(document.body.clientWidth < 950? "73.076em": "auto" ); */
+  background-color: #990000;
+  color: #FFFFFF;
+  height: 25px;
 }
 .sul-banner a, .sul-banner a:visited {
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .banner-links {
-	font-size: .85em;
-	display: inline;
-	float: right;
-	padding: 5px 10px 0 0;
+  font-size: .85em;
+  display: inline;
+  float: right;
+  padding: 5px 10px 0 0;
 }
 .banner-links a {
   border-bottom:none;
   text-decoration:underline;
 }
 #banner-logo {
-	float: left;
+  float: left;
 }
 #hd .yui-u {
  width: 25%;
@@ -264,19 +264,73 @@ ul.toc {
   margin-top: 7px;
 }
 .pagination {
-  margin: 0.5em 0 0 0;
+  margin: 0;
   border-top:1px dotted #cccccc;
   border-bottom:1px dotted #cccccc;
   padding: 5px 0 7px 0;
   text-align:right;
+  height: 40px;
 }
+
 .pagination a {
   border-bottom:none;
   text-decoration:underline;
 }
-div.prev_next_links {
+div.prev_next_links, div.windowed_links, div.list_gallery_toggle {
   float:left;
 }
+
+div.prev_next_links, div.windowed_links {
+  margin-top: 20px;
+}
+
+div.windowed_links, div.list_gallery_toggle {
+  margin-left: 15px;
+}
+
+div.list_gallery_toggle a, div.list_gallery_toggle span {
+  display: block;
+  float: left;
+  height: 20px;
+  padding-top: 20px;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+}
+
+div.list_gallery_toggle span {
+  color: #f33;
+}
+
+div.list_gallery_toggle a.list_toggle {
+  background-image: url(../images/list_toggle.gif);
+}
+
+div.list_gallery_toggle a.gallery_toggle {
+  background-image: url(../images/gallery_toggle.gif);
+}
+
+div.list_gallery_toggle span.list_toggle {
+  background-image: url(../images/list_toggle_current.gif);
+}
+
+div.list_gallery_toggle span.gallery_toggle {
+  background-image: url(../images/gallery_toggle_current.gif);
+}
+
+form.sort {
+  float: right;
+  width: 100px;
+}
+
+form.sort select {
+  display: block;
+  clear: left;
+}
+
+form.sort label {
+  float: left;
+}
+
 div#searchMods {
   padding: 0 10px;
 }
@@ -456,7 +510,7 @@ dl.defList dt, dl.defList dd {
   *width:79% !important;
 }
 .lightboxContent {
-  height:auto;	
+  height:auto;  
   padding-bottom:10px;
 }
 /* Access Data */
@@ -877,26 +931,26 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
 }
 
 #documents {
-	position: relative;
-	float: left;
+  position: relative;
+  float: left;
 }
 
 #documents .thumbnail {
-	display: inline;
-	float: left;
-	width: 130px;
-	height: 150px;
-	padding: 10px;
-	text-align: center;
-	border: none;
+  display: inline;
+  float: left;
+  width: 130px;
+  height: 150px;
+  padding: 10px;
+  text-align: center;
+  border: none;
 }
 
 #documents .thumbnail a {
-	display: block;
+  display: block;
 }
 
 .thumbnail-grid {
-	padding: 0px 0px;
+  padding: 0px 0px;
 }
 
 @media print {
