@@ -6,30 +6,31 @@
     var standard_nums = new Array();
   </script>
   <% # loop thru each doc -%>
-  <% @response.docs.each_with_index do |document,counter| %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Document Type</th>
+      <th>Location</th>
+    </tr>
+    <% @response.docs.each_with_index do |document,counter| %>
 
-    <% # container for a single doc -%>
-    <div class="document <%= cycle("even","odd")%>">
-      <% # header bar for doc items in index view -%>
-      <div class="documentHeader yui-g">
-        
-        <% # list controls for items/docs -%>
-        <div class="yui-u documentFunctions">
-          <%= render :partial=>'bookmark_control', :locals=>{:document=>document} %>
-        </div>
-        
-        <% # main title container for doc partial view -%>
-
-        <div class="yui-u">
-          <h3 class="index_title"><%= counter + 1 + @response.params[:start].to_i %>. <%= link_to_document document, :label=>document['title_facet'] ? document['title_facet'].to_s : document_show_link_field, :counter => (counter + 1 + @response.params[:start].to_i) %></h3>        
-        </div>
-      </div>
-      <%# book_cover =  render :partial => "catalog/book_cover" , :locals => {:doc => document}-%>
-      <%#= link_to_document document, :label=>  book_cover, :counter => (counter + 1 + @response.params[:start].to_i) -%>
-      <% # main container for doc partial view -%>
-      <%= render_document_partial document, :index %>
-
-    </div>
+      <% # container for a single doc -%>
+      <tr class="document <%= cycle("even","odd")%>">
+        <td>
+          <%= link_to_document(document, :label => :date_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        </td>
+        <td>
+          <%= link_to_document(document, :label => :title_facet, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        </td>
+        <td>
+          <%= link_to_document(document, :label => :medium_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        </td>
+        <td>
+          <%= link_to_document(document, :label => :location_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        </td>
+      </tr>
     
-  <% end %>
+    <% end %>
+  </table>
 </div>
