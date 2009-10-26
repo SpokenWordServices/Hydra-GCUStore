@@ -23,6 +23,15 @@ a {
   text-align:center;
 }
 
+ul.horizontal {
+}
+ul.horizontal li {
+  list-style-type: none;
+  display: inline;
+  margin-right: 5px;
+}
+
+
 /* Top Red Banner */
 .sul-banner {
   width: 100%;
@@ -334,6 +343,14 @@ form.sort select {
 
 form.sort label {
   float: left;
+}
+
+#collection-id-box { 
+  background-color: #CDD0EE; 
+  border:1px solid black;
+}
+#collection-id-box .title {
+    font-size:1em;
 }
 
 div#searchMods {

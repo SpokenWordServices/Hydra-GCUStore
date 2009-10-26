@@ -1,0 +1,19 @@
+<div id="collection-id-box" class="location-browse">
+  <h2 class="title">Edward Feigenbaum Collection</h2>
+  <ul class="containers horizontal">
+    <li class="first"> 
+      <%= link_to_multifacet("Series #{document["series_facet"]}", "series_facet" => document["series_facet"])  %> 
+    </li>
+    <li>
+      > <%= link_to_multifacet(document['box_facet'],  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"]) %>
+    </li>
+    <li>
+      > <%= link_to_multifacet(document['folder_facet'],  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"], "foler_facet" => document["folder_facet"]) %>
+    </li>
+  </ul>
+  <ul class="links horizontal">
+    <li><%= link_to("Collection Home", "")%> </li>
+    <li>Finding Aid</li>
+    <li>Access</li>
+  </ul>
+</div>

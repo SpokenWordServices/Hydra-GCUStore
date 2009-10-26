@@ -27,3 +27,7 @@
 <div style="clear:both;"></div>
 
 
+<% sidebar_items << capture do %>
+  <%= render :partial=>"location_browse_box", :locals => {:document => document} %>
+  <%#= render :partial=>'facets' %>
+<% end %>
