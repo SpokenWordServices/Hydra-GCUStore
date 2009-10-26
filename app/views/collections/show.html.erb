@@ -1,7 +1,9 @@
 <h2>Edward A Feigenbaum</h2>
-<%= image_tag "feigenbaum_splash.png"%>
+<div id="collection_image">
+  <%= image_tag "feigenbaum_splash.png"%>
+</div>
 
-<%= link_to "Browse the Collection", catalog_index_path("f[collection_facet]" => "e-a-feigenbaum-collection") %>
+<%= link_to "Browse the Collection", catalog_index_path("f[collection_facet][]" => "e-a-feigenbaum-collection") %>
 
 
 <ul>
@@ -10,3 +12,7 @@
 </ul>
 
 Notes, Scope, Coverage...
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>'catalog/facets', :locals=>{:facets_display_heading => "Explore the collection"} %>
+<% end %>
