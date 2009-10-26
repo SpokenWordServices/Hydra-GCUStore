@@ -7,6 +7,9 @@
   </script>
   <% # loop thru each doc -%>
   <table>
+    <caption>
+      <%= pluralize(@response.docs.total, 'document') %>
+    </caption>
     <tr>
       <th>Date</th>
       <th>Title</th>

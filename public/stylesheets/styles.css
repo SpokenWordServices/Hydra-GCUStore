@@ -958,6 +958,22 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
   padding: 0px 0px;
 }
 
+#documents caption {
+  background: #669;
+  color: #fff;
+  margin: 0;
+  text-align: left;
+  padding: .5em;
+}
+
+#documents th {
+  background: #ddd;
+}
+
+#documents table {
+  margin: 1em 0;
+}
+
 @media print {
 
  
