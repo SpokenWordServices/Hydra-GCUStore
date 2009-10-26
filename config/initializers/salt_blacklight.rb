@@ -30,7 +30,10 @@ Blacklight.configure(:shared) do |config|
         "organization_facet",
         "company_facet",
         "year_facet",
-        "state_facet"]
+        "state_facet",
+        "series_facet",
+        "box_facet",
+        "folder_facet"]
     }  
   }
   
@@ -69,7 +72,10 @@ Blacklight.configure(:shared) do |config|
       "organization_facet",
       "company_facet",
       "year_facet",
-      "state_facet"
+      "state_facet",
+      "series_facet",
+      "box_facet",
+      "folder_facet"
     ],
     :labels => {
       "technology_facet" => "Technology",
@@ -79,7 +85,10 @@ Blacklight.configure(:shared) do |config|
       "organization_facet" => "Organization",
       "company_facet" => "Company",
       "year_facet" => "Year",
-      "state_facet" => "State"
+      "state_facet" => "State",
+      "series_facet" => "Series",
+      "box_facet" => "Box",
+      "folder_facet" => "Folder"
     }
   }
 
@@ -91,14 +100,18 @@ Blacklight.configure(:shared) do |config|
       "title_facet",
       "date_t",
       "medium_t",
-      "location_t"
+      "series_facet",
+      "box_facet",
+      "folder_facet"
     ],
     :labels => {
       "text" => "Text:",
       "title_facet" => "Title:",
       "date_t" => "Date:",
       "medium_t" => "Document Type:",
-      "location_t" => "Location:"
+      "series_facet" => "Series",
+      "box_facet" => "Box",
+      "folder_facet" => "Folder"
     }
   }
 

@@ -30,7 +30,7 @@
           <%= document.get(:medium_t) %>
         </td>
         <td>
-          <%= document.get(:location_t) %>
+          <%= "#{document.get(:series_facet)}, #{document.get(:box_facet)}, #{document.get(:folder_facet)}" %>
         </td>
       </tr>
     
