@@ -9,8 +9,9 @@
         <h3><%= facet_field_labels[solr_fname] -%></h3>
         <ul>
           <% display_facet.each do |item| -%>
+            <% link_options = add_facet_params(solr_fname, item).merge!Hash["controller" => "catalog", :action=> "index"] %>
               <li>
-                <%= link_to h(item), catalog_index_path(add_facet_params(solr_fname, item)) %> (<%#= format_num item.hits %>)
+                <%= link_to h(item), url_for(link_options) %> (<%#= format_num item.hits %>)
               </li>
           <% end %>
         </ul>
