@@ -34,16 +34,18 @@
 <%= render :partial=>'solr_request' %>
 <% if @document.marc %>
   <%= @document.marc.to_zotero(document_partial_name(@document)) %>
-  <div class="lightboxContent" id="citation" style="display:none;">
-    <%= render :partial => 'citation' %>
-  </div>
-  <div class="lightboxContent" id="email" style="display:none;">
-    <%= render :partial => 'email_form' %>
-  </div>
-  <div class="lightboxContent" id="sms" style="display:none;">
-    <%= render :partial => 'sms_form' %>
-  </div>
 <% end %>
+
+<div class="lightboxContent" id="citation" style="display:none;">
+  <%= render :partial => 'citation' %>
+</div>
+<div class="lightboxContent" id="email" style="display:none;">
+  <%= render :partial => 'email_form' %>
+</div>
+<div class="lightboxContent" id="sms" style="display:none;">
+  <%= render :partial => 'sms_form' %>
+</div>
+  
 <script type="text/javascript">
   printGBSCall(standard_nums);
 </script>

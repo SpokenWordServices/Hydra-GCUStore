@@ -29,5 +29,6 @@
 
 <% sidebar_items << capture do %>
   <%= render :partial=>"location_browse_box", :locals => {:document => document} %>
+  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document} %>
   <%#= render :partial=>'facets' %>
 <% end %>

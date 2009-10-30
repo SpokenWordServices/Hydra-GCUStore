@@ -1,0 +1,7 @@
+<h2>Collections</h2>
+
+<%= link_to "Edward A Feigenbaum", collection_path("1") %>
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>'catalog/facets', :locals=>{:facets_display_heading => "Explore topics across collections"} %>
+<% end %>
