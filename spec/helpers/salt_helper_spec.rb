@@ -13,7 +13,7 @@ describe SaltHelper do
   
   describe "ead_title" do
     it "should read the title from the ead description" do
-      retrieve_descriptor
+      @descriptor = Descriptor.retrieve("sc0340")
       ead_title.should == "Edward A. Feigenbaum Papers"
     end
   end

@@ -17,13 +17,6 @@ module SaltHelper
     link_to(name, catalog_index_path(facet_params), options)
   end
   
-  def retrieve_descriptor
-    # We should be grabbing this from the collection_facet param, but there's only one collection so its hard-coded.
-    #collection_id = params[:collection_facet]
-    collection_id = "sc0340"
-    @descriptor = Descriptor.retrieve( collection_id )
-  end
-  
   def ead_title( ead_description=@descriptor )
     ead_description.xpath("//archdesc[@level=\"collection\"]/did/unittitle").first.content
   end

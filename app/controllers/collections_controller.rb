@@ -1,7 +1,5 @@
 class CollectionsController < CatalogController
   
-  before_filter :retrieve_descriptor, :only =>[:show]
-  
   # get search results from the solr index
   def index
       @response = get_search_results
