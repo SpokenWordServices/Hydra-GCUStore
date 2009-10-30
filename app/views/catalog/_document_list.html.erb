@@ -5,35 +5,12 @@
     var id_array = new Array();
     var standard_nums = new Array();
   </script>
-  <% # loop thru each doc -%>
-  <table>
-    <caption>
-      <%= pluralize(@response.docs.total, 'document') %>
-    </caption>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Document Type</th>
-      <th>Location</th>
-    </tr>
-    <% @response.docs.each_with_index do |document,counter| %>
-
-      <% # container for a single doc -%>
-      <tr class="document <%= cycle("even","odd")%>">
-        <td>
-          <%= document.get(:date_t) %>
-        </td>
-        <td>
-          <%= link_to_document(document, :label => :title_facet, :counter => (counter + 1 + @response.params[:start].to_i)) %>
-        </td>
-        <td>
-          <%= document.get(:medium_t) %>
-        </td>
-        <td>
-          <%= "#{document.get(:series_facet)}, #{document.get(:box_facet)}, #{document.get(:folder_facet)}" %>
-        </td>
-      </tr>
-    
-    <% end %>
-  </table>
+  <% facet_name = grouping_facet %>
+  <%- if facet_name -%>
+    <%- @response.docs.group_by {|d| d.get(facet_name)}.each do |grouping| -%>
+      <%= render :partial => 'catalog/_index_partials/default_group', :locals => {:docs => grouping[1], :facet_name => facet_name, :facet_value => grouping[0].to_s} %>
+    <%- end -%>
+  <%- else -%>
+    <%= render :partial => 'catalog/_index_partials/default_group', :locals => {:docs => @response.docs, :facet_name => nil, :facet_value => nil} %>
+  <%- end -%>
 </div>

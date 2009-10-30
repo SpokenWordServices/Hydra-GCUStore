@@ -955,6 +955,8 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
 #documents {
   position: relative;
   float: left;
+  padding-top: 1em;
+  width: 100%;
 }
 
 #documents .thumbnail {
@@ -972,10 +974,14 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
 }
 
 .thumbnail-grid {
-  padding: 0px 0px;
+  padding: 0;
+  margin-bottom: 2em;
+  width: 100%;
+  float: left;
 }
 
-#documents caption {
+#documents h3 {
+  clear: both;
   background: #669;
   color: #fff;
   margin: 0;
@@ -988,7 +994,8 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
 }
 
 #documents table {
-  margin: 1em 0;
+  margin: 0 0 2em;
+  width: 100%;
 }
 
 @media print {

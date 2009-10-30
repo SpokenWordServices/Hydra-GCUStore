@@ -1,0 +1,13 @@
+<h3><%=h facet_value if facet_value %> <em><%= grouped_result_count(@response, facet_name, facet_value) %></em></h3>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Document Type</th>
+    <th>Location</th>
+  </tr>
+  <% docs.each_with_index do |document,counter| %>
+    <%= document['year_facet'] %>
+    <%= render :partial => 'catalog/_index_partials/default', :locals => {:document => document, :counter => counter} %>
+  <% end %>
+</table>

@@ -1,5 +1,15 @@
 <%# default partial to display solr document fields in catalog index view -%>
-<div class="<%= params[:action]%>_details">
-  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
-</div>
-<div style="clear:both;"></div>
+<tr class="document <%= cycle("even","odd")%>">
+  <td>
+    <%= document.get(:date_t) %>
+  </td>
+  <td>
+    <%= link_to_document(document, :label => :title_facet, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+  </td>
+  <td>
+    <%= document.get(:medium_t) %>
+  </td>
+  <td>
+    <%= "#{document.get(:series_facet)}, #{document.get(:box_facet)}, #{document.get(:folder_facet)}" %>
+  </td>
+</tr>

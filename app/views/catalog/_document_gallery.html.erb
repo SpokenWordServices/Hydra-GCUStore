@@ -1,9 +1,10 @@
-<div id="documents" class="thumbnail-grid">
-  <%- @response.docs.each_with_index do |document, counter| -%>
-  <div class="document thumbnail">
-    <%= link_to_document(document, :label => image_tag('default_thumbnail.gif'), :counter => (counter + 1 + @response.params[:start].to_i)) %>
-    <%= link_to_document(document, :label => truncate(document.get('title_facet'), :length => 20, :omission => "..."), :counter => (counter + 1 + @response.params[:start].to_i)) -%>
-    <%= document['date_t'] %>
-  </div>
+<div id="documents">
+  <% facet_name = grouping_facet %>
+  <%- if facet_name -%>
+    <%- @response.docs.group_by {|d| d.get(facet_name)}.each do |grouping| -%>
+      <%= render :partial => 'catalog/_index_partials/gallery_group', :locals => {:docs => grouping[1], :facet_name => facet_name, :facet_value => grouping[0].to_s} %>
+    <%- end -%>
+  <%- else -%>
+    <%= render :partial => 'catalog/_index_partials/gallery_group', :locals => {:docs => @response.docs, :facet_name => nil, :facet_value => nil} %>
   <%- end -%>
 </div>
