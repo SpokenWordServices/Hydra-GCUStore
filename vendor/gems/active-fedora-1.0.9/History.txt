@@ -1,0 +1,45 @@
+
+1.0.7 2009-09-18
+
+Performance improvements. Requires RubyFedora 1.0.7 (but will probably work with 1.0.5)
+
+Feature #489: Optimize datastreams method so that you only hit fedora and parse xml when you have to
+Bug #415: Base.save returns meaningful responses and yields exceptions when appropriate
+Bug #465: ActiveFedora::Base#fields method performance issues (tied to #489)
+
+
+1.0.6 2009-08-27
+
+Minor update.
+
+* ToDo #78: Relationship finders should return an array of ActiveFedora Objects
+* Bug #40: Fedora::Datastream should track control_group attribute correctly
+* Bug #425: SOLR_DOCUMENT_ID still hardcoded as "id" in a few spots
+* Bug #449: using has_metadata breaks support for custom pids
+
+1.0.5 2009-07-17
+
+Minor update.
+
+* Bug #387: Base.deserialize should mark all datastreams as not new
+* ToDo #389: Base.update_attributes and Base.update_indexed_attributes should accept :datastream limiter
+* Feature #388: Base.update_attributes and Base.update_indexed_attributes should support deleting fields
+
+1.0.4 2009-07-10
+
+!! Not Backwards Compatible with Fedora < 3.2.* !!
+
+* 1 major enhancement:
+  * ruby-fedora is now compatible with Fedora 3.2.1
+  
+Changelog:
+* ToDo #272: Datastream.new should accept a :prefix option for auto-incrementing DSIDs
+* ToDo #275: Update RubyFedora to work with Fedora 3.2 REST API
+* ToDo #308: ActiveFedora::FedoraObject.datatsreams should load label as well as pid and dsId
+* ToDo #318: Intelligent FileDatastream and FileAsset Management
+* Bug #312: Base.delete should delete the solr record as well as the Fedora Object
+* Feature #46: Improve OSX Fedora/Solr Disk Image
+* Feature #284: solr document id should by a config option instead of hard coded as "id"
+* Feature #307: ActiveFedora::Base should provide a label setter.
+* Feature #314: Relationship finder should provide a "response_format" option, default to format of "objects"
+* Feature #327: Option to turn off solr updates (assume that something else will update Solr for you)

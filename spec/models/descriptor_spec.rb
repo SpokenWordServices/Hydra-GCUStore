@@ -27,7 +27,7 @@ describe Descriptor do
     response = ""
     response << "<dd> #{@descriptor.xpath( xpath_query + "/head" ).first.content} </dd>"
     response << "<dt> #{@descriptor.xpath( xpath_query + "/p" ).first.content} </dt>"
-    puts response
+    # puts response
   end
   
   describe "lookup_folder_title" do
