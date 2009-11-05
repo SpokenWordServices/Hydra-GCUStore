@@ -62,4 +62,12 @@ module SaltHelper
     end
   end
   
+  def document_fedora_show_html_title
+    @document.datastreams["descMetadata"].title_values.first
+  end
+  
+  def get_data_with_label(document, label, field)
+    
+  end
+  
 end

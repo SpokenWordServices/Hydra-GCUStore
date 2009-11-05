@@ -4,7 +4,7 @@
   <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
 <div class="document_viewer" id="cover_container">
-  <%= render :partial => "document/viewer" , :locals => {:doc => document}%>
+  <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
 </div>
 <dl class="defList" id="rights_info">
   <%= get_data_with_label(document, "Copyright:", 'rights_t') %>

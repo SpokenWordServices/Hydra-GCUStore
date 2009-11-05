@@ -1,0 +1,19 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<dl class="defList">
+  <dt>Date:</dt>
+  <dd><%=h @document.datastreams["descMetadata"].date_values.first %></dd>
+  <%#= get_data_with_label(document, "Date:", 'date_t') %>  
+  <dt>Title:</dt>
+  <dd><%=h @document.datastreams["descMetadata"].title_values.first %></dd>
+  <%#= get_data_with_label(document, "Title:", 'title_t') %>
+  <dt>Document Type:</dt>
+  <dd><%=h @document.datastreams["descMetadata"].medium_values.first %></dd>
+  <%#= get_data_with_label(document, "Document Type:", 'medium_t') %>
+  <dt>Location:</dt>
+  <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
+  <%#= get_data_with_label(document, "Location:", 'location_t') %>
+  <%# callnums = get_callnum(document) %>
+  <%#= get_suppl_urls(document) %>  
+  <%#= show_formats(document['format']) %>
+  <%#= get_toc(document.marc) %>
+</dl>

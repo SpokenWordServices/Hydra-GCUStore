@@ -21,12 +21,12 @@ module MediaShelf
     private
   
     def require_fedora
-      Fedora::Repository.register(FEDORA_URL,  session[:user])
+      Fedora::Repository.register(ActiveFedora.fedora_config[:url],  session[:user])
       return true
     end
   
     def require_solr
-      ActiveFedora::SolrService.register(SOLR_URL)
+      ActiveFedora::SolrService.register(ActiveFedora.solr_config[:url])
     end
   
   end
