@@ -3,7 +3,7 @@ development:
     url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
   solr:
     url: http://localhost:8080/solr
-test:
+test: &TEST  
   fedora:
     url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
   solr:
@@ -13,3 +13,7 @@ production:
     url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
   solr:
     url: http://localhost:8080/solr
+cucumber:
+  <<: *TEST
+cucumber:
+  <<: *TEST

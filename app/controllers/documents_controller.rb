@@ -1,12 +1,19 @@
 require 'mediashelf/active_fedora_helper'
 class DocumentsController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
-    helper :salt
+    include Blacklight::SolrHelper
     
+    include Blacklight::CatalogHelper
+    helper :salt, :metadata
+    
+    before_filter :search_session, :history_session
     before_filter :require_solr, :require_fedora
     
     def edit
       @document = Document.find(params[:id])
+      respond_to do |format|
+        format.html {setup_next_and_previous_documents}
+      end
     end
     
     def update

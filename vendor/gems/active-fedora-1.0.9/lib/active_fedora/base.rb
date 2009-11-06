@@ -30,7 +30,7 @@ module ActiveFedora
     logger.info("FEDORA: getting ActiveFedora config from #{config_path}")
     
     fedora_config = YAML::load(File.open(config_path))
-    raise "The #{config_env} environment settings were not found in the fedora.yml config" unless fedora_config[config_env]
+    raise "The #{config_env} environment settings were not found in the fedora.yml config.  If you already have a fedora.yml file defined, make sure it defines settings for the #{config_env} environment" unless fedora_config[config_env]
     
     ActiveFedora.solr_config[:url] = fedora_config[config_env]['solr']['url']
     
