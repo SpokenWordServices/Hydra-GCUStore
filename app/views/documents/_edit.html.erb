@@ -1,20 +1,7 @@
 <%# default partial to display edit interface for documents -%>
 <% form_for @document do |f| %>
 <div class="<%= params[:action]%>_details">
-  <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
-  <dl class="defList">
-    <%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %>
-    <%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %>    
-    <%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %>
-    <dt>Location:</dt>
-    <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
-    <%#= get_data_with_label(document, "Location:", 'location_t') %>
-    <%# callnums = get_callnum(document) %>
-    <%#= get_suppl_urls(document) %>  
-    <%#= show_formats(document['format']) %>
-    <%#= get_toc(document.marc) %>
-  </dl>
-  <%# -- end of code replicating catalog/_show_partials/_default_details -%>
+  <%= render :partial=>"edit_details", :locals => {:document => @document}%>
 </div>
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:doc => @document}%>
