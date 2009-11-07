@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   # :all can be used as a placeholder for all plugins not explicitly named
   config.gem 'authlogic'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
-  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller)
+  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller fluid-infusion)
   
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )

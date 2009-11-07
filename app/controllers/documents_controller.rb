@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
     include Blacklight::SolrHelper
     
     include Blacklight::CatalogHelper
-    helper :salt, :metadata
+    helper :salt, :metadata, :infusion_view
     
     before_filter :search_session, :history_session
     before_filter :require_solr, :require_fedora

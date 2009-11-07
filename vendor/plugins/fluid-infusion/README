@@ -1,0 +1,17 @@
+Fluid-infusion
+==============
+
+Rails plugin for the {Fluid Infusion Framework}[http://fluidproject.org/products/infusion/], which provides a number of useful components[http://wiki.fluidproject.org/display/fluid/Components].  Initial implementation focuses on the Uploader[http://wiki.fluidproject.org/display/fluid/Uploader] component.
+
+If you want to push this code along, {get involved}[http://wiki.fluidproject.org/display/fluid/Get+Involved].
+
+Example
+=======
+
+Put this into one of your views to display the SWFUpload-based Uploader Component.
+
+<%= render :partial=>"fluid_infusion/uploader" %>
+<%= render :partial=>"fluid_infusion/uploader_js" %>
+
+
+Copyright (c) 2009 MediaShelf, LLC, released under the MIT license
