@@ -16,9 +16,18 @@ class DocumentsController < ApplicationController
       end
     end
     
+    # Uses the update_indexed_attributes method provided by ActiveFedora::Base
+    # This should behave pretty much like the ActiveRecord update_indexed_attributes method
+    # For more information, see the ActiveFedora docs.
+    # 
+    # Examples
+    # put :update, :id=>"_PID_", "document"=>{"subject"=>{"-1"=>"My Topic"}}
+    # Appends a new "subject" value of "My Topic" to any appropriate datasreams in the _PID_ document.
+    # put :update, :id=>"_PID_", "document"=>{"medium"=>{"1"=>"Paper Document", "2"=>"Image"}}
+    # Sets the 1st and 2nd "medium" values on any appropriate datasreams in the _PID_ document, overwriting any existing values.
     def update
       @document = Document.find(params[:id])
-      attrs = unescape_keys(params[:basic_asset])
+      attrs = unescape_keys(params[:document])
       logger.debug("attributes submitted: #{attrs.inspect}")
       @document.update_indexed_attributes(attrs)
       @document.save
