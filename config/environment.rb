@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
+  config.gem 'active-fedora'
   config.gem 'authlogic'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
   config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller fluid-infusion)
