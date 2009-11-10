@@ -74,8 +74,4 @@ module SaltHelper
     @document.datastreams["descMetadata"].title_values.first
   end
   
-  def get_data_with_label(document, label, field)
-    
-  end
-  
 end
