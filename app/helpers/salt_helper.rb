@@ -29,6 +29,12 @@ module SaltHelper
     ead_description.xpath("//archdesc[@level=\"collection\"]/did/unittitle").first.content
   end
   
+  def ead_folder_title(series, box, folder, ead_description=@descriptor) 
+    if folder.match(/^[0-9]*:/)
+      return folder
+    end
+  end
+  
   def display_for_ead_node( node_name , ead_description=@descriptor ) 
     xpath_query = "//archdesc[@level=\"collection\"]/#{node_name}"
     response = ""
