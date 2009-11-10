@@ -1,15 +1,15 @@
 module DownloadsHelper
   
   def list_downloadables( fedora_object )
-    result = ""
+    result = "<div id=\"downloads\"><ul>"
     fedora_object.datastreams.each_value do |ds|
-      #if ds.label.include?(".pdf") 
+      if ds.attributes["mimeType"].include?("pdf")
         result << "<li>"
-        #result << ds.label
         result << link_to(ds.label, document_downloads_path(fedora_object.pid, :download_id=>ds.dsid))
         result << "</li>"
-      #end
+      end
     end
+    result << "</ul></div>"
     return result
   end
   
