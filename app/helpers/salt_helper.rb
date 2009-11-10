@@ -1,5 +1,13 @@
 module SaltHelper
 
+  
+  def async_load_tag( url, tag )
+    javascript_tag do 
+      "window._token='#{form_authenticity_token}'" 
+      "async_load('#{url}', '#{tag}');"
+    end
+  end
+  
   def link_to_multifacet( name, args={} )
     facet_params = {}
     options = {}

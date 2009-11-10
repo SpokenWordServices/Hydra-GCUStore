@@ -6,6 +6,11 @@
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
 </div>
+<div id="downloads">
+  <ul>
+    <% %>
+  </ul>
+</div>
 <dl class="defList" id="rights_info">
   <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
 </dl>
@@ -15,16 +20,7 @@
 <div class="access_data">
   <%#= render :partial => "catalog/access_data", :locals => {:doc => document} %>
 </div>
-<div style="clear:both;"></div>
-  <div id="tech_details">
-    <h2>Tech Details</h2>
-    <ul>
-      <li>Catkey: <%= document[:id] %></li>
-      <li><a href="http://library.stanford.edu/searchcat?ckey=<%= @document.id %>">Compare in Socrates</a></li>
-      <li><%= link_to "View MARC XML", catalog_path(document.id, :format => 'xml') %></li>
-    </ul>
-  </div>
-<div style="clear:both;"></div>
+
 
 
 <% sidebar_items << capture do %>
@@ -32,3 +28,5 @@
   <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document} %>
   <%#= render :partial=>'facets' %>
 <% end %>
+
+<%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>

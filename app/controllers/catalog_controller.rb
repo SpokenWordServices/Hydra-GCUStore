@@ -1,5 +1,6 @@
 class CatalogController 
   
+  helper :salt
   before_filter :retrieve_descriptor, :only =>[:index, :show]
   
   private

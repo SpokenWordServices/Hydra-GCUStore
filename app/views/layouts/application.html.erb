@@ -13,6 +13,8 @@
     <%= stylesheet_link_tag 'yui', :plugin=>:blacklight %>
     <%= stylesheet_link_tag 'application','styles', :media=>'all' %>
     <%= javascript_include_tag 'searchworks' %>
+    <%= javascript_include_tag :defaults %>
+    
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:controller] == 'catalog' and params[:action] == 'index' %>
     <body onload="$('input#q').focus();">
