@@ -30,10 +30,25 @@ module SaltHelper
   end
   
   def ead_folder_title(series, box, folder, ead_description=@descriptor) 
-    if folder.match(/^[0-9]*:/)
+    if folder.to_s.match(/^[0-9]*:/)
       return folder
+    else
+      series_id = series == "eaf7000" ? "Accession 1986-052>" : series.to_s
+      folder_id = folder.to_s.gsub("Folder ", "")
+      box_id = box.to_s.gsub("Box ", "")
+      #puts "Series id: " + series_id + "; Box id: " + box_id + "; Folder id: " + folder_id
+      xpath_query = "//dsc[@type=\"in-depth\"]/c01[did/unittitle=\"#{series_id}\"]/c02/c03/did[container[@type=\"box\"]=#{box_id} and container[@type=\"folder\"]=#{folder_id}]/unittitle"
+      #puts xpath_query
+      xpath_result = ead_description.xpath( xpath_query ).first
+      if xpath_result.nil?
+        #return "Series id: " + series_id + "; Box id: " + box_id + "; Folder id: " + folder_id
+        return "#{folder_id}: Folder #{folder_id}"
+      else
+        return folder_id + ": " + ead_description.xpath( xpath_query ).first.content
+      end
     end
   end
+  
   
   def display_for_ead_node( node_name , ead_description=@descriptor ) 
     xpath_query = "//archdesc[@level=\"collection\"]/#{node_name}"
