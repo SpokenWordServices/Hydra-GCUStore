@@ -1,0 +1,6 @@
+= The Blacklight App
+
+Authentication:
+
+The system is configured to set session[:user] to ENV['WEBAUTH_USER'], as set by the Stanford SSO system.  For testing purposes (i.e. unless Rails.env =~ /production/), users may pass in wau=<username> to over-ride or set the WEBAUTH_USER environment variable. Note that this will only have an effect for the current request, future requests will execute normally (unless you pass wau in to them as well).
+
