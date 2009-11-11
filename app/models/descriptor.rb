@@ -29,7 +29,6 @@ class Descriptor
     
     xpath_query = "//c01[did/unittitle=\"#{series}\"]//did[container[@type=\"box\"]=#{box_name} and container[@type=\"folder\"]=#{folder_name}]/unittitle"
     #xpath_query = "//c01[did/unittitle=\"Accession 2005-101>\"]//did[container[@type=\"box\"]=1 and container[@type=\"folder\"]=4]/unittitle"
-
     return xpath( xpath_query ).first.content
   end
   
