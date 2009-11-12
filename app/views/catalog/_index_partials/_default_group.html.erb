@@ -7,7 +7,6 @@
     <th>Location</th>
   </tr>
   <% docs.each_with_index do |document,counter| %>
-    <%= document['year_facet'] %>
     <%= render :partial => 'catalog/_index_partials/default', :locals => {:document => document, :counter => counter} %>
   <% end %>
 </table>

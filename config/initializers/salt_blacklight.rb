@@ -157,8 +157,8 @@ Blacklight.configure(:shared) do |config|
   # label is key, solr field is value
   config[:sort_fields] ||= []
   config[:sort_fields] << ['relevance', 'score desc, year_facet desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['date -', 'date_t desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['date +', 'date_t asc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['title', 'title_facet asc']
   config[:sort_fields] << ['document type', 'medium_t asc, year_facet desc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['location', 'location_t asc, year_facet desc, month_facet asc, title_facet asc']
