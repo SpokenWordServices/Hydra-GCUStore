@@ -28,7 +28,7 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     
     result = "<label for=\"#{resource_type}_#{field_name}\">#{label}</label>"    
-    result << "<input type=\"text\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}]\" value=\"#{get_values_from_datastream(resource, datastream_name, field_name).first}\" />"
+    result << "<span class=\"editableText\" id=\"#{resource_type}_#{field_name}\">#{get_values_from_datastream(resource, datastream_name, field_name).first}</span>"
     return result
   end
   

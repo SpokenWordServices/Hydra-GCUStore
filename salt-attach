@@ -1,0 +1,1 @@
+hdiutil attach /Volumes/Time\ Machine\ Backups/Stanford/salt_10_13_2009.sparseimage -shadow

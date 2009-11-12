@@ -292,3 +292,10 @@ dl.defList dd {
 .notice {
   color: #060;
 }
+
+input.flc-inlineEdit-edit {
+  border  : 1px dashed #999;
+  font    : bold 12px "Arial";
+  color   : #999;
+  padding : 2px;
+}

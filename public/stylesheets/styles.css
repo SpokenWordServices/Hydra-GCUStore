@@ -366,6 +366,19 @@ div#searchMods label, div#searchMods h2 {
 #document .document {
   border:none;
 }
+#document .document .edit_details {
+	float: right;
+	width: 55%;
+}
+#document .document .edit_details label {
+	display:block;
+}
+#document .document .edit_details .defList {
+	margin-left:10px;
+}
+#document .document .document_viewer {
+	width:45%;
+}
 div#spell{
   padding-left:10px;
   margin-bottom:5px;
