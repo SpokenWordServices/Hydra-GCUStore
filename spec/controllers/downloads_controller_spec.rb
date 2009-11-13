@@ -45,10 +45,10 @@ describe DownloadsController do
     
     it "should return the specified datastream if given a download_id (datastream dsid)" do
       #Fedora::Repository.any_instance.expects(:fetch_custom).with("_PID_", "datastreams/my_datastream.pdf/content").returns("foo")
-      mock_ds = mock("datastream", :label=>"mylabel")
+      mock_ds = mock("datastream", :label=>"mylabel", :content=>"ds content", :attributes=>{"mimeType"=>"text/plain"})
       ActiveFedora::Base.expects(:load_instance).returns(mock("result_object", :datastreams => {"mydsid"=>mock_ds}))
       
-      controller.expects(:send_data).with(mock_ds, :filename=>"mylabel") #.returns("foo")
+      controller.expects(:send_data).with("ds content", :filename=>"mylabel", :type => 'text/plain') #.returns("foo")
       get :index, :document_id=>"_PID_", :download_id=>"mydsid"
     end
   end
