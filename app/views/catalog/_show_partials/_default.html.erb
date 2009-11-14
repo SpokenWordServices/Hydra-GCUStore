@@ -5,6 +5,8 @@
 </div>
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
+  <%= get_data_with_label(document, "ID:", 'id') %>
+  <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>
 <h3>Download</h3>
 <div id="downloads">

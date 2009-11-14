@@ -19,6 +19,8 @@ module NavigationHelpers
 
     when /the edit document page for (.*)$/i
       edit_document_path($1)
+    when /the show document page for (.*)$/i
+      catalog_path($1)
     
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +

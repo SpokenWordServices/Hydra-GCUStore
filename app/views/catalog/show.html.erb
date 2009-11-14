@@ -20,7 +20,9 @@
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
       </div>
     <% end %>
-    <%= link_to "edit", edit_document_path(@document[:id]) %>
+    <%# if editor? %>
+      <%= link_to "edit", edit_document_path(@document[:id]) %>
+    <%# end -%>
   </div>
 </div>
 <div id="document">

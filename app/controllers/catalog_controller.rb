@@ -1,5 +1,5 @@
 class CatalogController 
   
-  helper :salt
-
+  #helper :salt, :salt_access_controls
+  
 end

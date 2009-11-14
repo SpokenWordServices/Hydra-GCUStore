@@ -5,16 +5,11 @@ Feature: Show a document
   wants [behaviour]
   
   Scenario: Visit Document Show Page
-    Given I am on the edit document page for druid:cm234kq4672
+    Given I am on the show document page for druid:cm234kq4672
     Then the "Title:" term should contain "Letter from Ellie Engelmore to Wemara Lichty" 
-    Then the "Date:" term should contain "1984-6-4" 
-    Then the "Document Type:" term should contain "Paper Document"
-
-  Scenario: Donor visits Document Show Page
-    Given I am on the edit document page for druid:cm234kq4672
-    And I am logged in as "francis"
-    Then I should see the "access" value 
-    And I should see the "document ID" value 
-    And I should see a link to the "raw OCR"
-    And I should see a link to the "edit" page
-    And related links are displayed as urls
+    And the "Date:" term should contain "1984-6-4" 
+    And the "Document Type:" term should contain "Paper Document"
+    And I should not see the "access" term 
+    And I should not see the "document ID" term 
+    #And I should not see a link to the "raw OCR"
+    And I should not see a link to "the edit document page for druid:cm234kq4672"
