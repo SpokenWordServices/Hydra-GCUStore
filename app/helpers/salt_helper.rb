@@ -4,7 +4,7 @@ module SaltHelper
   def async_load_tag( url, tag )
     javascript_tag do 
       "window._token='#{form_authenticity_token}'" 
-      "async_load('#{url}', '#{tag}');"
+      "async_load('#{url}', '\##{tag}');"
     end
   end
   
