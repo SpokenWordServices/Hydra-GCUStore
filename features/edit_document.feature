@@ -1,4 +1,4 @@
-@edit
+@edit @wip
 Feature: Edit a document
   In order to [goal]
   [stakeholder]
