@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Descriptor do
+describe Document do
   
   # Relies on the descriptor registered by config/initializers/salt_descriptors.rb
   before(:each) do

@@ -1,5 +1,5 @@
 <div id="collection-id-box" class="location-browse">
-  <h2 class="title"> <%=h ead_title %></h2>
+  <h2 class="title"> <%=h document["collection"] %></h2>
   <ul class="containers horizontal">
     <li class="first"> 
       <%= link_to_multifacet("Series #{document["series_facet"]}", "series_facet" => document["series_facet"])  %> 
@@ -8,7 +8,7 @@
       > <%= link_to_multifacet(document['box_facet'],  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"]) %>
     </li>
     <li>
-      > <%= link_to_multifacet(ead_folder_title(document["series_facet"], document["box_facet"], document['folder_facet']),  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"], "folder_facet" => document["folder_facet"]) %>
+      > <%= link_to_multifacet(document['folder_facet'],  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"], "folder_facet" => document["folder_facet"]) %>
     </li>
   </ul>
   <ul class="links horizontal">
