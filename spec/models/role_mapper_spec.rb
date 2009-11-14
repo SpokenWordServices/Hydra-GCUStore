@@ -2,8 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RoleMapper do
   
+ it "should define the 4 roles" do
+   RoleMapper.role_names.sort.should == %w(archivist donor patron researcher) 
+ end
  it "should quer[iy]able for roles for a given user" do
-   RoleMapper.roles('alice').should == ['archivist', 'donor']
+   RoleMapper.roles('alice').sort.should == ['archivist', 'donor', 'researcher']
    RoleMapper.roles('bob').should == ['archivist']
  end
 

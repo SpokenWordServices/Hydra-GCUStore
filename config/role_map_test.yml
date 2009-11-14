@@ -5,3 +5,8 @@ archivist:
 donor:
   - alice
   - francis
+researcher:
+  - Ronald McDonald
+  - alice
+patron:
+  - Mrs. Quang

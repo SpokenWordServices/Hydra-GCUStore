@@ -7,6 +7,9 @@ class RoleMapper
     memo
   end
   class << self
+    def role_names
+      @@map.keys
+    end
     def roles(username)
       @@byname[username]||[]
     end
