@@ -370,6 +370,11 @@ div#searchMods label, div#searchMods h2 {
 	float: right;
 	width: 55%;
 }
+#document .document .edit_details .side {
+	font-size:11px;
+	padding:10px 0 10px 10px;
+	width:115px;
+}
 #document .document .edit_details label {
 	display:block;
 }
@@ -383,7 +388,7 @@ div#searchMods label, div#searchMods h2 {
 	border:0.1em solid #5A95CF;
 	margin:0;
 }
-.fl-theme-mist :focus,
+.fl-theme-mist input:focus,
 .fl-theme-mist .selectable  {
   /* themed focus indicator */
   outline: none;

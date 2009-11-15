@@ -1,18 +1,25 @@
 <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
 <script type="text/javascript" language="Javascript">
-  function addFormField() {
+  function addLink() {
   	var id = document.getElementById("id").value;
-  	$("#newLink").append("<p id='row" + id + "'><span class='editableText' id='txt" + id + "'>Add new link</span> <a href='#' onClick='removeFormField(\"#row" + id + "\"); return false;'>Remove</a><p>");
-
-  	$('#row' + id).highlightFade({
-  		speed:1000
-  	});
+  	$("#newLink").append("<p id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a><p>");
 
   	id = (id - 1) + 2;
   	document.getElementById("id").value = id;
   }
 
-  function removeFormField(id) {
+  function removeLink(id) {
+  	$(id).remove();
+  }
+  function addAuthor() {
+  	var id = document.getElementById("id").value;
+  	$("#addAuthor").append("<p id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><p>");
+
+  	id = (id - 1) + 2;
+  	document.getElementById("id").value = id;
+  }
+
+  function removeAuthor(id) {
   	$(id).remove();
   }
 </script>
@@ -20,9 +27,17 @@
 <div id="multipleEdit">
 <dl class="defList fl-theme-mist">
 <%# default partial to display solr document fields in catalog show view -%>
-  <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
+  <form action="#" method="get" id="form1">
+  <input type="hidden" id="id" value="1">
+  <div class="floatRight side">
   <p><%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %></p>    
   <p><%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %></p>
+  </div>
+  <p><%# <%= editable_metadata_field(@document, "descMetadata", :author, :label => "Author(s): <a href=\"javascript:void();\" onClick=\"addAuthor(); return false;\">+ Add</a>", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links: <a href=\"javascript:void();\" onClick=\"addLink(); return false;\">+ Add</a>", :multiple=>false) %><br />
+  <div id="newLink"></div>
+  </p>
   <dt>Location:</dt>
   <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
   <%#= get_data_with_label(document, "Location:", 'location_t') %>
@@ -30,12 +45,8 @@
   <%#= get_suppl_urls(document) %>  
   <%#= show_formats(document['format']) %>
   <%#= get_toc(document.marc) %>
-<p><a href="#" onClick="addFormField(); return false;">Add</a></p>
-<form action="#" method="get" id="form1">
-<input type="hidden" id="id" value="1">
-<div id="newLink"></div>
-<p><input type="submit" value="Submit" name="submit">
-<input type="reset" value="Reset" name="reset"></p>
+
+<p><input type="submit" value="Save" name="submit"></p>
 </form>
 
 </dl>
