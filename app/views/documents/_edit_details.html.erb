@@ -1,19 +1,43 @@
+<script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
+<script type="text/javascript" language="Javascript">
+  function addFormField() {
+  	var id = document.getElementById("id").value;
+  	$("#newLink").append("<p id='row" + id + "'><span class='editableText' id='txt" + id + "'>Add new link</span> <a href='#' onClick='removeFormField(\"#row" + id + "\"); return false;'>Remove</a><p>");
+
+  	$('#row' + id).highlightFade({
+  		speed:1000
+  	});
+
+  	id = (id - 1) + 2;
+  	document.getElementById("id").value = id;
+  }
+
+  function removeFormField(id) {
+  	$(id).remove();
+  }
+</script>
 <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
 <div id="multipleEdit">
-<dl class="defList">
-  <%# default partial to display solr document fields in catalog show view -%>
-  <dl class="defList">
-    <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
-    <p><%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %></p>    
-    <p><%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %></p>
-    <dt>Location:</dt>
-    <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
-    <%#= get_data_with_label(document, "Location:", 'location_t') %>
-    <%# callnums = get_callnum(document) %>
-    <%#= get_suppl_urls(document) %>  
-    <%#= show_formats(document['format']) %>
-    <%#= get_toc(document.marc) %>
-  </dl>
+<dl class="defList fl-theme-mist">
+<%# default partial to display solr document fields in catalog show view -%>
+  <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %></p>    
+  <p><%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %></p>
+  <dt>Location:</dt>
+  <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
+  <%#= get_data_with_label(document, "Location:", 'location_t') %>
+  <%# callnums = get_callnum(document) %>
+  <%#= get_suppl_urls(document) %>  
+  <%#= show_formats(document['format']) %>
+  <%#= get_toc(document.marc) %>
+<p><a href="#" onClick="addFormField(); return false;">Add</a></p>
+<form action="#" method="get" id="form1">
+<input type="hidden" id="id" value="1">
+<div id="newLink"></div>
+<p><input type="submit" value="Submit" name="submit">
+<input type="reset" value="Reset" name="reset"></p>
+</form>
+
 </dl>
 </div>
 <%# -- end of code replicating catalog/_show_partials/_default_details -%>

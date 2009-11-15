@@ -379,6 +379,20 @@ div#searchMods label, div#searchMods h2 {
 #document .document .document_viewer {
 	width:45%;
 }
+.fl-theme-mist span input {
+	border:0.1em solid #5A95CF;
+	margin:0;
+}
+.fl-theme-mist :focus,
+.fl-theme-mist .selectable  {
+  /* themed focus indicator */
+  outline: none;
+	font-size:1em;
+	font-weight:normal; 
+	border:0.1em solid #F00;
+	margin:-0.1em 0;
+	background-color:#ffffe0 !important;
+}
 div#spell{
   padding-left:10px;
   margin-bottom:5px;
