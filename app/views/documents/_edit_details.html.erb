@@ -33,9 +33,9 @@
   <p><%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %></p>    
   <p><%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %></p>
   </div>
-  <p><%= editable_metadata_field(@document, "descMetadata", :creator, :label => "Author(s): <a href=\"javascript:void();\" onClick=\"addAuthor(); return false;\">+ Add</a>", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %></p>
   <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
-  <p><%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links: <a href=\"javascript:void();\" onClick=\"addLink(); return false;\">+ Add</a>", :multiple=>false) %><br />
+  <p><%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links:", :multiple=>true) %><br />
   <div id="newLink"></div>
   </p>
   <dt>Location:</dt>
