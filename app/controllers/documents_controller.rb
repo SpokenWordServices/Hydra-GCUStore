@@ -2,6 +2,8 @@ require 'mediashelf/active_fedora_helper'
 class DocumentsController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
     include Blacklight::SolrHelper
+    include Stanford::SaltControllerHelper
+    
     
     include Blacklight::CatalogHelper
     helper :salt, :metadata, :infusion_view
@@ -13,6 +15,8 @@ class DocumentsController < ApplicationController
       @document = Document.find(params[:id])
       @response = get_solr_response_for_doc_id
       @document_solr = SolrDocument.new(@response.docs.first)
+      find_folder_siblings(@document_solr)
+      
       respond_to do |format|
         format.html {setup_next_and_previous_documents}
       end

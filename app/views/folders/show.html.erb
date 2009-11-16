@@ -10,13 +10,7 @@
     <li>
       > <%= link_to_multifacet(document['folder_facet'],  "series_facet" => document["series_facet"], "box_facet" => document["box_facet"], "folder_facet" => document["folder_facet"]) %>
     </li>
-    <li>(<%= @folder_siblings.total %> Documents)</li>
   </ul>
-  
-  <ul>
-    <%= render :partial=>"folders/document", :collection=>@folder_siblings.docs %>
-  </ul>
-  
   <ul class="links horizontal">
     <li><%= link_to("Collection Home", "")%> </li>
     <li>Finding Aid</li>
