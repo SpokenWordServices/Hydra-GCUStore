@@ -44,8 +44,14 @@ module Engines
       super initializer
       add_plugin_locale_paths
       Assets.mirror_files_for(self)
+
+      if ::RAILS_ENV == 'development'
+        ActiveSupport::Dependencies.load_once_paths =
+          ActiveSupport::Dependencies.load_once_paths.select { |path| (path =~
+                                                        /#{name}\/app/).nil? }
+      end
     end    
-  
+
     # select those paths that actually exist in the plugin's directory
     def select_existing_paths(name)
       Engines.select_existing_paths(self.send(name).map { |p| File.join(directory, p) })
@@ -69,24 +75,24 @@ module Engines
     def public_asset_directory
       "#{File.basename(Engines.public_directory)}/#{name}"
     end
-    
+
     # The directory containing this plugin's migrations (<tt>plugin/db/migrate</tt>)
     def migration_directory
       File.join(self.directory, 'db', 'migrate')
     end
-  
+
     # Returns the version number of the latest migration for this plugin. Returns
     # nil if this plugin has no migrations.
     def latest_migration
       migrations.last
     end
-    
+
     # Returns the version numbers of all migrations for this plugin.
     def migrations
       migrations = Dir[migration_directory+"/*.rb"]
       migrations.map { |p| File.basename(p).match(/0*(\d+)\_/)[1].to_i }.sort
     end
-    
+
     # Migrate this plugin to the given version. See Engines::Plugin::Migrator for more
     # information.   
     def migrate(version = nil)
