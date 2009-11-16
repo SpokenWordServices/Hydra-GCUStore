@@ -30,21 +30,19 @@
   <form action="#" method="get" id="form1">
   <input type="hidden" id="id" value="1">
   <div class="floatRight side">
-  <p><%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %></p>    
-  <p><%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %></p>
+  <%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %>  
+  <%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %>
   </div>
   <p><%= editable_metadata_field(@document, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %></p>
   <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
   <p><%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links:", :multiple=>true) %><br />
   <div id="newLink"></div>
   </p>
-  <dt>Location:</dt>
-  <dd><%#=h @document.datastreams["descMetadata"].date_values.first %></dd>
-  <%#= get_data_with_label(document, "Location:", 'location_t') %>
-  <%# callnums = get_callnum(document) %>
-  <%#= get_suppl_urls(document) %>  
-  <%#= show_formats(document['format']) %>
-  <%#= get_toc(document.marc) %>
+  <%= get_data_with_label(@document_solr, "Series:", 'series_facet') %>
+  <%= get_data_with_label(@document_solr, "Subseries:", 'subseries_facet') %>
+  <%= get_data_with_label(@document_solr, "Box:", 'box_facet') %>
+  <%= get_data_with_label(@document_solr, "Folder:", 'folder_facet') %>
+  
 
 <p><input type="submit" value="Save" name="submit"></p>
 </form>
