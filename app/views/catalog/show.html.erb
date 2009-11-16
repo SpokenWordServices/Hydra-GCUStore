@@ -18,11 +18,15 @@
     <%- end -%>
     <% if @previous_document || @next_document %>
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
+	    
+	    <span class="edit-browse">
+      <%# if editor? %>
+        <a href="#" class="browse">Browse</a>
+        <%= link_to "edit", edit_document_path(@document[:id]), :class=>'edit' %>
+      <%# end -%>
+      </span>
       </div>
     <% end %>
-    <%# if editor? %>
-      <%= link_to "edit", edit_document_path(@document[:id]) %>
-    <%# end -%>
   </div>
 </div>
 <div id="document">

@@ -360,6 +360,20 @@ div#searchMods label, div#searchMods h2 {
   font-weight:normal;
 }
 /* show view is #document, index view is #documents */
+.edit-browse {
+	margin-left:50px;
+}
+.edit-browse a {
+	padding-right:10px;
+}
+.edit-browse a.edit {
+	background:transparent url('/images/icons/edit.png') center left no-repeat;
+	padding-left:20px;
+}
+.edit-browse a.browse {
+	background:transparent url('/images/icons/browse.png') center left no-repeat;
+	padding-left:20px;
+}
 #document {
   padding: 0 10px;
 }

@@ -2,7 +2,7 @@
 <script type="text/javascript" language="Javascript">
   function addLink() {
   	var id = document.getElementById("id").value;
-  	$("#newLink").append("<p id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a><p>");
+  	$("#newLink").append("<dd id='row" + id + "'><input type='text' id='document_link_" + id + "-1' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a><dd>");
 
   	id = (id - 1) + 2;
   	document.getElementById("id").value = id;
@@ -13,7 +13,7 @@
   }
   function addAuthor() {
   	var id = document.getElementById("id").value;
-  	$("#addAuthor").append("<p id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><p>");
+  	$("#addAuthor").append("<dd id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><dd>");
 
   	id = (id - 1) + 2;
   	document.getElementById("id").value = id;
@@ -28,24 +28,24 @@
 <dl class="defList fl-theme-mist">
 <%# default partial to display solr document fields in catalog show view -%>
   <form action="#" method="get" id="form1">
-  <input type="hidden" id="id" value="1">
+  <input type="hidden" id="id" value="document_link_">
+  
   <div class="floatRight side">
   <%= editable_metadata_field(@document, "descMetadata", :date, :label => "Date:", :multiple=>false) %>  
   <%= editable_metadata_field(@document, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %>
   </div>
-  <p><%= editable_metadata_field(@document, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %></p>
-  <p><%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %></p>
-  <p><%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links:", :multiple=>true) %><br />
-  <div id="newLink"></div>
-  </p>
+  <div style="float:left; width:250px;">
+  <%= editable_metadata_field(@document, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
+  <%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %>
+  <%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
+  <dd><div id="newLink"></div></dd>
   <%= get_data_with_label(@document_solr, "Series:", 'series_facet') %>
   <%= get_data_with_label(@document_solr, "Subseries:", 'subseries_facet') %>
   <%= get_data_with_label(@document_solr, "Box:", 'box_facet') %>
-  <%= get_data_with_label(@document_solr, "Folder:", 'folder_facet') %>
-  
-
-<p><input type="submit" value="Save" name="submit"></p>
-</form>
+  <%= get_data_with_label(@document_solr, "Folder:", 'folder_facet') %>  
+  </div>
+  <dd><input type="submit" value="Save" name="submit"></dd>
+  </form>
 
 </dl>
 </div>
