@@ -6,6 +6,8 @@
   </script>
   <%= infusion_javascripts(:inline_edit, :debug=>true) %>
   <%= infusion_stylesheets(:inline_edit) %>
+  <%= javascript_include_tag "custom"%>
+  
 
 <div id="showHead">
   <div id="showUtils">
@@ -22,6 +24,8 @@
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
       </div>
     <% end %>
+    <%= link_to "Browse", catalog_path(@document.pid) %>
+    Edit
   </div>
 </div>
 <div id="document">
