@@ -21,8 +21,10 @@
       </div>
     <% end %>
     <% if editor? %>
-      Browse
-      <%= link_to "Edit", edit_document_path(@document[:id]) %>
+      <span class="edit-browse">
+        Browse
+        <%= link_to "Edit", edit_document_path(@document[:id]), :class=>"edit" %>
+      </span>
     <% end -%>
   </div>
 </div>
