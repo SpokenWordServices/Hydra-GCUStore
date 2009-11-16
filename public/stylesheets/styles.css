@@ -366,7 +366,7 @@ div#searchMods label, div#searchMods h2 {
 .edit-browse a {
 	padding-right:10px;
 }
-.edit-browse a.edit {
+.edit-browse a.edit{
 	background:transparent url('/images/icons/edit.png') center left no-repeat;
 	padding-left:20px;
 }
