@@ -1,8 +1,10 @@
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="defList">
-  <%= get_data_with_label(document, "Date:", 'date_t') %>  
+  <div class="floatRight side">
+  <p><%= get_data_with_label(document, "Date:", 'date_t') %></p>    
+  <p><%= get_data_with_label(document, "Document Type:", 'medium_t') %></p>
+  </div>
   <%= get_data_with_label(document, "Title:", 'title_t') %>
-  <%= get_data_with_label(document, "Document Type:", 'medium_t') %>
   <%= get_data_with_label(document, "Series:", 'series_facet') %>
   <%= get_data_with_label(document, "Subseries:", 'subseries_facet') %>
   <%= get_data_with_label(document, "Box:", 'box_facet') %>
