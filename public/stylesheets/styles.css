@@ -375,6 +375,7 @@ div#searchMods label, div#searchMods h2 {
 	background:transparent url('/images/icons/browse.png') center left no-repeat;
 	padding-left:20px;
 }
+#previousNextDocument { display:inline; }
 #document {
   padding: 0 10px;
 }
@@ -385,7 +386,7 @@ div#searchMods label, div#searchMods h2 {
 	float: right;
 	width: 55%;
 }
-#document .document .edit_details .side {
+#document .document .side {
 	font-size:11px;
 	padding:10px 0 10px 10px;
 	width:115px;
