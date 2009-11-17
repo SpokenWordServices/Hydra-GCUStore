@@ -39,6 +39,9 @@
   <%= editable_metadata_field(@document, "descMetadata", :title, :label => "Title:", :multiple=>false) %>
   <%= editable_metadata_field(@document, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
   <dd><div id="newLink"></div></dd>
+  <p><%= editable_metadata_field(@document, "properties", :archivist_tags, :label => "Archivist Tags:", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document, "properties", :donor_tags, :label => "Donor Tags:", :multiple=>false) %></p>
+
   <%= get_data_with_label(@document_solr, "Series:", 'series_facet') %>
   <%= get_data_with_label(@document_solr, "Subseries:", 'subseries_facet') %>
   <%= get_data_with_label(@document_solr, "Box:", 'box_facet') %>

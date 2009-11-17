@@ -24,8 +24,10 @@
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
       </div>
     <% end %>
-    <%= link_to "Browse", catalog_path(@document.pid) %>
-    Edit
+    <span class="edit-browse">
+      <%= link_to "Browse", catalog_path(@document.pid), :class=>'browse' %>
+      Edit
+    </span>
   </div>
 </div>
 <div id="document">

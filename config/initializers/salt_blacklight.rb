@@ -161,7 +161,7 @@ Blacklight.configure(:shared) do |config|
   config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['title', 'title_facet asc']
   config[:sort_fields] << ['document type', 'medium_t asc, year_facet desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['location', 'location_t asc, year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['location', 'series_facet asc, box_facet asc, folder_facet asc, year_facet desc, month_facet asc, title_facet asc']
   
   # If there are more than this many search results, no spelling ("did you 
   # mean") suggestion is offered.
