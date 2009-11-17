@@ -19,8 +19,9 @@ require "stanford/ead_descriptor"
 module Stanford::SaltControllerHelper
   
   def find_folder_siblings(document=@document)
-    folder_search_params = {}
-    if document[:series_facet]
+    
+    if document[:series_facet] && document[:box_facet] && document[:folder_facet]
+      folder_search_params = {}
       folder_search_params[:phrases] = [{:series_facet => document[:series_facet].first}]
       if document[:box_facet]
         folder_search_params[:phrases] << {:box_facet => document[:box_facet].first}
@@ -28,9 +29,10 @@ module Stanford::SaltControllerHelper
           folder_search_params[:phrases] << {:folder_facet => document[:folder_facet].first}
         end
       end
+      @folder_siblings = Blacklight.solr.find folder_search_params
+    else 
+      @folder_siblings = nil
     end
-
-    @folder_siblings = Blacklight.solr.find folder_search_params
   end
   
   def retrieve_descriptor

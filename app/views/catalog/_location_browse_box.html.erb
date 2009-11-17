@@ -13,8 +13,12 @@
     <li>(<%= @folder_siblings.total %> Documents)</li>
   </ul>
   
-  <ul>
-    <%= render :partial=>"folders/document", :collection=>@folder_siblings.docs %>
+  <ul class="folder_siblings">
+    <% if @folder_siblings %>
+      <%= render :partial=>"folders/document", :collection=>@folder_siblings.docs %>
+    <% else %>
+      <span class="error">Location info is incomplete.  Could not find adjacent documents.</span>
+    <% end %>
   </ul>
   
   <ul class="links horizontal">
