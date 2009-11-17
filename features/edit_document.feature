@@ -1,4 +1,4 @@
-@edit @wip
+@edit 
 Feature: Edit a document
   In order to [goal]
   [stakeholder]
@@ -6,9 +6,9 @@ Feature: Edit a document
   
   Scenario: Visit Document Edit Page
     Given I am on the edit document page for druid:cm234kq4672
-    Then the "Title:" field should contain "Letter from Ellie Engelmore to Wemara Lichty"
-    Then the "Date:" field should contain "1984-6-4"
-    Then the "Document Type:" field should contain "Paper Document"
+    Then the "Title:" inline edit should contain "Letter from Ellie Engelmore to Wemara Lichty"
+    And the "Date:" inline edit should contain "1984-6-4"
+    And the "Document Type:" inline edit should contain "Paper Document"
 
     # 
     # When I fill in "Name" with "name 1"

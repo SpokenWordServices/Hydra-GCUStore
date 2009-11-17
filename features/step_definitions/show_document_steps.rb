@@ -18,22 +18,23 @@ Then /^the "([^\"]*)" term should contain "([^\"]*)"$/ do |arg1, arg2|
   end
 end
 
-
-Given /^I am logged in as "([^\"]*)"$/ do |arg1|
-  session[:user] = arg1
+Given /^I am logged in as "([^\"]*)" on (.+)$/ do |user_id, page_name|
+  visit path_to(page_name, user_id)
+  #controller.params[:wau]=arg1
+  #controller.session[:user] = arg1
+  #request.env['WEBAUTH_USER'] = arg1
 end
 
 Then /^I should see the "([^\"]*)" value$/ do |arg1|
   pending
 end
 
-Then /^I should see a link to the "([^\"]*)"$/ do |arg1|
-  pending
+Then /^I should see a link to "([^\"]*)"$/ do |arg1|
+  response.should have_selector("a", :href=>path_to(arg1))
 end
 
 Then /^I should see a link to the "([^\"]*)" page$/ do |arg1|
   response.should have_selector("a", :href=>path_to(arg1))
-  puts path_to(arg1)
 end
 
 Then /^I should not see a link to "([^\"]*)"$/ do |arg1|
