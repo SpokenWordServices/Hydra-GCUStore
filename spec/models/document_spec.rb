@@ -4,7 +4,7 @@ describe Document do
   
   # Relies on the descriptor registered by config/initializers/salt_descriptors.rb
   before(:each) do
-    @document = Document.new
+    @document = Document.new(:pid=>"test:never_save_this")
   end
   
   

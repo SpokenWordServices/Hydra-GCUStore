@@ -22,3 +22,8 @@ Feature: Show a document
     #And I should see a link to download "raw OCR"
     And I should see a link to "the edit document page for druid:cm234kq4672"
     And related links are displayed as urls
+    
+  @wip
+  Scenario: Viewing Document with incomplete location info
+    Given I am on the show document page for a document with incomplete location info
+    Then the location box should have an error saying "Location info is incomplete.  Could not find adjacent documents."
