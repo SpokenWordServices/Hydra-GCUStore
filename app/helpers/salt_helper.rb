@@ -25,9 +25,6 @@ module SaltHelper
     link_to(name, catalog_index_path(facet_params), options)
   end
   
-  # def ead_title( ead_description=@descriptor )
-  #   ead_description.xpath("//archdesc[@level=\"collection\"]/did/unittitle").first.content
-  # end
   
   def collection_title
     "Edward A. Feigenbaum Papers"

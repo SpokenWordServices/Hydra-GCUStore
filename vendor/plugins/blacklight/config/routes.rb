@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :saved_searches, :collection => {:clear => :delete}, :member => {:save => :put}
   
   map.resources(:catalog,
-    :only => [:index, :show, :update],
+    :only => [:index, :show, :update, :edit],
     # /catalog/:id/image <- for ajax cover requests
     # /catalog/:id/status
     # /catalog/:id/availability
