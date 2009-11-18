@@ -1,6 +1,6 @@
 <div id="collection-id-box" class="location-browse">
   <h2 class="title"> <%=h document["collection"] %></h2>
-  <% if @folder_siblings %>  
+  <% if !@folder_siblings.nil? %>  
     <ul class="containers horizontal">
       <li class="first"> 
         <%= link_to_multifacet("Series #{document["series_facet"]}", "series_facet" => document["series_facet"])  %> 
