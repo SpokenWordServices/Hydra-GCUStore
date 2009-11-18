@@ -1,0 +1,45 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<%= infusion_javascripts(:inline_edit, :debug=>true) %>
+<%= infusion_stylesheets(:inline_edit) %>
+<%= javascript_include_tag "custom"%>
+
+<div class="<%= params[:action]%>_details">
+  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
+</div>
+<div class="document_viewer" id="cover_container">
+  <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
+  <%= get_data_with_label(document, "ID:", 'id') %>
+  <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
+</div>
+
+<h3>Download</h3>
+<% if @downloadables %>
+  <%= list_downloadables(@downloadables, @mime_types) %>
+<% else %>
+  <div id="downloads">
+    <ul>
+      <% %>
+    </ul>
+  </div>
+  <%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>
+<% end -%>
+
+
+<dl class="defList" id="rights_info">
+  <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
+</dl>
+
+
+<div style="clear:left;"></div>
+<div class="access_data">
+  <%#= render :partial => "catalog/access_data", :locals => {:doc => document} %>
+</div>
+
+
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>"location_browse_box", :locals => {:document => document} %>
+  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document} %>
+  <%#= render :partial=>'facets' %>
+<% end %>
+

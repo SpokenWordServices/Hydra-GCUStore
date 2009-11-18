@@ -12,10 +12,10 @@ class DocumentsController < ApplicationController
     before_filter :require_solr, :require_fedora
     
     def edit
-      @document = Document.find(params[:id])
+      @document_fedora = Document.find(params[:id])
       @response = get_solr_response_for_doc_id
-      @document_solr = SolrDocument.new(@response.docs.first)
-      find_folder_siblings(@document_solr)
+      @document = SolrDocument.new(@response.docs.first)
+      find_folder_siblings(@document)
       
       respond_to do |format|
         format.html {setup_next_and_previous_documents}

@@ -4,4 +4,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :documents do |documents|
     documents.resources :downloads, :only=>[:index]
   end
+  
+  map.connect 'catalog/:id/edit', :controller=>:catalog, :action=>:edit
 end

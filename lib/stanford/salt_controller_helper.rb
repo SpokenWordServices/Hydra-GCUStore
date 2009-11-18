@@ -35,6 +35,36 @@ module Stanford::SaltControllerHelper
     end
   end
   
+  # Returns a list of datastreams for download.
+  # Uses user's roles and "mime_type" value in submitted params to decide what to return.
+  def downloadables(fedora_object=@fedora_object)
+    if editor? 
+      if params["mime_type"] == "all"
+        result = fedora_object.datastreams
+      else
+        result = Hash[]
+        fedora_object.datastreams.each_pair do |dsid,ds|
+          p dsid + ":" 
+          #p ds.inspect
+          p ds.attributes
+          p ds.label
+         if ds.attributes["mimeType"].include?("pdf") || ds.label.include?("_TEXT.xml") || ds.label.include?("_METS.xml")
+           result[dsid] = ds
+         end  
+         p "...fine."
+        end
+      end
+    else
+      result = Hash[]
+      fedora_object.datastreams.each_pair do |dsid,ds|
+         if ds.attributes["mimeType"].include?("pdf")
+           result[dsid] = ds
+         end  
+       end
+    end 
+    return result    
+  end
+  
   def retrieve_descriptor
     # We should be grabbing this from the collection_facet param, but there's only one collection so its hard-coded.
     #collection_id = params[:collection_facet]

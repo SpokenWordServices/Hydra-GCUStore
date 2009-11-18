@@ -22,7 +22,7 @@
 	    <span class="edit-browse">
       <% if editor? %>
         <a href="#" class="browse">Browse</a>
-        <%= link_to "edit", edit_document_path(@document[:id]), :class=>'edit' %>
+        <%= link_to "Edit", edit_document_path(@document[:id]), :class=>'edit' %>
       <% end -%>
       </span>
       </div>
@@ -33,7 +33,8 @@
   <div id="doc_<%= @document[:id] %>">
     <h1><%= h(document_heading) %><br/><%= h(vern_document_heading) %></h1>
     <div class="document">
-      <%= render_document_partial @document, :show %>
+      <%=h params["action"] %>
+      <%= render_document_partial @document, params["action"] %>
     </div>
   </div>
 </div>
