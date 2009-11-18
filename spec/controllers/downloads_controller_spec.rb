@@ -35,19 +35,67 @@ describe DownloadsController do
     before(:each) do
       mock_repo = mock('repo')
       Fedora::Repository.expects(:register).returns(mock_repo)
+      @mock_pdf = mock("mock_pdf")
+      @mock_pdf.stubs(:attributes).returns({"mimeType"=>"application/pdf"})
+      @mock_pdf.stubs(:label).returns("my_document.pdf")
+      
+      @mock_ocr = mock("mock_ocr")
+      @mock_ocr.stubs(:attributes).returns({"mimeType"=>"application/xml"})
+      @mock_ocr.stubs(:label).returns("my_document_TEXT.xml") 
+           
+           
+      @mock_mets = mock("mock_mets")
+      @mock_mets.stubs(:attributes).returns({"mimeType"=>"application/xml"})
+      @mock_mets.stubs(:label).returns("my_document_METS.xml")
+      
+      @mock_image_xml1 = mock("mock_image_xml1")
+      @mock_image_xml1.stubs(:attributes).returns({"mimeType"=>"application/xml"})
+      @mock_image_xml1.stubs(:label).returns("my_document_0001.xml")
+      
+      @mock_image_xml2 = mock("mock_image_xml2")
+      @mock_image_xml2.stubs(:attributes).returns({"mimeType"=>"application/xml"})
+      @mock_image_xml2.stubs(:label).returns("my_document_0002.xml")
+      
+      @mock_ext_properties = mock("mock_ext_properties")
+      @mock_ext_properties.stubs(:attributes).returns({"mimeType"=>"text/xml"})
+      @mock_ext_properties.stubs(:label).returns("extProperties")
+      
+      @ds_hash = {"mock_pdf" => @mock_pdf, 
+                "mock_ocr"=>@mock_ocr, 
+                "ds13_id" => @mock_mets, 
+                "mock_image_xml1"=>@mock_image_xml1, 
+                "mock_image_xml2"=>@mock_image_xml2,
+                "mock_ext_properties"=>@mock_ext_properties}
+      @sample_object = mock("result_object", :datastreams => @ds_hash )
     end
     
-    it "should create a stub of the specified document and return its datastreams list hash by calling its .datastreams method" do
-      ActiveFedora::Base.expects(:load_instance).returns(mock("result_object", :datastreams => ["ds1_id" => "ds1", "ds2_id"=>"ds2"]))
+    it "should default to returning only pdfs" do
+      ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
       xhr :get, :index, :document_id=>"_PID_"
-      assigns(:datastreams).should == ["ds1_id" => "ds1", "ds2_id"=>"ds2"]
+      assigns(:datastreams).should == {"mock_pdf" => @mock_pdf}
+    end
+
+    it "should return a list of all datastreams if params[mime_type] == all and logged in as an editor" do
+      ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
+      get :index, {:document_id=>"_PID_", :mime_type=>"all", :wau=>"francis"}
+      assigns(:datastreams).should == @ds_hash
     end
     
+    it "should default to returning pdfs, METS, and TEXT when logged in as an editor" do
+      ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
+      xhr :get, :index, :document_id=>"_PID_", :wau=>"francis"
+      assigns(:datastreams).should == {"mock_pdf" => @mock_pdf, 
+                "mock_ocr"=>@mock_ocr, 
+                "ds13_id" => @mock_mets}
+    end
+  end
+  
+  describe "index with download_id" do
     it "should return the specified datastream if given a download_id (datastream dsid)" do
       #Fedora::Repository.any_instance.expects(:fetch_custom).with("_PID_", "datastreams/my_datastream.pdf/content").returns("foo")
       mock_ds = mock("datastream", :label=>"mylabel", :content=>"ds content", :attributes=>{"mimeType"=>"text/plain"})
       ActiveFedora::Base.expects(:load_instance).returns(mock("result_object", :datastreams => {"mydsid"=>mock_ds}))
-      
+    
       controller.expects(:send_data).with("ds content", :filename=>"mylabel", :type => 'text/plain') #.returns("foo")
       get :index, :document_id=>"_PID_", :download_id=>"mydsid"
     end
