@@ -28,7 +28,7 @@ module SaltHelper
   def edit_and_browse_links
     result = ""
     if params[:action] == "edit"
-      result << "<a href=\"#{catalog_path(@document[:id])}\" class=\"browse\">Browse</a>"
+      result << "<a href=\"#{catalog_path(@document[:id], :viewing_context=>"browse")}\" class=\"browse\">Browse</a>"
       result << "<a href=\"#\" class=\"edit active\">Edit</a>"
     else
       result << "<a href=\"#\" class=\"browse active\">Browse</a>"
