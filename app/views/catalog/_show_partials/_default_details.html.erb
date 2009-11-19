@@ -3,9 +3,13 @@
   <div class="floatRight side">
   <%= get_data_with_label(document, "Date:", 'date_t') %>  
   <%= get_data_with_label(document, "Document Type:", 'medium_t') %>
+  <% if editor? %>
+    <%= get_data_with_label(document, "Access:", 'access_t', :default=>"private") %>
+  <% end -%>
   </div>
   <div style="float:left; width:250px;">
   <%= get_data_with_label(document, "Title:", 'title_t') %>
+  <%= get_data_with_label(document, "Author:", 'creator_t') %>
   <%= get_data_with_label(document, "Series:", 'series_facet') %>
   <%= get_data_with_label(document, "Subseries:", 'subseries_facet') %>
   <%= get_data_with_label(document, "Box:", 'box_facet') %>
