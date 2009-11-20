@@ -7,6 +7,7 @@ class Document < ActiveFedora::Base
     # Put them on the object itself (in the properties datastream) for now.
     has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
       m.field "note", :text  
+      m.field "access", :string
       m.field "archivist_tags", :string
       m.field "donor_tags", :string
     end

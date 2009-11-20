@@ -28,7 +28,7 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"    
-    result << "<dd><span class=\"editableText\" id=\"#{resource_type}_#{field_name}\">#{get_values_from_datastream(resource, datastream_name, field_name).first}</span></dd>"
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}_#{field_name}\">#{get_values_from_datastream(resource, datastream_name, field_name).first}</span></dd>"
     return result
   end
   
