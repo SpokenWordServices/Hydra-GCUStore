@@ -1,18 +1,29 @@
+<% facets_display_heading ||=  "Limit your search" %>
 <% # main container for facets/limits menu -%>
 <div id="facets">
-  <h2>This Document is About         (related items)</h2>
+  <h2><%=h facets_display_heading %></h2>
   <% facet_field_names.each do |solr_fname| %>
     <div>
-      <%# display_facet = @response.facets.detect {|f| f.name == solr_fname} -%>
-      <% display_facet = document[solr_fname] -%>
-      <% if display_facet %>
+      <% display_facet = @response.facets.detect {|f| f.name == solr_fname} -%>
+      <% if display_facet.items.length > 0 %>
         <h3><%= facet_field_labels[solr_fname] -%></h3>
         <ul>
-          <% display_facet.each do |item| -%>
-            <% link_options = add_facet_params(solr_fname, item).merge!Hash["controller" => "catalog", :action=> "index"] %>
-              <li>
-                <%= link_to h(item), url_for(link_options) %> (<%#= format_num item.hits %>)
-              </li>
+          <% display_facet.items.each do |item| -%>
+            <% if item.hits > 0 %>
+              <% facet_count_for_value = facet_value_hits(@facet_lookup, solr_fname, item.value) %>
+              <% if facet_in_params? solr_fname, item.value %>
+                <li>
+                  <span class="selected"><%= h(item.value) %> (<%= format_num facet_count_for_value %>)</span>
+                  <% link_options = remove_facet_params(solr_fname, item.value, params).merge!Hash["controller" => "catalog", :action=> "index"] %>
+                  [<%= link_to 'remove', url_for(link_options), :class=>'remove' %>]
+                </li>
+                <% else %>
+                <li>
+                  <% link_options = add_facet_params(solr_fname, item.value).merge!Hash["controller" => "catalog", :action=> "index"] %>
+                  <%= link_to h(item.value), url_for(link_options) %> (<%= format_num facet_count_for_value %>)
+                </li>
+              <% end -%>
+            <% end -%>
           <% end %>
         </ul>
       <% end %>

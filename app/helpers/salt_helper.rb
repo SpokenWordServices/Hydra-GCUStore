@@ -89,4 +89,14 @@ module SaltHelper
     @document.datastreams["descMetadata"].title_values.first
   end
   
+  # Returns the hits for facet_value within facet solr_fname within the solr_result.
+  def facet_value_hits(solr_result, solr_fname, facet_value, default_response="1")
+    item = solr_result.facets.detect {|f| f.name == solr_fname}.items.detect {|i| i.value == facet_value}
+    if item
+      return item.hits
+    else
+      return default_response
+    end
+  end
+  
 end

@@ -414,8 +414,20 @@
       <str name="facet">on</str>
 			<str name="facet.mincount">1</str>
 			<str name="facet.limit">10</str>
-			
+
+      <str name="facet.field">collection_facet</str>
       <str name="facet.field">technology_facet</str>
+      <str name="facet.field">person_facet</str>
+      <str name="facet.field">title_facet</str>			
+      <str name="facet.field">city_facet</str>
+      <str name="facet.field">organization_facet</str>
+      <str name="facet.field">company_facet</str>
+      <str name="facet.field">year_facet</str>
+      <str name="facet.field">state_facet</str>
+      <str name="facet.field">series_facet</str>
+      <str name="facet.field">box_facet</str>
+      <str name="facet.field">folder_facet</str>
+
     </lst>
   </requestHandler>
   

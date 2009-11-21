@@ -21,6 +21,9 @@ class CatalogController
   def show_with_customizations
     show_without_customizations
     find_folder_siblings
+    #facets_for_lookup = {:fields=>['title_facet', 'technology_facet', 'person_facet']}
+    params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
+    @facet_lookup = Blacklight.solr.find params
   end
   
   # trigger show_with_customizations when show is called

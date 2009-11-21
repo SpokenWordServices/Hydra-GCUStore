@@ -38,7 +38,22 @@ Blacklight.configure(:shared) do |config|
   }
   
   # default params for the SolrDocument.find_by_id method
-  SolrDocument.default_params[:find_by_id] = {:qt => :document}
+  SolrDocument.default_params[:find_by_id] = {
+    :qt => :document,
+    :facets => {:fields=>
+      ["technology_facet",
+        "person_facet",
+        "title_facet",
+        "city_facet",
+        "organization_facet",
+        "company_facet",
+        "year_facet",
+        "state_facet",
+        "series_facet",
+        "box_facet",
+        "folder_facet"]
+      }
+    }
   
   
   ##############################
