@@ -10,16 +10,19 @@ module MetadataHelper
   end
   
   # Convenience method for creating editable metadata fields.  Defaults to creating multi-value field, but creates single-value field if :multiple => false
-  def editable_metadata_field(resource, datastream_name, field_name, opts={})    
+  # Field name can be provided as a string or a symbol (ie. "title" or :title)
+  def editable_metadata_field(resource, datastream_name, field_key, opts={})    
+    field_name=field_key.to_s
     if opts[:multiple] == false
-      result = metadata_inline_edit(resource, datastream_name, field_name, opts)
+      result = single_value_inline_edit(resource, datastream_name, field_name, opts)
     else
-      result = editable_multi_value_field(resource, datastream_name, field_name, opts)
+      result = multi_value_inline_edit(resource, datastream_name, field_name, opts)
     end
     return result
   end
-   
-  def metadata_inline_edit(resource, datastream_name, field_name, opts={})
+  
+
+  def single_value_inline_edit(resource, datastream_name, field_name, opts={})
     if opts.has_key?(:label) 
       label = opts[:label]
     else
@@ -30,6 +33,32 @@ module MetadataHelper
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"    
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
+    return result
+  end
+  
+  def multi_value_inline_edit(resource, datastream_name, field_name, opts={})
+    if opts.has_key?(:label) 
+      label = opts[:label]
+    else
+      label = field_name
+    end
+    result = ""
+    result << "<dt id=\"#{field_name}\", class=\"field\">"
+    result << label
+    result << link_to_function("+" , "addLink()", :class=>'addmlink')
+    result << "</dt>"
+    
+    resource_type = resource.class.to_s.underscore
+    
+    #Output all of the current field values.
+    datastream = resource.datastreams[datastream_name]
+    vlist = datastream.fields[field_name.to_sym][:values] || []
+    vlist.each_with_index do |field_value,z|
+      # link to remove   --- !!! This doesn't work because of some insane Rails engines conflict that prevents us from using helpers.
+      # result << puts link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{fn}_#{z}"),:html => { :class  => "destructive" })
+      result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][#{z}]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
+    end
+    # hidden new value
     return result
   end
   
