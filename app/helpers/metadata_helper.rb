@@ -28,7 +28,8 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"    
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}_#{field_name}\">#{get_values_from_datastream(resource, datastream_name, field_name).first}</span></dd>"
+    field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}_#{field_name}\">#{field_value}</span></dd>"
     return result
   end
   
@@ -88,8 +89,12 @@ module MetadataHelper
     # end
   end
   
-  def get_values_from_datastream(resource, datastream_name, field_name)
-    resource.datastreams[datastream_name].send("#{field_name}_values")
+  def get_values_from_datastream(resource, datastream_name, field_name, opts={})
+    result = resource.datastreams[datastream_name].send("#{field_name}_values")
+    if result.empty? && opts[:default]
+      result = [opts[:default]]
+    end
+    return result
   end
   
   def custom_dom_id(resource)
