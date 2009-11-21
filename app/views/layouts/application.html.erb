@@ -13,21 +13,6 @@
     <%= stylesheet_link_tag 'yui', :plugin=>:blacklight %>
     <%= stylesheet_link_tag 'application','styles', :media=>'all' %>
     <%= javascript_include_tag 'searchworks' %>
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            /* Example 3 - note the difference in the syntax */
-            /* multiple inline edit requires each editable text object to be wrapped again inside another element */                
-            var multiEdit = fluid.inlineEdits("#multipleEdit", {
-                selectors : {
-                  text : ".editableText",
-                  editables : "dd"
-                }, 
-                componentDecorators: {
-                  type: "fluid.undoDecorator" 
-                }
-            });
-        });
-    </script>
 
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:controller] == 'catalog' and params[:action] == 'index' %>
