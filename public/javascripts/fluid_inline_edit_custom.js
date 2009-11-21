@@ -8,6 +8,28 @@ jQuery(document).ready(function () {
         }, 
         componentDecorators: {
           type: "fluid.undoDecorator" 
+        },
+        listeners : {
+          onFinishEdit : myFinishEditListener
         }
     });
 });
+
+function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
+  alert(this+"You edited the field "+$(viewNode).attr('rel')+", replacing \""+oldValue+"\" with \""+newValue+"\"")
+  saveEdit(viewNode.id, newValue, $(viewNode).attr('rel'))
+  return false;
+}
+
+function saveEdit(field,value,rel) {
+  alert("Attempting to save "+value+" as the new value for "+field+" by submitting to "+rel)
+  $.ajax({
+    type: "PUT",
+    url: rel,
+    dataType : "json",
+    data: field+"="+value,
+    success: function(msg){
+      alert( "Data Saved: " + msg );
+    }
+  });
+}

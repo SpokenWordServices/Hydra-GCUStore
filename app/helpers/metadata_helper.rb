@@ -29,7 +29,7 @@ module MetadataHelper
     
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"    
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][1]\">#{field_value}</span></dd>"
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
     return result
   end
   
