@@ -46,6 +46,7 @@ module MetadataHelper
       label = field_name
     end
     resource_type = resource.class.to_s.underscore
+    rel = url_for(:action=>"update", :controller=>"documents")
     
     result = ""
     result << "<dt id=\"#{resource_type}_#{field_name}\", class=\"field\">"
@@ -62,10 +63,11 @@ module MetadataHelper
       # link to remove   --- !!! This doesn't work because of some insane Rails engines conflict that prevents us from using helpers.
       result << "<dd id=\"#{resource_type}_#{field_name}\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
-      result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][#{z}]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
+      result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][#{z}]\" rel=\"#{rel}\">#{field_value}</span>"
       result << "</dd>"
     end
-    # hidden new value
+    # sample tag for new value
+    result << "<div class=\"new_field\" rel=\"#{rel}\" id=\"#{resource_type}[#{field_name}][-1]\" name=\"#{resource_type}[#{field_name}][-1]\"></div>"
     return result
   end
   
