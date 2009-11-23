@@ -54,8 +54,8 @@ module InfusionViewHelper
     when :uploader
       paths << '../infusion/components/uploader/css/Uploader.css'
     when :inline_edit
-      ["../infusion/framework/fss/css/fss-theme.mist.css",
-        "../infusion/framework/fss/css/fss-theme.hc.css",
+      ["../infusion/framework/fss/css/fss-theme-mist.css",
+        "../infusion/framework/fss/css/fss-theme-hc.css",
         "../infusion/components/inlineEdit/css/InlineEdit.css"].each {|path| paths << path}
     end
     

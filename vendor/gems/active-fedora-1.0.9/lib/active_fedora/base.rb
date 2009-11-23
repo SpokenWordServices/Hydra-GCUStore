@@ -381,13 +381,23 @@ module ActiveFedora
 
     def self.deserialize(doc) #:nodoc:
       pid = doc.elements['/foxml:digitalObject'].attributes['PID']
+      puts "Deserializing #{pid} as a #{self.class.inspect}"
       
       proto = self.new(:pid=>pid, :new_object=>false)
-      proto.datastreams.each do |name,ds|
-        ds.new_object = false
+      # get the datastream list from fedora (this is a workaround for the fact that configure_defined_datastreams has no notion of reading attributes from fedora)
+      ds_in_fedora = proto.datastreams_in_fedora
+      
+      # If you are deserializing a model which has datastreams specified in the model, only initialize those.  
+      # otherwise (ie. you are loading an instance of ActiveFedora::Base), deserialize all of the datastreams
+      datastreams_to_deserialize = @ds_specs ? @ds_specs : proto.datastreams
+      datastreams_to_deserialize.each_key do |name|
+        # use the version of the datastream straight from fedora as the template 
+        proto_ds = proto.datastreams[name]
+        proto_ds.new_object = false
         doc.elements.each("//foxml:datastream[@ID='#{name}']") do |el|
-          proto.datastreams[name]=ds.class.from_xml(ds, el)
+          proto.datastreams[name]=proto_ds.class.from_xml(proto_ds, el)
         end
+        proto.datastreams[name].attributes = ds_in_fedora[name].attributes
       end
       proto.inner_object.new_object = false
       return proto

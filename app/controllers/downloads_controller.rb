@@ -10,6 +10,7 @@ class DownloadsController < ApplicationController
     # in order to avoid ActionController being clever with the filenames/extensions/formats.
     # To download a datastream, pass the datastream id as ?document_id=#{dsid} in the url
     def index
+      p "DownloadsController.index triggered. #{params.inspect}"
       fedora_object = ActiveFedora::Base.load_instance(params[:document_id])
       if params[:download_id]
         @datastream = fedora_object.datastreams[params[:download_id]]

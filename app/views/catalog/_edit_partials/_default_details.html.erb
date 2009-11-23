@@ -2,7 +2,7 @@
 <script type="text/javascript" language="Javascript">
   function addLink() {
   	var id = document.getElementById("id").value;
-  	$("#newLink").append("<dd id='row" + id + "'><input type='text' id='document_link_" + id + "-1' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a><dd>");
+  	$("#document_link").append("<dd id='row" + id + "'><input type='text' id='document_link_" + id + "-1' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a><dd>");
 
   	id = (id - 1) + 2;
   	document.getElementById("id").value = id;
@@ -31,16 +31,16 @@
   <input type="hidden" id="id" value="document_link_">
   
   <div class="floatRight side">
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:", :multiple=>false) %>  
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:", :multiple=>false) %>
-  <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :multiple=>false, :default=>"private") %>
+  <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
+  <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:") %>
+  <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private") %>
   </div>
   <div style="float:left; width:250px;">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:", :multiple=>false) %>
+  <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
-  <p><%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:", :multiple=>false) %></p>
-  <p><%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:", :multiple=>false) %></p>
+  <p><%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %></p>
+  <p><%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %></p>
 
   <%= get_data_with_label(@document, "Series:", 'series_facet') %>
   <%= get_data_with_label(@document, "Subseries:", 'subseries_facet') %>

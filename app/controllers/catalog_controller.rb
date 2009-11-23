@@ -9,16 +9,20 @@ class CatalogController
   before_filter :enforce_edit_permissions, :only=>:edit
   
   def edit
+    p("CatalogController.edit triggered: #{params.inspect}")
     @document_fedora = Document.load_instance(params[:id])
-    fedora_object = ActiveFedora::Base.load_instance(params[:id])
+    #fedora_object = ActiveFedora::Base.load_instance(params[:id])
+    p "retrieved fedora object for CatalogController.edit"
     #params[:action] = "edit"
-    @downloadables = downloadables( fedora_object )
+    @downloadables = downloadables( @document_fedora )
     session[:viewing_context] = "edit"
     show_with_customizations
+    p "calling show action from edit action"
     render :action=>:show
   end
   
   def show_with_customizations
+    p("CatalogController.show_with_customizations triggered: #{params.inspect}")
     show_without_customizations
     find_folder_siblings
     #facets_for_lookup = {:fields=>['title_facet', 'technology_facet', 'person_facet']}
@@ -37,6 +41,8 @@ class CatalogController
   # this will redirect them to the edit action.
   # If they do not have sufficient privileges to edit documents, it will silently switch their session to browse mode.
   def enforce_viewing_context_for_show_requests
+    p("Enforcing viewing context.  Session conext is #{session[:viewing_context]}")
+    
     if params[:viewing_context] == "browse"
       session[:viewing_context] = params[:viewing_context]
     elsif session[:viewing_context] == "edit"
