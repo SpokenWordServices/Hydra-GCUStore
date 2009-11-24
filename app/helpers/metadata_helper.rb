@@ -23,12 +23,17 @@ module MetadataHelper
     
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
     
-    if opts[:type] == :text_area
+    case opts[:type]
+    when :text_area
       result << text_area_inine_edit(resource, datastream_name, field_name, opts)
-    elsif opts[:multiple] == true
-      result << multi_value_inline_edit(resource, datastream_name, field_name, opts)
+    when :date_picker
+      result << date_picker_inine_edit(resource, datastream_name, field_name, opts)
     else
-      result << single_value_inline_edit(resource, datastream_name, field_name, opts)
+      if opts[:multiple] == true
+        result << multi_value_inline_edit(resource, datastream_name, field_name, opts)
+      else
+        result << single_value_inline_edit(resource, datastream_name, field_name, opts)
+      end
     end
     return result
   end
@@ -56,7 +61,6 @@ module MetadataHelper
     #Output all of the current field values.
     datastream = resource.datastreams[datastream_name]
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
-    p "vlist for #{field_name}: #{vlist.inspect}"
     vlist.each_with_index do |field_value,z|
       result << "<dd id=\"#{resource_type}_#{field_name}\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
@@ -70,11 +74,22 @@ module MetadataHelper
 
   def text_area_inine_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
+    opts[:default] = "Text Area"
+    field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
+    result = ""
+    result << "<dd id=\"#{resource_type}_#{field_name}\">"
+    #result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
+    result << text_area_tag("#{resource_type}[#{field_name}][0]")
+    result << "</dd>"
+    return result
+  end
+  
+  def date_picker_inine_edit(resource, datastream_name, field_name, opts={})
+    resource_type = resource.class.to_s.underscore
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
     return result
   end
-  
   
   def get_values_from_datastream(resource, datastream_name, field_name, opts={})
     result = resource.datastreams[datastream_name].send("#{field_name}_values")
