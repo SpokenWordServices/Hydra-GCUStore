@@ -48,4 +48,9 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  
+  def fixture(file)
+    File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
+  end
+  
 end
