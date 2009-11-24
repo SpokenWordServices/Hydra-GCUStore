@@ -38,7 +38,7 @@
   <div style="float:left; width:250px;">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
-  <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:textbox) %>
+  <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
   <p><%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %></p>
   <p><%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %></p>
