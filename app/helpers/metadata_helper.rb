@@ -41,6 +41,7 @@ module MetadataHelper
 
   def single_value_inline_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
+    opts[:default] ||= "foo"
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
     return result
@@ -77,10 +78,10 @@ module MetadataHelper
     opts[:default] = "Text Area"
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = ""
-    result << "<dd id=\"#{resource_type}_#{field_name}\">"
+    result << "<div id=\"#{resource_type}_#{field_name}\">"
     #result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
-    #result << text_area_tag("#{resource_type}[#{field_name}][0]")
-    result << "</dd>"
+    result << text_area_tag("#{resource_type}[#{field_name}][0]")
+    result << "</div>"
     result << "<div id=\"textareaAbstract\">#{field_value}</div>"
     result << "<div class=\"boxSaveCancel marginTop_40\" id=\"abstractSaveCancelBox\">"
     result << "  <input type=\"button\" value=\"Save\" class=\"buttonSave button\" onclick=\"javascript: saveAbstract(); return true;\" />"
