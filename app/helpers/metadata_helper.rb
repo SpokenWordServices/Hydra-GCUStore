@@ -79,8 +79,14 @@ module MetadataHelper
     result = ""
     result << "<dd id=\"#{resource_type}_#{field_name}\">"
     #result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
-    result << text_area_tag("#{resource_type}[#{field_name}][0]")
+    #result << text_area_tag("#{resource_type}[#{field_name}][0]")
     result << "</dd>"
+    result << "<div id=\"textareaAbstract\">#{field_value}</div>"
+    result << "<div class=\"boxSaveCancel marginTop_40\" id=\"abstractSaveCancelBox\">"
+    result << "  <input type=\"button\" value=\"Save\" class=\"buttonSave button\" onclick=\"javascript: saveAbstract(); return true;\" />"
+    result << "  <input type=\"button\" value=\"Cancel\" class=\"buttonCancel\" onclick=\"javascript:hideAbstractSaveCancelBox();return true;\" />"
+    result << "</div>"
+    result << "<div class=\"boxSaveProcessing marginTop_40\" id=\"savingAbstract\" style=\"display:none;\">Saving..</div>"
     return result
   end
   

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "hydra-etd" %>
 <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
 <script type="text/javascript" language="Javascript">
   function addLink() {
@@ -11,6 +12,7 @@
   function removeLink(id) {
   	$(id).remove();
   }
+
   function addAuthor() {
   	var id = document.getElementById("id").value;
   	$("#addAuthor").append("<dd id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><dd>");
@@ -22,6 +24,9 @@
   function removeAuthor(id) {
   	$(id).remove();
   }
+  
+  initAbstractEdit();
+  
 </script>
 <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
 <div id="multipleEdit">
