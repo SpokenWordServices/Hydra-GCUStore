@@ -381,7 +381,7 @@ module ActiveFedora
 
     def self.deserialize(doc) #:nodoc:
       pid = doc.elements['/foxml:digitalObject'].attributes['PID']
-      puts "Deserializing #{pid} as a #{self.class.inspect}"
+      # p "Deserializing #{pid} as a #{self.class.inspect}"
       
       proto = self.new(:pid=>pid, :new_object=>false)
       # get the datastream list from fedora (this is a workaround for the fact that configure_defined_datastreams has no notion of reading attributes from fedora)
@@ -391,13 +391,21 @@ module ActiveFedora
       # otherwise (ie. you are loading an instance of ActiveFedora::Base), deserialize all of the datastreams
       datastreams_to_deserialize = @ds_specs ? @ds_specs : proto.datastreams
       datastreams_to_deserialize.each_key do |name|
+        # p "Deserializing #{name} for #{pid}"
         # use the version of the datastream straight from fedora as the template 
         proto_ds = proto.datastreams[name]
         proto_ds.new_object = false
         doc.elements.each("//foxml:datastream[@ID='#{name}']") do |el|
           proto.datastreams[name]=proto_ds.class.from_xml(proto_ds, el)
         end
-        proto.datastreams[name].attributes = ds_in_fedora[name].attributes
+        # IF the datastream exists in Fedora, pass its attributes into the initialized datastream instance 
+        # (this is a hack to deal with the fact that configure_defined_datastreams clobbers any attributes from fedora)
+        if ds_in_fedora[name]
+          proto.datastreams[name].attributes = ds_in_fedora[name].attributes
+        else
+          proto.datastreams[name].attributes["mimeType"] = "text/xml"
+          proto.datastreams[name].label = name
+        end
       end
       proto.inner_object.new_object = false
       return proto

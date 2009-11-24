@@ -12,6 +12,10 @@ class Document < ActiveFedora::Base
       m.field "donor_tags", :string
     end
     
+    has_metadata :name => "stories", :type=>ActiveFedora::MetadataDatastream do |m|
+      m.field "story", :text
+    end
+    
     has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream do |m|
       # Default :multiple => true
       #

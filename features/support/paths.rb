@@ -10,7 +10,7 @@ module NavigationHelpers
     if user_id
       case page_name
       when /the edit document page for (.*)$/i
-        edit_document_path($1, :wau=>user_id)
+        edit_catalog_path($1, :wau=>user_id)
       when /the show document page for (.*)$/i
         catalog_path($1, :wau=>user_id) 
       end    
@@ -29,7 +29,7 @@ module NavigationHelpers
       #     user_profile_path(User.find_by_login($1))
 
       when /the edit document page for (.*)$/i
-        edit_document_path($1)
+        edit_catalog_path($1)
       when /the show document page for (.*)$/i
         catalog_path($1)
     

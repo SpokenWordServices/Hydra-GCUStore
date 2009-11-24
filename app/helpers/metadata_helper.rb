@@ -23,7 +23,7 @@ module MetadataHelper
   
 
   def single_value_inline_edit(resource, datastream_name, field_name, opts={})
-    p "single_value_inline_edit triggered for #{datastream_name} #{field_name} "
+    # p "single_value_inline_edit triggered for #{datastream_name} #{field_name} "
     if opts.has_key?(:label) 
       label = opts[:label]
     else
@@ -38,7 +38,7 @@ module MetadataHelper
   end
   
   def multi_value_inline_edit(resource, datastream_name, field_name, opts={})
-    p "multi_value_inline_edit triggered for #{datastream_name} #{field_name} "
+    # p "multi_value_inline_edit triggered for #{datastream_name} #{field_name} "
     
     if opts.has_key?(:label) 
       label = opts[:label]
