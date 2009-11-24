@@ -41,7 +41,7 @@ module MetadataHelper
 
   def single_value_inline_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
-    opts[:default] ||= "foo"
+    opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
     return result
