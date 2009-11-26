@@ -1,13 +1,24 @@
 <%= javascript_include_tag "hydra-etd" %>
 <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
 <script type="text/javascript" language="Javascript">
+  function addLink() {
+  	var id = document.getElementById("id").value;
+  	$("#document_link").append("<dd id='row" + id + "'><input type='text' id='document_link_" + id + "-1' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a></dd>");
+
+  	for (id = 0; id < 1; id++) { 
+  	  document.getElementById("id").value = id;
+    }
+  }
+
+  function removeLink(id) {
+  	$(id).remove();
+  }
 
   function addAuthor() {
   	var id = document.getElementById("id").value;
-  	$("#addAuthor").append("<dd id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><dd>");
+  	$("#addAuthor").append("<dd id='author" + id + "'><input type='text' id='authortxt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#author" + id + "\"); return false;'>Remove</a></dd>");
 
-  	id = (id - 1) + 2;
-  	document.getElementById("id").value = id;
+  	document.getElementById("id").value = document.getElementById("id").value*1 + 1;
   }
 
   function removeAuthor(id) {
@@ -22,7 +33,7 @@
 <dl class="defList fl-theme-mist">
 <%# default partial to display solr document fields in catalog show view -%>
   <form action="#" method="get" id="form1">
-  <input type="hidden" id="id" value="document_link_">
+  <input type="hidden" id="id" value="1" />
   
   <div class="floatRight side">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
