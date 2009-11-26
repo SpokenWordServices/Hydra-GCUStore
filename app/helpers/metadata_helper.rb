@@ -56,7 +56,7 @@ module MetadataHelper
     # result = ""
     # result << "<dt id=\"#{resource_type}_#{field_name}\", class=\"field\">"
     # result << label
-    result << link_to_function("+" , "addLink()", :class=>'addmlink')
+    result << link_to_function("+" , "document_author()", :class=>'addmlink')
     # result << "</dt>"
     opts[:default] ||= ""
     #Output all of the current field values.

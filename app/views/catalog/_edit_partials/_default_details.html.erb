@@ -15,7 +15,7 @@
 
   function addAuthor() {
   	var id = document.getElementById("id").value;
-  	$("#addAuthor").append("<dd id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><dd>");
+  	$("#document_author").append("<dd id='row" + id + "'><input type='text' id='txt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#row" + id + "\"); return false;'>Remove</a><dd>");
 
   	id = (id - 1) + 2;
   	document.getElementById("id").value = id;
@@ -42,6 +42,7 @@
   </div>
   <div style="float:left; width:250px;">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
+  <div id="addAuthor"></div>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
   <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
