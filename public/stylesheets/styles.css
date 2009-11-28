@@ -361,6 +361,8 @@ div#searchMods label, div#searchMods h2 {
   font-weight:normal;
 }
 /* show view is #document, index view is #documents */
+#loading img { float:left;display:block;margin:-7px 5px 0 -5px }
+
 .edit-browse {
 	margin-left:50px;
 }
