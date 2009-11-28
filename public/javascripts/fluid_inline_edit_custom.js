@@ -29,7 +29,14 @@ function saveEdit(field,value,rel) {
     dataType : "json",
     data: field+"="+value,
     success: function(msg){
-      alert( "Data Saved: " + msg );
+			jQuery.noticeAdd({
+        inEffect:               {opacity: 'show'},      // in effect
+        inEffectDuration:       600,                    // in effect duration in miliseconds
+        stayTime:               6000,                   // time in miliseconds before the item has to disappear
+        text:                   'Your edit has been saved',   // content of the item
+        stay:                   false,                  // should the notice item stay or not?
+        type:                   'notice'                // could also be error, succes				
+       });
     }
   });
 }

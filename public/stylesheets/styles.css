@@ -396,9 +396,17 @@ div#searchMods label, div#searchMods h2 {
 }
 #document .document .edit_details .defList {
 	margin-left:10px;
+	background:transparent!important;
 }
 #document .document .document_viewer {
 	width:45%;
+}
+.fl-theme-mist {
+	background:transparent;
+}
+.fl-theme-mist a:active, .fl-theme-mist a:focus {
+	border:none;
+	outline:none;
 }
 .fl-theme-mist span input {
 	border:0.1em solid #5A95CF;
@@ -413,6 +421,7 @@ div#searchMods label, div#searchMods h2 {
 	border:0.1em solid #F00;
 	margin:-0.1em 0;
 	background-color:#ffffe0 !important;
+	padding:3px;
 }
 div#spell{
   padding-left:10px;
@@ -1046,13 +1055,65 @@ div.advanced_results, div.advanced_results a, div.advanced_results h2, div.advan
   width: 100%;
 }
 
+/*** jQuery Notifications ***/
+
+/* ie6 trash */
+* html .notice-wrap {
+	position:absolute; 
+}
+* html .notice-item {
+	padding-bottom:0;
+}
+* html .notice-item-close{
+	background:url(/images/gritter-close-ie6.gif);
+	width:22px;
+	height:22px;
+	top:7px;
+	left:7px;
+}
+
+.notice-wrap {
+	position:fixed;
+	top:20px;
+	right:20px;
+	width:301px;
+	z-index:9999;
+}
+
+* html .notice-wrap {
+	position: absolute;		
+}
+ 
+.notice-item {
+	display:block;
+	background:url(/images/gritter.png) no-repeat left -40px;
+	color:#eee;
+	padding:2px 11px 8px 11px;
+	font-size: 12px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	text-align:left;
+}
+
+.notice-item p {
+	margin-bottom:3px;
+	padding:7px 0 0 25px;
+}
+
+.notice-item-close {
+	position:absolute;
+	top:5px;
+	left:3px;
+	background:url(/images/gritter.png) no-repeat left top;
+	cursor:pointer;
+	width:30px;
+	height:30px;
+	text-indent:-10000px;
+}
+
 @media print {
 
- 
-
 body {font-size: 8pt;}
-
- 
 
 div.sul-banner, div#search, div.aboutLinks, span.back_to_cat, span.remove_link, div#tools, span#control_links a, div#showUtils a, ul.tools, form.per_page, img.cover_image, div.pagination {display: none;}
 div#cover_container img.cover_image {display: block;}

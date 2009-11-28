@@ -1,13 +1,11 @@
-<%= javascript_include_tag "hydra-etd" %>
 <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
+<script src="/plugin_assets/blacklight/javascripts/jquery.notice.js" type="text/javascript"></script>
 <script type="text/javascript" language="Javascript">
   function addLink() {
   	var id = document.getElementById("id").value;
-  	$("#document_link").append("<dd id='row" + id + "'><input type='text' id='document_link_" + id + "-1' /> | <a href='#' onClick='removeLink(\"#row" + id + "\"); return false;'>Remove</a></dd>");
+  	$("#addLink").append("<dd id='link" + id + "'><a href='javascript:void();' onClick='removeLink(\"#link" + id + "\"); return false;'><img src=\"/images/delete.png\" border=\"0\" /></a> <input type='text' id='link" + id + "' /></dd>");
 
-  	for (id = 0; id < 1; id++) { 
-  	  document.getElementById("id").value = id;
-    }
+  	document.getElementById("id").value = document.getElementById("id").value*1 + 1;
   }
 
   function removeLink(id) {
@@ -16,7 +14,7 @@
 
   function addAuthor() {
   	var id = document.getElementById("id").value;
-  	$("#addAuthor").append("<dd id='author" + id + "'><input type='text' id='authortxt" + id + "' /> | <a href='#' onClick='removeAuthor(\"#author" + id + "\"); return false;'>Remove</a></dd>");
+  	$("#addAuthor").append("<dd id='author" + id + "'><a href='javascript:void();' onClick='removeAuthor(\"#author" + id + "\"); return false;' class=\"destructive\"><img src=\"/images/delete.png\" border=\"0\" /></a> <input type='text' id='authortxt" + id + "' /></dd>");
 
   	document.getElementById("id").value = document.getElementById("id").value*1 + 1;
   }
@@ -24,9 +22,7 @@
   function removeAuthor(id) {
   	$(id).remove();
   }
-  
-  //initAbstractEdit();
-  
+
 </script>
 <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
 <div id="multipleEdit">
