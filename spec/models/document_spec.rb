@@ -41,7 +41,7 @@ describe Document do
     describe "properties" do
       it "should include the desired fields" do
         pending
-        ["creation_date", "abstract", "rights", "subject_heading", "spati"]
+        ["date", "abstract", "rights", "subject_heading", "spati"]
       end
     end
   end
