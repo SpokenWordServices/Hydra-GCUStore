@@ -36,7 +36,11 @@ class Document < ActiveFedora::Base
       m.field "alt_title", :string, :xml_node => "alternative"
     end
 
-    
+    def save
+      super
+      shelver = Shelver::Shelver.new
+      shelver.shelve_object( self )
+    end
   
 
 end

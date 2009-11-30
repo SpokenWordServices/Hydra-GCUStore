@@ -45,6 +45,22 @@ describe Document do
       end
     end
   end
+  
+  describe "save" do
+    before(:each) do
+      Fedora::Repository.instance.stubs(:save)
+    end
+    
+    it "should explicitly call shelver after updating fedora" do
+      @document.expects(:create).returns("Successfully created.")
+      # Solr updates are turned off in this app, so update_index never gets triggered.
+      #@document.expects(:update_index).returns("Successfully updated index.")
+      mock_shelver = mock("shelver")
+      mock_shelver.expects(:shelve_object).with(@document)
+      Shelver::Shelver.expects(:new).returns( mock_shelver )
+      @document.save
+    end
+  end
 
   
   
