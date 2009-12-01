@@ -13,6 +13,8 @@ jQuery(document).ready(function () {
           onFinishEdit : myFinishEditListener
         }
     });
+    var singleEdit = fluid.inlineEdit("#foo", {});
+    singleEdit.edit();
 });
 
 function myFinishEditListener(newValue, oldValue, editNode, viewNode) {

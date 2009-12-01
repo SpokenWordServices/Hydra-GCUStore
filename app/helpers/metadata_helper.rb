@@ -49,15 +49,20 @@ module MetadataHelper
   
   def multi_value_inline_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
-
+    oid = resource.pid
+    new_element_id = "#{resource_type}[#{field_name}][-1]"
     rel = url_for(:action=>"update", :controller=>"documents")
     result = ""
     
     # result = ""
     # result << "<dt id=\"#{resource_type}_#{field_name}\", class=\"field\">"
     # result << label
-    result << link_to_function("+" , "addAuthor()", :class=>'addmlink')
-    # result << "</dt>"
+    new_value_form = render(:partial=>"shared/new_field_value_form_test", :locals=>{:field_name=>field_name,:oid=>oid,:resource_type=>resource_type,:rel=>rel, :element_id=>new_element_id})
+    add_value_function = "var div = jQuery('#{new_value_form}');div.appendTo(\"\##{resource_type}_#{field_name}_new_values\")"
+    result << link_to_function("add" , add_value_function, :class=>'addmlink') 
+                #page.insert_html(:bottom, field_name,  )
+                ##page << "Editable.create_active($('#{new_element_id}'))"
+    # result << link_to_function("+" , "addAuthor()", :class=>'addmlink')
     opts[:default] ||= ""
     #Output all of the current field values.
     datastream = resource.datastreams[datastream_name]
@@ -68,8 +73,9 @@ module MetadataHelper
       result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][#{z}]\" rel=\"#{rel}\">#{field_value}</span>"
       result << "</dd>"
     end
+    result << "<div id=\"#{resource_type}_#{field_name}_new_values\">#{new_value_form}</div>"
     # sample tag for new value
-    result << "<div class=\"new_field\" rel=\"#{rel}\" id=\"#{resource_type}[#{field_name}][-1]\" name=\"#{resource_type}[#{field_name}][-1]\"></div>"
+    #result << "<div class=\"new_field\" rel=\"#{rel}\" id=\"#{resource_type}[#{field_name}][-1]\" name=\"#{resource_type}[#{field_name}][-1]\"></div>"
     return result
   end
 
