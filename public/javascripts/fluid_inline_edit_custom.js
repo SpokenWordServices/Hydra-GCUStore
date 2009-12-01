@@ -13,19 +13,39 @@ jQuery(document).ready(function () {
           onFinishEdit : myFinishEditListener
         }
     });
+    var singleEdit = fluid.inlineEdit("#foo", {});
+    singleEdit.edit();
 });
 
+function insertValue(fieldName) {
+  var div = jQuery('<dd id="document_' + fieldName + '_-1" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></dd>');
+  div.appendTo("#document_"+fieldName+"_new_values"); 
+  //return false;
+  var newVal = fluid.inlineEdit("#document_" + fieldName + "_-1", {
+    componentDecorators: {
+      type: "fluid.undoDecorator" 
+    },
+    listeners : {
+      onFinishEdit : myFinishEditListener
+    }
+  });
+  newVal.edit();
+}
+
+function removeValue(node) {
+  node.remove();
+}
+
 function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
-  //alert(this+"You edited the field "+$(viewNode).attr('rel')+", replacing \""+oldValue+"\" with \""+newValue+"\"")
-  saveEdit(viewNode.id, newValue, $(viewNode).attr('rel'))
+  saveEdit($(viewNode).parent().attr("name"), newValue)
   return true;
 }
 
-function saveEdit(field,value,rel) {
+function saveEdit(field,value) {
   //alert("Attempting to save "+value+" as the new value for "+field+" by submitting to "+rel)
   $.ajax({
     type: "PUT",
-    url: rel,
+    url: $("form#document_metadata").attr("action"),
     dataType : "json",
     data: field+"="+value,
     success: function(msg){
