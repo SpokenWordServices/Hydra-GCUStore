@@ -21,7 +21,11 @@ module MetadataHelper
     end
     resource_type = resource.class.to_s.underscore
     
-    result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
+    result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
+    if opts[:multiple] == true
+      result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
+    end
+    result << "</dt>"
     
     case opts[:type]
     when :text_area
@@ -57,12 +61,6 @@ module MetadataHelper
     # result = ""
     # result << "<dt id=\"#{resource_type}_#{field_name}\", class=\"field\">"
     # result << label
-    new_value_form = render(:partial=>"shared/new_field_value_form_test", :locals=>{:field_name=>field_name,:oid=>oid,:resource_type=>resource_type,:rel=>rel, :element_id=>new_element_id})
-    add_value_function = "var div = jQuery('#{new_value_form}');div.appendTo(\"\##{resource_type}_#{field_name}_new_values\")"
-    result << link_to_function("add" , add_value_function, :class=>'addmlink') 
-                #page.insert_html(:bottom, field_name,  )
-                ##page << "Editable.create_active($('#{new_element_id}'))"
-    # result << link_to_function("+" , "addAuthor()", :class=>'addmlink')
     opts[:default] ||= ""
     #Output all of the current field values.
     datastream = resource.datastreams[datastream_name]
@@ -70,12 +68,10 @@ module MetadataHelper
     vlist.each_with_index do |field_value,z|
       result << "<dd id=\"#{resource_type}_#{field_name}\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
-      result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][#{z}]\" rel=\"#{rel}\">#{field_value}</span>"
+      result << "<span class=\"editableText\" id=\"#{resource_type}_#{field_name}_#{z}\" rel=\"#{rel}\">#{field_value}</span>"
       result << "</dd>"
     end
-    result << "<div id=\"#{resource_type}_#{field_name}_new_values\">#{new_value_form}</div>"
-    # sample tag for new value
-    #result << "<div class=\"new_field\" rel=\"#{rel}\" id=\"#{resource_type}[#{field_name}][-1]\" name=\"#{resource_type}[#{field_name}][-1]\"></div>"
+    result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
     return result
   end
 
