@@ -1,29 +1,11 @@
 <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
 <script src="/plugin_assets/blacklight/javascripts/jquery.notice.js" type="text/javascript"></script>
-<script type="text/javascript" language="Javascript">
-
-  function insertValue(fieldName) {
-    var div = jQuery('<dd id="document_' + fieldName + '_-1"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></dd>');
-    div.appendTo("#document_"+fieldName+"_new_values"); 
-    //return false;
-    var newVal = fluid.inlineEdit("#document_" + fieldName + "_-1", {});
-    newVal.edit();
-  }
-
-  function removeValue(node) {
-    node.remove();
-  }
-
-</script>
 <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
-
-<dd class="flc-inlineEditable" id="foo"><span class="flc-inlineEdit-text">Foo</span></dd>
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"documents") %>" method="put" accept-charset="utf-8">
 
 <div id="multipleEdit">
 <dl class="defList fl-theme-mist">
 <%# default partial to display solr document fields in catalog show view -%>
-  <form action="#" method="get" id="form1">
-  <input type="hidden" id="id" value="1" />
   <div id="loading" style="display:none;"><img src="/images/ajax-loader.gif" width="32" height="32" alt="Saving"> Saving...</div>
   <div class="floatRight side">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
@@ -32,7 +14,6 @@
   </div>
   <div style="float:left; width:250px;">
   <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
-  <div id="addAuthor"></div>
   <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
   <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true) %>
   <%#= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
@@ -45,9 +26,8 @@
   <%= get_data_with_label(@document, "Box:", 'box_facet') %>
   <%= get_data_with_label(@document, "Folder:", 'folder_facet') %>  
   </div>
-  <dd><input type="submit" value="Save" name="submit"></dd>
-  </form>
 
+</form>
 </dl>
 </div>
 <%# -- end of code replicating catalog/_show_partials/_default_details -%>
