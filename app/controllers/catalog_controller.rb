@@ -58,4 +58,10 @@ class CatalogController
     end
   end
   
+  def get_search_results(extra_controller_params={})
+    _search_params = self.solr_search_params(extra_controller_params)
+    index = _search_params[:qt] == 'fulltext' ? :fulltext : :default
+    Blacklight.solr(index).find(_search_params)
+  end
+  
 end

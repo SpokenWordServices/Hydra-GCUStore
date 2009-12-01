@@ -29,7 +29,12 @@ module Blacklight::SolrHelper
     #   Naomi prefers it as part of the Solr request handler
     # ** we need to be consistent about what is getting passed in:
     # ** -- solr params or controller params that need to be mapped?
-    facet_fields = input[:facets].blank? ? Blacklight.config[:facet][:field_names] : input[:facets]
+    if input[:facets].blank? 
+      raise Blacklight.config.inspect unless Blacklight.config[:facet]
+      facet_fields = Blacklight.config[:facet][:field_names]
+    else
+      facet_fields = input[:facets]
+    end
     # add any facet fields from the argument list (that aren't in the config list)
     #  for example, if a selected facet value means a *new* facet is desired
     #   (Stanford is doing faux "hierarchical" facets this way;  the 

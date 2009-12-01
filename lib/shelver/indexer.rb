@@ -35,7 +35,12 @@ class Indexer
   #
   def connect
     # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )
-    @connection = Solr::Connection.new( Blacklight.solr_config[:url], :autocommit => :on )
+    if INDEX_FULL_TEXT
+      url = Blacklight.solr_config['fulltext']['url']
+    else
+      url = Blacklight.solr_config['default']['url']
+    end
+    @connection = Solr::Connection.new(url, :autocommit => :on )
   end
 
   #

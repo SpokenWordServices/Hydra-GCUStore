@@ -19,25 +19,31 @@ module Blacklight
   # The configuration hash that gets used by RSolr.connect
   @solr_config ||= {}
   
+  def self.solr(index=:default)
+    @solr[index]
+  end
+  
   def self.init
     
     solr_config = YAML::load(File.open("#{RAILS_ROOT}/config/solr.yml"))
     raise "The #{RAILS_ENV} environment settings were not found in the solr.yml config" unless solr_config[RAILS_ENV]
     
-    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]['url']
-    
+    Blacklight.solr_config = solr_config[RAILS_ENV]
     # Create a global connection instance
-    Blacklight.solr = RSolr::Ext.connect(Blacklight.solr_config)
+    Blacklight.solr = Blacklight.solr_config.inject(HashWithIndifferentAccess.new) do |hash, index|
+      key, value = *index
+      hash[key] = RSolr::Ext.connect(value.to_options)
+      if Gem.available?('curb')
+        require 'curb'
+        hash[key].adapter.connector.adapter_name = :curb
+      else
+        hash[key].adapter.connector.adapter_name = :net_http
+      end
+      hash
+    end
     
     # set the SolrDocument.connection to Blacklight.solr
     SolrDocument.connection = Blacklight.solr
-    
-    if Gem.available?('curb')
-      require 'curb'
-      Blacklight.solr.adapter.connector.adapter_name = :curb
-    else
-      Blacklight.solr.adapter.connector.adapter_name = :net_http
-    end
     
     logger.info("BLACKLIGHT: initialized with Blacklight.solr_config: #{Blacklight.solr_config.inspect}")
     logger.info("BLACKLIGHT: initialized with Blacklight.solr: #{Blacklight.solr.inspect}")

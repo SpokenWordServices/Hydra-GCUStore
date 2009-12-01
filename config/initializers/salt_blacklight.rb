@@ -163,7 +163,8 @@ Blacklight.configure(:shared) do |config|
   # label in pulldown is followed by the name of a SOLR request handler as 
   # defined in solr/conf/solrconfig.xml
   config[:search_fields] ||= []
-  config[:search_fields] << ['All Fields', 'dismax']
+  config[:search_fields] << ['Descriptions', 'search']
+  config[:search_fields] << ['Descriptions and full text', 'fulltext']
   
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and
