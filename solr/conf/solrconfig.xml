@@ -460,6 +460,8 @@
       <str name="facet.field">series_facet</str>
       <str name="facet.field">box_facet</str>
       <str name="facet.field">folder_facet</str>
+      <str name="facet.field">donor_tags_facet</str>
+      <str name="facet.field">archivist_tags_facet</str>
 
     </lst>
   </requestHandler>

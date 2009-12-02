@@ -91,7 +91,9 @@ Blacklight.configure(:shared) do |config|
       "state_facet",
       "series_facet",
       "box_facet",
-      "folder_facet"
+      "folder_facet",
+      "donor_tags_facet",
+      "archivist_tags_facet"
     ],
     :labels => {
       "collection_facet" => "Collection",
@@ -105,7 +107,9 @@ Blacklight.configure(:shared) do |config|
       "state_facet" => "State",
       "series_facet" => "Series",
       "box_facet" => "Box",
-      "folder_facet" => "Folder"
+      "folder_facet" => "Folder",
+      "donor_tags_facet" => "Tagged by Donor",
+      "archivist_tags_facet" => "Tagged by Archivist"
     }
   }
 
