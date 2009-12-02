@@ -19,7 +19,8 @@
   <%= get_suppl_urls(document) %>  
   <%= show_formats(document['format']) %>
   <%#= get_toc(document.marc) %>
-  <%= get_data_with_label(document, "Tagged by Donor:", 'donor_tags_facet') %>
-  <%= get_data_with_label(document, "Tagged by Archivist:", 'archivist_tags_facet') %>
+  
+  <%= get_data_with_linked_label(document, "Tagged by Donor:", 'donor_tags_facet') %>
+  <%= get_data_with_linked_label(document, "Tagged by Archivist:", 'archivist_tags_facet') %>
   </div>
 </dl>
