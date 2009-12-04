@@ -19,7 +19,6 @@ require "stanford/ead_descriptor"
 module Stanford::SaltControllerHelper
   
   def find_folder_siblings(document=@document)
-    p "finding folder siblings"
     if document[:series_facet] && document[:box_facet] && document[:folder_facet]
       folder_search_params = {}
       folder_search_params[:phrases] = [{:series_facet => document[:series_facet].first}]

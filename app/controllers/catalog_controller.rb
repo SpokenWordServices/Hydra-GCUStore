@@ -19,7 +19,6 @@ class CatalogController
   end
   
   def show_with_customizations
-    p("CatalogController.show_with_customizations triggered: #{params.inspect}")
     show_without_customizations
     find_folder_siblings
     #facets_for_lookup = {:fields=>['title_facet', 'technology_facet', 'person_facet']}
