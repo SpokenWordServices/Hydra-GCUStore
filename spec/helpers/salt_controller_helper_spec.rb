@@ -17,4 +17,32 @@ describe Stanford::SaltControllerHelper do
     end
   end
   
+  describe "downloadables" do
+    describe ':canonical => true' do
+      it "should return the first PDF datastream for the object identified by download_id" do
+        first_pdf = mock("pdf datastream1")
+        first_pdf.stubs(:attributes).returns({"mimeType"=>"application/pdf"})
+        first_pdf.stubs(:label).returns("my_document.pdf")
+
+        second_pdf = mock("pdf datastream2")
+        second_pdf.stubs(:attributes).returns({"mimeType"=>"application/pdf"})
+        second_pdf.stubs(:label).returns("my_document_Also.pdf")
+        
+        mock_ocr = mock("mock_ocr")
+        mock_ocr.stubs(:attributes).returns({"mimeType"=>"application/xml"})
+        mock_ocr.stubs(:label).returns("my_document_TEXT.xml")
+        ds_hash = {"mock_pdf" => first_pdf, 
+                    "second_pdf" => second_pdf,
+                    "mock_ocr"=>mock_ocr, 
+                  }
+        mock_object = mock("fedora object", :datastreams => ds_hash )
+        def editor?
+          return true
+        end
+        result = downloadables( mock_object, :canonical=>true )
+        result.should == first_pdf
+      end
+    end
+  end
+  
 end
