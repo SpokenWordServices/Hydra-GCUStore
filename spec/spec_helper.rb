@@ -53,4 +53,15 @@ Spec::Runner.configure do |config|
     File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
   end
   
+  
+  def connect_bl_solr
+    # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )
+    if defined?(INDEX_FULL_TEXT) && INDEX_FULL_TEXT
+      url = Blacklight.solr_config['fulltext']['url']
+    else
+      url = Blacklight.solr_config['default']['url']
+    end
+    @bl_solr = Solr::Connection.new(url, :autocommit => :on )
+  end
+  
 end

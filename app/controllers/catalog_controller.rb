@@ -18,6 +18,26 @@ class CatalogController
     render :action=>:show
   end
   
+  # get search results from the solr index
+  def index
+      @extra_controller_params = {}
+      enforce_search_permissions
+      @response = get_search_results( @extra_controller_params )
+      @filters = params[:f] || []
+    respond_to do |format|
+      format.html { save_current_search_params }
+      format.rss  { render :layout => false }
+    end
+    rescue RSolr::RequestError
+      logger.error("Unparseable search error: #{params.inspect}" ) 
+      flash[:notice] = "Sorry, I don't understand your search." 
+      redirect_to :action => 'index', :q => nil , :f => nil
+    rescue 
+      logger.error("Unknown error: #{params.inspect}" ) 
+      flash[:notice] = "Sorry, you've encountered an error. Try a different search." 
+      redirect_to :action => 'index', :q => nil , :f => nil
+  end
+    
   def show_with_customizations
     show_without_customizations
     find_folder_siblings
@@ -46,6 +66,13 @@ class CatalogController
         session[:viewing_context] = "browse"
         #flash[:message] = "You do not have sufficient privileges to edit this document."
       end
+    end
+  end
+  
+  def enforce_search_permissions
+    if !reader? 
+      # extra_controller_params[:qt] = "full_access_search"
+      @extra_controller_params = Hash[:f=>{"access_t"=>"public"}]
     end
   end
   
