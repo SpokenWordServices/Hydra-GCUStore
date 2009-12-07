@@ -102,6 +102,7 @@ class Indexer
         xml_ds_names << ds_name
       elsif ds_name =~ /^properties/
         properties_ds_names << ds_name
+        xml_ds_names << ds_name
       end
     end
 
