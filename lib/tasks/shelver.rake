@@ -1,7 +1,7 @@
 namespace :shelver do
   
   desc 'Index a fedora object of the given pid.'
-  task :shelve_object do 
+  task :shelve_object => :environment do 
     INDEX_FULL_TEXT = ENV['FULL_TEXT'] == 'true'
     if ENV['PID']
       puts "indexing #{ENV['PID'].inspect}"
