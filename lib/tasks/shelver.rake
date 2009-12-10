@@ -6,8 +6,8 @@ namespace :shelver do
     if ENV['PID']
       puts "indexing #{ENV['PID'].inspect}"
       shelver = Shelver::Shelver.new
-      shelver.shelve_object()
-      puts "Finished shelving #{ENV[PID]}"
+      shelver.shelve_object(ENV['PID'])
+      puts "Finished shelving #{ENV['PID']}"
     else
       puts "You must provide a pid using the format 'shelver::shelve_object PID=sample:pid'."
     end
