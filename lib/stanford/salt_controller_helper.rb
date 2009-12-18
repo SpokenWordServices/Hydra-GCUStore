@@ -39,7 +39,8 @@ module Stanford::SaltControllerHelper
   # if you pass the optional argument of :canonical=>true, it will return the canonical datastream for this object (a single object not a hash of datastreams)
   def downloadables(fedora_object=@fedora_object, opts={})
     if opts[:canonical]
-      result = filter_datastreams_for_mime_type(fedora_object.datastreams, "application/pdf").first[1]
+      mime_type = opts[:mime_type] ? opts[:mime_type] : "application/pdf"
+      result = filter_datastreams_for_mime_type(fedora_object.datastreams, mime_type).sort.first[1]
     elsif editor? 
       if params["mime_type"] == "all"
         result = fedora_object.datastreams
@@ -60,7 +61,7 @@ module Stanford::SaltControllerHelper
          end  
        end
     end 
-    puts "downloadables result: #{result}"
+    # puts "downloadables result: #{result}"
     return result    
   end
   
