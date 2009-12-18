@@ -81,6 +81,11 @@ class Indexer
     extractor.extract_tags( tags_ds.content )
   end
   
+  def extract_jp2_info_from_names_array(obj, ds_names_array)
+    first_jp2 =  Repository.get_datastream( obj, ds_names_array.sort.first )
+    return Hash[:jp2_url_display => "#{first_jp2.url}/content"]
+  end
+  
   #
   # This method creates a Solr-formatted XML document
   #
@@ -88,11 +93,9 @@ class Indexer
 
     # retrieve a comprehensive list of all the datastreams associated with the given
     #   object and categorize each datastream based on its filename
-    full_text_ds_names = Array.new
-    ext_properties_ds_names = Array.new
-    xml_ds_names = Array.new
-    properties_ds_names = []
+    ext_properties_ds_names, properties_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names = [],[],[],[],[] 
     ds_names = Repository.get_datastreams( obj )
+    
     ds_names.each do |ds_name|
       if( ds_name =~ /.*.xml$/ and ds_name !~ /.*_TEXT.*/ and ds_name !~ /.*_METS.*/ and ds_name !~ /.*_LogicalStruct.*/ )
         full_text_ds_names << ds_name
@@ -103,6 +106,8 @@ class Indexer
       elsif ds_name =~ /^properties/
         properties_ds_names << ds_name
         xml_ds_names << ds_name
+      elsif ds_name =~ /.*.jp2$/
+        jp2_ds_names << ds_name
       end
     end
 
@@ -118,11 +123,20 @@ class Indexer
     tags = extract_tags(obj, properties_ds_names[0])
     (ext_properties[:facets] ||={}).merge!(tags)
 
+
+
     # create the Solr document
     solr_doc = Solr::Document.new
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )
     solr_doc << Solr::Field.new( :text => "#{keywords}" )
     Indexer.solrize(ext_properties, solr_doc)
+    
+    # Uncomment these lines if you want to extract jp2 info, including the URL of the cononical jp2 datastream
+    # if !jp2_ds_names.empty?
+    #   jp2_properties = extract_jp2_info_from_names_array( obj, jp2_ds_names )
+    #   Indexer.solrize(jp2_properties, solr_doc)
+    # end
+    
     #facets.each { |key, value| solr_doc << Solr::Field.new( :"#{key}_facet" => "#{value}" ) }
     
     # Pass the solr_doc through extract_simple_xml_to_solr
