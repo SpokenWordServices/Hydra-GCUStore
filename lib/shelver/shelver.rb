@@ -20,10 +20,10 @@ class Shelver
   def shelve_object( obj )
     # retrieve the Fedora object based on the given unique id
     obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
-    p "Indexing object #{obj}"
+    p "Indexing object #{obj.pid} with label #{obj.label}"
     # add the keywords and facets to the search index
     indexer.index( obj )
-    p "Successfully indexed object #{obj}."
+    p "Successfully indexed object #{obj.pid}."
   end
   
   #

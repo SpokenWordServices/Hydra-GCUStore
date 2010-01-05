@@ -1,13 +1,13 @@
 development:
   default:
-    url: http://localhost:8080/bl_solr/core0
+    url: http://localhost:8080/bl_solr/
   fulltext:
-    url: http://localhost:8080/bl_solr/core1
+    url: http://localhost:8080/bl_solr/
 test: &TEST
   default:
-    url: http://localhost:8080/bl_solr/core0
+    url: http://localhost:8080/bl_solr/
   fulltext:
-    url: http://localhost:8080/bl_solr/core1
+    url: http://localhost:8080/bl_solr/
 production:
   default:
     url: http://sulwebappdev1.stanford.edu:8100/salt_solr

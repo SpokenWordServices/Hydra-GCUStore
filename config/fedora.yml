@@ -10,7 +10,7 @@ test: &TEST
     url: http://localhost:8080/solr
 production:
   fedora:
-    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
+    url: http://fedoraAdmin:fedoraAdmin@salt-dev.stanford.edu:8080/fedora
   solr:
     url: http://localhost:8080/solr
 cucumber:
