@@ -1,6 +1,8 @@
 module Shelver
   class Replicator
     
+    include Stanford::SaltControllerHelper
+    
     attr_accessor :dest_repo, :configs
     
     def initialize
@@ -46,6 +48,8 @@ module Shelver
         ds.blob = ds.content
         dest_repo.save(ds)
       end
+      jp2 = downloadables(source_object, :canonical=>true, :mime_type=>"image/jp2")
+      dest_repo.save(jp2)
     end
     
     def logger      

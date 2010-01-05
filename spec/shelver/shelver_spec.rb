@@ -16,8 +16,11 @@ describe Shelver::Shelver do
       @shelver.shelve_object( sample_obj )
     end
     it "should load the object if only a pid is provided" do
-      ActiveFedora::Base.expects(:load_instance).with( "_PID_" ).returns("my object")
-      @shelver.indexer.expects(:index).with("my object")
+      mock_object = mock("my object")
+      mock_object.stubs(:pid)
+      mock_object.stubs(:label)
+      ActiveFedora::Base.expects(:load_instance).with( "_PID_" ).returns(mock_object)
+      @shelver.indexer.expects(:index).with(mock_object)
       @shelver.shelve_object("_PID_")
     end
   end

@@ -13,7 +13,10 @@ describe Shelver::Replicator do
     ext_properties_ds = ActiveFedora::Datastream.new(:dsid=>"extProperties", :label=>"extProperties", :blob=>ext_properties_xml.read)
     desc_metadata_xml = fixture("sample_object/sample_object-descMetadata.xml")
     desc_metadata_ds = ActiveFedora::Datastream.new(:dsid=>"descMetadata", :label=>"descMetadata", :blob=>desc_metadata_xml.read)    
-    [properties_ds, ext_properties_ds, desc_metadata_ds].each {|x| @sample_object.add_datastream(x)}
+    jp2_content = fixture("sample_object/Feigenbaum_00009503_0001.jp2")
+    jp2_ds = ActiveFedora::Datastream.new(:dsid=>"Feigenbaum_00009503_0001.jp2", :label=>"Feigenbaum_00009503_0001.jp2", :blob=>jp2_content, :controlGroup=>"M", :mimeType=>"image/jp2")    
+    jp2_ds.attributes["mimeType"] = "image/jp2" # This is a hack to deal with a bug in the way activefedora's datastream instance initializer handles mime types 
+    [properties_ds, ext_properties_ds, desc_metadata_ds, jp2_ds].each {|x| @sample_object.add_datastream(x)}
     @sample_object.save
   end
   
@@ -60,7 +63,7 @@ describe Shelver::Replicator do
   end
   
   describe "create_stub" do
-    it "should create a new fedora object with copies of the necessary source document datastreams (descMetadata[X], properties[X], extProperties[E] & canonical JP2)" do 
+    it "should create a new fedora object with copies of the necessary source document datastreams (descMetadata[X], properties[X], extProperties[E]) and stick in a placeholder for the canonical JP2" do 
       stub_object = mock("stub object")
       Fedora::FedoraObject.expects(:new).with(:pid=>@sample_object.pid).returns(stub_object)
       @replicator.dest_repo.expects(:save).with(stub_object)
@@ -69,7 +72,10 @@ describe Shelver::Replicator do
         ds.expects(:new_object=).with(true)
         ds.expects(:blob=) # ds.content
         @replicator.dest_repo.expects(:save).with(ds)
-      end      
+      end   
+      # test for the placeholder jp2  
+      @replicator.expects(:downloadables).returns("fake jp2")
+      @replicator.dest_repo.expects(:save).with("fake jp2")
       @replicator.create_stub(@sample_object)
     end
     # create an empty object in destination repo with same pid as original object
