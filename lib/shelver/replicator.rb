@@ -16,6 +16,14 @@ module Shelver
 
       Fedora::Repository.register(ActiveFedora.fedora_config[:url])
       logger.info("REPLICATOR: re-initialized Fedora as: #{Fedora::Repository.instance.inspect}")
+      
+      # Register Solr
+      ActiveFedora.solr_config[:url] = configs["source"]["solr"]["url"]
+      
+      logger.info("REPLICATOR: re-initializing ActiveFedora::SolrService with solr_config: #{ActiveFedora.solr_config.inspect}")
+
+      ActiveFedora::SolrService.register(ActiveFedora.solr_config[:url])
+      
     end
     
     def replicate_object(pid)
