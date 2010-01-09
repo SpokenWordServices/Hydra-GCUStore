@@ -74,8 +74,13 @@ describe Shelver::Replicator do
         @replicator.dest_repo.expects(:save).with(ds)
       end   
       # test for the placeholder jp2  
-      @replicator.expects(:downloadables).returns("fake jp2")
-      @replicator.dest_repo.expects(:save).with("fake jp2")
+      mock_jp2 = mock("jp2" )
+      [:new_object=,:control_group=,:blob=,:content].each {|m| mock_jp2.expects(m) }
+      # mock_jp2.expects(:new_object=)
+      # mock_jp2.expects(:control_group=)
+      #,:control_group=,:blob,:content)
+      @replicator.expects(:downloadables).returns(mock_jp2)
+      @replicator.dest_repo.expects(:save).with(mock_jp2)
       @replicator.create_stub(@sample_object)
     end
     # create an empty object in destination repo with same pid as original object

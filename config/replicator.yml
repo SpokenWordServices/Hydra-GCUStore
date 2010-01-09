@@ -1,14 +1,14 @@
 production:
   source:
     fedora:
+      url: http://fedoraAdmin:fedoraAdmin@salt-prod.stanford.edu:8080/fedora
+    solr:
+      url: http://salt-prod.stanford.edu:8080/solr
+  destination:
+    fedora:
       url: http://fedoraAdmin:fedoraAdmin@salt-dev.stanford.edu:8080/fedora
     solr:
-      url: http://localhost:8080/solr
-  destination:  
-    fedora:
-      url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
-    solr:
-      url: http://localhost:8080/solr
+      url: http://salt-dev.stanford.edu:8080/solr
 development: &TEST
   source:
     fedora:
