@@ -3,7 +3,7 @@
   <%- if request.env["HTTP_HOST"].include?("-test") -%>
     <%= link_to image_tag("searchworks-test.jpg", :alt=>'',:id=>'searchworks-img'), root_path %>
   <%- else -%>
-	<%= link_to image_tag("saltworks.jpg", :alt=>'',:id=>'searchworks-img'), root_path %>
+	<%= link_to image_tag("saltworks.png", :alt=>'',:id=>'searchworks-img'), root_path %>
   <%- end -%>
   <% if params[:controller] == 'catalog' and params[:action] == 'index' %>
     <%= render 'shared/search_form', :localized_params=>params %>
