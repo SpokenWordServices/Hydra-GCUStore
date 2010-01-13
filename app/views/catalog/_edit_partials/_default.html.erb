@@ -9,7 +9,9 @@
 </div>
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
+  <dl>
   <%= get_data_with_label(document, "ID:", 'id') %>
+  </dl>
   <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>
 

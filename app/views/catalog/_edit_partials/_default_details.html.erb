@@ -20,8 +20,8 @@
       <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true) %>
       <%#= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
       <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
-      <p><%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %></p>
-      <p><%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %></p>
+      <%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %>
+      <%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %>
 
       <%= get_data_with_label(@document, "Series:", 'series_facet') %>
       <%= get_data_with_label(@document, "Subseries:", 'subseries_facet') %>
@@ -29,7 +29,6 @@
       <%= get_data_with_label(@document, "Folder:", 'folder_facet') %>  
       </dl>
     </div>
-
-  </form>
-</div>
+  </div>
+</form>
 <%# -- end of code replicating catalog/_show_partials/_default_details -%>
