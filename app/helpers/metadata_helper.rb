@@ -52,9 +52,10 @@ module MetadataHelper
   end
   
   def multi_value_inline_edit(resource, datastream_name, field_name, opts={})
+    opts[:default] = "" unless opts[:defualt]
     resource_type = resource.class.to_s.underscore
     oid = resource.pid
-    new_element_id = "#{resource_type}[#{field_name}][-1]"
+    new_element_id = "#{resource_type}_#{field_name}_-1"
     rel = url_for(:action=>"update", :controller=>"documents")
     result = ""
     
