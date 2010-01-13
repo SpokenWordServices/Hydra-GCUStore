@@ -47,7 +47,7 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result = "<dd id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
+    result = "<dd id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
     return result
   end
   
@@ -64,9 +64,9 @@ module MetadataHelper
     datastream = resource.datastreams[datastream_name]
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
-      result << "<dd id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
+      result << "<dd id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
-      result << "<span class=\"editableText\" id=\"#{resource_type}_#{field_name}_#{z}\" rel=\"#{rel}\">#{field_value}</span>"
+      result << "<span class=\"editableText\">#{field_value}</span>"
       result << "</dd>"
     end
     result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
@@ -79,7 +79,7 @@ module MetadataHelper
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = ""
     result << "<div id=\"#{resource_type}_#{field_name}\">"
-    #result << "<span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
+    #result << "<span class=\"editableText\" id=\"#{resource_type}_#{field_name}_0\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
     result << text_area_tag("#{resource_type}[#{field_name}][0]")
     result << "</div>"
     result << "<div id=\"textareaAbstract\">#{field_value}</div>"
@@ -94,7 +94,7 @@ module MetadataHelper
   def date_picker_inine_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}[#{field_name}][0]\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
+    result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}_#{field_name}_0\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
     return result
   end
   

@@ -45,7 +45,6 @@ function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
 }
 
 function saveEdit(field,value) {
-  //alert("Attempting to save "+value+" as the new value for "+field+" by submitting to "+rel)
   $.ajax({
     type: "PUT",
     url: $("form#document_metadata").attr("action"),
