@@ -79,7 +79,7 @@ class CatalogController
   def enforce_edit_permissions
     if !editor?
       session[:viewing_context] = "browse"
-      flash[:message] = "You do not have sufficient privileges to edit this document."
+      flash[:notice] = "You do not have sufficient privileges to edit this document. You have been redirected to the read-only view."
       redirect_to :action=>:show
     end
   end
