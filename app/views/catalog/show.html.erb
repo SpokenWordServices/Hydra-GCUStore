@@ -4,8 +4,12 @@
   <script type="text/javascript">
     var standard_nums = new Array();
   </script>
-<%= stylesheet_link_tag "metadata" %>
-<%= javascript_include_tag "custom" %>
+  
+  <% stylesheet_links << capture do %>
+    <%= stylesheet_link_tag "metadata" %>
+  <% end %>
+
+  <%= javascript_include_tag "custom" %>
 
 <div id="showHead">
   <div id="showUtils">

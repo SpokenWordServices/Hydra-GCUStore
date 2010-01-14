@@ -13,6 +13,12 @@
     <%= stylesheet_link_tag 'yui', :plugin=>:blacklight %>
     <%= stylesheet_link_tag 'application','styles', :media=>'all' %>
     <%= javascript_include_tag 'searchworks' %>
+    
+<!-- additional stylesheets and javascript includes called by misc view partials -->
+    <%= stylesheet_links.join('') %>
+    <%= javascript_includes.join('') %>
+<!-- end additional stylesheets and javascript includes -->
+    
 <script type="text/javascript" language="Javascript">
 $(document).ready(function()
 {
