@@ -1,15 +1,24 @@
 <%# default partial to display solr document fields in catalog show view -%>
-<%= infusion_javascripts(:inline_edit, :debug=>true) %>
-<%= infusion_stylesheets(:inline_edit) %>
-<%= javascript_include_tag "fluid_inline_edit_custom"%>
-<%= javascript_include_tag "custom"%>
+
+<% stylesheet_links << capture do %>
+  <%= infusion_stylesheets(:inline_edit) %>
+<% end %>
+
+<% javascript_includes << capture do %>
+  <%= infusion_javascripts(:inline_edit, :debug=>true) %>
+  <%= javascript_include_tag "fluid_inline_edit_custom"%>
+  <%= javascript_include_tag "custom"%>
+<% end %>
+
 
 <div class="<%= params[:action]%>_details">
   <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
+  <dl>
   <%= get_data_with_label(document, "ID:", 'id') %>
+  </dl>
   <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>
 

@@ -36,9 +36,7 @@ class ApplicationController < ActionController::Base
         request.env['WEBAUTH_USER']=params[:wau]
       end
     end
-    session[:user]=request.env['WEBAUTH_USER'] unless request.env['WEBAUTH_USER'].blank?
-    logger.debug("env  webauth_user:  to '#{request.env['WEBAUTH_USER']}'")
-    logger.debug("session[:user] is '#{session[:user]}'")
+    session[:user]=request.env['WEBAUTH_USER']
   end
     # Returns a list of Searches from the ids in the user's history.
     def searches_from_history

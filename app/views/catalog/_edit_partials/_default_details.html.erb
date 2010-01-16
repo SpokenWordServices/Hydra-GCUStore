@@ -1,33 +1,37 @@
-<script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
-<script src="/plugin_assets/blacklight/javascripts/jquery.notice.js" type="text/javascript"></script>
+<% javascript_includes << capture do %>
+  <script src="/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" type="text/javascript"></script>
+  <script src="/plugin_assets/blacklight/javascripts/jquery.notice.js" type="text/javascript"></script>
+<% end %>
+
 <%# this should imitate the stuff in catalog/_show_partials/_default_details -%>
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"documents") %>" method="put" accept-charset="utf-8">
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"documents") %>" method="post" accept-charset="utf-8">
 
-<div id="multipleEdit">
-<dl class="defList fl-theme-mist">
-<%# default partial to display solr document fields in catalog show view -%>
-  <div id="loading" style="display:none;"><img src="/images/ajax-loader.gif" width="32" height="32" alt="Saving"> Saving...</div>
-  <div class="floatRight side">
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:") %>
-  <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private") %>
+  <div id="multipleEdit">
+    <div id="loading" style="display:none;"><img src="/images/ajax-loader.gif" width="32" height="32" alt="Saving"/> Saving...</div>
+  
+    <div class="floatRight side">
+      <dl class="defList fl-theme-mist">
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:") %>
+      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private") %>
+      </dl>
+    </div>
+    <div style="float:left; width:250px;">
+      <dl class="defList fl-theme-mist">
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
+      <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true) %>
+      <%#= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
+      <%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %>
+      <%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %>
+
+      <%= get_data_with_label(@document, "Series:", 'series_facet') %>
+      <%= get_data_with_label(@document, "Subseries:", 'subseries_facet') %>
+      <%= get_data_with_label(@document, "Box:", 'box_facet') %>
+      <%= get_data_with_label(@document, "Folder:", 'folder_facet') %>  
+      </dl>
+    </div>
   </div>
-  <div style="float:left; width:250px;">
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
-  <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true) %>
-  <%#= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
-  <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
-  <p><%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %></p>
-  <p><%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %></p>
-
-  <%= get_data_with_label(@document, "Series:", 'series_facet') %>
-  <%= get_data_with_label(@document, "Subseries:", 'subseries_facet') %>
-  <%= get_data_with_label(@document, "Box:", 'box_facet') %>
-  <%= get_data_with_label(@document, "Folder:", 'folder_facet') %>  
-  </div>
-
 </form>
-</dl>
-</div>
 <%# -- end of code replicating catalog/_show_partials/_default_details -%>

@@ -1,5 +1,14 @@
 module SaltHelper
 
+  # collection of stylesheet links to be rendered in the <head>
+  def stylesheet_links
+    @stylesheet_links ||= []
+  end
+  
+  # collection of javascript includes to be rendered in the <head>
+  def javascript_includes
+    @javascript_includes ||= []
+  end
   
   def async_load_tag( url, tag )
     javascript_tag do 

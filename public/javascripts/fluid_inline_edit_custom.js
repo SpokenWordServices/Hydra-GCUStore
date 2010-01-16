@@ -37,12 +37,14 @@ function removeValue(node) {
 }
 
 function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
-  saveEdit($(viewNode).parent().attr("name"), newValue)
+  // Only submit if the value has actually changed.
+  if (newValue != oldValue) {
+    saveEdit($(viewNode).parent().attr("name"), newValue)
+  }
   return true;
 }
 
 function saveEdit(field,value) {
-  //alert("Attempting to save "+value+" as the new value for "+field+" by submitting to "+rel)
   $.ajax({
     type: "PUT",
     url: $("form#document_metadata").attr("action"),
