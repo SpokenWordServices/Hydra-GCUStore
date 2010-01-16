@@ -109,7 +109,7 @@ div.aboutLinks .noLink{
   color: white;
 }
 #util_links a {
-	display:none;
+  display:inline;
 }
 #util_links #control_links {
   float:left;
