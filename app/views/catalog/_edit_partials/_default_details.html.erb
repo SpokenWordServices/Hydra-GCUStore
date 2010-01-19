@@ -12,8 +12,8 @@
     <div class="floatRight side">
       <dl class="defList fl-theme-mist">
       <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:") %>  
-      <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:") %>
-      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private") %>
+      <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:", :type=>:select, :choices=>{"Paper Document"=>"Paper Document"}) %>
+      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private", :type=>:select, :choices=>{"Public" => "Public","Authorized" => "Authorized", "Private" => "Private"}) %>
       </dl>
     </div>
     <div style="float:left; width:250px;">

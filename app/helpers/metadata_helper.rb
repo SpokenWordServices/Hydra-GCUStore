@@ -32,6 +32,8 @@ module MetadataHelper
       result << text_area_inine_edit(resource, datastream_name, field_name, opts)
     when :date_picker
       result << date_picker_inine_edit(resource, datastream_name, field_name, opts)
+    when :select
+      result << metadata_drop_down(resource, datastream_name, field_name, opts)
     else
       if opts[:multiple] == true
         result << multi_value_inline_edit(resource, datastream_name, field_name, opts)
@@ -47,7 +49,7 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result = "<dd id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
+    result = "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
     return result
   end
   
@@ -64,7 +66,7 @@ module MetadataHelper
     datastream = resource.datastreams[datastream_name]
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
-      result << "<dd id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
+      result << "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
       result << "<span class=\"editableText\">#{field_value}</span>"
       result << "</dd>"
@@ -89,6 +91,29 @@ module MetadataHelper
     result << "</div>"
     result << "<div class=\"boxSaveProcessing marginTop_40\" id=\"savingAbstract\" style=\"display:none;\">Saving..</div>"
     return result
+  end
+  
+  # Returns an HTML select with options populated from opts[:choices].
+  # If opts[:choices] is not provided, or if it's not a Hash, a single_value_inline_edit will be returned instead.
+  # Will capitalize the key for each choice when displaying it in the options list.  The value is left alone.
+  def metadata_drop_down(resource, datastream_name, field_name, opts={})
+    if opts[:choices].nil? || !opts[:choices].kind_of?(Hash)
+      single_value_inline_edit(resource, datastream_name, field_name, opts)
+    else
+      choices = opts[:choices]
+      resource_type = resource.class.to_s.underscore
+      opts[:default] ||= ""
+      field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
+      choices.delete_if {|k, v| v == field_value || v == field_value.capitalize }
+      result = "<dd id=\"#{resource_type}_#{field_name}\">"
+      result << "<select name=\"#{resource_type}[#{field_name}][0]\" onChange=\"saveSelect(this)\"><option value=\"#{field_value}\" selected=\"selected\">#{field_value.capitalize}</option>"
+      choices.each_pair do |k,v|
+        result << "<option value=\"#{v}\">#{k}</option>"
+      end
+      result <<"</select>"
+      result <<"</dd>"
+      return result
+    end
   end
   
   def date_picker_inine_edit(resource, datastream_name, field_name, opts={})

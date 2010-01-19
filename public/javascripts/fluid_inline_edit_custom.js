@@ -1,10 +1,26 @@
+// Uncomment this if you want fluid to provide log messages in the console.
+// see <http://wiki.fluidproject.org/display/fluid/Framework+Functions#FrameworkFunctions-fluid.log%28str%29>
+// fluid.setLogging(true);
+
+$(document).ready(function()
+{
+    //-------------------------------------------------------
+    /*shows the loading div every time we have an Ajax call*/
+    $("#loading").bind("ajaxSend", function(){
+       $(this).show();
+     }).bind("ajaxComplete", function(){
+       $(this).hide();
+   });
+   //-------------------------------------------------------
+})
+
 jQuery(document).ready(function () {
     /* Example 3 - note the difference in the syntax */
     /* multiple inline edit requires each editable text object to be wrapped again inside another element */                
     var multiEdit = fluid.inlineEdits("#multipleEdit", {
         selectors : {
           text : ".editableText",
-          editables : "dd"
+          editables : "dd.editable"
         }, 
         // componentDecorators: {
         //   type: "fluid.undoDecorator" 
@@ -13,8 +29,8 @@ jQuery(document).ready(function () {
           onFinishEdit : myFinishEditListener
         }
     });
-    var singleEdit = fluid.inlineEdit("#foo", {});
-    singleEdit.edit();
+    // var singleEdit = fluid.inlineEdit("#foo", {});
+    // singleEdit.edit();
 });
 
 function insertValue(fieldName) {
