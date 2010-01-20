@@ -1,0 +1,7 @@
+<% if session[:user] %>
+  <%= link_to "Log Out", logout_path %> [<%=session[:user]%>]
+<% else %>
+  <%= link_to "Log In", login_path %>
+<%end%>
+| 
+<%= link_to "Search History", search_history_index_path %>

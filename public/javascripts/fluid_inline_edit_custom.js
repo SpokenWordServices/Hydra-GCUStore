@@ -6,9 +6,9 @@ jQuery(document).ready(function () {
           text : ".editableText",
           editables : "dd"
         }, 
-        componentDecorators: {
-          type: "fluid.undoDecorator" 
-        },
+        // componentDecorators: {
+        //   type: "fluid.undoDecorator" 
+        // },
         listeners : {
           onFinishEdit : myFinishEditListener
         }
@@ -18,10 +18,12 @@ jQuery(document).ready(function () {
 });
 
 function insertValue(fieldName) {
-  var div = jQuery('<dd id="document_' + fieldName + '_-1" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></dd>');
+  var d = new Date(); // get milliseconds for unique identfier
+  var unique_id = "document_" + fieldName + "_" + d.getTime();
+  var div = jQuery('<dd id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></dd>');
   div.appendTo("#document_"+fieldName+"_new_values"); 
   //return false;
-  var newVal = fluid.inlineEdit("#document_" + fieldName + "_-1", {
+  var newVal = fluid.inlineEdit("#"+unique_id, {
     componentDecorators: {
       type: "fluid.undoDecorator" 
     },

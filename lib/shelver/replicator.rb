@@ -32,12 +32,20 @@ module Shelver
       
       # retrieve a list of all the pids in the fedora repository
       num_docs = 1000000   # modify this number to guarantee that all the objects are retrieved from the repository
-      pids = Repository.get_pids( num_docs )
-      puts "Replicating #{pids.length} Fedora objects"
-      pids.reverse!
-      pids.each do |pid|
-        replicate_object( pid )
-      end
+      #pids = Repository.get_pids( num_docs )
+      #puts "Replicating #{pids.length} Fedora objects"
+      #pids.reverse!
+      #pids.each do |pid|
+      #  replicate_object( pid )
+      #end
+      
+       file = '/tmp/todo.csv'
+        FasterCSV::foreach(file, :headers=>true) do |row|
+           pid = row[0].chomp
+            replicate_object( pid )
+        end
+
+
       #puts "Finished replicating all #{pids.length} objects."
     end   
 

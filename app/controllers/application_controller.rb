@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def user_class; User; end
   
   helper_method [:request_is_for_user_resource?]#, :user_logged_in?]
-  before_filter [:set_current_user]
+  before_filter [:set_current_user, :store_bounce]
   
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -28,7 +28,9 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-  
+  def store_bounce
+    session[:bounce]=request.url
+  end
   def set_current_user
     unless Rails.env =~ /production/ 
       if params[:wau]
@@ -36,7 +38,7 @@ class ApplicationController < ActionController::Base
         request.env['WEBAUTH_USER']=params[:wau]
       end
     end
-    session[:user]=request.env['WEBAUTH_USER']
+    session[:user]=request.env['WEBAUTH_USER'] unless request.env['WEBAUTH_USER'].blank?
   end
     # Returns a list of Searches from the ids in the user's history.
     def searches_from_history
