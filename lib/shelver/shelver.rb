@@ -1,5 +1,6 @@
 
 require 'lib/shelver/indexer.rb'
+require 'fastercsv'
 require "ruby-debug"
 
 module Shelver
@@ -33,11 +34,19 @@ class Shelver
   def shelve_objects
     # retrieve a list of all the pids in the fedora repository
     num_docs = 1000000   # modify this number to guarantee that all the objects are retrieved from the repository
-    pids = Repository.get_pids( num_docs )
-    puts "Shelving #{pids.length} Fedora objects"
+#    pids = Repository.get_pids( num_docs )
+#    puts "Shelving #{pids.length} Fedora objects"
     puts "WARNING: You have turned off indexing of Full Text content.  Be sure to re-run indexer with INDEX_FULL_TEXT set to true in main.rb" if INDEX_FULL_TEXT == false
-    pids.each do |pid|
-      shelve_object( pid )
+#    pids.each do |pid|
+#      puts pid
+#      shelve_object( pid )
+#    end
+
+    file = '/tmp/zotero.csv'
+    FasterCSV::foreach(file, :headers=>true) do |row|
+      pid = row['Druid']
+       puts pid
+       shelve_object( pid ) 
     end
   end
 

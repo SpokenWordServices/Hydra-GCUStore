@@ -1,5 +1,6 @@
 archivist:
   - snydman
+  - mlooney
   - tcramer
   - lmcrae
   - jvine
@@ -19,6 +20,7 @@ archivist:
   - bob
   - alice
   - charlie
+  - mzumwalt
 donor:
   - kernsc
   - alice

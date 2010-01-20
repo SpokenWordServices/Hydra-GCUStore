@@ -1,9 +1,8 @@
-#!/usr/bin/ruby
+#!/bin/env ruby
 
 INDEX_FULL_TEXT = false
 
 require 'rubygems'
-
 load 'configuration.rb'  
 load 'repository.rb'  
 load 'shelver.rb'  
