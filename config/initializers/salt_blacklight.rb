@@ -117,6 +117,7 @@ Blacklight.configure(:shared) do |config|
     :field_names => [
       "text",
       "title_facet",
+      "title_t",
       "date_t",
       "medium_t",
       "series_facet",
@@ -125,7 +126,8 @@ Blacklight.configure(:shared) do |config|
     ],
     :labels => {
       "text" => "Text:",
-      "title_facet" => "Title:",
+      "title_t" => "Title:",
+      "title_facet" => "Extracted Title:",
       "date_t" => "Date:",
       "medium_t" => "Document Type:",
       "series_facet" => "Series",

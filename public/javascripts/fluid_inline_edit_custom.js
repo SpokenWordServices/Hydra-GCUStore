@@ -40,9 +40,9 @@ function insertValue(fieldName) {
   div.appendTo("#document_"+fieldName+"_new_values"); 
   //return false;
   var newVal = fluid.inlineEdit("#"+unique_id, {
-    componentDecorators: {
-      type: "fluid.undoDecorator" 
-    },
+    // componentDecorators: {
+    //   type: "fluid.undoDecorator" 
+    // },
     listeners : {
       onFinishEdit : myFinishEditListener
     }

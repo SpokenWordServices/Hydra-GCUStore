@@ -1,7 +1,7 @@
 <div class="document thumbnail">
   <%= link_to_document(document, :label => image_tag('default_thumbnail.gif'), :counter => (counter + 1 + @response.params[:start].to_i)) %>
-  <% if document.get('title_facet') %>
-    <%= link_to_document(document, :label => truncate(document.get('title_facet'), :length => 20, :omission => "..."), :counter => (counter + 1 + @response.params[:start].to_i)) -%>
+  <% if document.get(Blacklight.config[:show][:heading]) %>
+    <%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]), :length => 20, :omission => "..."), :counter => (counter + 1 + @response.params[:start].to_i)) -%>
   <% end -%>
   <%= document['date_t'] %>
 </div>
