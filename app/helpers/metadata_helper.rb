@@ -43,7 +43,7 @@ module MetadataHelper
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result = "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
+    result << "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
     return result
   end
   
