@@ -1,4 +1,3 @@
-
 require 'lib/shelver/indexer.rb'
 require "ruby-debug"
 
