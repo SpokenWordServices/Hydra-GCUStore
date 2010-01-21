@@ -31,7 +31,11 @@ jQuery(document).ready(function () {
     });
 
     var richEdits = setupRichTextEdits($(".editable_textarea"), {
-        FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
+        // FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
+        FCKEditor: {
+          BasePath: "/javascripts/fckeditor/", 
+          ToolbarSet: "Basic"
+        },
         // componentDecorators: {
         //     type: "fluid.undoDecorator"
         // },
@@ -126,7 +130,11 @@ function removeValue(node) {
    //return false;
 
    var newVal = fluid.inlineEdit.FCKEditor("#"+unique_id, {
-       FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
+       // FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
+        FCKEditor: {
+          BasePath: "/javascripts/fckeditor/", 
+          ToolbarSet: "Basic"
+        },
         componentDecorators: {
             type: "fluid.undoDecorator"
         },
