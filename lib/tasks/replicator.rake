@@ -12,6 +12,11 @@ namespace :replicator do
   
   desc 'Copy all objects in the repository.'
   task :copy_objects => :environment do
+  
+    if ENV['REPLICATOR_LIST']
+      REPLICATOR_LIST = ENV['REPLICATOR_LIST']
+    end
+  
     replicator = Shelver::Replicator.new
     puts "Source URL: #{ActiveFedora.fedora_config[:url]}"
     puts "Destination URL: #{replicator.configs["destination"]["fedora"]["url"]}"

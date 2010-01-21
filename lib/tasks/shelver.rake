@@ -16,6 +16,10 @@ namespace :shelver do
   desc 'Index all objects in the repository.'
   task :shelve_objects => :environment do
     INDEX_FULL_TEXT = ENV['FULL_TEXT'] == 'true'
+    if ENV['INDEX_LIST']
+      INDEX_LIST = ENV['INDEX_LIST']
+    end
+    
     puts "Re-indexing Fedora Repository."
     puts "Fedora URL: #{ActiveFedora.fedora_config[:url]}"
     puts "Fedora Solr URL: #{ActiveFedora.solr_config[:url]}"

@@ -1,9 +1,9 @@
-
 require 'solr'
-
 require 'lib/shelver/extractor.rb'
-
 INDEX_FULL_TEXT = true unless defined?(INDEX_FULL_TEXT) 
+
+
+
 
 module Shelver
 class Indexer
@@ -67,6 +67,17 @@ class Indexer
     ext_properties_ds = Repository.get_datastream( obj, ds_name )
     extractor.extract_ext_properties( ext_properties_ds.content )
   end
+  
+  #
+  # This method extracts the location info from the given Fedora object's location dstream
+  # 
+  
+  def extract_location_data(obj, ds_name)
+    location_ds = Repository.get_datastream(obj, ds_name)
+    unless location_ds.nil?
+	extractor.extract_location(location_ds.content)
+    end
+  end
 
   #
   # This method extracts the facet categories from the given Fedora object's external tag datastream
@@ -79,6 +90,7 @@ class Indexer
   def extract_tags(obj, ds_name)
     tags_ds =  Repository.get_datastream( obj, ds_name )
     extractor.extract_tags( tags_ds.content )
+  
   end
   
   def extract_jp2_info_from_names_array(obj, ds_names_array)
@@ -93,7 +105,7 @@ class Indexer
 
     # retrieve a comprehensive list of all the datastreams associated with the given
     #   object and categorize each datastream based on its filename
-    ext_properties_ds_names, properties_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names = [],[],[],[],[] 
+    ext_properties_ds_names, location_ds_names, properties_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names,  = [],[],[],[],[],[] 
     ds_names = Repository.get_datastreams( obj )
     
     ds_names.each do |ds_name|
@@ -103,6 +115,8 @@ class Indexer
         ext_properties_ds_names << ds_name
       elsif( ds_name =~ /descMetadata/ )
         xml_ds_names << ds_name
+      elsif( ds_name =~ /location/ )
+        location_ds_names << ds_name
       elsif ds_name =~ /^properties/
         properties_ds_names << ds_name
         xml_ds_names << ds_name
@@ -118,13 +132,22 @@ class Indexer
         keywords += extract_full_text( obj, full_text_ds_name )
       end
     end
+    
     # extract facet categories
-    ext_properties = extract_ext_properties( obj, ext_properties_ds_names[0] )
+    ext_properties = {}
+    ext_properties[:facets] = extract_ext_properties( obj, ext_properties_ds_names[0] )
+    ext_properties[:sympols] = ext_properties[:facets]
+    location_data = extract_location_data(obj, location_ds_names[0] )
     tags = extract_tags(obj, properties_ds_names[0])
+    
+    
+    # Merge the location_data and tag hashes back into the ext_properties hash
+    (ext_properties[:facets] ||={}).merge!(location_data[:facets]) unless location_data.nil?
+    (ext_properties[:symbols] ||={}).merge!(location_data[:symbols]) unless location_data.nil?
     (ext_properties[:facets] ||={}).merge!(tags)
-
-
-
+    
+   
+    
     # create the Solr document
     solr_doc = Solr::Document.new
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )
@@ -141,6 +164,20 @@ class Indexer
     
     # Pass the solr_doc through extract_simple_xml_to_solr
     xml_ds_names.each { |ds_name| extract_xml_to_solr(obj, ds_name, solr_doc)}
+      
+
+    #
+    #      Temporart hack to randomly create private and public documents
+    #            
+    
+      i = rand(2)
+
+      if i == 0
+                solr_doc << Solr::Field.new( :access_t => 'public')
+      else
+                solr_doc << Solr::Field.new( :access_t => 'private')
+      end
+
 
     # increment the unique id to ensure that all documents in the search index are unique
     @@unique_id += 1
@@ -204,7 +241,7 @@ class Indexer
         case value.class.to_s
         when "String"
           solr_doc << Solr::Field.new( :"#{symbol_name}_s" => "#{value}" )
-        when "Array"
+	      when "Array"
           value.each { |v| solr_doc << Solr::Field.new( :"#{symbol_name}_s" => "#{v}" ) } 
         end
       end
