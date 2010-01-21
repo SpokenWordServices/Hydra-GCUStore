@@ -27,6 +27,18 @@ module InfusionViewHelper
     case type
     when :uploader
       paths << '../infusion/framework/core/js/ProgressiveEnhancement.js'
+    # TinyMCE wasn't playing nice so I've denied it the opportunity to see the light of day. - MZ
+    # when :tinyMCE
+    #   paths << 'http://tinymce-fluid.appspot.com/tiny_mce.js'
+    end
+    
+    if opts[:extras] 
+      if opts[:extras].include?(:fckeditor)
+        paths << '../infusion/tests/manual-tests/lib/fckeditor/fckeditor.js'
+      end
+      if opts[:extras].include?(:inline_editor_integrations)
+        paths << "../infusion/components/inlineEdit/js/InlineEditIntegrations.js"
+      end
     end
     
     result = ""

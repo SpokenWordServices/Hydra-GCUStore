@@ -12,20 +12,8 @@ module MetadataHelper
   # Convenience method for creating editable metadata fields.  Defaults to creating single-value field, but creates multi-value field if :multiple => true
   # Field name can be provided as a string or a symbol (ie. "title" or :title)
   def editable_metadata_field(resource, datastream_name, field_key, opts={})    
-    field_name=field_key.to_s
-    
-    if opts.has_key?(:label) 
-      label = opts[:label]
-    else
-      label = field_name
-    end
-    resource_type = resource.class.to_s.underscore
-    
-    result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
-    if opts[:multiple] == true
-      result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
-    end
-    result << "</dt>"
+    field_name=field_key.to_s    
+    result = ""
     
     case opts[:type]
     when :text_area
@@ -47,6 +35,12 @@ module MetadataHelper
 
   def single_value_inline_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
+    if opts.has_key?(:label) 
+      label = opts[:label]
+    else
+      label = field_name
+    end
+    result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
@@ -54,12 +48,20 @@ module MetadataHelper
   end
   
   def multi_value_inline_edit(resource, datastream_name, field_name, opts={})
-    opts[:default] = "" unless opts[:defualt]
+    if opts.has_key?(:label) 
+      label = opts[:label]
+    else
+      label = field_name
+    end
     resource_type = resource.class.to_s.underscore
+    result = ""
+    result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
+    result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
+    result << "</dt>"
+    opts[:default] = "" unless opts[:defualt]
     oid = resource.pid
     new_element_id = "#{resource_type}_#{field_name}_-1"
     rel = url_for(:action=>"update", :controller=>"documents")
-    result = ""
     
     #opts[:default] ||= ""
     #Output all of the current field values.
@@ -76,20 +78,31 @@ module MetadataHelper
   end
 
   def text_area_inine_edit(resource, datastream_name, field_name, opts={})
+    if opts.has_key?(:label) 
+      label = opts[:label]
+    else
+      label = field_name
+    end
     resource_type = resource.class.to_s.underscore
     opts[:default] = "Text Area"
-    field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     result = ""
-    result << "<div id=\"#{resource_type}_#{field_name}\">"
-    #result << "<span class=\"editableText\" id=\"#{resource_type}_#{field_name}_0\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span>"
-    result << text_area_tag("#{resource_type}[#{field_name}][0]")
-    result << "</div>"
-    result << "<div id=\"textareaAbstract\">#{field_value}</div>"
-    result << "<div class=\"boxSaveCancel marginTop_40\" id=\"abstractSaveCancelBox\">"
-    result << "  <input type=\"button\" value=\"Save\" class=\"buttonSave button\" onclick=\"javascript: saveAbstract(); return true;\" />"
-    result << "  <input type=\"button\" value=\"Cancel\" class=\"buttonCancel\" onclick=\"javascript:hideAbstractSaveCancelBox();return true;\" />"
-    result << "</div>"
-    result << "<div class=\"boxSaveProcessing marginTop_40\" id=\"savingAbstract\" style=\"display:none;\">Saving..</div>"
+    result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
+    result << link_to_function("+" , "insertTextAreaValue(\"#{field_name}\")", :class=>'addval') 
+    result << "</dt>"   
+      
+    vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
+    vlist.each_with_index do |field_value,z|
+      result << "<dd id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
+      result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
+      result << "<div class=\"flc-inlineEdit-text\"></div>"
+      result << "<div class=\"flc-inlineEdit-editContainer\">"
+      result << "      <textarea></textarea>"
+      result << "      <button class=\"save\">Save</button> <button class=\"cancel\">Cancel</button>"
+      result << "</div>"
+      result << "</dd>"
+    end
+    result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
+    
     return result
   end
   
