@@ -84,7 +84,7 @@ module MetadataHelper
       label = field_name
     end
     resource_type = resource.class.to_s.underscore
-    opts[:default] = "Text Area"
+    opts[:default] = ""
     result = ""
     result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
     result << link_to_function("+" , "insertTextAreaValue(\"#{field_name}\")", :class=>'addval') 
@@ -94,7 +94,7 @@ module MetadataHelper
     vlist.each_with_index do |field_value,z|
       result << "<dd id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
-      result << "<div class=\"flc-inlineEdit-text\"></div>"
+      result << "<div class=\"flc-inlineEdit-text\">#{field_value}</div>"
       result << "<div class=\"flc-inlineEdit-editContainer\">"
       result << "      <textarea></textarea>"
       result << "      <button class=\"save\">Save</button> <button class=\"cancel\">Cancel</button>"

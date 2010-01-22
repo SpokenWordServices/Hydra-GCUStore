@@ -135,8 +135,11 @@ function removeValue(node) {
           BasePath: "/javascripts/fckeditor/", 
           ToolbarSet: "Basic"
         },
-        componentDecorators: {
-            type: "fluid.undoDecorator"
+        // componentDecorators: {
+        //     type: "fluid.undoDecorator"
+        // },
+        listeners : {
+          onFinishEdit : myFinishEditListener
         },
         defaultViewText: "click to edit"
     })
