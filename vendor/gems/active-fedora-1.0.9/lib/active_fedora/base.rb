@@ -394,8 +394,10 @@ module ActiveFedora
         # p "Deserializing #{name} for #{pid}"
         # use the version of the datastream straight from fedora as the template 
         proto_ds = proto.datastreams[name]
-        proto_ds.new_object = false
+        
         doc.elements.each("//foxml:datastream[@ID='#{name}']") do |el|
+          # datastreams remain marked as new if the foxml doesn't have an entry for that datastream
+          proto_ds.new_object = false
           proto.datastreams[name]=proto_ds.class.from_xml(proto_ds, el)
         end
         # IF the datastream exists in Fedora, pass its attributes into the initialized datastream instance 
