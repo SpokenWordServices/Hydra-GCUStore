@@ -5,7 +5,7 @@
 <% end %>
 
 <% javascript_includes << capture do %>
-  <%= infusion_javascripts(:inline_edit, :debug=>true) %>
+  <%= infusion_javascripts(:inline_edit, :extras=>[:fckeditor,:inline_editor_integrations], :debug=>true) %>
   <%= javascript_include_tag "fluid_inline_edit_custom"%>
   <%= javascript_include_tag "custom"%>
 <% end %>

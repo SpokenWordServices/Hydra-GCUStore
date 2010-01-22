@@ -1,4 +1,6 @@
 require 'fastercsv'
+REPLICATOR_LIST = false unless defined?(REPLICATOR_LIST)
+
 
 module Shelver
   class Replicator
@@ -28,26 +30,36 @@ module Shelver
     end
     
     def replicate_objects
-      puts "Replicating objects from #{Fedora::Repository.instance.fedora_url} to #{@dest_repo.fedora_url}"
-      
-      # retrieve a list of all the pids in the fedora repository
+     # retrieve a list of all the pids in the fedora repository
       num_docs = 1000000   # modify this number to guarantee that all the objects are retrieved from the repository
-      #pids = Repository.get_pids( num_docs )
-      #puts "Replicating #{pids.length} Fedora objects"
-      #pids.reverse!
-      #pids.each do |pid|
-      #  replicate_object( pid )
-      #end
-      
-       file = '/tmp/todo.csv'
-        FasterCSV::foreach(file, :headers=>true) do |row|
-           pid = row[0].chomp
+
+      if REPLICATOR_LIST == false
+
+         pids = Repository.get_pids( num_docs )
+         puts "Replicating #{pids.length} Fedora objects"
+          pids.each do |pid|
             replicate_object( pid )
-        end
+          end #pids.each
 
+      else
 
-      #puts "Finished replicating all #{pids.length} objects."
-    end   
+         if File.exists?(REPLICATOR_LIST)
+            arr_of_pids = FasterCSV.read(REPLICATOR_LIST, :headers=>false)
+
+            puts "Replicating from list at #{REPLICATOR_LIST}"
+            puts "Replicating #{arr_of_pids.length} Fedora objects"
+
+           arr_of_pids.each do |row|
+              pid = row[0]
+              replicate_object( pid )   
+           end #FASTERCSV
+           
+          else
+            puts "#{REPLICATOR_LIST} does not exists!"
+          end #if File.exists
+
+      end #if Index_LISTS
+    end #replicate_objects
 
  
     def replicate_object(pid)
@@ -87,15 +99,18 @@ module Shelver
      
      rescue
          #for object without jp2s
-        pid = source_object.pid 
-	p "> #{pid}"
+         #this is a temp fix to the downloadables() issue
+         
+         
+         pid = source_object.pid 
+	        p "> #{pid}"
         
           jp2_file = File.new('spec/fixtures/image.jp2')
           ds = ActiveFedora::Datastream.new(:dsID => "image.jp2", :dsLabel => 'image.jp2', :controlGroup => 'M', :blob => jp2_file)
-	  source_object.add_datastream(ds)
+	        source_object.add_datastream(ds)
           source_object.save 
-	#  source_object = Document.load_instance(pid)
- 	  source_object = ActiveFedora::Base.load_instance(pid)
+	        #  source_object = Document.load_instance(pid)
+ 	        source_object = ActiveFedora::Base.load_instance(pid)
        	  stub_object = Fedora::FedoraObject.new(:pid=>source_object.pid)
           dest_repo.save(stub_object)
          

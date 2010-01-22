@@ -1,8 +1,9 @@
-
 require 'solr'
 require 'lib/shelver/extractor.rb'
-#require 'extractor.rb'
 INDEX_FULL_TEXT = true unless defined?(INDEX_FULL_TEXT) 
+
+
+
 
 module Shelver
 class Indexer
@@ -133,7 +134,9 @@ class Indexer
     end
     
     # extract facet categories
-    ext_properties = extract_ext_properties( obj, ext_properties_ds_names[0] )
+    ext_properties = {}
+    ext_properties[:facets] = extract_ext_properties( obj, ext_properties_ds_names[0] )
+    ext_properties[:sympols] = ext_properties[:facets]
     location_data = extract_location_data(obj, location_ds_names[0] )
     tags = extract_tags(obj, properties_ds_names[0])
     
@@ -142,8 +145,6 @@ class Indexer
     (ext_properties[:facets] ||={}).merge!(location_data[:facets]) unless location_data.nil?
     (ext_properties[:symbols] ||={}).merge!(location_data[:symbols]) unless location_data.nil?
     (ext_properties[:facets] ||={}).merge!(tags)
-     
-
     # create the Solr document
     solr_doc = Solr::Document.new
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )

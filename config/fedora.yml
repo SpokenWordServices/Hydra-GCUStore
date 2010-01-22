@@ -1,6 +1,6 @@
 development:
   fedora:
-    url: http://fedoraAdmin:fedoraAdmin@salt-prod.stanford.edu:8080/fedora
+    url: http://fedoraAdmin:fedoraAdmin@salt-dev.stanford.edu:8080/fedora
   solr:
     url: http://salt-prod.stanford.edu:8080/solr
 test: &TEST  

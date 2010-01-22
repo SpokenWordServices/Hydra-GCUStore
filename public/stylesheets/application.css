@@ -287,6 +287,9 @@ dl.defList dd {
 	margin-bottom:1em;
 	border:solid 1px #CDC;
 }
+.notice-item-wrapper .error {
+  background-color:red;
+}
 .error, .notice {
 	font-size: 1.5em;
 }

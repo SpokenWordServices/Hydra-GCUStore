@@ -20,8 +20,7 @@
       <dl class="defList fl-theme-mist">
       <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
       <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
-      <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true) %>
-      <%#= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
+      <%= editable_metadata_field(@document_fedora, "stories", :story, :label => "Stories:", :multiple=>true, :type=>:text_area) %>
       <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
       <%= editable_metadata_field(@document_fedora, "properties", :archivist_tags, :label => "Archivist Tags:") %>
       <%= editable_metadata_field(@document_fedora, "properties", :donor_tags, :label => "Donor Tags:") %>
