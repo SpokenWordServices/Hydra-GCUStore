@@ -18,7 +18,20 @@
     <%= stylesheet_links.join('') %>
     <%= javascript_includes.join('') %>
 <!-- end additional stylesheets and javascript includes -->
-      
+    
+<script type="text/javascript" language="Javascript">
+$(document).ready(function()
+{
+    //-------------------------------------------------------
+    /*shows the loading div every time we have an Ajax call*/
+    $("#loading").bind("ajaxSend", function(){
+   		$(this).show();
+ 	  }).bind("ajaxComplete", function(){
+   		$(this).hide();
+ 	});
+ 	//-------------------------------------------------------
+})
+</script>    
   </head>
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:controller] == 'catalog' and params[:action] == 'index' %>
     <body onload="$('input#q').focus();">

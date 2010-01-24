@@ -145,9 +145,6 @@ class Indexer
     (ext_properties[:facets] ||={}).merge!(location_data[:facets]) unless location_data.nil?
     (ext_properties[:symbols] ||={}).merge!(location_data[:symbols]) unless location_data.nil?
     (ext_properties[:facets] ||={}).merge!(tags)
-    
-   
-    
     # create the Solr document
     solr_doc = Solr::Document.new
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )

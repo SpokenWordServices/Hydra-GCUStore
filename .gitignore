@@ -1,4 +1,5 @@
 .DS_Store
+nohup.out
 
 *.sqlite3
 *.log
