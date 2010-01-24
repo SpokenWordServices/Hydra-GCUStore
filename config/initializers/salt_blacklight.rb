@@ -60,6 +60,7 @@ Blacklight.configure(:shared) do |config|
   
   
   config[:default_qt] = "search"
+  config[:public_qt] = "public_search"
   
 
   # solr field values given special treatment in the show (single result) view

@@ -20,7 +20,7 @@ class CatalogController
   
   # get search results from the solr index
   def index
-      @extra_controller_params = {}
+      @extra_controller_params ||= {}
       enforce_search_permissions
       @response = get_search_results( @extra_controller_params )
       @filters = params[:f] || []
@@ -71,8 +71,8 @@ class CatalogController
   
   def enforce_search_permissions
     if !reader? 
-      # extra_controller_params[:qt] = "full_access_search"
-      @extra_controller_params = Hash[:f=>{"access_t"=>"public"}]
+      @extra_controller_params[:qt] = Blacklight.config[:public_qt]
+      return @extra_controller_params
     end
   end
   
