@@ -23,7 +23,7 @@ namespace :shelver do
     puts "Re-indexing Fedora Repository."
     puts "Fedora URL: #{ActiveFedora.fedora_config[:url]}"
     puts "Fedora Solr URL: #{ActiveFedora.solr_config[:url]}"
-    puts "Blacklight Solr Config: #{Blacklight.solr_config}"
+    puts "Blacklight Solr Config: #{Blacklight.solr_config.inspect}"
     puts "Doing full text index." if INDEX_FULL_TEXT
     shelver = Shelver::Shelver.new
     shelver.shelve_objects

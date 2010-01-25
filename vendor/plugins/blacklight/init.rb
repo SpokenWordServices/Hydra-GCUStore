@@ -4,7 +4,7 @@ config.gem 'nokogiri', :version=>'>=1.3.1'
 config.gem 'mwmitchell-material_girl', :lib=>'material_girl', :source=>'http://gems.github.com', :version=>'0.0.2'
 config.gem 'curb'
 # hanna is only needed for generating rdocs 
-config.gem 'mislav-hanna', :lib=>'hanna/rdoctask', :source=>'http://gems.github.com'
+#config.gem 'mislav-hanna', :lib=>'hanna/rdoctask', :source=>'http://gems.github.com'
 
 #config.gem 'mwmitchell-rsolr-ext', :version=>'0.7.35', :lib=>'rsolr-ext', :source=>'http://github.com'
 
