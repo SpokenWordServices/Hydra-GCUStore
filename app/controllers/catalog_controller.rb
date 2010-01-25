@@ -5,6 +5,7 @@ class CatalogController
   include MediaShelf::ActiveFedoraHelper
   
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
+  before_filter :deny_to_private, :only =>[:show, :edit]
   before_filter :enforce_viewing_context_for_show_requests, :only=>:show
   before_filter :enforce_edit_permissions, :only=>:edit
   
@@ -83,11 +84,19 @@ class CatalogController
       redirect_to :action=>:show
     end
   end
-  
+
+  def deny_to_private
+    unless session[:user]
+      flash[:notice] = "You must be logged in and have access to view this material."
+      redirect_to :action => 'index', :q => nil , :f => nil
+    end
+  end
+
+
   def get_search_results(extra_controller_params={})
     _search_params = self.solr_search_params(extra_controller_params)
     index = _search_params[:qt] == 'fulltext' ? :fulltext : :default
     Blacklight.solr(index).find(_search_params)
   end
-  
+
 end
