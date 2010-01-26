@@ -9,6 +9,16 @@ function saveSelect(element) {
 }
 
 /**
+ * Remove the given value from its corresponding metadata field.
+ * @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
+ */
+function removeFieldValue(element) {
+  alert("removing " + $(element).parent().attr("name"));
+  saveEdit($(element).parent().attr("name"), "");
+  $(element).parent().remove();
+}
+
+/**
  * Create date picker widgets for an array of elements.
  * @param {Object} pickers array of date inputs
  */

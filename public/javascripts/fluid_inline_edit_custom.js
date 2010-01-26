@@ -109,10 +109,6 @@ function insertValue(fieldName) {
   newVal.edit();
 }
 
-function removeValue(node) {
-  node.remove();
-}
-
 /***
  * Inserting and removing rich inline edits
  */
