@@ -23,7 +23,7 @@ class Shelver
   def shelve_object( obj )
     # retrieve the Fedora object based on the given unique id
       obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
-          unless obj.datastreams['descMetadata'].nil?
+          unless obj.datastreams['descMetadata'].nil? || obj.datastreams['location'].nil?
                 p "Indexing object #{obj.pid} with label #{obj.label}"
                  # add the keywords and facets to the search index
                  indexer.index( obj )
@@ -44,8 +44,8 @@ class Shelver
     if INDEX_LIST == false
      
        pids = Repository.get_pids( num_docs )
-        puts "Shelving #{pids.length} Fedora objects"
-        pids.each do |pid|
+	 puts "Shelving #{pids.length} Fedora objects"
+       pids.each do |pid|
           shelve_object( pid )
         end #pids.each
      
