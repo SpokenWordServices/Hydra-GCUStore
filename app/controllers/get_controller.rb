@@ -14,13 +14,14 @@ class GetController < ApplicationController
         format.pdf { send_datastream downloadables( fedora_object, :canonical=>true, :mime_type=>"application/pdf" ) }
         format.jp2 do 
           canonical_jp2 = downloadables( fedora_object, :canonical=>true, :mime_type=>"image/jp2" )
+          jp2_content_url = "#{canonical_jp2.url}/content"
           if params["image_server"]
             if params["image_server"]["scale"] 
-              send_data Djatoka.scale(canonical_jp2.url, params["image_server"]["scale"]), :type=>"image/jpeg"
+              send_data Djatoka.scale(jp2_content_url, params["image_server"]["scale"]), :type=>"image/jpeg"
             elsif   params["image_server"]["region"] 
-              send_data Djatoka.region(canonical_jp2.url, params["image_server"]["region"]), :type=>"image/jpeg"
+              send_data Djatoka.region(jp2_content_url, params["image_server"]["region"]), :type=>"image/jpeg"
             else
-              send_data Djatoka.get_image(canonical_jp2.url, params["image_server"]["region"]), :type=>"image/jpeg"
+              send_data Djatoka.get_image(jp2_content_url, params["image_server"]["region"]), :type=>"image/jpeg"
             end
           else
             send_datastream canonical_jp2
