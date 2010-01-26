@@ -123,12 +123,20 @@ module MetadataHelper
     if opts[:choices].nil? || !opts[:choices].kind_of?(Hash)
       single_value_inline_edit(resource, datastream_name, field_name, opts)
     else
-      choices = opts[:choices]
+      if opts.has_key?(:label) 
+        label = opts[:label]
+      else
+        label = field_name
+      end
       resource_type = resource.class.to_s.underscore
       opts[:default] ||= ""
+      
+      result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
+      
+      choices = opts[:choices]
       field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
       choices.delete_if {|k, v| v == field_value || v == field_value.capitalize }
-      result = "<dd id=\"#{resource_type}_#{field_name}\">"
+      result << "<dd id=\"#{resource_type}_#{field_name}\">"
       result << "<select name=\"#{resource_type}[#{field_name}][0]\" onChange=\"saveSelect(this)\"><option value=\"#{field_value}\" selected=\"selected\">#{field_value.capitalize}</option>"
       choices.each_pair do |k,v|
         result << "<option value=\"#{v}\">#{k}</option>"
@@ -141,8 +149,19 @@ module MetadataHelper
   
   def date_picker_inine_edit(resource, datastream_name, field_name, opts={})
     resource_type = resource.class.to_s.underscore
+    if opts.has_key?(:label) 
+      label = opts[:label]
+    else
+      label = field_name
+    end
+    result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result = "<dd id=\"#{resource_type}_#{field_name}\"><span class=\"editableText\" id=\"#{resource_type}_#{field_name}_0\" rel=\"#{url_for(:action=>"update", :controller=>"documents")}\">#{field_value}</span></dd>"
+    # result << "<li class=\"date_picker\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
+    result << "<input type=\"text\" class=\"date_picker w16em\" id=\"#{resource_type}_#{field_name}_value\" name=\"#{resource_type}[#{field_name}][0]\" value=\"#{field_value}\"></input>"
+    result << "</ol></dd>"
+    
     return result
   end
   

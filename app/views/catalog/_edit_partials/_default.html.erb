@@ -2,13 +2,13 @@
 
 <% stylesheet_links << capture do %>
   <%= infusion_stylesheets(:inline_edit) %>
+  <%= stylesheet_link_tag "../javascripts/date-picker/css/datepicker" %>
 <% end %>
 
 <% javascript_includes << capture do %>
   <%= infusion_javascripts(:inline_edit, :extras=>[:fckeditor,:inline_editor_integrations], :debug=>true) %>
-  <%= javascript_include_tag "fluid_inline_edit_custom"%>
-  <%= javascript_include_tag "hydra_metadata"%>
-  <%= javascript_include_tag "custom"%>
+  <%= javascript_include_tag "fluid_inline_edit_custom", "hydra_metadata", "custom" %>
+  <%= javascript_include_tag "date-picker/js/datepicker"%>
 <% end %>
 
 
