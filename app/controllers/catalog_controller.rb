@@ -5,7 +5,6 @@ class CatalogController
   include MediaShelf::ActiveFedoraHelper
   
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
-  before_filter :deny_to_private, :only =>[:show, :edit]
   before_filter :enforce_viewing_context_for_show_requests, :only=>:show
   before_filter :enforce_edit_permissions, :only=>:edit
   
@@ -16,6 +15,7 @@ class CatalogController
     @downloadables = downloadables( @document_fedora )
     session[:viewing_context] = "edit"
     show_with_customizations
+    enforce_read_permissions
     render :action=>:show
   end
   
@@ -42,9 +42,9 @@ class CatalogController
   def show_with_customizations
     show_without_customizations
     find_folder_siblings
-    #facets_for_lookup = {:fields=>['title_facet', 'technology_facet', 'person_facet']}
     params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
     @facet_lookup = Blacklight.solr.find params
+    enforce_read_permissions
   end
   
   # trigger show_with_customizations when show is called
@@ -65,7 +65,6 @@ class CatalogController
         redirect_to :action=>:edit
       else
         session[:viewing_context] = "browse"
-        #flash[:message] = "You do not have sufficient privileges to edit this document."
       end
     end
   end
@@ -76,19 +75,21 @@ class CatalogController
       return @extra_controller_params
     end
   end
+  def enforce_read_permissions
+    case @document['access_t'].first
+    when /private/
+      unless reader?
+        flash[:notice]= "You do not have sufficient access privileges to read this document, which has been marked private."
+        redirect_to(:action => 'index', :q => nil , :f => nil) and return false
+      end
+    end
+  end
   
   def enforce_edit_permissions
     if !editor?
       session[:viewing_context] = "browse"
       flash[:notice] = "You do not have sufficient privileges to edit this document. You have been redirected to the read-only view."
       redirect_to :action=>:show
-    end
-  end
-
-  def deny_to_private
-    unless session[:user]
-      flash[:notice] = "You must be logged in and have access to view this material."
-      redirect_to :action => 'index', :q => nil , :f => nil
     end
   end
 
