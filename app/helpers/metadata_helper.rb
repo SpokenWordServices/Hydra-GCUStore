@@ -41,10 +41,10 @@ module MetadataHelper
       label = field_name
     end
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\">"
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
+    result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}_0\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
     result << "</ol></dd>"
     
     return result
@@ -61,7 +61,7 @@ module MetadataHelper
     result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
     result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
     result << "</dt>"
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\">"
     
     opts[:default] = "" unless opts[:defualt]
     oid = resource.pid
@@ -98,7 +98,7 @@ module MetadataHelper
     result << link_to_function("+" , "insertTextAreaValue(\"#{field_name}\")", :class=>'addval') 
     result << "</dt>"   
     
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\">"
     
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
@@ -138,7 +138,7 @@ module MetadataHelper
       field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
       choices.delete_if {|k, v| v == field_value || v == field_value.capitalize }
       result << "<dd id=\"#{resource_type}_#{field_name}\">"
-      result << "<select name=\"#{resource_type}[#{field_name}][0]\" onChange=\"saveSelect(this)\"><option value=\"#{field_value}\" selected=\"selected\">#{field_value.capitalize}</option>"
+      result << "<select name=\"#{resource_type}[#{field_name}][0]\" onchange=\"saveSelect(this)\"><option value=\"#{field_value}\" selected=\"selected\">#{field_value.capitalize}</option>"
       choices.each_pair do |k,v|
         result << "<option value=\"#{v}\">#{k}</option>"
       end
@@ -159,7 +159,7 @@ module MetadataHelper
     z = "0" # single-values only 
     
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
-    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\">"
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     # result << "<li class=\"date_picker\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
