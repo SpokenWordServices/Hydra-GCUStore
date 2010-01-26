@@ -76,8 +76,9 @@ class CatalogController
     end
   end
   def enforce_read_permissions
-    case @document['access_t'].first
-    when /private/
+    unless @document['access_t'] && @document['access_t'] == "public"
+    # case @document['access_t'].first
+    # when /private/
       unless reader?
         flash[:notice]= "You do not have sufficient access privileges to read this document, which has been marked private."
         redirect_to(:action => 'index', :q => nil , :f => nil) and return false
