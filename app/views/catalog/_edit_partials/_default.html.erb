@@ -7,6 +7,7 @@
 <% javascript_includes << capture do %>
   <%= infusion_javascripts(:inline_edit, :extras=>[:fckeditor,:inline_editor_integrations], :debug=>true) %>
   <%= javascript_include_tag "fluid_inline_edit_custom"%>
+  <%= javascript_include_tag "hydra_metadata"%>
   <%= javascript_include_tag "custom"%>
 <% end %>
 
@@ -49,7 +50,7 @@
 
 <% sidebar_items << capture do %>
   <%= render :partial=>"location_browse_box", :locals => {:document => document} %>
-  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document is about"} %>
+  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document} %>
   <%#= render :partial=>'facets' %>
-<% end %> 
+<% end %>
 
