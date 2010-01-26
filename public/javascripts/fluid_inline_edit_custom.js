@@ -1,6 +1,6 @@
 // Uncomment this if you want fluid to provide log messages in the console.
 // see <http://wiki.fluidproject.org/display/fluid/Framework+Functions#FrameworkFunctions-fluid.log%28str%29>
-// fluid.setLogging(true);
+fluid.setLogging(true);
 
 $(document).ready(function()
 {
@@ -17,10 +17,10 @@ $(document).ready(function()
 jQuery(document).ready(function () {
     /* Example 3 - note the difference in the syntax */
     /* multiple inline edit requires each editable text object to be wrapped again inside another element */                
-    var multiEdit = fluid.inlineEdits("#multipleEdit", {
+    var singleValueEdits = fluid.inlineEdits("#multipleEdit", {
         selectors : {
           text : ".editableText",
-          editables : "dd.editable"
+          editables : "li.editable"
         }, 
         // componentDecorators: {
         //   type: "fluid.undoDecorator" 
@@ -29,6 +29,7 @@ jQuery(document).ready(function () {
           onFinishEdit : myFinishEditListener
         }
     });
+    
 
     var richEdits = setupRichTextEdits($(".editable_textarea"), {
         // FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
@@ -94,8 +95,8 @@ var makeAllButtons = function (editors) {
 function insertValue(fieldName) {
   var d = new Date(); // get milliseconds for unique identfier
   var unique_id = "document_" + fieldName + "_" + d.getTime();
-  var div = jQuery('<dd id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></dd>');
-  div.appendTo("#document_"+fieldName+"_new_values"); 
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  div.appendTo("#document_"+fieldName+"_values"); 
   //return false;
   var newVal = fluid.inlineEdit("#"+unique_id, {
     // componentDecorators: {
@@ -125,8 +126,8 @@ function removeValue(node) {
    //     <textarea></textarea>
    //     <button class="save">Save</button> <button class="cancel">Cancel</button>
    // </div>
-   var div = jQuery('<dd id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
-   div.appendTo("#document_"+fieldName+"_new_values"); 
+   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
+   div.appendTo("#document_"+fieldName+"_values"); 
    //return false;
 
    var newVal = fluid.inlineEdit.FCKEditor("#"+unique_id, {

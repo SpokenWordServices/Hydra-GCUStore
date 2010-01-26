@@ -41,9 +41,12 @@ module MetadataHelper
       label = field_name
     end
     result = "<dt for=\"#{resource_type}_#{field_name}\">#{label}</dt>"
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
-    result << "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></dd>"
+    result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
+    result << "</ol></dd>"
+    
     return result
   end
   
@@ -58,6 +61,8 @@ module MetadataHelper
     result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
     result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
     result << "</dt>"
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    
     opts[:default] = "" unless opts[:defualt]
     oid = resource.pid
     new_element_id = "#{resource_type}_#{field_name}_-1"
@@ -68,12 +73,14 @@ module MetadataHelper
     datastream = resource.datastreams[datastream_name]
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
-      result << "<dd class=\"editable\" id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
+      result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
       result << "<span class=\"editableText\">#{field_value}</span>"
-      result << "</dd>"
+      result << "</li>"
     end
-    result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
+    # result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
+    result << "</ol></dd>"
+    
     return result
   end
 
@@ -89,19 +96,22 @@ module MetadataHelper
     result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
     result << link_to_function("+" , "insertTextAreaValue(\"#{field_name}\")", :class=>'addval') 
     result << "</dt>"   
-      
+    
+    result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\""
+    
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
-      result << "<dd id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
+      result << "<li id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
       result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
       result << "<div class=\"flc-inlineEdit-text\">#{field_value}</div>"
       result << "<div class=\"flc-inlineEdit-editContainer\">"
       result << "      <textarea></textarea>"
       result << "      <button class=\"save\">Save</button> <button class=\"cancel\">Cancel</button>"
       result << "</div>"
-      result << "</dd>"
+      result << "</li>"
     end
-    result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
+    # result << "<div id=\"#{resource_type}_#{field_name}_new_values\"></div>"
+    result << "</ol></dd>"
     
     return result
   end

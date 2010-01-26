@@ -307,6 +307,11 @@ input.flc-inlineEdit-edit {
   padding : 2px;
 }
 
+li.editable, li.editable_textarea {
+  list-style-type: none;
+  clear:right;
+}
+
 /*
 	LAYOUT TOOLS
 */
