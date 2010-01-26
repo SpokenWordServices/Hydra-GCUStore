@@ -20,7 +20,7 @@ class Shelver
   #
   # This method shelves the given Fedora object's full-text and facets into the search index
   #
-  def shelve_object( obj )
+  def (shelve_object( obj )
     # retrieve the Fedora object based on the given unique id
       obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
           unless obj.datastreams['descMetadata'].nil? || obj.datastreams['location'].nil?
@@ -29,6 +29,8 @@ class Shelver
                  indexer.index( obj )
                  p "Successfully indexed object #{obj.pid}."
           end
+      rescue
+        
   
   end
   
@@ -46,7 +48,9 @@ class Shelver
        pids = Repository.get_pids( num_docs )
 	 puts "Shelving #{pids.length} Fedora objects"
        pids.each do |pid|
+         unless pid[0].empty? || pid[0].nil?
           shelve_object( pid )
+         end
         end #pids.each
      
     else
