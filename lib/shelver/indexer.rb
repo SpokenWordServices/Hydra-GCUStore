@@ -1,8 +1,5 @@
 require 'solr'
 require 'lib/shelver/extractor.rb'
-INDEX_FULL_TEXT = true unless defined?(INDEX_FULL_TEXT) 
-
-
 
 
 module Shelver
@@ -26,6 +23,8 @@ class Indexer
   # This method performs initialization tasks
   #
   def initialize()
+ 
+    @@index_full_text = false unless defined?(@@index_full_text)
     @extractor = Extractor.new
     connect
   end
@@ -34,8 +33,9 @@ class Indexer
   # This method connects to the Solr instance
   #
   def connect
-    # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )
-    if INDEX_FULL_TEXT
+
+    if @@index_full_text
+     
       url = Blacklight.solr_config['fulltext']['url']
     else
       url = Blacklight.solr_config['default']['url']
@@ -127,7 +127,7 @@ class Indexer
 
     # extract full-text
     keywords = String.new
-    if INDEX_FULL_TEXT
+    if @@index_full_text
       full_text_ds_names.each do |full_text_ds_name|
         keywords += extract_full_text( obj, full_text_ds_name )
       end
