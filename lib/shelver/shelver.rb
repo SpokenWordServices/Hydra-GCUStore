@@ -2,7 +2,7 @@
 require 'lib/shelver/indexer.rb'
 require 'fastercsv'
 require "ruby-debug"
-INDEX_LIST = false unless defined?(INDEX_LIST)
+
 
 
 module Shelver
@@ -14,6 +14,7 @@ class Shelver
   # This method initializes the indexer
   #
   def initialize()
+    @@index_list = false unless defined?(@@index_list)
     @indexer = Indexer.new
   end
 
@@ -29,6 +30,8 @@ class Shelver
                  indexer.index( obj )
                  p "Successfully indexed object #{obj.pid}."
           end
+      rescue
+        
   
   end
   
@@ -39,31 +42,32 @@ class Shelver
   def shelve_objects
     # retrieve a list of all the pids in the fedora repository
     num_docs = 1000000   # modify this number to guarantee that all the objects are retrieved from the repository
-    puts "WARNING: You have turned off indexing of Full Text content.  Be sure to re-run indexer with INDEX_FULL_TEXT set to true in main.rb" if INDEX_FULL_TEXT == false
+    puts "WARNING: You have turned off indexing of Full Text content.  Be sure to re-run indexer with @@index_full_text set to true in main.rb" if @@index_full_text == false
 
-    if INDEX_LIST == false
+    if @@index_list == false
      
        pids = Repository.get_pids( num_docs )
-	 puts "Shelving #{pids.length} Fedora objects"
+	     puts "Shelving #{pids.length} Fedora objects"
        pids.each do |pid|
+         unless pid[0].empty? || pid[0].nil?
           shelve_object( pid )
+          end
         end #pids.each
      
     else
     
-       if File.exists?(INDEX_LIST)
-          arr_of_pids = FasterCSV.read(INDEX_LIST, :headers=>false)
+       if File.exists?(@@index_list)
+          arr_of_pids = FasterCSV.read(@@index_list, :headers=>false)
           
-          puts "Indexing from list at #{INDEX_LIST}"
-           puts "Shelving #{arr_of_pids.length} Fedora objects"
-          
+          puts "Indexing from list at #{@@index_list}"
+          puts "Shelving #{arr_of_pids.length} Fedora objects"
           
          arr_of_pids.each do |row|
             pid = row[0]
             shelve_object( pid )
           end #FASTERCSV
         else
-          puts "#{INDEX_LIST} does not exists!"
+          puts "#{@@index_list} does not exists!"
         end #if File.exists
      
     end #if Index_LISTS
