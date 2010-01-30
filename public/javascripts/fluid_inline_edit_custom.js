@@ -45,6 +45,15 @@ jQuery(document).ready(function () {
         },
         defaultViewText: "click to edit"
     });
+    
+    var datePickers = setupDatePickers($(".editable_date_picker"), {
+      blurHandlerBinder : fluid.inlineEdit.datePicker.blurHandlerBinder,
+      submitOnEnter : true,
+      listeners : {
+        onFinishEdit : myFinishEditListener
+      },
+    });
+    
 });
 
 /**
@@ -108,6 +117,7 @@ function insertValue(fieldName) {
   });
   newVal.edit();
 }
+
 
 /***
  * Inserting and removing rich inline edits
@@ -186,3 +196,15 @@ function saveEdit(field,value) {
     }
   });
 }
+
+
+/**
+ * Creates a whole list of Date Picker editors.
+ */
+var setupDatePickers = function (editables, options) {
+    var editors = [];
+    editables.each(function (idx, editable) {
+        editors.push(fluid.inlineEdit.datePicker($(editable), options));
+    });
+    return editors;
+};

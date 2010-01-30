@@ -307,7 +307,7 @@ input.flc-inlineEdit-edit {
   padding : 2px;
 }
 
-li.editable, li.editable_textarea {
+li.editable, li.editable_textarea, li.editable_date_picker {
   list-style-type: none;
   clear:right;
 }
