@@ -311,6 +311,7 @@ fluid_1_1 = fluid_1_1 || {};
         editModeRenderer: fluid.inlineEdit.dropdown.editModeRenderer
     });
     
+    
     // Configuration for integrating a datepicker editor
 
     /**
