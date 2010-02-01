@@ -1,1 +1,1 @@
-<li><%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]), :length => 20, :omission => "...")) -%></li>
+<li><%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]).to_s, :length => 20, :omission => "...")) -%></li>
