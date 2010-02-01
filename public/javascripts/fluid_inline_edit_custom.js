@@ -22,11 +22,12 @@ jQuery(document).ready(function () {
           text : ".editableText",
           editables : "li.editable"
         }, 
-        // componentDecorators: {
-        //   type: "fluid.undoDecorator" 
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
         }
     });
     
@@ -37,11 +38,12 @@ jQuery(document).ready(function () {
           BasePath: "/javascripts/fckeditor/", 
           ToolbarSet: "Basic"
         },
-        // componentDecorators: {
-        //     type: "fluid.undoDecorator"
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
         },
         defaultViewText: "click to edit"
     });
@@ -49,9 +51,13 @@ jQuery(document).ready(function () {
     var datePickers = setupDatePickers($(".editable_date_picker"), {
       blurHandlerBinder : fluid.inlineEdit.datePicker.blurHandlerBinder,
       submitOnEnter : true,
-      listeners : {
-        onFinishEdit : myFinishEditListener
+      componentDecorators: {
+        type: "fluid.undoDecorator" 
       },
+      listeners : {
+        onFinishEdit : myFinishEditListener,
+        modelChanged : myModelChangedListener
+      }
     });
     
 });
@@ -108,11 +114,12 @@ function insertValue(fieldName) {
   div.appendTo("#document_"+fieldName+"_values"); 
   //return false;
   var newVal = fluid.inlineEdit("#"+unique_id, {
-    // componentDecorators: {
-    //   type: "fluid.undoDecorator" 
-    // },
+    componentDecorators: {
+      type: "fluid.undoDecorator" 
+    },
     listeners : {
-      onFinishEdit : myFinishEditListener
+      onFinishEdit : myFinishEditListener,
+      modelChanged : myModelChangedListener
     }
   });
   newVal.edit();
@@ -142,11 +149,12 @@ function insertValue(fieldName) {
           BasePath: "/javascripts/fckeditor/", 
           ToolbarSet: "Basic"
         },
-        // componentDecorators: {
-        //     type: "fluid.undoDecorator"
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
         },
         defaultViewText: "click to edit"
     })
@@ -195,6 +203,19 @@ function saveEdit(field,value) {
        });
     }
   });
+}
+
+
+/***
+ * Handler for ensuring that the undo decorator's actions will be submitted to the app.
+ */
+
+function myModelChangedListener(model, oldModel, source) {
+  // this was a really hacky way of checking if the model is being changed by the undo decorator
+  if (source && source.options.selectors.undoControl) {  
+    var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
+  }
+  return result;
 }
 
 
