@@ -16,7 +16,7 @@
   <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
 <div class="document_viewer" id="cover_container">
-  <%= render :partial => "documents/viewer" , :locals => {:doc => document}%>
+  <%= render :partial => "documents/viewer" , :locals => {:document => document}%>
   <dl>
   <%= get_data_with_label(document, "ID:", 'id') %>
   </dl>

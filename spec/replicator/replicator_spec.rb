@@ -44,6 +44,7 @@ describe Shelver::Replicator do
   
   describe "replicate_object" do
     it "should load Document from source repo and call create_stub, passing in the loaded Document" do
+      pending
       mock_document =  mock("Document")
       mock_document.stubs(:pid)
       mock_document.stubs(:label)
@@ -64,6 +65,7 @@ describe Shelver::Replicator do
   
   describe "create_stub" do
     it "should create a new fedora object with copies of the necessary source document datastreams (descMetadata[X], properties[X], extProperties[E]) and stick in a placeholder for the canonical JP2" do 
+      pending
       stub_object = mock("stub object")
       Fedora::FedoraObject.expects(:new).with(:pid=>@sample_object.pid).returns(stub_object)
       @replicator.dest_repo.expects(:save).with(stub_object)
