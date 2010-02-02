@@ -11,9 +11,9 @@ development:
     url: http://localhost:8080/solr
 test: &TEST  
   fedora:
-    url: http://fedoraAdmin:fedoraAdmin@salt-dev.stanford.edu:8080/fedora
+    url: http://fedoraAdmin:fedoraAdmin@localhost:8080/fedora
   solr:
-    url: http://salt-dev.stanford.edu:8080/solr
+    url: http://localhost:8080/solr
 production:
   fedora:
     url: http://fedoraAdmin:fedoraAdmin@salt-prod.stanford.edu:8080/fedora

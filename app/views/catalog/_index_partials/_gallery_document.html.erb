@@ -1,4 +1,5 @@
 <div class="document thumbnail">
+  <%#= hydra_djatoka_url_for(document, :scale=>"100,125") %>
   <%= link_to_document(document, :label => image_tag('default_thumbnail.gif'), :counter => (counter + 1 + @response.params[:start].to_i)) %>
   <% if document.get(Blacklight.config[:show][:heading]) %>
     <%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]), :length => 20, :omission => "..."), :counter => (counter + 1 + @response.params[:start].to_i)) -%>

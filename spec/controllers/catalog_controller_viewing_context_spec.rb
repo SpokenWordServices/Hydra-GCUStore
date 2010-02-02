@@ -43,7 +43,7 @@ describe CatalogController do
       request.env["WEBAUTH_USER"]="Mrs. Quang"
       get :edit, :id=>"druid:fs442rd9742"
       response.should redirect_to(:action => 'show')
-      flash[:message].should == "You do not have sufficient privileges to edit this document."
+      flash[:notice].should == "You do not have sufficient privileges to edit this document. You have been redirected to the read-only view."
     end
     it "should render normally if user has edit permissions" do
       request.env["WEBAUTH_USER"]="alice"
