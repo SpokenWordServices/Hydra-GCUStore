@@ -15,6 +15,7 @@ class Shelver
   #
   def initialize()
     @@index_list = false unless defined?(@@index_list)
+    @@index_full_text = ""
     @indexer = Indexer.new
   end
 
