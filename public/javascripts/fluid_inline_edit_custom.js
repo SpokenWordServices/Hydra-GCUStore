@@ -214,8 +214,8 @@ function myModelChangedListener(model, oldModel, source) {
   // this was a really hacky way of checking if the model is being changed by the undo decorator
   if (source && source.options.selectors.undoControl) {  
     var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
+    return result;
   }
-  return result;
 }
 
 
