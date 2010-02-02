@@ -146,7 +146,8 @@ Blacklight.configure(:shared) do |config|
       "date_t",
       "medium_t",
       "location_t",
-      "rights_t"
+      "rights_t",
+      "access_t"
     ],
     :labels => {
       "text" => "Text:",
@@ -154,7 +155,8 @@ Blacklight.configure(:shared) do |config|
       "date_t" => "Date:",
       "medium_t" => "Document Type:",
       "location_t" => "Location:",
-      "rights_t"  => "Copyright:"
+      "rights_t"  => "Copyright:",
+      "access_t" => "Access:"
     }
   }
 

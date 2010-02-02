@@ -76,7 +76,7 @@ class CatalogController
     end
   end
   def enforce_read_permissions
-    unless @document['access_t'] && @document['access_t'] == "public"
+    unless @document['access_t'] && (@document['access_t'].first == "public" || @document['access_t'].first == "Public")
     # case @document['access_t'].first
     # when /private/
       unless reader?
