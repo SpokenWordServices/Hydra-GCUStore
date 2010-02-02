@@ -2,8 +2,10 @@ module HydraDjatokaHelper
   
   def hydra_djatoka_url_for(document, opts={})
     
-    if document.kind_of?(Mash)
-      pid = document.get(:id)
+    if document.kind_of?(SolrDocument) 
+      pid = document.id
+    elsif document.kind_of?(Mash)
+      pid = document[:id]
     elsif document.respond_to?(:pid)
       pid = document.pid
     end
