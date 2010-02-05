@@ -189,5 +189,8 @@ Blacklight.configure(:shared) do |config|
   # If there are more than this many search results, no spelling ("did you 
   # mean") suggestion is offered.
   config[:spell_max] = 5
+  
+  # number of facets to show before adding a more link
+  config[:facet_more_num] = 5
 end
 
