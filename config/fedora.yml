@@ -3,15 +3,14 @@ staging:
     url: http://fedoraAdmin:fedoraAdmin@salt-dev.stanford.edu:8080/fedora
   solr:
     url: http://salt-prod.stanford.edu:8080/solr
-
 development:
   fedora:
-    url: http://fedoraAdmin:fedoraAdmin@localhost:8080/fedora
+    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
   solr:
     url: http://localhost:8080/solr
 test: &TEST  
   fedora:
-    url: http://fedoraAdmin:fedoraAdmin@localhost:8080/fedora
+    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora
   solr:
     url: http://localhost:8080/solr
 production:
