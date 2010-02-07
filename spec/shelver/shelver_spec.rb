@@ -24,7 +24,7 @@ describe Shelver::Shelver do
       mock_object.stubs(:label)
       mock_object.stubs(:datastreams).returns({'descMetadata'=>"foo","location"=>"bar"})
 
-      ActiveFedora::Base.expects(:load_instance).with( "_PID_" ).returns(mock_object)
+      Document.expects(:load_instance).with( "_PID_" ).returns(mock_object)
       @shelver.indexer.expects(:index).with(mock_object)
       @shelver.shelve_object("_PID_")
     end
