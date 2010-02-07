@@ -74,7 +74,7 @@ module MetadataHelper
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
       result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
-      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this,\"#{field_name}\", \"#{z}\")", :class=>'destructive') unless z == 0
+      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this)", :class=>'destructive') unless z == 0
       result << "<span class=\"editableText\">#{field_value}</span>"
       result << "</li>"
     end
@@ -102,7 +102,7 @@ module MetadataHelper
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
       result << "<li id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
-      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this,\"#{field_name}\", \"#{z}\")", :class=>'destructive') unless z == 0
+      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this)", :class=>'destructive') unless z == 0
       result << "<div class=\"flc-inlineEdit-text\">#{field_value}</div>"
       result << "<div class=\"flc-inlineEdit-editContainer\">"
       result << "      <textarea></textarea>"

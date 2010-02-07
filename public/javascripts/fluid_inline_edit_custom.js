@@ -28,7 +28,8 @@ jQuery(document).ready(function () {
         listeners : {
           onFinishEdit : myFinishEditListener,
           modelChanged : myModelChangedListener
-        }
+        },
+        defaultViewText: "click to edit"
     });
     
 
@@ -110,7 +111,7 @@ var makeAllButtons = function (editors) {
 function insertValue(fieldName) {
   var d = new Date(); // get milliseconds for unique identfier
   var unique_id = "document_" + fieldName + "_" + d.getTime();
-  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
   div.appendTo("#document_"+fieldName+"_values"); 
   //return false;
   var newVal = fluid.inlineEdit("#"+unique_id, {
@@ -139,7 +140,7 @@ function insertValue(fieldName) {
    //     <textarea></textarea>
    //     <button class="save">Save</button> <button class="cancel">Cancel</button>
    // </div>
-   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
+   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
    div.appendTo("#document_"+fieldName+"_values"); 
    //return false;
 
