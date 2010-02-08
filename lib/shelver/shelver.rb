@@ -26,15 +26,15 @@ class Shelver
     # retrieve the Fedora object based on the given unique id
       
       start = Time.now
-      p "Retrieving object #{obj} ."
+      print "Retrieving object #{obj} ..."
       obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
         
           obj_done = Time.now
           obj_done_elapse = obj_done - start
-          p "Object retrival completed. Duration: #{obj_done_elapse}"
+          puts  " completed. Duration: #{obj_done_elapse}"
           
           unless obj.datastreams['descMetadata'].nil? || obj.datastreams['location'].nil?
-                 p "Indexing object #{obj.pid} . "
+                 print "\t Indexing object #{obj.pid} ... "
                  # add the keywords and facets to the search index
                  index_start = Time.now
                  indexer.index( obj )
@@ -42,7 +42,7 @@ class Shelver
                  index_done = Time.now
                  index_elapsed = index_done - index_start
                  
-                  p "Successfully indexed object #{obj.pid} . Duration:  #{index_elapsed} ."
+                  puts "completed. Duration:  #{index_elapsed} ."
           end
       rescue
         
