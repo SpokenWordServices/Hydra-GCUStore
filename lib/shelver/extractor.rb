@@ -225,6 +225,25 @@ class Extractor
     return solr_doc
   end
   
+  #
+  # This method strips html tags out and returns content to be indexed in solr
+  #
+  def html_content_to_solr( text, solr_doc=Solr::Document.new )
+    
+    doc = Nokogiri::HTML(text.content)
+    text_nodes = doc.xpath("//text()")
+    text = String.new
+    
+     text_nodes.each do |text_node|
+       text << text_node.content
+     end
+    
+     solr_doc << Solr::Field.new(:story_t => text)
+     
+     return solr_doc
+  end
+  
+  
   # Returns the title for a folder given a series, box and folder
   # Appends the folder number to the title for easy sorting
   def ead_folder_title(series, box, folder, ead_description=@descriptor) 
