@@ -384,7 +384,7 @@
         ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
      </str>
      <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
+        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,access_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
@@ -417,7 +417,7 @@
         ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
      </str>
      <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
+        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,access_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
@@ -482,8 +482,8 @@
       
       <str name="facet">on</str>
 			<str name="facet.mincount">1</str>
-			<str name="facet.limit">10</str>
-
+      <!-- <str name="facet.limit">10</str> -->
+      <str name="facet.field">access_t</str>
       <str name="facet.field">collection_facet</str>
       <str name="facet.field">technology_facet</str>
       <str name="facet.field">person_facet</str>
@@ -522,7 +522,7 @@
         ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
      </str>
      <str name="fl">
-        id,text,title_facet,date_t,medium_t,location_t
+        id,text,title_facet,date_t,medium_t,location_t,access_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%

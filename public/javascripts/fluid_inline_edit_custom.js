@@ -22,12 +22,14 @@ jQuery(document).ready(function () {
           text : ".editableText",
           editables : "li.editable"
         }, 
-        // componentDecorators: {
-        //   type: "fluid.undoDecorator" 
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
-        }
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
+        },
+        defaultViewText: "click to edit"
     });
     
 
@@ -37,14 +39,28 @@ jQuery(document).ready(function () {
           BasePath: "/javascripts/fckeditor/", 
           ToolbarSet: "Basic"
         },
-        // componentDecorators: {
-        //     type: "fluid.undoDecorator"
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
         },
         defaultViewText: "click to edit"
     });
+    
+    var datePickers = setupDatePickers($(".editable_date_picker"), {
+      blurHandlerBinder : fluid.inlineEdit.datePicker.blurHandlerBinder,
+      submitOnEnter : true,
+      componentDecorators: {
+        type: "fluid.undoDecorator" 
+      },
+      listeners : {
+        onFinishEdit : myFinishEditListener,
+        modelChanged : myModelChangedListener
+      }
+    });
+    
 });
 
 /**
@@ -95,19 +111,21 @@ var makeAllButtons = function (editors) {
 function insertValue(fieldName) {
   var d = new Date(); // get milliseconds for unique identfier
   var unique_id = "document_" + fieldName + "_" + d.getTime();
-  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
   div.appendTo("#document_"+fieldName+"_values"); 
   //return false;
   var newVal = fluid.inlineEdit("#"+unique_id, {
-    // componentDecorators: {
-    //   type: "fluid.undoDecorator" 
-    // },
+    componentDecorators: {
+      type: "fluid.undoDecorator" 
+    },
     listeners : {
-      onFinishEdit : myFinishEditListener
+      onFinishEdit : myFinishEditListener,
+      modelChanged : myModelChangedListener
     }
   });
   newVal.edit();
 }
+
 
 /***
  * Inserting and removing rich inline edits
@@ -122,7 +140,7 @@ function insertValue(fieldName) {
    //     <textarea></textarea>
    //     <button class="save">Save</button> <button class="cancel">Cancel</button>
    // </div>
-   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeValue($(this).parent());" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
+   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
    div.appendTo("#document_"+fieldName+"_values"); 
    //return false;
 
@@ -132,11 +150,12 @@ function insertValue(fieldName) {
           BasePath: "/javascripts/fckeditor/", 
           ToolbarSet: "Basic"
         },
-        // componentDecorators: {
-        //     type: "fluid.undoDecorator"
-        // },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
         listeners : {
-          onFinishEdit : myFinishEditListener
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
         },
         defaultViewText: "click to edit"
     })
@@ -186,3 +205,28 @@ function saveEdit(field,value) {
     }
   });
 }
+
+
+/***
+ * Handler for ensuring that the undo decorator's actions will be submitted to the app.
+ */
+
+function myModelChangedListener(model, oldModel, source) {
+  // this was a really hacky way of checking if the model is being changed by the undo decorator
+  if (source && source.options.selectors.undoControl) {  
+    var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
+    return result;
+  }
+}
+
+
+/**
+ * Creates a whole list of Date Picker editors.
+ */
+var setupDatePickers = function (editables, options) {
+    var editors = [];
+    editables.each(function (idx, editable) {
+        editors.push(fluid.inlineEdit.datePicker($(editable), options));
+    });
+    return editors;
+};

@@ -71,7 +71,7 @@ describe DownloadsController do
     
     it "should default to returning only pdfs" do
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      xhr :get, :index, :document_id=>"_PID_"
+      xhr :get, :index, :document_id=>"_PID_", :wau=>"nobody"
       assigns(:datastreams).should == {"mock_pdf" => @mock_pdf}
     end
 

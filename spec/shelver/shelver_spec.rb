@@ -8,18 +8,23 @@ describe Shelver::Shelver do
   
   describe "shelve_object" do
     it "should trigger the indexer for the provided object" do
-      sample_obj = ActiveFedora::Base.new
-      #mock_obj = mock("ActiveFedora Object")
-      #mock_obj.expects(:kind_of?).with(ActiveFedora::Base).returns(true)
+      # sample_obj = ActiveFedora::Base.new
+      mock_object = mock("my object")
+      mock_object.expects(:kind_of?).with(ActiveFedora::Base).returns(true)
+      mock_object.stubs(:pid)
+      mock_object.stubs(:label)
+      mock_object.stubs(:datastreams).returns({'descMetadata'=>"foo","location"=>"bar"})
       ActiveFedora::Base.expects(:load_instance).never
-      @shelver.indexer.expects(:index).with( sample_obj )
-      @shelver.shelve_object( sample_obj )
+      @shelver.indexer.expects(:index).with( mock_object )
+      @shelver.shelve_object( mock_object )
     end
-    it "should load the object if only a pid is provided" do
+    it "should still load the object if only a pid is provided" do
       mock_object = mock("my object")
       mock_object.stubs(:pid)
       mock_object.stubs(:label)
-      ActiveFedora::Base.expects(:load_instance).with( "_PID_" ).returns(mock_object)
+      mock_object.stubs(:datastreams).returns({'descMetadata'=>"foo","location"=>"bar"})
+
+      Document.expects(:load_instance).with( "_PID_" ).returns(mock_object)
       @shelver.indexer.expects(:index).with(mock_object)
       @shelver.shelve_object("_PID_")
     end
@@ -27,7 +32,7 @@ describe Shelver::Shelver do
   
   describe "shelve_objects" do
     it "should call shelve_object for each pid returned by solr" do
-      pids = ["pid1", "pid2", "pid3"]
+      pids = [["pid1"], ["pid2"], ["pid3"]]
       Shelver::Repository.expects(:get_pids).returns(pids)
       pids.each {|pid| @shelver.expects(:shelve_object).with( pid ) }
       @shelver.shelve_objects

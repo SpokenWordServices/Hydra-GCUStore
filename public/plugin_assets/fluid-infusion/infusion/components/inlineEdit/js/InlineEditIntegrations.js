@@ -312,6 +312,33 @@ fluid_1_1 = fluid_1_1 || {};
     });
     
     
+    // Configuration for integrating a datepicker editor
+
+    /**
+     * Instantiate a date picker InlineEdit component
+     * 
+     * @param {Object} container
+     * @param {Object} options
+     */
+    fluid.inlineEdit.datePicker = function (container, options) {
+        return configureInlineEdit("fluid.inlineEdit.datePicker", container, options);
+    };
+
+    fluid.inlineEdit.datePicker.blurHandlerBinder = function (that) {
+        fluid.deadMansBlur(that.editField,
+                           $("#fd-document_date_value_input","#fd-document_date_value_input *",".date-picker",".date-picker *",".date-picker-control","#fd-but-document_date_value_input",".datePickerTable",".fd-document_date_value_input", that.editContainer),
+                           function () {
+                               that.finish();
+                           });
+    };
+
+    fluid.defaults("fluid.inlineEdit.datePicker", {
+        applyEditPadding: true,
+        blurHandlerBinder: fluid.inlineEdit.datePicker.blurHandlerBinder,
+        editModeRenderer: fluid.inlineEdit.editModeRenderer
+    });
+    
+    
 })(jQuery, fluid_1_1);
 
 

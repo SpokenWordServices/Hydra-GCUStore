@@ -74,8 +74,7 @@ module MetadataHelper
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
       result << "<li class=\"editable\" id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\">"
-      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this,\"#{field_name}\", \"#{z}\")", :class=>'destructive') 
-      # result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
+      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this)", :class=>'destructive') unless z == 0
       result << "<span class=\"editableText\">#{field_value}</span>"
       result << "</li>"
     end
@@ -103,7 +102,7 @@ module MetadataHelper
     vlist = get_values_from_datastream(resource, datastream_name, field_name, opts)
     vlist.each_with_index do |field_value,z|
       result << "<li id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_textarea\">"
-      result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
+      result << link_to_function(image_tag("delete.png") , "removeFieldValue(this)", :class=>'destructive') unless z == 0
       result << "<div class=\"flc-inlineEdit-text\">#{field_value}</div>"
       result << "<div class=\"flc-inlineEdit-editContainer\">"
       result << "      <textarea></textarea>"
@@ -163,11 +162,11 @@ module MetadataHelper
     opts[:default] ||= ""
     field_value = get_values_from_datastream(resource, datastream_name, field_name, opts).first
     # result << "<li class=\"date_picker\" id=\"#{resource_type}_#{field_name}\" name=\"#{resource_type}[#{field_name}][0]\"><span class=\"editableText\">#{field_value}</span></li>"
-    result << "<li id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable\">"
-    result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
+    result << "<li id=\"#{resource_type}_#{field_name}_#{z}\" name=\"#{resource_type}[#{field_name}][#{z}]\"  class=\"editable_date_picker\">"
+    # result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
     result << "<div class=\"flc-inlineEdit-text editableText\">#{field_value}</div>"
     result << "<div class=\"flc-inlineEdit-editContainer\">"
-    result << "      <input type=\"text\" class=\"date_picker w16em flc-inlineEdit-edit\" id=\"#{resource_type}_#{field_name}_value_input\" value=\"#{field_value}\"></input>"
+    result << "      <input type=\"text\" class=\"date_picker w16em flc-inlineEdit-edit\" id=\"#{resource_type}_#{field_name}_#{z}_value_input\" value=\"#{field_value}\"></input>"
     result << "</div>"
     result << "</li>"
     #result << "<input type=\"text\" class=\"date_picker w16em\" id=\"#{resource_type}_#{field_name}_value\" name=\"#{resource_type}[#{field_name}][0]\" value=\"#{field_value}\"></input>"

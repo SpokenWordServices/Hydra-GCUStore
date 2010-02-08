@@ -54,7 +54,7 @@ describe GetController do
     it "should return canonical jpeg2000 as response to .jp2 requests" do
       result_object = mock("result_object")
       ActiveFedora::Base.expects(:load_instance).returns(result_object)
-      mock_ds = mock("jp2 datastream", :label=>"first.jp2", :content=>"jp2 content", :attributes=>{"mimeType"=>"image/jp2"})
+      mock_ds = mock("jp2 datastream", :label=>"first.jp2", :content=>"jp2 content", :url=>"jp2_url", :attributes=>{"mimeType"=>"image/jp2"})
       
       controller.expects(:downloadables).with(result_object, :canonical=>true, :mime_type=>"image/jp2").returns(mock_ds)
       controller.expects(:send_data).with("jp2 content", :filename=>"first.jp2", :type => "image/jp2") #.returns("foo")
@@ -76,7 +76,7 @@ describe GetController do
       mock_ds = mock("jp2 datastream", :url=>"mock_jp2_url")
       
       controller.expects(:downloadables).with(result_object, :canonical=>true, :mime_type=>"image/jp2").returns(mock_ds)
-      Djatoka.expects(:scale).with("mock_jp2_url", "96").returns("djatoka result")
+      Djatoka.expects(:scale).with("mock_jp2_url/content", "96").returns("djatoka result")
       controller.expects(:send_data).with( "djatoka result", :type=>"image/jpeg" )
       get :show, :id=>"_PID_", :format=>"jp2", :image_server=>{:scale=>"96"}
     end

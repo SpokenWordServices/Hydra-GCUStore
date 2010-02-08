@@ -6,4 +6,5 @@ nohup.out
 *~
 *.swp
 
-tmp/**/* 
+tmp/**/*
+tmp/performance 
