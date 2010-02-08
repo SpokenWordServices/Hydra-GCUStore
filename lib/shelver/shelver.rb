@@ -42,7 +42,7 @@ class Shelver
                  index_done = Time.now
                  index_elapsed = index_done - index_start
                  
-                  p "Successfully indexed object #{obj.pid} . Duration:  #{index_elapsed} ."s
+                  p "Successfully indexed object #{obj.pid} . Duration:  #{index_elapsed} ."
           end
       rescue
         
