@@ -13,7 +13,7 @@
       <dl class="defList fl-theme-mist">
       <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:", :type=>:date_picker) %>  
       <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Document Type:", :type=>:select, :choices=>{"Paper Document"=>"Paper Document","Correspondence"=>"Correspondence","Instructional material"=>"Instructional material","Paper"=>"Paper","Proposal"=>"Proposal","Reprint"=>"Reprint"}) %>
-      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :type=>:select, :choices=>{"Public" => "public","Authorized" => "authorized", "Private" => "private"}) %>
+      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :default=>"private", :type=>:select, :choices=>{"Public" => "public","Authorized" => "authorized", "Private" => "private"}) %>
       </dl>
     </div>
     <div style="float:left; width:250px;">
