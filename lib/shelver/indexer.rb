@@ -24,7 +24,13 @@ class Indexer
   def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
     @extractor = Extractor.new
-    @index_full_text = false unless opts[:index_full_text] == true
+    
+    if opts[:index_full_text] == true || opts[:index_full_text] == "true"
+      @index_full_text = true 
+    else
+      @index_full_text = false 
+    end
+    
     connect
   end
 
@@ -217,7 +223,9 @@ class Indexer
       
       solr_doc = create_document( obj )
       connection.add( solr_doc )
-      #puts solr_doc
+ 
+     # puts connection.url
+     #puts solr_doc
      #  puts "done"
    
     rescue Exception => e

@@ -91,7 +91,7 @@ class Shelver
          arr_of_pids.each do |row|
             pid = row[0]
             shelve_object( pid )
-          end #FASTERCSV
+	 end #FASTERCSV
         else
           puts "#{@@index_list} does not exists!"
         end #if File.exists
