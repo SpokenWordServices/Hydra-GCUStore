@@ -8,15 +8,16 @@ require "ruby-debug"
 module Shelver
 class Shelver
 
-  attr_accessor :indexer
+  attr_accessor :indexer, :index_full_text
 
   #
   # This method initializes the indexer
+  # If passed an argument of :index_full_text=>true, it will perform full-text indexing instead of indexing fields only.
   #
-  def initialize()
+  def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
-    @@index_full_text = false unless defined?(@@index_full_text)
-    @indexer = Indexer.new
+    @index_full_text = false unless opts[:index_full_text] == true
+    @indexer = Indexer.new( :index_full_text=>@index_full_text )
   end
 
   #
@@ -56,7 +57,7 @@ class Shelver
   def shelve_objects
     # retrieve a list of all the pids in the fedora repository
     num_docs = 1000000   # modify this number to guarantee that all the objects are retrieved from the repository
-    puts "WARNING: You have turned off indexing of Full Text content.  Be sure to re-run indexer with @@index_full_text set to true in main.rb" if @@index_full_text == false
+    puts "WARNING: You have turned off indexing of Full Text content.  Be sure to re-run indexer with @@index_full_text set to true in main.rb" if index_full_text == false
 
     if @@index_list == false
      
