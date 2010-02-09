@@ -16,7 +16,11 @@ class Shelver
   #
   def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
-    @index_full_text = false unless opts[:index_full_text] == true
+    if opts[:index_full_text] == true || opts[:index_full_text] == "true"
+      @index_full_text = true 
+    else
+      @index_full_text = false 
+    end
     @indexer = Indexer.new( :index_full_text=>@index_full_text )
   end
 
