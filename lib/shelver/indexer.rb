@@ -147,7 +147,7 @@ class Indexer
 
     # extract full-text
     keywords = String.new
-    if @@index_full_text
+    if @index_full_text
       full_text_ds_names.each do |full_text_ds_name|
         keywords += extract_full_text( obj, full_text_ds_name )
       end
@@ -187,7 +187,7 @@ class Indexer
     
     #Pass the solr_doc through extract_stories_to_solr
     #needs work
-    #  stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
+      stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
 
     #
     #  Temporary hack to randomly create private and public documents
