@@ -188,7 +188,8 @@ class Indexer
 
     
     #Pass the solr_doc through extract_stories_to_solr
-      stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
+    #needs work
+    #  stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
 
     #
     #  Temporary hack to randomly create private and public documents
