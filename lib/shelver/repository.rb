@@ -43,7 +43,11 @@ class Repository
   # This method retrieves the datastream for the given object with the given datastream name
   #
   def self.get_datastream( obj, ds_name )
-    obj.datastreams[ ds_name ]
+    begin
+      obj.datastreams[ ds_name ]
+    rescue
+      return nil
+    end
   end
 
 end

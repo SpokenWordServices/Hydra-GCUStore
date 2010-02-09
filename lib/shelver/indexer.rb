@@ -23,6 +23,7 @@ class Indexer
   #
   def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
+     @@index_full_text = false unless defined?(@@index_full_text)
     @extractor = Extractor.new
     @index_full_text = false unless opts[:index_full_text] == true
     connect
@@ -37,7 +38,6 @@ class Indexer
      
       url = Blacklight.solr_config['fulltext']['url']
     else
-       puts "here!"
       url = Blacklight.solr_config['default']['url']
     end
     @connection = Solr::Connection.new(url, :autocommit => :on )
@@ -95,11 +95,13 @@ class Indexer
   def extract_stories_to_solr( obj, ds_name, solr_doc=Solr::Document.new )
     
      story_ds = Repository.get_datastream( obj, ds_name )
-    
-     # html to display
-     solr_doc << Solr::Field.new(:story_display => story_ds.content)
-     # content to seach
-     extractor.html_content_to_solr( story_ds, solr_doc )
+     
+     unless story_ds.new_object?
+       # html to display
+       solr_doc << Solr::Field.new(:story_display => story_ds.content)
+       # content to seach
+       extractor.html_content_to_solr( story_ds, solr_doc )
+     end
      
    end
   
@@ -180,12 +182,14 @@ class Indexer
     
     #facets.each { |key, value| solr_doc << Solr::Field.new( :"#{key}_facet" => "#{value}" ) }
     
-    # Pass the solr_doc through extract_simple_xml_to_solr
-    xml_ds_names.each { |ds_name| extract_xml_to_solr(obj, ds_name, solr_doc)}
+    # Pass the solr_doc through extract_simple_xml_to_solr   
+      xml_ds_names.each { |ds_name| extract_xml_to_solr(obj, ds_name, solr_doc)}
+
     
     #Pass the solr_doc through extract_stories_to_solr
-    stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
-      
+    #needs work
+    #  stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
+
     #
     #  Temporary hack to randomly create private and public documents
     #            
@@ -210,11 +214,17 @@ class Indexer
   #
   def index( obj )
    # print "Indexing '#{obj.pid}'..."
+    begin
+      
+      solr_doc = create_document( obj )
+      connection.add( solr_doc )
+      #puts solr_doc
+     #  puts "done"
    
-    solr_doc = create_document( obj )
-    connection.add( solr_doc )
-
-   #  puts "done"
+    rescue Exception => e
+       p "unable to index #{obj.pid}.  Failed with #{e.inspect}"
+    end
+   
   end
 
   #
