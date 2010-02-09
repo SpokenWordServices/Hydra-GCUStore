@@ -24,7 +24,7 @@ class Indexer
   #
   def initialize()
  
-    @@index_full_text = false unless defined?(@@index_full_text)
+    @@index_list = false unless defined?(@@index_list)
     @extractor = Extractor.new
     connect
   end
@@ -33,11 +33,12 @@ class Indexer
   # This method connects to the Solr instance
   #
   def connect
-
-    if @@index_full_text
+     
+    if @@index_full_text == true
      
       url = Blacklight.solr_config['fulltext']['url']
     else
+       puts "here!"
       url = Blacklight.solr_config['default']['url']
     end
     @connection = Solr::Connection.new(url, :autocommit => :on )
@@ -75,7 +76,7 @@ class Indexer
   def extract_location_data(obj, ds_name)
     location_ds = Repository.get_datastream(obj, ds_name)
     unless location_ds.nil?
-	extractor.extract_location(location_ds.content)
+	    extractor.extract_location(location_ds.content)
     end
   end
 
@@ -86,6 +87,23 @@ class Indexer
     xml_ds = Repository.get_datastream( obj, ds_name )
     extractor.xml_to_solr( xml_ds.content, solr_doc )
   end
+  
+  #
+  # This method extracts content from stories dstream and puts it into a story_t field
+  # The entire html output it placed into the story_display field
+  #
+  
+  def extract_stories_to_solr( obj, ds_name, solr_doc=Solr::Document.new )
+    
+     story_ds = Repository.get_datastream( obj, ds_name )
+    
+     # html to display
+     solr_doc << Solr::Field.new(:story_display => story_ds.content)
+     # content to seach
+     extractor.html_content_to_solr( story_ds, solr_doc )
+     
+   end
+  
   
   def extract_tags(obj, ds_name)
     tags_ds =  Repository.get_datastream( obj, ds_name )
@@ -102,10 +120,10 @@ class Indexer
   # This method creates a Solr-formatted XML document
   #
   def create_document( obj )
-
+    
     # retrieve a comprehensive list of all the datastreams associated with the given
     #   object and categorize each datastream based on its filename
-    ext_properties_ds_names, location_ds_names, properties_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names,  = [],[],[],[],[],[] 
+    ext_properties_ds_names, location_ds_names, properties_ds_names, stories_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names,  = [],[],[],[],[],[],[] 
     ds_names = Repository.get_datastreams( obj )
     
     ds_names.each do |ds_name|
@@ -120,6 +138,8 @@ class Indexer
       elsif ds_name =~ /^properties/
         properties_ds_names << ds_name
         xml_ds_names << ds_name
+      elsif ds_name =~ /stories/
+        stories_ds_names << ds_name
       elsif ds_name =~ /.*.jp2$/
         jp2_ds_names << ds_name
       end
@@ -140,6 +160,8 @@ class Indexer
     location_data = extract_location_data(obj, location_ds_names[0] )
     tags = extract_tags(obj, properties_ds_names[0])
     
+    # extract stories content sans html and put into story_t field. stories content with html is placed into story_display 
+    
     
     # Merge the location_data and tag hashes back into the ext_properties hash
     (ext_properties[:facets] ||={}).merge!(location_data[:facets]) unless location_data.nil?
@@ -150,7 +172,7 @@ class Indexer
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )
     solr_doc << Solr::Field.new( :text => "#{keywords}" )
     Indexer.solrize(ext_properties, solr_doc)
-    
+   
     # Uncomment these lines if you want to extract jp2 info, including the URL of the cononical jp2 datastream
     # if !jp2_ds_names.empty?
     #   jp2_properties = extract_jp2_info_from_names_array( obj, jp2_ds_names )
@@ -161,10 +183,12 @@ class Indexer
     
     # Pass the solr_doc through extract_simple_xml_to_solr
     xml_ds_names.each { |ds_name| extract_xml_to_solr(obj, ds_name, solr_doc)}
+    
+    #Pass the solr_doc through extract_stories_to_solr
+    stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
       
-
     #
-    #      Temporart hack to randomly create private and public documents
+    #  Temporary hack to randomly create private and public documents
     #            
     
       i = rand(2)
@@ -186,10 +210,12 @@ class Indexer
   # This method adds a document to the Solr search index
   #
   def index( obj )
-    print "Indexing '#{obj.pid}'..."
+   # print "Indexing '#{obj.pid}'..."
+   
     solr_doc = create_document( obj )
     connection.add( solr_doc )
-    puts "done"
+
+   #  puts "done"
   end
 
   #
