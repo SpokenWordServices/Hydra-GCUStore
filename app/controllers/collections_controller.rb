@@ -46,6 +46,10 @@ class CollectionsController < CatalogController
   
   private
   
+  # override this method to do nothing in this controller
+  def enforce_viewing_context_for_show_requests    
+  end
+  
   def retrieve_descriptor
     # We should be grabbing this from the collection_facet param, but there's only one collection so its hard-coded.
     #collection_id = params[:collection_facet]
