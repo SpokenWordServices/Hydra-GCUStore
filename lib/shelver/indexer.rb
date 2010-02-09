@@ -25,6 +25,7 @@ class Indexer
   def initialize()
  
     @@index_list = false unless defined?(@@index_list)
+     @@index_full_text = false unless defined?(@@index_full_text)
     @extractor = Extractor.new
     connect
   end
