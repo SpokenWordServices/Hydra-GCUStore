@@ -3,8 +3,7 @@ require 'lib/shelver/extractor.rb'
 
 
 module Shelver
-class Indexer
-
+class Indexer  
   #
   # Class variables
   #
@@ -17,15 +16,15 @@ class Indexer
   #
   # Member variables
   #
-  attr_accessor :connection, :extractor
+  attr_accessor :connection, :extractor, :index_full_text
 
   #
   # This method performs initialization tasks
   #
-  def initialize()
- 
+  def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
     @extractor = Extractor.new
+    @index_full_text = false unless opts[:index_full_text] == true
     connect
   end
 
@@ -34,7 +33,7 @@ class Indexer
   #
   def connect
      
-    if @@index_full_text == true
+    if index_full_text == true
      
       url = Blacklight.solr_config['fulltext']['url']
     else
