@@ -35,13 +35,19 @@ class DocumentsController < ApplicationController
       @document = Document.find(params[:id])
       attrs = unescape_keys(params[:document])
       logger.debug("attributes submitted: #{attrs.inspect}")
-      @document.update_indexed_attributes(attrs)
+      result = @document.update_indexed_attributes(attrs)
       @document.save
-      response = attrs.keys.map{|x| escape_keys({x=>attrs[x].values})}
+      #response = attrs.keys.map{|x| escape_keys({x=>attrs[x].values})}
+      response = Hash["updated"=>[]]
+      result.each_pair do |field_name,changed_values|
+        changed_values.each_pair do |index,value|
+          response["updated"] << {"field_name"=>field_name,"index"=>index,"value"=>value} 
+        end
+      end
       logger.debug("returning #{response.inspect}")
       respond_to do |want| 
         want.js {
-          render :json=> response.pop
+          render :json=> response
         }
       end
     end

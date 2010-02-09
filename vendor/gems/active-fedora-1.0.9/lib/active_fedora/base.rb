@@ -515,7 +515,9 @@ module ActiveFedora
       else
         ds_array = datastreams.values
       end
+      result = params.dup
       params.each do |key,value|
+        result[key] = value.dup
         ds_array.each do |dstream|
           if dstream.fields[key.to_sym]
             aname="#{key}_values"
@@ -529,13 +531,20 @@ module ActiveFedora
                 false
               end
             end 
-            cpv.each { |y,z| curval<<z}#just append everything left
+            cpv.each do |y,z| 
+              curval<<z #just append everything left
+              if y == "-1"
+                new_array_index = curval.length - 1
+                result[key][new_array_index.to_s] = params[key]["-1"]
+              end
+            end
             curval.delete_if {|x| x == :delete || x == "" || x == nil}
             dstream.send("#{aname}=", curval) #write it back to the ds
           end
         end
+        result[key].delete("-1")
       end
-
+      return result
     end
     
     def self.pids_from_uris(uris) 
