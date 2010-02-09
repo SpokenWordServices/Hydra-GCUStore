@@ -30,6 +30,8 @@ class Shelver
   def shelve_object( obj )
     # retrieve the Fedora object based on the given unique id
       
+      begin
+      
       start = Time.now
       print "Retrieving object #{obj} ..."
       obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
@@ -48,9 +50,14 @@ class Shelver
                  index_elapsed = index_done - index_start
                  
                   puts "completed. Duration:  #{index_elapsed} ."
-          end
-      rescue
+          end #unless
         
+      
+      rescue Exception => e
+           p "unable to index #{obj}.  Failed with #{e.inspect}"
+        
+      
+      end #begin
   
   end
   
