@@ -188,7 +188,7 @@ function saveEdit(field,value) {
         inEffect:               {opacity: 'show'},      // in effect
         inEffectDuration:       600,                    // in effect duration in miliseconds
         stayTime:               6000,                   // time in miliseconds before the item has to disappear
-        text:                   'Your edit has been saved',   // content of the item
+        text:                   "Your edit to "+ msg.updated[0].field_name +" has been saved as "+msg.updated[0].value+" at index "+msg.updated[0].index,   // content of the item
         stay:                   false,                  // should the notice item stay or not?
         type:                   'notice'                // could also be error, succes				
        });

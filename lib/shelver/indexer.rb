@@ -24,7 +24,13 @@ class Indexer
   def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
     @extractor = Extractor.new
-    @index_full_text = false unless opts[:index_full_text] == true
+    
+    if opts[:index_full_text] == true || opts[:index_full_text] == "true"
+      @index_full_text = true 
+    else
+      @index_full_text = false 
+    end
+    
     connect
   end
 
@@ -147,7 +153,7 @@ class Indexer
 
     # extract full-text
     keywords = String.new
-    if @@index_full_text
+    if @index_full_text
       full_text_ds_names.each do |full_text_ds_name|
         keywords += extract_full_text( obj, full_text_ds_name )
       end
@@ -187,7 +193,7 @@ class Indexer
     
     #Pass the solr_doc through extract_stories_to_solr
     #needs work
-    #  stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
+      stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
 
     #
     #  Temporary hack to randomly create private and public documents
@@ -217,7 +223,9 @@ class Indexer
       
       solr_doc = create_document( obj )
       connection.add( solr_doc )
-      #puts solr_doc
+ 
+     # puts connection.url
+     #puts solr_doc
      #  puts "done"
    
     rescue Exception => e

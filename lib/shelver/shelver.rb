@@ -16,7 +16,11 @@ class Shelver
   #
   def initialize( opts={} )
     @@index_list = false unless defined?(@@index_list)
-    @index_full_text = false unless opts[:index_full_text] == true
+    if opts[:index_full_text] == true || opts[:index_full_text] == "true"
+      @index_full_text = true 
+    else
+      @index_full_text = false 
+    end
     @indexer = Indexer.new( :index_full_text=>@index_full_text )
   end
 
@@ -25,6 +29,8 @@ class Shelver
   #
   def shelve_object( obj )
     # retrieve the Fedora object based on the given unique id
+      
+      begin
       
       start = Time.now
       print "Retrieving object #{obj} ..."
@@ -44,9 +50,14 @@ class Shelver
                  index_elapsed = index_done - index_start
                  
                   puts "completed. Duration:  #{index_elapsed} ."
-          end
-      rescue
+          end #unless
         
+      
+      rescue Exception => e
+           p "unable to index #{obj}.  Failed with #{e.inspect}"
+        
+      
+      end #begin
   
   end
   
@@ -80,7 +91,7 @@ class Shelver
          arr_of_pids.each do |row|
             pid = row[0]
             shelve_object( pid )
-          end #FASTERCSV
+	 end #FASTERCSV
         else
           puts "#{@@index_list} does not exists!"
         end #if File.exists
