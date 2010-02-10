@@ -228,9 +228,10 @@ class Extractor
   #
   # This method strips html tags out and returns content to be indexed in solr
   #
-  def html_content_to_solr( text, solr_doc=Solr::Document.new )
+  def html_content_to_solr( ds, solr_doc=Solr::Document.new )
     
-    doc = Nokogiri::HTML(text.content)
+    text = CGI.unescapeHTML(ds.content)
+    doc = Nokogiri::HTML(text)
     text_nodes = doc.xpath("//text()")
     text = String.new
     
