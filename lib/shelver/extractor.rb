@@ -232,6 +232,15 @@ class Extractor
     
     text = CGI.unescapeHTML(ds.content)
     doc = Nokogiri::HTML(text)
+    
+    # html to story_display
+    stories = doc.xpath('//story')
+        
+    stories.each do |story|
+      solr_doc << Solr::Field.new(:story_display => story.to_xml)
+    end
+    
+    #strip out text and put in story_t
     text_nodes = doc.xpath("//text()")
     text = String.new
     

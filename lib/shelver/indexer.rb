@@ -102,12 +102,8 @@ class Indexer
      story_ds = Repository.get_datastream( obj, ds_name )
      
      unless story_ds.new_object?
-       # html to display
-       solr_doc << Solr::Field.new(:story_display => story_ds.content)
-       # content to seach
        extractor.html_content_to_solr( story_ds, solr_doc )
      end
-     
    end
   
   
