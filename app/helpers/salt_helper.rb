@@ -108,4 +108,44 @@ module SaltHelper
     end
   end
   
+  def get_html_data_with_label(doc, label, field_string, opts={})
+     if opts[:default] && !doc[field_string]
+       doc[field_string] = opts[:default]
+     end
+
+     if doc[field_string]
+       field = doc[field_string]
+       text = "<dt>#{label}</dt><dd>"
+       if field.is_a?(Array)
+           field.each do |l|
+             text += "#{CGI::unescapeHTML(l)}"
+             if l != h(field.last)
+               text += "<br/>"
+             end
+           end
+       else
+         text += CGI::unescapeHTML(field)
+       end
+       #Does the field have a vernacular equivalent? 
+       if doc["vern_#{field_string}"]
+         vern_field = doc["vern_#{field_string}"]
+         text += "<br/>"
+         if vern_field.is_a?(Array)
+           vern_field.each do |l|
+             text += "#{CGI::unescapeHTML(l)}"
+             if l != h(vern_field.last)
+               text += "<br/>"
+             end
+           end
+         else
+           text += CGI::unescapeHTML(vern_field)
+         end
+       end
+       text += "</dd>"
+       text
+      end
+   end
+  
+  
+  
 end
