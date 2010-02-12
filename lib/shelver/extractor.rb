@@ -234,7 +234,7 @@ class Extractor
     doc = Nokogiri::HTML(text)
     
     # html to story_display
-    stories = doc.xpath('//story')
+    stories = doc.xpath('//story/*')
         
     stories.each do |story|
       solr_doc << Solr::Field.new(:story_display => story.to_xml)
