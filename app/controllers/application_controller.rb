@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def store_bounce 
-    session[:bounce]=request.url unless request.xhr?
+    session[:bounce]=params[:bounce]
   end
   def set_current_user
     unless Rails.env =~ /production/ 
