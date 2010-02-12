@@ -1,7 +1,7 @@
 class WebauthSessionsController < ApplicationController
   skip_before_filter :store_bounce
   def new
-    redirect_to session[:bounce] if session[:bounce]
+    redirect_to session[:bounce]||params[:bounce] if session[:bounce] || params[:bounce]
   end
   def destroy
     session[:bounce]=nil
