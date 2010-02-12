@@ -10,7 +10,7 @@
   <div style="float:left; width:250px;">
   <%= get_data_with_label(document, "Title:", 'title_t') %>
   <%= get_data_with_label(document, "Author:", 'creator_t') %>
-  <%= CGI::unescapeHTML(get_data_with_label(document, "Stories:", 'story_display')) %>
+  <%= get_data_with_label(document, "Stories:", 'story_t') %>
   <%= get_data_with_label(document, "Links:", 'relation_t') %>
   <%= get_data_with_label(document, "Series:", 'series_facet') %>
   <%= get_data_with_label(document, "Subseries:", 'subseries_facet') %>
