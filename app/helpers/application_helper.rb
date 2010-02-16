@@ -8,12 +8,10 @@ module ApplicationHelper
   end
   
   def get_data_with_linked_label(doc, label, field_string, opts={})
-    if opts[:default] && !doc[field_string]
-      doc[field_string] = opts[:default]
-    end
+   
+    (opts[:default] and !doc[field_string]) ? field = opts[:default] : field = doc[field_string]
     
     if doc[field_string]
-      field = doc[field_string]
       text = "<dt>#{label}</dt><dd>"
       if field.respond_to?(:each)
         text += field.map do |l| 
@@ -21,18 +19,6 @@ module ApplicationHelper
         end.join("<br/>")
       else
         text += linked_label(field, field_string)
-      end
-      #Does the field have a vernacular equivalent? 
-      if doc["vern_#{field_string}"]
-        vern_field = doc["vern_#{field_string}"]
-        text += "<br/>"
-        if vern_field.respond_to?(:each)
-          text += vern_field.map do |l|
-            linked_label(l, field_string)
-          end.join("<br/>")
-        else
-          text += linked_label(vern_field, field_string)
-        end
       end
       text += "</dd>"
       text

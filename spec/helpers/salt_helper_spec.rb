@@ -12,20 +12,46 @@ describe SaltHelper do
   end
   
   describe "get_html_data_with_label" do
-    it "should return unescaped html from story_display field" do
-     
-     sample_document = {'story_display' => [" &lt;p&gt;Hello&lt;/p&gt;&lt;ol&gt;
-        &lt;li&gt;1&lt;/li&gt;
-        &lt;li&gt;2&lt;/li&gt;
+    before(:all) do
+      @default_html = " &lt;p&gt;Default Hello&lt;/p&gt;&lt;ol&gt;
+           &lt;li&gt;1&lt;/li&gt;
+           &lt;li&gt;2&lt;/li&gt;
 
-        &lt;li&gt;3&lt;/li&gt;
-        &lt;li&gt;
-          &lt;em&gt;strong&lt;/em&gt;
-        &lt;/li&gt;
-      &lt;/ol&gt;"]}
-      
-     get_html_data_with_label(sample_document,"Stories:", 'story_display').should == "<dt>Stories:</dt><dd> <p>Hello</p><ol>\n        <li>1</li>\n        <li>2</li>\n\n        <li>3</li>\n        <li>\n          <em>strong</em>\n        </li>\n      </ol><br/></dd>"
-      
+           &lt;li&gt;3&lt;/li&gt;
+           &lt;li&gt;
+             &lt;em&gt;strong&lt;/em&gt;
+           &lt;/li&gt;
+         &lt;/ol&gt;"
+      @sample_document = {'story_display' => [" &lt;p&gt;Hello&lt;/p&gt;&lt;ol&gt;
+          &lt;li&gt;1&lt;/li&gt;
+          &lt;li&gt;2&lt;/li&gt;
+
+          &lt;li&gt;3&lt;/li&gt;
+          &lt;li&gt;
+            &lt;em&gt;strong&lt;/em&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;"]}
+    end
+    it "should return unescaped html from story_display field" do    
+     text = get_html_data_with_label(@sample_document,"Stories:", 'story_display')
+     text.should match(/^<dt>Stories:<\/dt><dd>/) and  # Begin with <dt> label
+     text.should match(/<p>Hello<\/p>/) and # have HTML
+     text.should_not match(/&lt;p&gt;Hello&lt;\/p&gt;/) and #NOT have escaped html
+     text.should match(/<\/dd>$/) # ends with closing </dd>
+    end
+    
+    it "should return unescaped html from default option if one is passed and the given field doesn't exist in the edoc" do
+      text = get_html_data_with_label(@sample_document,"Stories:", 'no_story_display',{:default=>@default_html})
+      text.should match(/^<dt>Stories:<\/dt><dd>/) and  # Begin with <dt> label
+      text.should match(/<p>Default Hello<\/p>/) and # have HTML with Default in the text
+      text.should_not match(/<p>Hello<\/p>/) and # NOT have the text from the document
+      text.should_not match(/&lt;p&gt;Default Hello&lt;\/p&gt;/) and #NOT have escaped html
+      text.should match(/<\/dd>$/) # ends with closing </dd>
+    end  
+    it "should return the unescaped document html if the given field exists even if the default option is passed" do
+      doc_text = get_html_data_with_label(@sample_document,"Stories:", 'story_display',{:default=>@default_html})
+      doc_text.should match(/<p>Hello<\/p>/) and
+      doc_text.should_not match(/<p>Default Hello<\/p>/)
     end
   end
   
