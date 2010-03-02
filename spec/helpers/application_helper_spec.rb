@@ -15,5 +15,16 @@ describe ApplicationHelper do
         link_to_document(@mock_doc,:label=>"Some crazy long label...").should_not match(/title=/)
       end
     end
+    
+    describe "link back to catalog" do
+      it "should return the view parameter in the link back to catalog method if there is one in the users previous search session" do
+        session[:search] = {:view=>"list"}
+        link_back_to_catalog.should match(/\?view=list/)
+      end
+      it "should not return the view parameter if it wasn't provided" do
+        session[:search] = {}
+        link_back_to_catalog.should_not match(/\?view=/)
+      end
+    end
   end
 end
