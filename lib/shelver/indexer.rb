@@ -172,6 +172,7 @@ class Indexer
     # create the Solr document
     solr_doc = Solr::Document.new
     solr_doc << Solr::Field.new( :id => "#{obj.pid}" )
+    solr_doc << Solr::Field.new( :id_t => "#{obj.pid}" )
     solr_doc << Solr::Field.new( :text => "#{keywords}" )
     Indexer.solrize(ext_properties, solr_doc)
    
