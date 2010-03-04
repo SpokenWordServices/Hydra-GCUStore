@@ -8,6 +8,5 @@ Then /^I should see (\d+) (gallery|list) results$/ do |number,type|
   else
     results_num = -1
   end
-  puts flash if flash
   results_num.should == number.to_i
 end
