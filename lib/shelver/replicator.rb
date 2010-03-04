@@ -38,7 +38,10 @@ module Shelver
          pids = Repository.get_pids( num_docs )
          puts "Replicating #{pids.length} Fedora objects"
           pids.each do |pid|
-            replicate_object( pid )
+            unless pid[0].empty? || pid[0].nil? || !pid[0].include?("druid:")
+              puts "Processing #{pid}"
+              replicate_object( pid )
+            end #unless
           end #pids.each
 
       else
@@ -62,16 +65,16 @@ module Shelver
     end #replicate_objects
 
  
-    def replicate_object(pid)
+    def replicate_object(obj)
 	#source_doc = Document.load_instance(pid)
-        source_doc = ActiveFedora::Base.load_instance(pid)
-	  p "Indexing object #{source_doc.pid} with label #{source_doc.label}"
+       obj = obj.kind_of?(ActiveFedora::Base) ? obj : Repository.get_object( obj )
+	     p "Indexing object #{obj.pid} with label #{obj.label}"
       begin
-        unless source_doc.nil?
-		create_stub(source_doc)
-        	p "Successfully replicated #{source_doc.pid}"
-   	end 
-     rescue Exception => e
+        unless obj.nil?
+		      create_stub(obj)
+        	p "Successfully replicated #{obj.pid}"
+   	    end  
+      rescue Exception => e
         p "unable to create stub.  Failed with #{e.inspect}"
       end
     end
