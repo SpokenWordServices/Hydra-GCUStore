@@ -101,4 +101,15 @@ class CatalogController
     Blacklight.solr(index).find(_search_params)
   end
 
+  # This method will remove certain params from the session[:search] hash
+  # if the values are blank? (nil or empty string)
+  # if the values aren't blank, they are saved to the session in the :search hash.
+  # We're overriding this for SALT because we need to add in the view parameter to 
+  # make sure that the user is taken back to the same view (gallery/list) that they came from
+  def delete_or_assign_search_session_params
+    [:q, :qt, :f, :per_page, :page, :sort, :view].each do |pname|
+      params[pname].blank? ? session[:search].delete(pname) : session[:search][pname] = params[pname]
+    end
+  end
+
 end

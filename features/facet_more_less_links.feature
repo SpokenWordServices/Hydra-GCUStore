@@ -8,3 +8,11 @@ Feature: display more/less links
     When I am on the home page
     Then I should see "more technologies"
     And I should see "less technologies"
+
+  Scenario: Facets on the record view
+    Given I am on the show document page for druid:sb733gr4073
+    Then I should see "more technologies"
+    And I should see "less technologies"
+  
+  
+  

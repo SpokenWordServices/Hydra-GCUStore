@@ -372,25 +372,20 @@
 
   <requestHandler name="search" class="solr.SearchHandler" >
     <lst name="defaults">
-     <str name="echoParams">explicit</str>
+     <str name="defType">dismax</str>
+       <str name="facet">on</str>
+      <str name="facet.mincount">1</str>
+	<str name="echoParams">explicit</str>
      <float name="tie">0.01</float>
-     <str name="qf">
-        text^0.5
-     </str>
-     <str name="pf">
-        text^0.2
-     </str>
-     <str name="bf">
-        ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
-     </str>
-     <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,access_t
+  <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
+   <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
+      <str name="fl">
+        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
      </str>
      <int name="ps">100</int>
-     <str name="q">*:*</str>
      <str name="q.alt">*:*</str>
      <!-- example highlighter config, enable per-query with hl=true -->
      <str name="hl.fl">text features name</str>
@@ -405,25 +400,23 @@
   
   <requestHandler name="public_search" class="solr.SearchHandler" >
     <lst name="defaults">
+      
+      <str name="facet">on</str>
+			<str name="facet.mincount">1</str>
+
+
+     <str name="defType">dismax</str>
      <str name="echoParams">explicit</str>
      <float name="tie">0.01</float>
-     <str name="qf">
-        text^0.5
-     </str>
-     <str name="pf">
-        text^0.2
-     </str>
-     <str name="bf">
-        ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
-     </str>
+      <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
+       <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
      <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,access_t
+        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
      </str>
      <int name="ps">100</int>
-     <str name="q">*:*</str>
      <str name="q.alt">*:*</str>
      <!-- example highlighter config, enable per-query with hl=true -->
      <str name="hl.fl">text features name</str>
@@ -441,17 +434,13 @@
   
   <requestHandler name="fulltext" class="solr.SearchHandler" >
     <lst name="defaults">
+      <str name="defType">dismax</str>
+     <str name="facet">on</str>
+      <str name="facet.mincount">1</str> 
      <str name="echoParams">explicit</str>
-     <float name="tie">0.01</float>
-     <str name="qf">
-        text^0.5
-     </str>
-     <str name="pf">
-        text^0.2
-     </str>
-     <str name="bf">
-        ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
-     </str>
+      <float name="tie">0.01</float>
+      <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
+       <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
      <str name="fl">
         id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>
@@ -459,7 +448,6 @@
         2&lt;-1 5&lt;-2 6&lt;90%
      </str>
      <int name="ps">100</int>
-     <str name="q">*:*</str>
      <str name="q.alt">*:*</str>
      <!-- example highlighter config, enable per-query with hl=true -->
      <str name="hl.fl">text features name</str>
@@ -481,9 +469,8 @@
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
       
       <str name="facet">on</str>
-			<str name="facet.mincount">1</str>
-      <!-- <str name="facet.limit">10</str> -->
-      <str name="facet.field">access_t</str>
+	<str name="facet.mincount">1</str>
+
       <str name="facet.field">collection_facet</str>
       <str name="facet.field">technology_facet</str>
       <str name="facet.field">person_facet</str>
@@ -510,6 +497,8 @@
    -->
   <requestHandler name="dismax" class="solr.SearchHandler" >
     <lst name="defaults">
+       <str name="facet">on</str>
+      <str name="facet.mincount">1</str>
      <str name="echoParams">explicit</str>
      <float name="tie">0.01</float>
      <str name="qf">
@@ -522,7 +511,7 @@
         ord(popularity)^0.5 recip(rord(price),1,1000,1000)^0.3
      </str>
      <str name="fl">
-        id,text,title_facet,date_t,medium_t,location_t,access_t
+        id,text,title_facet,date_t,medium_t,location_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
