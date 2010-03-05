@@ -21,7 +21,7 @@ describe DocumentsController do
   describe "update" do
     it "should update the object with the attributes provided, setting wau regardless of env" do
       mock_document = mock("document")
-      mock_document.expects(:update_indexed_attributes)
+      mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
       Document.expects(:find).with("_PID_").returns(mock_document)
       put :update, :id=>"_PID_", "document"=>{"subject"=>{"-1"=>"My Topic"}}, :wau => 'krang'
@@ -29,7 +29,7 @@ describe DocumentsController do
     end
     it "should update the object with the attributes provided" do
       mock_document = mock("document")
-      mock_document.expects(:update_indexed_attributes)
+      mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
       Document.expects(:find).with("_PID_").returns(mock_document)
       put :update, :id=>"_PID_", "document"=>{"subject"=>{"-1"=>"My Topic"}}

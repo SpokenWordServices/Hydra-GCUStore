@@ -1,3 +1,5 @@
+@wip
+# This test will fail when running against the test image because there are less than 40 sample items to work with.
 Feature: Items per page
   In order to verify that the correct per page parameter is being used
   As a user
