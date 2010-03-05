@@ -17,7 +17,7 @@ Feature: Show a document
   Scenario: Public visit Document Show Page for a private document  
     Given I am on the show document page for druid:bz425fy5289
     Then I should be on the search page
-    And I should see "You do not have sufficient access privileges to read this document, which has been marked private"
+    And I should see "You do not have sufficient access privileges to read this document, which has been marked private" within ".notice"
 
   
   @wip
