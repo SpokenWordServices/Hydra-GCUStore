@@ -21,7 +21,8 @@ module NavigationHelpers
     
       when /the home\s?page/
         '/'
-    
+      when /the search page/
+        '/'
       # Add more mappings here.
       # Here is a more fancy example:
       #
@@ -32,7 +33,6 @@ module NavigationHelpers
         edit_catalog_path($1)
       when /the show document page for (.*)$/i
         catalog_path($1)
-    
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
           "Now, go and add a mapping in #{__FILE__}"
