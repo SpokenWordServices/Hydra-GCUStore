@@ -4,16 +4,22 @@ Feature: Show a document
   [stakeholder]
   wants [behaviour]
   
-  Scenario: Visit Document Show Page
-    Given I am on the show document page for druid:cm234kq4672
-    Then the "Title:" term should contain "Letter from Ellie Engelmore to Wemara Lichty" 
-    And the "Date:" term should contain "1984-6-4" 
+  Scenario: Public visit Document Show Page
+    Given I am on the show document page for druid:sb733gr4073
+    Then the "Title:" term should contain "Ahlstrom Annual Report 1991" 
+    And the "Date:" term should contain "1991-00-00" 
     And the "Document Type:" term should contain "Paper Document"
     And I should not see the "access" term 
     And I should not see the "document ID" term 
     #And I should not see a link to the "raw OCR"
     And I should not see a link to "the edit document page for druid:cm234kq4672"
-    
+  
+  Scenario: Public visit Document Show Page for a private document  
+    Given I am on the show document page for druid:bz425fy5289
+    Then I should be on the search page
+    And I should see "You do not have sufficient access privileges to read this document, which has been marked private"
+
+  
   @wip
   Scenario: Donor visits Document Show Page
     Given I am logged in as "francis" on the show document page for druid:cm234kq4672 
