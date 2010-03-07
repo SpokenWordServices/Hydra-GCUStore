@@ -1,6 +1,6 @@
 
 require 'lib/shelver/indexer.rb'
-require 'fastercsv'
+# require 'fastercsv'
 require "ruby-debug"
 
 

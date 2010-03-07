@@ -6,5 +6,7 @@ nohup.out
 *~
 *.swp
 
+coverage/*
+
 tmp/**/*
 tmp/performance 
