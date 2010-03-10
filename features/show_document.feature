@@ -8,7 +8,7 @@ Feature: Show a document
     Given I am on the show document page for druid:sb733gr4073
     Then the "Title:" term should contain "Ahlstrom Annual Report 1991" 
     And the "Date:" term should contain "1991-00-00" 
-    And the "Document Type:" term should contain "Paper Document"
+    And the "Type:" term should contain "Paper Document"
     And I should not see the "access" term 
     And I should not see the "document ID" term 
     #And I should not see a link to the "raw OCR"

@@ -1,7 +1,7 @@
 module DownloadsHelper
   
   def list_downloadables( datastreams, mime_types=["application/pdf"])
-    result = "<div id=\"downloads\"><ul>" 
+    result = "<ul>" 
            
     datastreams.each_value do |ds|
       result << "<li>"
@@ -12,7 +12,7 @@ module DownloadsHelper
       result << "</li>"     
     end
         
-    result << "</ul></div>"
+    result << "</ul>"
     return result
   end
   

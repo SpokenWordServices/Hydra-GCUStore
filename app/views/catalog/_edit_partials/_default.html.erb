@@ -11,41 +11,28 @@
   <%= javascript_include_tag "date-picker/js/datepicker"%>
 <% end %>
 
-
-<div class="<%= params[:action]%>_details">
-  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
-</div>
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "documents/viewer" , :locals => {:document => document}%>
-  <dl>
-  <%= get_data_with_label(document, "ID:", 'id') %>
+  <dl class="defList">
+    <%= get_data_with_label(document, "ID:", 'id') %>
+    <dt>Download:</dt>
+    <dd id="downloads">
+	  <% if @downloadables %>
+		<%= list_downloadables(@downloadables, @mime_types) %>
+	  <% else %>
+	    <ul>
+          <% %>
+        </ul>
+        <%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>
+      <%- end -%>
+    </dd>
+    <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
   </dl>
   <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>
-
-<h3>Download</h3>
-<% if @downloadables %>
-  <%= list_downloadables(@downloadables, @mime_types) %>
-<% else %>
-  <div id="downloads">
-    <ul>
-      <% %>
-    </ul>
-  </div>
-  <%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>
-<% end -%>
-
-
-<dl class="defList" id="rights_info">
-  <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
-</dl>
-
-
-<div style="clear:left;"></div>
-<div class="access_data">
-  <%#= render :partial => "catalog/access_data", :locals => {:doc => document} %>
+<div class="<%= params[:action]%>_details">
+  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
-
 
 
 <% sidebar_items << capture do %>
