@@ -112,7 +112,7 @@ class Indexer
     if date_obj[:mon].nil? 
        solr_doc << Solr::Field.new(:month_facet => 99)
     elsif 0 < date_obj[:mon] && date_obj[:mon] < 13
-      solr_doc << Solr::Field.new( :month_facet => date_obj[:mon] )
+      solr_doc << Solr::Field.new( :month_facet => date_obj[:mon].to_s.rjust(2, '0'))
     else
       solr_doc << Solr::Field.new( :month_facet => 99)
     end
@@ -120,7 +120,7 @@ class Indexer
     if  date_obj[:mday].nil?
       solr_doc << Solr::Field.new( :day_facet => 99)
     elsif 0 < date_obj[:mday] && date_obj[:mday] < 32   
-      solr_doc << Solr::Field.new( :day_facet => date_obj[:mday])
+      solr_doc << Solr::Field.new( :day_facet => date_obj[:mday].to_s.rjust(2, '0'))
     else
        solr_doc << Solr::Field.new( :day_facet => 99)
     end

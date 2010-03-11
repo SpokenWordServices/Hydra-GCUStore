@@ -56,10 +56,22 @@ describe Shelver::Indexer do
             solr_result = @indexer.generate_dates(@solr_doc)
             solr_result.should be_kind_of Solr::Document
             solr_result[:date_t].should == "1978-04-11"
-            solr_result[:month_facet].should == "4"
+            solr_result[:month_facet].should == "04"
             solr_result[:day_facet].should == '11'
      
      end
+     
+     it "should still give two digit strings even if the month/day is single digit" do
+     
+         @solr_doc << Solr::Field.new(:date_t => "1978-4-1")
+         solr_result = @indexer.generate_dates(@solr_doc)
+         solr_result.should be_kind_of Solr::Document
+         solr_result[:date_t].should == "1978-4-1"
+         solr_result[:month_facet].should == "04"
+         solr_result[:day_facet].should == '01'  
+     
+     end
+     
   end
   
   
