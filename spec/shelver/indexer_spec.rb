@@ -8,14 +8,60 @@ describe Shelver::Indexer do
   
      @extractor = mock("Extractor")
      @extractor.stubs(:html_content_to_solr).returns(@solr_doc)
-     @solr_doc = mock('solr_doc')
-     @solr_doc.stubs(:<<)
-    
-      
+#     @solr_doc = mock('solr_doc')
+#     @solr_doc.stubs(:<<)
+#     @solr_doc.stubs(:[])
+     
+     @solr_doc = Solr::Document.new
+     
      Shelver::Extractor.expects(:new).returns(@extractor)
      @indexer = Shelver::Indexer.new
      
    end
+  
+  describe "#generate_dates" do
+    it "should still give 9999-99-99 date if the solr document does not have a date_t field" do
+    
+    solr_result = @indexer.generate_dates(@solr_doc)
+    solr_result.should be_kind_of Solr::Document
+    solr_result[:date_t].should == "9999-99-99"
+    solr_result[:month_facet].should == "99"
+    solr_result[:day_facet].should == '99'
+    
+    end
+    
+    it "should still give 9999-99-99 date if the solr_doc[:date_t] is not valid date in YYYY-MM-DD format " do
+     
+      @solr_doc << Solr::Field.new(:date_t => "Unknown")
+      solr_result = @indexer.generate_dates(@solr_doc)
+      solr_result.should be_kind_of Solr::Document
+      solr_result[:date_t].should == "Unknown"
+      solr_result[:month_facet].should == "99"
+      solr_result[:day_facet].should == '99'
+  
+    end
+    
+    it "should give month and dates even if the :date_t is not a valid date but is in YYYY-MM-DD format  " do
+      
+       @solr_doc << Solr::Field.new(:date_t => "0000-13-11")
+       solr_result = @indexer.generate_dates(@solr_doc)
+       solr_result.should be_kind_of Solr::Document
+       solr_result[:date_t].should == "0000-13-11"
+       solr_result[:month_facet].should == "99"
+       solr_result[:day_facet].should == '11'
+     end
+     
+     it "should give month and day when in a valid date format" do
+           @solr_doc << Solr::Field.new(:date_t => "1978-04-11")
+            solr_result = @indexer.generate_dates(@solr_doc)
+            solr_result.should be_kind_of Solr::Document
+            solr_result[:date_t].should == "1978-04-11"
+            solr_result[:month_facet].should == "4"
+            solr_result[:day_facet].should == '11'
+     
+     end
+  end
+  
   
   describe "#extract_stories_to_solr" do
     before(:each) do
@@ -65,7 +111,8 @@ describe Shelver::Indexer do
           example_result["#{key}_facet"].should == values
         else
           values.each do |v|
-            example_result.inspect.include?"@name=\"#{key}_facet\", @boost=nil, @value=\"#{v}\"".should be_true 
+            example_result.inspect.include?("@name=\"#{key}_facet\"").should be_true
+            example_result.inspect.include?("@value=\"#{v}\"").should be_true
           end
         end        
       end
@@ -76,10 +123,14 @@ describe Shelver::Indexer do
       result = Shelver::Indexer.solrize( simple_hash )
       result.should be_kind_of Solr::Document
       result["technology_facet"].should == "t1"
-      result.inspect.include?'@name="technology_facet", @boost=nil, @value="t2"'.should be_true
+      result.inspect.include?('@boost=nil').should be_true
+      result.inspect.include?('@name="technology_facet"').should be_true
+      result.inspect.include?('@value="t2"').should be_true
       result["company_facet"].should == "c1"
       result["person_facet"].should == "p1"
-      result.inspect.include?'@name="person_facet", @boost=nil, @value="p2"'.should be_true
+      result.inspect.include?('@name="person_facet"').should be_true
+      result.inspect.include?('@value="p2"').should be_true
+      
     end
     
     it "should create symbols from the :symbols subhash" do
@@ -87,10 +138,14 @@ describe Shelver::Indexer do
       result = Shelver::Indexer.solrize( simple_hash )
       result.should be_kind_of Solr::Document
       result["technology_s"].should == "t1"
-      result.inspect.include?'@name="technology_s", @boost=nil, @value="t2"'.should be_true
+      result.inspect.include?('@name="technology_s"').should be_true
+      result.inspect.include?('@value="t2"').should be_true
+    
       result["company_s"].should == "c1"
       result["person_s"].should == "p1"
-      result.inspect.include?'@name="person_s", @boost=nil, @value="p2"'.should be_true
+      result.inspect.include?('@name="person_s"').should be_true
+      result.inspect.include?('@value="p2"').should be_true
+  
     end
   end
 end

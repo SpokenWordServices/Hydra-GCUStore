@@ -22,8 +22,8 @@ describe Shelver::Extractor do
       result[:title_t].should == "This is a Sample Title"
       result[:publisher_t].should == "Sample Unversity"
       # ... and a hacky way of making sure that it added a field for each of the dc:medium values
-      result.inspect.include?'@name="format_t", @boost=nil, @value="application/tiff"'.should be_true
-      result.inspect.include?'@name="format_t", @boost=nil, @value="application/pdf"'.should be_true
+      result.inspect.include?('@value="application/tiff"').should be_true
+      result.inspect.include?('@value="application/pdf"').should be_true
     end
   end
   

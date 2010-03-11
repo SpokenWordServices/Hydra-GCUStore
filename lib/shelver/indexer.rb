@@ -93,6 +93,44 @@ class Indexer
   end
   
   #
+  # This method generates the month and day facets from the date_t in solr_doc
+  #
+  
+  def generate_dates(solr_doc)
+    
+    # This will check for valid dates, but it seems most of the dates are currently invalid....
+    #date_check =  /^(19|20)\d\d([- \/.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])/
+
+   #if there is not date_t, add on with easy-to-find value
+   if solr_doc[:date_t].nil?
+        solr_doc << Solr::Field.new( :date_t => "9999-99-99")
+   end #if
+
+    # unless date_check !~  solr_doc[:date_t]     
+    date_obj = Date._parse(solr_doc[:date_t])
+    
+    if date_obj[:mon].nil? 
+       solr_doc << Solr::Field.new(:month_facet => 99)
+    elsif 0 < date_obj[:mon] && date_obj[:mon] < 13
+      solr_doc << Solr::Field.new( :month_facet => date_obj[:mon] )
+    else
+      solr_doc << Solr::Field.new( :month_facet => 99)
+    end
+      
+    if  date_obj[:mday].nil?
+      solr_doc << Solr::Field.new( :day_facet => 99)
+    elsif 0 < date_obj[:mday] && date_obj[:mday] < 32   
+      solr_doc << Solr::Field.new( :day_facet => date_obj[:mday])
+    else
+       solr_doc << Solr::Field.new( :day_facet => 99)
+    end
+    
+    return solr_doc
+#      end
+        
+  end
+  
+  #
   # This method extracts content from stories dstream and puts it into a story_t field
   # The entire html output it placed into the story_display field
   #
@@ -186,8 +224,10 @@ class Indexer
     
     # Pass the solr_doc through extract_simple_xml_to_solr   
       xml_ds_names.each { |ds_name| extract_xml_to_solr(obj, ds_name, solr_doc)}
-
     
+    # Generate month_facet and day_facet from date_t value
+      generate_dates(solr_doc)
+  
     #Pass the solr_doc through extract_stories_to_solr
     #needs work
       stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
