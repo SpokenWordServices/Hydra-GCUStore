@@ -21,6 +21,7 @@
         },
     });
   });
+  initDatePicker(jQuery('#document_date_1_value_input'));
   </script>
 </head>
 <body>
@@ -34,6 +35,9 @@
             <div class="flc-inlineEdit-editContainer">      
               <input type="text" class="date_picker w16em flc-inlineEdit-edit" id="document_date_value_input" value="15/01/2010"></input>
               </div>
+            </li>
+            <li id="document_date_1" name="document[date][1]"  class="my_date_picker">
+              <input type="text" readonly="readonly" class="date_picker w16em" id="document_date_1_value_input" value="15-22-1999" onclick="$('a#fd-but-document_date_1_value_input').click()"></input>
             </li>
           </ol>
         </dd>  

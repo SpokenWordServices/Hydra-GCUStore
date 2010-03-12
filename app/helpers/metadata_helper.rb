@@ -166,7 +166,7 @@ module MetadataHelper
     # result << link_to_remote(image_tag("delete.png"), :update => "", :url => {:action=>:show, "#{resource_type}[#{field_name}][#{z}]"=>""}, :method => :put, :success => visual_effect(:fade, "#{field_name}_#{z}"),:html => { :class  => "destructive" })
     result << "<div class=\"flc-inlineEdit-text editableText\">#{field_value}</div>"
     result << "<div class=\"flc-inlineEdit-editContainer\">"
-    result << "      <input type=\"text\" class=\"date_picker w16em flc-inlineEdit-edit\" id=\"#{resource_type}_#{field_name}_#{z}_value_input\" value=\"#{field_value}\"></input>"
+    result << "      <input type=\"text\" readonly=\"readonly\" class=\"date_picker w16em flc-inlineEdit-edit\" id=\"#{resource_type}_#{field_name}_#{z}_value_input\" value=\"#{field_value}\"></input>"
     result << "</div>"
     result << "</li>"
     #result << "<input type=\"text\" class=\"date_picker w16em\" id=\"#{resource_type}_#{field_name}_value\" name=\"#{resource_type}[#{field_name}][0]\" value=\"#{field_value}\"></input>"

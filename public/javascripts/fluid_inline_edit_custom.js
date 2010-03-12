@@ -68,10 +68,11 @@ jQuery(document).ready(function () {
  */
 var setupRichTextEdits = function (editables, options) {
     var editors = [];
+    makeAllButtons(editors);
+    
     editables.each(function (idx, editable) {
         editors.push(fluid.inlineEdit.FCKEditor($(editable), options));
     });
-    makeAllButtons(editors);
     return editors;
 };
 
