@@ -1,10 +1,5 @@
 <% # container for all documents in index view -%>
 <div id="documents">
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-    var id_array = new Array();
-    var standard_nums = new Array();
-  </script>
   <% facet_name = grouping_facet %>
   <%- if facet_name -%>
     <%- @response.docs.group_by {|d| d.get(facet_name)}.each do |grouping| -%>
