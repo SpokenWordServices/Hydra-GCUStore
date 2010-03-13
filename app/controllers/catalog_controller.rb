@@ -3,10 +3,11 @@ class CatalogController
   
   include Stanford::SaltControllerHelper
   include MediaShelf::ActiveFedoraHelper
-  
+  include Blacklight::CatalogHelper
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
   before_filter :enforce_viewing_context_for_show_requests, :only=>:show
   before_filter :enforce_edit_permissions, :only=>:edit
+  
   
   def edit
     @document_fedora = Document.load_instance(params[:id])
@@ -51,7 +52,7 @@ class CatalogController
   # This has the same effect as the (deprecated) alias_method_chain :show, :find_folder_siblings
   alias_method :show_without_customizations, :show
   alias_method :show, :show_with_customizations
-  
+
   private
   
   # If someone hits the show action while their session's viewing_context is in edit mode, 
@@ -84,6 +85,10 @@ class CatalogController
         redirect_to(:action => 'index', :q => nil , :f => nil) and return false
       end
     end
+  end
+  
+  def setup_document_by_counter(counter)
+    super
   end
   
   def enforce_edit_permissions
