@@ -861,7 +861,7 @@ dl dd {
 	background-repeat:no-repeat;
 	padding-top: 5px;
 	padding-left:15px;
-	font-size: 1.1em
+	font-size: 1.1em;
 	background-image:url('/images/facet_closed.png');
 }
 #facets h3.facet_selected {
