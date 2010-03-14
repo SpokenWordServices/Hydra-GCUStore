@@ -24,7 +24,7 @@ Then /^the "([^\"]*)" dropdown edit should contain "([^\"]*)"$/ do |arg1, arg2|
   response.should have_selector("dt", :content=>arg1) do |dt|
     dt.each do |term| 
       term.next.should have_selector("select") do |dropdown|
-        dropdown.should have_selector("option", :content=>arg2, :selected=>"selected")
+        dropdown.should have_selector("option", :content=>arg2, :selected=>"")
       end
     end
   end

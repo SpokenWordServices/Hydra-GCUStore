@@ -30,7 +30,7 @@
         </ul>
       </div>
     </span>
-    <%= hidden_field_tag(:hidden_qt, h((localized_params[:qt].blank? or localized_params[:qt] == "standard") ? "search" : localized_params[:qt])) %>
+    <%= hidden_field_tag(:hidden_qt, h(localized_params[:qt])) unless localized_params[:qt].blank? %>
     <%= hidden_field_tag(:per_page, localized_params[:per_page] ? localized_params[:per_page] : Blacklight.config[:index][:num_per_page], :id => 'hidden_per_page') %>
     <%= hidden_field_tag(:view, localized_params[:view], :id => 'hidden_view') if localized_params[:view] %>
     <%= render :partial => 'catalog/hidden_filters' %>

@@ -10,7 +10,13 @@ module Blacklight::CatalogHelper
   # gets a document based on its position within a resultset  
   def setup_document_by_counter(counter)
     return if counter < 1 || session[:search].blank?
-    search = session[:search] || {}
+    # need to duplicate search session hash so we aren't modifying the original (and don't get the qt in the Back to search results link)
+    search = session[:search].dup || {}
+    # enforcing search restrictions
+    # if the user is not a reader then use the pulic qt, otherwise use the default qt (using logic from enforce_search_permissions method)
+    if !reader?
+      search[:qt] = Blacklight.config[:public_qt]
+    end
     get_single_doc_via_search(search.merge({:page => counter}))
   end
 
