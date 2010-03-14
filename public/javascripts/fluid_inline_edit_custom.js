@@ -70,12 +70,12 @@ jQuery(document).ready(function () {
  * Creates a whole list of Rich Text Editors editors.
  */
 var setupRichTextEdits = function (editables, options) {
-    var editors = [];
-    makeAllButtons(editors);
-    
+    var editors = [];    
     editables.each(function (idx, editable) {
         editors.push(fluid.inlineEdit.FCKEditor($(editable), options));
     });
+    makeAllButtons(editors);
+    
     return editors;
 };
 
