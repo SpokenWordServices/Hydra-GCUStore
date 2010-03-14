@@ -57,7 +57,10 @@ jQuery(document).ready(function () {
       },
       listeners : {
         onFinishEdit : myFinishEditListener,
-        modelChanged : myModelChangedListener
+        modelChanged : myModelChangedListener,
+        afterBeginEdit : function() { 
+          jQuery('#'+this.elem.id).siblings('a.date-picker-control').click();
+        }
       }
     });
     
