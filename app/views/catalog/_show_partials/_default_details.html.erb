@@ -1,30 +1,21 @@
 <%# default partial to display solr document fields in catalog show view -%>
-<div class="floatRight side">
-  <dl class="defList">
-    <%= get_data_with_label(document, "Date:", 'date_t') %>  
-    <%= get_data_with_label(document, "Type:", 'medium_t') %>
-    <% if editor? %>
-      <%= get_data_with_label(document, "Access:", 'access_t', :default=>"private") %>
-    <% end -%>
-  </dl>
-</div>
 <div>
   <dl class="defList">
 	  <%= get_data_with_label(document, "Title:", 'title_t') %>
 	  <%= get_data_with_label(document, "Author:", 'creator_t') %>
 	  <%= get_html_data_with_label(document, "Stories:", 'story_display') %>
 	  <%= get_data_with_label(document, "Links:", 'relation_t') %>
-	  <%= get_data_with_label(document, "Series:", 'series_facet') %>
-	  <%= get_data_with_label(document, "Subseries:", 'subseries_facet') %>
-	  <%= get_data_with_label(document, "Box:", 'box_facet') %>
-	  <%= get_data_with_label(document, "Folder:", 'folder_facet') %>
 	  <% callnums = get_callnum(document) %>
 	  <%= get_suppl_urls(document) %>  
 	  <%= show_formats(document['format']) %>
 	  <%#= get_toc(document.marc) %>
 
-	  <%= get_data_with_linked_label(document, "Tagged by Donor:", 'donor_tags_facet') %>
-	  <%= get_data_with_linked_label(document, "Tagged by Archivist:", 'archivist_tags_facet') %>
-  
+	  <%= get_data_with_linked_label(document, "Tagged by Donor:", 'donor_tags_facet',{:delimiter=>", "}) %>
+	  <%= get_data_with_linked_label(document, "Tagged by Archivist:", 'archivist_tags_facet',{:delimiter=>", "}) %>
+      <%= get_data_with_label(document, "Date:", 'date_t') %>  
+      <%= get_data_with_label(document, "Type:", 'medium_t') %>
+      <% if editor? %>
+        <%= get_data_with_label(document, "Access:", 'access_t', :default=>"private") %>
+      <% end -%>
   </dl>
 </div>
