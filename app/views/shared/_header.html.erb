@@ -13,7 +13,6 @@
 </div>
 <div class="yui-u">
   <div class="aboutLinks"> 
-    <a href="http://lib.stanford.edu/searchworks">About SearchWorks</a> | 
     <%= link_to "Collections", collections_path %> |
     <%= link_to 'Feedback', feedback_path, {:id => 'feedbackLink', :name => 'feedback', :class => 'lightboxLink'}%>
   </div>
@@ -32,9 +31,6 @@
     <% end %>
   <% elsif params[:action] == 'show' and params[:controller] == 'catalog' %>
     <%= render 'catalog/constraints', :localized_params=>session[:search] %>
-  <% end %>
-  <% unless params[:id].nil? %>
-    <span class="back_to_cat"><%= link_back_to_catalog :label=>'&laquo; Back to Search Results' %></span>
   <% end %>
 </span>
 <%= render :partial=>'/user_util_links' %>
