@@ -83,20 +83,26 @@ a.addval {
 	background-color:#FFFFFF;
 	border:none;
 }
+
 #hd .yui-g {
 	padding: 1em;
 }
-#hd .yui-g .first {
-	/* margin-left:1em; */
-}
+
 #hd .yui-g .first a {
 	border-bottom:none;
 }
+
 #ft {
 	text-align:center;
 	margin:0 0 50px;
 }
-#ft, #ft a {color: #ccc;}
+#ft, #ft a {
+	color: #ccc;
+}
+
+#bd #yui-main, #bd .yui-b {
+	padding-bottom: 2em;
+}
 
 
 ul.horizontal li {
@@ -138,7 +144,7 @@ ul.horizontal li {
 	float: left;
 }
 #hd .yui-u {
- width: 25%;
+	width: 25%;
 }
 
 #hd .first {
@@ -151,7 +157,6 @@ ul.horizontal li {
 	float:right;
 }
 div.aboutLinks {
-	/* clear:right; */
 	display: none;
 }
 div.aboutLinks .noLink{
@@ -175,14 +180,13 @@ div.aboutLinks .noLink{
 	display:inline;
  	 float:left;
 }
-#control_links .back_to_cat {
+#control_links .back_to_cat { /* old backtocat link */
 	display: none;
 }
 
 #control_links .constraints {
 	margin:0 0 0 10%;
 	font-weight:normal;
-	/* border: 1px solid #d4e4ea; */
 	padding: 1px 3px;
 	color: #4D606A;
 	width: 90%;
@@ -298,8 +302,6 @@ div#yui-main div#mid_content h2 {
 	margin-top:-.5em;
 }
 
-div#collection_image {
-}
 
 /* middle content */
 .content-bg {
@@ -316,7 +318,7 @@ div#yui-main div#mid_content {
 }
 #showUtils {
 	text-align:left;
-	padding: 5px 5px 0	5px;
+	padding: 5px 5px 0 5px;
 	border:1px solid #d4e4ea;
 	background-color: #ffffff;
 	height:2em;
@@ -326,6 +328,7 @@ div#yui-main div#mid_content {
 	padding-right:10%;
 }
 div.tools {display: none;}
+
 ul.tools {
 	margin:0;
 	float:right;
@@ -455,6 +458,7 @@ form.sort label {
 	border:1px solid #9bafb8;
 	padding:0.5em;
 	margin-right: 10px;
+	margin-top:1px;
 }
 
 #collection-id-box .title {
@@ -493,8 +497,11 @@ div#searchMods label, div#searchMods h2 {
 /* show view is #document, index view is #documents */
 
 
-#loading img { float:left;display:block;margin:-7px 5px 0 -5px }
-
+#loading img { 
+	float:left;
+	display:block;
+	margin:-7px 5px 0 -5px
+}
 
 #showHead a {
 	text-decoration:underline;
@@ -526,7 +533,9 @@ div#searchMods label, div#searchMods h2 {
         color: #666666;
 }
 
-#previousNextDocument { display:inline; }
+#previousNextDocument { 
+	display:inline; 
+}
 
 #document {
 	padding: 0;
@@ -543,8 +552,9 @@ div#searchMods label, div#searchMods h2 {
 
 
 #document .document .document_viewer {
-	width:250px;
+	width: 49%;
 	float: left;
+	border-right: 1px solid #D4E4EA;
 }
 .fl-theme-mist {
 	background:transparent;
@@ -558,40 +568,39 @@ div#searchMods label, div#searchMods h2 {
 	margin:0;
 }
 .fl-theme-mist input:focus,
-.fl-theme-mist .selectable, .fl-inlineEdit-focus	{
+.fl-theme-mist .selectable, .fl-inlineEdit-focus {
 	/* themed focus indicator */
 	outline: none !important;
-	font-size:1em !important;
-	font-weight:normal; 
-	border: 1px solid green !important;
-	background-color: #ffffe0 !important;
-	padding: 1px !important;
-}
-
-.fl-inlineEdit-invitation-text {
-	color: #666;
-	font-style: italic;
-}
-
-.fl-inlineEdit-invitation {
-	margin-left: -2px !important;
-	padding: 1px !important;
-}
-
-input.flc-inlineEdit-edit {
-	color: #000 !important;
-	padding: 1px !important;
 	font-size: 1em !important;
-	margin-left: -2px !important;
-	width: 100% !important;
+	font-weight:normal; 
+	border: 1px solid #5A95CF !important;
+	background-color: white !important;
+	padding: 1px !important;
 }
 
-.flc-inlineEdit-text {
+
+.flc-inlineEdit-edit, .flc-inlineEdit-text {
 	color: #000 !important;
 	padding: 1px !important;
 	font-size: 1em !important;
 	margin-left: -2px !important;
 	width: auto !important;
+}
+
+input.flc-inlineEdit-edit {
+	width: 90% !important;
+}
+
+.fl-inlineEdit-invitation-text {
+	color: #666 !important;
+	font-style: italic;
+	border: none !important;
+}
+
+.fl-inlineEdit-invitation {
+	margin-left: -1px !important;
+	padding: 1px !important;
+	border: none !important;
 }
 
 .flc-inlineEdit-editContainer {
@@ -609,8 +618,14 @@ span.flc-undo-undoContainer, span.flc-undo-redoContainer {
 	font-size: .9em;
 }
 
-#document_title, #document_creator {
-	max-width: 80%;
+.destructive {
+	float: none;
+}
+
+.destructive img {
+	margin-left:-21px;
+	padding-top:3px;
+	width:13px;
 }
 
 button.save {
@@ -624,8 +639,6 @@ button.cancel {
 	top: 3px;
 	right: .5em;
 }
-
-
 
 
 div#spell{
@@ -656,9 +669,7 @@ div#preview_info {
 	margin:-23px 5px 5px;
 	height:125px;
 }
-#document #showUtils {
-	
-}
+
 #documents {
 	margin-top:0;
 }
@@ -709,18 +720,20 @@ div#preview_info {
 }
 
 #document .document .show_details, #document .document .edit_details {
-	margin-left: 260px;
+	float: left;
+	width: 49%;
 }
 #document .document .show_details dl.defList, #document .document .edit_details dl.defList {
 	margin:0;
 	float: left;
-	width: 70%;
+	overflow: hidden;
 }
 
 #document .document .show_details .side dl.defList, #document .document .edit_details .side dl.defList {
 	margin:0;
 	float: left;
 	width: 100%;
+	max-width: none;
 }
 
 #document .document .show_details dl.defList dt, #document .document .edit_details dl.defList dt {
@@ -773,23 +786,27 @@ dl#rights_info {width: 100%; margin: 0;}
 
 div#cover_container img {
 	border: 1px solid #d4e4ea;
-	max-width: 248px;}
+}
 
-dl#rights_info dt, div#cover_container dt {
+div#cover_container dl {
+	margin-top: 15px;
+}
+div#cover_container dt {
 	clear: both;
 	width: 5em;
 	text-align: right;
 	float: left;
 	font-weight: normal;
 	color: #666;
-	padding: 5px;
+	padding: 2px;
 	margin: 0 !important;
-	}
-dl#rights_info dd, div#cover_container dd {
+}
+
+div#cover_container dd {
 	float: none;
 	margin: 0 0 0 6em !important;
 	width: auto;
-	padding: 5px;
+	padding: 2px;
 	}
 
 #document .document h3 {
@@ -836,6 +853,9 @@ dl dd {
 	padding: 1px;
 }
 
+.side {
+	font-size: .9em;
+	}
 
 #rights_info {
 	width:320px;
@@ -951,6 +971,20 @@ dl dd {
 	margin: 0 0 2em;
 	width: 100%;
 }
+
+#documents table td {
+	padding: 2px 6px 2px;
+} 
+
+#documents table th {
+	padding: 2px 6px 2px;
+	background:none repeat scroll 0 0 #9BAFB8;
+	color:white;
+	font-weight:normal;
+	text-align:left;
+	white-space:nowrap;
+} 
+
 
 /*** jQuery Notifications ***/
 
