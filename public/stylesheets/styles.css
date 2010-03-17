@@ -738,7 +738,7 @@ div#preview_info {
 
 #document .document .show_details dl.defList dt, #document .document .edit_details dl.defList dt {
 	clear: both;
-	width: 8em;
+	width: 10em;
 	text-align: right;
 	float: left;
 	font-weight: normal;
@@ -747,17 +747,10 @@ div#preview_info {
 	margin: 0;
 }
 
-#document .document .show_details .side dl.defList dt, #document .document .edit_details .side dl.defList dt {
-	width: 5em;
-}
-
-#document .document .show_details .side dl.defList dd, #document .document .edit_details .side dl.defList dd {
-	margin: 0 0 0 5.5em;
-}
 
 #document .document .show_details dl.defList dd, #document .document .edit_details dl.defList dd {
 	float: none;
-	margin: 0 0 0 9em;
+	margin: 0 0 0 11em;
 	width: auto;
 	padding: 3px;
 }
@@ -793,7 +786,7 @@ div#cover_container dl {
 }
 div#cover_container dt {
 	clear: both;
-	width: 5em;
+	width: 7em;
 	text-align: right;
 	float: left;
 	font-weight: normal;
@@ -804,7 +797,7 @@ div#cover_container dt {
 
 div#cover_container dd {
 	float: none;
-	margin: 0 0 0 6em !important;
+	margin: 0 0 0 7.5em !important;
 	width: auto;
 	padding: 2px;
 	}

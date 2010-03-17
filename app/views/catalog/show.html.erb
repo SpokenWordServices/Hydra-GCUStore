@@ -19,14 +19,13 @@
     <%- end -%>
     <% if @previous_document || @next_document %>
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
-	    
-	    <span class="edit-browse">
+      </div>
+    <% end %>
+    <span class="edit-browse">
       <% if editor? %>
         <%= edit_and_browse_links %>
       <% end -%>
-      </span>
-      </div>
-    <% end %>
+    </span>
   </div>
 </div>
 <div id="document">
