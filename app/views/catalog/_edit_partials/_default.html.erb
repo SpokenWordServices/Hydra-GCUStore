@@ -27,6 +27,10 @@
       <%- end -%>
     </dd>
     <%= get_data_with_label(document, "Copyright:", 'rights_t') %>
+    <%= get_data_with_label(@document, "Series:", 'series_facet') %>
+    <%= get_data_with_label(@document, "Subseries:", 'subseries_facet') %>
+    <%= get_data_with_label(@document, "Box:", 'box_facet') %>
+    <%= get_data_with_label(@document, "Folder:", 'folder_facet') %>
   </dl>
   <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>

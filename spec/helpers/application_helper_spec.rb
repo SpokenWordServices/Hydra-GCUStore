@@ -27,4 +27,19 @@ describe ApplicationHelper do
       end
     end
   end
+  
+  describe "SALT methods" do
+    describe "get_data_with_linked_label" do
+      before(:each) do
+        @doc = {"field"=>["Item1","Item2","Item3"]}
+      end
+      it "should return a string representing the collection of items with the suplied delimiter" do
+        get_data_with_linked_label(@doc,"Items","field",{:delimiter=>", "}).should match(/, /)
+      end
+      it "should return a string representing the collection of items with the default <br/> delimiter" do
+        get_data_with_linked_label(@doc,"Items","field").should match(/<br\/>/)
+      end
+    end
+  end
+  
 end

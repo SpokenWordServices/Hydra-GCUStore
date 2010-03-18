@@ -12,6 +12,9 @@ Feature: Edit a document
     ## Commented out next line b/c the title is not displaying properly due to a bug in the sample data on the testing image.
     # And the "Title:" inline edit should contain "Letter from Ellie Engelmore to Wemara Lichty"
 
+  Scenario: Viewing browse/edit buttons
+    Given I am logged in as "frances" on the edit document page for druid:sb733gr4073
+    Then I should see a "span" tag with a "class" attribute of "edit-browse"
     # 
     # When I fill in "Name" with "name 1"
     # And I fill in "Color" with "color 1"

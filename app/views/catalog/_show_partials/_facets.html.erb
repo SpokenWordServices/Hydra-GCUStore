@@ -7,7 +7,7 @@
       <% display_facet = @response.facets.detect {|f| f.name == solr_fname} -%>
       <%#- raise solr_fname.inspect unless display_facet -%>
       <% if display_facet && display_facet.items.length > 0 %>
-        <h3><%= facet_field_labels[solr_fname] -%></h3>
+        <h3 class="facet_selected"><%= facet_field_labels[solr_fname] -%></h3>
         <ul>
 	      <% item_counter = 0 %>
           <% display_facet.items.each do |item| -%>
