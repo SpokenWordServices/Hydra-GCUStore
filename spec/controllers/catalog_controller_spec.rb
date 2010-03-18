@@ -33,14 +33,14 @@ describe CatalogController do
   describe "index" do
     describe "access controls" do
       before(:all) do
-        @public_document = Document.new(:pid=>"test:public_document")
+        @public_document = SaltDocument.new(:pid=>"test:public_document")
         @public_document.datastreams["properties"].access_values = "public"
         extracted = ActiveFedora::Datastream.new(:dsid=>"extProperties")
         extracted.content = fixture("druid-bv448hq0314-extProperties.xml").read
         @public_document.add_datastream( extracted )
         @public_document.save
         
-        @private_document = Document.new(:pid=>"test:private_document")
+        @private_document = SaltDocument.new(:pid=>"test:private_document")
         @private_document.datastreams["properties"].access_values = "private"
         extracted = ActiveFedora::Datastream.new(:dsid=>"extProperties")
         extracted.content = fixture("druid-bv448hq0314-extProperties.xml").read

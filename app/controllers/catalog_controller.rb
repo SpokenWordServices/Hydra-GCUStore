@@ -10,7 +10,7 @@ class CatalogController
   
   
   def edit
-    @document_fedora = Document.load_instance(params[:id])
+    @document_fedora = SaltDocument.load_instance(params[:id])
     #fedora_object = ActiveFedora::Base.load_instance(params[:id])
     #params[:action] = "edit"
     @downloadables = downloadables( @document_fedora )

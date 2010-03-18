@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'RedCloth'
 include SaltHelper
 
 
@@ -30,7 +31,7 @@ describe SaltHelper do
           &lt;li&gt;
             &lt;em&gt;strong&lt;/em&gt;
           &lt;/li&gt;
-        &lt;/ol&gt;"]}
+        &lt;/ol&gt;"],'relation_t'=>['http://example.com','"Salt Dev":https://salt-dev.stanford.edu/catalog']}
     end
     it "should return unescaped html from story_display field" do    
      text = get_html_data_with_label(@sample_document,"Stories:", 'story_display')
@@ -52,6 +53,20 @@ describe SaltHelper do
       doc_text = get_html_data_with_label(@sample_document,"Stories:", 'story_display',{:default=>@default_html})
       doc_text.should match(/<p>Hello<\/p>/) and
       doc_text.should_not match(/<p>Default Hello<\/p>/)
+    end
+  end
+  
+  describe "get_textile_data_with_label" do
+    before(:all) do
+      @sample_document = {'relation_t'=>['http://example.com','"Salt Dev":https://salt-dev.stanford.edu/catalog']}
+    end
+    it "should return html-rendered textile data" do
+      doc_text = get_textile_data_with_label(@sample_document,"Links:", 'relation_t')
+      doc_text.should match(/<dt>Links:<\/dt><dd>/) and
+      doc_text.should match(/<p>http:\/\/example.com<\/p>/) and
+      doc_text.should match(/<br\/>/) and
+      doc_text.should match('<p><a href="https://salt-dev.stanford.edu/catalog">Salt Dev</a></p><br/>') and
+      doc_text.should match(/<\/dd>/)
     end
   end
   

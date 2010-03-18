@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
     before_filter :require_solr, :require_fedora
     
     def edit
-      @document_fedora = Document.find(params[:id])
+      @document_fedora = SaltDocument.find(params[:id])
       @response = get_solr_response_for_doc_id
       @document = SolrDocument.new(@response.docs.first)
       find_folder_siblings(@document)
@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
     # put :update, :id=>"_PID_", "document"=>{"medium"=>{"1"=>"Paper Document", "2"=>"Image"}}
     # Sets the 1st and 2nd "medium" values on any appropriate datasreams in the _PID_ document, overwriting any existing values.
     def update
-      @document = Document.find(params[:id])
+      @document = SaltDocument.find(params[:id])
       attrs = unescape_keys(params[:document])
       logger.debug("attributes submitted: #{attrs.inspect}")
       result = @document.update_indexed_attributes(attrs)

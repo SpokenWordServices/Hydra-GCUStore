@@ -145,6 +145,29 @@ module SaltHelper
        text
       end
    end
+   
+   def get_textile_data_with_label(doc, label, field_string, opts={})
+      if opts[:default] && !doc[field_string]
+        doc[field_string] = opts[:default]
+      end
+
+      if doc[field_string]
+        field = doc[field_string]
+        text = "<dt>#{label}</dt><dd>"
+        if field.is_a?(Array)
+            field.each do |l|
+              text += "#{RedCloth.new(l).to_html}"
+              if l != h(field.last)
+                text += "<br/>"
+              end
+            end
+        else
+          text += RedCloth.new(field).to_html
+        end
+        text += "</dd>"
+        text
+       end
+    end
   
   
   
