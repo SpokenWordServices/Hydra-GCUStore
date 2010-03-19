@@ -11,5 +11,7 @@ coverage/*
 tmp/**/*
 tmp/performance 
 
+rerun.txt
+
 .project
 .buildpath
