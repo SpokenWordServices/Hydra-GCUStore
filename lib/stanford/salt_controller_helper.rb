@@ -65,13 +65,6 @@ module Stanford::SaltControllerHelper
     return result    
   end
   
-  def retrieve_descriptor
-    # We should be grabbing this from the collection_facet param, but there's only one collection so its hard-coded.
-    #collection_id = params[:collection_facet]
-    collection_id = "sc0340"
-    @descriptor = Stanford::EadDescriptor.retrieve( collection_id )
-  end
-  
   private
   
   def filter_datastreams_for_mime_type(datastreams_hash, mime_type)

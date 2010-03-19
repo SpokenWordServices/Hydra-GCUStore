@@ -48,25 +48,6 @@ module SaltHelper
     return result
   end
   
-  def collection_title
-    "Edward A. Feigenbaum Papers"
-  end
-  
-  
-  def display_for_ead_node( node_name , ead_description=@descriptor ) 
-    xpath_query = "//archdesc[@level=\"collection\"]/#{node_name}"
-    response = ""
-    response << "<dt> #{ead_description.xpath( xpath_query + "/head" ).first.content} </dt>"
-    response << "<dd> #{ead_description.xpath( xpath_query + "/p" ).first.content} </dd>"
-    if node_name == "controlaccess"
-      response << "<ul>"
-      ead_description.xpath( xpath_query + "/*[@source]" ).each do |subject|
-        response << "<li>[#{subject.attribute("source")}]  #{subject.content}</li>"
-      end
-    end
-    return response
-  end
-  
   def grouped_result_count(response, facet_name=nil, facet_value=nil)
     if facet_name && facet_value
       facet = response.facets.detect {|f| f.name == facet_name}
