@@ -2,6 +2,7 @@ require 'solr'
 require 'rexml/document'
 require "nokogiri"
 require 'lib/shelver/descriptor'
+require 'yaml'
 #require 'descriptor.rb'
 TEXT_FORMAT_ALTO = 0
 
@@ -211,6 +212,25 @@ class Extractor
       keywords << element.text
     end
     return keywords
+  end
+  
+  #
+  # Extracts content of a RELS-EXT datastream
+  #
+  def extract_rels_ext( text, solr_doc=Solr::Document.new )
+    map = YAML.load(File.open(File.join(Rails.root, "config/hydra_types.yml")))
+    
+    doc = Nokogiri::XML(text)
+    doc.xpath( '//foo:hasModel', 'foo' => 'info:fedora/fedora-system:def/model#' ).each do |element|
+      cmodel = element.attributes['resource'].to_s
+      solr_doc << Solr::Field.new( :cmodel => cmodel )
+      
+      if map.has_key?(cmodel)
+        solr_doc << Solr::Field.new( :hydra_type => map[cmodel] )
+      end
+    end
+
+    return solr_doc
   end
 
   #
