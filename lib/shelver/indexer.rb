@@ -93,6 +93,14 @@ class Indexer
   end
   
   #
+  #
+  #
+  def extract_rels_ext( obj, ds_name, solr_doc=Solr::Document.new )
+    rels_ext_ds = Repository.get_datastream( obj, ds_name )
+    extractor.extract_rels_ext( rels_ext_ds.content, solr_doc )
+  end
+  
+  #
   # This method generates the month and day facets from the date_t in solr_doc
   #
   
@@ -182,6 +190,8 @@ class Indexer
         stories_ds_names << ds_name
       elsif ds_name =~ /.*.jp2$/
         jp2_ds_names << ds_name
+      elsif ds_name =~ /^RELS-EXT/
+        rels_ext_names << ds_name
       end
     end
 
@@ -193,6 +203,9 @@ class Indexer
       end
     end
     
+    # extract RELS-EXT
+    rels_ext_names.each { |ds_name| extract_rels_ext(obj, ds_name, solr_doc)}
+    
     # extract facet categories
     ext_properties = {}
     ext_properties[:facets] = extract_ext_properties( obj, ext_properties_ds_names[0] )
@@ -200,6 +213,12 @@ class Indexer
     location_data = extract_location_data(obj, location_ds_names[0] )
     tags = extract_tags(obj, properties_ds_names[0])
     
+    # print location_data[:symbols]["series"]
+    ["Accession 2005-101"].each do |salt_series|
+      if location_data[:symbols]["series"] == salt_series
+        solr_doc << Solr::Field.new( :hydra_type => "SaltDocument" )
+      end
+    end
     # extract stories content sans html and put into story_t field. stories content with html is placed into story_display 
     
     
@@ -231,19 +250,6 @@ class Indexer
     #Pass the solr_doc through extract_stories_to_solr
     #needs work
       stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
-
-    #
-    #  Temporary hack to randomly create private and public documents
-    #            
-    
-      i = rand(2)
-
-      if i == 0
-                solr_doc << Solr::Field.new( :access_t => 'public')
-      else
-                solr_doc << Solr::Field.new( :access_t => 'private')
-      end
-
 
     # increment the unique id to ensure that all documents in the search index are unique
     @@unique_id += 1
