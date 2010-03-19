@@ -4,6 +4,7 @@ Feature: Show a document
   [stakeholder]
   wants [behaviour]
   
+  @wip
   Scenario: Public visit Document Show Page
     Given I am on the show document page for druid:sb733gr4073
     Then the "Title:" term should contain "Ahlstrom Annual Report 1991" 
