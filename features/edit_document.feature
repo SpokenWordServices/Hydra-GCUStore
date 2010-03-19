@@ -13,7 +13,7 @@ Feature: Edit a document
     # And the "Title:" inline edit should contain "Letter from Ellie Engelmore to Wemara Lichty"
 
   Scenario: Viewing browse/edit buttons
-    Given I am logged in as "frances" on the edit document page for druid:sb733gr4073
+    Given I am logged in as "francis" on the edit document page for druid:sb733gr4073
     Then I should see a "span" tag with a "class" attribute of "edit-browse"
     # 
     # When I fill in "Name" with "name 1"
