@@ -10,6 +10,7 @@ describe Blacklight::CatalogHelper do
       @reader = false
     end
     it "should have the correct qt param when the user is not of the reader role" do
+      pending
       session[:search] = {:per_page=>"40",:counter=>5}
       params[:per_page] = "40"
       prev_doc = setup_document_by_counter(4)
