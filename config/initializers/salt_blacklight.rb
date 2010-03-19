@@ -67,7 +67,7 @@ Blacklight.configure(:shared) do |config|
   config[:show] = {
     :html_title => "title_t",
     :heading => "title_t",
-    :display_type => "id"
+    :display_type => "hydra_type_t"
   }
 
   # solr fld values given special treatment in the index (search results) view
