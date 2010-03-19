@@ -215,9 +215,10 @@ class Extractor
   end
   
   #
-  # Extracts content of a RELS-EXT datastream
+  # Extracts content-model and hydra-type from RELS-EXT datastream
   #
   def extract_rels_ext( text, solr_doc=Solr::Document.new )
+    # TODO: only read in this file once
     map = YAML.load(File.open(File.join(Rails.root, "config/hydra_types.yml")))
     
     doc = Nokogiri::XML(text)
