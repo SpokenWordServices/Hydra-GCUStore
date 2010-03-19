@@ -1,0 +1,3 @@
+h1. Hydrangea
+
+Hydrangea is the first general-purpose Hydra app.  It's built on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
