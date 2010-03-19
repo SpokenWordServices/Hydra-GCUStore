@@ -223,10 +223,10 @@ class Extractor
     doc = Nokogiri::XML(text)
     doc.xpath( '//foo:hasModel', 'foo' => 'info:fedora/fedora-system:def/model#' ).each do |element|
       cmodel = element.attributes['resource'].to_s
-      solr_doc << Solr::Field.new( :cmodel => cmodel )
+      solr_doc << Solr::Field.new( :cmodel_t => cmodel )
       
       if map.has_key?(cmodel)
-        solr_doc << Solr::Field.new( :hydra_type => map[cmodel] )
+        solr_doc << Solr::Field.new( :hydra_type_t => map[cmodel] )
       end
     end
 

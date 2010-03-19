@@ -171,7 +171,7 @@ class Indexer
     
     # retrieve a comprehensive list of all the datastreams associated with the given
     #   object and categorize each datastream based on its filename
-    ext_properties_ds_names, location_ds_names, properties_ds_names, stories_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names,  = [],[],[],[],[],[],[] 
+    ext_properties_ds_names, location_ds_names, rels_ext_names, properties_ds_names, stories_ds_names, full_text_ds_names, xml_ds_names, jp2_ds_names,  = [],[],[],[],[],[],[],[] 
     ds_names = Repository.get_datastreams( obj )
     
     ds_names.each do |ds_name|
@@ -203,9 +203,6 @@ class Indexer
       end
     end
     
-    # extract RELS-EXT
-    rels_ext_names.each { |ds_name| extract_rels_ext(obj, ds_name, solr_doc)}
-    
     # extract facet categories
     ext_properties = {}
     ext_properties[:facets] = extract_ext_properties( obj, ext_properties_ds_names[0] )
@@ -213,12 +210,7 @@ class Indexer
     location_data = extract_location_data(obj, location_ds_names[0] )
     tags = extract_tags(obj, properties_ds_names[0])
     
-    # print location_data[:symbols]["series"]
-    ["Accession 2005-101"].each do |salt_series|
-      if location_data[:symbols]["series"] == salt_series
-        solr_doc << Solr::Field.new( :hydra_type => "SaltDocument" )
-      end
-    end
+    
     # extract stories content sans html and put into story_t field. stories content with html is placed into story_display 
     
     
@@ -250,7 +242,17 @@ class Indexer
     #Pass the solr_doc through extract_stories_to_solr
     #needs work
       stories_ds_names.each { |ds_name| extract_stories_to_solr(obj, ds_name, solr_doc)}
-
+      
+    # extract RELS-EXT
+    rels_ext_names.each { |ds_name| extract_rels_ext(obj, ds_name, solr_doc)}
+    
+    # Hack to set hydra_type for SALT data that has missing or incorrect cmodel info
+    salt_series = ["Accession 2005-101", "Accession 1986-052"]
+    if salt_series.include?(location_data[:symbols]["series"].to_s) 
+      solr_doc << Solr::Field.new( :hydra_type_t => "salt_document" )
+      puts "Added salt_document hydra type manually."
+    end
+    
     # increment the unique id to ensure that all documents in the search index are unique
     @@unique_id += 1
 
