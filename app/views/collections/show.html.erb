@@ -3,7 +3,7 @@
   <%= image_tag "feigenbaum_splash.png"%>
 </div>
 
-<%= link_to "Browse the Collection", catalog_index_path("f[collection_facet][]" => "e-a-feigenbaum-collection") %>
+<%= link_to "Browse the Collection", catalog_index_path("f[collection_facet][]" => "e-a-feigenbaum-collection"), :class=>"browse" %>
 
 <dl>
 <%= display_for_ead_node("bioghist") %>

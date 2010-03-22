@@ -116,6 +116,14 @@ ul.horizontal li {
 }
 
 
+#home h3, #home a.browse {
+	color:#4D606A;
+	font-size:1.3em;
+	font-weight:normal;
+	padding:15px 0 5px;
+}
+
+
 /* Top Red Banner */
 .sul-banner {
 	width: 100%;
@@ -179,9 +187,6 @@ div.aboutLinks .noLink{
 #control_links a {	/* start over link */
 	display:inline;
  	 float:left;
-}
-#control_links .back_to_cat { /* old backtocat link */
-	display: none;
 }
 
 #control_links .constraints {
@@ -325,7 +330,7 @@ div#yui-main div#mid_content {
 }
 #showUtils .back_to_cat {
 	float:left; 
-	padding-right:10%;
+	padding-right:5%;
 }
 div.tools {display: none;}
 
@@ -409,9 +414,14 @@ div.windowed_links a, div.windowed_links span {
 	padding:0 8px 2px;
 }
 
+div.windowed_links .current {
+	background-color:#9BAFB8;
+	color:white;
+}
+
 div.list_gallery_toggle {
 	float: right;
-	margin-right: 10%;
+	margin-right: 5%;
 }
 
 div.list_gallery_toggle a, div.list_gallery_toggle span {
@@ -446,6 +456,12 @@ div.list_gallery_toggle span.gallery_toggle {
 form.sort {
 	float: right;
 	padding-right: 5px;
+}
+
+select {
+	background-color:#F2F6F7;
+	border:1px solid #D4E4EA;
+	font-size:1em;
 }
 
 form.sort label {
@@ -500,7 +516,7 @@ div#searchMods label, div#searchMods h2 {
 #loading img { 
 	float:left;
 	display:block;
-	margin:-7px 5px 0 -5px
+	margin:-7px 5px 0 -5px;
 }
 
 #showHead a {
@@ -537,6 +553,14 @@ div#searchMods label, div#searchMods h2 {
 	display:inline; 
 }
 
+.previous {
+	padding-right: 5px;
+}
+
+.next {
+	padding-left: 5px;
+}
+
 #document {
 	padding: 0;
 }
@@ -554,41 +578,41 @@ div#searchMods label, div#searchMods h2 {
 #document .document .document_viewer {
 	width: 49%;
 	float: left;
-	border-right: 1px solid #D4E4EA;
+	border-right:1px solid #D4E4EA;
 }
 .fl-theme-mist {
 	background:transparent;
 }
-.fl-theme-mist a:active, .fl-theme-mist a:focus {
-	border:none;
-	outline:none;
-}
+
 .fl-theme-mist span input {
 	border:0.1em solid #5A95CF;
 	margin:0;
 }
-.fl-theme-mist input:focus,
-.fl-theme-mist .selectable, .fl-inlineEdit-focus {
+.fl-theme-mist :focus, .fl-theme-mist .selectable, .fl-inlineEdit-focus {
 	/* themed focus indicator */
-	outline: none !important;
+	outline: medium none !important;
 	font-size: 1em !important;
 	font-weight:normal; 
 	border: 1px solid #5A95CF !important;
 	background-color: white !important;
-	padding: 1px !important;
+	padding: 0px !important;
+	color: #000000 !important;
 }
 
+.fl-theme-mist a:active, .fl-theme-mist a:focus {
+	border: medium none !important;
+	outline: medium none !important;
+	font-size: .9em !important;
+	font-weight:normal; 
+	background-color: #F2F6F7 !important;
+	padding: 0px !important;
+	color: #5A95CF !important;
+}
 
-.flc-inlineEdit-edit, .flc-inlineEdit-text {
-	color: #000 !important;
-	padding: 1px !important;
+.fl-theme-mist input.flc-inlineEdit-edit, .fl-theme-mist input.editableText {
+	width: 85% !important;
+	font: normal 14px;
 	font-size: 1em !important;
-	margin-left: -2px !important;
-	width: auto !important;
-}
-
-input.flc-inlineEdit-edit {
-	width: 90% !important;
 }
 
 .fl-inlineEdit-invitation-text {
@@ -601,6 +625,11 @@ input.flc-inlineEdit-edit {
 	margin-left: -1px !important;
 	padding: 1px !important;
 	border: none !important;
+}
+
+
+li.editable_date_picker .fl-inlineEdit-invitation {
+	padding: 0px 1px !important;
 }
 
 .flc-inlineEdit-editContainer {
@@ -623,8 +652,7 @@ span.flc-undo-undoContainer, span.flc-undo-redoContainer {
 }
 
 .destructive img {
-	margin-left:-21px;
-	padding-top:3px;
+	margin-left:-16px;
 	width:13px;
 }
 
@@ -726,19 +754,14 @@ div#preview_info {
 #document .document .show_details dl.defList, #document .document .edit_details dl.defList {
 	margin:0;
 	float: left;
+	width: 100%;
 	overflow: hidden;
 }
 
-#document .document .show_details .side dl.defList, #document .document .edit_details .side dl.defList {
-	margin:0;
-	float: left;
-	width: 100%;
-	max-width: none;
-}
 
 #document .document .show_details dl.defList dt, #document .document .edit_details dl.defList dt {
 	clear: both;
-	width: 10em;
+	width: 20%;
 	text-align: right;
 	float: left;
 	font-weight: normal;
@@ -749,9 +772,9 @@ div#preview_info {
 
 
 #document .document .show_details dl.defList dd, #document .document .edit_details dl.defList dd {
-	float: none;
-	margin: 0 0 0 11em;
-	width: auto;
+	float: left;
+	margin: 0;
+	width: 76%;
 	padding: 3px;
 }
 
@@ -770,23 +793,23 @@ dd#document_medium select, dd#document_access select {
 }
 
 input#document_date_0_value_input, li.editable_date_picker {
-	width: 9em !important;
-	white-space: nowrap;
+	width: 11em !important;
+}
+
+li.editable, li.editable_textarea, li.editable_date_picker {
+	padding-bottom: 1px;
 }
 
 
 dl#rights_info {width: 100%; margin: 0;}
 
-div#cover_container img {
-	border: 1px solid #d4e4ea;
-}
 
 div#cover_container dl {
 	margin-top: 15px;
 }
 div#cover_container dt {
 	clear: both;
-	width: 7em;
+	width: 20%;
 	text-align: right;
 	float: left;
 	font-weight: normal;
@@ -796,16 +819,17 @@ div#cover_container dt {
 }
 
 div#cover_container dd {
-	float: none;
-	margin: 0 0 0 7.5em !important;
-	width: auto;
+	float: left;
+	margin: 0 !important;
+	width: 77%;
 	padding: 2px;
 	}
 
 #document .document h3 {
 	margin: 0;
 	font-weight: normal;
-	color: #666;}
+	color: #666;
+}
 
 dl {
 	overflow:hidden;
@@ -826,6 +850,10 @@ dl dd {
 	padding-bottom: 3px;
 	border-bottom: none;
 	}
+
+#home dl ul {
+	margin-left:17em;
+}
 
 #document {position: relative;}
 
@@ -861,6 +889,11 @@ dl dd {
 
 
 /* facets */
+
+#facets {
+	margin-right: 10px;
+}
+
 #facets h2 {
 	color:#4d606a;
 	font-size:1.3em;
@@ -881,7 +914,7 @@ dl dd {
 	background-image:url('/images/facet_open.png');
 }
 #facets ul {
-	padding-left:10px;
+	padding-left:15px;
 }
 #facets ul#related_subjects {
 	padding-left:0;
@@ -960,13 +993,29 @@ dl dd {
 	background: #DEE7EA;
 }
 
+#documents th.date {
+	width: 6em;
+}
+
+#documents th.title {
+	width: auto;
+}
+
+#documents th.type {
+	width: 9em;
+}
+
+#documents th.loc {
+	width: 15em;
+}
+
 #documents table {
 	margin: 0 0 2em;
 	width: 100%;
 }
 
 #documents table td {
-	padding: 2px 6px 2px;
+	padding: 3px 6px;
 } 
 
 #documents table th {
