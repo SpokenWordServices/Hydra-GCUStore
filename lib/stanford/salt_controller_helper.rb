@@ -47,10 +47,12 @@ module Stanford::SaltControllerHelper
       else
         result = Hash[]
         fedora_object.datastreams.each_pair do |dsid,ds|
-          mime_type = ds.attributes["mimeType"] ? ds.attributes["mimeType"] : ""
-          if ds.attributes["mimeType"].include?("pdf") || ds.label.include?("_TEXT.xml") || ds.label.include?("_METS.xml")
-           result[dsid] = ds
-          end  
+          if !ds.new_object?
+            mime_type = ds.attributes["mimeType"] ? ds.attributes["mimeType"] : ""
+            if mime_type.include?("pdf") || ds.label.include?("_TEXT.xml") || ds.label.include?("_METS.xml")
+             result[dsid] = ds
+            end 
+          end 
         end
       end
     else
