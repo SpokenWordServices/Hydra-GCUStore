@@ -1,0 +1,31 @@
+<h2>Edward A Feigenbaum</h2>
+<div id="collection_image">
+  <%= image_tag "feigenbaum_splash.png"%>
+</div>
+
+<%= link_to "Browse the Collection", catalog_index_path("f[collection_facet][]" => "e-a-feigenbaum-collection"), :class=>"browse" %>
+
+<dl>
+<%= display_for_ead_node("bioghist") %>
+</dl>
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>'catalog/facets', :locals=>{:facets_display_heading => "Explore the collection"} %>
+<% end %>
+
+<h3>Descriptive Summary</h3>
+<dl>
+<% @descriptor.xpath('//archdesc[@level="collection"]/did/*[@label]').each do |desc_node| %>
+  <dt><%= desc_node.attribute("label") %></dd>
+  <dd><%= desc_node.content %></dt>
+<% end %>
+</dl>
+<h3>Additional Information</h3>
+<dl>
+  <%= display_for_ead_node("scopecontent") %>
+  <%= display_for_ead_node("accessrestrict") %>
+  <%= display_for_ead_node("userestrict") %>
+  <%= display_for_ead_node("prefercite") %>
+  <%= display_for_ead_node("acqinfo") %>
+  <%= display_for_ead_node("controlaccess") %>
+</dl>

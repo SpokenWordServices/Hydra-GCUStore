@@ -36,7 +36,7 @@ $(document).ready(function()
   <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:controller] == 'catalog' and params[:action] == 'index' %>
     <body onload="$('input#q').focus();">
   <% else %>
-    <body>
+    <body<%= (params[:controller] == "collections" and params[:action] == "show") ? " id='home'" : nil %>>
   <% end %>
     <div class="sul-banner">
       <a href="http://library.stanford.edu" title="SULAIR Home"><%= image_tag("sulair_logo.jpg", :border=>0, :alt=>'SULAIR', :id => 'banner-logo') %></a>

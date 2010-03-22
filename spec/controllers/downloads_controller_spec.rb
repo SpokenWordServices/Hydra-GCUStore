@@ -38,27 +38,34 @@ describe DownloadsController do
       @mock_pdf = mock("mock_pdf")
       @mock_pdf.stubs(:attributes).returns({"mimeType"=>"application/pdf"})
       @mock_pdf.stubs(:label).returns("my_document.pdf")
+      @mock_pdf.stubs(:new_object?).returns(false) 
       
       @mock_ocr = mock("mock_ocr")
       @mock_ocr.stubs(:attributes).returns({"mimeType"=>"application/xml"})
       @mock_ocr.stubs(:label).returns("my_document_TEXT.xml") 
+      @mock_ocr.stubs(:new_object?).returns(false) 
            
            
       @mock_mets = mock("mock_mets")
       @mock_mets.stubs(:attributes).returns({"mimeType"=>"application/xml"})
       @mock_mets.stubs(:label).returns("my_document_METS.xml")
+      @mock_mets.stubs(:new_object?).returns(false) 
       
       @mock_image_xml1 = mock("mock_image_xml1")
       @mock_image_xml1.stubs(:attributes).returns({"mimeType"=>"application/xml"})
       @mock_image_xml1.stubs(:label).returns("my_document_0001.xml")
+      @mock_image_xml1.stubs(:new_object?).returns(false) 
       
       @mock_image_xml2 = mock("mock_image_xml2")
       @mock_image_xml2.stubs(:attributes).returns({"mimeType"=>"application/xml"})
       @mock_image_xml2.stubs(:label).returns("my_document_0002.xml")
+      @mock_image_xml2.stubs(:new_object?).returns(false) 
       
       @mock_ext_properties = mock("mock_ext_properties")
       @mock_ext_properties.stubs(:attributes).returns({"mimeType"=>"text/xml"})
       @mock_ext_properties.stubs(:label).returns("extProperties")
+      @mock_ext_properties.stubs(:new_object?).returns(false) 
+      
       
       @ds_hash = {"mock_pdf" => @mock_pdf, 
                 "mock_ocr"=>@mock_ocr, 

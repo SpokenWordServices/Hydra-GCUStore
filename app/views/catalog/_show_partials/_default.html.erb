@@ -17,7 +17,7 @@
   <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/default_details", :locals => {:document => document}%>
 </div>
 <% sidebar_items << capture do %>
-  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document is about"} %>
+  <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
   <%#= render :partial=>"catalog/facets", :locals=>{:document=>document} %>
 <% end %>
 
