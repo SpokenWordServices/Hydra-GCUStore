@@ -46,14 +46,20 @@ namespace :hydra do
       puts "You must specify a path to the fixture or provide its pid.  Example: rake hydra:import_fixture fixture=spec/fixtures/demo_12.foxml.xml"
     end
     
+    if !filename.nil?
       puts "Importing '#{filename}' to #{Fedora::Repository.instance.fedora_url}"
       file = File.new(filename, "r")
       result = foxml = Fedora::Repository.instance.ingest(file.read)
       if result
         puts "The fixture has been ingested as #{result}"
+        if !pid.nil?
+          shelver = Shelver::Shelver.new 
+          shelver.shelve_object(pid) 
+        end    
       else
         puts "Failed to ingest the fixture."
       end
+    end
   end
 
 end
