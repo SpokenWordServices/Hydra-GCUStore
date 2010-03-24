@@ -26,5 +26,34 @@ namespace :hydra do
     end
   end
   
+  desc "Import the fixture located at the provided path"
+  task :import_fixture => :environment do
+        
+    # If a destination url has been provided, attampt to export from the fedora repository there.
+    if ENV["destination"]
+      Fedora::Repository.register(ENV["destination"])
+    end
+    
+    # If Fedora Repository connection is not already initialized, initialize it using ActiveFedora defaults
+    ActiveFedora.init unless Thread.current[:repo]
+    
+    if !ENV["pid"].nil?
+      pid = ENV["pid"]
+      filename = File.join("spec","fixtures","#{pid.gsub(":","_")}.foxml.xml")
+    elsif !ENV["fixture"].nil? 
+      filename = ENV["fixture"]
+    else
+      puts "You must specify a path to the fixture or provide its pid.  Example: rake hydra:import_fixture fixture=spec/fixtures/demo_12.foxml.xml"
+    end
+    
+      puts "Importing '#{filename}' to #{Fedora::Repository.instance.fedora_url}"
+      file = File.new(filename, "r")
+      result = foxml = Fedora::Repository.instance.ingest(file.read)
+      if result
+        puts "The fixture has been ingested as #{result}"
+      else
+        puts "Failed to ingest the fixture."
+      end
+  end
 
 end
