@@ -24,7 +24,7 @@ describe DocumentsController do
       mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
       SaltDocument.expects(:find).with("_PID_").returns(mock_document)
-      put :update, :id=>"_PID_", "document"=>{"subject"=>{"-1"=>"My Topic"}}, :wau => 'krang'
+      put :update, :id=>"_PID_", "salt_document"=>{"subject"=>{"-1"=>"My Topic"}}, :wau => 'krang'
       session[:user].should == 'krang'
     end
     it "should update the object with the attributes provided" do
@@ -32,7 +32,7 @@ describe DocumentsController do
       mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
       SaltDocument.expects(:find).with("_PID_").returns(mock_document)
-      put :update, :id=>"_PID_", "document"=>{"subject"=>{"-1"=>"My Topic"}}
+      put :update, :id=>"_PID_", "salt_document"=>{"subject"=>{"-1"=>"My Topic"}}
       #session[:user].should == 'bob'
     end
     it "should initialize solr" do
