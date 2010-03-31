@@ -6,6 +6,7 @@ nohup.out
 *~
 *.swp
 
+coverage.data
 coverage/*
 
 tmp/**/*
