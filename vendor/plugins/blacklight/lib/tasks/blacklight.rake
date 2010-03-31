@@ -1,3 +1,16 @@
+namespace :blacklight do
+  
+  desc "Copies Blacklight's default images, css and javascript into your apps public/plugin_assets/blacklight directory."
+  task :copy_assets do
+    bl_root = File.join(File.dirname(__FILE__), '..', '..')
+    from = File.join(bl_root, 'assets', '*')
+    to = File.join(Rails.root, 'public', 'plugin_assets', 'blacklight')
+    mkdir_p to
+    cp_r Dir[from], to
+  end
+  
+end
+
 # Rake tasks for Blacklight plugin
 
 desc "Runs db:migrate then spec for Cruise Control."
@@ -26,20 +39,21 @@ namespace :solr do
   desc "Calls RSpec Examples wrapped in the test instance of Solr"
   task :spec do
     # wrap tests with a test-specific Solr server
-    got_error = TestSolrServer.wrap(SOLR_PARAMS) do
+    error = TestSolrServer.wrap(SOLR_PARAMS) do
+      rm_f "coverage.data"
       Rake::Task["rake:spec"].invoke 
       #puts `ps aux | grep start.jar` 
     end
-    raise "test failures" if got_error
+    raise "test failures: #{error}" if error
   end
 
   desc "Calls Cucumber Features wrapped in the test instance of Solr"
   task :features do
     # wrap tests with a test-specific Solr server
-    got_error = TestSolrServer.wrap(SOLR_PARAMS) do
-      Rake::Task["rake:features"].invoke 
+    error = TestSolrServer.wrap(SOLR_PARAMS) do
+      Rake::Task["cucumber:all"].invoke 
       #puts `ps aux | grep start.jar` 
     end
-    raise "test failures" if got_error
+    raise "test failures: #{error}" if error
   end
 end

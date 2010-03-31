@@ -1,3 +1,4 @@
+=begin
 require 'fileutils'
 
 blacklight_dir = File.join(RAILS_ROOT, 'vendor', 'plugins', 'blacklight')
@@ -79,3 +80,4 @@ puts "
 * Blacklight was successfully installed!
 
 "
+=end

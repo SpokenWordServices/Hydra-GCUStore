@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
+  
   acts_as_authentic do |config|
     #config.my_config_option = my_value
-    config.transition_from_crypto_providers = Authlogic::CryptoProviders::BCrypt
-  end  
+    #config.transition_from_crypto_providers = Authlogic::CryptoProviders::BCrypt
+  end
+  
   has_many :searches, :dependent => :destroy
-    
+  
   validates_presence_of :email
   validates_uniqueness_of :email
   

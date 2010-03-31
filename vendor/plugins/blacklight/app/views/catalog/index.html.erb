@@ -1,4 +1,4 @@
-<% if params[:q].to_s.empty? and params[:f].to_s.empty? %>
+<% if params[:q].blank? and params[:f].blank? %>
 	<%# if there are no input/search related params, display the "home" partial -%>
 	<%= render 'home' %>
 <% else %>

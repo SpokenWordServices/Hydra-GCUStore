@@ -5,12 +5,17 @@ module Blacklight
   CoreExt
   
   autoload :Configurable, 'blacklight/configurable'
+  autoload :SearchFields, 'blacklight/search_fields'
+
   autoload :Solr, 'blacklight/solr.rb'
   autoload :Marc, 'blacklight/marc.rb'
   
   autoload :SolrHelper, 'blacklight/solr_helper'
   
+  autoload :Routes, 'blacklight/routes'
+  
   extend Configurable
+  extend SearchFields
   
   class << self
     attr_accessor :solr, :solr_config
@@ -19,27 +24,19 @@ module Blacklight
   # The configuration hash that gets used by RSolr.connect
   @solr_config ||= {}
   
-  def self.solr(index=:default)
-    @solr[index]
-  end
-  
   def self.init
     
     solr_config = YAML::load(File.open("#{RAILS_ROOT}/config/solr.yml"))
     raise "The #{RAILS_ENV} environment settings were not found in the solr.yml config" unless solr_config[RAILS_ENV]
+
+    Blacklight.solr_config = solr_config[RAILS_ENV]    
+    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]["default"]['url']
     
-    Blacklight.solr_config = solr_config[RAILS_ENV]
-    # Create a global connection instance
-    Blacklight.solr = Blacklight.solr_config.inject(HashWithIndifferentAccess.new) do |hash, index|
-      key, value = *index
-      hash[key] = RSolr::Ext.connect(value.to_options)
-      if Gem.available?('curb')
-        require 'curb'
-        hash[key].adapter.connector.adapter_name = :curb
-      else
-        hash[key].adapter.connector.adapter_name = :net_http
-      end
-      hash
+    if Gem.available? 'curb'
+      require 'curb'
+      Blacklight.solr = RSolr::Ext.connect(Blacklight.solr_config.merge(:adapter=>:curb))
+    else
+      Blacklight.solr = RSolr::Ext.connect(Blacklight.solr_config)
     end
     
     # set the SolrDocument.connection to Blacklight.solr
@@ -53,6 +50,27 @@ module Blacklight
 
   def self.logger
     RAILS_DEFAULT_LOGGER
+  end
+  
+  # returns the full path the the blacklight plugin installation
+  def self.root
+    @root ||= File.expand_path File.join(__FILE__, '..', '..')
+  end
+  
+  # Searches Rails.root then Blacklight.root for a valid path
+  # returns a full path if a valid path is found
+  # returns nil if nothing is found.
+  # First looks in Rails.root, then Blacklight.root
+  #
+  # Example:
+  # full_path_to_solr_marc_jar = Blacklight.locate_path 'solr_marc', 'SolrMarc.jar'
+  
+  def self.locate_path *subpath_fragments
+    subpath = subpath_fragments.join('/')
+    base_match = [Rails.root, Blacklight.root].find do |base|
+      File.exists? File.join(base, subpath)
+    end
+    File.join(base_match.to_s, subpath) if base_match
   end
   
 end

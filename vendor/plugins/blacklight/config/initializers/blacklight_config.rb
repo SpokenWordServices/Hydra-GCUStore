@@ -21,7 +21,6 @@ Blacklight.configure(:shared) do |config|
   # FIXME: is this duplicated below?
   SolrDocument.marc_source_field  = :marc_display
   SolrDocument.marc_format_type   = :marc21
-  SolrDocument.ead_source_field   = :xml_display
   
   # default params for the SolrDocument.search method
   SolrDocument.default_params[:search] = {
@@ -160,14 +159,13 @@ Blacklight.configure(:shared) do |config|
   # name of solr field containing raw data
   config[:raw_storage_field] = "marc_display"
 
-  # "fielded" search select (pulldown)
-  # label in pulldown is followed by the name of a SOLR request handler as 
-  # defined in solr/conf/solrconfig.xml
+  # "fielded" search configuration. Used by pulldown among other places.
+  # For supported keys in hash, see rdoc for Blacklight::SearchFields
   config[:search_fields] ||= []
-  config[:search_fields] << ['All Fields', 'search']
-  config[:search_fields] << ['Title', 'title_search']
-  config[:search_fields] << ['Author', 'author_search']
-  config[:search_fields] << ['Subject', 'subject_search']
+  config[:search_fields] << {:display_label => 'All Fields', :qt => 'search'}
+  config[:search_fields] << {:display_label => 'Title', :qt => 'title_search'}
+  config[:search_fields] << {:display_label =>'Author', :qt => 'author_search'}
+  config[:search_fields] << {:display_label => 'Subject', :qt=> 'subject_search'}
   
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and

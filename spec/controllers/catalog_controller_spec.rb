@@ -48,7 +48,7 @@ describe CatalogController do
         @private_document.save
         
         @public_only_results = Blacklight.solr.find Hash[:phrases=>{:access_t=>"public"}]
-        @priavte_only_results = Blacklight.solr.find Hash[:phrases=>{:access_t=>"private"}]
+        @private_only_results = Blacklight.solr.find Hash[:phrases=>{:access_t=>"private"}]
 
       end
       after(:all) do
@@ -61,17 +61,13 @@ describe CatalogController do
       it "should only return public documents if role does not have permissions" do
         request.env["WEBAUTH_USER"]="Mr. Notallowed"
         get :index
-        # assigns["response"].docs.should include(@public_only_results.first)
-        # assigns["response"].docs.should_not include(@priavte_only_results.first)
-
-        assigns["response"].docs.count.should == @public_only_results.docs.count
-        #assigns["response"].should == @public_only_results
+        assigns("response").docs.count.should == @public_only_results.docs.count
       end
       it "should return all documents if role does have permissions" do
         request.env["WEBAUTH_USER"]="francis"
         get :index
         # assigns["response"].docs.should include(@public_only_results.first)
-        # assigns["response"].docs.should include(@priavte_only_results.first)
+        # assigns["response"].docs.should include(@private_only_results.first)
         assigns["response"].docs.count.should > @public_only_results.docs.count
       end
     end

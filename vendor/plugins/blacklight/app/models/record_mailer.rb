@@ -1,7 +1,7 @@
 class RecordMailer < ActionMailer::Base
   def email_record(document, details, from_host, host)
     recipients details[:to]
-    subject "Item Record: #{document.marc.marc['245']['a']}"
+    subject "Item Record: #{document.marc.marc['245']['a'] rescue 'N/A'}"
     from "no-reply@" << from_host
     body :document => document, :host => host, :message => details[:message]
   end

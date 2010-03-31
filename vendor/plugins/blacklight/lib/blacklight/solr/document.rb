@@ -1,9 +1,11 @@
 module Blacklight::Solr::Document
   
+  autoload :MARC, 'blacklight/solr/document/marc'
+  
   # When this module is included,
   # it includes the RSolr::Ext::Doc module (provides the #find method etc..)
   def self.included(base)
-    base.send :include, RSolr::Ext::Doc
+    base.send :include, RSolr::Ext::Model
     base.extend DefaultFinders
   end
   

@@ -1,3 +1,70 @@
 h1. Hydrangea
 
 Hydrangea is the first general-purpose Hydra app.  It's built on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
+
+h2. Basic installation & Running RSpec tests
+
+This is based on Matt Zumwalt's "Hydra Stack: Getting Started"http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv notes from LibDevConX in March 2010.
+
+Clone the git repository from github and pull the copy of jetty
+
+<pre>
+git clone git://github.com/mediashelf/hydrangea.git
+cd hydrangea
+git submodule init
+git submodule update
+</pre>
+
+This will pull all of the code.  The 'git submodule update' command is pulling a copy of hydra-jetty into the jetty directory within hydrangea.
+
+You are now in your working copy of hydrangea.  Use rake to install the gem dependencies (this might not work perfectly - we're still preparing this code for distribution).
+
+<pre>
+rake gems:install
+</pre>
+
+Run your database migrations (only need to do this once after cloning the git repository).
+<pre>
+rake db:migrate
+</pre>
+
+Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.
+
+<pre>
+cd jetty 
+java -jar start.jar
+</pre>
+
+... leave that running and open a new terminal window.  cd to wherever you checked out hydrangea 
+
+Run the Rspec tests to make sure everything is working properly.
+<pre>
+cd hydrangea
+rake hydra:import_fixture pid="druid:tj532xx3843"
+rake spec
+</pre>
+
+Now run the rails lighttpd server
+
+<pre>
+script/server
+</pre>
+
+If all goes well, you will be able to see an empty copy of hydrangea at http://localhost:3000
+
+
+
+h2. To get cucumber features to pass
+
+You must ingest two more fixtures:
+
+<pre>
+  rake hydra:import_fixture pid=druid:sb733gr4073
+  rake hydra:import_fixture pid=druid:bz425fy5289
+</pre>
+
+Then run your tests.
+
+<pre>
+  rake cucumber
+</pre>

@@ -1,0 +1,14 @@
+0.0.0 2010-03-30
+
+Upgraded to Blacklight 2.4 using a git subtree
+
+== Notes
+
+lost support for switching indexes at query time 
+forced to edit Blacklight's routes.rb to expose catalog/{id}/edit 
+* setting the edit_catalog_path separately failed
+
+
+#	modified:   vendor/plugins/blacklight/lib/blacklight.rb
+## this includes a hack to smooth over the usage of Blacklight.solr_config, but SHOULD BE REPLACED
+#	modified:   vendor/plugins/blacklight/lib/blacklight/routes.rb

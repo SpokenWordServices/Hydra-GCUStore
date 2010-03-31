@@ -28,5 +28,11 @@ module CatalogHelper
         "Displaying #{entry_name.pluralize} <b>#{start_num} - #{end_num}</b> of <b>#{total_num}</b>"
       end
   end
+
+  # Look up search field user-displayable label
+  # based on params[:qt] and configuration.
+  def search_field_label(params)
+    h( Blacklight.label_for_search_field(params[:search_field]) )
+  end
   
 end

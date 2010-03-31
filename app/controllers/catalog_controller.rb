@@ -24,7 +24,7 @@ class CatalogController
   def index
       @extra_controller_params ||= {}
       enforce_search_permissions
-      @response = get_search_results( @extra_controller_params )
+      (@response, @document_list) = get_search_results( @extra_controller_params )
       @filters = params[:f] || []
     respond_to do |format|
       format.html { save_current_search_params }
@@ -100,11 +100,21 @@ class CatalogController
   end
 
 
-  def get_search_results(extra_controller_params={})
-    _search_params = self.solr_search_params(extra_controller_params)
-    index = _search_params[:qt] == 'fulltext' ? :fulltext : :default
-    Blacklight.solr(index).find(_search_params)
-  end
+  # 
+  ### This was how get_search_results in SALT deals with switching solr instances
+  #
+  # def get_search_results(extra_controller_params={})
+  #   _search_params = self.solr_search_params(extra_controller_params)
+  #   index = _search_params[:qt] == 'fulltext' ? :fulltext : :default
+  #   
+  #   document_list = solr_response.docs.collect {|doc| SolrDocument.new(doc)}
+  #   
+  #   Blacklight.solr(index).find(_search_params)
+  #   
+  #   return [solr_response, document_list]
+  #   
+  # end
+  
 
   # This method will remove certain params from the session[:search] hash
   # if the values are blank? (nil or empty string)

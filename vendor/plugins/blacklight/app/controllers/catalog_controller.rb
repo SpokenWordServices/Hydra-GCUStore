@@ -6,24 +6,43 @@ class CatalogController < ApplicationController
   before_filter :delete_or_assign_search_session_params,  :only=>:index
   after_filter :set_additional_search_session_values, :only=>:index
   
+  # Whenever an action raises SolrHelper::InvalidSolrID, this block gets executed.
+  # Hint: the SolrHelper #get_solr_response_for_doc_id method raises this error,
+  # which is used in the #show action here.
+  rescue_from InvalidSolrID, :with => lambda {
+    # when a request for /catalog/BAD_SOLR_ID is made, this method is executed...
+    flash[:notice] = "Sorry, you seem to have encountered an error."
+    redirect_to catalog_index_path
+  }
+  
+  # When RSolr::RequestError is raised, this block is executed.
+  # The index action will more than likely throw this one.
+  # Example, when the standard query parser is used, and a user submits a "bad" query.
+  rescue_from RSolr::RequestError, :with => lambda {
+    # when solr (RSolr) throws an error (RSolr::RequestError), this method is executed.
+    flash[:notice] = "Sorry, I don't understand your search."
+    redirect_to catalog_index_path
+  }
+  
   # get search results from the solr index
   def index
-      @response = get_search_results
-      @filters = params[:f] || []
+    (@response, @document_list) = get_search_results
+    @filters = params[:f] || []
     respond_to do |format|
       format.html { save_current_search_params }
       format.rss  { render :layout => false }
     end
-=begin
-    rescue RSolr::RequestError
-      logger.error("Unparseable search error: #{params.inspect}" ) 
-      flash[:notice] = "Sorry, I don't understand your search." 
-      redirect_to :action => 'index', :q => nil , :f => nil
-    rescue 
-      logger.error("Unknown error: #{params.inspect}" ) 
-      flash[:notice] = "Sorry, you've encountered an error. Try a different search." 
-      redirect_to :action => 'index', :q => nil , :f => nil
-=end
+  end
+  
+  # get single document from the solr index
+  def show
+    @response, @document = get_solr_response_for_doc_id
+    respond_to do |format|
+      format.html {setup_next_and_previous_documents}
+      format.xml  {render :xml => @document.marc.to_xml}
+      format.refworks
+      format.endnote
+    end
   end
   
   # updates the search counter (allows the show view to paginate)
@@ -32,27 +51,6 @@ class CatalogController < ApplicationController
     redirect_to :action => "show"
   end
   
-  # get single document from the solr index
-  def show
-    @response = get_solr_response_for_doc_id
-    @document = SolrDocument.new(@response.docs.first)
-    respond_to do |format|
-      format.html {setup_next_and_previous_documents}
-      format.xml  {render :xml => @document.marc.to_xml}
-      format.refworks
-      format.endnote
-    end
-  rescue ActiveRecord::RecordNotFound 
-     logger.error("Attempt to access invalid id: #{params[:id]}") 
-     flash[:notice] = "Sorry, I can't find the item you requested." 
-     redirect_to :action => 'index' 
-  rescue => x
-       raise x
-       logger.error("Error encountered when trying to access: #{params[:id]}") 
-       flash[:notice] = "Sorry, you seem to have encountered an error." 
-       redirect_to :action => 'index', :q => nil , :f => nil
-  end
-
   # displays values and pagination links for a single facet field
   def facet
     @pagination = get_facet_pagination(params[:id], params)
@@ -88,24 +86,20 @@ class CatalogController < ApplicationController
   
   # citation action
   def citation
-    @response = get_solr_response_for_doc_id
-    @document = SolrDocument.new(@response.docs.first)
+    @response, @document = get_solr_response_for_doc_id
   end
   # Email Action (this will only be accessed when the Email link is clicked by a non javascript browser)
   def email
-    @response = get_solr_response_for_doc_id
-    @document = SolrDocument.new(@response.docs.first)
+    @response, @document = get_solr_response_for_doc_id
   end
   # SMS action (this will only be accessed when the SMS link is clicked by a non javascript browser)
   def sms 
-    @response = get_solr_response_for_doc_id
-    @document = SolrDocument.new(@response.docs.first)
+    @response, @document = get_solr_response_for_doc_id
   end
   
   # action for sending email.  This is meant to post from the form and to do processing
   def send_email_record
-    @response = get_solr_response_for_doc_id
-    @document = SolrDocument.new(@response.docs.first)
+    @response, @document = get_solr_response_for_doc_id
     if params[:to]
       from = request.host # host w/o port for From address (from address cannot have port#)
       host = request.host
@@ -129,11 +123,12 @@ class CatalogController < ApplicationController
           end
       end
       RecordMailer.deliver(email) unless flash[:error]
-      redirect_to catalog_path(@document.id)
+      redirect_to catalog_path(@document[:id])
     else
       flash[:error] = "You must enter a recipient in order to send this message"
     end
   end
+  
   protected
   
   #
@@ -178,7 +173,7 @@ class CatalogController < ApplicationController
   # if the values are blank? (nil or empty string)
   # if the values aren't blank, they are saved to the session in the :search hash.
   def delete_or_assign_search_session_params
-    [:q, :qt, :f, :per_page, :page, :sort].each do |pname|
+    [:q, :qt, :search_field, :f, :per_page, :page, :sort].each do |pname|
       params[pname].blank? ? session[:search].delete(pname) : session[:search][pname] = params[pname]
     end
   end

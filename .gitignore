@@ -9,6 +9,9 @@ nohup.out
 coverage.data
 coverage/*
 
+public/plugin_assets
+public/plugin_assets/**/*
+
 tmp/**/*
 tmp/performance 
 

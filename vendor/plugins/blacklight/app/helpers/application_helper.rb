@@ -6,6 +6,28 @@ module ApplicationHelper
   def application_name
     'Blacklight'
   end
+
+  # Over-ride in local app if you want to specify your own
+  # stylesheets. Want to add your own stylesheets onto the defaults
+  # from plugin?
+  # alias_method_chain :render_stylesheet_includes :local
+  # def render_stylesheet_includes_with_local
+  #   render_stylesheet_includes_without_local + stylesheet_link_tag "mine"
+  # end
+  def render_stylesheet_includes
+    stylesheet_link_tag 'yui', 'application', :plugin=>:blacklight, :media=>'all' 
+  end
+  
+  # Over-ride in local app if you want to specify your own
+  # js. Want to add your own stylesheets onto the defaults
+  # from plugin?
+  # alias_method_chain :render_js_includes :local
+  # def render_js_includes_with_local
+  #   render_js_includes_without_local + javascript_include_tag "mine"
+  # end
+  def render_js_includes
+    javascript_include_tag 'jquery-1.3.1.min.js', 'blacklight', 'application', 'accordion', 'lightbox', :plugin=>:blacklight 
+  end
   
   # collection of items to be rendered in the @sidebar
   def sidebar_items
@@ -40,6 +62,9 @@ module ApplicationHelper
   def document_heading
     @document[Blacklight.config[:show][:heading]]
   end
+  def render_document_heading
+    '<h1>' + document_heading + '</h1>'
+  end
   
   # Used in the show view for setting the main html document title
   def document_show_html_title
@@ -58,7 +83,7 @@ module ApplicationHelper
   
   # Used in the search form partial for building a select tag
   def search_fields
-    Blacklight.config[:search_fields]
+    Blacklight.search_field_options_for_select
   end
   
   # used in the catalog/_show/_default partial
@@ -91,7 +116,15 @@ module ApplicationHelper
   
   # Search History and Saved Searches display
   def link_to_previous_search(params)
-    query_part = params[:qt] == Blacklight.config[:default_qt] ? params[:q] : "#{params[:qt]}:(#{params[:q]})"
+    query_part = case
+                   when params[:q].blank?
+                     ""
+                   when (params[:search_field] == Blacklight.default_search_field[:key])
+                     params[:q]
+                   else
+                     "#{Blacklight.label_for_search_field(params[:search_field])}:(#{params[:q]})"
+                 end      
+    
     facet_part = 
     if params[:f]
       tmp = 
@@ -306,7 +339,7 @@ module ApplicationHelper
       end
 
       href_attr = "href=\"#{url}\"" unless href
-      "<a #{href_attr}#{tag_options}>#{name || url}</a>"
+      "<a #{href_attr}#{tag_options}>#{h(name) || h(url)}</a>"
     end
   end
 
@@ -349,14 +382,6 @@ module ApplicationHelper
       submit_function << "s.setAttribute('name', '#{request_forgery_protection_token}'); s.setAttribute('value', '#{escape_javascript form_authenticity_token}'); f.appendChild(s);"
     end
     submit_function << "f.submit();"
-  end
-  
-  # performs an XSLT transform
-  def xslt(stylesheet_file_path, document, params={})
-    require 'nokogiri'
-    document = Nokogiri::XML(document) if document.is_a?(String)
-    stylesheet = Nokogiri::XSLT.parse(render(stylesheet_file_path))
-    stylesheet.apply_to(Nokogiri::XML(document.to_xml), params)
   end
   
 end

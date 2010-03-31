@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   
   filter_parameter_logging :password, :password_confirmation  
   helper_method :current_user_session, :current_user
-  
-  helper :all
 
   def user_class; User; end
   
@@ -26,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-  
+    
     # Returns a list of Searches from the ids in the user's history.
     def searches_from_history
       session[:history].blank? ? [] : Search.find(session[:history]) rescue []
@@ -57,4 +55,5 @@ class ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.user
     end
+    
 end

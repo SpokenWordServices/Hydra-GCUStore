@@ -2,7 +2,7 @@
 
 namespace :hydra do
   
-  desc "Export the object identified by pid into spec/fixtures"
+  desc "Export the object identified by pid into spec/fixtures. Example:rake hydra:harvest_fixture pid=druid:sb733gr4073 source=http://fedoraAdmin:fedoraAdmin@127.0.0.1:8080/fedora"
   task :harvest_fixture => :environment do
         
     # If a source url has been provided, attampt to export from the fedora repository there.
