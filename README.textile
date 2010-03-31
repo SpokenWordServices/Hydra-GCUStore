@@ -40,7 +40,7 @@ java -jar start.jar
 Run the Rspec tests to make sure everything is working properly.
 <pre>
 cd hydrangea
-rake hydra:import_fixture pid="druid:tj532xx3843"
+rake hydra:import_fixture pid=druid:tj532xx3843
 rake spec
 </pre>
 
