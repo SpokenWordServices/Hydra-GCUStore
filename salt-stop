@@ -1,8 +1,0 @@
-export FEDORA_HOME=/Volumes/salt/fedora
-export CATALINA_HOME=$FEDORA_HOME/tomcat
-#hdiutil attach /Volumes/Time\ Machine\ Backups/Stanford/salt_10_13_2009.sparseimage --shadow
-#hdiutil attach /u/disk\ images/salt.sparseimage -shadow
-cd $FEDORA_HOME
-export JAVA_OPTS=""
-$FEDORA_HOME/tomcat/bin/shutdown.sh
-tail -f $FEDORA_HOME/tomcat/logs/catalina.out
