@@ -4,7 +4,7 @@ Hydrangea is the first general-purpose Hydra app.  It's built on "Blacklight":ht
 
 h2. Basic installation & Running RSpec tests
 
-This is based on Matt Zumwalt's "Hydra Stack: Getting Started"http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv notes from LibDevConX in March 2010.
+This is based on Matt Zumwalt's "Hydra Stack: Getting Started":http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv notes from LibDevConX in March 2010.
 
 Clone the git repository from github and pull the copy of jetty
 
@@ -39,7 +39,7 @@ java -jar start.jar
 
 Run the Rspec tests to make sure everything is working properly.
 <pre>
-cd hydrangea
+{cd to wherever you cloned hydrangea, then...}
 rake hydra:import_fixture pid=druid:tj532xx3843
 rake spec
 </pre>
