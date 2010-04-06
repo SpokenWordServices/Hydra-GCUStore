@@ -9,7 +9,7 @@ This is based on Matt Zumwalt's "Hydra Stack: Getting Started":http://docs.googl
 Clone the git repository from github and pull the copy of jetty
 
 <pre>
-git clone git://github.com/mediashelf/hydrangea.git
+git clone git://github.com/projecthydra/hydrangea.git
 cd hydrangea
 git submodule init
 git submodule update
