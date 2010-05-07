@@ -5,6 +5,7 @@
 class ApplicationController < ActionController::Base
   
   include SaltAccessControlsHelper
+  include StanfordWebauthIntegration::ControllerMethods
   
   filter_parameter_logging :password, :password_confirmation  
   helper_method :current_user_session, :current_user
@@ -31,15 +32,7 @@ class ApplicationController < ActionController::Base
   def store_bounce 
     session[:bounce]=params[:bounce]
   end
-  def set_current_user
-    unless Rails.env =~ /production/ 
-      if params[:wau]
-        logger.warn("Setting WEBAUTH_USER in dev mode!")
-        request.env['WEBAUTH_USER']=params[:wau]
-      end
-    end
-    session[:user]=request.env['WEBAUTH_USER'] unless request.env['WEBAUTH_USER'].blank?
-  end
+  
     # Returns a list of Searches from the ids in the user's history.
     def searches_from_history
       session[:history].blank? ? [] : Search.find(session[:history]) rescue []

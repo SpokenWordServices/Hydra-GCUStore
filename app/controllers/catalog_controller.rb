@@ -1,7 +1,7 @@
 require 'mediashelf/active_fedora_helper'
 class CatalogController
   
-  include Stanford::SaltControllerHelper
+  include Hydra::RepositoryController
   include MediaShelf::ActiveFedoraHelper
   include Blacklight::CatalogHelper
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
@@ -42,7 +42,6 @@ class CatalogController
     
   def show_with_customizations
     show_without_customizations
-    find_folder_siblings
     params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
     @facet_lookup = Blacklight.solr.find params
     enforce_read_permissions

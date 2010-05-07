@@ -1,7 +1,7 @@
 require 'mediashelf/active_fedora_helper'
 class GetController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
-    include Stanford::SaltControllerHelper
+    include Hydra::RepositoryController
     helper :downloads
     
     before_filter :require_fedora

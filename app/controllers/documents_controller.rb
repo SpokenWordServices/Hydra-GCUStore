@@ -2,7 +2,7 @@ require 'mediashelf/active_fedora_helper'
 class DocumentsController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
     include Blacklight::SolrHelper
-    include Stanford::SaltControllerHelper
+    include Hydra::RepositoryController
     
     
     include Blacklight::CatalogHelper

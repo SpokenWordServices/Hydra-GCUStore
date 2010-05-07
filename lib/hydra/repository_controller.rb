@@ -1,5 +1,4 @@
-require "stanford/ead_descriptor"
-# Stanford SolrHelper is a controller layer mixin. It is in the controller scope: request params, session etc.
+# Hydra-repository Contoller is a controller layer mixin. It is in the controller scope: request params, session etc.
 # 
 # NOTE: Be careful when creating variables here as they may be overriding something that already exists.
 # The ActionController docs: http://api.rubyonrails.org/classes/ActionController/Base.html
@@ -16,23 +15,7 @@ require "stanford/ead_descriptor"
 #   
 # end
 #
-module Stanford::SaltControllerHelper
-  
-  def find_folder_siblings(document=@document)
-    if document[:series_facet] && document[:box_facet] && document[:folder_facet]
-      folder_search_params = {}
-      folder_search_params[:phrases] = [{:series_facet => document[:series_facet].first}]
-      if document[:box_facet]
-        folder_search_params[:phrases] << {:box_facet => document[:box_facet].first}
-        if document[:folder_facet]
-          folder_search_params[:phrases] << {:folder_facet => document[:folder_facet].first}
-        end
-      end
-      @folder_siblings = Blacklight.solr.find folder_search_params
-    else 
-      @folder_siblings = nil
-    end
-  end
+module Hydra::RepositoryController
   
   # Returns a list of datastreams for download.
   # Uses user's roles and "mime_type" value in submitted params to decide what to return.
