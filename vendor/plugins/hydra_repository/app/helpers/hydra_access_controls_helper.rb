@@ -1,4 +1,4 @@
-module SaltAccessControlsHelper
+module HydraAccessControlsHelper
   
   def editor?
     user = session[:user]

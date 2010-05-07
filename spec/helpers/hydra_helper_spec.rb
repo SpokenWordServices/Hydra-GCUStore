@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'RedCloth'
-include SaltHelper
+include HydraHelper
 
 
-describe SaltHelper do
+describe HydraHelper do
   
   describe "link_to_multifacet" do
     #"box_facet"=>["7"]

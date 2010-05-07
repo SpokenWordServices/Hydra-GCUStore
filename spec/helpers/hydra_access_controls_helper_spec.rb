@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-include SaltAccessControlsHelper
+include HydraAccessControlsHelper
 
 
-describe SaltAccessControlsHelper do
+describe HydraAccessControlsHelper do
   
   describe "editor?" do
     it "should return true if the session[:user] is an editor or an archivist" do

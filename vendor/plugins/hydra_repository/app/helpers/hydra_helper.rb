@@ -1,4 +1,4 @@
-module SaltHelper
+module HydraHelper
 
   # collection of stylesheet links to be rendered in the <head>
   def stylesheet_links

@@ -4,13 +4,13 @@
 #
 class ApplicationController < ActionController::Base
   
-  include SaltAccessControlsHelper
+  include HydraAccessControlsHelper
   include StanfordWebauthIntegration::ControllerMethods
   
   filter_parameter_logging :password, :password_confirmation  
   helper_method :current_user_session, :current_user
   
-  helper :all
+  helper :all, :hydra_access_controls, :hydra_djatoka, :downloads, :metadata
 
   def user_class; User; end
   
