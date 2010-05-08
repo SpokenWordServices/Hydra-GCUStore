@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation  
   helper_method :current_user_session, :current_user
   
-  helper :all, :hydra_access_controls, :hydra_djatoka, :downloads, :metadata
+  helper :all
+  helper :hydra_access_controls, :hydra_djatoka, :downloads, :metadata, :hydra
 
   def user_class; User; end
   

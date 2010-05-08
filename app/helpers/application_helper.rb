@@ -4,7 +4,7 @@ module ApplicationHelper
   include HydraHelper
   
   def application_name
-    'SALT (Self Archiving Legacy Toolkit)'
+    'Hydrangea (Hydra Demo App)'
   end
   
   def get_data_with_linked_label(doc, label, field_string, opts={})
