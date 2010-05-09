@@ -49,6 +49,7 @@ jQuery(document).ready(function () {
         defaultViewText: "click to edit"
     });
     
+    /*
     var datePickers = setupDatePickers($(".editable_date_picker"), {
       blurHandlerBinder : fluid.inlineEdit.datePicker.blurHandlerBinder,
       submitOnEnter : true,
@@ -63,6 +64,7 @@ jQuery(document).ready(function () {
         }
       }
     });
+    */
     
 });
 
@@ -137,6 +139,7 @@ function insertValue(fieldName) {
  */
  
  function insertTextAreaValue(fieldName) {
+   console.log("poop");
    var d = new Date(); // get milliseconds for unique identfier
    var unique_id = "document_" + fieldName + "_" + d.getTime();
    // <div class="flc-inlineEdit-text">&nbsp;

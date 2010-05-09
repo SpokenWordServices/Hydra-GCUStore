@@ -85,5 +85,5 @@ function finishAssociatedInlineEdit(args) {
 
 jQuery(document).ready(function () 
 {
-  var datePickers = initAllDatePickers($(".date_picker"));
+  //var datePickers = initAllDatePickers($(".date_picker"));
 })

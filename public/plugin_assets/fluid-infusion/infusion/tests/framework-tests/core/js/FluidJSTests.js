@@ -1,7 +1,7 @@
 /*
-Copyright 2008-2009 University of Cambridge
+Copyright 2008-2010 University of Cambridge
 Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
+Copyright 2008-2009 University of California, Berkeley
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -21,9 +21,10 @@ https://source.fluidproject.org/svn/LICENSE.txt
         fluid.logEnabled = true;
         
         var fluidJSTests = new jqUnit.TestCase("Fluid JS Tests");
+
+        function isOdd(i) {return i % 2 === 1;}
         
         fluidJSTests.test("remove_if", function() {
-            function isOdd(i) {return i % 2 === 1;}
             jqUnit.assertDeepEq("Remove nothing", [2, 4, 6, 8], fluid.remove_if([2, 4, 6, 8], isOdd));
             jqUnit.assertDeepEq("Remove first ", [2, 4, 6, 8], fluid.remove_if([1, 2, 4, 6, 8], isOdd));
             jqUnit.assertDeepEq("Remove last ", [2, 4, 6, 8], fluid.remove_if([2, 4, 6, 8, 9], isOdd));
@@ -31,6 +32,13 @@ https://source.fluidproject.org/svn/LICENSE.txt
             jqUnit.assertDeepEq("Remove last two ", [2, 4, 6, 8], fluid.remove_if([2, 4, 6, 8, 9, 11], isOdd));
             jqUnit.assertDeepEq("Remove all ", [], fluid.remove_if([1, 3, 5, 7], isOdd));
             jqUnit.assertDeepEq("Remove from nothing ", [], fluid.remove_if([], isOdd));    
+        });
+
+        fluidJSTests.test("transform", function() {
+            function addOne(i) {return i + 1;}
+            jqUnit.assertDeepEq("Transform array", [false, true, false, true, false], fluid.transform([0, 1, 2, 3, 4], isOdd));
+            jqUnit.assertDeepEq("Transform hash", {a: false, b: true}, fluid.transform({a: 0, b: 1}, isOdd));
+            jqUnit.assertDeepEq("Transform hash chain", {a: true, b: false}, fluid.transform({a: 0, b: 1}, addOne, isOdd));
         });
 
         fluidJSTests.test("merge", function() {
@@ -275,13 +283,21 @@ https://source.fluidproject.org/svn/LICENSE.txt
             var binder = fluid.createDomBinder(container, selectors);
             var pageLinks = binder.locate("page-link");
             jqUnit.assertEquals("Find 3 links", 3, pageLinks.length);
-            var scoped = binder.locate("inner-link", pageLinks[2]);
-            jqUnit.assertNotNull("Find inner link", scoped);
-            jqUnit.assertEquals("Found second link", scoped[0].id, "page-link-3");
+            function testSublocate(method) {
+                for (var i = 0; i < 3; ++ i) {
+                    var scoped = binder[method]("inner-link", pageLinks[i]);
+                    jqUnit.assertNotNull("Find inner link: " + method + "(" + i + ")", scoped);
+                    jqUnit.assertEquals("Found second link: " + method + "(" + i + ")", scoped[0].id, "page-link-" + (i + 1));
+                }
+            }
+            
+            testSublocate("locate");
+            testSublocate("fastLocate");
+            
             var inexistent = binder.locate("inexistent");
             jqUnit.assertNotNull("Inexistent return", inexistent);
             jqUnit.assertEquals("Inexistent length", 0, inexistent.length);
-            var inexistent2 = binder.locate("inexistent", scoped);
+            var inexistent2 = binder.locate("inexistent", pageLinks[0]);
             jqUnit.assertNotNull("Scoped inexistent return", inexistent);
             jqUnit.assertEquals("Scoped inexistent length", 0, inexistent.length);
         });
@@ -365,6 +381,24 @@ https://source.fluidproject.org/svn/LICENSE.txt
            jqUnit.assertEquals("The subcomponent's options should have been overridden correctly.", 
                                "bonjour", myComponent.subcomponent.greeting);
                                
+        });
+        
+        fluidJSTests.test("set/getBeanValue", function() {
+            var model = {"path3": "thing"};
+            jqUnit.assertEquals("Get blank value", undefined, fluid.model.getBeanValue(model, "path3.nonexistent"));
+            jqUnit.assertEquals("Get blank value", undefined, fluid.model.getBeanValue(model, "path3.nonexistent.non3"));
+            jqUnit.assertEquals("Get blank value", undefined, fluid.model.getBeanValue(model, "path1.nonexistent"));
+            jqUnit.assertEquals("Get blank value", undefined, fluid.model.getBeanValue(model, "path1"));
+            fluid.model.setBeanValue(model, "path2.past", "attach");
+            jqUnit.assertDeepEq("Set blank value", {path2: {past: "attach"}, path3: "thing"}, model);
+            fluid.registerGlobalFunction("fluid.newFunc", function() { return 2 ;});
+            jqUnit.assertEquals("Call new global function", 2, fluid.newFunc());
+        });
+        
+        fluidJSTests.test("Globals", function() {
+            var space = fluid.registerNamespace("fluid.engage.mccord");
+            space.func = function() { return 2 ;};
+            jqUnit.assertEquals("Call function in namespace", 2, fluid.engage.mccord.func());
         });
         
     });

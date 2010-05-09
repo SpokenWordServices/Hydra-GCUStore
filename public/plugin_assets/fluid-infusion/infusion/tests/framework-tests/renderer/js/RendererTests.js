@@ -1,7 +1,6 @@
 /*
-Copyright 2008-2009 University of Cambridge
+Copyright 2008-2010 University of Cambridge
 Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -12,6 +11,13 @@ https://source.fluidproject.org/svn/LICENSE.txt
 */
 
 fluid.tests = fluid.tests || {};
+
+
+//TODO: fluid.identity required for testing purposes, will not be present until 
+// FLUID-2281 branch is merged
+fluid.identity = function() {
+    return arguments;
+};
 
 (function($) {
 
@@ -249,6 +255,7 @@ fluid.tests = fluid.tests || {};
     var messageBase = {
         message1: "A simple message",
         message2: "A second message",
+        refMessage: "http://a.b.com/c",
         message3: "Every {0} has {1} {2}(s)"
     };
     
@@ -297,7 +304,7 @@ fluid.tests = fluid.tests || {};
             fluid.testUtils.assertNode("Rendered message", {nodeText: message}, messageNode);
         }
         var tree = { ID: "message", messagekey: "message1"};
-        var options = {messageSource: {type: "data", messages: messageBase}};
+        var options = {messageSource: {type: "data", messages: messageBase, resolveFunc: fluid.formatMessage}};
         var templates = fluid.selfRender(node, tree, options);
         expectMessage(messageBase.message1);
         
@@ -308,6 +315,33 @@ fluid.tests = fluid.tests || {};
         expectMessage("Every CATT has four leg(s)");
     });
     
+    renderTests.test("UILinkMessage tests", function() {
+        var node = $(".UILinkMessage-test");
+        
+        var tree = { children: [{ID: "link", linktext: {messagekey: "message1"}, target: {messagekey: "refMessage"}}]};
+        var options = {messageSource: {type: "data", messages: messageBase}};
+        var templates = fluid.selfRender(node, tree, options);
+        var link = $("a", node);
+        fluid.testUtils.assertNode("Rendered messages", 
+            {nodeText: messageBase.message1, href: messageBase.refMessage}, link);
+    });
+    
+    renderTests.test("UIVerbatimMessage tests", function() {
+        var node = $(".UIVerbatimMessage-test");
+        var vmessageBase = {
+            vmessage: "Some <em>HTML</em> text"
+        };
+        
+        var tree = { children: [{ID: "verbatim", markup: {messagekey: "vmessage"}}]};
+        var options = {messageSource: {type: "data", messages: vmessageBase}};
+        var templates = fluid.selfRender(node, tree, options);
+        
+        var node2 = $(".UIVerbatimMessage-dumpery");
+        node2.html(vmessageBase.vmessage);
+        
+        fluid.testUtils.assertNode("Rendered messages", 
+            {nodeHTML: node2.html()}, $("div", node));
+    });
     
     renderTests.test("Simple UIBound tests", function() {
       var node = $(".FLUID-1696-test");
@@ -722,6 +756,144 @@ fluid.tests = fluid.tests || {};
          ], inputs);
     });
 
+    fluid.tests.decoratorRegistrar = function(container, registrar) {
+        registrar[registrar.length] = container;
+        var node = $(".FLUID-2980-test2");
+        fluid.selfRender(node, {});
+    };
+
+    renderTests.test("Multiple decorator test (FLUID-2980)", function() {
+        var node = $(".FLUID-2980-test");
+        var registrar = [];
+        var tree = {
+            children: [
+            {
+            ID: "item:",
+            decorators: {
+                type: "fluid",
+                func: "fluid.tests.decoratorRegistrar",
+                options: registrar
+            }},
+            {
+            ID: "item:",
+            decorators: {
+                type: "fluid",
+                func: "fluid.tests.decoratorRegistrar",
+                options: registrar
+              }
+            }
+            ]
+        };
+        fluid.selfRender(node, tree);
+        jqUnit.assertEquals("2 invocations of decorator expected", 2, registrar.length);
+    });
+    
+    renderTests.test("UISelect decorator fail (FLUID-3357)", function() {
+        var node = $(".FLUID-3357-test");
+        var registrar = [];
+        var tree = {
+            children: [{
+                ID: "select",
+                selection: "Choice1",
+                optionlist: ["Choice1", "Choice2"],
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.tests.decoratorRegistrar",
+                    options: registrar
+                    }
+                }
+            ]
+        };
+        fluid.selfRender(node, tree, {cutpoints: [{selector: ".select-3357", id: "select"}]});
+        jqUnit.assertEquals("1 invocations of decorator expected", 1, registrar.length);
+    });
+    
+    renderTests.test("Attribute character support (FLUID-3364)", function() {
+        var node = $(".FLUID-3364-test");
+        var tree = {};
+        fluid.selfRender(node, tree);
+        var input = $("input", node);
+        fluid.testUtils.assertNode("Rendered messages", 
+          {"aria-readonly": "true",
+           "aria-disabled": "true"}, input);
+    });
+    
+    renderTests.test("InitBlock rendering (FLUID-3482)", function() {
+        var node = $(".FLUID-3482-test");
+        var args = [true, 3, "string", {key1: 3, "key2": "thing"}];
+        var tree = {ID: "initBlock", functionname: "fluid.identity", 
+          "arguments": args};
+        fluid.selfRender(node, tree);
+        var block = $("div", node);
+        var result = eval(block.html());
+        jqUnit.assertDeepEq("Idempotent transit", args, result);
+    });
+    
+    renderTests.test("Removal of rsf:id attributes (FLUID-3498)", function() {
+        var node = $(".FLUID-3498-test");
+        fluid.selfRender(node, {});
+        var markup = node.html();
+        jqUnit.assertEquals("ids removed", -1, markup.indexOf("rsf:id"));
+    });
+    
+    function renderManually(node, tree, options) {
+        options = options || {};
+        var resourceSpec = {base: {resourceText: fluid.extractTemplate(node[0], options.armouring), 
+                    href: ".", resourceKey: "."}
+                    };
+        var templates = fluid.parseTemplates(resourceSpec, ["base"]);
+        var renderer = fluid.renderer(templates, tree, options);
+        var rendered = renderer.renderTemplates();
+        return rendered;
+    }
+    
+    renderTests.test("Empty tag corruption test (FLUID-3493)", function() {
+        var node = $(".FLUID-3493-test");
+        var tree = {children: [{ID: "cell:", 
+            children: [{ID: "payload-1", value: "Thing 1"},{ID: "payload-2", value: "Thing 2"}]},
+            {ID: "cell:", 
+            children: [{ID: "payload-1", value: "Thing 2"},{ID: "payload-2", value: "Thing 3"}]}
+            ]};
+          fluid.selfRender(node, tree)
+        function assertCount(sel, count) {
+            var rows = $(sel, node);
+            jqUnit.assertEquals("Render count " + count + " for " + sel, count, rows.length);
+        }
+ 
+//        var rendered = renderManually(node, tree, {});
+        assertCount("div.cell", 2);
+        assertCount("div.preamble", 2);
+        assertCount("br.middle", 2);
+        assertCount("div.end", 2);
+    });
+    
+    renderTests.test("Blank switching and blind textarea support (FLUID-3224)", function() {
+        var node = $(".FLUID-3224-test");
+        var model = {};
+        var tree = {children: [{ID: "input", valuebinding: "nonexistent.empty"}, {ID: "switch"}]};
+        var rendered = renderManually(node, tree, {model: model});
+   // These lines commented out since the test for an unclosed textarea is not completely safe
+   // due to possible corruption or "correction" through passage through the DOM
+   //     fluid.selfRender(node, tree, {model: model, autoBind: true});
+   //     var rendered = node[0].innerHTML;
+        jqUnit.assertTrue("Closed textarea is expected", rendered.indexOf("</textarea>") >= 0);
+    });
+    
+    renderTests.test("Self-closed tags for HTML support (FLUID-3524)", function() {
+        var node = $(".FLUID-3524-test");
+        var rendered = renderManually(node, {},  {armouring: "comment"});
+        jqUnit.assertTrue("No empty tags are present", rendered.indexOf("</") === -1);
+        jqUnit.assertTrue("meta rendered", rendered.indexOf("meta") !== -1);
+        jqUnit.assertTrue("link rendered", rendered.indexOf("link") !== -1);
+    });
+    
+    renderTests.test("Self-closed tags for HTML support (FLUID-3524-b)", function() {
+        var node = $(".FLUID-3524-b-test");
+        var rendered = renderManually(node, {},  {armouring: "comment"});
+        jqUnit.assertTrue("script open rendered", rendered.indexOf("<script") !== -1);
+        jqUnit.assertTrue("script close rendered", rendered.indexOf("</script>") !== -1);
+    });
+
     renderTests.test("Properties unescaping", function() {
       
       jqUnit.assertEquals("Simple unescaping", "This is a thing", 
@@ -732,20 +904,83 @@ fluid.tests = fluid.tests || {};
       jqUnit.assertDeepEq("Random junk", ["\\\\\\\\\\ \t\nThing\x53\u0000", true],
           fluid.unescapeProperties("\\\\\\\\\\\\\\\\\\\\\ \\t\\nThing\\x53\\u0000\\"));
       });
-
-    var resourceSpec = {properties: {href: "../data/testProperties.properties"},
-                              json: {href: "../data/testProperties.json"}};    
-    fluid.fetchResources(resourceSpec, function() {
-        renderTests.test("Properties file parsing", function() {
-            jqUnit.assertNotNull("Fetched properties file", resourceSpec.properties.resourceText);
-            jqUnit.assertNotNull("Fetched JSON file", resourceSpec.json.resourceText);
-            var json = JSON.parse(resourceSpec.json.resourceText);
-            var properties = fluid.parseJavaProperties(resourceSpec.properties.resourceText);
-            jqUnit.assertDeepEq("Parsed properties equivalent", json, properties);        
-        });
       
-      });
+    renderTests.test("Nested data binding", function () {
+       var selectionModel = {
+           values: ["v1", "v2"],
+           names: ["value one", "value two"],
+           selection: ["v2"]
+       };
+       
+       var selectorMap = [
+           {selector: ".nestLevelOne", id: "levelOne:"},
+           {selector: ".nestLevelTwo", id: "levelTwo:"},
+           {selector: ".nestLevelThree", id: "levelThree:"},
+           {selector: "#nestedDataBindingInput", id: "input"},
+           {selector: ".nestedDataBindingLabel", id: "label"}
+       ];
+       
+       var generateNestedTree = function () {
+           var tree = {children: []};
+           
+           tree.children[0] = {
+               ID: "selections",
+               optionlist: {valuebinding: "values"},
+               optionnames: {valuebinding: "names"},
+               selection: {valuebinding: "selection"}
+           };
+           
+           tree.children[1] = {
+               ID: "levelOne:",
+               children: [
+                   {
+                       ID: "levelTwo:",
+                       children: []
+                   }
+               ]    
+           };
+           
+           for (var i = 0; i < selectionModel.values.length; i++) {
+               var item = tree.children[1].children[0].children;
+               
+               item[item.length] = {
+                   ID: "levelThree:",
+                   children: [
+                       {ID: "input", choiceindex: i, parentRelativeID: "..::..::..::selections"},
+                       {ID: "label", choiceindex: i, parentRelativeID: "..::..::..::selections"}
+                   ]
+               };
+           }
+           
+           return tree;
+       };
+       
+       fluid.selfRender($(".nestedDataBinding"), generateNestedTree(), {cutpoints: selectorMap, model: selectionModel});
+       
+       jqUnit.assertEquals("Number of Inputs", selectionModel.values.length, $("input", ".nestedDataBinding").length);
+       jqUnit.assertEquals("Number of Labels", selectionModel.values.length, $("label", ".nestedDataBinding").length);
+       jqUnit.assertEquals("Selected Value", selectionModel.selection,$("input:checked", ".nestedDataBinding").attr("value"));
+    });
 
+ 
+        var resourceSpec = {properties: {href: "../data/testProperties.properties"},
+                                  json: {href: "../data/testProperties.json"}};    
+        var calls = 0;
+        //stop();
+        
+        fluid.fetchResources(resourceSpec, function() {
+            renderTests.test("Properties file parsing", function() {
+                ++calls; // Test FLUID-3361
+                jqUnit.assertEquals("Just one call to fetchResources callback", 1, calls);
+                jqUnit.assertValue("Fetched properties file", resourceSpec.properties.resourceText);
+                jqUnit.assertValue("Fetched JSON file", resourceSpec.json.resourceText);
+                var json = JSON.parse(resourceSpec.json.resourceText);
+                var properties = fluid.parseJavaProperties(resourceSpec.properties.resourceText);
+                jqUnit.assertDeepEq("Parsed properties equivalent", json, properties);
+                //start();
+        });
+        
+      });
     
     };
   })(jQuery); 

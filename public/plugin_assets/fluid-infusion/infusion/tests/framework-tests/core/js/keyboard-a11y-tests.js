@@ -1,7 +1,6 @@
 /*
 Copyright 2008-2009 University of Cambridge
-Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
+Copyright 2008-2010 University of Toronto
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -296,7 +295,7 @@ if (!fluid.unwrap) {
 
         // Try selecting something that isn't selectable. Assume things stay the same.
         var nonSelectable = jQuery(NON_ITEM_SEL);
-        menu.items.select(nonSelectable);
+        menu.items.fluid("selectable.select", nonSelectable);
         keyboardA11y.assertNotSelected(nonSelectable);
         keyboardA11y.assertSelected(getFirstMenuItem());
     });

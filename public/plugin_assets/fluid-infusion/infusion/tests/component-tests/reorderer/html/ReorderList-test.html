@@ -4,24 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca">
   <head>
     <title>List Layout Handler Tests</title>
-    <link href="../../../test-core/css/markup-examples.css" type="text/css" rel="stylesheet" media="all" />
+    <link type="text/css" rel="stylesheet" media="all" href="../../../test-core/css/markup-examples.css" />
 
     <!--  This is the jqUnit test css file -->
-    <link rel="Stylesheet" media="screen" href="../../../lib/qunit/css/testsuite.css" />
+    <link rel="stylesheet" media="screen" href="../../../lib/qunit/css/qunit.css" />
 
     <!--  These are the required javascript modules for the Reorderer
           eventually to be replaced with a single build generated file -->
     <script type="text/javascript" src="../../../../lib/jquery/core/js/jquery.js"></script>
-    <script type="text/javascript" src="../../../../lib/jquery/ui/js/ui.core.js"></script>
-    <script type="text/javascript" src="../../../../lib/jquery/ui/js/ui.draggable.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.mouse.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.draggable.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/jquery.keyboard-a11y.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/Fluid.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/FluidDOMUtilities.js"></script>
+    <script type="text/javascript" src="../../../../components/reorderer/js/ReordererDOMUtilities.js" ></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/GeometricManager.js"></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/Reorderer.js"></script>
 
     <!--  These are the jqUnit test js files -->
-    <script type="text/javascript" src="../../../lib/qunit/js/testrunner.js"></script>
+    <script type="text/javascript" src="../../../lib/qunit/js/qunit.js"></script>
     <script type="text/javascript" src="../../../test-core/jqUnit/js/jqUnit.js"></script>
 
     <!--  These are used for tests that have been written using this page as data -->
@@ -37,11 +40,12 @@
     </script>
   </head>
   <body>
-     <h1 id="header">ListLayoutHandler Test Suite</h1>
-    <h2 id="banner"></h2>
-    <h2 id="userAgent"></h2>
+    <h1 id="qunit-header">ListLayoutHandler Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
     
-    <ol id="tests"></ol>
     <div id="main">
 
     <h1>Unordered List (vertical)</h1>

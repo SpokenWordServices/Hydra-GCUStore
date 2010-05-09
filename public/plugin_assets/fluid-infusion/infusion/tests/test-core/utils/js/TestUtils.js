@@ -1,7 +1,6 @@
 /*
-Copyright 2008-2009 University of Cambridge
-Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
+Copyright 2007-2010 University of Cambridge
+Copyright 2007-2009 University of Toronto
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -73,8 +72,11 @@ fluid.testUtils.assertNode = function(message, expected, node) {
            attr = node.tagName.toLowerCase();
            messageExt = " - node name"
         }
-        if (key === "nodeText") {
+        else if (key === "nodeText") {
            attr = jQuery.trim(fluid.dom.getElementText(node));
+        }
+        else if (key === "nodeHTML") {
+           attr = $(node).html();
         }
         var evalue = expected[key];
         var pass = evalue === attr;
@@ -82,7 +84,7 @@ fluid.testUtils.assertNode = function(message, expected, node) {
             pass = !!evalue === attr;
             }
         if (key !== "children") {
-            jqUnit.assertTrue(message + messageExt + " expected: " + evalue + " actual: " + attr, pass);
+            jqUnit.assertTrue(message + messageExt + " expected value: " + evalue + " actual: " + attr, pass);
         }
         else {
             var children = $("> *", node);

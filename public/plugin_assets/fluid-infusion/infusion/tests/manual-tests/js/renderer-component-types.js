@@ -1,7 +1,6 @@
 /*
-Copyright 2008-2009 University of Cambridge
-Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
+Copyright 2009 University of Cambridge
+Copyright 2009 University of Toronto
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -21,31 +20,30 @@ var demo = demo || {};
 
     var listTree = {
         children: [{
-            ID: "H1s:",
+            ID: "template2:subtemplate1",
             children: [{
-                ID: "H1item:toc",
-                children: [{
-                    ID: "toc_anchor",
-                    linktext: "foo",
-                    target: "#foo"
-                }]
-            }, {
-                ID: "H1item:H2s",
-                children: [{
-                    ID: "H2item:toc",
+                ID: "anch",
+                linktext: "foo",
+                target: "#foo"
+            }]
+        }, {
+            ID: "template2:subtemplate2",
+            children: [
+                {
+                    ID: "template2:subtemplate1",
                     children: [{
-                        ID: "toc_anchor",
+                        ID: "anch",
                         linktext: "bar",
                         target: "#bar"
                     }]
-                }]
-            }, {
-                ID: "H1item:toc",
-                children: [{
-                    ID: "toc_anchor",
-                    linktext: "foobar",
-                    target: "#foobar"
-                }]
+                }
+            ]
+        }, {
+            ID: "template2:subtemplate1",
+            children: [{
+                ID: "anch",
+                linktext: "foobar",
+                target: "#foobar"
             }]
         }]
     };

@@ -4,25 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca">
   <head>
     <title>Layout Reorderer Tests</title>
-    <link href="../../../test-core/css/markup-examples.css" type="text/css" rel="stylesheet" media="all" />
+    <link type="text/css" rel="stylesheet" media="all" href="../../../test-core/css/markup-examples.css" />
 
     <!--  This is the jqUnit test css file -->
-    <link rel="Stylesheet" media="screen" href="../../../lib/qunit/css/testsuite.css" />
+    <link rel="Stylesheet" media="screen" href="../../../lib/qunit/css/qunit.css" />
 
     <script type="text/javascript" src="../../../../lib/jquery/core/js/jquery.js"></script>
-    <script type="text/javascript" src="../../../../lib/jquery/ui/js/ui.core.js"></script>
-    <script type="text/javascript" src="../../../../lib/jquery/ui/js/ui.draggable.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.mouse.js"></script>
+    <script type="text/javascript" src="../../../../lib/jquery/ui/js/jquery.ui.draggable.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/jquery.keyboard-a11y.js"></script>
     <script type="text/javascript" src="../../../../lib/json/js/json2.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/Fluid.js"></script>
     <script type="text/javascript" src="../../../../framework/core/js/FluidDOMUtilities.js"></script>
+    <script type="text/javascript" src="../../../../components/reorderer/js/ReordererDOMUtilities.js" ></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/GeometricManager.js"></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/Reorderer.js"></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/ModuleLayout.js"></script>
     <script type="text/javascript" src="../../../../components/reorderer/js/LayoutReorderer.js"></script>
 
     <!--  These are the jqUnit test js files -->
-    <script type="text/javascript" src="../../../lib/qunit/js/testrunner.js"></script>
+    <script type="text/javascript" src="../../../lib/qunit/js/qunit.js"></script>
     <script type="text/javascript" src="../../../test-core/jqUnit/js/jqUnit.js"></script>
     <script type="text/javascript" src="../../../lib/jquery-ui/js/jquery.simulate.js"></script>
   
@@ -34,13 +37,13 @@
     <script type="text/javascript" src="../js/ModuleLayoutTests.js"></script>
   </head>
   <body>
-     <h1 id="header">LayoutReorderer Test Suite</h1>
-    <h2 id="banner"></h2>
-    <h2 id="userAgent"></h2>
+    <h1 id="qunit-header">LayoutReorderer Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
     
-    <ol id="tests"></ol>
-    <div id="main" >
-
+    <div id="main">
         <div id="default-selector-test">
             <div class="flc-reorderer-column">
                 <div class="flc-reorderer-module" id="portlet-1">

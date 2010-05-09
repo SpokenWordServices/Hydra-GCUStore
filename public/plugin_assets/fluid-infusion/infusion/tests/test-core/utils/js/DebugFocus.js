@@ -1,7 +1,6 @@
 /*
-Copyright 2008-2009 University of Cambridge
+Copyright 2008-2010 University of Cambridge
 Copyright 2008-2009 University of Toronto
-Copyright 2007-2009 University of California, Berkeley
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -51,4 +50,4 @@ fluid.debug = function () {
 } (); // End of fluid.debug namespace.
 
 // Call listenForFocusEvents when the document is ready.
-//jQuery(document).ready(fluid.debug.listenForFocusEvents);
+jQuery(document).ready(function () {fluid.debug.listenForFocusEvents()});
