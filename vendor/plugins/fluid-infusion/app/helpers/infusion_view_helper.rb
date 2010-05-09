@@ -15,9 +15,7 @@ module InfusionViewHelper
   def infusion_javascripts(type = :basic, opts={})
     opts = {:include_base=>true, :cache=>false, :debug=>false}.merge!opts
     
-    debug_base_paths = ["../infusion/lib/jquery/core/js/jquery.js",
-            "../infusion/lib/jquery/ui/js/ui.core.js",
-            "../infusion/framework/core/js/jquery.keyboard-a11y.js",
+    debug_base_paths = ["../infusion/framework/core/js/jquery.keyboard-a11y.js",
             "../infusion/framework/core/js/Fluid.js",
             "../infusion/components/inlineEdit/js/InlineEdit.js"]
     base_paths = opts[:debug] ? debug_base_paths : ['../infusion/InfusionAll.js']
