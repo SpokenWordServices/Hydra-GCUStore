@@ -11,17 +11,6 @@ class DocumentsController < ApplicationController
     before_filter :search_session, :history_session
     before_filter :require_solr, :require_fedora
     
-    def edit
-      @document_fedora = SaltDocument.find(params[:id])
-      @response = get_solr_response_for_doc_id
-      @document = SolrDocument.new(@response.docs.first)
-      find_folder_siblings(@document)
-      
-      respond_to do |format|
-        format.html {setup_next_and_previous_documents}
-      end
-    end
-    
     # Uses the update_indexed_attributes method provided by ActiveFedora::Base
     # This should behave pretty much like the ActiveRecord update_indexed_attributes method
     # For more information, see the ActiveFedora docs.
