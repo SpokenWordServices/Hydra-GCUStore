@@ -59,7 +59,7 @@ module MetadataHelper
     resource_type = resource.class.to_s.underscore
     result = ""
     result << "<dt for=\"#{resource_type}_#{field_name}\">#{label}"
-    result << link_to_function("+" , "insertValue(\"#{field_name}\")", :class=>'addval') 
+    result << "<a class='addval' data-field_name='#{field_name}' href='#'>+</a>"
     result << "</dt>"
     result << "<dd id=\"#{resource_type}_#{field_name}\"><ol id=\"#{resource_type}_#{field_name}_values\">"
     
