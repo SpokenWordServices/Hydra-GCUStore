@@ -1,6 +1,6 @@
 # require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 # 
-# describe Shelver::Replicator do
+# describe Solrizer::Replicator do
 #   
 #   before(:all) do
 #     config_path = "#{RAILS_ROOT}/config/replicator.yml"
@@ -27,11 +27,11 @@
 #   end
 #   
 #   before(:each) do
-#     @replicator = Shelver::Replicator.new
+#     @replicator = Solrizer::Replicator.new
 #   end
 #   
-#   it "should be a kind of Shelver" do
-#     @replicator.should be_instance_of(Shelver::Replicator)
+#   it "should be a kind of Solrizer" do
+#     @replicator.should be_instance_of(Solrizer::Replicator)
 #   end
 # 
 #   it "should get its solr and fedora locations from replicator.yml" do
@@ -57,7 +57,7 @@
 #   describe "replicate_objects" do
 #     it "should retrieve pids and pass each pid to replicate_object" do
 #       pids = ["pid1", "pid2", "pid3"]
-#       Shelver::Repository.expects(:get_pids).returns( pids )
+#       Solrizer::Repository.expects(:get_pids).returns( pids )
 #       pids.each {|p| @replicator.expects(:replicate_object).with(p) }
 #       @replicator.replicate_objects
 #     end

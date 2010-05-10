@@ -37,8 +37,8 @@ class SaltDocument < ActiveFedora::Base
 
     def save
       super
-      shelver = Shelver::Shelver.new
-      shelver.shelve_object( self )
+      solrizer = Solrizer::Solrizer.new
+      solrizer.solrize( self )
     end
   
 

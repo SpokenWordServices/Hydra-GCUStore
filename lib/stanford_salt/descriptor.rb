@@ -1,6 +1,6 @@
 require "nokogiri"
 
-module Shelver
+module Solrizer
 class Descriptor
   
   @@desctriptors = Hash[]

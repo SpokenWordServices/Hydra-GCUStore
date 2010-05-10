@@ -1,14 +1,14 @@
 require 'test_helper'
 require 'performance_test_help'
 
-class ShelverTest < ActionController::PerformanceTest
+class SolrizerTest < ActionController::PerformanceTest
   
   def setup
   end
   
-  def test_shelve_large_object
-    @shelver = Shelver::Shelver.new
-    @shelver.shelve_object("druid:cs409mn9638")
+  def test_solrize_large_object
+    @solrizer = Solrizer::Solrizer.new
+    @solrizer.solrize("druid:cs409mn9638")
     obj = Document.load_instance("druid:cs409mn9638")
   end
   

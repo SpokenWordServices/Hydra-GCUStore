@@ -53,8 +53,8 @@ namespace :hydra do
       if result
         puts "The fixture has been ingested as #{result}"
         if !pid.nil?
-          shelver = Shelver::Shelver.new 
-          shelver.shelve_object(pid) 
+          solrizer = Solrizer::Solrizer.new 
+          solrizer.solrize(pid) 
         end    
       else
         puts "Failed to ingest the fixture."
