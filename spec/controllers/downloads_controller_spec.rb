@@ -21,10 +21,10 @@ describe DownloadsController do
   
   it "should be restful" do
     #route_for(:controller=>'courses', :action=>'index').should == '/'
-    route_for(:controller=>'downloads', :action=>'index', :document_id=>"_PID_").should == '/documents/_PID_/downloads'
+    route_for(:controller=>'downloads', :action=>'index', :asset_id=>"_PID_").should == '/assets/_PID_/downloads'
     #route_for(:controller=>'downloads', :action=>'show', :document_id=>"_PID_", :id=>"my_datastream.pdf").should == '/documents/_PID_/downloads/my_datastream.pdf'
 
-    params_from(:get, '/documents/_PID_/downloads').should == {:controller=>'downloads', :document_id=>"_PID_", :action=>'index'}
+    params_from(:get, '/assets/_PID_/downloads').should == {:controller=>'downloads', :asset_id=>"_PID_", :action=>'index'}
     #params_from(:get, '/documents/_PID_/downloads/3.pdf').should == {:controller=>'downloads', :document_id=>"_PID_",  :action=>'show', :id=>'3.pdf'}
     #params_from(:get, '/documents/_PID_/downloads/3').should == {:controller=>'downloads', :document_id=>"_PID_",  :action=>'show', :id=>'3'}
 
@@ -78,19 +78,19 @@ describe DownloadsController do
     
     it "should default to returning only pdfs" do
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      xhr :get, :index, :document_id=>"_PID_", :wau=>"nobody"
+      xhr :get, :index, :asset_id=>"_PID_", :wau=>"nobody"
       assigns(:datastreams).should == {"mock_pdf" => @mock_pdf}
     end
 
     it "should return a list of all datastreams if params[mime_type] == all and logged in as an editor" do
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      get :index, {:document_id=>"_PID_", :mime_type=>"all", :wau=>"francis"}
+      get :index, {:asset_id=>"_PID_", :mime_type=>"all", :wau=>"francis"}
       assigns(:datastreams).should == @ds_hash
     end
     
     it "should default to returning pdfs, METS, and TEXT when logged in as an editor" do
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      xhr :get, :index, :document_id=>"_PID_", :wau=>"francis"
+      xhr :get, :index, :asset_id=>"_PID_", :wau=>"francis"
       assigns(:datastreams).should == {"mock_pdf" => @mock_pdf, 
                 "mock_ocr"=>@mock_ocr, 
                 "ds13_id" => @mock_mets}
@@ -104,7 +104,7 @@ describe DownloadsController do
       ActiveFedora::Base.expects(:load_instance).returns(mock("result_object", :datastreams => {"mydsid"=>mock_ds}))
     
       controller.expects(:send_data).with("ds content", :filename=>"mylabel", :type => 'text/plain') #.returns("foo")
-      get :index, :document_id=>"_PID_", :download_id=>"mydsid"
+      get :index, :asset_id=>"_PID_", :download_id=>"mydsid"
     end
   end
   

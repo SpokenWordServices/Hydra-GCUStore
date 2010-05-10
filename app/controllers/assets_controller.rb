@@ -1,4 +1,5 @@
 require 'mediashelf/active_fedora_helper'
+
 class AssetsController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
     include Blacklight::SolrHelper
@@ -21,8 +22,14 @@ class AssetsController < ApplicationController
     # put :update, :id=>"_PID_", "document"=>{"medium"=>{"1"=>"Paper Document", "2"=>"Image"}}
     # Sets the 1st and 2nd "medium" values on any appropriate datasreams in the _PID_ document, overwriting any existing values.
     def update
-      @document = SaltDocument.find(params[:id])
-      attrs = unescape_keys(params[:salt_document])
+      af_model = retrieve_af_model(params[:content_type])
+      unless af_model 
+        af_model = SaltDocument
+      end
+      @document = af_model.find(params[:id])
+      
+      
+      attrs = unescape_keys(params[af_model.to_s.underscore])
       logger.debug("attributes submitted: #{attrs.inspect}")
       result = @document.update_indexed_attributes(attrs)
       @document.save
@@ -40,4 +47,18 @@ class AssetsController < ApplicationController
         }
       end
     end
+    
+    private
+    def retrieve_af_model(class_name)
+      klass = Module.const_get(class_name.camelcase)
+      #klass.included_modules.include?(ActiveFedora::Model)  
+      if klass.is_a?(Class) && klass.superclass == ActiveFedora::Base
+        return klass
+      else
+        return false
+      end
+      rescue NameError
+        return false
+    end
+    
 end
