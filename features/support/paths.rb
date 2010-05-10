@@ -23,6 +23,8 @@ module NavigationHelpers
         '/'
       when /the search page/
         '/'
+      when /the catalog index page/
+        catalog_index_path
       # Add more mappings here.
       # Here is a more fancy example:
       #

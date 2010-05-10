@@ -28,4 +28,4 @@
   <%#= render :partial=>"catalog/facets", :locals=>{:document=>document} %>
 <% end %>
 
-<%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>
+<%= async_load_tag(asset_downloads_path(params[:id]), 'downloads') %>

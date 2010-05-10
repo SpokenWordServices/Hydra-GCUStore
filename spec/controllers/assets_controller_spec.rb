@@ -8,14 +8,14 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 # or
 # rake cucumber
 
-describe DocumentsController do
+describe AssetsController do
   
   before do
     request.env['WEBAUTH_USER']='bob'
   end
   
   it "should use DocumentController" do
-    controller.should be_an_instance_of(DocumentsController)
+    controller.should be_an_instance_of(AssetsController)
   end
   
   describe "update" do

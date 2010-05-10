@@ -1,8 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   #map.root :controller => 'collections', :action=>'index'
   map.resources :collections 
-  map.resources :documents do |documents|
-    documents.resources :downloads, :only=>[:index]
+  # map.resources :documents, :controller => :assets do |documents|
+  #   documents.resources :downloads, :only=>[:index]
+  # end
+  map.resources :assets do |assets|
+    assets.resources :downloads, :only=>[:index]
   end
   map.resources :get, :only=>:show  
   map.connect 'catalog/:id/edit', :controller=>:catalog, :action=>:edit

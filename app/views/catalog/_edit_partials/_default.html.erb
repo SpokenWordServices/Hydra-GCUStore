@@ -23,7 +23,7 @@
 	    <ul>
           <% %>
         </ul>
-        <%= async_load_tag(document_downloads_path(params[:id]), 'downloads') %>
+        <%= async_load_tag(asset_downloads_path(params[:id]), 'downloads') %>
       <%- end -%>
     </dd>
     <%= get_data_with_label(document, "Copyright:", 'rights_t') %>

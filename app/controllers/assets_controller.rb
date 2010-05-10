@@ -1,5 +1,5 @@
 require 'mediashelf/active_fedora_helper'
-class DocumentsController < ApplicationController
+class AssetsController < ApplicationController
     include MediaShelf::ActiveFedoraHelper
     include Blacklight::SolrHelper
     include Hydra::RepositoryController
