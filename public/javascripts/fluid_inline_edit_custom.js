@@ -111,11 +111,34 @@ var makeAllButtons = function (editors) {
 };
 
 /***
+ * Inserting and removing simple inline edits
+ */
+ 
+function insertValue(fieldName) {
+  var values_list = jQuery("#document_"+fieldName+"_values");
+  var new_value_index = values_list.children('li').size()
+  var unique_id = "document_" + fieldName + "_" + new_value_index;
+  
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  div.appendTo(values_list); 
+  var newVal = fluid.inlineEdit("#"+unique_id, {
+    componentDecorators: {
+      type: "fluid.undoDecorator" 
+    },
+    listeners : {
+      onFinishEdit : myFinishEditListener,
+      modelChanged : myModelChangedListener
+    }
+  });
+  newVal.edit();
+}
+
+
+/***
  * Inserting and removing rich inline edits
  */
  
  function insertTextAreaValue(fieldName) {
-   console.log("poop");
    var d = new Date(); // get milliseconds for unique identfier
    var unique_id = "document_" + fieldName + "_" + d.getTime();
    // <div class="flc-inlineEdit-text">&nbsp;
