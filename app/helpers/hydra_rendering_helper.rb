@@ -4,7 +4,7 @@ module HydraRenderingHelper
   # currently only used by the render_document_partial helper method (below)
   def document_partial_name(document)
     if !document[Blacklight.config[:show][:display_type]].nil?
-      return document[Blacklight.config[:show][:display_type]].first.downcase.pluralize
+      return document[Blacklight.config[:show][:display_type]].first.underscore.pluralize
     else
       return nil
     end

@@ -1,1 +1,3 @@
 # StanfordSalt
+module StanfordSalt
+end

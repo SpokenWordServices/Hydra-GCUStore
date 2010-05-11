@@ -2,7 +2,7 @@
 
 
 <div class="document_viewer" id="cover_container">
-  <%= render :partial => "documents/viewer" , :locals => {:document => document}%>
+  <%= render :partial => "salt_documents/viewer" , :locals => {:document => document}%>
   <dl class="defList">
     <%= get_data_with_label(document, "ID:", 'id') %>
     <dt>Download:</dt>
@@ -20,7 +20,7 @@
   <%#= link_to("view raw OCR", document_downloads_path(fedora_object.pid, :download_id=>ds.dsid)) %>
 </div>
 <div class="<%= params[:action]%>_details">
-  <%= render :partial => "#{params[:controller]}/_#{params[:action]}_partials/salt_document_details", :locals => {:document => document}%>
+  <%= render :partial => "salt_documents/show_details", :locals => {:document => document}%>
 </div>
 <% sidebar_items << capture do %>
   <%= render :partial=>"location_browse_box", :locals => {:document => document} %>
