@@ -52,13 +52,13 @@ describe SaltDocument do
       Fedora::Repository.instance.stubs(:save)
     end
     
-    it "should explicitly call shelver after updating fedora" do
+    it "should explicitly call solrizer after updating fedora" do
       @document.expects(:create).returns("Successfully created.")
       # Solr updates are turned off in this app, so update_index never gets triggered.
       #@document.expects(:update_index).returns("Successfully updated index.")
-      mock_shelver = mock("shelver")
-      mock_shelver.expects(:shelve_object).with(@document)
-      Shelver::Shelver.expects(:new).returns( mock_shelver )
+      mock_solrizer = mock("solrizer")
+      mock_solrizer.expects(:solrize).with(@document)
+      Solrizer::Solrizer.expects(:new).returns( mock_solrizer )
       @document.save
     end
   end

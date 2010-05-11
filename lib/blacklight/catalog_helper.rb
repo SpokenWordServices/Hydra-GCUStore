@@ -1,3 +1,4 @@
+# Note: not sure we're still using this in hydrangea...
 # This is a replica of some methods that are in Blacklight's CatalogController that we wanted to re-use in other controllers
 module Blacklight::CatalogHelper
   # calls setup_previous_document then setup_next_document.

@@ -1,10 +1,10 @@
 module ApplicationHelper
   include Stanford::SearchworksHelper
   #include Stanford::SolrHelper # this is already included by the SearchworksHelper
-  include SaltHelper
+  include HydraHelper
   
   def application_name
-    'SALT (Self Archiving Legacy Toolkit)'
+    'Hydrangea (Hydra Demo App)'
   end
   
   def get_data_with_linked_label(doc, label, field_string, opts={})

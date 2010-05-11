@@ -1,0 +1,3 @@
+# StanfordWebauthIntegration
+module StanfordWebauthIntegration; end
+require "stanford_webauth_integration/controller_methods"

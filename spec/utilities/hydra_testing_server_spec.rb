@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../../lib/hydra/hydra_testing_server.rb')
+# require File.expand_path(File.dirname(__FILE__) + '/../../lib/hydra/hydra_testing_server.rb')
 
-describe HydraTestingServer do
+describe Hydra::TestingServer do
   
   it "should be configurable with params hash" do
     jetty_params = {
@@ -12,7 +12,7 @@ describe HydraTestingServer do
       :fedora_home => '/path/to/fedora'
     }
     
-    ts = HydraTestingServer.configure(jetty_params) 
+    ts = Hydra::TestingServer.configure(jetty_params) 
     ts.quiet.should == false
     ts.jetty_home.should == "/path/to/jetty"
     ts.port.should == 8888
@@ -21,7 +21,7 @@ describe HydraTestingServer do
   end
   
   it "should be configurable with default values" do
-    ts = HydraTestingServer.configure 
+    ts = Hydra::TestingServer.configure 
     ts.quiet.should == true
     ts.jetty_home.should == File.join(RAILS_ROOT, "jetty")
     ts.port.should == 8888
@@ -38,7 +38,7 @@ describe HydraTestingServer do
       :fedora_home => nil
     }
     
-    ts = HydraTestingServer.configure(jetty_params) 
+    ts = Hydra::TestingServer.configure(jetty_params) 
     ts.quiet.should == false
     ts.jetty_home.should == File.join(RAILS_ROOT, "jetty")
     ts.port.should == 8888
