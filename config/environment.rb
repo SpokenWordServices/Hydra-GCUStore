@@ -30,7 +30,7 @@ Rails::Initializer.run do |config|
   config.gem 'solrizer', :version=>">= 0.0.9"
   config.gem 'authlogic', :version=>">= 0.1.0"
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
-  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller fluid-infusion hydra_repository stanford_salt)
+  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller fluid-infusion hydra_repository stanford_salt stanford_webauth_integration)
   
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
