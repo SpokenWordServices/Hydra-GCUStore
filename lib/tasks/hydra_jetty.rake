@@ -2,7 +2,7 @@
 # when starting solr test server during functional tests use:
 # 
 #    rake SOLR_CONSOLE=true
-require File.expand_path(File.dirname(__FILE__) + '/../hydra/hydra_testing_server.rb')
+#require 'hydra/testing_server'
 
 
 JETTY_PARAMS = {
@@ -17,14 +17,14 @@ namespace :hydra do
 namespace :jetty do
   desc "Starts the bundled Hydra Testing Server"
   task :start do
-    HydraTestingServer.configure(JETTY_PARAMS)
-    HydraTestingServer.instance.start
+    Hydra::TestingServer.configure(JETTY_PARAMS)
+    Hydra::TestingServer.instance.start
   end
   
   desc "Stops the bundled Hydra Testing Server"
   task :stop do
-    puts "stopping #{HydraTestingServer.instance.pid}"
-    HydraTestingServer.instance.stop
+    puts "stopping #{Hydra::TestingServer.instance.pid}"
+    Hydra::TestingServer.instance.stop
   end
 end
 end

@@ -16,7 +16,7 @@
 
 # This class is based on Blacklight's TestSolrServer
 
-class HydraTestingServer
+class Hydra::TestingServer
   require 'singleton'
   include Singleton
   attr_accessor :port, :jetty_home, :solr_home, :quiet, :fedora_home
@@ -29,7 +29,12 @@ class HydraTestingServer
   def self.configure(params = {})
     hydra_server = self.instance
     hydra_server.quiet = params[:quiet].nil? ? true : params[:quiet]
-    hydra_server.jetty_home = params[:jetty_home] || File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'jetty'))
+    if defined?(RAILS_ROOT)
+      base_path = RAILS_ROOT
+    else
+      base_path = "."
+    end
+    hydra_server.jetty_home = params[:jetty_home] || File.expand_path(File.join(base_path, 'jetty'))
     hydra_server.solr_home = params[:solr_home]  || File.join( hydra_server.jetty_home, "solr")
     hydra_server.fedora_home = params[:fedora_home] || File.join( hydra_server.jetty_home, "fedora/default")
     hydra_server.port = params[:jetty_port] || 8888
