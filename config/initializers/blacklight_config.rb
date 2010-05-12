@@ -109,7 +109,8 @@ Blacklight.configure(:shared) do |config|
       "folder_facet" => "Folder",
       "donor_tags_facet" => "Tagged by Donor",
       "archivist_tags_facet" => "Tagged by Archivist"
-    }
+    },
+    :limits=> {nil=>10}
   }
 
   # solr fields to be displayed in the index (search results) view
