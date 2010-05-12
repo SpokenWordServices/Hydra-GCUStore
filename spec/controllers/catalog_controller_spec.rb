@@ -64,7 +64,8 @@ describe CatalogController do
         assigns("response").docs.count.should == @public_only_results.docs.count
       end
       it "should return all documents if role does have permissions" do
-        request.env["WEBAUTH_USER"]="francis"
+        mock_user = mock("User", :login=>"archivist1")
+        controller.stubs(:current_user).returns(mock_user)
         get :index
         # assigns["response"].docs.should include(@public_only_results.first)
         # assigns["response"].docs.should include(@private_only_results.first)

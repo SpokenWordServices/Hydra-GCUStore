@@ -1,8 +1,3 @@
-staging:
-  fedora:
-    url: http://fedoraAdmin:fedoraAdmin@your.staging.server:8080/fedora
-  solr:
-    url: http://your.staging.server:8080/solr
 development:
   fedora:
     url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora

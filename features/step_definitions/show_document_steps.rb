@@ -18,13 +18,6 @@ Then /^the "([^\"]*)" term should contain "([^\"]*)"$/ do |arg1, arg2|
   end
 end
 
-Given /^I am logged in as "([^\"]*)" on (.+)$/ do |user_id, page_name|
-  visit path_to(page_name, user_id)
-  #controller.params[:wau]=arg1
-  #controller.session[:user] = arg1
-  #request.env['WEBAUTH_USER'] = arg1
-end
-
 Then /^I should see the "([^\"]*)" value$/ do |arg1|
   pending
 end

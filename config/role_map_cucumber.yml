@@ -1,7 +1,8 @@
 archivist:
-  - bob
-  - alice
-  - charlie
+  - archivist1
 donor:
-  - alice
-  - francis
+  - donor1
+researcher:
+  - researcher1
+patron:
+  - patron1

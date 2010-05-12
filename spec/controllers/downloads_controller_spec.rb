@@ -77,20 +77,28 @@ describe DownloadsController do
     end
     
     it "should default to returning only pdfs" do
+      controller.stubs(:current_user).returns(nil)
+      
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      xhr :get, :index, :asset_id=>"_PID_", :wau=>"nobody"
+      xhr :get, :index, :asset_id=>"_PID_"
       assigns(:datastreams).should == {"mock_pdf" => @mock_pdf}
     end
 
     it "should return a list of all datastreams if params[mime_type] == all and logged in as an editor" do
+      mock_user = mock("User", :login=>"archivist1")
+      controller.stubs(:current_user).returns(mock_user)
+      
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      get :index, {:asset_id=>"_PID_", :mime_type=>"all", :wau=>"francis"}
+      get :index, {:asset_id=>"_PID_", :mime_type=>"all"}
       assigns(:datastreams).should == @ds_hash
     end
     
     it "should default to returning pdfs, METS, and TEXT when logged in as an editor" do
+      mock_user = mock("User", :login=>"archivist1")
+      controller.stubs(:current_user).returns(mock_user)
+      
       ActiveFedora::Base.expects(:load_instance).returns( @sample_object )
-      xhr :get, :index, :asset_id=>"_PID_", :wau=>"francis"
+      xhr :get, :index, :asset_id=>"_PID_"
       assigns(:datastreams).should == {"mock_pdf" => @mock_pdf, 
                 "mock_ocr"=>@mock_ocr, 
                 "ds13_id" => @mock_mets}

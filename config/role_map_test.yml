@@ -1,13 +1,12 @@
 archivist:
-  - bob
-  - alice
-  - charlie
+  - archivist1
+  - archivist2
+  - leland_himself
 donor:
-  - alice
-  - francis
+  - donor1
+  - leland_himself
 researcher:
-  - Ronald McDonald
-  - alice
-  - frank
+  - researcher1
 patron:
-  - Mrs. Quang
+  - patron1
+  - leland_himself

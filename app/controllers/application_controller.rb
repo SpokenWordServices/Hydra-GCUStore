@@ -5,7 +5,6 @@
 class ApplicationController < ActionController::Base
   
   include HydraAccessControlsHelper
-  include StanfordWebauthIntegration::ControllerMethods
   
   filter_parameter_logging :password, :password_confirmation  
   helper_method :current_user_session, :current_user
@@ -14,7 +13,7 @@ class ApplicationController < ActionController::Base
   helper :hydra_access_controls, :hydra_djatoka, :downloads, :metadata, :hydra
   
   helper_method [:request_is_for_user_resource?]#, :user_logged_in?]
-  before_filter [:set_current_user, :store_bounce]
+  before_filter [:store_bounce]
   
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store

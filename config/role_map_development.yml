@@ -1,32 +1,8 @@
 archivist:
-  - snydman
-  - mlooney
-  - tcramer
-  - lmcrae
-  - jvine
-  - cfitz
-  - dougkim
-  - jchris
-  - eaf
-  - wmene
-  - savd
-  - amorgan2
-  - mgolson
-  - lowood
-  - rns
-  - jkeck
-  - ndushay
-  - gedwards
-  - bob
-  - alice
-  - charlie
-  - mzumwalt
+  - archivist1
 donor:
-  - kernsc
-  - alice
-  - francis
+  - donor1
 researcher:
-  - Ronald McDonald
-  - alice
+  - researcher1
 patron:
-  - Mrs. Quang
+  - patron1
