@@ -4,7 +4,7 @@ class CatalogController
   #include Blacklight::CatalogHelper
   include Hydra::RepositoryController
   include Hydra::AccessControlsEnforcement
-  include MediaShelf::ActiveFedoraHelper
+
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
   before_filter :enforce_viewing_context_for_show_requests, :only=>:show
   before_filter :enforce_edit_permissions, :only=>:edit
