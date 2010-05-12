@@ -39,9 +39,15 @@ module InfusionViewHelper
       end
     end
     
-    result = ""
-    paths.each do |path|
-      result << javascript_include_tag(path, :cache=>opts[:cache], :plugin=>"fluid-infusion")
+    if opts[:render_html] == false
+      paths << {:cache=>opts[:cache], :plugin=>"fluid-infusion"}
+      result = paths
+      puts path.inspect
+    else
+      result = ""
+      paths.each do |path|
+        result << javascript_include_tag(path, :cache=>opts[:cache], :plugin=>"fluid-infusion")
+      end
     end
     return result
   end

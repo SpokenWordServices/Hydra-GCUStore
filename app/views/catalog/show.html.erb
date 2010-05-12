@@ -1,10 +1,7 @@
 <% @page_title = "#{document_show_html_title} - #{application_name}" %>
 
-  <% stylesheet_links << capture do %>
-    <%= stylesheet_link_tag "metadata" %>
-  <% end %>
-
-  <%= javascript_include_tag "custom" %>
+  <%- stylesheet_links << "metadata" %>
+  <%- javascript_includes << "custom" %>
 
 <div id="showHead">
   <div id="showUtils">

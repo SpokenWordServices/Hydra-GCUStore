@@ -1,16 +1,14 @@
 <%# default partial to display solr document fields in catalog show view -%>
 
-<% stylesheet_links << capture do %>
-  <%= infusion_stylesheets(:inline_edit) %>
-  <%= stylesheet_link_tag "../javascripts/date-picker/css/datepicker" %>
-<% end %>
+<%- stylesheet_links << "../javascripts/date-picker/css/datepicker" %>
+<%- javascript_includes << infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) %>
+<%- javascript_includes << "http://ckeditor-fluid.appspot.com/ckeditor.js" %>
+<%- javascript_includes << ["fluid_inline_edit_custom", "hydra_metadata", "custom"] %>
+<%- javascript_includes << "date-picker/js/datepicker" %>
+<%- javascript_includes << "catalog/edit" %>
 
-<% javascript_includes << capture do %>
-  <%= javascript_include_tag "http://ckeditor-fluid.appspot.com/ckeditor.js" %>
-  <%= infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true) %>
-  <%= javascript_include_tag "fluid_inline_edit_custom", "hydra_metadata", "custom" %>
-  <%= javascript_include_tag "date-picker/js/datepicker"%>
-  <%= javascript_include_tag "catalog/edit"%>
+
+<%- extra_head_content << capture do %>
   <script type="text/javascript">
     $(document).ready(function() {
       $(document).catalogEdit();
