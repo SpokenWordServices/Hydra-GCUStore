@@ -36,7 +36,8 @@ module Blacklight
     solr_config = YAML::load(File.open("#{RAILS_ROOT}/config/solr.yml"))
     raise "The #{RAILS_ENV} environment settings were not found in the solr.yml config" unless solr_config[RAILS_ENV]
     
-    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]['url']
+    Blacklight.solr_config = solr_config[RAILS_ENV]
+    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]["default"]['url']
     
     if Gem.available? 'curb'
       require 'curb'

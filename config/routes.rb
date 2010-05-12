@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  Blacklight::Routes.build map
   #map.root :controller => 'collections', :action=>'index'
   map.resources :collections 
   # map.resources :documents, :controller => :assets do |documents|
