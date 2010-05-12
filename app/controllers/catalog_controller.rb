@@ -86,10 +86,6 @@ class CatalogController
     end
   end
   
-  def setup_document_by_counter(counter)
-    super
-  end
-  
   def enforce_edit_permissions
     if !editor?
       session[:viewing_context] = "browse"
