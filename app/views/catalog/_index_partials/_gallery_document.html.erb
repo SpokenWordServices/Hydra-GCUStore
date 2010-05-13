@@ -1,7 +1,0 @@
-<div class="document thumbnail">  
-  <%= link_to_document(document, :label => image_tag(hydra_djatoka_url_for(document, :scale=>"100"), :alt=>"thumbnail"), :counter => (counter + 1 + @response.params[:start].to_i)) %>
-  <% if document.get(Blacklight.config[:show][:heading]) %>
-    <%= link_to_document(document, :label => truncate(document.get(Blacklight.config[:show][:heading]), :length => 35, :omission => "..."), :counter => (counter + 1 + @response.params[:start].to_i),:title=>document.get(Blacklight.config[:show][:heading])) -%>
-  <% end -%>
-  <%= document['date_t'] %>
-</div>

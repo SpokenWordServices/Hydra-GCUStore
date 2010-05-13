@@ -1,6 +1,0 @@
-<h3><%=h facet_value if facet_value %> <em><%= grouped_result_count(@response, facet_name, facet_value) %></em></h3>
-<div class="thumbnail-grid">
-  <%- docs.each_with_index do |document, counter| -%>
-    <%= render :partial => 'catalog/_index_partials/gallery_document', :locals => {:document => document, :counter => counter} %>
-  <%- end -%>
-</div>

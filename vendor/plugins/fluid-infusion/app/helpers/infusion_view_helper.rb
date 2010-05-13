@@ -42,7 +42,6 @@ module InfusionViewHelper
     if opts[:render_html] == false
       paths << {:cache=>opts[:cache], :plugin=>"fluid-infusion"}
       result = paths
-      puts path.inspect
     else
       result = ""
       paths.each do |path|
