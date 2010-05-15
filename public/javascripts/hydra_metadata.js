@@ -8,6 +8,15 @@ function saveSelect(element) {
   }
 }
 
+function saveDateWidgetEdit(callback) {
+    // console.log(callback["id"], callback["dd"], callback["mm"], callback["yyyy"]);
+    name = $("#"+callback["id"]).parent().attr("name");
+    value = callback["yyyy"]+"-"+callback["mm"]+"-"+callback["dd"];
+    // console.log(name);
+    // console.log(value);
+    saveEdit(name , value);
+}
+
 /**
  * Remove the given value from its corresponding metadata field.
  * @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
@@ -16,6 +25,31 @@ function removeFieldValue(element) {
   // alert("removing " + $(element).parent().attr("name"));
   saveEdit($(element).parent().attr("name"), "");
   $(element).parent().remove();
+}
+
+
+function insertTextileValue(fieldName, datastreamName, basicUrl) {
+  var values_list = jQuery("#salt_document_"+fieldName+"_values");
+  var new_value_index = values_list.children('li').size()
+  var unique_id = "salt_document_" + fieldName + "_" + new_value_index;
+
+  var div = jQuery('<li class=\"field_value textile_value\" id="'+unique_id+'" name="salt_document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+  div.appendTo(values_list);
+  $("#"+unique_id).children("#"+fieldName+"_"+new_value_index).editable(basicUrl+".textile", { 
+      method    : "PUT", 
+      indicator : "<img src='/images/ajax-loader.gif'>",
+      loadtext  : "",
+      type      : "textarea",
+      submit    : "OK",
+      cancel    : "Cancel",
+      // tooltip   : "Click to edit #{field_name.gsub(/_/, ' ')}...",
+      placeholder : "click to edit",
+      onblur    : "ignore",
+      name      : "salt_document["+fieldName+"]["+new_value_index+"]", 
+      id        : "field_id",
+      height    : "100",
+      loadurl  : basicUrl+"?datastream="+datastreamName+"&field="+fieldName+"&field_index="+new_value_index
+  });
 }
 
 /**
@@ -85,5 +119,5 @@ function finishAssociatedInlineEdit(args) {
 
 jQuery(document).ready(function () 
 {
-  //var datePickers = initAllDatePickers($(".date_picker"));
+  var datePickers = initAllDatePickers($(".date_picker"));
 })

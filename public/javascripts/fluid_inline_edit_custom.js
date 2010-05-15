@@ -62,7 +62,8 @@ jQuery(document).ready(function () {
         afterBeginEdit : function() { 
           jQuery('#'+this.elem.id).siblings('a.date-picker-control').click();
         }
-      }
+      },
+      defaultViewText: "click to edit"
     });
     */
     
@@ -76,7 +77,7 @@ var setupRichTextEdits = function (editables, options) {
     editables.each(function (idx, editable) {
         editors.push(fluid.inlineEdit.FCKEditor($(editable), options));
     });
-    makeAllButtons(editors);
+    makeAllFluidSaveCancelButtons(editors);
     
     return editors;
 };
@@ -86,7 +87,7 @@ var setupRichTextEdits = function (editables, options) {
  * Create cancel and save buttons for a rich inline editor.
  * @param {Object} editor 
  */
-var makeButtons = function (editor) {
+var makeFluidSaveCancelButtons = function (editor) {
     $(".save", editor.container).click(function(event){
         event.preventDefault();
         editor.finish();
@@ -104,9 +105,9 @@ var makeButtons = function (editor) {
  * Create cancel and save buttons for all rich text editors.
  * @param {Object} editors array of rich inline editors.
  */
-var makeAllButtons = function (editors) {
+var makeAllFluidSaveCancelButtons = function (editors) {
     while (editors.length > 0) {
-        makeButtons(editors.pop());
+        makeFluidSaveCancelButtons(editors.pop());
     }
 };
 
@@ -115,11 +116,11 @@ var makeAllButtons = function (editors) {
  */
  
 function insertValue(fieldName) {
-  var values_list = jQuery("#document_"+fieldName+"_values");
+  var values_list = jQuery("#salt_document_"+fieldName+"_values");
   var new_value_index = values_list.children('li').size()
-  var unique_id = "document_" + fieldName + "_" + new_value_index;
+  var unique_id = "salt_document_" + fieldName + "_" + new_value_index;
   
-  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+  var div = jQuery('<li class=\"editable\" id="'+unique_id+'" name="salt_document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
   div.appendTo(values_list); 
   var newVal = fluid.inlineEdit("#"+unique_id, {
     componentDecorators: {
@@ -128,7 +129,8 @@ function insertValue(fieldName) {
     listeners : {
       onFinishEdit : myFinishEditListener,
       modelChanged : myModelChangedListener
-    }
+    },
+    defaultViewText: "click to edit"
   });
   newVal.edit();
 }
@@ -140,7 +142,7 @@ function insertValue(fieldName) {
  
  function insertTextAreaValue(fieldName) {
    var d = new Date(); // get milliseconds for unique identfier
-   var unique_id = "document_" + fieldName + "_" + d.getTime();
+   var unique_id = "salt_document_" + fieldName + "_" + d.getTime();
    // <div class="flc-inlineEdit-text">&nbsp;
    // </div>
    // <div class="flc-inlineEdit-editContainer">
@@ -148,7 +150,7 @@ function insertValue(fieldName) {
    //     <button class="save">Save</button> <button class="cancel">Cancel</button>
    // </div>
    var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
-   div.appendTo("#document_"+fieldName+"_values"); 
+   div.appendTo("#salt_document_"+fieldName+"_values"); 
    //return false;
 
    var newVal = fluid.inlineEdit.FCKEditor("#"+unique_id, {
@@ -166,7 +168,7 @@ function insertValue(fieldName) {
         },
         defaultViewText: "click to edit"
     })
-    makeButtons(newVal)
+    makeFluidSaveCancelButtons(newVal)
     newVal.edit();
 
  }
@@ -184,31 +186,39 @@ function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
   return result;
 }
 
+function saveModifiedField(element, value) {  
+  result = saveEdit($(element).parent().attr("name"), value);
+  // return value;
+}
+
 function saveEdit(field,value) {
-  $.ajax({
+  result = $.ajax({
+    async: false,
     type: "PUT",
     url: $("form#document_metadata").attr("action"),
     dataType : "json",
     data: field+"="+value,
     success: function(msg){
-			jQuery.noticeAdd({
+       jQuery.noticeAdd({
         inEffect:               {opacity: 'show'},      // in effect
         inEffectDuration:       600,                    // in effect duration in miliseconds
         stayTime:               6000,                   // time in miliseconds before the item has to disappear
         text:                   "Your edit to "+ msg.updated[0].field_name +" has been saved as "+msg.updated[0].value+" at index "+msg.updated[0].index,   // content of the item
         stay:                   false,                  // should the notice item stay or not?
-        type:                   'notice'                // could also be error, succes				
+        type:                   'notice'                // could also be error, succes       
        });
+       result = value;
     },
     error: function(xhr, textStatus, errorThrown){
-			jQuery.noticeAdd({
+       jQuery.noticeAdd({
         inEffect:               {opacity: 'show'},      // in effect
         inEffectDuration:       600,                    // in effect duration in miliseconds
         stayTime:               6000,                   // time in miliseconds before the item has to disappear
         text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
         stay:                   true,                  // should the notice item stay or not?
-        type:                   'error'                // could also be error, succes				
+        type:                   'error'                // could also be error, succes        
        });
+       result = false;
     }
   });
 }
