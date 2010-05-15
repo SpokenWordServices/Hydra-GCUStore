@@ -11,8 +11,12 @@
     // constructor
   	function init() {
       $metaDataForm = $("form#document_metadata", $el);
-      $metaDataForm.delegate("a.addval", "click", function(e) {
+      $metaDataForm.delegate("a.addval.input", "click", function(e) {
         insertValue(this, e);
+        e.preventDefault();
+      });
+      $metaDataForm.delegate("a.addval.textArea", "click", function(e) {
+        insertTextAreaValue(this, e);
         e.preventDefault();
       });
       $metaDataForm.delegate("a.destructive", "click", function(e) {
@@ -27,13 +31,14 @@
      * Inserting and removing simple inline edits
      */
     function insertValue(element, event) {
-      var fieldName = $(element).attr("data-fieldName");
-      var values_list = $(element).closest("dt").next("dd");
-      var new_value_index = values_list.children('li').size()
-      var unique_id = "document_" + fieldName + "_" + new_value_index;
+      var resourceType = $(element).attr("data-resource_type");
+      var fieldName = $(element).attr("data-field_name");
+      var values_list = $(element).closest("dt").next("dd").find("ol");
+      var new_value_index = values_list.children('li').size();
+      var unique_id = resourceType + "_" + fieldName + "_" + new_value_index;
       
-      var div = $('<li class=\"editable\" id="'+unique_id+'" name="document[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
-      div.appendTo(values_list); 
+      var $item = $('<li class=\"editable\" id="'+unique_id+'" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+      $item.appendTo(values_list); 
       var newVal = fluid.inlineEdit("#"+unique_id, {
         componentDecorators: {
           type: "fluid.undoDecorator" 
@@ -45,6 +50,43 @@
       });
       newVal.edit();
     };
+    
+  /***
+   * Inserting and removing rich inline edits
+   */
+  
+  function insertTextAreaValue(fieldName) {
+   var d = new Date(); // get milliseconds for unique identfier
+   var unique_id = "document_" + fieldName + "_" + d.getTime();
+   // <div class="flc-inlineEdit-text">&nbsp;
+   // </div>
+   // <div class="flc-inlineEdit-editContainer">
+   //     <textarea></textarea>
+   //     <button class="save">Save</button> <button class="cancel">Cancel</button>
+   // </div>
+   var div = jQuery('<li class=\"editable_textarea\" id="'+unique_id+'" name="document[' + fieldName + '][-1]"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="flc-inlineEdit-text"></div><div class="flc-inlineEdit-editContainer"><textarea></textarea><button class="save">Save</button> <button class="cancel">Cancel</button></div> </dd>');
+   div.appendTo("#document_"+fieldName+"_values"); 
+   //return false;
+  
+   var newVal = fluid.inlineEdit.FCKEditor("#"+unique_id, {
+       // FCKEditor: {BasePath: "/plugin_assets/fluid-infusion/javascripts/../infusion/tests/manual-tests/lib/fckeditor/"},
+        FCKEditor: {
+          BasePath: "/javascripts/fckeditor/", 
+          ToolbarSet: "Basic"
+        },
+        componentDecorators: {
+          type: "fluid.undoDecorator" 
+        },
+        listeners : {
+          onFinishEdit : myFinishEditListener,
+          modelChanged : myModelChangedListener
+        },
+        defaultViewText: "click to edit"
+    })
+    makeButtons(newVal)
+    newVal.edit();
+  };
+
     
     /***
      * Handlers for when you're done editing and want values to submit to the app. 
@@ -72,7 +114,7 @@
   function saveEdit(field,value) {
     $.ajax({
       type: "PUT",
-      url: $el.attr("action"),
+      url: $("form#document_metadata").attr("action"),
       dataType : "json",
       data: field+"="+value,
       success: function(msg){
@@ -102,10 +144,10 @@
    * Remove the given value from its corresponding metadata field.
    * @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
    */
-  function removeFieldValue(element, event) {
+  function removeFieldValue(element) {
     saveEdit($(element).parent().attr("name"), "");
     $(element).parent().remove();
-  };
+  }
 
     // PUBLIC METHODS
     
