@@ -1,15 +1,20 @@
 <%# default partial to display solr document fields in catalog show view -%>
 
-<% stylesheet_links << capture do %>
-  <%= infusion_stylesheets(:inline_edit) %>
-  <%= stylesheet_link_tag "../javascripts/date-picker/css/datepicker" %>
+<%- stylesheet_links << "../javascripts/date-picker/css/datepicker" %>
+<%- javascript_includes << infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) %>
+<%- javascript_includes << "http://ckeditor-fluid.appspot.com/ckeditor.js" %>
+<%- javascript_includes << ["fluid_inline_edit_custom", "hydra_metadata", "custom"] %>
+<%- javascript_includes << "date-picker/js/datepicker" %>
+<%- javascript_includes << "catalog/edit" %>
+
+<%- extra_head_content << capture do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(document).catalogEdit();
+    });
+  </script>
 <% end %>
 
-<% javascript_includes << capture do %>
-  <%= infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true) %>
-  <%= javascript_include_tag "fluid_inline_edit_custom", "hydra_metadata", "custom" %>
-  <%= javascript_include_tag "date-picker/js/datepicker"%>
-<% end %>
 
 <div class="document_viewer" id="cover_container">
   <%= render :partial => "djatoka_assets/viewer" , :locals => {:document => document}%>
