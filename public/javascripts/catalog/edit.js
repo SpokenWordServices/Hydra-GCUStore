@@ -50,6 +50,30 @@
       });
       newVal.edit();
     };
+
+    function insertTextileValue(fieldName, datastreamName, basicUrl) {
+      var values_list = jQuery("#salt_document_"+fieldName+"_values");
+      var new_value_index = values_list.children('li').size()
+      var unique_id = "salt_document_" + fieldName + "_" + new_value_index;
+
+      var div = jQuery('<li class=\"field_value textile_value\" id="'+unique_id+'" name="salt_document[' + fieldName + '][' + new_value_index + ']"><a href="javascript:void();" onClick="removeFieldValue(this);" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+      div.appendTo(values_list);
+      $("#"+unique_id).children("#"+fieldName+"_"+new_value_index).editable(basicUrl+".textile", { 
+          method    : "PUT", 
+          indicator : "<img src='/images/ajax-loader.gif'>",
+          loadtext  : "",
+          type      : "textarea",
+          submit    : "OK",
+          cancel    : "Cancel",
+          // tooltip   : "Click to edit #{field_name.gsub(/_/, ' ')}...",
+          placeholder : "click to edit",
+          onblur    : "ignore",
+          name      : "salt_document["+fieldName+"]["+new_value_index+"]", 
+          id        : "field_id",
+          height    : "100",
+          loadurl  : basicUrl+"?datastream="+datastreamName+"&field="+fieldName+"&field_index="+new_value_index
+      });
+    };
     
   /***
    * Inserting and removing rich inline edits

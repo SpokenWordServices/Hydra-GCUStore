@@ -13,8 +13,8 @@ end
 Then /^the "([^\"]*)" inline date edit should contain "([^\"]*)"$/ do |arg1, arg2|
   response.should have_selector("dt", :content=>arg1) do |dt|
     dt.each do |term| 
-      term.next.should have_selector("dd ol li.editable_date_picker") do |editable_date_picker|
-        editable_date_picker.should have_selector(".editableText", :content=>arg2)
+      term.next.should have_selector("dd div.date-select") do |editable_date_picker|
+        editable_date_picker.should have_selector("input.controlled-date-part", :value=>arg2)
       end 
     end
   end
