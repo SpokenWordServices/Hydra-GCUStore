@@ -6,6 +6,8 @@ nohup.out
 *~
 *.swp
 
+vendor/plugins/haml/init.rb
+
 coverage.data
 coverage/*
 
