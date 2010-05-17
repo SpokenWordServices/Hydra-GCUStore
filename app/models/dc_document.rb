@@ -14,11 +14,4 @@ class DcDocument < ActiveFedora::Base
       m.field "type", :string, :xml_node => "type", :encoding => "DCMITYPE"
     end
 
-    def save
-      super
-      solrizer = Solrizer::Solrizer.new
-      solrizer.solrize( self )
-    end
-  
-
 end

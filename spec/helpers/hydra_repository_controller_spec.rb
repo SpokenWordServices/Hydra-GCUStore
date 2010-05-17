@@ -1,5 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-include Hydra::RepositoryController
 
 describe Hydra::RepositoryController do
   
@@ -25,7 +24,7 @@ describe Hydra::RepositoryController do
         def editor?
           return true
         end
-        result = downloadables( mock_object, :canonical=>true )
+        result = helper.downloadables( mock_object, :canonical=>true )
         result.should == first_pdf
       end
       describe ' && :mime_type=>"jp2"' do
@@ -59,7 +58,7 @@ describe Hydra::RepositoryController do
           def editor?
             return true
           end
-          result = downloadables( mock_object, :canonical=>true, :mime_type=>"image/jp2" )
+          result = helper.downloadables( mock_object, :canonical=>true, :mime_type=>"image/jp2" )
           result.should == first_jp2
         end
       end
