@@ -67,7 +67,7 @@ Blacklight.configure(:shared) do |config|
   config[:show] = {
     :html_title => "title_t",
     :heading => "title_t",
-    :display_type => "active_fedora_model_s"
+    :display_type => "has_model_s"
   }
 
   # solr fld values given special treatment in the index (search results) view

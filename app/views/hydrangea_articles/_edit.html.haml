@@ -19,6 +19,8 @@
     = editable_metadata_field(@document_fedora, "descMetadata", :person_contact_info, :label => "Researcher Contact Info:", :multiple=>true) 
     = editable_metadata_field(@document_fedora, "descMetadata", :person_organization, :label => "Researcher Organization:", :multiple=>true) 
     
+    = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area) 
+    
     %dt Download:
     %dd#downloads
       %ul

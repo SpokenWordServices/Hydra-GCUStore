@@ -7,3 +7,4 @@
 Mime::Type.register "image/jpg", :jpg
 Mime::Type.register "application/pdf", :pdf
 Mime::Type.register "image/jpeg2000", :jp2
+Mime::Type.register "text/html", :textile
