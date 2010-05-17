@@ -1,0 +1,34 @@
+- stylesheet_links << "../javascripts/date-picker/css/datepicker" 
+- javascript_includes << infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) 
+- javascript_includes << "http://ckeditor-fluid.appspot.com/ckeditor.js" 
+- javascript_includes << ["fluid_inline_edit_custom", "hydra_metadata", "custom"] 
+- javascript_includes << "jquery.jeditable.mini" 
+- javascript_includes << "date-picker/js/datepicker" 
+- javascript_includes << "catalog/edit" 
+
+- extra_head_content << capture do 
+  :javascript
+    $(document).ready(function() {
+      $(document).catalogEdit();
+    });
+
+.document_viewer#cover_container
+  %dl.defList  
+    = get_data_with_label(document, "ID:", 'id') 
+    = editable_metadata_field(@document_fedora, "descMetadata", :person, :label => "Researcher(s):", :multiple=>true) 
+    = editable_metadata_field(@document_fedora, "descMetadata", :person_contact_info, :label => "Researcher Contact Info:", :multiple=>true) 
+    = editable_metadata_field(@document_fedora, "descMetadata", :person_organization, :label => "Researcher Organization:", :multiple=>true) 
+    
+    %dt Download:
+    %dd#downloads
+      %ul
+    = get_data_with_label(document, "Copyright:", 'rights_t')
+
+%div{:class=>"#{params[:action]}_details"}
+  = render :partial => "hydrangea_articles/#{params[:action]}_details", :locals => {:document => document}
+
+
+- sidebar_items << capture do 
+  = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
+  =# render :partial=>'facets' 
+

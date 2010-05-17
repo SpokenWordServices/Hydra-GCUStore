@@ -11,7 +11,12 @@ class CatalogController
   
   
   def edit
-    @document_fedora = SaltDocument.load_instance(params[:id])
+    af_base = ActiveFedora::Base.load_instance(params[:id])
+    the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
+    if the_model.nil?
+      the_model = DcDocument
+    end
+    @document_fedora = the_model.load_instance(params[:id])
     #fedora_object = ActiveFedora::Base.load_instance(params[:id])
     #params[:action] = "edit"
     @downloadables = downloadables( @document_fedora )
