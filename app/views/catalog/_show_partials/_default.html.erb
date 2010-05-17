@@ -18,7 +18,6 @@
 </div>
 <% sidebar_items << capture do %>
   <%= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
-  <%#= render :partial=>"catalog/facets", :locals=>{:document=>document} %>
 <% end %>
 
 <%= async_load_tag(asset_downloads_path(params[:id]), 'downloads') %>

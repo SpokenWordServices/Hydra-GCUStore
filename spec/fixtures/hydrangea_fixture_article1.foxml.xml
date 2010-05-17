@@ -55,6 +55,9 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2010-05-17T06:10:57.964Z" MIMETYPE="text/xml" SIZE="304">
 <foxml:xmlContent>
 <fields>
+  <person_organization_info>person1@hotmail.com</person_organization_info>
+  <person_organization_info>person2@yahoo.com</person_organization_info>
+  <person_organization_info>person3@gmail.com</person_organization_info>
   <person_contact_info>Microsoft</person_contact_info>
   <person_contact_info>Yahoo</person_contact_info>
   <person_contact_info>Google</person_contact_info>
