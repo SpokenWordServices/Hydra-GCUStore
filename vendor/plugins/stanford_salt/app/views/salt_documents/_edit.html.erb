@@ -16,8 +16,8 @@
   </script>
 <% end %>
 
-
 <div class="document_viewer" id="cover_container">
+  
   <%= render :partial => "djatoka_assets/viewer" , :locals => {:document => document}%>
   <dl class="defList">
     <%= get_data_with_label(document, "ID:", 'id') %>

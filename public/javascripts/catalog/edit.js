@@ -6,11 +6,16 @@
   
     var $el = $element,
         opts = options,
-        $metaDataForm;
+        $metaDataForm,
+        documentUrl,
+        resourceType;
   
     // constructor
   	function init() {
-      $metaDataForm = $("form#document_metadata", $el);
+  	 $metaDataForm = $("form#document_metadata", $el);
+      documentUrl = $metaDataForm.attr("action");
+      resourceType = $metaDataForm.attr('data-resourceType');
+      
       $metaDataForm.delegate("a.addval.input", "click", function(e) {
         insertValue(this, e);
         e.preventDefault();
@@ -23,7 +28,39 @@
         removeFieldValue(this, e);
         e.preventDefault();
       });
+
+      setUpStoryEditable();      
   	};
+  	
+  	function setUpStoryEditable() {
+      var $storyDD = $("dd#story", $el);
+      var datastreamName = $storyDD.attr('data-datastream-name');
+      var fieldName = $storyDD.attr("id");
+      var submitUrl = documentUrl + ".textile";
+      var $stories = $("ol div.textile", $storyDD);
+      $stories.each(function(index) {
+        var params = {
+          datastream: datastreamName,
+          field: fieldName,
+          field_index: index
+        }
+        
+        $(this).editable(submitUrl, {
+          method    : "PUT", 
+          indicator : "<img src='/images/ajax-loader.gif'>",
+          type      : "textarea",
+          submit    : "OK",
+          cancel    : "Cancel",
+          tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
+          placeholder : "click to edit",
+          onblur    : "ignore",
+          name      : resourceType+"["+fieldName+"]["+index+"]", 
+          id        : "field_id",
+          height    : "100",
+          loadurl  : documentUrl + "?" + $.param(params)
+        });
+      });
+    };
   	
     // PRIVATE METHODS
     
@@ -31,15 +68,14 @@
      * Inserting and removing simple inline edits
      */
     function insertValue(element, event) {
-      var resourceType = $(element).attr("data-resource_type");
-      var fieldName = $(element).attr("data-field_name");
+      var fieldName = $(element).closest("dt").next("dd").attr("id");
       var values_list = $(element).closest("dt").next("dd").find("ol");
       var new_value_index = values_list.children('li').size();
-      var unique_id = resourceType + "_" + fieldName + "_" + new_value_index;
+      var unique_id = fieldName + "_" + new_value_index;
       
-      var $item = $('<li class=\"editable\" id="'+unique_id+'" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+      var $item = $('<li class=\"editable\" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
       $item.appendTo(values_list); 
-      var newVal = fluid.inlineEdit("#"+unique_id, {
+      var newVal = fluid.inlineEdit($item, {
         componentDecorators: {
           type: "fluid.undoDecorator" 
         },
@@ -53,14 +89,13 @@
 
     function insertTextileValue(element, event) {
       var basicUrl = $(element).attr("href");
-      var resourceType = $(element).attr("data-resource_type");
-      var fieldName = $(element).attr("data-field_name");
-      var datastreamName = $(element).attr("data-datastream_name");
+      var fieldName = $(element).closest("dt").next('dd').attr("id");
+      var datastreamName = $(element).closest("dt").next('dd').attr("data-datastream-name");
       var values_list = $(element).closest("dt").next("dd").find("ol");
       var new_value_index = values_list.children('li').size();
       var unique_id = resourceType + "_" + fieldName + "_" + new_value_index;
 
-      var $item = jQuery('<li class=\"field_value textile_value\" id="'+unique_id+'" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+      var $item = jQuery('<li class=\"field_value textile_value\" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
       $item.appendTo(values_list);
       
       $("div.textile", $item).editable(basicUrl+".textile", { 
