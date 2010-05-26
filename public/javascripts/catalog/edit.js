@@ -9,14 +9,20 @@
         $metaDataForm,
         documentUrl,
         resourceType;
+        
+    // PRIVATE METHODS
   
     // constructor
   	function init() {
-  	 $metaDataForm = $("form#document_metadata", $el);
+  	  $metaDataForm = $("form#document_metadata", $el);
       documentUrl = $metaDataForm.attr("action");
       resourceType = $metaDataForm.attr('data-resourceType');
-      
-      $metaDataForm.delegate("a.addval.input", "click", function(e) {
+      bindDomEvents();
+      setUpStoryEditable();
+  	};
+  	
+  	function bindDomEvents () {
+  	  $metaDataForm.delegate("a.addval.input", "click", function(e) {
         insertValue(this, e);
         e.preventDefault();
       });
@@ -28,8 +34,10 @@
         removeFieldValue(this, e);
         e.preventDefault();
       });
-
-      setUpStoryEditable();      
+      
+      $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
+        saveSelect(this);
+      });
   	};
   	
   	function setUpStoryEditable() {
@@ -61,8 +69,6 @@
         });
       });
     };
-  	
-    // PRIVATE METHODS
     
     /***
      * Inserting and removing simple inline edits
@@ -152,29 +158,34 @@
     newVal.edit();
   };
 
-    
-    /***
-     * Handlers for when you're done editing and want values to submit to the app. 
-     */
-    
-    function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
-      // Only submit if the value has actually changed.
-      if (newValue != oldValue) {
-        var result = saveEdit($(viewNode).parent().attr("name"), newValue)
-      }
+  /***
+   * Handlers for when you're done editing and want values to submit to the app. 
+   */
+  
+  function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
+    // Only submit if the value has actually changed.
+    if (newValue != oldValue) {
+      var result = saveEdit($(viewNode).parent().attr("name"), newValue)
+    }
+    return result;
+  };
+      
+  /***
+   * Handler for ensuring that the undo decorator's actions will be submitted to the app.
+   */
+  function myModelChangedListener(model, oldModel, source) {
+    // this was a really hacky way of checking if the model is being changed by the undo decorator
+    if (source && source.options.selectors.undoControl) {  
+      var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
       return result;
-    };
-        
-    /***
-     * Handler for ensuring that the undo decorator's actions will be submitted to the app.
-     */
-    function myModelChangedListener(model, oldModel, source) {
-      // this was a really hacky way of checking if the model is being changed by the undo decorator
-      if (source && source.options.selectors.undoControl) {  
-        var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
-        return result;
-      }
-    };
+    }
+  };
+    
+  function saveSelect(element) {
+    if (element.value != '') { 
+      saveEdit(element.name, element.value);
+    }
+  };
     
   function saveEdit(field,value) {
     $.ajax({

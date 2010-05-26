@@ -49,24 +49,6 @@ jQuery(document).ready(function () {
         defaultViewText: "click to edit"
     });
     
-    /*
-    var datePickers = setupDatePickers($(".editable_date_picker"), {
-      blurHandlerBinder : fluid.inlineEdit.datePicker.blurHandlerBinder,
-      submitOnEnter : true,
-      componentDecorators: {
-        type: "fluid.undoDecorator" 
-      },
-      listeners : {
-        onFinishEdit : myFinishEditListener,
-        modelChanged : myModelChangedListener,
-        afterBeginEdit : function() { 
-          jQuery('#'+this.elem.id).siblings('a.date-picker-control').click();
-        }
-      },
-      defaultViewText: "click to edit"
-    });
-    */
-    
 });
 
 /**
@@ -235,15 +217,3 @@ function myModelChangedListener(model, oldModel, source) {
     return result;
   }
 }
-
-
-/**
- * Creates a whole list of Date Picker editors.
- */
-var setupDatePickers = function (editables, options) {
-    var editors = [];
-    editables.each(function (idx, editable) {
-        editors.push(fluid.inlineEdit.datePicker($(editable), options));
-    });
-    return editors;
-};
