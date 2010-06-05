@@ -24,7 +24,6 @@
     %dt Download:
     %dd#downloads
       %ul
-    = get_data_with_label(document, "Copyright:", 'rights_t')
 
 %div{:class=>"#{params[:action]}_details"}
   = render :partial => "hydrangea_articles/#{params[:action]}_details", :locals => {:document => document}
