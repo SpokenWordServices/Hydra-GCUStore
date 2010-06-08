@@ -65,27 +65,27 @@
       var fieldName = $storyDD.attr("id");
       var submitUrl = documentUrl + ".textile";
       var $stories = $("ol div.textile", $storyDD);
-      // $stories.each(function(index) {
-      //   var params = {
-      //     datastream: datastreamName,
-      //     field: fieldName,
-      //     field_index: index
-      //   }
-      //   $(this).editable(submitUrl, {
-      //     method    : "PUT", 
-      //     indicator : "<img src='/images/ajax-loader.gif'>",
-      //     type      : "textarea",
-      //     submit    : "OK",
-      //     cancel    : "Cancel",
-      //     tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
-      //     placeholder : "click to edit",
-      //     onblur    : "ignore",
-      //     name      : resourceType+"["+fieldName+"]["+index+"]", 
-      //     id        : "field_id",
-      //     height    : "100",
-      //     loadurl  : documentUrl + "?" + $.param(params)
-      //   });
-      // });
+      $stories.each(function(index) {
+        var params = {
+          datastream: datastreamName,
+          field: fieldName,
+          field_index: index
+        }
+        $(this).editable(submitUrl, {
+          method    : "PUT", 
+          indicator : "<img src='/images/ajax-loader.gif'>",
+          type      : "textarea",
+          submit    : "OK",
+          cancel    : "Cancel",
+          tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
+          placeholder : "click to edit",
+          onblur    : "ignore",
+          name      : resourceType+"["+fieldName+"]["+index+"]", 
+          id        : "field_id",
+          height    : "100",
+          loadurl  : documentUrl + "?" + $.param(params)
+        });
+      });
     };
     
     function setUpDatePicker () {
