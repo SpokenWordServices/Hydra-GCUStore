@@ -1,6 +1,6 @@
 #require "active_fedora"
 class HydrangeaArticle < ActiveFedora::Base
-
+  
     has_relationship "parts", :is_part_of, :inbound => true
     
     # simpleRightsMetadata datastream is a stand-in for the rightsMetadata datastream that will eventually have Hydra Rights Metadata xml in it
@@ -23,6 +23,16 @@ class HydrangeaArticle < ActiveFedora::Base
     
     has_metadata :name => "descMetadata", :type => ActiveFedora::MetadataDatastream do |m|
       m.field "title", :string
+      m.field 'language', :string
+      m.field 'journal_title', :string
+      m.field 'publisher', :string
+      m.field 'issn', :string
+      m.field 'publication_date', :date
+      m.field 'citation_volume', :string
+      m.field 'citation_issue', :string
+      m.field 'start_page', :string
+      m.field 'end_page', :string
+      m.field 'original_url', :string
       m.field "person", :string
       m.field "person_contact_info", :string
       m.field "person_organization", :string
