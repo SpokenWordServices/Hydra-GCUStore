@@ -4,9 +4,9 @@ require 'active-fedora'
 #
 
 
-# This initializes ActiveFedora with config info from RAOLS_ROOT/lib/fedora.yml
+# This initializes ActiveFedora with config info from RAILS_ROOT/lib/fedora.yml
 # Among other things, it allows you to access Fedora and Solr (ActiveFedora's copy) as ActiveFedora.fedora and ActiveFedora.solr
-ENABLE_SOLR_UPDATES=false
+ENABLE_SOLR_UPDATES=true
 ActiveFedora.init
 
 #
