@@ -52,6 +52,10 @@
     %dd#downloads
       %ul
 
+    %dt File Uploads:
+    %dd#uploads
+      
+
 %div{:class=>"#{params[:action]}_details"}
   = render :partial => "hydrangea_articles/#{params[:action]}_details", :locals => {:document => document}
 
@@ -60,3 +64,5 @@
   = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
   =# render :partial=>'facets' 
 
+= javascript_include_tag 'custom'
+= async_load_tag(new_asset_file_asset_path(params[:id]), 'uploads')
