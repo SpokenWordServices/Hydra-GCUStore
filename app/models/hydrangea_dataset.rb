@@ -26,4 +26,8 @@ class HydrangeaDataset < ActiveFedora::Base
     m.field 'longitude', :string
     m.field 'latitude', :string
   end
+
+  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
+    m.field 'collection', :string
+  end
 end

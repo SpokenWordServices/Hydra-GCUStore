@@ -100,4 +100,13 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
+<foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2010-05-17T06:10:58.041Z" MIMETYPE="text/xml" SIZE="216">
+<foxml:xmlContent>
+<fields>
+  <collection>Example Collection</collection>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>
