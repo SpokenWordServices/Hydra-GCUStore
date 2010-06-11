@@ -65,4 +65,4 @@
   =# render :partial=>'facets' 
 
 = javascript_include_tag 'custom'
-= async_load_tag(new_asset_file_asset_path(params[:id]), 'uploads')
+= async_load_tag(asset_file_assets_path(params[:id]), 'uploads')
