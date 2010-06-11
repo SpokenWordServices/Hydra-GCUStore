@@ -7,6 +7,6 @@
     <th class="loc">Location</th>
   </tr>
   <% docs.each_with_index do |document,counter| %>
-    <%= render :partial => 'catalog/_index_partials/default', :locals => {:document => document, :counter => counter} %>
+   <%= render_document_partial document, 'index', :counter => counter %>
   <% end %>
 </table>
