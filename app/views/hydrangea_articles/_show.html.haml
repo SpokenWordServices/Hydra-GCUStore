@@ -1,7 +1,11 @@
+- javascript_includes << 'custom'
+
 .document_viewer#cover_container
-  %dl.defList
-    = get_data_with_label(document, "ID:", 'id') 
-    = get_data_with_label(document, "Title:", 'title_t')
+
+  %div.accordion-section
+    %h2.section-title Description
+
+    = get_data_with_label(document, "Article Title:", 'title_t')
     = get_data_with_label(document, "Language:", 'language_t')
 
     = get_data_with_label(document, "Researcher:", 'person_t')
@@ -23,15 +27,15 @@
 
     = get_data_with_label(document, "Topic Tags:", 'topic_tag_t')
 
-    %dt Download:
-    %dd#downloads
-      %ul
-    = get_data_with_label(document, "Copyright:", 'rights_t') 
+  %div.accordion-section
+    %h2.section-title Download Files
+    %div#downloads
 
-%div{:class=>"#{params[:action]}_details"}
-  = render :partial => "hydrangea_articles/#{params[:action]}_details", :locals => {:document => document}
+  %div.accordion-section
+    %h2.section-title Permissions
+    = render :partial => "hydrangea_articles/show_permissions", :locals => {:document => document}
 
 - sidebar_items << capture do 
   = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
 
-= async_load_tag(asset_downloads_path(params[:id]), 'downloads')
+= async_load_tag(asset_file_assets_path(params[:id]), 'downloads')

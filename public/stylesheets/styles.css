@@ -576,7 +576,6 @@ div#searchMods label, div#searchMods h2 {
 
 
 #document .document .document_viewer {
-	width: 49%;
 	float: left;
 	border-right:1px solid #D4E4EA;
 }
@@ -1109,3 +1108,4 @@ a {text-decoration: none; border-bottom: none;}
 img {border: none;}
 div#bd {clear: both}
 }
+

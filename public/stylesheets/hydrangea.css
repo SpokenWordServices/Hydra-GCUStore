@@ -1,0 +1,11 @@
+div.accordion-section {
+    border: 1px solid gray;
+    overflow: auto;
+}
+
+div.accordion-section h2.section-title {
+    background: #A9EDBA;
+    border-bottom: 1px solid gray;
+    padding-left: 1em;
+    margin: 0;
+}
