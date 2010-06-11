@@ -37,6 +37,11 @@ module ApplicationHelper
       else
         raise 'Invalid label argument'
       end
+
+    if label.blank?
+      label = doc[:id]
+    end
+    
     link_to_with_data(label, catalog_path(doc[:id]), {:method => :put, :data => {:counter => opts[:counter]},:title=>opts[:title]})
   end
 end
