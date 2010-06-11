@@ -1,4 +1,4 @@
-class HydrangeaDataSet < ActiveFedora::Base
+class HydrangeaDataset < ActiveFedora::Base
   
   has_relationship "parts", :is_part_of, :inbound => true
   
