@@ -8,12 +8,7 @@
     <div id="loading" style="display:none;"><img src="/images/ajax-loader.gif" width="32" height="32" alt="Saving"/> Saving...</div>
     <div>
       <dl class="defList fl-theme-mist">
-      <%= editable_metadata_field(@document_fedora, "descMetadata", :creator, :label => "Author(s):", :multiple=>true) %>
       <%= editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:") %>
-      <%= editable_metadata_field(@document_fedora, "descMetadata", :relation, :label => "Links:", :multiple=>true) %>
-      <%= editable_metadata_field(@document_fedora, "descMetadata", :date, :label => "Date:", :type=>:date_picker) %>  
-      <%= editable_metadata_field(@document_fedora, "descMetadata", :medium, :label => "Type:", :type=>:select, :choices=>{"Paper Document"=>"Paper Document","Correspondence"=>"Correspondence","Instructional material"=>"Instructional material","Paper"=>"Paper","Proposal"=>"Proposal","Reprint"=>"Reprint"}) %>
-      <%= editable_metadata_field(@document_fedora, "properties", :access, :label => "Access:", :type=>:select, :choices=>{"Public" => "public","Authorized" => "authorized", "Private" => "private"}) %>
       </dl>
     </div>
   </div>
