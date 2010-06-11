@@ -22,7 +22,7 @@ class CatalogController
     @downloadables = downloadables( @document_fedora )
     session[:viewing_context] = "edit"
     show_with_customizations
-    enforce_read_permissions
+    enforce_edit_permissions
     render :action=>:show
   end
   
