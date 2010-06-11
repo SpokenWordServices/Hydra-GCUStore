@@ -1,0 +1,3 @@
+[submodule "jetty"]
+	path = jetty
+	url = git://github.com/mediashelf/hydra-jetty.git
