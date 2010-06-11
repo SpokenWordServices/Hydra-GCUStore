@@ -37,4 +37,4 @@
   = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
   =# render :partial=>'facets' 
 
-= async_load_tag(new_asset_file_asset_path(params[:id]), 'uploads')
+= async_load_tag(asset_file_assets_path(params[:id]), 'uploads')
