@@ -32,9 +32,12 @@ class HydrangeaArticle < ActiveFedora::Base
     m.field 'start_page', :string
     m.field 'end_page', :string
     m.field 'original_url', :string
-    m.field "person", :string
-    m.field "person_contact_info", :string
-    m.field "person_organization", :string
+    m.field 'contributor_role', :string
+    m.field 'first_name', :string
+    m.field 'last_name', :string
+    m.field 'institution', :string
+    m.field 'organization_name', :string
+    m.field 'conference_name', :string
     m.field "abstract", :string
     m.field "topic_tag", :string
   end

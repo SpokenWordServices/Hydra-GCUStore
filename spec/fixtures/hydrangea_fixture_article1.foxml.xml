@@ -55,15 +55,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2010-05-17T06:10:57.964Z" MIMETYPE="text/xml" SIZE="304">
 <foxml:xmlContent>
 <fields>
-  <person_organization>person1@hotmail.com</person_organization>
-  <person_organization>person2@yahoo.com</person_organization>
-  <person_organization>person3@gmail.com</person_organization>
-  <person_contact_info>Microsoft</person_contact_info>
-  <person_contact_info>Yahoo</person_contact_info>
-  <person_contact_info>Google</person_contact_info>
-  <person>person1</person>
-  <person>person2</person>
-  <person>person3</person>
+  <contributor_role>author</contributor_role>
+  <first_name>Joe</first_name>
+  <last_name>Schmoe</last_name>
+  <institution>Microsoft</institution>
+  <contributor_role>author</contributor_role>
+  <first_name>Jane</first_name>
+  <last_name>Doe</last_name>
+  <institution>Yahoo</institution>
+  <contributor_role>editor</contributor_role>
+  <first_name>Mark</first_name>
+  <last_name>Mack</last_name>
+  <institution>Google</institution>
+  <contributor_role>editor</contributor_role>
+  <conference_name>Institute of Applied Mathematics Symposium 2009</conference_name>
+  <contributor_role>contributor</contributor_role>
+  <organization_name>Stanford University</organization_name>
   <title>Hydrangea Article Fixture #1</title>
 </fields>
 </foxml:xmlContent>
