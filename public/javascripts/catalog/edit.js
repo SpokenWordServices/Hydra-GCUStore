@@ -80,7 +80,7 @@
           tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
           placeholder : "click to edit",
           onblur    : "ignore",
-          name      : resourceType+"["+fieldName+"]["+index+"]", 
+          name      : "asset["+fieldName+"]["+index+"]", 
           id        : "field_id",
           height    : "100",
           loadurl  : documentUrl + "?" + $.param(params)
@@ -109,7 +109,7 @@
       var new_value_index = values_list.children('li').size();
       var unique_id = fieldName + "_" + new_value_index;
       
-      var $item = $('<li class=\"editable\" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+      var $item = $('<li class=\"editable\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
       $item.appendTo(values_list); 
       var newVal = fluid.inlineEdit($item, {
         componentDecorators: {
@@ -128,9 +128,9 @@
       var datastreamName = $(element).closest("dt").next('dd').attr("data-datastream-name");
       var values_list = $(element).closest("dt").next("dd").find("ol");
       var new_value_index = values_list.children('li').size();
-      var unique_id = resourceType + "_" + fieldName + "_" + new_value_index;
+      var unique_id =  "asset_" + fieldName + "_" + new_value_index;
 
-      var $item = jQuery('<li class=\"field_value textile_value\" name="'+resourceType+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+      var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
       $item.appendTo(values_list);
       
       $("div.textile", $item).editable(documentUrl+".textile", { 
@@ -143,7 +143,7 @@
           // tooltip   : "Click to edit #{field_name.gsub(/_/, ' ')}...",
           placeholder : "click to edit",
           onblur    : "ignore",
-          name      : resourceType+"["+fieldName+"]["+new_value_index+"]", 
+          name      : "asset["+fieldName+"]["+new_value_index+"]", 
           id        : "field_id",
           height    : "100",
           loadurl  : documentUrl+"?datastream="+datastreamName+"&field="+fieldName+"&field_index="+new_value_index

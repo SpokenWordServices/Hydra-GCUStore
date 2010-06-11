@@ -24,14 +24,14 @@ describe AssetsController do
       mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
       SaltDocument.expects(:find).with("_PID_").returns(mock_document)
-      put :update, :id=>"_PID_", "salt_document"=>{"subject"=>{"-1"=>"My Topic"}}
+      put :update, :id=>"_PID_", "asset"=>{"subject"=>{"-1"=>"My Topic"}}
       #session[:user].should == 'bob'
     end
     it "should initialize solr" do
       pending
       ActiveFedora::SolrService.expects(:register)
       SaltDocument.expects(:find).with("_PID_").returns(stub_everything)
-      put :update, :id=>"_PID_", "basic_asset"=>{"subject"=>{"-1"=>"My Topic"}}
+      put :update, :id=>"_PID_", "asset"=>{"subject"=>{"-1"=>"My Topic"}}
       session[:user].should == 'bob'
     end
   end
