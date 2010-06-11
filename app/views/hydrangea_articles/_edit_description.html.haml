@@ -5,9 +5,12 @@
   = editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
   = editable_metadata_field(@document_fedora, "descMetadata", :language, :label => "Language:")
   
-  = editable_metadata_field(@document_fedora, "descMetadata", :person, :label => "Researcher(s):", :multiple=>true) 
-  = editable_metadata_field(@document_fedora, "descMetadata", :person_contact_info, :label => "Researcher Contact Info:", :multiple=>true) 
-  = editable_metadata_field(@document_fedora, "descMetadata", :person_organization, :label => "Researcher Organization:", :multiple=>true) 
+  = editable_metadata_field(@document_fedora, "descMetadata", :contributor_role, :label => "Role:", :multiple=>true) 
+  = editable_metadata_field(@document_fedora, "descMetadata", :first_name, :label => "First Name:", :multiple=>true) 
+  = editable_metadata_field(@document_fedora, "descMetadata", :last_name, :label => "Last Name:", :multiple=>true)
+  = editable_metadata_field(@document_fedora, "descMetadata", :institution, :label => "Institution:", :multiple=>true)
+  = editable_metadata_field(@document_fedora, "descMetadata", :conference_name, :label => "Conference:", :multiple=>true)
+  = editable_metadata_field(@document_fedora, "descMetadata", :organization_name, :label => "Organization:", :multiple=>true)   
     
   = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area)
   
