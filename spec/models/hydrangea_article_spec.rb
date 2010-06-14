@@ -25,7 +25,7 @@ describe HydrangeaArticle do
     
     describe "descMetadata" do
       it "should include the desired fields" do
-        ["person", "person_contact_info", "person_organization", "abstract", "topic_tag"].each do |field_name|
+        ["person_contact_info", "person_organization", "abstract", "topic_tag"].each do |field_name|
            @article.datastreams["descMetadata"].fields.should have_key(field_name.to_sym)
         end
       end
