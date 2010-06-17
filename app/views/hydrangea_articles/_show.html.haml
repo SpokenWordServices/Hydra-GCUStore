@@ -1,4 +1,5 @@
 - javascript_includes << 'custom'
+- javascript_includes << "catalog/show"
 
 .document_viewer#cover_container
 
@@ -39,7 +40,7 @@
 
   %div.accordion-section
     %h2.section-title Download Files
-    %div#downloads
+    %div#uploads{'data-pid' => params[:id]}
 
   %div.accordion-section
     %h2.section-title Permissions
@@ -48,4 +49,4 @@
 - sidebar_items << capture do 
   = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
 
-= async_load_tag(asset_file_assets_path(params[:id]), 'downloads')
+= async_load_tag(asset_file_assets_path(params[:id]), 'uploads')
