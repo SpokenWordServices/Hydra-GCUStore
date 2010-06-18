@@ -28,7 +28,7 @@ rake gems:install
 Now install the development dependencies (not required for runtime, but required to run tests)
 
 <pre>
-gem install rcov rspec rspec-rails cucumber ruby-debug mocha
+gem install rcov rspec rspec-rails cucumber cucumber-rails webrat database_cleaner ruby-debug mocha
 </pre>
 
 Run your database migrations (only need to do this once after cloning the git repository).
