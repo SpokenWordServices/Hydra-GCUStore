@@ -15,4 +15,10 @@
 |
 = link_to "Search History", search_history_index_path 
 
-=select_tag("add_asset", "<option selected=\"selected\">Create new...</option><option value=\"#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_article")}\">Add an article</option><option value=\"#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_dataset")}\">Add a dataset</option>", :onchange=>"if (this.value != '') { window.location = this.value; }")
+%div#create-asset-box
+  %input#re-run-action{:type=>"button",:value=>"Create new..."}
+  %button#select Select
+  %div#create-asset-menu
+    %ul
+      %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_article")}');"} Add an article
+      %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_dataset")}');"} Add a dataset

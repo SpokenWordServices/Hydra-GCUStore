@@ -1109,3 +1109,12 @@ img {border: none;}
 div#bd {clear: both}
 }
 
+/* styles for top header 'create new...' select box */
+div#create-asset-box {position:relative; float: right; margin-top: 8px; font-size:62.5%;}
+div#create-asset-box input, div#create-asset-box button {font-size: 62.5%;}
+input#re-run-action{padding: 0.3em 1em; margin-right: -0.5em;}
+div#create-asset-menu {display: none; overflow: auto; background: #f6f6f6 url('plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; top: 26px; border: 1px solid #ccc; z-index: 500;}
+div#create-asset-menu ul {padding: 0; margin: 0; cursor: pointer;}
+div#create-asset-menu li {padding: 5px 12px; margin:0; list-style: none;}
+div#create-asset-menu li:hover {background-color: #666; color: #fff;}
+
