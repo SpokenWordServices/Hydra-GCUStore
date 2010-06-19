@@ -20,11 +20,22 @@ Then /^the "([^\"]*)" inline date edit should contain "([^\"]*)"$/ do |arg1, arg
   end
 end
 
-Then /^the "([^\"]*)" dropdown edit should contain "([^\"]*)"$/ do |arg1, arg2|
+# This was failing on some computers that displayed "selected" instead of "selected='selected'", so we made it an option in the next step definition 
+Then /^the "([^\"]*)" dropdown edit should be set to "([^\"]*)"$/ do |arg1, arg2|
   response.should have_selector("dt", :content=>arg1) do |dt|
     dt.each do |term| 
       term.next.should have_selector("select") do |dropdown|
         dropdown.should have_selector("option", :content=>arg2, :selected=>"selected")
+      end
+    end
+  end
+end
+
+Then /^the "([^\"]*)" dropdown edit should contain "([^\"]*)" as an option$/ do |arg1, arg2|
+  response.should have_selector("dt", :content=>arg1) do |dt|
+    dt.each do |term| 
+      term.next.should have_selector("select") do |dropdown|
+        dropdown.should have_selector("option", :content=>arg2)
       end
     end
   end

@@ -8,7 +8,7 @@ Feature: Edit a document
     Given I am logged in as "archivist1" 
     And I am on the edit document page for druid:sb733gr4073     
     Then the "Date:" inline date edit should contain "1991"
-    And the "Type:" dropdown edit should contain "Paper document"
+    And the "Type:" dropdown edit should contain "Paper document" as an option
     ## Commented out next line b/c the title is not displaying properly due to a bug in the sample data on the testing image.
     # And the "Title:" inline edit should contain "Letter from Ellie Engelmore to Wemara Lichty"
 
