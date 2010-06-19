@@ -1,30 +1,142 @@
 %form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
-
-  =# hidden_form_tag "content_type", :value=>"hydrangea_article"
-
-  = editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :language, :label => "Language:")
-  
-  = editable_metadata_field(@document_fedora, "descMetadata", :contributor_role, :label => "Role:", :multiple=>true) 
-  = editable_metadata_field(@document_fedora, "descMetadata", :first_name, :label => "First Name:", :multiple=>true) 
-  = editable_metadata_field(@document_fedora, "descMetadata", :last_name, :label => "Last Name:", :multiple=>true)
-  = editable_metadata_field(@document_fedora, "descMetadata", :institution, :label => "Institution:", :multiple=>true)
-  = editable_metadata_field(@document_fedora, "descMetadata", :conference_name, :label => "Conference:", :multiple=>true)
-  = editable_metadata_field(@document_fedora, "descMetadata", :organization_name, :label => "Organization:", :multiple=>true)   
+  %dl
+    =# hidden_form_tag "content_type", :value=>"hydrangea_article"
+    - title = custom_editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
+    %dt
+      %label{:for=>"title"}
+        = title[:label]
+    %dd#title
+      = title[:field]
     
-  = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area)
-  
-  = editable_metadata_field(@document_fedora, "descMetadata", :journal_title, :label => "Journal Title:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :publisher, :label => "Publisher:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :issn, :label => "ISSN:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :publication_date, :label => "Publication Date:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :citation_volume, :label => "Volume:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :citation_issue, :label => "Issue:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :start_page, :label => "Start Page:")
-  = editable_metadata_field(@document_fedora, "descMetadata", :end_page, :label => "End Page:")
-  
-  = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
+    - language = custom_editable_metadata_field(@document_fedora, "descMetadata", :language, :label => "Language:")
+    %dt
+      %label{:for=>"language"}
+        = language[:label]
+    %dd#language
+      = language[:field]
     
-  = editable_metadata_field(@document_fedora, "descMetadata", :topic_tag, :label => "Topic Tags:")
-  
-  = editable_metadata_field(@document_fedora, "properties", :collection, :label => "Collection:")
+    - contributor_role = custom_editable_metadata_field(@document_fedora, "descMetadata", :contributor_role, :label => "Role:", :multiple=>true) 
+    %dt
+      %label{:for=>"contributor_role"}
+        = contributor_role[:label]
+    %dd#contributor_role
+      = contributor_role[:field]
+      
+    - first_name = custom_editable_metadata_field(@document_fedora, "descMetadata", :first_name, :label => "First Name:", :multiple=>true) 
+    %dt
+      %label{:for=>"first_name"}
+        = first_name[:label]
+    %dd#first_name
+      = first_name[:field]
+      
+    - last_name = custom_editable_metadata_field(@document_fedora, "descMetadata", :last_name, :label => "Last Name:", :multiple=>true)
+    %dt
+      %label{:for=>"last_name"}
+        = last_name[:label]
+    %dd#last_name
+      = last_name[:field]
+      
+    - institution = custom_editable_metadata_field(@document_fedora, "descMetadata", :institution, :label => "Institution:", :multiple=>true)
+    %dt
+      %label{:for=>"institution"}
+        = institution[:label]
+    %dd#institution
+      = institution[:field]
+      
+    - conference_name = custom_editable_metadata_field(@document_fedora, "descMetadata", :conference_name, :label => "Conference:", :multiple=>true)
+    %dt
+      %label{:for=>"conference_name"}
+        = conference_name[:label]
+    %dd#conference_name
+      = conference_name[:field]
+      
+    - organization_name = custom_editable_metadata_field(@document_fedora, "descMetadata", :organization_name, :label => "Organization:", :multiple=>true)   
+    %dt
+      %label{:for=>"organization_name"}
+        = organization_name[:label]
+    %dd#organization_name
+      = organization_name[:field]
+      
+    - abstract = custom_editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area)
+    %dt
+      %label{:for=>"abstract"}
+        = abstract[:label]
+    %dd#abstract{"data-datastream-name"=>"descMetadata"}
+      = abstract[:field]
+
+    - journal_title = custom_editable_metadata_field(@document_fedora, "descMetadata", :journal_title, :label => "Journal Title:")
+    %dt
+      %label{:for=>"journal_title"}
+        = journal_title[:label]
+    %dd#journal_title
+      = journal_title[:field] 
+      
+    - publisher = custom_editable_metadata_field(@document_fedora, "descMetadata", :publisher, :label => "Publisher:")
+    %dt
+      %label{:for=>"publisher"}
+        = publisher[:label]
+    %dd#publisher
+      = publisher[:field]
+      
+    - issn = custom_editable_metadata_field(@document_fedora, "descMetadata", :issn, :label => "ISSN:")
+    %dt
+      %label{:for=>"issn"}
+        = issn[:label]
+    %dd#issn
+      = issn[:field]
+      
+    - publication_date = custom_editable_metadata_field(@document_fedora, "descMetadata", :publication_date, :label => "Publication Date:")
+    %dt
+      %label{:for=>"publication_date"}
+        = publication_date[:label]
+    %dd#publication_date
+      = publication_date[:field]
+      
+    - citation_volume = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_volume, :label => "Volume:")
+    %dt
+      %label{:for=>"citation_volume"}
+        = citation_volume[:label]
+    %dd#citation_volume
+      = citation_volume[:field]
+      
+    - citation_issue = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_issue, :label => "Issue:")
+    %dt
+      %label{:for=>"citation_issue"}
+        = citation_issue[:label]
+    %dd#citation_issue
+      = citation_issue[:field]
+      
+    - start_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :start_page, :label => "Start Page:")
+    %dt
+      %label{:for=>"start_page"}
+        = start_page[:label]
+    %dd#start_page
+      = start_page[:field]
+      
+    - end_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :end_page, :label => "End Page:")
+    %dt
+      %label{:for=>"end_page"}
+        = end_page[:label]
+    %dd#end_page
+      = end_page[:field]
+      
+    - original_url = custom_editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
+    %dt
+      %label{:for=>"original_url"}
+        = original_url[:label]
+    %dd#original_url
+      = original_url[:field]
+      
+    - topic_tag = custom_editable_metadata_field(@document_fedora, "descMetadata", :topic_tag, :label => "Topic Tags:")
+    %dt
+      %label{:for=>"topic_tag"}
+        = topic_tag[:label]
+    %dd#topic_tag
+      = topic_tag[:field]
+      
+    - collection = custom_editable_metadata_field(@document_fedora, "properties", :collection, :label => "Collection:")
+    %dt
+      %label{:for=>"collection"}
+        = collection[:label]
+    %dd#collection
+      = collection[:field]
