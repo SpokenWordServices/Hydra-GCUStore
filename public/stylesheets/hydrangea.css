@@ -9,3 +9,22 @@ div.accordion-section h2.section-title {
     padding-left: 1em;
     margin: 0;
 }
+#document .document .document_viewer {
+  float:none;	
+}
+.multi_inline ol li {
+	display:inline-block;
+	list-style-type:none;
+}
+.multi_inline ol li span.field {
+	float:left;
+	margin:auto 5em auto -5em;
+	width:65px;
+}
+.multi_inline ol li label {
+	float:left;
+	padding-top:2em;
+}
+dd.multi_inline {
+	padding-left:10px !important;
+}

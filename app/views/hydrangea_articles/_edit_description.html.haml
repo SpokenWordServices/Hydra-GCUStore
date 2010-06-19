@@ -92,34 +92,36 @@
     %dd#publication_date
       = publication_date[:field]
       
-    - citation_volume = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_volume, :label => "Volume:")
-    %dt
-      %label{:for=>"citation_volume"}
-        = citation_volume[:label]
-    %dd#citation_volume
-      = citation_volume[:field]
-      
-    - citation_issue = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_issue, :label => "Issue:")
-    %dt
-      %label{:for=>"citation_issue"}
-        = citation_issue[:label]
-    %dd#citation_issue
-      = citation_issue[:field]
-      
-    - start_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :start_page, :label => "Start Page:")
-    %dt
-      %label{:for=>"start_page"}
-        = start_page[:label]
-    %dd#start_page
-      = start_page[:field]
-      
-    - end_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :end_page, :label => "End Page:")
-    %dt
-      %label{:for=>"end_page"}
-        = end_page[:label]
-    %dd#end_page
-      = end_page[:field]
-      
+    %dt.multi_inline
+      %label{:for=>"citation"}
+        Citation:
+    %dd#citation.multi_inline
+      %ol
+        %li
+          - citation_volume = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_volume, :label => "Volume")
+          %label{:for=>"citation_volume"}
+            = citation_volume[:label]
+          %span#citation_volume.field
+            = citation_volume[:field]
+        %li
+          - citation_issue = custom_editable_metadata_field(@document_fedora, "descMetadata", :citation_issue, :label => "Issue")
+          %label{:for=>"citation_issue"}
+            = citation_issue[:label]
+          %span#citation_issue.field
+            = citation_issue[:field]
+        %li
+          - start_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :start_page, :label => "Start Page")
+          %label{:for=>"start_page"}
+            = start_page[:label]
+          %span#start_page.field
+            = start_page[:field]
+        %li
+          - end_page = custom_editable_metadata_field(@document_fedora, "descMetadata", :end_page, :label => "End Page")
+          %label{:for=>"end_page"}
+            = end_page[:label]
+          %span#end_page.field
+            = end_page[:field]
+            
     - original_url = custom_editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
     %dt
       %label{:for=>"original_url"}
