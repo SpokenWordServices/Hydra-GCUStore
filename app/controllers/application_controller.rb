@@ -11,7 +11,7 @@ class ApplicationController
   include HydraAccessControlsHelper
   
   helper :all
-  helper :hydra_access_controls, :hydra_djatoka, :downloads, :metadata, :hydra
+  helper :hydra_access_controls, :hydra_djatoka, :downloads, :metadata, :hydra, :custom_metadata
   
   # helper_method [:request_is_for_user_resource?]#, :user_logged_in?]
   before_filter [:store_bounce]
