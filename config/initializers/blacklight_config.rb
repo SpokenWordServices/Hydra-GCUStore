@@ -7,7 +7,7 @@
 # environment's configuration.
 # 
 # If you have no configuration beyond :shared for an environment, you
-# do not need to call configure() for that envirnoment.
+# do not need to call configure() for that environment.
 # 
 # For specific environments:
 # 
