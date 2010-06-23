@@ -1113,7 +1113,7 @@ div#bd {clear: both}
 div#create-asset-box {position:relative; float: right; margin-top: 8px; font:0.7em Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif; line-height: 1.4; color:#333;}
 div#create-asset-box input, div#create-asset-box button {font:0.7em Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif; line-height: 1.4; color:#333; height: 2.4em;}
 input#re-run-action{margin-right: -0.5em;}
-ul#create-asset-menu {display: none; overflow: auto; background: #f6f6f6 url('plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer;}
+ul#create-asset-menu {display: none; overflow: auto; background: #f6f6f6 url('../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer;}
 ul#create-asset-menu li {padding: 5px 12px; margin:0; list-style: none;}
 ul#create-asset-menu li:hover {background-color: #666; color: #fff;}
 

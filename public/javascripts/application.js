@@ -2,9 +2,6 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function() {
-  var elemFirst = $('ul#create-asset-menu li:first-child');	
-  setupNavigation(elemFirst, elemFirst.text());
-	
   $("#re-run-action").next().button( {
     text: false,
     icons: { primary: "ui-icon-triangle-1-s" }
@@ -17,21 +14,14 @@ $(function() {
   
   $('#create-asset-menu').mouseleave(function(){
     $('#create-asset-menu').hide();
-  })
-  .css('top', $('re-run-action').height());
+  });
 });
 
-function setupNavigation(elem, link) {
-  $('#re-run-action')
-  .attr('value', $(elem).text())
+function navigateTo(elem, link) {
+  $('#re-run-action').attr('value', $(elem).text())
   .click(function() {
     $('#create-asset-menu').hide();
     location.href = link;
-  });
-}
-
-function navigateTo(elem, link) {
-  setupNavigation(elem, link);	
-  $('#re-run-action').click();	
+  }).click();
 }
 
