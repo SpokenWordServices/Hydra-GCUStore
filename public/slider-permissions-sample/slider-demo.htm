@@ -27,24 +27,45 @@
 			$('select').each(function(index) {
 				$(this).selectToUISlider({labelSrc:'text'}).hide();
 			});
+			$('.ui-slider ol:not(:first)').toggle();
 		});
 	</script>
 	
 	<style type="text/css">
 
 	label {
-	width:20%;
+	width:15%;
 	float:left;
 	padding:10px;
-	background:#eee;
+	background:#F6F6F6;
 	}
 	
 	.ui-slider {
-	margin:0 0 3em 0;
+	margin:1em 0 2em 1em;
 	font-size: inherit;
 	background: #eee;
-	width:75%;
+	width:70%;
 	float:left;
+	}
+
+	.ui-slider-label {
+		margin-top:-4.5em;
+	}
+	
+	a.remove {
+		display:block;
+		background:#F6F6F6;
+		border:1px solid #eee;
+		width:2.5em;
+		line-height:2.5em;
+		text-align:center;
+		float:right;
+		text-decoration:none;
+		font-weight:bold;
+	}
+	
+	a.remove:hover {
+		color:red;
 	}
 
 	/* demo styles below are removable, they're just for testing */
@@ -97,7 +118,7 @@
 				<option value="read" selected="selected">Read</option>
 				<option value="edit">Edit</option>
 			</select>
-			<button>Remove</button>
+			<a href="#" class="remove" title="Remove Example Person">X</a>
 		</fieldset>
 		
 	</form>
