@@ -5,6 +5,8 @@
 - javascript_includes << "date-picker/js/datepicker" 
 - javascript_includes << 'custom'
 - javascript_includes << "catalog/edit"
+- javascript_includes << "/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" 
+- javascript_includes << "jquery.notice.js" 
 
 
 - extra_head_content << capture do 
@@ -30,7 +32,7 @@
 
     %div.accordion-section
       %h2.section-title Set permissions
-      = render :partial => "hydrangea_articles/edit_permissions", :locals => {:document => document}
+      = render :partial => "mods_articles/edit_permissions", :locals => {:document => document}
 
 
 - sidebar_items << capture do 

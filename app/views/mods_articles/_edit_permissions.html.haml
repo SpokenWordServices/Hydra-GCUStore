@@ -1,0 +1,9 @@
+%form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
+
+  %legend Group Permissions
+  %fieldset
+    = render :partial=>"mods_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].retrieve(:access_group)
+
+  %legend Individual Permissions
+  %fieldset
+    = render :partial=>"mods_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].retrieve(:access_person)
