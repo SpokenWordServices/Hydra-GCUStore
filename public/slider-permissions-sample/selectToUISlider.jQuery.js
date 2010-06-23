@@ -211,7 +211,7 @@ jQuery.fn.selectToUISlider = function(settings){
 	.insertAfter(jQuery(this).eq(this.length-1))
 	.slider(options.sliderOptions)
 	.attr('role','application')
-	.find('.ui-slider-label')
+	.find('.ui-slider-label:not(:first)')
 	.each(function(){
 		jQuery(this).css('marginLeft', -jQuery(this).width()/2);
 	});

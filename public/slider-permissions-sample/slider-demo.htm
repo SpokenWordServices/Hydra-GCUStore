@@ -31,24 +31,39 @@
 	</script>
 	
 	<style type="text/css">
+
+	label {
+	width:20%;
+	float:left;
+	padding:10px;
+	background:#eee;
+	}
+	
+	.ui-slider {
+	margin:0 0 3em 0;
+	font-size: inherit;
+	background: #eee;
+	width:75%;
+	float:left;
+	}
+
+	/* demo styles below are removable, they're just for testing */
 	body {background:white;}
-		.ui-slider { margin:3em 0; font-size:inherit; background:#eee;}
-		.accordion-section {padding:2em;}
-		fieldset {
-			border:1px solid #ccc;
-			padding:3em;
-			margin-bottom:1em;
-		}
+	.accordion-section {padding:2em;}
+	fieldset {
+		border:1px solid #ccc;
+		padding:3em;
+		margin-bottom:1em;
+	}
 	</style>
 <!--end slider code -->	
-	
 </head>
 
 <body>
 	<div class="accordion-section">
 	<form action="#">
 		<fieldset>
-			<dt>Group Permissions</dt>
+			<legend>Group Permissions</legend>
 			<label for="archivists">Archivists</label>
 			<select name="archivists" id="archivists">
 				<option value="no_access">No Access</option>
@@ -75,7 +90,7 @@
 		</fieldset>
 		
 		<fieldset>
-			<dt>Individual Permissions</dt>
+			<legend>Individual Permissions</legend>
 			<label for="examplePerson">Example Person</label>
 			<select name="examplePerson" id="examplePerson">
 				<option value="discover">Discover</option>
