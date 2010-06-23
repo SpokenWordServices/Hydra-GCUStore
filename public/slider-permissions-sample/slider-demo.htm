@@ -27,7 +27,7 @@
 			$('select').each(function(index) {
 				$(this).selectToUISlider({labelSrc:'text'}).hide();
 			});
-			$('.ui-slider ol:not(:first)').toggle();
+			$('fieldset:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
 		});
 	</script>
 	
