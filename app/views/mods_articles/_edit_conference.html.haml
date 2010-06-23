@@ -1,0 +1,5 @@
+conference = conference_edit
+conference_index = @document_fedora.datastreams["descMetadata"].persons.index[conference]
+
+= editable_metadata_field(@document_fedora, "descMetadata", [:conference, conference_index, :role], :label => "Role:", :multiple=>true)
+= editable_metadata_field(@document_fedora, "descMetadata", [:conference, conference_index, :name], :label => "Conference:")

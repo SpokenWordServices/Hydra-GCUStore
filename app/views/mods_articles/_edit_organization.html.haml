@@ -1,0 +1,5 @@
+organization = organization_edit
+organization_index = @document_fedora.datastreams["descMetadata"].persons.index[organization]
+
+= editable_metadata_field(@document_fedora, "descMetadata", [:organization, organization_index, :role], :label => "Role:", :multiple=>true)
+= editable_metadata_field(@document_fedora, "descMetadata", [:organization, organization_index, :name], :label => "Organization:")
