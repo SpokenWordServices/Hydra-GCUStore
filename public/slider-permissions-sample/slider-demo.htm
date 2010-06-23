@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>hydrangea slider example</title>
+
+<!-- Inherited from hydrangea -->	
+	<link href="http://localhost:3000/stylesheets/application.css?1276898167" media="all" rel="stylesheet" type="text/css" />
+	<link href="http://localhost:3000/stylesheets/styles.css?1277321571" media="all" rel="stylesheet" type="text/css" />
+	<link href="http://localhost:3000/stylesheets/metadata.css?1276898167" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://localhost:3000/stylesheets/hydrangea.css?1277321571" media="screen" rel="stylesheet" type="text/css" />
+	<link href="http://localhost:3000/stylesheets/../javascripts/date-picker/css/datepicker.css?1276898166" media="screen" rel="stylesheet" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<!-- Inherited from hydrangea -->
+
+<!-- slider code - add these libraries, jquery code, and css into hydrangea, eventually -->
+	<script src="selectToUISlider.jQuery.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/redmond/jquery-ui-1.7.1.custom.css" type="text/css" />
+	<link rel="Stylesheet" href="css/ui.slider.extras.css" type="text/css" />
+	
+	<script type="text/javascript" charset="utf-8">
+		jQuery(document).ready(function($) {
+			$('select').each(function(index) {
+				$(this).selectToUISlider({labelSrc:'text'}).hide();
+			});
+		});
+	</script>
+	
+	<style type="text/css">
+	body {background:white;}
+		.ui-slider { margin:3em 0; font-size:inherit; background:#eee;}
+		.accordion-section {padding:2em;}
+		fieldset {
+			border:1px solid #ccc;
+			padding:3em;
+			margin-bottom:1em;
+		}
+	</style>
+<!--end slider code -->	
+	
+</head>
+
+<body>
+	<div class="accordion-section">
+	<form action="#">
+		<fieldset>
+			<dt>Group Permissions</dt>
+			<label for="archivists">Archivists</label>
+			<select name="archivists" id="archivists">
+				<option value="no_access">No Access</option>
+				<option value="discover">Discover</option>
+				<option value="read">Read</option>
+				<option value="edit" selected="selected">Edit</option>
+			</select>
+			
+			<label for="researchers">Researchers</label>
+			<select name="researchers" id="researchers">
+				<option value="no_access">No Access</option>
+				<option value="discover">Discover</option>
+				<option value="read" selected="selected">Read</option>
+				<option value="edit">Edit</option>
+			</select>
+			
+			<label for="public">Public</label>
+			<select name="public" id="public">
+				<option value="no_access" selected="selected">No Access</option>
+				<option value="discover">Discover</option>
+				<option value="read">Read</option>
+				<option value="edit">Edit</option>
+			</select>
+		</fieldset>
+		
+		<fieldset>
+			<dt>Individual Permissions</dt>
+			<label for="examplePerson">Example Person</label>
+			<select name="examplePerson" id="examplePerson">
+				<option value="discover">Discover</option>
+				<option value="read" selected="selected">Read</option>
+				<option value="edit">Edit</option>
+			</select>
+			<button>Remove</button>
+		</fieldset>
+		
+	</form>
+	</div>
+
+
+
+</body>
+</html>
