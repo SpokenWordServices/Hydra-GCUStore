@@ -1,0 +1,10 @@
+person = edit_person
+person_index = @document_fedora.datastreams["descMetadata"].persons.index[person]
+
+// since :multiple is true for this one, it should call persons[person_index].roles and iterate through the set
+= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :role], :label => "Role:", :multiple=>true)
+
+= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :first_name], :label => "First Name:") 
+= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :last_name], :label => "Last Name:") 
+
+= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :institution], :label => "Institution:")
