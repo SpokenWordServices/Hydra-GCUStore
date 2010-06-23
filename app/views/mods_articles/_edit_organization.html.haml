@@ -1,5 +1,20 @@
-organization = organization_edit
-organization_index = @document_fedora.datastreams["descMetadata"].persons.index[organization]
+- organization = edit_organization
+- organization_counter = edit_organization_counter
 
-= editable_metadata_field(@document_fedora, "descMetadata", [:organization, organization_index, :role], :label => "Role:", :multiple=>true)
-= editable_metadata_field(@document_fedora, "descMetadata", [:organization, organization_index, :name], :label => "Organization:")
+= editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:", :multiple=>true)
+= editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Organization:")
+
+- organization_role = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:")
+%dt
+  %label{:for=>"organization_role"}
+    = organization_role[:label]
+%dd#organization_role
+  = organization_role[:field]
+  
+- organization_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Conference:", :multiple=>true)
+%dt
+  %label{:for=>"organization_name"}
+    = organization_name[:label]
+%dd#organization_name
+  = organization_name[:field]
+

@@ -1,10 +1,33 @@
-person = edit_person
-person_index = @document_fedora.datastreams["descMetadata"].persons.index[person]
+- person = edit_person
+- person_counter = edit_person_counter
 
-// since :multiple is true for this one, it should call persons[person_index].roles and iterate through the set
-= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :role], :label => "Role:", :multiple=>true)
-
-= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :first_name], :label => "First Name:") 
-= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :last_name], :label => "Last Name:") 
-
-= editable_metadata_field(@document_fedora, "descMetadata", [:person, person_index, :institution], :label => "Institution:")
+%dd#person.multi_inline
+  %ol
+    %li
+      - person_role = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :role, :text], :label => "Role:") 
+      %dt
+        %label{:for=>"person_role"}
+          = person_role[:label]
+      %dd#person_role
+        = person_role[:field]
+    %li
+      - first_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :first_name], :label => "First Name:", :multiple=>true) 
+      %dt
+        %label{:for=>"first_name"}
+          = first_name[:label]
+      %dd#first_name
+        = first_name[:field]
+    %li
+      - last_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :last_name], :label => "Last Name:", :multiple=>true)
+      %dt
+        %label{:for=>"last_name"}
+          = last_name[:label]
+      %dd#last_name
+        = last_name[:field]
+  
+  - institution = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :institution], :label => "Institution:", :multiple=>true)
+  %dt
+    %label{:for=>"institution"}
+      = institution[:label]
+  %dd#institution
+    = institution[:field]

@@ -1,0 +1,63 @@
+- journal = edit_journal
+- journal_counter = edit_journal_counter
+  
+- journal_title = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :title], :label => "Journal Title:")
+%dt
+  %label{:for=>"journal_title"}
+    = journal_title[:label]
+%dd#journal_title
+  = journal_title[:field] 
+
+%dd#citation.multi_inline
+  %ol
+    %li
+      - publisher = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:publisher], :label => "Publisher:")
+      %dt
+        %label{:for=>"publisher"}
+          = publisher[:label]
+      %dd#publisher
+        = publisher[:field]
+    %li
+      - issn = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :issn], :label => "ISSN:")
+      %dt
+        %label{:for=>"issn"}
+          = issn[:label]
+      %dd#issn
+        = issn[:field]
+  
+- publication_date = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:publication_date], :label => "Publication Date:")
+%dt
+  %label{:for=>"publication_date"}
+    = publication_date[:label]
+%dd#publication_date
+  = publication_date[:field]
+  
+%dt.multi_inline
+  %label{:for=>"citation"}
+    Citation:
+%dd#citation.multi_inline
+  %ol
+    %li
+      - citation_volume = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:volume], :label => "Volume")
+      %label{:for=>"citation_volume"}
+        = citation_volume[:label]
+      %span#citation_volume.field
+        = citation_volume[:field]
+    %li
+      - citation_issue = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:level], :label => "Issue")
+      %label{:for=>"citation_issue"}
+        = citation_issue[:label]
+      %span#citation_issue.field
+        = citation_issue[:field]
+    %li
+      - start_page = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Start Page")
+      %label{:for=>"start_page"}
+        = start_page[:label]
+      %span#start_page.field
+        = start_page[:field]
+    %li
+      - end_page = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "End Page")
+      %label{:for=>"end_page"}
+        = end_page[:label]
+      %span#end_page.field
+        = end_page[:field]

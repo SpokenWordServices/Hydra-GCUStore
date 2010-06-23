@@ -95,6 +95,15 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               <roleTerm type="text">submitter</roleTerm>
           </role>
       </name>
+      <name type="personal">
+          <namePart type="family">Lacks</namePart>
+          <namePart type="given">Henrietta</namePart>
+          <displayForm>HeLa</displayForm>
+          <affiliation>Baltimore</affiliation>    
+          <role>
+              <roleTerm type="text">contributor</roleTerm>
+          </role>
+      </name>
 
       <typeOfResource>text</typeOfResource>
       <genre authority="local">journal article</genre>
