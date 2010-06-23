@@ -18,7 +18,6 @@
 %div#create-asset-box
   %input#re-run-action{:type=>"button",:value=>"Create new..."}
   %button#select Select
-  %div#create-asset-menu
-    %ul
-      %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_article")}');"} Add an article
-      %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_dataset")}');"} Add a dataset
+  %ul#create-asset-menu
+    %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_article")}');"} Add an article
+    %li{:onclick=>"javascript:navigateTo(this, '#{url_for(:action=>"new", :controller=>"assets", :content_type=>"hydrangea_dataset")}');"} Add a dataset
