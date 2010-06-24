@@ -6,6 +6,9 @@
 %label{:for=>"field_name"}
   = access_entry_text
 %select{:id=>"field_name", :name=>"field_name"}
-  - choices.each_pair do |choice_label, choice_name|
-    %option{:value=>choice_name, :selected=>!access_entry.ancestors("access[@type=\"#{choice_name}\"]").empty? } 
+  - choices.each do |choice|
+    - choice_label = choice.keys.first
+    - choice_name = choice.keys.first
+
+    %option{:value=>choice_label, :selected=>!access_entry.ancestors("access[@type=\"#{choice_name}\"]").empty? } 
       = choice_name
