@@ -21,7 +21,7 @@
   = render :partial=>"mods_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
   = render :partial=>"mods_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
   
-  - abstract = custom_editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area)
+  - abstract = custom_editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area, :multiple=>false)
   %dt
     %label{:for=>"abstract"}
       = abstract[:label]

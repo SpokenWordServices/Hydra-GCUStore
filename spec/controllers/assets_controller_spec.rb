@@ -23,7 +23,7 @@ describe AssetsController do
       mock_document = mock("document")
       mock_document.expects(:update_indexed_attributes).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
-      SaltDocument.expects(:find).with("_PID_").returns(mock_document)
+      HydrangeaArticle.expects(:find).with("_PID_").returns(mock_document)
       put :update, :id=>"_PID_", "asset"=>{"subject"=>{"-1"=>"My Topic"}}
       #session[:user].should == 'bob'
     end
