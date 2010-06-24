@@ -21,6 +21,7 @@
       setUpInlineEdits();
       setUpStoryEditable();
       setUpDatePicker();
+      setUpSliders();
   	};
 
   	function bindDomEvents () {
@@ -42,6 +43,13 @@
       });
   	};
 
+    function setUpSliders () {
+			$('fieldset.slider select').each(function(index) {
+				$(this).selectToUISlider({labelSrc:'text'}).hide();
+			});
+			$('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
+    }
+    
   	function setUpInlineEdits () {
   	  fluid.inlineEdits("#multipleEdit", {
           selectors : {

@@ -24,10 +24,10 @@
 	
 	<script type="text/javascript" charset="utf-8">
 		jQuery(document).ready(function($) {
-			$('select').each(function(index) {
+			$('fieldset.slider select').each(function(index) {
 				$(this).selectToUISlider({labelSrc:'text'}).hide();
 			});
-			$('fieldset:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
+			$('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
 		});
 	</script>
 	
@@ -111,7 +111,7 @@
 			</select>
 		</fieldset>
 		
-		<fieldset>
+		<fieldset class="slider">
 			<legend>Individual Permissions</legend>
 			<label for="examplePerson">Example Person</label>
 			<select name="examplePerson" id="examplePerson">
