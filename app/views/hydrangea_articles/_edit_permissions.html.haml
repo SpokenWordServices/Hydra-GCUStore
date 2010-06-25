@@ -9,13 +9,13 @@
       Saving...
 
     %h2 Access Controls for Groups
-    %dl.defList.fl-theme-mist
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :discover_access_group, :label => "Discover Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"}) 
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :read_access_group, :label => "Read Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"}) 
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :edit_access_group, :label => "Edit Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"}) 
+    %dl.defList.fl-theme-mist    
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :discover_access_group, :label => "Discover Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"})      
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :read_access_group, :label => "Read Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"}) 
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :edit_access_group, :label => "Edit Access:", :type=>:select, :choices=>{"Public" => "public","Researchers" => "researcher", "Archivists" => "archivist", "Archivists" => "archivist"}) 
     
     %h2 Access Controls for Individuals
     %dl.defList.fl-theme-mist
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :discover_access, :label => "Discover Access:", :multiple=>true )
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :read_access, :label => "Read Access:", :multiple=>true)
-      = editable_metadata_field(@document_fedora, "rightsMetadata", :edit_access, :label => "Edit Access:", :multiple=>true)
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :discover_access, :label => "Discover Access:", :multiple=>true )
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :read_access, :label => "Read Access:", :multiple=>true)
+      = prefab_editable_metadata_field(@document_fedora, "rightsMetadata", :edit_access, :label => "Edit Access:", :multiple=>true)

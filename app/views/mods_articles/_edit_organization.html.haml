@@ -4,14 +4,14 @@
 = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:", :multiple=>true)
 = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Organization:")
 
-- organization_role = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:")
+- organization_role = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:")
 %dt
   %label{:for=>"organization_role"}
     = organization_role[:label]
 %dd#organization_role
   = organization_role[:field]
   
-- organization_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Conference:", :multiple=>true)
+- organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Conference:", :multiple=>true)
 %dt
   %label{:for=>"organization_name"}
     = organization_name[:label]

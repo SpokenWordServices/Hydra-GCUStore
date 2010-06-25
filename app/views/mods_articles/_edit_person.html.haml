@@ -4,28 +4,28 @@
 %dd#person.multi_inline
   %ol
     %li
-      - person_role = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :role, :text], :label => "Role:") 
+      - person_role = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :role, :text], :label => "Role:") 
       %dt
         %label{:for=>"person_role"}
           = person_role[:label]
       %dd#person_role
         = person_role[:field]
     %li
-      - first_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :first_name], :label => "First Name:") 
+      - first_name = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :first_name], :label => "First Name:") 
       %dt
         %label{:for=>"first_name"}
           = first_name[:label]
       %dd#first_name
         = first_name[:field]
     %li
-      - last_name = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :last_name], :label => "Last Name:")
+      - last_name = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :last_name], :label => "Last Name:")
       %dt
         %label{:for=>"last_name"}
           = last_name[:label]
       %dd#last_name
         = last_name[:field]
   
-  - institution = custom_editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :institution], :label => "Institution:")
+  - institution = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :institution], :label => "Institution:")
   %dt
     %label{:for=>"institution"}
       = institution[:label]
