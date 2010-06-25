@@ -156,15 +156,15 @@ describe MetadataHelper do
     it "should assume symbols and arrays are pointers to accessors declared in this datastreams model" do
       
       ActiveFedora::NokogiriDatastream.expects(:accessor_xpath).with(:abstract).returns("--abstract xpath--")
-      ActiveFedora::NokogiriDatastream.expects(:accessor_xpath).with([{:person=>1}]).returns("--person xpath--")
-      ActiveFedora::NokogiriDatastream.expects(:accessor_xpath).with([{:person=>1},{:role=>1},:text]).returns("--person role text xpath--")     
+      ActiveFedora::NokogiriDatastream.expects(:accessor_xpath).with(*[{:person=>1}]).returns("--person xpath--")
+      ActiveFedora::NokogiriDatastream.expects(:accessor_xpath).with(*[{:person=>1},{:role=>1},:text]).returns("--person role text xpath--")     
       
       @mock_ng_ds.expects(:property_values).with("--abstract xpath--").returns(["abstract1", "abstract2"])
       @mock_ng_ds.expects(:property_values).with("--person xpath--").returns(["person1", "person2"])
       @mock_ng_ds.expects(:property_values).with("--person role text xpath--").returns(["text1"])
       
       helper.get_values_from_datastream(@resource, "ds1", :abstract).should == ["abstract1", "abstract2"]
-      helper.get_values_from_datastream(@resource, "ds1", {:person=>1}).should == ["person1", "person2"]
+      helper.get_values_from_datastream(@resource, "ds1", [{:person=>1}]).should == ["person1", "person2"]
       helper.get_values_from_datastream(@resource, "ds1", [{:person=>1},{:role=>1},:text]).should == ["text1"]
 
     end
