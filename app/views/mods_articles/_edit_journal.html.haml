@@ -46,7 +46,7 @@
           %span#citation_volume.field
             = citation_volume[:field]
         %li
-          - citation_issue = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:level], :label => "Issue")
+          - citation_issue = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:level], :label => "(Issue)")
           %label{:for=>"citation_issue"}
             = citation_issue[:label]
           %span#citation_issue.field
