@@ -11,11 +11,11 @@
     %dd{:id=>"#{base_id}_role"}
       = person_role[:field]  
   %li
-    %dt
+    %dt.multi_inline
       %label{:for=>"#{base_id}_name"}
         Name
     %dd.multi_inline{:id=>"#{base_id}_name"}
-      %ol{:for=>"#{base_id}_name_fields"}
+      %ol{:id=>"#{base_id}_name_fields"}
         %li
           - first_name = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :first_name], :label => "First Name") 
           %label{:for=>"#{base_id}_first_name"}
