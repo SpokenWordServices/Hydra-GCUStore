@@ -1,7 +1,7 @@
 %form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
   %dl
     =# hidden_form_tag "content_type", :value=>"hydrangea_article"
-    - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:", :multiple=>true)
+    - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
     %dt
       %label{:for=>"title"}
         = title[:label]

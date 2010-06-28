@@ -8,21 +8,20 @@
 %dd#journal_title
   = journal_title[:field] 
 
-%dd#citation.multi_inline
+%dt.multi_inline
+  %label{:for=>"publisher"}
+    Publisher:
+%dd#publisher.multi_inline
   %ol
     %li
       - publisher = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:publisher], :label => "Publisher:")
-      %dt
-        %label{:for=>"publisher"}
-          = publisher[:label]
-      %dd#publisher
+      %span#publisher.field
         = publisher[:field]
     %li
       - issn = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :issn], :label => "ISSN:")
-      %dt
-        %label{:for=>"issn"}
-          = issn[:label]
-      %dd#issn
+      %label{:for=>"issn"}
+        = issn[:label]
+      %span#issn.field
         = issn[:field]
   
 - publication_date = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:publication_date], :label => "Publication Date:")
