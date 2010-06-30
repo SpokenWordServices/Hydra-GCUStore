@@ -70,6 +70,7 @@ You must ingest two more fixtures:
   rake hydra:import_fixture pid=druid:sb733gr4073
   rake hydra:import_fixture pid=druid:bz425fy5289
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
+  rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
 </pre>
 
 Then run your tests.

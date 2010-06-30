@@ -2,11 +2,12 @@
 
   %fieldset.slider
     %legend Group Permissions
-    - choices = [{"No Access" => "no_access"},{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}]
-    - group_permissions = {}
+    - choices = [{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}]
+    - group_permissions = {"no_access"=>[]}
     - choices.each do |choice|
       - choice_name = choice.values.first
-      - group_permissions[choice_name] = get_values_from_datastream(@document_fedora,"rightsMetadata", ["#{choice_name}_access".to_sym, :group])
+      - group_permissions[choice_name] = @document_fedora.get_values_from_datastream("rightsMetadata", ["#{choice_name}_access".to_sym, :group])
+    - choices = [{"No Access" => "no_access"}] + choices
     
     - roles = RoleMapper.role_names
     // This next line should be conditional upon a person having Publish permissions on the object's collection
