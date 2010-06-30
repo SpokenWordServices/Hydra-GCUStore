@@ -81,7 +81,7 @@ class CatalogController
   # We're overriding this for SALT because we need to add in the view parameter to 
   # make sure that the user is taken back to the same view (gallery/list) that they came from
   def delete_or_assign_search_session_params
-    [:q, :qt, :f, :per_page, :page, :sort, :view].each do |pname|
+    [:q, :qt, :search_field, :f, :per_page, :page, :sort, :view].each do |pname|
       params[pname].blank? ? session[:search].delete(pname) : session[:search][pname] = params[pname]
     end
   end
