@@ -4,16 +4,16 @@
   = link_to current_user.login, user_path 
   ]
   - if current_user.last_search_url
-    |
-    = link_to('View your last search', catalog_index_path(current_user.last_search_url))
-  | 
-  = link_to 'Your Bookmarks', bookmarks_path  
-  |
-  = link_to "Saved Searches", saved_searches_path
+
+    =# link_to('View your last search', catalog_index_path(current_user.last_search_url))
+
+  =# link_to 'Your Bookmarks', bookmarks_path  
+
+  =# link_to "Saved Searches", saved_searches_path
 - else 
   = link_to 'Login', login_path
-|
-= link_to "Search History", search_history_index_path 
+
+=# link_to "Search History", search_history_index_path 
 
 %div#create-asset-box
   %input#re-run-action{:type => "button", :value => "Add an article", :onclick => "javascript:location.href = '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}'"}
