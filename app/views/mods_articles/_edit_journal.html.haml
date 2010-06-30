@@ -2,12 +2,13 @@
 - journal_counter = edit_journal_counter
 - base_id = "journal_#{journal_counter}"
 
-- journal_title = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :title], :label => "Journal Title:")
-%dt
-  %label{:for=>"journal_title"}
-    = journal_title[:label]
-%dd#journal_title
-  = journal_title[:field] 
+%dl
+  - journal_title = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :title], :label => "Journal Title:")
+  %dt
+    %label{:for=>"journal_title"}
+      = journal_title[:label]
+  %dd#journal_title
+    = journal_title[:field] 
 
 %ol#journal_publisher_and_issn.multi_inline
   %li

@@ -21,32 +21,28 @@
   = render :partial=>"mods_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
   = render :partial=>"mods_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
   
-  - abstract = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area, :multiple=>false)
-  %dt
-    %label{:for=>"abstract"}
-      = abstract[:label]
-  %dd#abstract{"data-datastream-name"=>"descMetadata"}
-    = abstract[:field]
+  %dl
+    - abstract = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area, :multiple=>false)
+    %dt
+      %label{:for=>"abstract"}
+        = abstract[:label]
+    %dd#abstract{"data-datastream-name"=>"descMetadata"}
+      = abstract[:field]
     
   = render :partial=>"mods_articles/edit_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:journal)
   
-  / - original_url = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
-  /  %dt
-  /    %label{:for=>"original_url"}
-  /      = original_url[:label]
-  /  %dd#original_url
-  /    = original_url[:field]
-    
-  - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", :topic_tag, :label => "Topic Tags:",:multiple=>true)
-  %dt
-    %label{:for=>"topic_tag"}
-      = topic_tag[:label]
-  %dd#topic_tag
-    = topic_tag[:field]
-    
-  / - collection = editable_metadata_field(@document_fedora, "properties", :collection, :label => "Collection:")
-  / %dt
-  /   %label{:for=>"collection"}
-  /     = collection[:label]
-  / %dd#collection
-  /   = collection[:field]
+  / %dl
+  /   - original_url = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
+  /   %dt
+  /     %label{:for=>"original_url"}
+  /       = original_url[:label]
+  /   %dd#original_url
+  /     = original_url[:field]
+  
+  %dl
+    - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", :topic_tag, :label => "Topic Tags:",:multiple=>true)
+    %dt
+      %label{:for=>"topic_tag"}
+        = topic_tag[:label]
+    %dd#topic_tag
+      = topic_tag[:field]
