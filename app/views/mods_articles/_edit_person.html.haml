@@ -30,11 +30,10 @@
               = last_name[:label]
             %span.field{:id=>"#{base_id}_last_name"}
               = last_name[:field]
-  %li
-    %dl
-      - institution = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :institution], :label => "Institution:")
-      %dt
-        %label{:for=>"#{base_id}_institution"}
-          = institution[:label]
-      %dd{:id=>"#{base_id}_institution"}
-        = institution[:field]
+%dl
+  - institution = editable_metadata_field(@document_fedora, "descMetadata", [{:person=>person_counter}, :institution], :label => "Institution:")
+  %dt
+    %label{:for=>"#{base_id}_institution"}
+      = institution[:label]
+  %dd{:id=>"#{base_id}_institution"}
+    = institution[:field]
