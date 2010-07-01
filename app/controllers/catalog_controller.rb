@@ -48,6 +48,12 @@ class CatalogController
     
   def show_with_customizations
     show_without_customizations
+    af_base = ActiveFedora::Base.load_instance(params[:id])
+    the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
+    if the_model.nil?
+      the_model = DcDocument
+    end
+    @document_fedora = the_model.load_instance(params[:id])
     params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
     @facet_lookup = Blacklight.solr.find params
     enforce_read_permissions
