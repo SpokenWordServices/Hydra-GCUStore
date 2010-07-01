@@ -23,17 +23,10 @@ Blacklight.configure(:shared) do |config|
     :qt=>:search,
     :per_page => 10,
     :facets => {:fields=>
-      ["technology_facet",
-        "person_facet",
-        "title_facet",
-        "city_facet",
-        "organization_facet",
-        "company_facet",
-        "year_facet",
-        "state_facet",
-        "series_facet",
-        "box_facet",
-        "folder_facet"]
+      ["date_t",
+        "title_t",
+        "medium_t",
+        "location_t"]
     }  
   }
   
@@ -41,17 +34,10 @@ Blacklight.configure(:shared) do |config|
   SolrDocument.default_params[:find_by_id] = {
     :qt => :document,
     :facets => {:fields=>
-      ["technology_facet",
-        "person_facet",
-        "title_facet",
-        "city_facet",
-        "organization_facet",
-        "company_facet",
-        "year_facet",
-        "state_facet",
-        "series_facet",
-        "box_facet",
-        "folder_facet"]
+      ["date_t",
+        "title_t",
+        "medium_t",
+        "location_t"]
       }
     }
   
@@ -80,35 +66,16 @@ Blacklight.configure(:shared) do |config|
   # solr fields that will be treated as facets by the blacklight application
   #   The ordering of the field names is the order of the display 
   config[:facet] = {
-    :field_names => [
-      "collection_facet",
-      "technology_facet",
-      "person_facet",
-      "city_facet",
-      "organization_facet",
-      "company_facet",
-      "year_facet",
-      "state_facet",
-      "series_facet",
-      "box_facet",
-      "folder_facet",
-      "donor_tags_facet",
-      "archivist_tags_facet"
-    ],
+    :field_names => ["date_t",
+      "title_t",
+      "medium_t",
+      "location_t"
+      ],
     :labels => {
-      "collection_facet" => "Collection",
-      "technology_facet" => "Technology",
-      "person_facet" => "Person",
-      "city_facet" => "City",
-      "organization_facet" => "Organization",
-      "company_facet" => "Company",
-      "year_facet" => "Year",
-      "state_facet" => "State",
-      "series_facet" => "Series",
-      "box_facet" => "Box",
-      "folder_facet" => "Folder",
-      "donor_tags_facet" => "Tagged by Donor",
-      "archivist_tags_facet" => "Tagged by Archivist"
+      "date_t"=>"Date",
+      "title_t"=>"Title",
+      "medium_t"=>"Content Type",
+      "location_t"=>"Location"
     },
     :limits=> {nil=>10}
   }
@@ -117,24 +84,15 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:index_fields] = {
     :field_names => [
-      "text",
-      "title_facet",
-      "title_t",
       "date_t",
+      "title_t",
       "medium_t",
-      "series_facet",
-      "box_facet",
-      "folder_facet"
-    ],
+      "location_t"],
     :labels => {
-      "text" => "Text:",
-      "title_t" => "Title:",
-      "title_facet" => "Extracted Title:",
-      "date_t" => "Date:",
-      "medium_t" => "Document Type:",
-      "series_facet" => "Series",
-      "box_facet" => "Box",
-      "folder_facet" => "Folder"
+      "date_t"=>"Date",
+      "title_t"=>"Title",
+      "medium_t"=>"Content Type",
+      "location_t"=>"Location"
     }
   }
 

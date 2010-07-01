@@ -28,7 +28,7 @@
     .notice
     %div.accordion-section
       %h2.section-title Describe the Article
-      = render :partial => 'mods_articles/edit_description'
+      = render :partial => 'hydrangea_articles/edit_description'
 
     %div.accordion-section
       %h2.section-title Upload files
@@ -36,7 +36,7 @@
 
     %div.accordion-section
       %h2.section-title Set permissions
-      = render :partial => "mods_articles/edit_permissions", :locals => {:document => document}
+      = render :partial => "hydrangea_articles/edit_permissions", :locals => {:document => document}
 
 
 - sidebar_items << capture do 
