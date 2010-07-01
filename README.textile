@@ -38,6 +38,14 @@ rake db:migrate
 
 Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.
 
+First, copy hydrangea's solr configs into the hydra-jetty solr cores. (You only need to do this when you first clone the jetty submodule and when Hydrangea's solr configurations change)
+<pre>
+  cp solr/conf/* jetty/solr/development-core/conf/
+  cp solr/conf/* jetty/solr/test-core/conf/
+</pre>
+
+Then start jetty:
+
 <pre>
 cd jetty 
 java -jar start.jar
@@ -67,7 +75,6 @@ h2. To get cucumber features to pass
 You must ingest two more fixtures:
 
 <pre>
-  rake hydra:import_fixture pid=druid:sb733gr4073
   rake hydra:import_fixture pid=druid:bz425fy5289
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
