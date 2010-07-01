@@ -8,6 +8,7 @@ nohup.out
 
 vendor/plugins/haml/init.rb
 
+log/*
 coverage.data
 coverage/*
 
