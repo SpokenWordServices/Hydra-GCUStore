@@ -146,7 +146,7 @@
 
     // Inserting and removing simple inline edits
     function insertValue(element, event) {
-      var containerDD = $(element).closest("dt").next("dd")
+      var $containerDD = $(element).closest("dt").next('dd');
       var fieldName = $containerDD.attr("id");
       var values_list = $containerDD.find("ol");
       var datastreamName = $containerDD.attr('data-datastream-name');
