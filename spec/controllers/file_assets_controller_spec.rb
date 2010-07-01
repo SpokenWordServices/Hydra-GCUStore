@@ -42,8 +42,10 @@ describe FileAssetsController do
     it "should find all file assets belonging to a given container object if container_id or container_id is provided" do
       mock_container = mock("container")
       mock_container.expects(:collection_members).with(:response_format => :solr).returns("solr result")
+      controller.expects(:get_solr_response_for_doc_id).with("_PID_").returns("container solr doc")
       ActiveFedora::Base.expects(:load_instance).with("_PID_").returns(mock_container)
       xhr :get, :index, :container_id=>"_PID_"
+      assigns[:document].should == "container solr doc"
       assigns[:solr_result].should == "solr result"
       assigns[:container].should == mock_container
     end
