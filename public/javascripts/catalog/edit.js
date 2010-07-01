@@ -19,7 +19,8 @@
       resourceType = $metaDataForm.attr('data-resourceType');
       bindDomEvents();
       setUpInlineEdits();
-      setUpStoryEditable();
+      setUpTextileEditables();
+      // setUpStoryEditable();
       setUpDatePicker();
       setUpSliders();
   	};
@@ -67,34 +68,67 @@
       });
   	};
 
-  	function setUpStoryEditable() {
-      var $storyDD = $("dd#story", $el);
-      var datastreamName = $storyDD.attr('data-datastream-name');
-      var fieldName = $storyDD.attr("id");
-      var submitUrl = documentUrl + ".textile";
-      var $stories = $("ol div.textile", $storyDD);
-      $stories.each(function(index) {
-        var params = {
-          datastream: datastreamName,
-          field: fieldName,
-          field_index: index
-        }
-        $(this).editable(submitUrl, {
-          method    : "PUT",
-          indicator : "<img src='/images/ajax-loader.gif'>",
-          type      : "textarea",
-          submit    : "OK",
-          cancel    : "Cancel",
-          tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
-          placeholder : "click to edit",
-          onblur    : "ignore",
-          name      : "asset["+fieldName+"]["+index+"]",
-          id        : "field_id",
-          height    : "100",
-          loadurl  : documentUrl + "?" + $.param(params)
+  	function setUpTextileEditables() {
+      $('.textile', $el).each(function(index) {
+        var $textileContainer = $(this).closest("dd")
+        // var $textileContainer = $(this);     
+        var datastreamName = $textileContainer.attr('data-datastream-name');
+        var fieldName = $textileContainer.attr("id");
+
+        var submitUrl = appendFormat(documentUrl, {format: "textile"});
+
+        var $textiles = $("ol div.textile", $textileContainer);
+        $textiles.each(function(index) {
+          var params = {
+            datastream: datastreamName,
+            field: fieldName,
+            field_index: index
+          }
+          $(this).editable(submitUrl, {
+            method    : "PUT",
+            indicator : "<img src='/images/ajax-loader.gif'>",
+            type      : "textarea",
+            submit    : "OK",
+            cancel    : "Cancel",
+            tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
+            placeholder : "click to edit",
+            onblur    : "ignore",
+            name      : "asset["+datastreamName+"]["+fieldName+"]["+index+"]",
+            id        : "field_id",
+            height    : "100",
+            loadurl  : documentUrl + "?" + $.param(params)
+          });
         });
       });
     };
+    // function setUpStoryEditable() {
+    //       var $storyDD = $("dd#story", $el);
+    //       var datastreamName = $storyDD.attr('data-datastream-name');
+    //       var fieldName = $storyDD.attr("id");
+    //       var submitUrl = documentUrl + ".textile";
+    //       var $stories = $("ol div.textile", $storyDD);
+    //       $stories.each(function(index) {
+    //         var params = {
+    //           datastream: datastreamName,
+    //           field: fieldName,
+    //           field_index: index
+    //         }
+    //         $(this).editable(submitUrl, {
+    //           method    : "PUT",
+    //           indicator : "<img src='/images/ajax-loader.gif'>",
+    //           type      : "textarea",
+    //           submit    : "OK",
+    //           cancel    : "Cancel",
+    //           tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
+    //           placeholder : "click to edit",
+    //           onblur    : "ignore",
+    //           name      : "asset["+fieldName+"]["+index+"]",
+    //           id        : "field_id",
+    //           height    : "100",
+    //           loadurl  : documentUrl + "?" + $.param(params)
+    //         });
+    //       });
+    //     };
 
     function setUpDatePicker () {
       $('div.date-select', $el).each(function(index) {
@@ -112,12 +146,15 @@
 
     // Inserting and removing simple inline edits
     function insertValue(element, event) {
-      var fieldName = $(element).closest("dt").next("dd").attr("id");
-      var values_list = $(element).closest("dt").next("dd").find("ol");
+      var containerDD = $(element).closest("dt").next("dd")
+      var fieldName = $containerDD.attr("id");
+      var values_list = $containerDD.find("ol");
+      var datastreamName = $containerDD.attr('data-datastream-name');
+      
       var new_value_index = values_list.children('li').size();
       var unique_id = fieldName + "_" + new_value_index;
 
-      var $item = $('<li class=\"editable\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+      var $item = $('<li class=\"editable\" name="asset['+datastreamName+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
       $item.appendTo(values_list);
       var newVal = fluid.inlineEdit($item, {
         componentDecorators: {
@@ -228,6 +265,27 @@
       $(element).parent().remove();
     }
 
+    
+    /*
+    * Simplified function based on jQuery AppendFormat plugin by Edgar J. Suarez
+    * http://github.com/edgarjs/jquery-append-format
+    */
+    function appendFormat(url,options) {
+       var qs = '';
+       var baseURL;
+       
+       if(url.indexOf("?") !== -1) {
+           baseURL = url.substr(0, url.indexOf("?"));
+           qs = url.substr(url.indexOf("?"), url.length);
+       } else {
+           baseURL = url;
+      }
+      if((/\/.*\.\w+$/).exec(baseURL) && !options.force) {
+          return baseURL + qs;
+      } else {
+          return baseURL + '.' + options.format + qs;
+      }
+    }
     // PUBLIC METHODS
 
 
