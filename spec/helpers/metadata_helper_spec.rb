@@ -18,7 +18,12 @@ describe MetadataHelper do
     @resource.stubs(:get_values_from_datastream).with("simple_ds", "drop_down").returns( ["Value1"] )
     @resource.stubs(:get_values_from_datastream).with("simple_ds", "date_field").returns( ["2009-12-31"] )
 
-    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :family_name]).returns( ["Samuelson"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :given_name]).returns( ["Bob"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :family_name]).returns( ["Bob","Bill"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:abstract]).returns( ["Textile1","Textile2"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:date_field]).returns( ["2009-12-31"] )
+
+    @resource.stubs(:get_values_from_datastream).with("empty_ds", "something").returns( [] )
 
     # @mock_md_ds.stubs(:first_name_values).returns( ["Bob"] )
     # @mock_md_ds.stubs(:last_name_values).returns( ["Bob","Bill"] )
@@ -48,7 +53,7 @@ describe MetadataHelper do
         # helper.single_value_inline_edit(@resource,"simple_ds","first_name")[:field].should match(/<li class=\"editable\" name=\"asset\[first_name\]\[0\]\">.*<\/li>/)
       end
       it "should work with nokogiri datastreams, inserting additional information into the input" do
-        helper.single_value_inline_edit(@resource,"ng_ds",[{:person=>1}, :family_name])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D%5Bperson%5D=1&field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D=family_name&asset\[ng_ds\]\[person_1_family_name\]\[0\]">.*<\/li>/)
+        helper.single_value_inline_edit(@resource,"ng_ds",[{:person=>1}, :given_name])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_1_given_name%5D%5B%5D%5Bperson%5D=1&field_selectors%5Bng_ds%5D%5Bperson_1_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_1_given_name\]\[0\]">.*<\/li>/)
       end
     end  
   end
@@ -78,6 +83,11 @@ describe MetadataHelper do
         multi_line.should match(/<li class=\"editable\" name=\"asset\[simple_ds\]\[last_name\]\[0\]\">.*<\/li>/) and
         multi_line.should match(/<li class=\"editable\" name=\"asset\[simple_ds\]\[last_name\]\[1\]\">.*<\/li>/)
       end
+      it "should work with nokogiri datastreams" do
+        multi_line = helper.multi_value_inline_edit(@resource,"ng_ds",[{:person=>1}, :family_name])[:field]
+        multi_line.should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D%5Bperson%5D=1&field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D=family_name&asset\[ng_ds\]\[person_1_family_name\]\[0\]\">.*<\/li>/) and
+        multi_line.should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D%5Bperson%5D=1&field_selectors%5Bng_ds%5D%5Bperson_1_family_name%5D%5B%5D=family_name&asset\[ng_ds\]\[person_1_family_name\]\[1\]\">.*<\/li>/)
+      end
     end  
   end
   
@@ -104,6 +114,11 @@ describe MetadataHelper do
         textile.should match(/<li name=\"asset\[simple_ds\]\[abstract\]\[0\]\".*>.*<\/li>/) and
         textile.should match(/<li name=\"asset\[simple_ds\]\[abstract\]\[1\]\".*>.*<\/li>/)
       end
+      it "should work with nokogiri datastreams" do
+        textile = helper.editable_textile(@resource,"ng_ds",[:abstract])[:field]
+        textile.should match(/<li name=\"field_selectors%5Bng_ds%5D%5Babstract%5D%5B%5D=abstract&asset\[ng_ds\]\[abstract\]\[0\]\".*>.*<\/li>/) and
+        textile.should match(/<li name=\"field_selectors%5Bng_ds%5D%5Babstract%5D%5B%5D=abstract&asset\[ng_ds\]\[abstract\]\[1\]\".*>.*<\/li>/)
+      end
       it "should have textile rendered HTML for each field" do
         textile = helper.editable_textile(@resource,"simple_ds","abstract")[:field]
         textile.should match(/<p>Textile1<\/p>/) and
@@ -115,6 +130,10 @@ describe MetadataHelper do
   describe "metadata_drop_down" do
     before(:all) do
       @choices = {:Value1=>"Value1",:Value2=>"Value2"}
+    end
+    
+    it "should not choke on empty fields" do
+      helper.metadata_drop_down(@resource,"empty_ds","something",:label=>"Drop Down:",:choices=>@choices)[:label].should == "Drop Down:"
     end
     
     describe "label" do
@@ -159,6 +178,9 @@ describe MetadataHelper do
       end
       it "should have the select fields wrapped in an appropriate named div" do
         helper.date_select(@resource,"simple_ds","date_field")[:field].should match(/^<div class=\"date-select\" name=\"asset\[simple_ds\]\[date_field\]\[0\]\">/)
+      end
+      it "should work with nokogiri datastreams" do
+        helper.date_select(@resource,"ng_ds",[:date_field])[:field].should match(/^<div class=\"date-select\" name=\"field_selectors%5Bng_ds%5D%5Bdate_field%5D%5B%5D=date_field&asset\[ng_ds\]\[date_field\]\[0\]\">/)
       end
     end
   end
