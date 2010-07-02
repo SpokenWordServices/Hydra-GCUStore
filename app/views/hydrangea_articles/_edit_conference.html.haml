@@ -10,7 +10,7 @@
   %dd#conference_role
     = conference_role[:field]
   
-  - conference_name = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :name], :label => "Conference:", :multiple=>true)
+  - conference_name = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :namePart], :label => "Conference:", :multiple=>true)
   %dt
     %label{:for=>"conference_name"}
       = conference_name[:label]
