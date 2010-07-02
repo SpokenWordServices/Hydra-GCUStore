@@ -414,7 +414,10 @@
       <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
        <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
      <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s
+       id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s,has_collection_member_s,system_create_dt,
+       person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,person_7_role_t,person_8_role_t,person_9_role_t,
+       person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
+       person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
