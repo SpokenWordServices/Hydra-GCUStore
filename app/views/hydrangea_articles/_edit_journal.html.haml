@@ -3,7 +3,7 @@
 - base_id = "journal_#{journal_counter}"
 
 %dl
-  - journal_title = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :title], :label => "Journal Title:")
+  - journal_title = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter}, :title_info, :main_title], :label => "Journal Title:")
   %dt
     %label{:for=>"journal_title"}
       = journal_title[:label]
@@ -13,7 +13,7 @@
 %ol#journal_publisher_and_issn.multi_inline
   %li
     %dl
-      - publisher = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:publisher], :label => "Publisher:")
+      - publisher = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:origin_info, :publisher], :label => "Publisher:")
       %dt
         %label{:for=>"publisher"}
           Publisher:
@@ -57,13 +57,13 @@
             %span#citation_issue.field
               = citation_issue[:field]
           %li
-            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Start Page")
+            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:citation_start_page], :label => "Start Page")
             %label{:for=>"start_page"}
               = start_page[:label]
             %span#start_page.field
               = start_page[:field]
           %li
-            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "End Page")
+            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:citation_end_page], :label => "End Page")
             %label{:for=>"end_page"}
               = end_page[:label]
             %span#end_page.field
