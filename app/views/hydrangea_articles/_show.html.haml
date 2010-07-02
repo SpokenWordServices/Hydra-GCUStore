@@ -16,6 +16,6 @@
     = render :partial => "hydrangea_articles/show_permissions", :locals => {:document => document}
 
 - sidebar_items << capture do 
-  = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
+  = #render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
 
 = async_load_tag(asset_file_assets_path(params[:id]), 'uploads')

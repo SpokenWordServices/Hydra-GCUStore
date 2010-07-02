@@ -25,7 +25,9 @@
     #loading{:style=>"display:none;"}
       %img{:src=>"/images/ajax-loader.gif", :width=>"32", :height=>"32", :alt=>"Saving"} 
         Saving...
-    .notice
+    - if flash[:notice]
+      .notice
+        = flash[:notice]
     %div.accordion-section
       %h2.section-title Describe the Article
       = render :partial => 'hydrangea_articles/edit_description'
@@ -40,7 +42,7 @@
 
 
 - sidebar_items << capture do 
-  = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
+  =# render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
   =# render :partial=>'facets' 
 
 = async_load_tag(asset_file_assets_path(params[:id]), 'uploads')
