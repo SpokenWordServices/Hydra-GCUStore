@@ -62,6 +62,7 @@ describe AssetsController do
       put :update, nokogiri_request_params
       # put :update, :id=>"_PID_", "content_type"=>"hydrangea_article", "datastream"=>"descMetadata", "field_name"=>"person_0_last_name","parent_select"=>[{":person"=>"0"}, ":last_name"], "child_index"=>"0", "value"=>"Sample New Value"
     end
+    
     it "should initialize solr" do
       pending
       ActiveFedora::SolrService.expects(:register)

@@ -25,3 +25,18 @@ function navigateTo(elem, link) {
   }).click();
 }
 
+$(function() {
+  $("#re-run-add-contributor-action").next().button( {
+    text: false,
+    icons: { primary: "ui-icon-triangle-1-s" }
+  })
+  .click(function() {
+    $('#add-contributor-menu').is(":hidden") ? 
+      $('#add-contributor-menu').show() : $('#add-contributor-menu').hide();
+    })
+  .parent().buttonset();
+  
+  $('#add-contributor-menu').mouseleave(function(){
+    $('#add-contributor-menu').hide();
+  });
+});

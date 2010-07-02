@@ -15,8 +15,16 @@
     %dd#language
       = language[:field]
   
-  // !! Need split button for creatin new person/organization/conference
-  
+  // Button for adding person/conference/organization
+  / - format = document_partial_name(@document)
+  / %div#add-contributor-box
+  /   %input#re-run-add-contributor-action{:type => "button", :value => "Add a person", :onclick => "javascript:location.href = '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"person")}'"}
+  /   %button#add-contributor-select Select
+  /   %ul#add-contributor-menu
+  /     %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"person")}');"} Add a person
+  /     %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"organizaton")}');"} Add an organization
+  /     %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"conference")}');"} Add a conference
+      
   = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
   = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
   = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
