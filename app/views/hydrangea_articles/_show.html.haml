@@ -5,36 +5,7 @@
 
   %div.accordion-section
     %h2.section-title Description
-    = get_data_with_label(document, "Article Title:", 'title_t')
-    = get_data_with_label(document, "Language:", 'language_t')
-
-    = get_data_with_label(document, "Researcher:", 'person_t')
-    = get_data_with_label(document, "Researcher Contact Info:", 'person_contact_info_t') 
-    = get_data_with_label(document, "Researcher Organization:", 'person_organization_t')
-
-
-    = get_data_with_label(document, "Role:", 'person_role_text_t') 
-    = get_data_with_label(document, "First Name:", 'person_first_name_t') 
-    = get_data_with_label(document, "Last Name:", 'person_last_name_t')
-    = get_data_with_label(document, "Conference:",  'conference_t')
-    = get_data_with_label(document, "Organization:", 'organization_t')   
-
-    = get_data_with_label(document, "Abstract:", 'abstract_t')
-
-    = get_data_with_label(document, "Journal Title:", 'journal_title_t')
-    = get_data_with_label(document, "Publisher:", 'journal_publisher_t')
-    = get_data_with_label(document, "ISSN:", 'journal_issn_t')
-    = get_data_with_label(document, "Publication Date:", 'journal_issue_publication_date_t')
-    = get_data_with_label(document, "Volume:", 'journal_issue_volume_t')
-    = get_data_with_label(document, "Issue:", 'journal_issue_level_t')
-    = get_data_with_label(document, "Start Page:", 'journal_issue_start_page_t')
-    = get_data_with_label(document, "End Page:", 'journal_issue_end_page_t')
-
-    = get_data_with_label(document, "Original URL:", 'original_url_t')
-
-    = get_data_with_label(document, "Topic Tags:", 'topic_tag_t')
-
-    = get_data_with_label(document, "Collection:", 'collection_t')
+    = render :partial => 'hydrangea_articles/edit_description'
 
   %div.accordion-section
     %h2.section-title Download Files

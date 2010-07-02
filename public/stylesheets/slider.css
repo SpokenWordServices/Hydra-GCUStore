@@ -1,12 +1,18 @@
+.slider legend {
+	font-size: 1.2em;
+	padding: 0 5px;
+	}
+
 .slider label {
 width:15%;
 float:left;
-padding:10px;
-background:#F6F6F6;
+padding:7px;
+	clear: both;
+	text-align: right;
 }
 
 .slider .ui-slider {
-margin:1em 0 2em 1em;
+margin:1em 0 1em 1em;
 font-size: inherit;
 background: #eee;
 width:70%;
@@ -14,7 +20,7 @@ float:left;
 }
 
 .slider .ui-slider-label {
-	margin-top:-4.5em;
+	margin-top:-3.5em;
 }
 
 .slider a.remove {
@@ -33,3 +39,5 @@ float:left;
 .slider a.remove:hover {
 	color:red;
 }
+
+#document_metadata > fieldset { border:1px dotted #CCCCCC; margin-top: 10px; padding-top: 20px;}

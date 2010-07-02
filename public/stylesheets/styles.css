@@ -56,7 +56,23 @@ dd ol li, dd ul li {
 	border-bottom: 1px dotted #CCCCCC;
 }
 
+h2, h3 {font-weight: normal;}
 
+/* File asset table */
+
+table#assets {
+	width: 100%;
+	background-color: #ffffff;
+	}
+
+table#assets  th {
+	text-align: left;
+	font-size: .9em;
+	border-top: 1px dotted #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+table#assets > col {width: auto;}
 
 
 /* suppress search field dropdown */
@@ -121,8 +137,6 @@ div#search select#search_field {display: none;}
 
 
 
-
-
 /* Fluid edit control overrides */
 
 a.flc-undo-redoControl, a.flc-undo-undoControl {
@@ -134,10 +148,11 @@ a.flc-undo-redoControl, a.flc-undo-undoControl {
 	overflow:hidden;
 	padding-left:15px;
 	border-bottom: none;
+	font-size: .9em;
 }
 	
 .flc-undo-redoControl {
-	background-image:url("/images/icons/redo.png");
+	background-image:url("/images/icons/redo.png") !important;
 }
 
 a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
@@ -172,6 +187,24 @@ li.editable, li.editable_textarea, li.editable_date_picker {
 /* a:hover {background-color:white !important;} */
 ol li{ list-style:none outside !important;}
 
-#document_metadata > dl dt { width: 102px; }
-#document_metadata > fieldset { margin-top: 20px; }
-.multi_inline dt { width: 80px; }
+
+/* nested layout temporary */
+
+#document_metadata > dl dt { width: 123px; }
+.multi_inline dt { width: 100px; }
+
+#document_metadata ol {margin-bottom: 0px;}
+
+#abstract p {margin: 0px !important; padding: 0px !important;}
+
+/*
+
+ol#journal_publication_date_and_citation, ol#journal_publisher_and_issn {clear: both;}
+ol#journal_publisher_and_issn li  {display: inline; float: left; margin: 0px; width: 50%}
+ol#journal_publisher_and_issn li dl {}
+ol#journal_publisher_and_issn li dl dt {}
+
+dd#publisher {width: 50%;}
+dd#issn {width: 10%;}
+
+*/
