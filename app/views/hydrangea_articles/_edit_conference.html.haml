@@ -1,16 +1,18 @@
 - conference = edit_conference
 - conference_counter = edit_conference_counter
+- base_id = "conference_#{conference_counter}"
 
-- conference_role = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :role], :label => "Role:")
-%dt
-  %label{:for=>"conference_role"}
-    = conference_role[:label]
-%dd#conference_role
-  = conference_role[:field]
+%span.conference{:id=>base_id}
+  - conference_role = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :role], :label => "Role:")
+  %dt
+    %label{:for=>"conference_role"}
+      = conference_role[:label]
+  %dd#conference_role
+    = conference_role[:field]
   
-- conference_name = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :name], :label => "Conference:", :multiple=>true)
-%dt
-  %label{:for=>"conference_name"}
-    = conference_name[:label]
-%dd#conference_name
-  = conference_name[:field]
+  - conference_name = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :name], :label => "Conference:", :multiple=>true)
+  %dt
+    %label{:for=>"conference_name"}
+      = conference_name[:label]
+  %dd#conference_name
+    = conference_name[:field]
