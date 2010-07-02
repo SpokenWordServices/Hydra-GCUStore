@@ -53,6 +53,7 @@ describe SaltDocument do
     end
     
     it "should explicitly call solrizer after updating fedora" do
+      pending "this might not be applicable any more..."
       @document.expects(:create).returns("Successfully created.")
       # Solr updates are turned off in this app, so update_index never gets triggered.
       #@document.expects(:update_index).returns("Successfully updated index.")
