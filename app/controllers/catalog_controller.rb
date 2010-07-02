@@ -23,7 +23,12 @@ class CatalogController
   # get search results from the solr index
   def index
       @extra_controller_params ||= {}
-      enforce_search_permissions
+
+      #FIXME
+      if current_user.nil?
+        enforce_search_permissions
+      end
+      
       (@response, @document_list) = get_search_results( @extra_controller_params )
       @filters = params[:f] || []
     respond_to do |format|

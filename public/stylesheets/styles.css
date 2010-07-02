@@ -1,6 +1,9 @@
-label {
-	font-weight: normal;
-}
+.yui-t2 #yui-main .yui-b {padding-top: 0px;}
+
+label {color: #666666; font-weight: normal;}
+
+
+fieldset label {font-size: .9em;}
 
 select {
 	background-color:#FFFFFF;
@@ -12,8 +15,13 @@ select {
 dl {
 	overflow:hidden;
 	margin-top:0;
+	margin-left: 20px;
 	padding-top:0;
+	border-bottom: 1px dotted #eee;
 }
+ol dl {
+	border-bottom: none;
+	}
 
 dt {
 	clear: both;
@@ -22,14 +30,18 @@ dt {
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
-	padding: 5px;
-}
+	padding: 3px;
+	}
 
 dd {
 	float: left;
 	color: #000000;
 	width: 75%;
-	padding: 5px;
+	padding: 3px;
+	}
+	
+dd#topic_tag li {
+	padding: 2px 0;
 	}
 
 dd ol, dd ul {
@@ -190,12 +202,15 @@ ol li{ list-style:none outside !important;}
 
 /* nested layout temporary */
 
-#document_metadata > dl dt { width: 123px; }
-.multi_inline dt { width: 100px; }
+#document_metadata dl dt { width: 122px; }
+#document_metadata .multi_inline dl dt { width: 100px; }
 
 #document_metadata ol {margin-bottom: 0px;}
 
 #abstract p {margin: 0px !important; padding: 0px !important;}
+
+form span ol {margin-top: 0px;}
+
 
 /*
 
@@ -208,3 +223,11 @@ dd#publisher {width: 50%;}
 dd#issn {width: 10%;}
 
 */
+
+.multi_inline ol li span.field {
+	width: 20em;
+}
+
+.multi_inline ol#citation_fields li span.field {
+	width: 8em;
+}
