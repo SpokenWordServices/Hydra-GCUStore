@@ -17,10 +17,10 @@ Hydrangea.FileUploader = function() {
     toggle: function() {
       if ($("a#toggle-uploader").html().trim() === "Upload files") {
         $("a#toggle-uploader").html("Hide file uploader");
-        async_load("/assets/" + pid + "/file_assets/new", "div#uploader-placeholder");
+        async_load("/assets/" + pid + "/file_assets/new", "div#uploader");
       } else {
         $("a#toggle-uploader").html("Upload files");
-        $("div#uploader-placeholder").html("");
+        $("div#uploader").html("");
       }
       return false;
     }
