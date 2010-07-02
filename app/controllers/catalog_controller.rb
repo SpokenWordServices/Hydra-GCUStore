@@ -4,11 +4,7 @@ class CatalogController
   #include Blacklight::CatalogHelper
   include Hydra::RepositoryController
   include Hydra::AccessControlsEnforcement
-
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
-  before_filter :enforce_viewing_context_for_show_requests, :only=>:show
-  before_filter :enforce_edit_permissions, :only=>:edit
-  
   
   def edit
     af_base = ActiveFedora::Base.load_instance(params[:id])
@@ -19,11 +15,9 @@ class CatalogController
     @document_fedora = the_model.load_instance(params[:id])
     #fedora_object = ActiveFedora::Base.load_instance(params[:id])
     #params[:action] = "edit"
-    @downloadables = downloadables( @document_fedora )
-    session[:viewing_context] = "edit"
-    show_with_customizations
+    #@downloadables = downloadables( @document_fedora )
+    show_without_customizations
     enforce_edit_permissions
-    render :action=>:show
   end
   
   # get search results from the solr index
@@ -48,6 +42,7 @@ class CatalogController
     
   def show_with_customizations
     show_without_customizations
+    enforce_viewing_context_for_show_requests
     af_base = ActiveFedora::Base.load_instance(params[:id])
     the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
     if the_model.nil?
