@@ -3,7 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe HydraAccessControlsHelper do
   
   describe "editor?" do
-    it "should return true if the session[:user] is an editor or an archivist" do
+    it "should return true if the session[:user] is a superuser" do
+      pending("revisit this when superuser role/group is implemented")
       mock_user = mock("User", :login=>"archivist1")
       helper.stubs(:current_user).returns(mock_user)
       helper.editor?.should be_true
