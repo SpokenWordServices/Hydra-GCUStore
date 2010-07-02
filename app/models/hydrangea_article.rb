@@ -26,6 +26,8 @@ class HydrangeaArticle < ActiveFedora::Base
     
     prop_ds.depositor_values = depositor_id
     rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id)
+    rights_ds.update_indexed_attributes([:read_access, :person]=>depositor_id)
+    rights_ds.update_indexed_attributes([:discover_access, :person]=>depositor_id)
     return true
   end
   
