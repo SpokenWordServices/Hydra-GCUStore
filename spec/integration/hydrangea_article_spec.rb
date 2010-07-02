@@ -14,7 +14,8 @@ describe HydrangeaArticle do
     end
     it "should save and index successfully" do
       @sample.apply_depositor_metadata("Depositor ID")
-      @sample.save.should == ""
+      @sample.save.should be_true
     end
   end
+  
 end
