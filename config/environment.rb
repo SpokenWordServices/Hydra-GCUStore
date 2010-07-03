@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
+  config.gem 'om', :version=>">= 0.1.9"
   config.gem 'active-fedora', :version=>">= 1.1.11"
   config.gem 'RedCloth'
   config.gem 'solrizer', :version=>">= 0.1.2"
