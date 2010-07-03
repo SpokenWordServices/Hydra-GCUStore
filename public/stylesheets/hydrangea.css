@@ -1,8 +1,8 @@
 h1.site_title {
-background:url("/images/hydrangea_logo.png") no-repeat scroll left top transparent;
-height:42px;
-margin:0 0 0 0;
-width:120px;
+	background:url("/images/hydrangea_logo.png") no-repeat scroll left top transparent;
+	height:42px;
+	margin:0 0 0 0;
+	width:120px;
 }
 
 
@@ -84,16 +84,31 @@ div.accordion-section h2.section-title {
 
 /* styles for "add new" split button */
 
+
+.ui-widget {font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background:url("../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png") repeat-x scroll 50% 50% #DFEFFC;
+	border:1px solid #C5DBEC;
+	color:#2E6E9E;
+	font-weight:bold;
+	outline:medium none;
+}
+.ui-state-default .ui-icon {
+background-image:url("../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-icons_2e4f81_256x240.png");
+}
+
+div#create-asset-box .ui-widget {font-size: 1em;}
 div#create-asset-box {position:relative; margin-top: 15px; color:#333;}
-div#create-asset-box input, div#create-asset-box button {font-size:1em; color:#333;}
+div#create-asset-box input, div#create-asset-box button {color:#333;}
 input#re-run-action{margin-right: -0.5em;}
 ul#create-asset-menu {display: none; overflow: auto; background: #f6f6f6 url('../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer; top: 2.3em; right: 0;}
 ul#create-asset-menu li {padding: 5px 12px; margin:0; list-style: none;}
 ul#create-asset-menu li:hover {background-color: #666; color: #fff;}
 
-
+div#add-contributor-box .ui-widget {font-size: .9em;}
+div#add-contributor-box .ui-button {padding: 0;}
 div#add-contributor-box {position:relative; margin-top: 15px; color:#333; margin: 5px 0 0 20px;}
-div#add-contributor-box input,  div#add-contributor-box button {font-size:.9em; color:#333; padding:0 2px; height: 2.1em;}
+div#add-contributor-box input,  div#add-contributor-box button {color:#333; height: 2.2em;}
 div#add-contributor-box button {padding: 0 0;}
 input#re-run-add-contributor-action {margin-right: -0.5em;}
 ul#add-contributor-menu {display: none; overflow: auto; background: #f6f6f6 url('../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer; top: 2.3em; right: 0;}

@@ -1,4 +1,3 @@
-.yui-t2 #yui-main .yui-b {padding-top: 0px;}
 
 label {color: #666666; font-weight: normal;}
 
@@ -114,7 +113,7 @@ div#search select#search_field {display: none;}
 
 #showUtils {
 	text-align: center;
-	margin: 0 0 15px 0;}
+	}
 
 #showUtils .back_to_cat {
 	float:left; 
@@ -225,7 +224,7 @@ dd#issn {width: 10%;}
 */
 
 .multi_inline ol li span.field {
-	width: 20em;
+	width: 17.5em;
 }
 
 .multi_inline ol#citation_fields li span.field {

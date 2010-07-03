@@ -23,14 +23,14 @@ float:left;
 	margin-top:-3.5em;
 }
 
-slider a.remove {
+.slider a.remove {
 background:none repeat scroll 0 0 #F6F6F6;
 border:1px solid #EEEEEE;
 display:block;
 float:left;
 font-weight:bold;
 line-height:1.5em;
-margin-left:1em;
+margin-left:2em;
 margin-top:0.6em;
 text-align:center;
 text-decoration:none;
