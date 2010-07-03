@@ -14,7 +14,7 @@
           = organization_role[:field] 
     %li
       %dl  
-        - organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :namePart], :label => "Organization:", :multiple=>true)
+        - organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :namePart], :label => "Organization:")
         %dt
           %label{:for=>"organization_name"}
             = organization_name[:label]
