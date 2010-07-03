@@ -31,7 +31,7 @@
   = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
   
   %dl
-    - abstract = editable_metadata_field(@document_fedora, "descMetadata", :abstract, :label => "Abstract:", :type=>:text_area, :multiple=>false)
+    - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Abstract:", :type=>:text_area, :multiple=>false)
     %dt
       %label{:for=>"abstract"}
         = abstract[:label]
@@ -49,7 +49,7 @@
   /     = original_url[:field]
   
   %dl
-    - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", :topic_tag, :label => "Topic Tags:",:multiple=>true)
+    - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
     %dt
       %label{:for=>"topic_tag"}
         = topic_tag[:label]
