@@ -372,69 +372,67 @@
 
   <requestHandler name="search" class="solr.SearchHandler" >
     <lst name="defaults">
-     <str name="defType">dismax</str>
-       <str name="facet">on</str>
+      <!-- Making defType lucene to exclude file assets -->
+        <str name="defType">lucene</str>
+        <str name="df">has_model_s</str>
+        <str name="q.op">AND</str>
+      <str name="facet">on</str>
       <str name="facet.mincount">1</str>
-	<str name="echoParams">explicit</str>
-     <float name="tie">0.01</float>
-  <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
-   <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
+	    <str name="echoParams">explicit</str>
+      <float name="tie">0.01</float>
+      <str name="qf_dismax">id^0.8 id_t^0.8 format text^0.3</str>
+      <str name="pf_dismax">id^0.9  id_t^0.9 text^0.5</str>
       <str name="fl">
         id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s,has_collection_member_s,system_create_dt,
         person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,person_7_role_t,person_8_role_t,person_9_role_t,
         person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
         person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t
-     </str>
-     <str name="mm">
+      </str>
+      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
-     </str>
-     <int name="ps">100</int>
-     <str name="q.alt">*:*</str>
-     <!-- example highlighter config, enable per-query with hl=true -->
-     <str name="hl.fl">text features name</str>
-     <!-- for this field, we want no fragmenting, just highlighting -->
-     <str name="f.name.hl.fragsize">0</str>
-     <!-- instructs Solr to return the field itself if no query terms are
-          found -->
-     <str name="f.name.hl.alternateField">name</str>
-     <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
+      </str>
+      <int name="ps">100</int>
+      <str name="q.alt">*:*</str>
+      <!-- example highlighter config, enable per-query with hl=true -->
+      <str name="hl.fl">text features name</str>
+      <!-- for this field, we want no fragmenting, just highlighting -->
+      <str name="f.name.hl.fragsize">0</str>
+      <!-- instructs Solr to return the field itself if no query terms are found -->
+      <str name="f.name.hl.alternateField">name</str>
+      <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
     </lst>
   </requestHandler>
   
-  <requestHandler name="public_search" class="solr.SearchHandler" >
+  <requestHandler name="search" class="solr.SearchHandler" >
     <lst name="defaults">
-      
+      <!-- Making defType lucene to exclude file assets -->
+        <str name="defType">lucene</str>
+        <str name="df">has_model_s</str>
+        <str name="q.op">AND</str>
       <str name="facet">on</str>
-			<str name="facet.mincount">1</str>
-
-
-     <str name="defType">dismax</str>
-     <str name="echoParams">explicit</str>
-     <float name="tie">0.01</float>
-      <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
-       <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
-     <str name="fl">
-       id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s,has_collection_member_s,system_create_dt,
-       person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,person_7_role_t,person_8_role_t,person_9_role_t,
-       person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
-       person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t
-     </str>
-     <str name="mm">
+      <str name="facet.mincount">1</str>
+	    <str name="echoParams">explicit</str>
+      <float name="tie">0.01</float>
+      <str name="qf_dismax">id^0.8 id_t^0.8 format text^0.3</str>
+      <str name="pf_dismax">id^0.9  id_t^0.9 text^0.5</str>
+      <str name="fl">
+        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s,has_collection_member_s,system_create_dt,
+        person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,person_7_role_t,person_8_role_t,person_9_role_t,
+        person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
+        person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t
+      </str>
+      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
-     </str>
-     <int name="ps">100</int>
-     <str name="q.alt">*:*</str>
-     <!-- example highlighter config, enable per-query with hl=true -->
-     <str name="hl.fl">text features name</str>
-     <!-- for this field, we want no fragmenting, just highlighting -->
-     <str name="f.name.hl.fragsize">0</str>
-     <!-- instructs Solr to return the field itself if no query terms are
-          found -->
-     <str name="f.name.hl.alternateField">name</str>
-     <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
-    </lst>
-    <lst name="appends">
-      <str name="fq">access_t:public</str>
+      </str>
+      <int name="ps">100</int>
+      <str name="q.alt">*:*</str>
+      <!-- example highlighter config, enable per-query with hl=true -->
+      <str name="hl.fl">text features name</str>
+      <!-- for this field, we want no fragmenting, just highlighting -->
+      <str name="f.name.hl.fragsize">0</str>
+      <!-- instructs Solr to return the field itself if no query terms are found -->
+      <str name="f.name.hl.alternateField">name</str>
+      <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
     </lst>
   </requestHandler>
   
