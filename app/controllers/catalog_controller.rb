@@ -23,8 +23,9 @@ class CatalogController
   # get search results from the solr index
   def index
       @extra_controller_params ||= {}
-      enforce_search_permissions
-      (@response, @document_list) = get_search_results( @extra_controller_params )
+      # Commenting out because we're doing the user permissions in the lucene query
+      #enforce_search_permissions
+      (@response, @document_list) = get_search_results( @extra_controller_params.merge!(:q=>build_lucene_query(params[:q])) )
       @filters = params[:f] || []
     respond_to do |format|
       format.html { save_current_search_params }
@@ -74,7 +75,20 @@ class CatalogController
   #   return [solr_response, document_list]
   #   
   # end
+  protected
   
+  # a solr query method
+  # this is used when selecting a search result: we have a query and a 
+  # position in the search results and possibly some facets
+  def get_single_doc_via_search(extra_controller_params={})
+    solr_params = solr_search_params(extra_controller_params)
+    solr_params[:per_page] = 1
+    solr_params[:fl] = '*'
+    if params[:q].to_s.blank?
+      solr_params.merge!(:q=>build_lucene_query(params[:q]))
+    end
+    Blacklight.solr.find(solr_params).docs.first
+  end
 
   # This method will remove certain params from the session[:search] hash
   # if the values are blank? (nil or empty string)
