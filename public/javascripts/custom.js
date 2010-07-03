@@ -27,10 +27,9 @@ Hydrangea.FileUploader = function() {
   };
 }();
 
-
 jQuery(document).ready(function($) {
 
-	// activate accordion behavior for all accordion-section elements
+    // activate accordion behavior for all accordion-section elements
     $(".accordion-section").accordion({
         autoHeight: false,
         clearStyle: false,
@@ -39,16 +38,16 @@ jQuery(document).ready(function($) {
         icons: false
     });
 
-	// open up the first accordion-section by "clicking"
+    // open up the first accordion-section by "clicking"
     $(".accordion-section:first h2").click();
 
-	// Disable styles inherited by jQuery UI (see also bottom of public/plugin_assets/blacklight/stylesheets/jquery/ui-lightness/jquery-ui-1.8.1.custom.css)
-	$(".ui-accordion-content").removeClass("ui-accordion ui-widget ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active");
+    // Disable styles inherited by jQuery UI (see also bottom of public/plugin_assets/blacklight/stylesheets/jquery/ui-lightness/jquery-ui-1.8.1.custom.css)
+    $(".ui-accordion-content").removeClass("ui-accordion ui-widget ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active");
     $(".accordion-section h2").removeClass("ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-default ui-corner-all").css('cursor', 'pointer');
-	$("div.ui-widget").css({
-		"font" : "inherit",
-		"font-size" : "inherit",
-	    'line-height': 'inherit'
-	});
-		
+    $("div.ui-widget").css({
+        "font": "inherit",
+        "font-size": "inherit",
+        'line-height': 'inherit'
+    });
+
 });
