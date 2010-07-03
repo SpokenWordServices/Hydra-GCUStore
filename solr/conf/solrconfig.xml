@@ -403,7 +403,7 @@
     </lst>
   </requestHandler>
   
-  <requestHandler name="search" class="solr.SearchHandler" >
+  <requestHandler name="public_search" class="solr.SearchHandler" >
     <lst name="defaults">
       <!-- Making defType lucene to exclude file assets -->
         <str name="defType">lucene</str>
