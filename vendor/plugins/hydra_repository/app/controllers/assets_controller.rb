@@ -83,6 +83,9 @@ class AssetsController < ApplicationController
           render :json=> response
         }
         want.textile {
+          if response.kind_of?(Hash)
+            response = response.values.first
+          end
           render :text=> white_list( RedCloth.new(response, [:sanitize_html]).to_html )
         }
       end
@@ -92,6 +95,7 @@ class AssetsController < ApplicationController
       af_model = retrieve_af_model(params[:content_type])
       if af_model
         @asset = af_model.new
+        apply_depositor_metadata(@asset)
         @asset.save
       end
       redirect_to url_for(:action=>"edit", :controller=>"catalog", :id=>@asset.pid)

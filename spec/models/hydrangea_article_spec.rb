@@ -16,4 +16,16 @@ describe HydrangeaArticle do
       node, index = @article.insert_contributor("person")
     end
   end
+  
+  describe "apply_depositor_metadata" do
+    it "should set depositor info in the properties and rightsMetadata datastreams" do
+      rights_ds = @article.datastreams_in_memory["rightsMetadata"]
+      prop_ds = @article.datastreams_in_memory["properties"]
+
+      node, index = @article.apply_depositor_metadata("Depositor Name")
+      
+      prop_ds.depositor_values.should == ["Depositor Name"]
+      rights_ds.get_values([:edit_access, :person]).should == ["Depositor Name"]
+    end
+  end
 end

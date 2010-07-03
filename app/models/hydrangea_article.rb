@@ -13,6 +13,20 @@ class HydrangeaArticle < ActiveFedora::Base
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
+    m.field 'depositor', :string
+  end
+  
+  
+  #
+  # Adds metadata about the depositor to the asset 
+  #
+  def apply_depositor_metadata(depositor_id)
+    prop_ds = self.datastreams_in_memory["properties"]
+    rights_ds = self.datastreams_in_memory["rightsMetadata"]
+    
+    prop_ds.depositor_values = depositor_id
+    rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id)
+    return true
   end
   
   def insert_contributor(type, opts={})

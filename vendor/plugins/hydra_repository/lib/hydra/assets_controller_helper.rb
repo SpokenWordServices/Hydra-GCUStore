@@ -1,6 +1,14 @@
 require "om"
 module Hydra::AssetsControllerHelper
   
+  
+  def apply_depositor_metadata(asset)
+    if asset.respond_to?(:apply_depositor_metadata)
+      asset.apply_depositor_metadata(current_user.login)
+    end
+  end
+  
+  
   # 
   # parses your params hash, massaging them into an appropriate set of params and opts to pass into ActiveFedora::Base.update_indexed_attributes
   #
@@ -11,15 +19,18 @@ module Hydra::AssetsControllerHelper
       
       args[:opts][:datastreams] = datastream_name
       
+      # TEMPORARY HACK: special case for supporting textile 
+      if params["field_id"]=="abstract_0" 
+        params[:field_selectors] = {"descMetadata" => {"abstract" => [:abstract]}}
+      end
+      
       if params.fetch("field_selectors",false) && params["field_selectors"].fetch(datastream_name, false)
         # If there is an entry in field_selectors for the datastream (implying a nokogiri datastream), retrieve the field_selector for this field.
         # if no field selector, exists, use the field name
         fields.each_pair do |field_name,field_values|
-          
           parent_select = OM.destringify( params["field_selectors"][datastream_name].fetch(field_name, field_name) )
           args[:params][parent_select] = field_values       
-        end
-      
+        end        
       else
         args[:params] = unescape_keys(params[:asset][datastream_name])
       end

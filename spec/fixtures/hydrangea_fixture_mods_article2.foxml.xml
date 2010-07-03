@@ -128,7 +128,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2010-06-17T19:56:23.335Z" MIMETYPE="text/xml" SIZE="19">
 <foxml:xmlContent>
-  <rightsMetadata>
+  <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
       <copyright>
         <human>(c)2009 The Hydra Project</human>
         <human type="someSpecialisedType">Blah Blah</human>
@@ -137,23 +137,20 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   	</copyright>
   	<access type="discover">
   		<human></human>
-  		<machine>
+		  <!-- this is a hack. should be nested in a <machine> tag -->
   			<policy>hydra-policy:4502</policy>
         <group>public</group>
-  		</machine>
   	</access>
   	<access type="read">
   		<human></human>
-  		<machine>
+		  <!-- this is a hack. should be nested in a <machine> tag -->
         <group>public</group>
-  		</machine>
   	</access>
   	<access type="edit">
   		<human></human>
-  		<machine>
+		  <!-- this is a hack. should be nested in a <machine> tag -->
         <person>researcher1</person>
         <group>researcher</group>
-  		</machine>
   	</access>
     <access type="etc">
             <!-- etc -->

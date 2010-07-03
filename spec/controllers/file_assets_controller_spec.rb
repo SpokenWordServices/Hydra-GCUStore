@@ -163,6 +163,8 @@ describe FileAssetsController do
         filename = "Foo File"
         mock_fa = mock("FileAsset", :pid=>"test:pid")
         mock_fa.stub_everything
+        mock_user = stub("User", :login=>"archivist1")
+        controller.stubs(:current_user).returns(mock_user)
         FileAsset.expects(:new).returns(mock_fa)
         post :create, {:Filedata=>mock_file, :Filename=>filename, :container_id=>@test_container.pid}
         assigns(:container).collection_members(:response_format=>:id_array).should include("foo:2")

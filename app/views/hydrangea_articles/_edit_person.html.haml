@@ -2,7 +2,7 @@
 - person_counter = edit_person_counter
 - base_id = "person_#{person_counter}"
 
-%span.person{:id=>base_id}
+%span.person.contributor{:id=>base_id}
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li
       %dl
@@ -16,7 +16,7 @@
       %dl
         %dt.multi_inline
           %label{:for=>"#{base_id}_name"}
-            Name
+            Name:
         %dd.multi_inline{:id=>"#{base_id}_name"}
           %ol{:id=>"#{base_id}_name_fields"}
             %li

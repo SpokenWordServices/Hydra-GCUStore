@@ -12,18 +12,18 @@ describe MetadataHelper do
     @resource.stubs(:datastreams).returns(datastreams)
     @resource.stubs(:datastreams_in_memory).returns(datastreams)
         
-    @resource.stubs(:get_values_from_datastream).with("simple_ds", "first_name").returns( ["Bob"] )
-    @resource.stubs(:get_values_from_datastream).with("simple_ds", "last_name").returns( ["Bob","Bill"] )
-    @resource.stubs(:get_values_from_datastream).with("simple_ds", "abstract").returns( ["Textile1","Textile2"] )
-    @resource.stubs(:get_values_from_datastream).with("simple_ds", "drop_down").returns( ["Value1"] )
-    @resource.stubs(:get_values_from_datastream).with("simple_ds", "date_field").returns( ["2009-12-31"] )
+    @resource.stubs(:get_values_from_datastream).with("simple_ds", "first_name", "").returns( ["Bob"] )
+    @resource.stubs(:get_values_from_datastream).with("simple_ds", "last_name", "").returns( ["Bob","Bill"] )
+    @resource.stubs(:get_values_from_datastream).with("simple_ds", "abstract", "").returns( ["Textile1","Textile2"] )
+    @resource.stubs(:get_values_from_datastream).with("simple_ds", "drop_down", "").returns( ["Value1"] )
+    @resource.stubs(:get_values_from_datastream).with("simple_ds", "date_field", "").returns( ["2009-12-31"] )
 
-    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :given_name]).returns( ["Bob"] )
-    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :family_name]).returns( ["Bob","Bill"] )
-    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:abstract]).returns( ["Textile1","Textile2"] )
-    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:date_field]).returns( ["2009-12-31"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :given_name], "").returns( ["Bob"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :family_name], "").returns( ["Bob","Bill"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:abstract], "").returns( ["Textile1","Textile2"] )
+    @resource.stubs(:get_values_from_datastream).with("ng_ds", [:date_field], "").returns( ["2009-12-31"] )
 
-    @resource.stubs(:get_values_from_datastream).with("empty_ds", "something").returns( [] )
+    @resource.stubs(:get_values_from_datastream).with("empty_ds", "something", "").returns( [] )
 
     # @mock_md_ds.stubs(:first_name_values).returns( ["Bob"] )
     # @mock_md_ds.stubs(:last_name_values).returns( ["Bob","Bill"] )
@@ -187,7 +187,7 @@ describe MetadataHelper do
   
   describe "get_values_from_datastream" do
     it "(with nokogiri datastreams) should call lookup with field_name and returns the text values from each resulting node" do
-      @resource.expects(:get_values_from_datastream).with("ds1", "--my xpath--").returns(["value1", "value2"])
+      @resource.expects(:get_values_from_datastream).with("ds1", "--my xpath--", "").returns(["value1", "value2"])
       helper.get_values_from_datastream(@resource, "ds1", "--my xpath--").should == ["value1", "value2"]
     end
   end

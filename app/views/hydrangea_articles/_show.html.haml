@@ -12,10 +12,6 @@
     %h2.section-title Download Files
     %div#uploads{'data-pid' => params[:id]}
 
-  %div.accordion-section
-    %h2.section-title Permissions
-    = render :partial => "hydrangea_articles/show_permissions", :locals => {:document => document}
-
 - sidebar_items << capture do 
   = #render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
 

@@ -2,11 +2,11 @@
 - organization_counter = edit_organization_counter
 - base_id = "organization_#{organization_counter}"
 
-%span.organization{:id=>base_id}
+%span.organization.contributor{:id=>base_id}
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li
       %dl
-        - organization_role = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role], :label => "Role:")
+        - organization_role = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role, :text], :label => "Role:")
         %dt
           %label{:for=>"organization_role"}
             = organization_role[:label]
@@ -14,7 +14,7 @@
           = organization_role[:field] 
     %li
       %dl  
-        - organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :name], :label => "Conference:", :multiple=>true)
+        - organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :namePart], :label => "Organization:")
         %dt
           %label{:for=>"organization_name"}
             = organization_name[:label]
