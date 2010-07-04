@@ -20,8 +20,8 @@
 			            afterUploadComplete: function () {
 			                // first check to see if the file queue is empty and there haven't been any errors
 			                if (myUploader.uploadManager.queue.getReadyFiles().length === 0 && myUploader.uploadManager.queue.getErroredFiles().length === 0) {
-			                    // console.log("afterUploadComplete was triggered");
-			                    async_load('/assets/hydrangea:fixture_mods_article1/file_assets', '#uploads'); 
+			                    console.log("afterUploadComplete was triggered");
+			                    async_load('<%= "/assets/#{params[:container_id]}/file_assets"%>', '#uploads'); 
 			                }
 			            }
 			        },
