@@ -10,7 +10,7 @@ describe HydrangeaArticle do
   end
   
   describe "insert_contributor" do
-    it "should generate a new contributor of type (type) into the current xml, treating strings and symbols equally to indicate type" do
+    it "should generate a new contributor of type (type) into the current xml, treating strings and symbols equally to indicate type, and then mark the datastream as dirty" do
       mods_ds = @article.datastreams_in_memory["descMetadata"]
       mods_ds.expects(:insert_contributor).with("person",{})
       node, index = @article.insert_contributor("person")

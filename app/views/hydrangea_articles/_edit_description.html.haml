@@ -1,6 +1,26 @@
+:javascript
+  function addContributor(type) {
+    var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+    var insertion_point_selector = "#"+type+"_entries";
+    var url = $("form#new_contributor").attr("action");
+  
+    $.post(url, {contributor_type: type, content_type: content_type},function(data) {
+      $(insertion_point_selector).append(data);
+    });
+
+  };
+%form#new_contributor{:action=>"http://localhost:3000/assets/#{params[:id]}/contributors", :method=>"post", :style=>"display:none;"}
+  %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"} 
+  %label{:for=>"contributor_type"} Contributor Type
+  %select#contributor_type{:name=>"contributor_type"}
+    %option{:value=>"person"} Person
+    %option{:value=>"organization"} Organization
+    %option{:value=>"conference"} Conference
+  %input{:type=>"submit", :value=>"Add Contributor"}
+  
 %form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
+  %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
   %dl
-    =# hidden_form_tag "content_type", :value=>"hydrangea_article"
     - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
     %dt
       %label{:for=>"title"}
@@ -19,16 +39,19 @@
   - if params[:action] == "edit"
     - format = document_partial_name(@document)
     %div#add-contributor-box
-      %input#re-run-add-contributor-action{:type => "button", :value => "Add a person", :onclick => "javascript:location.href = '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"person")}'"}
-      %button#add-contributor-select Select
+      %input#re-run-add-contributor-action{:type => "button", :value => "Add a person", :onclick => "javascript:addContributor('person')"}
+      %button#select Select type of contributor to add
       %ul#add-contributor-menu
-        %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"person")}');"} Add a person
-        %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"organizaton")}');"} Add an organization
-        %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "create", :asset_id=>@document_fedora.pid, :controller => "contributors", :content_type => format, :contributor_type=>"conference")}');"} Add a conference
-      
-  = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
-  = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
-  = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
+        %li{:onclick => "javascript:addContributor('person')"} Add a person
+        %li{:onclick => "javascript:addContributor('organization')"} Add an organization
+        %li{:onclick => "javascript:addContributor('conference')"} Add a conference
+
+  #person_entries
+    = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
+  #organization_entries
+    = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
+  #conference_entries
+    = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
   
   %dl
     - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Abstract:", :type=>:text_area, :multiple=>false)
