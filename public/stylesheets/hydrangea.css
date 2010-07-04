@@ -20,7 +20,9 @@ div.accordion-section h2.section-title {
 }
 
 
-
+#new_contributor {
+  display: none;
+}
 
 /* Multiple fields in one line */
 

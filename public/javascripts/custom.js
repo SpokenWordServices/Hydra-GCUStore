@@ -27,6 +27,22 @@ Hydrangea.FileUploader = function() {
   };
 }();
 
+//
+// Use Ajax to add a contributor to the page
+//
+function addContributor(type) {
+  var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+  var insertion_point_selector = "#"+type+"_entries";
+  var url = $("form#new_contributor").attr("action");
+
+  $.post(url, {contributor_type: type, content_type: content_type},function(data) {
+    $(insertion_point_selector).append(data);
+  });
+
+};
+
+
+// Accordion Behavior
 jQuery(document).ready(function($) {
 
     // activate accordion behavior for all accordion-section elements

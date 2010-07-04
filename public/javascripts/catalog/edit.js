@@ -307,6 +307,7 @@
 
 })(jQuery);
 
+
 $(function() {
     Hydrangea.FileUploader.setUp();
   });

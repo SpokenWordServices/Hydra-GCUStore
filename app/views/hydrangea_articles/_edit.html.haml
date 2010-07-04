@@ -38,7 +38,17 @@
     %div.accordion-section
       %h2.section-title Set permissions
       = render :partial => "hydrangea_articles/edit_permissions", :locals => {:document => document}
-
+      
+    // This hidden form really belongs elsewhere, but putting it inside of an 
+    // accordion section un-hides it, so I stuck it here for now. -MZ
+    %form#new_contributor{:action=>"http://localhost:3000/assets/#{params[:id]}/contributors", :method=>"post", :style=>"display:none;"}
+      %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"} 
+      %label{:for=>"contributor_type"} Contributor Type
+      %select#contributor_type{:name=>"contributor_type"}
+        %option{:value=>"person"} Person
+        %option{:value=>"organization"} Organization
+        %option{:value=>"conference"} Conference
+      %input{:type=>"submit", :value=>"Add Contributor"}
 
 - sidebar_items << capture do 
   =# render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
