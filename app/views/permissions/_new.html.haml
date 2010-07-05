@@ -1,0 +1,17 @@
+- javascript_includes << "jquery.form.js"
+- unless defined?(asset_id)
+  - asset_id = params[:asset_id]
+%h2 Add Individual Permissions
+%form#new_permissions{:action=>url_for(:action=>"create", :controller=>"permissions", :asset_id=>asset_id), :method=>"post"}
+  / %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
+  / %input#permission_type{:type=>"hidden", :name=>"permission[\"person\"]", :value=>"person"} 
+  
+  %label{:for=>"permission_person"} User ID
+  %input#permission_type{:name=>"permission[person]"} 
+  
+  %label{:for=>"permission_level"} Permission Level
+  %select#permission_level{:name=>"permission[level]"}
+    %option{:value=>"discover"} Discover
+    %option{:value=>"read"} Read
+    %option{:value=>"edit"} Edit
+  %input{:type=>"submit", :value=>"Add Permissions"}

@@ -52,6 +52,18 @@ describe Hydra::RightsMetadata do
         @sample.retrieve(person_123_perms_xpath).length.should == 1
         @sample.retrieve(group_zzz_perms_xpath).length.should == 1
       end
+      it "should not impact other users permissions" do
+        @sample.permissions({"person"=>"person_123"}, "read")
+        @sample.permissions({"person"=>"person_789"}, "edit")
+        
+        @sample.permissions({"person"=>"person_123"}).should == "read"
+        @sample.permissions({"person"=>"person_456"}, "read")
+        @sample.permissions({"person"=>"person_123"}).should == "read"
+        @sample.permissions({"person"=>"person_456"}).should == "read"
+        @sample.permissions({"person"=>"person_789"}).should == "edit"
+        
+        
+      end
     end
     describe "getter" do
       it "should return permissions level for the given user/group" do

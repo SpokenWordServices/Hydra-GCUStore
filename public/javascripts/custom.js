@@ -41,6 +41,24 @@ function addContributor(type) {
 
 };
 
+//
+// Use Ajax to add individual permissions entry to the page
+//
+// wait for the DOM to be loaded 
+$(document).ready(function() { 
+    var options = { 
+        clearForm: true,        // clear all form fields after successful submit 
+        timeout:   2000,
+        success:   insertPersonPermission  // post-submit callback 
+    };
+    // bind 'myForm' and provide a simple callback function 
+    $('#new_permissions').ajaxForm(options); 
+});
+
+// post-submit callback 
+function insertPersonPermission(responseText, statusText, xhr, $form)  { 
+  $("#individual_permissions").append(responseText);
+}
 
 // Accordion Behavior
 jQuery(document).ready(function($) {

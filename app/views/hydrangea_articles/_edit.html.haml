@@ -35,9 +35,10 @@
       %h2.section-title Upload files
       %div#uploads{'data-pid' => params[:id]}
 
-    %div.accordion-section
+    %div.accordion-section#permissions
       %h2.section-title Set permissions
-      = render :partial => "hydrangea_articles/edit_permissions", :locals => {:document => document}
+      %span#permissions
+        = render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]}
       
     // This hidden form really belongs elsewhere, but putting it inside of an 
     // accordion section un-hides it, so I stuck it here for now. -MZ
