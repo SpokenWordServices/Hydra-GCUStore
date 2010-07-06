@@ -19,7 +19,7 @@
       / ie. asset[access_group][researcher]
       - field_name = "#{role}_group_access"
       %label{:for=>field_name}
-        = role.pluralize.capitalize
+        = role.capitalize
       %select{:id=>field_name, :name=>"asset[access_group][#{role}]"}
         - choices.each do |choice|
           - choice_label = choice.keys.first
