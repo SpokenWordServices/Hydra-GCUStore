@@ -65,7 +65,7 @@
     function insertPersonPermission(responseText, statusText, xhr, $form)  { 
       $("#individual_permissions").append(responseText);
       $('fieldset.slider select').last().selectToUISlider({labelSrc:'text'}).hide();
-
+      $('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
     };
     
     function setUpSliders () {

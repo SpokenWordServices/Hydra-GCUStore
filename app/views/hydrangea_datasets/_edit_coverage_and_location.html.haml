@@ -1,0 +1,42 @@
+- journal_counter = 0
+- base_id = "journal_#{journal_counter}"
+
+%ol#coverage_and_location.multi_inline
+  %li
+    %dl
+      %dt.multi_inline
+        %label{:for=>"citation"}
+          Dates:
+      %dd#citation.multi_inline
+        %ol#citation_fields
+          %li
+            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Start Date")
+            %label{:for=>"start_page"}
+              = start_page[:label]
+            %span#start_page.field
+              = start_page[:field]
+          %li
+            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "End Date")
+            %label{:for=>"end_page"}
+              = end_page[:label]
+            %span#end_page.field
+              = end_page[:field]
+  %li
+    %dl
+      %dt.multi_inline
+        %label{:for=>"citation"}
+          Location:
+      %dd#citation.multi_inline
+        %ol#citation_fields
+          %li
+            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Longitude")
+            %label{:for=>"start_page"}
+              = start_page[:label]
+            %span#start_page.field
+              = start_page[:field]
+          %li
+            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "Latitude")
+            %label{:for=>"end_page"}
+              = end_page[:label]
+            %span#end_page.field
+              = end_page[:field]
