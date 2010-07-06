@@ -23,6 +23,8 @@
       // setUpStoryEditable();
       setUpDatePicker();
       setUpSliders();
+      setUpNewPermissionsForm();
+      setUpNewContributorForm();
   	};
 
   	function bindDomEvents () {
@@ -44,6 +46,28 @@
       });
   	};
 
+    //
+    // Permissions
+    // Use Ajax to add individual permissions entry to the page
+    //
+    // wait for the DOM to be loaded 
+    function setUpNewPermissionsForm () {
+        var options = { 
+            clearForm: true,        // clear all form fields after successful submit 
+            timeout:   2000,
+            success:   insertPersonPermission  // post-submit callback 
+        };
+        // bind 'new_permissions'
+        $('#new_permissions').ajaxForm(options); 
+    };
+
+    // post-submit callback 
+    function insertPersonPermission(responseText, statusText, xhr, $form)  { 
+      $("#individual_permissions").append(responseText);
+      $('fieldset.slider select').last().selectToUISlider({labelSrc:'text'}).hide();
+
+    };
+    
     function setUpSliders () {
 			$('fieldset.slider select').each(function(index) {
 				$(this).selectToUISlider({labelSrc:'text'}).hide();
@@ -67,6 +91,56 @@
           defaultViewText: "click to edit"
       });
   	};
+  	
+    // 
+    // Contributors
+    // 
+    //
+    // Use Ajax to add a contributor to the page
+    //
+    function setUpNewContributorForm () {
+      $("#re-run-add-contributor-action").click(function() {
+        addContributor("person");
+      });
+      $("#add_person").click(function() {
+        addContributor("person");
+      });
+      $("#add_organization").click(function() {
+        addContributor("organization");
+      });
+      $("#add_conference").click(function() {
+        addContributor("conference");
+      });
+    }
+    
+    function addContributor(type) {
+      var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+      var insertion_point_selector = "#"+type+"_entries";
+      var url = $("form#new_contributor").attr("action");
+      
+      $.post(url, {contributor_type: type, content_type: content_type},function(data) {
+        $(insertion_point_selector).append(data);
+        console.log(data);
+        fluid.inlineEdits("#"+$(data).attr("id"), {
+            selectors : {
+              text : ".editableText",
+              editables : "li.editable"
+            },
+            componentDecorators: {
+              type: "fluid.undoDecorator"
+            },
+            listeners : {
+              onFinishEdit : myFinishEditListener,
+              modelChanged : myModelChangedListener
+            },
+            defaultViewText: "click to edit"
+        });
+        
+      });
+
+    };
+    
+  	
 
   	function setUpTextileEditables() {
       $('.textile', $el).each(function(index) {
@@ -101,34 +175,6 @@
         });
       });
     };
-    // function setUpStoryEditable() {
-    //       var $storyDD = $("dd#story", $el);
-    //       var datastreamName = $storyDD.attr('data-datastream-name');
-    //       var fieldName = $storyDD.attr("id");
-    //       var submitUrl = documentUrl + ".textile";
-    //       var $stories = $("ol div.textile", $storyDD);
-    //       $stories.each(function(index) {
-    //         var params = {
-    //           datastream: datastreamName,
-    //           field: fieldName,
-    //           field_index: index
-    //         }
-    //         $(this).editable(submitUrl, {
-    //           method    : "PUT",
-    //           indicator : "<img src='/images/ajax-loader.gif'>",
-    //           type      : "textarea",
-    //           submit    : "OK",
-    //           cancel    : "Cancel",
-    //           tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
-    //           placeholder : "click to edit",
-    //           onblur    : "ignore",
-    //           name      : "asset["+fieldName+"]["+index+"]",
-    //           id        : "field_id",
-    //           height    : "100",
-    //           loadurl  : documentUrl + "?" + $.param(params)
-    //         });
-    //       });
-    //     };
 
     function setUpDatePicker () {
       $('div.date-select', $el).each(function(index) {
@@ -264,7 +310,7 @@
       saveEdit($(element).parent().attr("name"), "");
       $(element).parent().remove();
     }
-
+    
     
     /*
     * Simplified function based on jQuery AppendFormat plugin by Edgar J. Suarez

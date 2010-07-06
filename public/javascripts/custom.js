@@ -27,39 +27,6 @@ Hydrangea.FileUploader = function() {
   };
 }();
 
-//
-// Use Ajax to add a contributor to the page
-//
-function addContributor(type) {
-  var content_type = $("form#new_contributor > input#content_type").first().attr("value");
-  var insertion_point_selector = "#"+type+"_entries";
-  var url = $("form#new_contributor").attr("action");
-
-  $.post(url, {contributor_type: type, content_type: content_type},function(data) {
-    $(insertion_point_selector).append(data);
-  });
-
-};
-
-//
-// Use Ajax to add individual permissions entry to the page
-//
-// wait for the DOM to be loaded 
-$(document).ready(function() { 
-    var options = { 
-        clearForm: true,        // clear all form fields after successful submit 
-        timeout:   2000,
-        success:   insertPersonPermission  // post-submit callback 
-    };
-    // bind 'myForm' and provide a simple callback function 
-    $('#new_permissions').ajaxForm(options); 
-});
-
-// post-submit callback 
-function insertPersonPermission(responseText, statusText, xhr, $form)  { 
-  $("#individual_permissions").append(responseText);
-}
-
 // Accordion Behavior
 jQuery(document).ready(function($) {
 
