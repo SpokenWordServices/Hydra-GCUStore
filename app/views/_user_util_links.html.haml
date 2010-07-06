@@ -19,5 +19,5 @@
   %input#re-run-action{:type => "button", :value => "Add an article", :onclick => "javascript:location.href = '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}'"}
   %button#select Select type of content to create
   %ul#create-asset-menu
-    %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}');"} Add an article
-    %li{:onclick => "javascript:navigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_dataset")}');"} Add a dataset
+    %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}');"} Add an article
+    %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_dataset")}');"} Add a dataset

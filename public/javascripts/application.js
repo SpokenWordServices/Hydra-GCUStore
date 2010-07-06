@@ -17,12 +17,15 @@ $(function() {
   });
 });
 
-function navigateTo(elem, link) {
-  $('#re-run-action').attr('value', $(elem).text())
+function createAssetNavigateTo(elem, link) {
+  $('#re-run-action')
+  .attr('value', $(elem).text())
   .click(function() {
     $('#create-asset-menu').hide();
     location.href = link;
-  }).click();
+  });
+
+  location.href = link;
 }
 
 $(function() {
