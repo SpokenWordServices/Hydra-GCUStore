@@ -14,13 +14,11 @@
 
 			listeners: {
 			            onFileSuccess: function (file, serverData){
-							console.log("onFileSuccess was triggered");
 			            },
 
 			            afterUploadComplete: function () {
 			                // first check to see if the file queue is empty and there haven't been any errors
 			                if (myUploader.uploadManager.queue.getReadyFiles().length === 0 && myUploader.uploadManager.queue.getErroredFiles().length === 0) {
-			                    console.log("afterUploadComplete was triggered");
 			                    async_load('<%= "/assets/#{params[:container_id]}/file_assets"%>', '#uploads'); 
 			                }
 			            }
