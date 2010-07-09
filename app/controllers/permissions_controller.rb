@@ -35,15 +35,11 @@ class PermissionsController < ApplicationController
     self.update
   end
   
-  # Currently assumes that you will only
   def update
-    # pid = params[:asset_id]
-    # dsid = "descMetadata"
-    # xml_content = Fedora::Repository.instance.fetch_custom(pid, "datastreams/#{dsid}/content")
-    # ds = Hydra::RightsMetadata.from_xml(xml_content)
-    @document_fedora=ActiveFedora::Base.load_instance(params[:asset_id])
     pid = params[:asset_id]
     dsid = "rightsMetadata"
+    # xml_content = Fedora::Repository.instance.fetch_custom(pid, "datastreams/#{dsid}/content")
+    @document_fedora=ActiveFedora::Base.load_instance(params[:asset_id])
     xml_content = @document_fedora.datastreams_in_memory[dsid].content
     ds = Hydra::RightsMetadata.from_xml(xml_content)
     ds.pid = pid

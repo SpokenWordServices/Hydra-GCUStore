@@ -29,13 +29,13 @@
       %dd#citation.multi_inline
         %ol#citation_fields
           %li
-            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Longitude")
+            - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:volume], :label => "Longitude")
             %label{:for=>"start_page"}
               = start_page[:label]
             %span#start_page.field
               = start_page[:field]
           %li
-            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "Latitude")
+            - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:level], :label => "Latitude")
             %label{:for=>"end_page"}
               = end_page[:label]
             %span#end_page.field

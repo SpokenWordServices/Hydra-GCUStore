@@ -68,9 +68,23 @@
       $('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
     };
     
+    function updatePermission(element) {
+      console.log("Update Permissions triggered for "+element+ "which serializes as "+element.fieldSerialize());
+      // dont submit to permissions controller.  submit as regular metadata update to assets controller update method...
+    }
+    
     function setUpSliders () {
+      sliderOpts = {
+		    change: function(event, ui) { 
+          var associatedSelect = $(ui.handle).parent().prev()
+          updatePermission(associatedSelect);
+        }
+		  }
 			$('fieldset.slider select').each(function(index) {
-				$(this).selectToUISlider({labelSrc:'text'}).hide();
+				$(this).selectToUISlider({
+				  labelSrc:'text',
+				  sliderOptions: sliderOpts
+				}).hide();
 			});
 			$('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
     }
