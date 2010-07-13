@@ -68,8 +68,11 @@
       $('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
     };
     
+    function removePermission(element) {
+      
+    }
+    
     function updatePermission(element) {
-      console.log("Update Permissions triggered for "+element.attr("id")+ " which serializes as "+element.fieldSerialize());
       $.ajax({
          type: "PUT",
          url: element.closest("form").attr("action"),
