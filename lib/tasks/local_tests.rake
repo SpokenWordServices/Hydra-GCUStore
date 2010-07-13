@@ -1,5 +1,6 @@
 SOLR_PARAMS = {
   :quiet => ENV['SOLR_CONSOLE'] ? false : true,
+  :startup_wait => 60,
   :jetty_home => ENV['SOLR_JETTY_HOME'] || File.expand_path('./jetty'),
   :jetty_port => ENV['SOLR_JETTY_PORT'] || 8983,
   :solr_home => ENV['SOLR_HOME'] || File.expand_path('./jetty/solr')

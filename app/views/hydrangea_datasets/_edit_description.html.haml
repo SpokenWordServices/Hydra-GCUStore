@@ -20,7 +20,7 @@
     - format = document_partial_name(@document)
     %div#add-contributor-box
       %input#re-run-add-contributor-action{:type => "button", :value => "Add a researcher"}
-      %button#select Select type of contributor to add
+      %button#select-contributor-type{:type => "button"} Select type of contributor to add      
       %ul#add-contributor-menu
         %li#add_person Add a person
         %li#add_organization Add an organization
