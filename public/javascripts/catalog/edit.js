@@ -163,7 +163,6 @@
       
       $.post(url, {contributor_type: type, content_type: content_type},function(data) {
         $(insertion_point_selector).append(data);
-        console.log(data);
         fluid.inlineEdits("#"+$(data).attr("id"), {
             selectors : {
               text : ".editableText",
@@ -310,11 +309,8 @@
     };
 
     function saveDateWidgetEdit(callback) {
-        // console.log(callback["id"], callback["dd"], callback["mm"], callback["yyyy"]);
         name = $("#"+callback["id"]).parent().attr("name");
         value = callback["yyyy"]+"-"+callback["mm"]+"-"+callback["dd"];
-        // console.log(name);
-        // console.log(value);
         saveEdit(name , value);
     };
 
