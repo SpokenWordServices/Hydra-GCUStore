@@ -1,6 +1,6 @@
 - unless defined?(asset_id)
   - asset_id = params[:asset_id]
-%form#document_metadata{ :action=>url_for(:id=>@document_fedora.pid,:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
+%form#document_metadata{ :action=>url_for(:asset_id=>@document_fedora.pid,:action=>"update", :controller=>"permissions"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
 
   %fieldset.slider
     %legend Group Permissions
@@ -20,7 +20,7 @@
       - field_name = "#{role}_group_access"
       %label{:for=>field_name}
         = role.capitalize
-      %select{:id=>field_name, :name=>"asset[access_group][#{role}]"}
+      %select{:id=>field_name, :name=>"permission[group][#{role}]"}
         - choices.each do |choice|
           - choice_label = choice.keys.first
           - choice_name = choice.values.first

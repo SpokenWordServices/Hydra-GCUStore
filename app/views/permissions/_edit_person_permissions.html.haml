@@ -8,13 +8,11 @@
 
 %label{:for=>field_name}
   = person_id
-/   # post :update, :asset_id=>"_pid_", :actor_type=>"group", :actor_id=>"_group_id_", :permission => {"group"=>"_group_id_","level"=>"discover"}
-/ OR
-/ post :update, :asset_id=>"_pid_", :actor_type=>"group", :actor_id=>"_group_id_", :permission => {"group"=>{"_group_id_"=>"discover"}}
+
+// :permission => {"group"=>{"_group_id_"=>"discover"}}
 
 
-%input{:rel=>field_name, :value=>}
-%select{:id=>field_name, :name=>"asset[access_group][#{person_id}]"}
+%select{:id=>field_name, :name=>"permission[person][#{person_id}]"}
   - choices.each do |choice|
     - choice_label = choice.keys.first
     - choice_name = choice.values.first

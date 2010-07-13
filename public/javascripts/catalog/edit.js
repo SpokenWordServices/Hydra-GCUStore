@@ -69,7 +69,32 @@
     };
     
     function updatePermission(element) {
-      console.log("Update Permissions triggered for "+element+ "which serializes as "+element.fieldSerialize());
+      console.log("Update Permissions triggered for "+element.attr("id")+ " which serializes as "+element.fieldSerialize());
+      $.ajax({
+         type: "PUT",
+         url: element.closest("form").attr("action"),
+         data: element.fieldSerialize(),
+         success: function(msg){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   "Permissions for "+element.attr("id")+" have been set to "+element.fieldValue(),
+             stay:                   false,                  // should the notice item stay or not?
+             type:                   'notice'                // could also be error, succes
+            });
+         },
+         error: function(xhr, textStatus, errorThrown){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
+             stay:                   true,                  // should the notice item stay or not?
+             type:                   'error'                // could also be error, succes
+            });
+         }
+       });
       // Must submit to permissions controller.  (can't submit as regular metadata update to assets controller update method)
       // because we need to trigger the RightsMetadata update_permissions methods.
     }
