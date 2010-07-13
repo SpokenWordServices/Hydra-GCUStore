@@ -70,7 +70,8 @@
     
     function updatePermission(element) {
       console.log("Update Permissions triggered for "+element+ "which serializes as "+element.fieldSerialize());
-      // dont submit to permissions controller.  submit as regular metadata update to assets controller update method...
+      // Must submit to permissions controller.  (can't submit as regular metadata update to assets controller update method)
+      // because we need to trigger the RightsMetadata update_permissions methods.
     }
     
     function setUpSliders () {

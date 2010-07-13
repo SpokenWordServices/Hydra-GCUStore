@@ -91,6 +91,17 @@ describe Hydra::RightsMetadata do
     end
   end
   
+  describe "update_permissions" do
+    it "should accept a hash of groups and persons, updating their permissions accordingly" do
+      @sample.expects(:permissions).with({"group" => "group1"}, "discover")
+      @sample.expects(:permissions).with({"group" => "group2"}, "edit")
+      @sample.expects(:permissions).with({"person" => "person1"}, "read")
+      @sample.expects(:permissions).with({"person" => "person2"}, "discover")
+      
+      @sample.update_permissions( {"group"=>{"group1"=>"discover","group2"=>"edit"}, "person"=>{"person1"=>"read","person2"=>"discover"}} )
+    end
+  end
+  
   describe "update_indexed_attributes" do
     it "should update the declared properties" do
       @sample.retrieve(*[:edit_access, :person]).length.should == 0

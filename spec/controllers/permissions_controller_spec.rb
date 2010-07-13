@@ -31,7 +31,7 @@ describe PermissionsController do
       Solrizer::Solrizer.stubs(:new).returns(stub_solrizer)
       mock_ds = mock("Datastream")
       Hydra::RightsMetadata.stubs(:from_xml).returns(mock_ds)
-      mock_ds.expects(:permissions).with({"person" => "_person_id_"}, "read")
+      mock_ds.expects(:update_permissions).with({"person"=>{"_person_id_"=>"read"}})
       mock_ds.stubs(:content)
       mock_ds.stubs(:pid=)
       mock_ds.stubs(:dsid=)
@@ -41,7 +41,7 @@ describe PermissionsController do
       
       ActiveFedora::Base.expects(:load_instance).with("_pid_").returns(mock_object)
       
-      post :create, :asset_id=>"_pid_", :permission => {"person"=>"_person_id_","level"=>"read"}
+      post :create, :asset_id=>"_pid_", :permission => {"person"=>{"_person_id_"=>"read"}}
     end
     it "should rely on .update method"
   end
@@ -51,7 +51,7 @@ describe PermissionsController do
       Solrizer::Solrizer.stubs(:new).returns(stub_solrizer)
       mock_ds = mock("Datastream")
       Hydra::RightsMetadata.stubs(:from_xml).returns(mock_ds)
-      mock_ds.expects(:permissions).with({"group" => "_group_id_"}, "discover")
+      mock_ds.expects(:update_permissions).with({"group" => {"_group_id_"=>"discover"}})
       mock_ds.stubs(:content)
       mock_ds.stubs(:pid=)
       mock_ds.stubs(:dsid=)
@@ -67,7 +67,7 @@ describe PermissionsController do
       # this is what currently works 
       # post :update, :asset_id=>"_pid_", :actor_type=>"group", :actor_id=>"_group_id_", :permission => {"group"=>"_group_id_","level"=>"discover"}
 
-      post :update, :asset_id=>"_pid_", :actor_type=>"group", :actor_id=>"_group_id_", :permission => {"group"=>{"_group_id_"=>"discover"}}
+      post :update, :asset_id=>"_pid_", :permission => {"group"=>{"_group_id_"=>"discover"}}
     end
     it "should add a rightsMetadata datastream if it doesn't exist"
     it "should not cause the metadata to be indexed twice" do
