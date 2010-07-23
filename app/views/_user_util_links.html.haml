@@ -15,9 +15,10 @@
 
 =# link_to "Search History", search_history_index_path 
 
-%div#create-asset-box
-  %input#re-run-action{:type => "button", :value => "Add an article", :onclick => "javascript:location.href = '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}'"}
-  %button#select-asset{:type => "button"} Select type of content to create
-  %ul#create-asset-menu
-    %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}');"} Add an article
-    %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_dataset")}');"} Add a dataset
+- if current_user
+  %div#create-asset-box
+    %input#re-run-action{:type => "button", :value => "Add an article", :onclick => "javascript:location.href = '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}'"}
+    %button#select-asset{:type => "button"} Select type of content to create
+    %ul#create-asset-menu
+      %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_article")}');"} Add an article
+      %li{:onclick => "javascript:createAssetNavigateTo(this, '#{url_for(:action => "new", :controller => "assets", :content_type => "hydrangea_dataset")}');"} Add a dataset
