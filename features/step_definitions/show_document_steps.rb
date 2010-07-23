@@ -30,16 +30,27 @@ Then /^I should see a link to the "([^\"]*)" page$/ do |arg1|
   response.should have_selector("a", :href=>path_to(arg1))
 end
 
+Then /^I should see a link to "([^\"]*)" with label "([^\"]*)"$/ do |arg1,arg2|
+  response.should have_selector("a", :href=>path_to(arg1), :content=>arg2)
+end
+
 Then /^I should not see a link to "([^\"]*)"$/ do |arg1|
   response.should_not have_selector("a", :href=>path_to(arg1))
-  puts path_to(arg1)
 end
 
 Then /^I should not see a link to the "([^\"]*)" page$/ do |arg1|
   response.should_not have_selector("a", :href=>path_to(arg1))
-  puts path_to(arg1)
 end
 
 Then /^related links are displayed as urls$/ do
   pending
 end
+
+Then /^I (should|should not) see a delete button for "([^\"]*)"$/ do |bool,target|
+  if bool == "should"
+    response.should have_selector("a", :class=>"destructive", :href=>path_to(target))
+  else
+    response.should_not have_selector("a", :class=>"destructive", :href=>path_to(target))
+  end
+end
+
