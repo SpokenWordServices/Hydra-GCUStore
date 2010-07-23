@@ -56,6 +56,13 @@ describe MetadataHelper do
         helper.single_value_inline_edit(@resource,"ng_ds",[{:person=>1}, :given_name])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_1_given_name%5D%5B%5D%5Bperson%5D=1&field_selectors%5Bng_ds%5D%5Bperson_1_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_1_given_name\]\[0\]">.*<\/li>/)
       end
     end  
+    it "should allow you to provide the :values list" do
+      @resource.expects(:get_values_from_datastream).never
+      helper.single_value_inline_edit(@resource,"ng_ds",[{:person=>4}, :given_name], :multiple=>true, :values=>["val1"])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D%5Bperson%5D=4&field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_4_given_name\]\[0\]"><span class=\"editableText\">val1<\/span><\/li>/)                                                                                                               
+    end
+    it "should allow you to provide a pid as the resource and a :values array, bypassing the need to have the fedora object loaded" do
+      helper.single_value_inline_edit("__PID__","ng_ds",[{:person=>4}, :given_name], :values=>["val1"])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D%5Bperson%5D=4&field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_4_given_name\]\[0\]">.*<\/li>/)   
+    end
   end
   
   describe "multi_value_inline_edit" do
@@ -69,6 +76,10 @@ describe MetadataHelper do
         multi_line = helper.multi_value_inline_edit(@resource,"simple_ds","last_name")[:label]
         multi_line.should match("last_name") and
         multi_line.should match(/<a.*>\+<\/a>$/)
+      end
+      it "should allow you to provide the :values list" do
+        @resource.expects(:get_values_from_datastream).never
+        helper.multi_value_inline_edit(@resource,"ng_ds",[{:person=>4}, :given_name], :values=>["val1","val2"])[:field].should match(/<li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D%5Bperson%5D=4&field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_4_given_name\]\[0\]\"><span class=\"editableText\">val1<\/span><\/li><li class=\"editable\" name=\"field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D%5Bperson%5D=4&field_selectors%5Bng_ds%5D%5Bperson_4_given_name%5D%5B%5D=given_name&asset\[ng_ds\]\[person_4_given_name\]\[1\]\"><a href='#' class='destructive'><img src='\/images\/delete.png' alt='Delete'><\/a><span class=\"editableText\">val2<\/span><\/li>/)                                                                                                               
       end
     end
     
