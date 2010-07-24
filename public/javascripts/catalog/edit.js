@@ -122,7 +122,7 @@
   	  fluid.inlineEdits("#multipleEdit", {
           selectors : {
             text : ".editableText",
-            editables : "li.editable"
+            editables : ".editable"
           },
           componentDecorators: {
             type: "fluid.undoDecorator"
