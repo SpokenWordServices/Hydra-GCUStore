@@ -17,18 +17,19 @@ describe HydraFedoraMetadataHelper do
     @resource.stubs(:get_values_from_datastream).with("ng_ds", [:title, :main_title], "").returns( ["My Title"] )
     @resource.stubs(:get_values_from_datastream).with("ng_ds", [{:person=>1}, :given_name], "").returns( ["Bob"] )
 
-    @resource.stubs(:get_values_from_datastream).with("empty_ds", "something", "").returns( [] )
-
+    @resource.stubs(:get_values_from_datastream).with("empty_ds", "something", "").returns( [""] )
   end
   
   describe "fedora_text_field" do
     it "should generate a text field input with values from the given datastream" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      generated_html.should have_tag "li", :class=>"editable-container", :id=>"title_main_title_0-container" do
+      generated_html.should have_tag "#title_main_title_0-container.editable-container"do
         with_tag "span#title_main_title_0-text.editable-text", "My Title"
         with_tag "input#title_main_title_0.editable-edit" do
           with_tag "[value=?]", "My Title"
           with_tag "[name=?]","asset[ng_ds][title_main_title_0]"
+          with_tag "[data-datastream-name=?]", "ng_ds" 
+          with_tag "[rel=?]", "title_main_title"
         end
       end
     end
@@ -52,6 +53,11 @@ describe HydraFedoraMetadataHelper do
       end
       generated_html.should have_tag "input", :class=>"editable-edit", :id=>"subject_1", :name=>"asset[simple_ds][subject_1]", :value=>"topic9"                                                                                        
     end
+    it "should render an empty control if the field has no values" do
+      helper.fedora_text_field(@resource,"empty_ds","something").should have_tag "li#something_0-container.editable-container" do
+        with_tag "#something_0-text.editable-text", ""
+      end
+    end
     it "should limit to single-value output with no ordered list if :multiple=>false" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject", :multiple=>false)
       generated_html.should_not have_tag "ol"
@@ -71,12 +77,19 @@ describe HydraFedoraMetadataHelper do
       generated_html = helper.fedora_text_area(@resource,"simple_ds","subject")
       generated_html.should have_tag "ol" do
         with_tag "li#subject_0-container.field_value.textile-container" do
-          with_tag "[data-datastream-name=?]", "simple_ds" 
+          # with_tag "[data-datastream-name=?]", "simple_ds" 
           with_tag "div#subject_0-text.textile-text", "topic1"
           with_tag "input#subject_0.textile-edit[value=topic1]" do
+            with_tag "[data-datastream-name=?]", "simple_ds" 
+            with_tag "[rel=?]", "subject" 
             with_tag "[name=?]", "asset[simple_ds][subject_0]"
           end
         end 
+      end
+    end
+    it "should render an empty control if the field has no values" do      
+      helper.fedora_text_area(@resource,"empty_ds","something").should have_tag "li#something_0-container.textile-container" do
+        with_tag "#something_0-text.textile-text", ""
       end
     end
     it "should limit to single-value output if :multiple=>false"
@@ -133,11 +146,16 @@ describe HydraFedoraMetadataHelper do
   end
   
   describe "fedora_text_field_insert_link" do
-    it "should generate a link for inserting a fedora_text_field into the page" 
+    it "should generate a link for inserting a fedora_text_field into the page" do
+      helper.fedora_text_field_insert_link("ng_ds",[:title, :main_title]).should have_tag "a.addval.textfield[href=\#]"
+    end
   end
   
   describe "fedora_text_area_insert_link" do
-    it "should generate a link for inserting a fedora_text_area into the page" 
+    it "should generate a link for inserting a fedora_text_area into the page" do
+      helper.fedora_text_area_insert_link("ng_ds",[:title, :main_title]).should have_tag "a.addval.textarea[href=\#]"
+    end
+      
   end
   
   describe "fedora_field_label" do
@@ -152,11 +170,11 @@ describe HydraFedoraMetadataHelper do
   describe "field_selectors_for" do
     it "should generate any necessary field_selector values for the given field" do
       generated_html = helper.field_selectors_for("myDsName", [{:name => 3}, :name_part])
-      generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][][name]" do
+      generated_html.should have_tag "input.fieldselector[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][][name]" do
         with_tag "[rel=name_3_name_part]"
         with_tag "[value=3]"
       end
-      generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][]" do
+      generated_html.should have_tag "input.fieldselector[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][]" do
         with_tag "[rel=name_3_name_part]"
         with_tag "[value=name_part]"
       end
