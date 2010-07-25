@@ -24,32 +24,48 @@ describe HydraFedoraMetadataHelper do
   describe "fedora_text_field" do
     it "should generate a text field input with values from the given datastream" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      generated_html.should match(/<li class="editable-container" id="title_main_title_0-container">.*<\/li>/)
-      generated_html.should match(/<span class="editable-text" id="title_main_title_0-text">My Title<\/span>/)
-      generated_html.should match(/<input class="editable-edit" id="title_main_title_0" name="asset\[ng_ds\]\[title_main_title_0\]" value="My Title"\/>/)
-      # generated_html.should match(//)
+      generated_html.should have_tag "li", :class=>"editable-container", :id=>"title_main_title_0-container" do
+        with_tag "span#title_main_title_0-text.editable-text", "My Title"
+        with_tag "input#title_main_title_0.editable-edit" do
+          with_tag "[value=?]", "My Title"
+          with_tag "[name=?]","asset[ng_ds][title_main_title_0]"
+        end
+      end
     end
     it "should include any necessary field_selector values" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      generated_html.should match(  helper.field_selectors_for("ng_ds",[:title, :main_title]) )
+      field_selectors_regexp = helper.field_selectors_for("ng_ds",[:title, :main_title]).gsub('/','\/').gsub(']','\]').gsub('[','\[')
+      generated_html.should match ( field_selectors_regexp )
     end
     it "should generate an ordered list of text field inputs" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
-      generated_html.should match(/<ol.*>.*<\/ol>/)                                                                                                          
-      generated_html.should match(/<li class="editable-container" id="subject_0-container">.*<\/li>/) 
-      generated_html.should match(/<input class="editable-edit" id="subject_0" name="asset\[simple_ds\]\[subject_0\]" value="topic1"\/>/)
-                                                                                                               
-      generated_html.should match(/<li class="editable-container" id="subject_1-container">.*<\/li>/)        
-      generated_html.should match(/<input class="editable-edit" id="subject_1" name="asset\[simple_ds\]\[subject_1\]" value="topic2"\/>/)                                                                                           
+      generated_html.should have_tag "ol" do
+        with_tag "li#subject_0-container.editable-container" do
+          with_tag "span#subject_0-text.editable-text", "topic1"
+          with_tag "input#subject_0.editable-edit[value=topic1]" do
+            assert_select "[name=?]", "asset[simple_ds][subject_0]"
+          end
+        end
+        with_tag "li#subject_1-container.editable-container" do
+          with_tag "span#subject_1-text.editable-text", "topic2"
+          with_tag "input#subject_1.editable-edit[value=topic2]" do
+            with_tag "[name=?]", "asset[simple_ds][subject_1]"
+          end
+        end
+      end
+      generated_html.should have_tag "input", :class=>"editable-edit", :id=>"subject_1", :name=>"asset[simple_ds][subject_1]", :value=>"topic9"                                                                                        
     end
     it "should limit to single-value output with no ordered list if :multiple=>false" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject", :multiple=>false)
-      generated_html.should_not match(/<ol.*>.*<\/ol>/)                                                                                                          
-      generated_html.should_not match(/<li.*>.*<\/li>/)
+      generated_html.should_not have_tag "ol"
+      generated_html.should_not have_tag "li"
       
-      generated_html.should match(/<span class="editable-container" id="subject-container">.*<\/span>/)
-      generated_html.should match(/<span class="editable-text" id="subject-text">topic1<\/span>/)
-      generated_html.should match(/<input class="editable-edit" id="subject" name="asset\[simple_ds\]\[subject\]" value="topic1"\/>/)                                                                                                                                                                                                   
+      generated_html.should have_tag "span#subject-container.editable-container" do
+        with_tag "span#subject-text.editable-text", "topic1"
+        with_tag "input#subject.editable-edit[value=topic1]" do
+          with_tag "[name=?]", "asset[simple_ds][subject]"
+        end
+      end                                                                                                                                                                                                
     end
   end
   
@@ -81,7 +97,18 @@ describe HydraFedoraMetadataHelper do
   
   describe "field_selectors_for" do
     it "should generate any necessary field_selector values for the given field" do
-      helper.field_selectors_for("myDsName", [{:name => 3}, :name_part]).should match_html('<input type="hidden" rel="name_3_name_part" name="field_selectors[myDsName][name_3_name_part][][name]" value="3" /><input type="hidden" rel="name_3_name_part" name="field_selectors[myDsName][name_3_name_part][]" value="name_part" />')
+      generated_html = helper.field_selectors_for("myDsName", [{:name => 3}, :name_part])
+      generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][][name]" do
+        assert_select "[rel=name_3_name_part]"
+        assert_select "[value=3]"
+      end
+      generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][]" do
+        assert_select "[rel=name_3_name_part]"
+        assert_select "[value=name_part]"
+      end
+      # ordering is important.  this next line makes sure that the inputs are in the correct order
+      # (tried using CSS3 nth-of-type selectors in have_tag but it didn't work)
+      generated_html.should match(/<input.*name="field_selectors\[myDsName\]\[name_3_name_part\]\[\]\[name\]".*\/><input.*name="field_selectors\[myDsName\]\[name_3_name_part\]\[\].*value="name_part" .*\/>/)
     end
     it "should not generate any field selectors if the field key is not an array" do
       helper.field_selectors_for("myDsName", :description).should == ""
