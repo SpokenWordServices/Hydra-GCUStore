@@ -24,9 +24,9 @@ describe HydraFedoraMetadataHelper do
   describe "fedora_text_field" do
     it "should generate a text field input with values from the given datastream" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      generated_html.should match(/<li class="editable" id="title_main_title_0-container">.*<\/li>/)
-      generated_html.should match(/<span class="editableText" id="title_main_title_0-text">My Title<\/span>/)
-      generated_html.should match(/<input class="editableTarget" id="title_main_title_0" name="asset\[ng_ds\]\[title_main_title_0\]" value="My Title"\/>/)
+      generated_html.should match(/<li class="editable-container" id="title_main_title_0-container">.*<\/li>/)
+      generated_html.should match(/<span class="editable-text" id="title_main_title_0-text">My Title<\/span>/)
+      generated_html.should match(/<input class="editable-edit" id="title_main_title_0" name="asset\[ng_ds\]\[title_main_title_0\]" value="My Title"\/>/)
       # generated_html.should match(//)
     end
     it "should include any necessary field_selector values" do
@@ -36,20 +36,20 @@ describe HydraFedoraMetadataHelper do
     it "should generate an ordered list of text field inputs" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
       generated_html.should match(/<ol.*>.*<\/ol>/)                                                                                                          
-      generated_html.should match(/<li class="editable" id="subject_0-container">.*<\/li>/) 
-      generated_html.should match(/<input class="editableTarget" id="subject_0" name="asset\[simple_ds\]\[subject_0\]" value="topic1"\/>/)
+      generated_html.should match(/<li class="editable-container" id="subject_0-container">.*<\/li>/) 
+      generated_html.should match(/<input class="editable-edit" id="subject_0" name="asset\[simple_ds\]\[subject_0\]" value="topic1"\/>/)
                                                                                                                
-      generated_html.should match(/<li class="editable" id="subject_1-container">.*<\/li>/)        
-      generated_html.should match(/<input class="editableTarget" id="subject_1" name="asset\[simple_ds\]\[subject_1\]" value="topic2"\/>/)                                                                                           
+      generated_html.should match(/<li class="editable-container" id="subject_1-container">.*<\/li>/)        
+      generated_html.should match(/<input class="editable-edit" id="subject_1" name="asset\[simple_ds\]\[subject_1\]" value="topic2"\/>/)                                                                                           
     end
     it "should limit to single-value output with no ordered list if :multiple=>false" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject", :multiple=>false)
       generated_html.should_not match(/<ol.*>.*<\/ol>/)                                                                                                          
       generated_html.should_not match(/<li.*>.*<\/li>/)
       
-      generated_html.should match(/<span class="editable" id="subject-container">.*<\/span>/)
-      generated_html.should match(/<span class="editableText" id="subject-text">topic1<\/span>/)
-      generated_html.should match(/<input class="editableTarget" id="subject" name="asset\[simple_ds\]\[subject\]" value="topic1"\/>/)                                                                                                                                                                                                   
+      generated_html.should match(/<span class="editable-container" id="subject-container">.*<\/span>/)
+      generated_html.should match(/<span class="editable-text" id="subject-text">topic1<\/span>/)
+      generated_html.should match(/<input class="editable-edit" id="subject" name="asset\[simple_ds\]\[subject\]" value="topic1"\/>/)                                                                                                                                                                                                   
     end
   end
   
