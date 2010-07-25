@@ -99,7 +99,21 @@ describe HydraFedoraMetadataHelper do
   end
 
   describe "fedora_date_select" do
-    it "should generate a date picker with values from the given datastream" 
+    it "should generate a date picker with values from the given datastream" do
+      generated_html = helper.fedora_date_select(@resource,"simple_ds","subject")
+      generated_html.should have_tag ".date-select[name=?]", "asset[simple_ds][subject]" do
+        with_tag "input#subject-sel-y.controlled-date-part.w4em"
+        with_tag "select#subject-sel-mm.controlled-date-part" do
+          with_tag "option[value=01]", "January"
+          with_tag "option[value=12]", "December"
+        end
+        with_tag "select#subject-sel-dd.controlled-date-part" do
+          with_tag "option[value=01]", "01"
+          with_tag "option[value=31]", "31"
+        end
+
+      end
+    end
   end
   
   describe "fedora_checkbox" do
@@ -109,7 +123,7 @@ describe HydraFedoraMetadataHelper do
   describe "all field generators" do
     it "should include any necessary field_selector info" do
       field_selectors_regexp = helper.field_selectors_for("ng_ds",[:title, :main_title]).gsub('/','\/').gsub(']','\]').gsub('[','\[')
-      ["fedora_text_field", "fedora_text_area", "fedora_select"].each do |method|
+      ["fedora_text_field", "fedora_text_area", "fedora_select", "fedora_date_select"].each do |method|
         generated_html = eval("helper.#{method}(@resource,\"ng_ds\",[:title, :main_title])")
         generated_html.should match ( field_selectors_regexp )
       end
