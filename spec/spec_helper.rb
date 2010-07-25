@@ -53,6 +53,10 @@ Spec::Runner.configure do |config|
     File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
   end
   
+  def match_html(html)
+    # Match two strings, but don't care about whitespace
+    simple_matcher("should match #{html}"){|given| given.strip.gsub(/\s+/,' ').gsub('> <','><') == html.strip.gsub(/\s+/,' ').gsub('> <','><') }
+  end
   
   def connect_bl_solr
     # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )

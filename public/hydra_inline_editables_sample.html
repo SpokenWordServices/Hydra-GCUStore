@@ -12,12 +12,12 @@
 <script type="text/javascript" charset="utf-8">
   jQuery(document).ready(function () {
       fluid.inlineEdits(".inlineEditable", {
-        // selectors : {
-        //   text: ".flc-inlineEdit-text",
-        //   editContainer: ".flc-inlineEdit-editContainer",
-        //   edit: ".flc-inlineEdit-edit",
-        //   editables: ".flc-inlineEditable"
-        // }
+        selectors : {
+          text: ".editableText",
+          editContainer: ".editable",
+          edit: ".editableTarget",
+          editables: ".editable"
+        }
       });
   });
 </script>
@@ -36,15 +36,15 @@ body {background-color: white;}
         <dl> 
             <dt><label for="title_main_title">Title</label></dt> 
             <dd class="title"> 
-              <span id="title_main_title-container" class="editable flc-inlineEditable">
-                <span class="editableText flc-inlineEdit-text" id="title_main_title-text"></span> 
-                <input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="title_info_title-edit" name="asset[descMetadata][title_main_title]" />
+              <span id="title_main_title-container" class="editable">
+                <span class="editableText" id="title_main_title-text"></span> 
+                <input class="editableTarget" id="title_info_title-edit" name="asset[descMetadata][title_main_title]" />
               </span>
             <dt><label for "title_info_language">Language</label></dt> 
             <dd class="language"> 
-              <span id="title_language-container" class="flc-inlineEditable">
-                <span class="editableText flc-inlineEdit-text" id="title_language-text">eng-uk</span> 
-                <input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="title_language" name="asset[descMetadata][title_language]" value="eng-uk"/>
+              <span id="title_language-container" class="editable">
+                <span class="editableText" id="title_language-text">eng-uk</span> 
+                <input class="editableTarget" id="title_language" name="asset[descMetadata][title_language]" value="eng-uk"/>
               </span>
             </dd> 
         </dl> 

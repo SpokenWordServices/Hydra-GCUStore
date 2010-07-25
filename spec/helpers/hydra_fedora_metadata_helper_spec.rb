@@ -24,18 +24,22 @@ describe HydraFedoraMetadataHelper do
   describe "fedora_text_field" do
     it "should generate a text field input with values from the given datastream" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      generated_html.should match(/<li id="title_main_title_0-container" class="editable">.*<\/li>/)
+      generated_html.should match(/<li class="editable" id="title_main_title_0-container">.*<\/li>/)
       generated_html.should match(/<span class="editableText" id="title_main_title_0-text">My Title<\/span>/)
       generated_html.should match(/<input class="editableTarget" id="title_main_title_0" name="asset\[ng_ds\]\[title_main_title_0\]" value="My Title"\/>/)
       # generated_html.should match(//)
     end
+    it "should include any necessary field_selector values" do
+      generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
+      generated_html.should match(  helper.field_selectors_for("ng_ds",[:title, :main_title]) )
+    end
     it "should generate an ordered list of text field inputs" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
       generated_html.should match(/<ol.*>.*<\/ol>/)                                                                                                          
-      generated_html.should match(/<li id="subject_0-container" class=\"editable\">.*<\/li>/) 
+      generated_html.should match(/<li class="editable" id="subject_0-container">.*<\/li>/) 
       generated_html.should match(/<input class="editableTarget" id="subject_0" name="asset\[simple_ds\]\[subject_0\]" value="topic1"\/>/)
                                                                                                                
-      generated_html.should match(/<li id="subject_1-container" class=\"editable\">.*<\/li>/)        
+      generated_html.should match(/<li class="editable" id="subject_1-container">.*<\/li>/)        
       generated_html.should match(/<input class="editableTarget" id="subject_1" name="asset\[simple_ds\]\[subject_1\]" value="topic2"\/>/)                                                                                           
     end
     it "should limit to single-value output with no ordered list if :multiple=>false" do
@@ -43,7 +47,7 @@ describe HydraFedoraMetadataHelper do
       generated_html.should_not match(/<ol.*>.*<\/ol>/)                                                                                                          
       generated_html.should_not match(/<li.*>.*<\/li>/)
       
-      generated_html.should match(/<span id="subject-container" class="editable">.*<\/span>/)
+      generated_html.should match(/<span class="editable" id="subject-container">.*<\/span>/)
       generated_html.should match(/<span class="editableText" id="subject-text">topic1<\/span>/)
       generated_html.should match(/<input class="editableTarget" id="subject" name="asset\[simple_ds\]\[subject\]" value="topic1"\/>/)                                                                                                                                                                                                   
     end
@@ -77,11 +81,9 @@ describe HydraFedoraMetadataHelper do
   
   describe "field_selectors_for" do
     it "should generate any necessary field_selector values for the given field" do
-      pending
       helper.field_selectors_for("myDsName", [{:name => 3}, :name_part]).should match_html('<input type="hidden" rel="name_3_name_part" name="field_selectors[myDsName][name_3_name_part][][name]" value="3" /><input type="hidden" rel="name_3_name_part" name="field_selectors[myDsName][name_3_name_part][]" value="name_part" />')
     end
     it "should not generate any field selectors if the field key is not an array" do
-      pending
       helper.field_selectors_for("myDsName", :description).should == ""
     end
   end
