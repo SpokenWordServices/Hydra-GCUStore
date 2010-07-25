@@ -140,6 +140,15 @@ describe HydraFedoraMetadataHelper do
     it "should generate a link for inserting a fedora_text_area into the page" 
   end
   
+  describe "fedora_field_label" do
+    it "should generate a label with appropriate @for attribute" do
+      helper.fedora_field_label("ng_ds",[:title, :main_title], "Title:").should have_tag "label[for=title_main_title]", "Title:"
+    end 
+    it "should display the field name if no label is provided" do
+      helper.fedora_field_label("ng_ds",[:title, :main_title]).should have_tag "label[for=title_main_title]", "title_main_title"
+    end
+  end
+  
   describe "field_selectors_for" do
     it "should generate any necessary field_selector values for the given field" do
       generated_html = helper.field_selectors_for("myDsName", [{:name => 3}, :name_part])
