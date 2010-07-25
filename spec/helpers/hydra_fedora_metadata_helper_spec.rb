@@ -32,23 +32,20 @@ describe HydraFedoraMetadataHelper do
         end
       end
     end
-    it "should include any necessary field_selector values" do
-      generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
-      field_selectors_regexp = helper.field_selectors_for("ng_ds",[:title, :main_title]).gsub('/','\/').gsub(']','\]').gsub('[','\[')
-      generated_html.should match ( field_selectors_regexp )
-    end
     it "should generate an ordered list of text field inputs" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
       generated_html.should have_tag "ol" do
         with_tag "li#subject_0-container.editable-container" do
           with_tag "span#subject_0-text.editable-text", "topic1"
-          with_tag "input#subject_0.editable-edit[value=topic1]" do
-            assert_select "[name=?]", "asset[simple_ds][subject_0]"
+          with_tag "input#subject_0.editable-edit" do
+            with_tag "[value=?]", "topic1"
+            with_tag "[name=?]", "asset[simple_ds][subject_0]"
           end
         end
         with_tag "li#subject_1-container.editable-container" do
           with_tag "span#subject_1-text.editable-text", "topic2"
-          with_tag "input#subject_1.editable-edit[value=topic2]" do
+          with_tag "input#subject_1.editable-edit" do
+            with_tag "[value=?]", "topic2"
             with_tag "[name=?]", "asset[simple_ds][subject_1]"
           end
         end
@@ -70,13 +67,39 @@ describe HydraFedoraMetadataHelper do
   end
   
   describe "fedora_text_area" do
-    it "should generate a textile-enabled text area with values from the given datastream" 
-    it "should generate an ordered list of text field inputs if there are multiple values"
+    it "should generate an ordered list of textile-enabled text area with values from the given datastream" do
+      generated_html = helper.fedora_text_area(@resource,"simple_ds","subject")
+      generated_html.should have_tag "ol" do
+        with_tag "li#subject_0-container.field_value.textile-container" do
+          with_tag "[data-datastream-name=?]", "simple_ds" 
+          with_tag "div#subject_0-text.textile-text", "topic1"
+          with_tag "input#subject_0.textile-edit[value=topic1]" do
+            with_tag "[name=?]", "asset[simple_ds][subject_0]"
+          end
+        end 
+      end
+    end
     it "should limit to single-value output if :multiple=>false"
   end
   
   describe "fedora_select" do
-    it "should generate a select with values from the given datastream" 
+    it "should generate a select with values from the given datastream" do
+      generated_html = helper.fedora_select(@resource,"simple_ds","subject", :choices=>["topic1","topic2", "topic3"])
+      generated_html.should have_tag "select.metadata-dd[name=?]", "asset[simple_ds][subject]" do
+        with_tag "option[value=topic1][selected=selected]"
+        with_tag "option[value=topic2][selected=selected]"
+        with_tag "option[value=topic3]"
+      end
+    end
+    it "should return the product of fedora_text_field if :choices is not set" do
+      helper.expects(:fedora_text_field).returns("fake response")
+      generated_html = helper.fedora_select(@resource,"simple_ds","subject")
+      generated_html.should == "fake response"
+    end
+  end
+
+  describe "fedora_date_select" do
+    it "should generate a date picker with values from the given datastream" 
   end
   
   describe "fedora_checkbox" do
@@ -84,7 +107,15 @@ describe HydraFedoraMetadataHelper do
   end
   
   describe "all field generators" do
-    it "should include any necessary field_selector info" 
+    it "should include any necessary field_selector info" do
+      field_selectors_regexp = helper.field_selectors_for("ng_ds",[:title, :main_title]).gsub('/','\/').gsub(']','\]').gsub('[','\[')
+      ["fedora_text_field", "fedora_text_area", "fedora_select"].each do |method|
+        generated_html = eval("helper.#{method}(@resource,\"ng_ds\",[:title, :main_title])")
+        generated_html.should match ( field_selectors_regexp )
+      end
+      generated_html = helper.fedora_select(@resource,"ng_ds",[:title, :main_title], :choices=>["choice1"])
+      generated_html.should match ( field_selectors_regexp )
+    end
   end
   
   describe "fedora_text_field_insert_link" do
@@ -99,12 +130,12 @@ describe HydraFedoraMetadataHelper do
     it "should generate any necessary field_selector values for the given field" do
       generated_html = helper.field_selectors_for("myDsName", [{:name => 3}, :name_part])
       generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][][name]" do
-        assert_select "[rel=name_3_name_part]"
-        assert_select "[value=3]"
+        with_tag "[rel=name_3_name_part]"
+        with_tag "[value=3]"
       end
       generated_html.should have_tag "input[type=hidden][name=?]", "field_selectors[myDsName][name_3_name_part][]" do
-        assert_select "[rel=name_3_name_part]"
-        assert_select "[value=name_part]"
+        with_tag "[rel=name_3_name_part]"
+        with_tag "[value=name_part]"
       end
       # ordering is important.  this next line makes sure that the inputs are in the correct order
       # (tried using CSS3 nth-of-type selectors in have_tag but it didn't work)
