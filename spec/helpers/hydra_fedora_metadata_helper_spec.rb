@@ -74,8 +74,7 @@ describe HydraFedoraMetadataHelper do
   
   describe "fedora_text_area" do
     it "should generate an ordered list of textile-enabled text area with values from the given datastream" do
-      generated_html = helper.fedora_text_area(@resource,"simple_ds","subject")
-      generated_html.should have_tag "ol" do
+      helper.fedora_text_area(@resource,"simple_ds","subject").should have_tag "ol" do
         with_tag "li#subject_0-container.field_value.textile-container" do
           # with_tag "[data-datastream-name=?]", "simple_ds" 
           with_tag "div#subject_0-text.textile-text", "topic1"
@@ -92,7 +91,19 @@ describe HydraFedoraMetadataHelper do
         with_tag "#something_0-text.textile-text", ""
       end
     end
-    it "should limit to single-value output if :multiple=>false"
+    it "should limit to single-value output if :multiple=>false" do
+      generated_html = helper.fedora_text_area(@resource,"simple_ds","subject", :multiple=>false)
+      generated_html.should_not have_tag "ol"
+      generated_html.should_not have_tag "li"
+      generated_html.should have_tag "span#subject-container.field_value.textile-container" do
+        with_tag "div#subject-text.textile-text", "topic1"
+        with_tag "input#subject.textile-edit[value=topic1]" do
+          with_tag "[data-datastream-name=?]", "simple_ds" 
+          with_tag "[rel=?]", "subject" 
+          with_tag "[name=?]", "asset[simple_ds][subject]"
+        end 
+      end
+    end
   end
   
   describe "fedora_select" do
