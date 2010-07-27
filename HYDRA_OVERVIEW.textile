@@ -134,4 +134,4 @@ h4. In-Browser
 <span class="new-for-hydra">Hydra javascripts (soon to be a JQuery plugin) *</span>
 Fluid Infusion JQuery plugin
 
-==*== indicates code that was written in the process of creating Hydra
+\* indicates code that was written in the process of creating Hydra

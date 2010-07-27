@@ -1,6 +1,8 @@
 h1. Hydrangea
 
-Hydrangea is the first general-purpose Hydra app.  It's built on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
+Hydrangea is the reference implementation of the Hydra framework, which builds on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
+
+For a more thorough overview of the Hydra framework, see "HYDRA_OVERVIEW.textile":http://github.com/projecthydra/hydrangea/blob/master/HYDRA_OVERVIEW.textile
 
 h2. Prerequisites
 
