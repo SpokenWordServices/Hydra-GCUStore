@@ -59,22 +59,46 @@ This is a copy of Jetty, the lightweight Java Application Container, with Fedora
 
 Hydra-Jetty is not meant for use for production deployment.  In production environments, you should set up an application container like Tomcat and point the "production" section of config/fedora.yml and config/solr.yml to point to that production system's URL.
 
-h2. Hydra Heads
-
-Hydra models 
-* datastreams & metadata mappings
-* model-specific behaviors 
-Model-specific views (Search Result, Show/Details, Edit)
-
-h2. Fedora
+h3. Fedora
 
 <span class="feature">Flexible preservation-oriented storage service</span>
 
-h2. Solr
+h3. Solr
 
 <span class="feature">Robust, flexible faceted search</span>
 
+h2. Hydra Heads
+
+Hydra Heads are independently built & distributed Hydra-powered applications built to suit specific users and specific content types. 
+
+h3. Examples of Hydra Heads
+
+A number of Hydra heads are in the works.  Some of them already exist in pre-Hydra form and will be updated to use the Hydra framework once Hydra 1.0 is released.  Some Hydra Heads include:
+
+* Articles & Publications Tracker (Institutional Repository)
+* Scientific Dataset Curation
+* ETD (Electronic Theses & Dissertations) Submission
+* Scanned Manuscripts
+* Everyday (Born Digital) Archival Materials
+
+These are just a few examples.  Please feel free to create your own, and contact the Hydra community to see if anyone else shares your interest.  Someone may already be working on a similar application.
+
+h3. Sharing/Re-using Hydra Content Types
+
+In order to enable content-specific behaviors and displays, you must define a new content type, which consists of:
+
+* Hydra models 
+** datastreams & metadata mappings
+** model-specific behaviors 
+* Model-specific views (Search Result, Show/Details, Edit)
+
+You can share Hydra content types by putting the code into Rails Plugins.
+
 h2. The Code
+
+h3. Distribution
+
+All of the code that we've written as part of Hydra, as well as some of the code that we rely on, is all hosted in public Github repositories.  Some portions of Hydra are distributed as Rails plugins that you can install into your rails applications.  Other portions of Hydra are distributed as Ruby gems, which can be incorporated into any Ruby application. 
 
 h3. Tested ... Thoroughly
 
@@ -84,12 +108,6 @@ RSpec -- unit testing of code
 Cucumber -- story-driven integration/acceptance tests
 Celerity (coming soon) -- automated javascript testing
 Manual User Testing (provided by Stanford University Libraries)
-
-h3. Distribution
-
-Github
-Rails Engines
-Ruby Gems
 
 h3. Components
 
