@@ -55,9 +55,9 @@ Example implementation of the complete Hydra stack, which consists of Blacklight
 
 h3. Hydra-Jetty
 
-This is a copy of Jetty, the lightweight Java Application Container, with Fedora and Solr pre-installed and configured to work with Hydra applications.  You can use this to get your development, testing and demo environments set up with minimal hassle.
+Jetty is a lightweight Java Application Container.  We have created a copy of Jetty with Fedora and Solr pre-installed and configured to work with Hydra applications.  You can use this to get your development, testing and demo environments set up with minimal hassle.  By convention, we put it into a directory called "jetty" at the root of a Hydra application.  See Hydrangea for sample usage.
 
-Hydra-Jetty is not meant for use for production deployment.  In production environments, you should set up an application container like Tomcat and point the "production" section of config/fedora.yml and config/solr.yml to point to that production system's URL.
+*Note:* Hydra-Jetty is not meant for use for production deployment.  In production environments, you should set up an application container like Tomcat and point the "production" section of config/fedora.yml and config/solr.yml to point to that production system's URL.
 
 h3. Fedora
 
@@ -69,7 +69,7 @@ h3. Solr
 
 h2. Hydra Heads
 
-Hydra Heads are independently built & distributed Hydra-powered applications built to suit specific users and specific content types. 
+Hydra Heads are independently built & distributed Hydra-powered applications that suit specific users and specific content types. If you are looking for an out-of-the box solution, these are what you want.
 
 h3. Examples of Hydra Heads
 
@@ -81,7 +81,7 @@ A number of Hydra heads are in the works.  Some of them already exist in pre-Hyd
 * Scanned Manuscripts
 * Everyday (Born Digital) Archival Materials
 
-These are just a few examples.  Please feel free to create your own, and contact the Hydra community to see if anyone else shares your interest.  Someone may already be working on a similar application.
+These are just a few examples.  Please feel free to create your own, and contact the Hydra community to see if anyone else shares your interests.  Someone may already be working on a similar application.
 
 h3. Sharing/Re-using Hydra Content Types
 
@@ -92,7 +92,7 @@ In order to enable content-specific behaviors and displays, you must define a ne
 ** model-specific behaviors 
 * Model-specific views (Search Result, Show/Details, Edit)
 
-You can share Hydra content types by putting the code into Rails Plugins.
+It's very easy to share Hydra content types across multiple Hydra Heads by putting the Hydra models and views into a Rails plugin.
 
 h2. The Code
 
@@ -113,9 +113,9 @@ h3. Components
 
 h4. Application -- Rails Plugins/Engines
 
-<span class="new-for-hydra">Hydra Repository Plugin *</span>
+<span class="new-for-hydra">Hydra Repository plugin *</span>
 Blacklight
-Fluid Infusion Plugin 
+Fluid Infusion plugin 
 
 h4. Underneath the Hood -- Ruby Gems
 
@@ -126,4 +126,4 @@ ActiveFedora
 h4. In-Browser
 
 <span class="new-for-hydra">Hydra javascripts (soon to be a JQuery plugin) *</span>
-Fluid Infusion JQuery Plugin
+Fluid Infusion JQuery plugin
