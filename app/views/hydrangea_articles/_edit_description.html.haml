@@ -7,14 +7,14 @@
       %dt
         %label{:for=>"title"}
           = title[:label]
-      %dd#title
+      %dd#title.title
         = title[:field]
     
       - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
       %dt
         %label{:for=>"language"}
           = language[:label]
-      %dd#language
+      %dd#language.language
         = language[:field]
   %fieldset#contributor_fields
     %legend Contributors
@@ -63,5 +63,5 @@
       %dt
         %label{:for=>"topic_tag"}
           = topic_tag[:label]
-      %dd#topic_tag{"data-datastream-name"=>"descMetadata"}
+      %dd#topic_tag.topic_tag{"data-datastream-name"=>"descMetadata"}
         = topic_tag[:field]

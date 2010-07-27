@@ -7,7 +7,7 @@
   %dt
     %label{:for=>"journal_title"}
       = journal_title[:label]
-  %dd#journal_title
+  %dd#journal_title.journal
     = journal_title[:field] 
 
 %ol#journal_publisher_and_issn.multi_inline
@@ -17,7 +17,7 @@
       %dt
         %label{:for=>"publisher"}
           Publisher:
-      %dd#publisher
+      %dd#publisher.publisher
         = publisher[:field]
   %li
     %dl
@@ -25,7 +25,7 @@
       %dt
         %label{:for=>"issn"}
           = issn[:label]
-      %dd#issn
+      %dd#issn.issn
         = issn[:field]
 
 %ol#journal_publication_date_and_citation.multi_inline
@@ -44,25 +44,25 @@
           Citation:
       %dd#citation.multi_inline
         %ol#citation_fields
-          %li
+          %li.citation_volume
             - citation_volume = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:volume], :label => "Volume")
             %label{:for=>"citation_volume"}
               = citation_volume[:label]
             %span#citation_volume.field
               = citation_volume[:field]
-          %li
+          %li.citation_issue
             - citation_issue = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:level], :label => "(Issue)")
             %label{:for=>"citation_issue"}
               = citation_issue[:label]
             %span#citation_issue.field
               = citation_issue[:field]
-          %li
+          %li.start_page
             - start_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:start_page], :label => "Start Page")
             %label{:for=>"start_page"}
               = start_page[:label]
             %span#start_page.field
               = start_page[:field]
-          %li
+          %li.end_page
             - end_page = editable_metadata_field(@document_fedora, "descMetadata", [{:journal => journal_counter},:issue,:end_page], :label => "End Page")
             %label{:for=>"end_page"}
               = end_page[:label]
