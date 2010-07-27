@@ -4,7 +4,7 @@ h2. The Pieces
 
 The Hydra framework was carefully designed as a collection of components that work in concert to present the behaviors of a single application.  
 
-There are three main components at the application level -- the Hydra plugin, Blacklight, and Solrizer.  The Hydra plugin is a Rails plugin that provides the Create, Edit and Delete behaviors of your Hydra-powered applications.  When you combine that with Blacklight (also a Rails plugin), which provides Search & Display behaviors, you get a complete application.  Solrizer provides the crossover, ensuring that the Solr index is immediately updated to reflect any Create/Edit/Delete actions that you have performed.
+There are three main components at the application level -- the Hydra plugin, Blacklight, and Solrizer.  The Hydra plugin is a Rails plugin that provides the Create, Edit and Delete behaviors of your Hydra-powered applications.  When you combine that with Blacklight (also a Rails plugin), which provides Search & Display behaviors, you get a complete application.  Solrizer provides the crossover between these two by ensuring that the Solr index is immediately updated to reflect any Create/Edit/Delete actions that you have performed.
 
 Underneath these components, we rely on Fedora and Solr.
 
@@ -104,7 +104,7 @@ h2. The Code
 
 h3. Distribution
 
-All of the code that we've written as part of Hydra, as well as some of the code that we rely on, is all hosted in public Github repositories.  Some portions of Hydra are distributed as Rails plugins that you can install into your rails applications.  Other portions of Hydra are distributed as Ruby gems, which can be incorporated into any Ruby application. 
+All of the code that we've written as part of Hydra, as well as some of the external code that it relies on, is all hosted in public Github repositories.  Some portions of Hydra are distributed as Rails plugins that you can install into your rails applications.  Other portions of Hydra are distributed as Ruby gems, which can be incorporated into any Ruby application. 
 
 h3. Tested ... Thoroughly
 
@@ -133,3 +133,5 @@ h4. In-Browser
 
 <span class="new-for-hydra">Hydra javascripts (soon to be a JQuery plugin) *</span>
 Fluid Infusion JQuery plugin
+
+ * indicates code that was written in the process of creating Hydra
