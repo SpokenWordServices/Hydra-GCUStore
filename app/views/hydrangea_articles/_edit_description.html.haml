@@ -1,60 +1,67 @@
 %form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
-  %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
-  %dl
-    - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
-    %dt
-      %label{:for=>"title"}
-        = title[:label]
-    %dd#title
-      = title[:field]
+  %fieldset#title_fields
+    %legend Title
+    %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
+    %dl
+      - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
+      %dt
+        %label{:for=>"title"}
+          = title[:label]
+      %dd#title.title
+        = title[:field]
     
-    - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
-    %dt
-      %label{:for=>"language"}
-        = language[:label]
-    %dd#language
-      = language[:field]
-  
-  // Button for adding person/conference/organization
-  - if params[:action] == "edit"
-    - format = document_partial_name(@document)
-    %div#add-contributor-box
-      %input#re-run-add-contributor-action{:type => "button", :value => "Add a person"}
-      %button#select-contributor-type{:type => "button"} Select type of contributor to add
-      %ul#add-contributor-menu
-        %li#add_person Add a person
-        %li#add_organization Add an organization
-        %li#add_conference Add a conference
+      - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
+      %dt
+        %label{:for=>"language"}
+          = language[:label]
+      %dd#language.language
+        = language[:field]
+  %fieldset#contributor_fields
+    %legend Contributors
+    // Button for adding person/conference/organization
+    - if params[:action] == "edit"
+      - format = document_partial_name(@document)
+      %div#add-contributor-box
+        %input#re-run-add-contributor-action{:type => "button", :value => "Add a person"}
+        %button#select-contributor-type{:type => "button"} Select type of contributor to add
+        %ul#add-contributor-menu
+          %li#add_person Add a person
+          %li#add_organization Add an organization
+          %li#add_conference Add a conference
 
-  #person_entries
-    = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
-  #organization_entries
-    = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
-  #conference_entries
-    = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
-  
-  %dl
-    - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Abstract:", :type=>:text_area, :multiple=>false)
-    %dt
-      %label{:for=>"abstract"}
-        = abstract[:label]
-    %dd#abstract{"data-datastream-name"=>"descMetadata"}
-      = abstract[:field]
+    #person_entries
+      = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
+    #organization_entries
+      = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
+    #conference_entries
+      = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
+
+  %fieldset#citation_fields
+    %legend Journal Citation
+    %dl
+      - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Abstract:", :type=>:text_area, :multiple=>false)
+      %dt
+        %label{:for=>"abstract"}
+          = abstract[:label]
+      %dd#abstract{"data-datastream-name"=>"descMetadata"}
+        = abstract[:field]
     
-  = render :partial=>"hydrangea_articles/edit_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:journal)
+    = render :partial=>"hydrangea_articles/edit_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:journal)
   
-  / %dl
-  /   - original_url = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
-  /   %dt
-  /     %label{:for=>"original_url"}
-  /       = original_url[:label]
-  /   %dd#original_url
-  /     = original_url[:field]
-  
-  %dl
-    - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
-    %dt
-      %label{:for=>"topic_tag"}
-        = topic_tag[:label]
-    %dd#topic_tag{"data-datastream-name"=>"descMetadata"}
-      = topic_tag[:field]
+    / %dl
+    /   - original_url = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
+    /   %dt
+    /     %label{:for=>"original_url"}
+    /       = original_url[:label]
+    /   %dd#original_url
+    /     = original_url[:field]
+
+  %fieldset#topic_fields
+    %legend Topics
+    %dl
+      - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
+      %dt
+        %label{:for=>"topic_tag"}
+          = topic_tag[:label]
+      %dd#topic_tag.topic_tag{"data-datastream-name"=>"descMetadata"}
+        = topic_tag[:field]
