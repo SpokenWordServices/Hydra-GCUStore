@@ -43,15 +43,15 @@ h3. Hydrangea
 
 Example implementation of the complete Hydra stack, which consists of Blacklight + Hydra Framework + Hydra Models & Model-specific Views all sitting on top of Fedora and Solr.  In addition to serving as a starting point for those looking to use the Hydra framework, Hydrangea will also serve as a reference example as we discover and settle upon new best practices for building Hydra-powered applications.
 
-Full Hydra Framework Installed & Tested
-Reference Example Models & Views (Articles & Datasets) with MODS Metadata
-Example views for editing object-level permissions
-Sample URL Routing
-Placeholder user & group management 
-* works for demo & testing, but should be replaced with your institution's user/group management solution (ie. LDAP) in real deployment
-Sample Metadata Mappings (using OM)
-* MODS Articles
-* Hydra Rights Metadata
+* Full Hydra framework installed & tested
+* Reference examples of Hydra models & views (Articles & Datasets) with MODS metadata
+* Example views for editing object-level permissions
+* Sample URL routing
+* Placeholder user & group management
+** works for demo & testing, but should be replaced with your institution's user/group management solution (ie. LDAP) in real deployment
+* Sample Metadata Mappings (using OM)
+** MODS Articles
+** Hydra Rights Metadata
 
 h3. Hydra-Jetty
 
