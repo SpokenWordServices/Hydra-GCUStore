@@ -2,6 +2,15 @@ h1. Hydrangea
 
 Hydrangea is the first general-purpose Hydra app.  It's built on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
 
+h2. Prerequisites
+
+Hydrangea requires Ruby version 1.8.7.  It will not run on Ruby 1.8.6.  If you need to upgrade Ruby, consider using "RVM":http://rvm.beginrescueend.com/ to do so, especially in your development environment.
+
+Other Requirements:
+* "git":http://git-scm.com/
+* "rubygems":http://rubygems.org/pages/download
+* "rake":http://rake.rubyforge.org/
+
 h2. Basic installation & Running RSpec tests
 
 This is based on Matt Zumwalt's "Hydra Stack: Getting Started":http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv notes from LibDevConX in March 2010.
@@ -78,6 +87,7 @@ You must ingest two more fixtures:
   rake hydra:import_fixture pid=druid:bz425fy5289
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
+  rake hydra:import_fixture pid=hydrangea:fixture_uploaded_svg1
 </pre>
 
 Then run your tests.
