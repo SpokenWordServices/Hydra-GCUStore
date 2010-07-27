@@ -1,0 +1,111 @@
+h1. Hydra -- Overview
+
+h2. The Pieces
+
+h3. Hydra Plugin
+
+<span class="feature">Customizable Framework for building repository-driven applications</span>
+<span class="feature">Flexible access controls</span>
+
+h4. Controllers
+
+* integration of ActiveFedora & Solrizer
+* REST API
+
+h4. Views
+
+* basic views for uploader
+* helper methods for editable metadata
+* javascript code that works with the views & controllers
+
+h4. Access Controls Enforcement
+
+Uses Hydra rightsMetadata schema, which is indexed into Solr in order to allow for enforcement on all Read, Write, Edit and Search/Discover actions.  
+
+* re-usable API hooks for using and/or extending enforcement logic
+* REST API methods for adding/editing permissions
+* automatically indexes rights metadata into Solr
+* supports gated discovery out of the box
+
+h3. Blacklight
+
+<span class="feature">Next-Gen Content-Aware Search & Discovery</span>
+
+h3. Solrizer
+
+<span class="feature">Customizable indexing</span>
+
+h3. Hydrangea 
+
+<span class="feature">Reference implementation</span>
+<span class="feature">Slick editor UI features</span>
+<span class="feature">MODS support</span>
+
+Example implementation of the complete Hydra stack, which consists of Blacklight + Hydra Framework + Hydra Models & Model-specific Views all sitting on top of Fedora and Solr.  In addition to serving as a starting point for those looking to use the Hydra framework, Hydrangea will also serve as a reference example as we discover and settle upon new best practices for building Hydra-powered applications.
+
+* Full Hydra framework installed & tested
+* Reference examples of Hydra models & views (Articles & Datasets) with MODS metadata
+* Example views for editing object-level permissions
+* Sample URL routing
+* Placeholder user & group management
+** works for demo & testing, but should be replaced with your institution's user/group management solution (ie. LDAP) in real deployment
+* Sample Metadata Mappings (using OM)
+** MODS Articles
+** Hydra Rights Metadata
+
+h3. Hydra-Jetty
+
+This is a copy of Jetty, the lightweight Java Application Container, with Fedora and Solr pre-installed and configured to work with Hydra applications.  You can use this to get your development, testing and demo environments set up with minimal hassle.
+
+Hydra-Jetty is not meant for use for production deployment.  In production environments, you should set up an application container like Tomcat and point the "production" section of config/fedora.yml and config/solr.yml to point to that production system's URL.
+
+h2. Hydra Heads
+
+Hydra models 
+* datastreams & metadata mappings
+* model-specific behaviors 
+Model-specific views (Search Result, Show/Details, Edit)
+
+h2. Fedora
+
+<span class="feature">Flexible preservation-oriented storage service</span>
+
+h2. Solr
+
+<span class="feature">Robust, flexible faceted search</span>
+
+h2. The Code
+
+h3. Tested ... Thoroughly
+
+We use the following technologies to test our code.  Our continuous integration server (we use Hudson) runs all of the automated tests against any code changes.
+
+RSpec -- unit testing of code
+Cucumber -- story-driven integration/acceptance tests
+Celerity (coming soon) -- automated javascript testing
+Manual User Testing (provided by Stanford University Libraries)
+
+h3. Distribution
+
+Github
+Rails Engines
+Ruby Gems
+
+h3. Components
+
+h4. Application -- Rails Plugins/Engines
+
+<span class="new-for-hydra">Hydra Repository Plugin *</span>
+Blacklight
+Fluid Infusion Plugin 
+
+h4. Underneath the Hood -- Ruby Gems
+
+ActiveFedora
+<span class="new-for-hydra">Solrizer *</span>
+<span class="new-for-hydra">OM (Opinionated Metadata) *</span>
+
+h4. In-Browser
+
+<span class="new-for-hydra">Hydra javascripts (soon to be a JQuery plugin) *</span>
+Fluid Infusion JQuery Plugin
