@@ -11,7 +11,8 @@ Hydrangea requires Ruby version 1.8.7.  It will not run on Ruby 1.8.6.  If you n
 Other Requirements:
 * "git":http://git-scm.com/
 * "rubygems":http://rubygems.org/pages/download
-* "rake":http://rake.rubyforge.org/
+* "rake":http://rake.rubyforge.org/ (gem install rake)
+* Rails 2.3.5 (gem install -v=2.3.5 rails)
 
 h2. Basic installation & Running RSpec tests
 
@@ -39,7 +40,7 @@ rake gems:install
 Now install the development dependencies (not required for runtime, but required to run tests)
 
 <pre>
-gem install rcov rspec rspec-rails cucumber cucumber-rails webrat database_cleaner ruby-debug mocha
+gem install rcov rspec rspec-rails cucumber cucumber-rails webrat database_cleaner ruby-debug mocha httparty
 </pre>
 
 Run your database migrations (only need to do this once after cloning the git repository).
@@ -68,6 +69,7 @@ Run the Rspec tests to make sure everything is working properly.
 <pre>
 {cd to wherever you cloned hydrangea, then...}
 rake hydra:import_fixture pid=druid:tj532xx3843
+rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
 rake spec
 </pre>
 
@@ -87,7 +89,6 @@ You must ingest two more fixtures:
 
 <pre>
   rake hydra:import_fixture pid=druid:bz425fy5289
-  rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
   rake hydra:import_fixture pid=hydrangea:fixture_uploaded_svg1
 </pre>
