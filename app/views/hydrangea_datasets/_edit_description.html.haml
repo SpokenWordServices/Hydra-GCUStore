@@ -1,19 +1,15 @@
 %form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
   %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
   %dl
-    - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
     %dt
-      %label{:for=>"title"}
-        = title[:label]
+      = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
     %dd#title
-      = title[:field]
-    
-    - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
+      = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false)
+      
     %dt
-      %label{:for=>"language"}
-        = language[:label]
+      = fedora_field_label("descMetadata", [:title_info, :language], "Language:")
     %dd#language
-      = language[:field]
+      = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :language], :multiple=>false)
   
   // Button for adding person/conference/organization
   - if params[:action] == "edit"
@@ -31,12 +27,10 @@
 
   
   %dl
-    - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Description:", :type=>:text_area, :multiple=>false)
     %dt
-      %label{:for=>"abstract"}
-        = abstract[:label]
-    %dd#abstract{"data-datastream-name"=>"descMetadata"}
-      = abstract[:field]
+      = fedora_field_label("descMetadata", [:abstract], "Description:")
+    %dd#abstract
+      = fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false)
   
   / %dl
   /   - original_url = editable_metadata_field(@document_fedora, "descMetadata", :original_url, :label => "Original URL:")
@@ -47,12 +41,9 @@
   /     = original_url[:field]
   
   %dl
-    - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
     %dt
-      %label{:for=>"topic_tag"}
-        = topic_tag[:label]
-    %dd#topic_tag{"data-datastream-name"=>"descMetadata"}
-      = topic_tag[:field]
-      #person_entries
+      = fedora_field_label("descMetadata", [:subject, :topic], "Topic:")
+    %dd#topic_tag
+      = fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic])
       
   = render :partial=>"hydrangea_datasets/edit_coverage_and_location"
