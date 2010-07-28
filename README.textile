@@ -85,7 +85,7 @@ If all goes well, you will be able to see an empty copy of hydrangea at http://l
 
 h2. To get cucumber features to pass
 
-You must ingest two more fixtures:
+You must ingest some more fixtures:
 
 <pre>
   rake hydra:import_fixture pid=druid:bz425fy5289
