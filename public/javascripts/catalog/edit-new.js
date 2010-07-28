@@ -28,11 +28,11 @@
   	};
 
   	function bindDomEvents () {
-  	  $metaDataForm.delegate("a.addval.input", "click", function(e) {
+  	  $metaDataForm.delegate("a.addval.textfield", "click", function(e) {
         insertValue(this, e);
         e.preventDefault();
       });
-      $metaDataForm.delegate("a.addval.textArea", "click", function(e) {
+      $metaDataForm.delegate("a.addval.textarea", "click", function(e) {
         insertTextileValue(this, e);
         e.preventDefault();
       });
@@ -121,8 +121,9 @@
   	function setUpInlineEdits () {
   	  fluid.inlineEdits("#multipleEdit", {
           selectors : {
-            text : ".editableText",
-            editables : ".editable"
+            editables : ".editable-container",
+            text : ".editable-text",
+            edit: ".editable-edit"           
           },
           componentDecorators: {
             type: "fluid.undoDecorator"
@@ -182,19 +183,24 @@
 
     };
     
-  	
-
+  	// grabs datastream name and field name from the data-datastream-name and rel attributes on the input.textile-edit
+  	// grabs the submit url from the closest form, appending .textile as the format on the URL
+    // Hides the input.textile-edit
+    // serializes applicable field selectors and adds them to the submit data
+    // 
   	function setUpTextileEditables() {
-      $('.textile', $el).each(function(index) {
-        var $textileContainer = $(this).closest("dd")
-        // var $textileContainer = $(this);     
-        var datastreamName = $textileContainer.attr('data-datastream-name');
-        var fieldName = $textileContainer.attr("id");
+      $('.textile-container', $el).each(function(index) {
+        // var $textileContainer = $(this).closest("dd");
+        var $textileContainer = $(this);  
+        var $textileEditOrig = $(".textile-edit", $textileContainer).first();
+        var datastreamName = $textileEditOrig.attr('data-datastream-name');
+        var fieldName = $textileEditOrig.attr("rel");
+        var assetUrl = $textileContainer.closest("form.inline-editable").attr("rel");
+        var submitUrl = appendFormat(assetUrl, {format: "textile"});
 
-        var submitUrl = appendFormat(documentUrl, {format: "textile"});
-
-        var $textiles = $("ol div.textile", $textileContainer);
+        var $textiles = $(".textile-edit", $textileContainer);
         $textiles.each(function(index) {
+          var name = this.attr("name");
           var params = {
             datastream: datastreamName,
             field: fieldName,
@@ -209,7 +215,7 @@
             tooltip   : "Click to edit " + fieldName.replace(/_/, ' ') + "...",
             placeholder : "click to edit",
             onblur    : "ignore",
-            name      : "asset["+datastreamName+"]["+fieldName+"]["+index+"]",
+            name      : name,
             id        : "field_id",
             height    : "100",
             loadurl  : documentUrl + "?" + $.param(params)

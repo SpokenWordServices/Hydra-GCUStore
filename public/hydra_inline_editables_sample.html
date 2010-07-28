@@ -30,19 +30,19 @@ body {background-color: white;}
 </head> 
  
 <body> 
-<form action="unauthorized.html" class="inlineEditable"> 
+<form action="unauthorized.html" class="inline-editable"> 
     <fieldset id="title_fields"> 
         <legend>Title</legend> 
         <dl> 
             <dt><label for="title_main_title">Title</label></dt> 
             <dd class="title"> 
-              <span id="title_main_title-container" class="editable">
+              <span id="title_main_title-container" class="editable" data-datastream-name="descMetadata">
                 <span class="editableText" id="title_main_title-text"></span> 
-                <input class="editableTarget" id="title_info_title-edit" name="asset[descMetadata][title_main_title]" />
+                <input class="editableTarget" id="title_main_title" name="asset[descMetadata][title_main_title]" />
               </span>
             <dt><label for "title_info_language">Language</label></dt> 
             <dd class="language"> 
-              <span id="title_language-container" class="editable">
+              <span id="title_language-container" class="editable" data-datastream-name="descMetadata">
                 <span class="editableText" id="title_language-text">eng-uk</span> 
                 <input class="editableTarget" id="title_language" name="asset[descMetadata][title_language]" value="eng-uk"/>
               </span>
