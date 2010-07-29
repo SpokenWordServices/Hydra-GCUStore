@@ -37,6 +37,9 @@ You are now in your working copy of hydrangea.  Use rake to install the gem depe
 rake gems:install
 </pre>
 
+Review the output from running gems:install and make sure that there were no errors.  Depending on what operating system you're on, you might have to install library dependencies in order for all of the gems to install successfully.  In particular, nokogiri and sqlite3 require native C-libraries such as libxml2, libxslt and libsqlite3. 
+
+
 Now install the development dependencies (not required for runtime, but required to run tests)
 
 <pre>
