@@ -129,8 +129,8 @@
             type: "fluid.undoDecorator"
           },
           listeners : {
-            onFinishEdit : myFinishEditListener,
-            modelChanged : myModelChangedListener
+            onFinishEdit : hydraFinishEditListener,
+            modelChanged : hydraModelChangedListener
           },
           defaultViewText: "click to edit"
       });
@@ -173,8 +173,8 @@
               type: "fluid.undoDecorator"
             },
             listeners : {
-              onFinishEdit : myFinishEditListener,
-              modelChanged : myModelChangedListener
+              onFinishEdit : hydraFinishEditListener,
+              modelChanged : hydraModelChangedListener
             },
             defaultViewText: "click to edit"
         });
@@ -255,8 +255,8 @@
           type: "fluid.undoDecorator"
         },
         listeners : {
-          onFinishEdit : myFinishEditListener,
-          modelChanged : myModelChangedListener
+          onFinishEdit : hydraFinishEditListener,
+          modelChanged : hydraModelChangedListener
         }
       });
       newVal.edit();
@@ -291,19 +291,22 @@
     };
 
     //Handlers for when you're done editing and want values to submit to the app.
-    function myFinishEditListener(newValue, oldValue, editNode, viewNode) {
+    function hydraFinishEditListener(newValue, oldValue, editNode, viewNode) {
+      console.log("hydraFinishEditListener triggered");
       // Only submit if the value has actually changed.
       if (newValue != oldValue) {
-        var result = saveEdit($(viewNode).parent().attr("name"), newValue)
+        var result = hydraSaveEdit(editNode, newValue)
       }
       return result;
     };
 
     // Handler for ensuring that the undo decorator's actions will be submitted to the app.
-    function myModelChangedListener(model, oldModel, source) {
+    function hydraModelChangedListener(model, oldModel, source) {
+      console.log("hydraModelChangedListener triggered");
+      
       // this was a really hacky way of checking if the model is being changed by the undo decorator
       if (source && source.options.selectors.undoControl) {
-        var result = saveEdit(source.component.editContainer.parent().attr("name"), model.value);
+        var result = hydraSaveEdit(source.component.edit);
         return result;
       }
     };
@@ -320,13 +323,22 @@
         saveEdit(name , value);
     };
 
-    function saveEdit(field,value) {
-      // $("input.fieldselector[rel="+el.attr("rel")+"]").fieldSerialize()
+    function hydraSaveEdit(editNode, newValue) {
+      $editNode = $(editNode)
+      var $closestForm = $editNode.closest("form");
+      var url = $closestForm.attr("action");
+      var field_param = $editNode.fieldSerialize();
+      var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
+      var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
+      
+      var params = field_param + "&" + content_type_param + "&" + field_selectors
+      console.log(params);
+      
       $.ajax({
         type: "PUT",
-        url: $("form#document_metadata").attr("action"),
+        url: url,
         dataType : "json",
-        data: field+"="+value,
+        data: params,
         success: function(msg){
     			$.noticeAdd({
             inEffect:               {opacity: 'show'},      // in effect
@@ -349,6 +361,7 @@
         }
       });
     };
+
 
     // Remove the given value from its corresponding metadata field.
     // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
