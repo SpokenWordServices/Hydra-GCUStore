@@ -1,0 +1,9 @@
+h1. Release Notes & Known Issues -- Hydrangea Beta
+
+
+
+h2. Features Planned for Version 1.0
+
+Gems will be managed using Bundler.  This will make installation of gem dependencies even easier.
+
+h2. Known Issues
