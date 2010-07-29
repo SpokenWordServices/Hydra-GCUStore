@@ -43,6 +43,7 @@
   %dl
     %dt
       = fedora_field_label("descMetadata", [:subject, :topic], "Topic:")
+      = fedora_text_field_insert_link "descMetadata", [:subject, :topic]
     %dd#topic_tag
       = fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic])
       

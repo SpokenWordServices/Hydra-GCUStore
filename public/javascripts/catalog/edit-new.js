@@ -166,8 +166,9 @@
         $(insertion_point_selector).append(data);
         fluid.inlineEdits("#"+$(data).attr("id"), {
             selectors : {
-              text : ".editableText",
-              editables : "li.editable"
+              editables : ".editable-container",
+              text : ".editable-text",
+              edit: ".editable-edit"
             },
             componentDecorators: {
               type: "fluid.undoDecorator"
@@ -192,21 +193,30 @@
       $('.textile-container', $el).each(function(index) {
         // var $textileContainer = $(this).closest("dd");
         var $textileContainer = $(this);  
-        var $textileEditOrig = $(".textile-edit", $textileContainer).first();
-        var datastreamName = $textileEditOrig.attr('data-datastream-name');
-        var fieldName = $textileEditOrig.attr("rel");
-        var assetUrl = $textileContainer.closest("form.inline-editable").attr("rel");
-        var submitUrl = appendFormat(assetUrl, {format: "textile"});
+        var $editNode = $(".textile-edit", $textileContainer).first();
+        var datastreamName = $editNode.attr('data-datastream-name');
+
+        var $closestForm = $textileContainer.closest("form");
+        var assetUrl = $closestForm.attr("action");
+        
+        var fieldName = $editNode.attr("rel");
+        var field_param = $editNode.fieldSerialize();
+        var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
+        var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
+        var params = field_param + "&" + content_type_param + "&" + field_selectors
+        
+        var submitUrl = appendFormat(assetUrl, {format: "textile"}) + params
 
         var $textiles = $(".textile-edit", $textileContainer);
         $textiles.each(function(index) {
-          var name = this.attr("name");
+          var $this = $(this);
+          var name = $this.attr("name");
           var params = {
             datastream: datastreamName,
             field: fieldName,
             field_index: index
-          }
-          $(this).editable(submitUrl, {
+          }                    
+          $this.siblings().first().editable(submitUrl, {
             method    : "PUT",
             indicator : "<img src='/images/ajax-loader.gif'>",
             type      : "textarea",
@@ -220,6 +230,7 @@
             height    : "100",
             loadurl  : documentUrl + "?" + $.param(params)
           });
+          $this.hide();
         });
       });
     };
@@ -240,26 +251,31 @@
 
     // Inserting and removing simple inline edits
     function insertValue(element, event) {
-      var $containerDD = $(element).closest("dt").next('dd');
-      var fieldName = $containerDD.attr("id");
-      var values_list = $containerDD.find("ol");
-      var datastreamName = $containerDD.attr('data-datastream-name');
+      $element = $(element)
+      var fieldName = $element.attr("rel");
+      var datastreamName = $element.attr('data-datastream-name');
       
+      var values_list = $("ol[rel="+fieldName+"]");
       var new_value_index = values_list.children('li').size();
       var unique_id = fieldName + "_" + new_value_index;
-
-      var $item = $('<li class=\"editable\" name="asset['+datastreamName+'[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><span class="flc-inlineEdit-text"></span></li>');
+      
+      var $item = $('<li class=\"editable-container\" id="'+unique_id+'-container"><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
       $item.appendTo(values_list);
       var newVal = fluid.inlineEdit($item, {
-        componentDecorators: {
-          type: "fluid.undoDecorator"
-        },
-        listeners : {
-          onFinishEdit : hydraFinishEditListener,
-          modelChanged : hydraModelChangedListener
-        }
-      });
-      newVal.edit();
+                    selectors: {
+                      editables : ".editable-container",
+                      text : ".editable-text",
+                      edit: ".editable-edit"
+                    },
+                    componentDecorators: {
+                      type: "fluid.undoDecorator"
+                    },
+                    listeners : {
+                      onFinishEdit : hydraFinishEditListener,
+                      modelChanged : hydraModelChangedListener
+                    }
+                  });
+                  newVal.edit();
     };
 
     function insertTextileValue(element, event) {
@@ -292,7 +308,6 @@
 
     //Handlers for when you're done editing and want values to submit to the app.
     function hydraFinishEditListener(newValue, oldValue, editNode, viewNode) {
-      console.log("hydraFinishEditListener triggered");
       // Only submit if the value has actually changed.
       if (newValue != oldValue) {
         var result = hydraSaveEdit(editNode, newValue)
@@ -302,7 +317,6 @@
 
     // Handler for ensuring that the undo decorator's actions will be submitted to the app.
     function hydraModelChangedListener(model, oldModel, source) {
-      console.log("hydraModelChangedListener triggered");
       
       // this was a really hacky way of checking if the model is being changed by the undo decorator
       if (source && source.options.selectors.undoControl) {
@@ -332,7 +346,6 @@
       var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
       
       var params = field_param + "&" + content_type_param + "&" + field_selectors
-      console.log(params);
       
       $.ajax({
         type: "PUT",
