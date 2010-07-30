@@ -1,14 +1,14 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
 Then /^I should see an inline edit containing "([^"]*)"$/ do |arg1|
-  response.should have_selector("span", :content=>arg1, :class=>"editableText")
+  response.should have_selector("span", :content=>arg1, :class=>"editable-text")
 end
 
 Then /^the "([^\"]*)" inline edit should contain "([^\"]*)"$/ do |arg1, arg2|
   response.should have_selector("dt", :content=>arg1) do |dt|
     dt.each do |term| 
       term.next_element.should have_selector("dd ol li.editable") do |editable|
-        editable.should have_selector("span", :content=>arg2, :class=>"editableText")
+        editable.should have_selector("span", :content=>arg2, :class=>"editable-text")
       end 
     end
   end

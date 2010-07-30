@@ -6,18 +6,14 @@
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li
       %dl
-        - organization_role = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :role, :text], :label => "Role:")
         %dt
-          %label{:for=>"organization_role"}
-            = organization_role[:label]
-        %dd#organization_role
-          = organization_role[:field] 
+          = fedora_field_label("descMetadata", [{:organization => organization_counter}, :role, :text], "Role:")
+        %dd
+          = fedora_text_field(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text])
     %li
       %dl  
-        - organization_name = editable_metadata_field(@document_fedora, "descMetadata", [{:organization => organization_counter}, :namePart], :label => "Organization:")
         %dt
-          %label{:for=>"organization_name"}
-            = organization_name[:label]
-        %dd#organization_name
-          = organization_name[:field]
+          = fedora_field_label("descMetadata", [{:organization => organization_counter}, :namePart], "Organization:")
+        %dd
+          = fedora_text_field(@document_fedora,"descMetadata", [{:organization => organization_counter}, :namePart])
 

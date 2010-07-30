@@ -5,17 +5,15 @@
     %dl
       - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
       %dt
-        %label{:for=>"title"}
-          = title[:label]
-      %dd#title.title
-        = title[:field]
+        = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
+      %dd#title
+        = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false)
     
       - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
       %dt
-        %label{:for=>"language"}
-          = language[:label]
+        = fedora_field_label("descMetadata", [:title_info, :language], "Language:")
       %dd#language.language
-        = language[:field]
+        = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :language], :multiple=>false)
   %fieldset#contributor_fields
     %legend Contributors
     // Button for adding person/conference/organization
@@ -39,12 +37,10 @@
   %fieldset#citation_fields
     %legend Journal Citation
     %dl
-      - abstract = editable_metadata_field(@document_fedora, "descMetadata", [:abstract], :label => "Abstract:", :type=>:text_area, :multiple=>false)
       %dt
-        %label{:for=>"abstract"}
-          = abstract[:label]
+        = fedora_field_label("descMetadata", [:abstract], "Abstract:")
       %dd#abstract{"data-datastream-name"=>"descMetadata"}
-        = abstract[:field]
+        = fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false)
     
     = render :partial=>"hydrangea_articles/edit_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:journal)
   
@@ -61,7 +57,7 @@
     %dl
       - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
       %dt
-        %label{:for=>"topic_tag"}
-          = topic_tag[:label]
-      %dd#topic_tag.topic_tag{"data-datastream-name"=>"descMetadata"}
-        = topic_tag[:field]
+        = fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:")
+        = fedora_text_field_insert_link "descMetadata", [:subject, :topic]
+      %dd#topic_tag.topic_tag
+        = fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic], :multiple=>true)
