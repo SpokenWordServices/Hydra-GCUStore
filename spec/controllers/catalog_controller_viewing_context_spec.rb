@@ -29,7 +29,7 @@ describe CatalogController do
       controller.stubs(:current_user).returns(mock_user)
             
       controller.session[:viewing_context] = "edit"
-      get(:show, :id=>"druid:tj532xx3843", :viewing_context=>"browse")
+      get(:show, :id=>"hydrangea:fixture_mods_article1", :viewing_context=>"browse")
       session[:viewing_context].should == "browse"
       response.should_not redirect_to(:action => 'edit')
     end
@@ -39,7 +39,7 @@ describe CatalogController do
       controller.stubs(:current_user).returns(mock_user)
       
       controller.session[:viewing_context] = "edit"
-      get(:show, {:id=>"druid:tj532xx3843"})
+      get(:show, {:id=>"hydrangea:fixture_mods_article1"})
       session[:viewing_context].should == "browse"
       response.should_not redirect_to(:action => 'edit')
     end
