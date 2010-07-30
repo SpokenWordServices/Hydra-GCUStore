@@ -13,6 +13,8 @@ module NavigationHelpers
       '/'
     when /the search page/
       '/'
+    when /the base search page/
+      '/catalog?q=&search_field=search&action=index&controller=catalog&commit=search'
     when /the document page for id (.+)/ 
       catalog_path($1)
     when /the edit page for id (.+)/ 
