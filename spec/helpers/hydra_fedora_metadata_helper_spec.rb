@@ -35,15 +35,15 @@ describe HydraFedoraMetadataHelper do
     end
     it "should generate an ordered list of text field inputs" do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
-      generated_html.should have_tag "ol" do
-        with_tag "li#subject_0-container.editable-container" do
+      generated_html.should have_tag "ol[rel=subject]" do
+        with_tag "li#subject_0-container.editable-container.field" do
           with_tag "span#subject_0-text.editable-text", "topic1"
           with_tag "input#subject_0.editable-edit" do
             with_tag "[value=?]", "topic1"
             with_tag "[name=?]", "asset[simple_ds][subject][0]"
           end
         end
-        with_tag "li#subject_1-container.editable-container" do
+        with_tag "li#subject_1-container.editable-container.field" do
           with_tag "span#subject_1-text.editable-text", "topic2"
           with_tag "input#subject_1.editable-edit" do
             with_tag "[value=?]", "topic2"
@@ -63,7 +63,7 @@ describe HydraFedoraMetadataHelper do
       generated_html.should_not have_tag "ol"
       generated_html.should_not have_tag "li"
       
-      generated_html.should have_tag "span#subject-container.editable-container" do
+      generated_html.should have_tag "span#subject-container.editable-container.field" do
         with_tag "span#subject-text.editable-text", "topic1"
         with_tag "input#subject.editable-edit[value=topic1]" do
           with_tag "[name=?]", "asset[simple_ds][subject][0]"
@@ -74,8 +74,8 @@ describe HydraFedoraMetadataHelper do
   
   describe "fedora_text_area" do
     it "should generate an ordered list of textile-enabled text area with values from the given datastream" do
-      helper.fedora_text_area(@resource,"simple_ds","subject").should have_tag "ol" do
-        with_tag "li#subject_0-container.field_value.textile-container" do
+      helper.fedora_text_area(@resource,"simple_ds","subject").should have_tag "ol[rel=subject]" do
+        with_tag "li#subject_0-container.field_value.textile-container.field" do
           # with_tag "[data-datastream-name=?]", "simple_ds" 
           with_tag "div#subject_0-text.textile-text", "topic1"
           with_tag "input#subject_0.textile-edit[value=topic1]" do
@@ -95,7 +95,7 @@ describe HydraFedoraMetadataHelper do
       generated_html = helper.fedora_text_area(@resource,"simple_ds","subject", :multiple=>false)
       generated_html.should_not have_tag "ol"
       generated_html.should_not have_tag "li"
-      generated_html.should have_tag "span#subject-container.field_value.textile-container" do
+      generated_html.should have_tag "span#subject-container.field_value.textile-container.field" do
         with_tag "div#subject-text.textile-text", "topic1"
         with_tag "input#subject.textile-edit[value=topic1]" do
           with_tag "[data-datastream-name=?]", "simple_ds" 

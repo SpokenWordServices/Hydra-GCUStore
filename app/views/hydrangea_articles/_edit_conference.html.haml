@@ -6,17 +6,13 @@
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li
       %dl
-        - conference_role = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :role, :text], :label => "Role:")
         %dt
-          %label{:for=>"conference_role"}
-            = conference_role[:label]
-        %dd#conference_role
-          = conference_role[:field]
+          = fedora_field_label("descMetadata", [{:conference=>conference_counter}, :role, :text], "Role:")
+        %dd{:id=>"#{base_id}_role"}
+          = fedora_text_field(@document_fedora,"descMetadata", [{:conference=>conference_counter}, :role, :text], :multiple=>false)
     %li
       %dl
-        - conference_name = editable_metadata_field(@document_fedora, "descMetadata", [{:conference=>conference_counter}, :namePart], :label => "Conference:")
         %dt
-          %label{:for=>"conference_name"}
-            = conference_name[:label]
-        %dd#conference_name
-          = conference_name[:field]
+          = fedora_field_label("descMetadata", [{:conference=>conference_counter}, :namePart], "Conference:")
+        %dd{:id=>"#{base_id}_role"}
+          = fedora_text_field(@document_fedora,"descMetadata", [{:conference=>conference_counter}, :namePart], :multiple=>false)
