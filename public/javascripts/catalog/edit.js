@@ -115,7 +115,7 @@
     }
     
   	function setUpInlineEdits () {
-  	  fluid.inlineEdits(".multipleEdit", {
+  	  fluid.inlineEdits("body", {
           selectors : {
             editables : ".editable-container",
             text : ".editable-text",

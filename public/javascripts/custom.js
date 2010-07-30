@@ -1,5 +1,13 @@
 function async_load(url, divid) {
-  $(divid).load(url);
+  $.ajax({
+    type: "GET",
+    url: url,
+    dataType: "html",
+    success: function(data){
+            $(divid).html(data);
+          }
+  });
+  // $(divid).load(url);
   return null;
 }
 
