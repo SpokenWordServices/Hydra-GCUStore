@@ -115,6 +115,7 @@ describe HydraFedoraMetadataHelper do
     it "should generate a select with values from the given datastream" do
       generated_html = helper.fedora_select(@resource,"simple_ds","subject", :choices=>["topic1","topic2", "topic3"])
       generated_html.should have_tag "select.metadata-dd[name=?]", "asset[simple_ds][subject]" do
+        with_tag "[rel=?]", "subject" 
         with_tag "option[value=topic1][selected=selected]"
         with_tag "option[value=topic2][selected=selected]"
         with_tag "option[value=topic3]"
@@ -131,6 +132,7 @@ describe HydraFedoraMetadataHelper do
     it "should generate a date picker with values from the given datastream" do
       generated_html = helper.fedora_date_select(@resource,"simple_ds","subject")
       generated_html.should have_tag ".date-select[name=?]", "asset[simple_ds][subject]" do
+        with_tag "[rel=?]", "subject" 
         with_tag "input#subject-sel-y.controlled-date-part.w4em"
         with_tag "select#subject-sel-mm.controlled-date-part" do
           with_tag "option[value=01]", "January"
