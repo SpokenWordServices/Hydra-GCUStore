@@ -13,6 +13,7 @@
     // constructor
   	function init() {
   	  $metaDataForm = $("form#document_metadata", $el);
+  	  $fileAssetsList = $("#file_assets", $el);
       bindDomEvents();
       setUpInlineEdits();
       setUpTextileEditables();
@@ -36,10 +37,16 @@
         removeFieldValue(this, e);
         e.preventDefault();
       });
-
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);
       });
+      
+      $fileAssetsList.delegate("a.destructive", "click", function(e) {
+        url = $(this).attr("href");
+        deleteFileAsset(this, url) 
+        e.preventDefault();
+      });
+      
   	};
 
     //
@@ -381,6 +388,24 @@
       $(element).parent().remove();
     }
     
+    
+    // Submit a destroy request
+    function deleteFileAsset(el, url) {
+      var $el = $(el);
+      var $fileAssetNode = $el.closest(".file_asset");
+      $.ajax({
+        type: "DELETE",
+        url: url,
+        beforeSend: function() {
+  				$fileAssetNode.animate({'backgroundColor':'#fb6c6c'},300);
+  			},
+  			success: function() {
+  				$fileAssetNode.slideUp(300,function() {
+  					$fileAssetNode.remove();
+  				});
+				}
+      });
+    }
     
     /*
     * Simplified function based on jQuery AppendFormat plugin by Edgar J. Suarez
