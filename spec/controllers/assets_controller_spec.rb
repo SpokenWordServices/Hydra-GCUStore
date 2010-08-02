@@ -73,4 +73,11 @@ describe AssetsController do
     end
   end
   
+  describe "destroy" do
+    it "should delete the asset identified by pid" do
+      mock_obj = mock("asset", :delete)
+      ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
+      delete(:destroy, :id => "__PID__")
+    end
+  end
 end

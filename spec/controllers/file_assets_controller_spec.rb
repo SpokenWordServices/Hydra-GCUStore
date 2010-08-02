@@ -132,6 +132,15 @@ describe FileAssetsController do
 
     end    
   end
+
+  describe "destroy" do
+    it "should delete the asset identified by pid" do
+      mock_obj = mock("asset", :delete)
+      ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
+      delete(:destroy, :id => "__PID__")
+    end
+  end
+  
   describe "integration tests - " do
     before(:all) do
       Fedora::Repository.register(ActiveFedora.fedora_config[:url])
