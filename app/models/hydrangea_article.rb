@@ -1,4 +1,5 @@
 require "hydra"
+
 class HydrangeaArticle < ActiveFedora::Base
   
   include Hydra::ModelMethods
