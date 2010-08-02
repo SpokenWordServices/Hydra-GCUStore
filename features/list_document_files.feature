@@ -20,6 +20,7 @@ Feature: List files for a document
     And I should see a "th" element containing "Description"
     And I should see a "th" element containing "Size"
     And I should see a "th" element containing "Uploaded"
+    # And I should see a "td" with class "file_asset"
     Then I should see a link to "the file asset hydrangea:fixture_uploaded_svg1" with label "OM_MANI_PADME_HUM-bw.svg"    
     Then I should see an inline edit containing "sample file description"
     And I should see a delete button for "the file asset hydrangea:fixture_uploaded_svg1"

@@ -139,6 +139,14 @@ describe FileAssetsController do
       ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
       delete(:destroy, :id => "__PID__")
     end
+    it "should remove container relationhip and perform proper garbage collection" do
+      pending "relies on ActiveFedora implementing Base.file_objects_remove"
+      mock_container = mock("asset")
+      mock_container.expects(:file_objects_remove).with("_file_asset_pid_")
+      FileAsset.expects(:garbage_collect).with("_file_asset_pid_")
+      ActiveFedora::Base.expects(:load_instance).with("_container_pid_").returns(mock_container)
+      delete(:destroy, :id => "_file_asset_pid_", :container_id=>"_container_pid_")
+    end
   end
   
   describe "integration tests - " do
