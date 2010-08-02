@@ -32,6 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'authlogic', :version=>">= 0.1.0"
   config.gem "block_helpers", :source => "http://gemcutter.org"
   config.gem 'haml'
+  config.gem "httparty"
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
   config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller haml fluid-infusion hydra_repository stanford_salt white_list)
