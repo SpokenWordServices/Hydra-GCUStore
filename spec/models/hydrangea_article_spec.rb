@@ -17,6 +17,14 @@ describe HydrangeaArticle do
     end
   end
   
+  describe "remove_contributor" do
+    it "should remove the corresponding contributor from the xml and then mark the datastream as dirty" do
+      mods_ds = @article.datastreams_in_memory["descMetadata"]
+      mods_ds.expects(:remove_contributor).with("person","3")
+      node, index = @article.remove_contributor("person", "3")
+    end
+  end
+  
   describe "apply_depositor_metadata" do
     it "should set depositor info in the properties and rightsMetadata datastreams" do
       rights_ds = @article.datastreams_in_memory["rightsMetadata"]

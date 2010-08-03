@@ -9,14 +9,27 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 # rake cucumber
 
 describe ContributorsController do
-  it "should support adding new person / contributor / organization nodes" do
-    mock_document = mock("document")
-    ["person","conference","organization"].each do |type|
-      mock_document.expects(:insert_contributor).with(type).returns(["foo node","foo index"])
-      mock_document.expects(:save)
-      HydrangeaArticle.expects(:find).with("_PID_").returns(mock_document)
-      post :create, :asset_id=>"_PID_", :controller => "contributors", :content_type => "hydrangea_article", :contributor_type=>type
-      response.should render_template "hydrangea_articles/_edit_#{type}"
+  
+  describe "create" do
+    it "should support adding new person / contributor / organization nodes" do
+      mock_document = mock("document")
+      ["person","conference","organization"].each do |type|
+        mock_document.expects(:insert_contributor).with(type).returns(["foo node","foo index"])
+        mock_document.expects(:save)
+        HydrangeaArticle.expects(:find).with("_PID_").returns(mock_document)
+        post :create, :asset_id=>"_PID_", :controller => "contributors", :content_type => "hydrangea_article", :contributor_type=>type
+        response.should render_template "hydrangea_articles/_edit_#{type}"
+      end
     end
   end
+  
+  describe "destroy" do
+    it "should delete the contributor corresponding to contributor_type and index" do
+      mock_dataset = mock("Dataset")
+      mock_dataset.expects(:remove_contributor).with("conference", "3")
+      HydrangeaDataset.expects(:find).with("_PID_").returns(mock_dataset)
+      delete :destroy, :asset_id=>"_PID_", :content_type => "hydrangea_dataset", :contributor_type=>"conference", :index=>"3"
+    end
+  end
+  
 end
