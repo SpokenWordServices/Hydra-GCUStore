@@ -81,6 +81,20 @@ describe FileAssetsController do
       params[:container_id].should == "_PID_"
     end
   end
+
+  describe "show" do
+    it "should redirect to index view if current_user does not have read or edit permissions" do
+      mock_user = mock("User")
+      mock_user.stubs(:login).returns("fake_user")
+      controller.stubs(:current_user).returns(mock_user)
+      get(:show, :id=>"hydrangea:fixture_file_asset1")
+      response.should redirect_to(:action => 'index')
+    end
+    it "should redirect to index view if the file does not exist" do
+      get(:show, :id=>"example:invalid_object")
+      response.should redirect_to(:action => 'index')
+    end
+  end
   
   describe "create" do
     it "should init solr, create a FileAsset object, add the uploaded file to its datastreams, set the filename as its title, label, and the datastream label, and save the FileAsset" do
@@ -139,7 +153,7 @@ describe FileAssetsController do
       ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
       delete(:destroy, :id => "__PID__")
     end
-    it "should remove container relationhip and perform proper garbage collection" do
+    it "should remove container relationship and perform proper garbage collection" do
       pending "relies on ActiveFedora implementing Base.file_objects_remove"
       mock_container = mock("asset")
       mock_container.expects(:file_objects_remove).with("_file_asset_pid_")
