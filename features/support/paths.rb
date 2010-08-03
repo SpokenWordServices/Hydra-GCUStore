@@ -35,6 +35,10 @@ module NavigationHelpers
       asset_file_assets_path($1)
     when /the file asset (.*)$/i
       file_asset_path($1)
+      
+    when /the (\d+)(?:st|nd|rd|th) (person|organization|conference) entry in (.*)$/i
+      # contributor_id = "#{$2}_#{$1.to_i-1}"
+      asset_contributor_path($3, $2, $1.to_i-1)
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

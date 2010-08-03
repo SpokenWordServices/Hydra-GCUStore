@@ -3,13 +3,18 @@
 - base_id = "organization_#{organization_counter}"
 
 %span.organization.contributor{:id=>base_id}
+  - if params[:action] == "edit"
+    / Generate only the field selectors and delete button for this person entry
+    = field_selectors_for("descMetadata", [{:person=>organization_counter}])
+    %a.destructive{:href=>asset_contributor_path(@document_fedora.pid, "organization", organization_counter)} X
+  
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li
       %dl
         %dt
           = fedora_field_label("descMetadata", [{:organization => organization_counter}, :role, :text], "Role:")
         %dd
-          = fedora_text_field(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text])
+          = fedora_select(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text], :choices=>Hydra::ModsArticle.common_relator_terms.values)
     %li
       %dl  
         %dt
