@@ -23,7 +23,8 @@ class ContributorsController < ApplicationController
   def destroy
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     @document_fedora = af_model.find(params[:asset_id])
-    result = @document_fedora.remove_contributor(params[:contributor_type], params[:index])
+    @document_fedora.remove_contributor(params[:contributor_type], params[:index])
+    result = @document_fedora.save
     render :text=>result.inspect
   end
 end

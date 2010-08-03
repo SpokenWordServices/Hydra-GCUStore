@@ -24,8 +24,8 @@ describe HydraFedoraMetadataHelper do
     it "should generate a text field input with values from the given datastream" do
       generated_html = helper.fedora_text_field(@resource,"ng_ds",[:title, :main_title])
       generated_html.should have_tag "#title_main_title_0-container.editable-container"do
-        with_tag "span#title_main_title_0-text.editable-text", "My Title"
-        with_tag "input#title_main_title_0.editable-edit" do
+        with_tag "span#title_main_title_0-text.editable-text.text", "My Title"
+        with_tag "input#title_main_title_0.editable-edit.edit" do
           with_tag "[value=?]", "My Title"
           with_tag "[name=?]","asset[ng_ds][title_main_title][0]"
           with_tag "[data-datastream-name=?]", "ng_ds" 
@@ -37,15 +37,17 @@ describe HydraFedoraMetadataHelper do
       generated_html = helper.fedora_text_field(@resource,"simple_ds","subject")
       generated_html.should have_tag "ol[rel=subject]" do
         with_tag "li#subject_0-container.editable-container.field" do
-          with_tag "span#subject_0-text.editable-text", "topic1"
-          with_tag "input#subject_0.editable-edit" do
+          without_tag "a.destructive.field"
+          with_tag "span#subject_0-text.editable-text.text", "topic1"
+          with_tag "input#subject_0.editable-edit.edit" do
             with_tag "[value=?]", "topic1"
             with_tag "[name=?]", "asset[simple_ds][subject][0]"
           end
         end
         with_tag "li#subject_1-container.editable-container.field" do
-          with_tag "span#subject_1-text.editable-text", "topic2"
-          with_tag "input#subject_1.editable-edit" do
+          with_tag "a.destructive.field"
+          with_tag "span#subject_1-text.editable-text.text", "topic2"
+          with_tag "input#subject_1.editable-edit.edit" do
             with_tag "[value=?]", "topic2"
             with_tag "[name=?]", "asset[simple_ds][subject][1]"
           end
@@ -55,7 +57,7 @@ describe HydraFedoraMetadataHelper do
     end
     it "should render an empty control if the field has no values" do
       helper.fedora_text_field(@resource,"empty_ds","something").should have_tag "li#something_0-container.editable-container" do
-        with_tag "#something_0-text.editable-text", ""
+        with_tag "#something_0-text.editable-text.text", ""
       end
     end
     it "should limit to single-value output with no ordered list if :multiple=>false" do
@@ -64,8 +66,8 @@ describe HydraFedoraMetadataHelper do
       generated_html.should_not have_tag "li"
       
       generated_html.should have_tag "span#subject-container.editable-container.field" do
-        with_tag "span#subject-text.editable-text", "topic1"
-        with_tag "input#subject.editable-edit[value=topic1]" do
+        with_tag "span#subject-text.editable-text.text", "topic1"
+        with_tag "input#subject.editable-edit.edit[value=topic1]" do
           with_tag "[name=?]", "asset[simple_ds][subject][0]"
         end
       end                                                                                                                                                                                                
@@ -77,13 +79,24 @@ describe HydraFedoraMetadataHelper do
       helper.fedora_text_area(@resource,"simple_ds","subject").should have_tag "ol[rel=subject]" do
         with_tag "li#subject_0-container.field_value.textile-container.field" do
           # with_tag "[data-datastream-name=?]", "simple_ds" 
-          with_tag "div#subject_0-text.textile-text", "topic1"
-          with_tag "input#subject_0.textile-edit[value=topic1]" do
+          without_tag "a.destructive.field"
+          with_tag "div#subject_0-text.textile-text.text", "topic1"
+          with_tag "input#subject_0.textile-edit.edit[value=topic1]" do
             with_tag "[data-datastream-name=?]", "simple_ds" 
             with_tag "[rel=?]", "subject" 
             with_tag "[name=?]", "asset[simple_ds][subject][0]"
           end
         end 
+        with_tag "li#subject_1-container.field_value.textile-container.field" do
+          # with_tag "[data-datastream-name=?]", "simple_ds" 
+          with_tag "a.destructive.field"
+          with_tag "div#subject_1-text.textile-text.text", "topic2"
+          with_tag "input#subject_1.textile-edit.edit[value=topic2]" do
+            with_tag "[data-datastream-name=?]", "simple_ds" 
+            with_tag "[rel=?]", "subject" 
+            with_tag "[name=?]", "asset[simple_ds][subject][1]"
+          end
+        end
       end
     end
     it "should render an empty control if the field has no values" do      
@@ -96,8 +109,8 @@ describe HydraFedoraMetadataHelper do
       generated_html.should_not have_tag "ol"
       generated_html.should_not have_tag "li"
       generated_html.should have_tag "span#subject-container.field_value.textile-container.field" do
-        with_tag "div#subject-text.textile-text", "topic1"
-        with_tag "input#subject.textile-edit[value=topic1]" do
+        with_tag "div#subject-text.textile-text.text", "topic1"
+        with_tag "input#subject.textile-edit.edit[value=topic1]" do
           with_tag "[data-datastream-name=?]", "simple_ds" 
           with_tag "[rel=?]", "subject" 
           with_tag "[name=?]", "asset[simple_ds][subject][0]"

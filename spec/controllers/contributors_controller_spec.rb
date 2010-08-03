@@ -27,7 +27,9 @@ describe ContributorsController do
     it "should delete the contributor corresponding to contributor_type and index" do
       mock_dataset = mock("Dataset")
       mock_dataset.expects(:remove_contributor).with("conference", "3")
+      mock_dataset.expects(:save)
       HydrangeaDataset.expects(:find).with("_PID_").returns(mock_dataset)
+      
       delete :destroy, :asset_id=>"_PID_", :content_type => "hydrangea_dataset", :contributor_type=>"conference", :index=>"3"
     end
   end

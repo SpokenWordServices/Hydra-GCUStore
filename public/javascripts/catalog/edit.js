@@ -17,7 +17,6 @@
       bindDomEvents();
       setUpInlineEdits();
       setUpTextileEditables();
-      // setUpStoryEditable();
       setUpDatePicker();
       setUpSliders();
       setUpNewPermissionsForm();
@@ -33,10 +32,15 @@
         insertTextileValue(this, e);
         e.preventDefault();
       });
-      $metaDataForm.delegate("a.destructive", "click", function(e) {
+      $metaDataForm.delegate("a.destructive.field", "click", function(e) {
         removeFieldValue(this, e);
         e.preventDefault();
       });
+      $metaDataForm.delegate("a.destructive.contributor", "click", function(e) {
+        removeContributor(this, e);
+        e.preventDefault();
+      });
+      
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);
       });
@@ -184,7 +188,27 @@
         });
         
       });
-
+    };
+    
+    function removeContributor(element) {
+      var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+      var url = $(element).attr("href");
+      var $contributorNode = $(element).closest(".contributor")
+      
+      $.ajax({
+        type: "DELETE",
+        url: url,
+        dataType: "html",
+        beforeSend: function() {
+  				$contributorNode.animate({'backgroundColor':'#fb6c6c'},300);
+  			},
+  			success: function() {
+  				$contributorNode.slideUp(300,function() {
+  					$contributorNode.remove();
+  				});
+        }        
+      });
+      
     };
     
   	// grabs datastream name and field name from the data-datastream-name and rel attributes on the input.textile-edit
@@ -262,7 +286,7 @@
       var new_value_index = values_list.children('li').size();
       var unique_id = fieldName + "_" + new_value_index;
       
-      var $item = $('<li class=\"editable-container\" id="'+unique_id+'-container"><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
+      var $item = $('<li class=\"editable-container field\" id="'+unique_id+'-container"><a href="#" class="destructive field">X</a><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
       $item.appendTo(values_list);
       var newVal = fluid.inlineEdit($item, {
                     selectors: {
@@ -342,6 +366,15 @@
         saveEdit(name , value);
     };
 
+    // Remove the given value from its corresponding metadata field.
+    // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
+    function removeFieldValue(element) {
+      // set the value to an empty string & call hydraSaveEdit
+      $editNode = $(element).siblings("input.edit").first();
+      $editNode.attr("value", "");
+      hydraSaveEdit($editNode, "");
+    }
+    
     function hydraSaveEdit(editNode, newValue) {
       $editNode = $(editNode)
       var $closestForm = $editNode.closest("form");
@@ -379,14 +412,6 @@
         }
       });
     };
-
-
-    // Remove the given value from its corresponding metadata field.
-    // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
-    function removeFieldValue(element) {
-      saveEdit($(element).parent().attr("name"), "");
-      $(element).parent().remove();
-    }
     
     
     // Submit a destroy request

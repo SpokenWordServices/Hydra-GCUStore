@@ -6,7 +6,7 @@
   - if params[:action] == "edit"
     / Generate only the field selectors and delete button for this person entry
     = field_selectors_for("descMetadata", [{:person=>conference_counter}])
-    %a.destructive{:href=>asset_contributor_path(@document_fedora.pid, "conference", conference_counter)} X
+    %a.destructive.contributor{:href=>asset_contributor_path(@document_fedora.pid, "conference", conference_counter)} X
   
   %ol.multi_inline{:id=>"#{base_id}_role_and_name"}
     %li

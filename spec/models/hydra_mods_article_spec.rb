@@ -67,6 +67,7 @@ describe Hydra::ModsArticle do
       @article_ds.retrieve(:person).length.should == 1
       result = @article_ds.remove_contributor("person", "0")
       @article_ds.retrieve(:person).length.should == 0
+      @article_ds.should be_dirty
     end
   end
   

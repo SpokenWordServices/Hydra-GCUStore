@@ -33,6 +33,8 @@ module NavigationHelpers
       catalog_path($1)
     when /the file list page for (.*)$/i
       asset_file_assets_path($1)
+    when /the file asset (.*) with (.*) as its container$/i
+      asset_file_asset_path($2, $1)
     when /the file asset (.*)$/i
       file_asset_path($1)
       

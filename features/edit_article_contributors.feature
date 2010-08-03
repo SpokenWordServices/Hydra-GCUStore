@@ -12,7 +12,7 @@ Feature: Edit Article Contributors
     And I should see "Author" within "select[rel=person_0_role_text]"
     # And the "role" field for "the 1st person" entry should contain "Author"
     And the "Institution" field should contain "FACULTY, UNIVERSITY"
-    And I should see a delete button for "the 1st person entry in hydrangea:fixture_mods_article1"
+    And I should see a delete contributor button for "the 1st person entry in hydrangea:fixture_mods_article1"
     
     # Then the "First Name" field for "person_1" should contain "Henrietta"
     # And the "Last Name" field for "person_1" should contain "Lacks"
@@ -22,15 +22,15 @@ Feature: Edit Article Contributors
     And I should see "Lacks"
     And I should see "Contributor" within "select[rel=person_1_role_text]"
     And I should see "Baltimore"
-    And I should see a delete button for "the 2nd person entry in hydrangea:fixture_mods_article1"
+    And I should see a delete contributor button for "the 2nd person entry in hydrangea:fixture_mods_article1"
     
     Then I should see "NSF"
     And I should see "Other" within "select[rel=organization_0_role_text]"    
-    And I should see a delete button for "the 1st organization entry in hydrangea:fixture_mods_article1"
+    And I should see a delete contributor button for "the 1st organization entry in hydrangea:fixture_mods_article1"
     
     Then I should see "some conference"
     And I should see "Other" within "select[rel=conference_0_role_text]"    
-    And I should see a delete button for "the 1st conference entry in hydrangea:fixture_mods_article1"
+    And I should see a delete contributor button for "the 1st conference entry in hydrangea:fixture_mods_article1"
     
   Scenario: Viewing contributors in browse mode
     Given I am logged in as "archivist1" 
@@ -40,7 +40,7 @@ Feature: Edit Article Contributors
     And I should see "Author" within "select[rel=person_0_role_text]"
     # And the "role" field for "the 1st person" entry should contain "Author"
     And the "Institution" field should contain "FACULTY, UNIVERSITY"
-    And I should not see a delete button for "the 1st person entry in hydrangea:fixture_mods_article1"
+    And I should not see a delete contributor button for "the 1st person entry in hydrangea:fixture_mods_article1"
 
     # Then the "First Name" field for "person_1" should contain "Henrietta"
     # And the "Last Name" field for "person_1" should contain "Lacks"
@@ -50,13 +50,13 @@ Feature: Edit Article Contributors
     And I should see "Lacks"
     And I should see "Contributor" within "select[rel=person_1_role_text]"
     And I should see "Baltimore"
-    And I should not see a delete button for "the 2nd person entry in hydrangea:fixture_mods_article1"
+    And I should not see a delete contributor button for "the 2nd person entry in hydrangea:fixture_mods_article1"
 
     Then I should see "NSF"
     And I should see "Other" within "select[rel=organization_0_role_text]"    
-    And I should not see a delete button for "the 1st organization entry in hydrangea:fixture_mods_article1"
+    And I should not see a delete contributor button for "the 1st organization entry in hydrangea:fixture_mods_article1"
 
     Then I should see "some conference"
     And I should see "Other" within "select[rel=conference_0_role_text]"    
-    And I should not see a delete button for "the 1st conference entry in hydrangea:fixture_mods_article1"
+    And I should not see a delete contributor button for "the 1st conference entry in hydrangea:fixture_mods_article1"
     

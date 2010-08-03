@@ -46,6 +46,23 @@ Then /^related links are displayed as urls$/ do
   pending
 end
 
+Then /^I (should|should not) see a delete (field|contributor) button for "([^\"]*)"$/ do |bool,type,target|
+  if bool == "should"
+    response.should have_selector("a", :class=>"destructive #{type}", :href=>path_to(target))
+  else
+    response.should_not have_selector("a", :class=>"destructive #{type}", :href=>path_to(target))
+  end
+end
+
+Then /^I (should|should not) see a button to delete "([^\"]*)" from "([^\"]*)"$/ do |bool,target,container|
+  path_name = "#{target} with #{container} as its container"
+  if bool == "should"
+    response.should have_selector("a", :class=>"destructive", :href=>path_to(path_name))
+  else
+    response.should_not have_selector("a", :class=>"destructive", :href=>path_to(path_name))
+  end
+end
+
 Then /^I (should|should not) see a delete button for "([^\"]*)"$/ do |bool,target|
   if bool == "should"
     response.should have_selector("a", :class=>"destructive", :href=>path_to(target))
