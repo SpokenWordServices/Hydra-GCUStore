@@ -14,5 +14,16 @@ describe Hydra::ModelMethods do
       helper.apply_depositor_metadata("foouser")
     end
   end
+
+  describe "set_collection_type" do
+    it "should set the collection metadata field" do
+      prop_ds = mock("properties ds")
+      prop_ds.expects(:respond_to?).with(:collection_values).returns(true)
+      prop_ds.expects(:collection_values=).with("hydrangea_article")
+
+      helper.stubs(:datastreams_in_memory).returns({"properties"=>prop_ds})
+      helper.set_collection_type("hydrangea_article")
+    end
+  end
   
 end
