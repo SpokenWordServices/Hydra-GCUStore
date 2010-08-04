@@ -3,19 +3,210 @@
   
    $.fn.hydraMetadata = {
 
-     insertTextField: function() {},
-     insertTextileField: function() {},
-     removeFieldValue: function() {},
-     setUpNewContributorForm: function() {},
-     addContributor: function() {},
-     removeContributor: function() {},
+     /*
+     *  hydraMetadata.insertTextField
+     *  Insert a Hydra editable text field
+     */
+     insertTextField: function(element, event) {
+       $element = $(element)
+       var fieldName = $element.attr("rel");
+       var datastreamName = $element.attr('data-datastream-name');
+
+       var values_list = $("ol[rel="+fieldName+"]");
+       var new_value_index = values_list.children('li').size();
+       var unique_id = fieldName + "_" + new_value_index;
+
+       var $item = $('<li class=\"editable-container field\" id="'+unique_id+'-container"><a href="#" class="destructive field">X</a><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
+       $item.appendTo(values_list);
+       var newVal = fluid.inlineEdit($item, {
+                     selectors: {
+                       editables : ".editable-container",
+                       text : ".editable-text",
+                       edit: ".editable-edit"
+                     },
+                     componentDecorators: {
+                       type: "fluid.undoDecorator"
+                     },
+                     listeners : {
+                       onFinishEdit : hydraFinishEditListener,
+                       modelChanged : hydraModelChangedListener
+                     }
+                   });
+                   newVal.edit();
+     },
      
-     saveSelect: function() {},
-     saveDateWidgetEdit: function() {},
+     /*
+     *  hydraMetadata..insertTextileField
+     *  Insert a Hydra editable textile field
+     */
+     insertTextileField: function(element, event) {
+       var fieldName = $(element).closest("dt").next('dd').attr("id");
+       var datastreamName = $(element).closest("dt").next('dd').attr("data-datastream-name");
+       var $values_list = $(element).closest("dt").next("dd").find("ol");
+       var new_value_index = values_list.children('li').size();
+       var unique_id =  "asset_" + fieldName + "_" + new_value_index;
+
+       var assetUrl = $values_list.closest("form").attr("action");
+
+       var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+       $item.appendTo(values_list);
+
+       $("div.textile", $item).editable(assetUrl+"&format=textile", {
+           method    : "PUT",
+           indicator : "<img src='/images/ajax-loader.gif'>",
+           loadtext  : "",
+           type      : "textarea",
+           submit    : "OK",
+           cancel    : "Cancel",
+           // tooltip   : "Click to edit #{field_name.gsub(/_/, ' ')}...",
+           placeholder : "click to edit",
+           onblur    : "ignore",
+           name      : "asset["+fieldName+"]["+new_value_index+"]",
+           id        : "field_id",
+           height    : "100",
+           loadurl  : assetUrl+"?datastream="+datastreamName+"&field="+fieldName+"&field_index="+new_value_index
+       });
+
+     },
      
-     fluidFinishEditListener: function() {},
-     fluidModelChangedListener: function() {},
-     saveEdit: function() {},
+     // Remove the given value from its corresponding metadata field.
+     // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
+     removeFieldValue: function(element) {
+       // set the value to an empty string & call hydraSaveEdit
+       $editNode = $(element).siblings("input.edit").first();
+       $editNode.attr("value", "");
+       hydraSaveEdit($editNode, "");
+     },
+          
+     addContributor: function(type) {
+       var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+       var insertion_point_selector = "#"+type+"_entries";
+       var url = $("form#new_contributor").attr("action");
+
+       $.post(url, {contributor_type: type, content_type: content_type},function(data) {
+         $(insertion_point_selector).append(data);
+         fluid.inlineEdits("#"+$(data).attr("id"), {
+             selectors : {
+               editables : ".editable-container",
+               text : ".editable-text",
+               edit: ".editable-edit"
+             },
+             componentDecorators: {
+               type: "fluid.undoDecorator"
+             },
+             listeners : {
+               onFinishEdit : hydraFinishEditListener,
+               modelChanged : hydraModelChangedListener
+             },
+             defaultViewText: "click to edit"
+         });
+
+       });
+     },
+     
+     removeContributor: function(element) {
+       var content_type = $("form#new_contributor > input#content_type").first().attr("value");
+       var url = $(element).attr("href");
+       var $contributorNode = $(element).closest(".contributor")
+
+       $.ajax({
+         type: "DELETE",
+         url: url,
+         dataType: "html",
+         beforeSend: function() {
+   				$contributorNode.animate({'backgroundColor':'#fb6c6c'},300);
+   			},
+   			success: function() {
+   				$contributorNode.slideUp(300,function() {
+   					$contributorNode.remove();
+   				});
+         }        
+       });
+       
+     },
+     
+     saveSelect: function(element) {
+       if (element.value != '') {
+         hydraSaveEdit(element);
+       }
+     },
+     
+     saveDateWidgetEdit: function(callback) {
+         name = $("#"+callback["id"]).parent().attr("name");
+         value = callback["yyyy"]+"-"+callback["mm"]+"-"+callback["dd"];
+         saveEdit(name , value);
+     },
+     
+     /*
+     *  hydraMetadata.fluidFinishEditListener
+     *  modelChangedListener for Fluid Components
+     *  Purpose: Handler for when you're done editing and want values to submit to the app.     
+     *  Triggers hydraMetadata.saveEdit()
+     */
+     fluidFinishEditListener: function(newValue, oldValue, editNode, viewNode) {
+       // Only submit if the value has actually changed.
+       if (newValue != oldValue) {
+         var result = hydraSaveEdit(editNode, newValue)
+       }
+       return result;
+     },
+     
+     /*
+     *  hydraMetadata.fluidModelChangedListener
+     *  modelChangedListener for Fluid Components
+     *  Purpose: Handler for ensuring that the undo decorator's actions will be submitted to the app.
+     *  Triggers hydraMetadata.saveEdit()
+     */
+     fluidModelChangedListener: function(model, oldModel, source) {
+
+       // this was a really hacky way of checking if the model is being changed by the undo decorator
+       if (source && source.options.selectors.undoControl) {
+         var result = hydraSaveEdit(source.component.edit);
+         return result;
+       }
+     },
+     
+     /*
+     *  Save the values from a Hydra editable field (fedora_textfield, fedora_textarea, fedora_textile, fedora_select, fedora_date)
+     *
+     */
+     saveEdit: function(editNode) {
+       $editNode = $(editNode)
+       var $closestForm = $editNode.closest("form");
+       var url = $closestForm.attr("action");
+       var field_param = $editNode.fieldSerialize();
+       var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
+       var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
+
+       var params = field_param + "&" + content_type_param + "&" + field_selectors
+
+       $.ajax({
+         type: "PUT",
+         url: url,
+         dataType : "json",
+         data: params,
+         success: function(msg){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   "Your edit to "+ msg.updated[0].field_name +" has been saved as "+msg.updated[0].value+" at index "+msg.updated[0].index,   // content of the item
+             stay:                   false,                  // should the notice item stay or not?
+             type:                   'notice'                // could also be error, succes
+            });
+         },
+         error: function(xhr, textStatus, errorThrown){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
+             stay:                   true,                  // should the notice item stay or not?
+             type:                   'error'                // could also be error, succes
+            });
+         }
+       });
+     },
      
      // Submit a destroy request
      deleteFileAsset: function(el, url) {
@@ -58,43 +249,138 @@
      
    };
    
+   
+   /*
+   *  jQuery Plugin Functions
+   */
+   
+   /*
+   * Initialize the element as a Hydra Editable TextField
+   */
    $.fn.hydraTextField = function(settings) {
-     var config = {'foo': 'bar'};
+     var config = {
+      };
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       fluid.inlineEdit(this, {
+         selectors : {
+           text  : ".editable-text",
+           edit  : ".editable-edit"           
+         },
+         componentDecorators: {
+           type  : "fluid.undoDecorator"
+         },
+         listeners : {
+           onFinishEdit : $.fn.hydraMetadata.fluidFinishEditListener,
+           modelChanged : $.fn.hydraMetadata.fluidModelChangedListener
+         },
+         defaultViewText: "click to edit"
+       });
      });
  
      return this;
  
    };
    
+   /*
+   * Initialize the element as a Hydra Editable TextileField (textile-processed textarea)
+   */
    $.fn.hydraTextileField = function(settings) {
-     var config = {'foo': 'bar'};
+     var config = {
+       method    : "PUT",
+       indicator : "<img src='/images/ajax-loader.gif'>",
+       type      : "textarea",
+       submit    : "OK",
+       cancel    : "Cancel",
+       placeholder : "click to edit",
+       tooltip   : "Click to edit ...",
+       onblur    : "ignore",
+       id        : "field_id",
+       height    : "100",
+     };
  
      if (settings) $.extend(config, settings);
- 
+     
      this.each(function() {
-       // element-specific code here
+      var $this = $(this);
+      var $editNode = $(".textile-edit", this).first();  
+      var $textNode = $(".textile-text", this).first();  
+           
+      var name = $editNode.attr("name");      
+      var assetUrl = $editNode.closest("form").attr("action");
+      var submitUrl = $.fn.hydraMetadata.appendFormat(assetUrl, {format: "textile"}) + params
+
+      var params = {
+        datastream  : $editNode.attr('data-datastream-name'),
+        field       : $editNode.attr("rel"),
+        field_index : $this.index()
+      }
+
+      var nodeSpecificSettings = {
+        tooltip   : "Click to edit "+$this.attr("id")+" ...",
+        name      : name,
+        loadurl  : assetUrl + "?" + $.param(params)
+      }
+
+      $textNode.editable(submitUrl, $.extend(nodeSpecificSettings, settings));
+      $editNode.hide();
      });
- 
+      
      return this;
  
    };
    
-   $.fn.hydraDatePicker = function(settings) {
+   /*
+   *  Initialize all Textile Fields within the given selector
+   */
+   $.fn.hydraTextileFields = function(settings) {
      var config = {'foo': 'bar'};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       $(".textile-container", this).hydraTextileField(settings);
      });
  
      return this;
+   }
+   
+   
+   // 
+   // This method relies on some options being saved in the dom element's data, which is populated by a little script inserted by the fedora_date_select helper.  
+   // For example:
+   //
+   // $('div.date-select[name="asset[descMetadata][journal_0_issue_publication_date]"]').data("opts")
+   // will return
+   // {
+   //   formElements: {
+   //     journal_0_issue_publication_date-sel-dd: "d"
+   //     journal_0_issue_publication_date-sel-mm: "m"
+   //     journal_0_issue_publication_date-sel-y: "Y"
+   //    }
+   //  }
+   //
+   $.fn.hydraDatePicker = function(settings) {
+      var config = {
+       showWeeks    :   true,
+       statusFormat :   "l-cc-sp-d-sp-F-sp-Y",
+       callbackFunctions : {
+         "dateset": [$.fn.hydraMetadata.saveDateWidgetEdit]
+       }
+      };
+
+      if (settings) $.extend(config, settings);
+
+      this.each(function() {
+        var $this = $(this);
+        var opts = $.extend($this.data("opts"), settings);
+        datePickerController.createDatePicker(opts);
+      });
  
+      return this;
+
    };
    $.fn.hydraSlider = function(settings) {
      var config = {'foo': 'bar'};
@@ -123,6 +409,72 @@
    };
    
    $.fn.hydraNewContributorForm = function(settings) {
+     var config = {'foo': 'bar'};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       // element-specific code here
+     });
+ 
+     return this;
+ 
+   };
+   
+   $.fn.hydraAddTextFieldButton = function(settings) {
+     var config = {'foo': 'bar'};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       // element-specific code here
+     });
+ 
+     return this;
+ 
+   };
+   
+   
+   $.fn.hydraAddTextileFieldButton = function(settings) {
+     var config = {'foo': 'bar'};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       // element-specific code here
+     });
+ 
+     return this;
+ 
+   };
+   
+   $.fn.hydraDeleteFieldButton = function(settings) {
+     var config = {'foo': 'bar'};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       // element-specific code here
+     });
+ 
+     return this;
+ 
+   };
+   
+   $.fn.hydraDeleteContributorButton = function(settings) {
+     var config = {'foo': 'bar'};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       // element-specific code here
+     });
+ 
+     return this;
+ 
+   };
+   
+   $.fn.hydraDeleteFileAssetButton = function(settings) {
      var config = {'foo': 'bar'};
  
      if (settings) $.extend(config, settings);

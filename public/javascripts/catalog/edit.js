@@ -16,7 +16,7 @@
   	  $fileAssetsList = $("#file_assets", $el);
       bindDomEvents();
       setUpInlineEdits();
-      setUpTextileEditables();
+      setUpTextileEditables();      
       setUpDatePicker();
       setUpSliders();
       setUpNewPermissionsForm();
@@ -53,7 +53,61 @@
       
   	};
 
+    //
+    // Permissions
+    // Use Ajax to add individual permissions entry to the page
+    //
+    // wait for the DOM to be loaded 
+    function setUpNewPermissionsForm () {
+        var options = { 
+            clearForm: true,        // clear all form fields after successful submit 
+            timeout:   2000,
+            success:   insertPersonPermission  // post-submit callback 
+        };
+        // bind 'new_permissions'
+        $('#new_permissions').ajaxForm(options); 
+    };
 
+    // post-submit callback 
+    function insertPersonPermission(responseText, statusText, xhr, $form)  { 
+      $("#individual_permissions").append(responseText);
+      $('fieldset.slider select').last().selectToUISlider({labelSrc:'text'}).hide();
+      $('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
+    };
+    
+    function removePermission(element) {
+      
+    }
+    
+    function updatePermission(element) {
+      $.ajax({
+         type: "PUT",
+         url: element.closest("form").attr("action"),
+         data: element.fieldSerialize(),
+         success: function(msg){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   "Permissions for "+element.attr("id")+" have been set to "+element.fieldValue(),
+             stay:                   false,                  // should the notice item stay or not?
+             type:                   'notice'                // could also be error, succes
+            });
+         },
+         error: function(xhr, textStatus, errorThrown){
+     			$.noticeAdd({
+             inEffect:               {opacity: 'show'},      // in effect
+             inEffectDuration:       600,                    // in effect duration in miliseconds
+             stayTime:               6000,                   // time in miliseconds before the item has to disappear
+             text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
+             stay:                   true,                  // should the notice item stay or not?
+             type:                   'error'                // could also be error, succes
+            });
+         }
+       });
+      // Must submit to permissions controller.  (can't submit as regular metadata update to assets controller update method)
+      // because we need to trigger the RightsMetadata update_permissions methods.
+    }
     
     function setUpSliders () {
       sliderOpts = {
@@ -208,7 +262,7 @@
       });
     };
 
-    function setUpDatePicker () {
+    function setUpDatePicker () {      
       $('div.date-select', $el).each(function(index) {
         var $this = $(this);
         var opts = $.extend($this.data("opts"), {
