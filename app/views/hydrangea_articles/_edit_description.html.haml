@@ -35,14 +35,16 @@
       %li
         = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
 
-  %fieldset#citation_fields
-    %legend Journal Citation
+  %fieldset#abstract_fields
+    %legend Abstract
     %dl
       %dt
         = fedora_field_label("descMetadata", [:abstract], "Abstract:")
       %dd#abstract{"data-datastream-name"=>"descMetadata"}
         = fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false)
-    
+  
+  %fieldset#citation_fields
+    %legend Journal Citation
     = render :partial=>"hydrangea_articles/edit_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:journal)
   
     / %dl

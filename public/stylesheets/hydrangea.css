@@ -26,26 +26,53 @@ div.accordion-section h2.section-title {
 
 /* Multiple fields in one line */
 
-.multi_inline ol li {
+.multi_inline ul, fieldset ol {
+	margin: 0px; padding: 0px;}
+
+.multi_inline ul li {
 	display:inline-block;
 	list-style-type:none;
 	position: relative;
+	margin-bottom: .5em;
 }
-.multi_inline ol li span.field {
+
+
+.multi_inline span.editable-text {
 	float:left;
-	width: 16em;
 	margin: 0 1em 1em 0;
 }
 
-
-.multi_inline ol li label {
+.multi_inline label {
 	position: absolute;
-	bottom: -3px;
-	left: 0px;
+	top: 2em;
+	left: 3px;
 	font-size: .9em;
 }
 
+span.editable-text {display:inline-block; width: 100%; background-color: white;}
 
+/* set field sizes for fields with label to left */
+
+dd.title span.editable-text {width: 42em;}
+dd.language span.editable-text {width: 6em;}
+dd.journal span.editable-text {width: 42em;}
+dd.publisher span.editable-text {width: 23em;}
+dd.issn span.editable-text {width: 8em;}
+
+dd.publication_date {width:42em; margin-bottom:20px;}
+dd.publication_date span.editable-text {width: 8em;}
+
+/* set field sizes for fields with label underneath */
+
+dd.person .name_first span.editable-text {width: 18em;}
+dd.person .name_last span.editable-text {width: 22em;}
+dd.person .affiliation span.editable-text {width: 42em;}
+dd.organization span.editable-text {width: 42em;}
+dd.conference span.editable-text {width: 42em;}
+dd.citation .citation_volume span.editable-text {width: 6em;}
+dd.citation .citation_issue span.editable-text {width: 6em;}
+dd.citation .start_page span.editable-text {width: 6em;}
+dd.citation .end_page span.editable-text {width: 6em;}
 
 
 /*
