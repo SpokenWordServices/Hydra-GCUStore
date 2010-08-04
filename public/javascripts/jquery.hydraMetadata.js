@@ -28,8 +28,8 @@
                        type: "fluid.undoDecorator"
                      },
                      listeners : {
-                       onFinishEdit : hydraFinishEditListener,
-                       modelChanged : hydraModelChangedListener
+                       onFinishEdit : jQuery.fn.hydraMetadata.fluidFinishEditListener,
+                       modelChanged : jQuery.fn.hydraMetadata.fluidModelChangedListener
                      }
                    });
                    newVal.edit();
@@ -72,10 +72,10 @@
      // Remove the given value from its corresponding metadata field.
      // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
      deleteFieldValue: function(element) {
-       // set the value to an empty string & call hydraSaveEdit
+       // set the value to an empty string & call $.fn.hydraMetadata.saveEdit
        $editNode = $(element).siblings("input.edit").first();
        $editNode.attr("value", "");
-       hydraSaveEdit($editNode, "");
+       $.fn.hydraMetadata.saveEdit($editNode, "");
      },
           
      addContributor: function(type) {
@@ -163,7 +163,7 @@
      
      saveSelect: function(element) {
        if (element.value != '') {
-         hydraSaveEdit(element);
+         $.fn.hydraMetadata.saveEdit(element);
        }
      },
      
@@ -182,7 +182,7 @@
      fluidFinishEditListener: function(newValue, oldValue, editNode, viewNode) {
        // Only submit if the value has actually changed.
        if (newValue != oldValue) {
-         var result = hydraSaveEdit(editNode, newValue)
+         var result = $.fn.hydraMetadata.saveEdit(editNode, newValue)
        }
        return result;
      },
@@ -197,7 +197,7 @@
 
        // this was a really hacky way of checking if the model is being changed by the undo decorator
        if (source && source.options.selectors.undoControl) {
-         var result = hydraSaveEdit(source.component.edit);
+         var result = $.fn.hydraMetadata.saveEdit(source.component.edit);
          return result;
        }
      },
@@ -214,8 +214,7 @@
        var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
        var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
 
-       var params = field_param + "&" + content_type_param + "&" + field_selectors
-
+       var params = field_param + "&" + content_type_param + "&" + field_selectors + "&_method=put"
        $.ajax({
          type: "PUT",
          url: url,
@@ -236,7 +235,7 @@
              inEffect:               {opacity: 'show'},      // in effect
              inEffectDuration:       600,                    // in effect duration in miliseconds
              stayTime:               6000,                   // time in miliseconds before the item has to disappear
-             text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
+             text:                   'Your changes to' + $editNode.attr("rel") + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
              stay:                   true,                  // should the notice item stay or not?
              type:                   'error'                // could also be error, succes
             });
@@ -310,8 +309,8 @@
           type  : "fluid.undoDecorator"
         },
         listeners : {
-          onFinishEdit : $.fn.hydraMetadata.fluidFinishEditListener,
-          modelChanged : $.fn.hydraMetadata.fluidModelChangedListener
+          onFinishEdit : jQuery.fn.hydraMetadata.fluidFinishEditListener,
+          modelChanged : jQuery.fn.hydraMetadata.fluidModelChangedListener
         },
         defaultViewText: "click to edit"
       };
@@ -456,7 +455,7 @@
      var config = { 
          clearForm: true,        // clear all form fields after successful submit 
          timeout:   2000,
-         success:   $fn.hydraMetadata.addPersonPermission  // post-submit callback 
+         success:   $.fn.hydraMetadata.addPersonPermission  // post-submit callback 
      };
  
      if (settings) $.extend(config, settings);
