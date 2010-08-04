@@ -8,10 +8,12 @@
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" /> 
 
 <script type="text/javascript" src="plugin_assets/fluid-infusion/infusion/InfusionAll.js"></script>
+<script type="text/javascript" src="javascripts/jquery.hydraMetadata.js"></script>
+
 
 <script type="text/javascript" charset="utf-8">
   jQuery(document).ready(function () {
-      fluid.inlineEdits(".inlineEditable", {
+      fluid.inlineEdits(".inline-editable", {
         selectors : {
           text: ".editableText",
           editContainer: ".editable",
@@ -52,128 +54,7 @@ body {background-color: white;}
     
     
     
-    <fieldset id="contributor_fields"> 
-        <legend>Contributors</legend> 
-        
-        <!-- this is where the "add contributor" split button goes --> 
-        <input name="" type="button" value="Add person v" /> 
-        
-        <ol> 
-			<li> 
-                <dl> 
-                    <dt> 
-                        <label for="person_0_role">Person's role</label> 
-                        <select id="person_0_role"> 
-                            <option selected>Creator</option> 
-                            <option>Contributor</option> 
-                            <option>etc.</option> 
-                        </select></dt> 
-                    <dd class="multi_inline person"> 
-                        <ul> 
-                            <li class="name_first"> 
-                            	<label for "fluid-id-3-edit">First name</label> 
-                                <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-3-edit" /></span></li> 
-                            <li class="name_last"> 
-                            	<label for "fluid-id-4-edit">Last name</label> 
-                                <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-4-edit" /></span></li> 
-                            <li class="affiliation"> 
-                            	<label for "fluid-id-5-edit">Affiliation</label> 
-                                <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-5-edit" /></span></li> 
-                        </ul>               
-    	            </dd>	
-          	  </dl> 
-            </li> 
-            <li> 
-                <dl> 
-                    <dt> 
-                    	<label for="org_0_role">Organization's role</label> 
-                        <select id="org_0_role"> 
-                            <option>Creator</option> 
-                            <option selected="selected">Contributor</option> 
-                            <option>etc.</option> 
-                         </select></dt> 
-                    <dd class="multi_inline organization"> 
-                    	<label for "fluid-id-6-edit">Organization</label> 
-                        <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-6-edit" /></span></dd> 
-                </dl> 
-            </li> 
-            <li> 
-                <dl> 
-                <dt> 
-                	<label for="conf_0_role">Conference's role</label> 
-                    <select id="conf_0_role"> 
-                        <option>Creator</option> 
-                        <option selected="selected">Contributor</option> 
-                        <option>etc.</option> 
-                    </select></dt> 
-                <dd class="multi_inline conference"> 
-                	<label for "fluid-id-7-edit">Conference</label> 
-                    <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                    <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-7-edit" /></span></dd> 
-                </dl> 
-            </li> 
-            </ol> 
-    </fieldset> 
-    
-    
-    
-    <fieldset id="citation_fields"> 
-        <legend>Journal Citation</legend> 
-        <dl> 
-            <dt><label for="fluid-id-8-edit">Journal title</label></dt> 
-            <dd class="journal"> 
-            	<span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-8-edit" /></span></dd> 
-            <dt><label for="fluid-id-9-edit">Publisher</label></dt> 
-            <dd class="publisher"> 
-            	<span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-9-edit" /></span></dd> 
-            <dt><label for="fluid-id-10-edit">ISSN</label></dt> 
-            <dd class="issn"> 
-            	<span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-10-edit" /></span></dd> 
-            <dt>Citation</dt> 
-            <dd class="multi_inline citation"> 
-                <ul> 
-                    <li class="citation_volume"> 
-                    	<label for "fluid-id-11-edit">Volume</label> 
-                        <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-11-edit" /></span></li> 
-                    <li class="citation_issue"> 
-                    	<label for "fluid-id-12-edit">Issue</label> 
-                        <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-12-edit" /></span></li> 
-                    <li class="start_page"> 
-                    	<label for "fluid-id-13-edit">Start page</label> 
-                        <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-13-edit" /></span></li> 
-                    <li class="end_page"> 
-                      	<label for "fluid-id-14-edit">End page</label> 
-                        <span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-14-edit" /></span></li> 
-                </ul> 
-            </dd> 
-        </dl> 
-	</fieldset> 
-   
-   
-    <fieldset id="topic_fields"> 
-        <legend>Topics</legend> 
-        <dl> 
-            <dt><label for="topic_tag">Topics</label> <a href="">add topic</a></dt> 
-            <dd class="topic_tag"> 
-                <ul> 
-            	    <li> 
-                    	<span class="editableText fl-inlineEdit-invitation-text">click to edit</span> 
-                        <span><input class="flc-inlineEdit-edit fl-inlineEdit-edit" id="fluid-id-15-edit" /></span></li> 
-                </ul> 
-            </dd> 
-        </dl> 
-    </fieldset> 
+
 </form> 
 </body> 
 </html>
