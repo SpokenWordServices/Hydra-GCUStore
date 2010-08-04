@@ -39,13 +39,13 @@ div.accordion-section h2.section-title {
 
 .multi_inline span.editable-text {
 	float:left;
-	margin: 0 1em 1em 0;
+	margin: 0 0 1em 0;
 }
 
 .multi_inline label {
 	position: absolute;
-	top: 2em;
-	left: 3px;
+	top: 1.5em;
+	left: 0;
 	font-size: .9em;
 }
 
@@ -59,16 +59,17 @@ dd.journal span.editable-text {width: 42em;}
 dd.publisher span.editable-text {width: 23em;}
 dd.issn span.editable-text {width: 8em;}
 
-dd.publication_date {width:42em; margin-bottom:20px;}
+dd.publication_date {width:42em; height: 3em;}
 dd.publication_date span.editable-text {width: 8em;}
 
 /* set field sizes for fields with label underneath */
 
+dd.person {width: 43em;}
 dd.person .name_first span.editable-text {width: 18em;}
 dd.person .name_last span.editable-text {width: 22em;}
-dd.person .affiliation span.editable-text {width: 42em;}
-dd.organization span.editable-text {width: 42em;}
-dd.conference span.editable-text {width: 42em;}
+dd.person .affiliation span.editable-text {width: 41em;}
+dd.organization span.editable-text {width: 41em;}
+dd.conference span.editable-text {width: 41em;}
 dd.citation .citation_volume span.editable-text {width: 6em;}
 dd.citation .citation_issue span.editable-text {width: 6em;}
 dd.citation .start_page span.editable-text {width: 6em;}
@@ -136,7 +137,7 @@ ul#create-asset-menu li:hover {background-color: #666; color: #fff;}
 
 div#add-contributor-box .ui-widget {font-size: .9em;}
 div#add-contributor-box .ui-button {padding: 0;}
-div#add-contributor-box {position:relative; margin-top: 15px; color:#333; margin: 5px 0 0 20px;}
+div#add-contributor-box {position:relative; color:#333; margin: 0 0 5px 0;}
 div#add-contributor-box input,  div#add-contributor-box button {color:#333; height: 2.2em;}
 div#add-contributor-box button {padding: 0 0;}
 input#re-run-add-contributor-action {margin-right: -0.5em; padding: 0 0.6em !important;}
@@ -156,8 +157,10 @@ a.destructive {
 	color: transparent;
 	margin-left: -19px;
 	overflow:hidden;
-	padding-left:16px;
 	border-bottom: none;
+    position: absolute;
+	top: 2px;
+	right: -15px;	
 } 
 
 td a.destructive {
@@ -187,3 +190,22 @@ a:hover.addval {
 {
  display: none;
 }
+
+a#inline {
+	padding-top:5em;
+	position:absolute;
+	}
+
+div#ft {
+	text-align: center;
+	margin: 20px;
+	padding: 5px;
+	border-top: 1px dotted #cccccc;
+	}
+
+div.solrQuery {display: none;}
+
+div.powered_by {
+	font-size:0.9em;
+	font-weight:bold;
+	}
