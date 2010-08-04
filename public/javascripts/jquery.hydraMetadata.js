@@ -71,7 +71,7 @@
      
      // Remove the given value from its corresponding metadata field.
      // @param {Object} element - the element containing a value that should be removed.  element.name must be in format document[field_name][index]
-     removeFieldValue: function(element) {
+     deleteFieldValue: function(element) {
        // set the value to an empty string & call hydraSaveEdit
        $editNode = $(element).siblings("input.edit").first();
        $editNode.attr("value", "");
@@ -104,7 +104,43 @@
        });
      },
      
-     removeContributor: function(element) {
+     addPersonPermission: function(responseText, statusText, xhr, $form)  { 
+       $("#individual_permissions").append(responseText);
+       $('fieldset.slider select').last().selectToUISlider({labelSrc:'text'}).hide();
+       $('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
+     },
+     
+     updatePermission: function(element) {
+       $.ajax({
+          type: "PUT",
+          url: element.closest("form").attr("action"),
+          data: element.fieldSerialize(),
+          success: function(msg){
+      			$.noticeAdd({
+              inEffect:               {opacity: 'show'},      // in effect
+              inEffectDuration:       600,                    // in effect duration in miliseconds
+              stayTime:               6000,                   // time in miliseconds before the item has to disappear
+              text:                   "Permissions for "+element.attr("id")+" have been set to "+element.fieldValue(),
+              stay:                   false,                  // should the notice item stay or not?
+              type:                   'notice'                // could also be error, succes
+             });
+          },
+          error: function(xhr, textStatus, errorThrown){
+      			$.noticeAdd({
+              inEffect:               {opacity: 'show'},      // in effect
+              inEffectDuration:       600,                    // in effect duration in miliseconds
+              stayTime:               6000,                   // time in miliseconds before the item has to disappear
+              text:                   'Your changes to' + field + ' could not be saved because of '+ xhr.statusText + ': '+ xhr.responseText,   // content of the item
+              stay:                   true,                  // should the notice item stay or not?
+              type:                   'error'                // could also be error, succes
+             });
+          }
+        });
+       // Must submit to permissions controller.  (can't submit as regular metadata update to assets controller update method)
+       // because we need to trigger the RightsMetadata update_permissions methods.
+     },
+     
+     deleteContributor: function(element) {
        var content_type = $("form#new_contributor > input#content_type").first().attr("value");
        var url = $(element).attr("href");
        var $contributorNode = $(element).closest(".contributor")
@@ -227,6 +263,13 @@
      },
      
      /*
+     * Hide labels on all sliders in a set except for the labels on the first slider.
+     */
+     configureSliderLabels: function() {
+       	$('fieldset.slider:first .ui-slider ol:not(:first) .ui-slider-label').toggle();
+     },
+     
+     /*
      * Simplified function based on jQuery AppendFormat plugin by Edgar J. Suarez
      * http://github.com/edgarjs/jquery-append-format
      */
@@ -259,25 +302,24 @@
    */
    $.fn.hydraTextField = function(settings) {
      var config = {
+        selectors : {
+          text  : ".editable-text",
+          edit  : ".editable-edit"           
+        },
+        componentDecorators: {
+          type  : "fluid.undoDecorator"
+        },
+        listeners : {
+          onFinishEdit : $.fn.hydraMetadata.fluidFinishEditListener,
+          modelChanged : $.fn.hydraMetadata.fluidModelChangedListener
+        },
+        defaultViewText: "click to edit"
       };
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       fluid.inlineEdit(this, {
-         selectors : {
-           text  : ".editable-text",
-           edit  : ".editable-edit"           
-         },
-         componentDecorators: {
-           type  : "fluid.undoDecorator"
-         },
-         listeners : {
-           onFinishEdit : $.fn.hydraMetadata.fluidFinishEditListener,
-           modelChanged : $.fn.hydraMetadata.fluidModelChangedListener
-         },
-         defaultViewText: "click to edit"
-       });
+       fluid.inlineEdit(this, config);
      });
  
      return this;
@@ -324,7 +366,7 @@
         loadurl  : assetUrl + "?" + $.param(params)
       }
 
-      $textNode.editable(submitUrl, $.extend(nodeSpecificSettings, settings));
+      $textNode.editable(submitUrl, $.extend(nodeSpecificSettings, config));
       $editNode.hide();
      });
       
@@ -341,7 +383,7 @@
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       $(".textile-container", this).hydraTextileField(settings);
+       $(".textile-container", this).hydraTextileField(config);
      });
  
      return this;
@@ -375,112 +417,162 @@
 
       this.each(function() {
         var $this = $(this);
-        var opts = $.extend($this.data("opts"), settings);
+        var opts = $.extend($this.data("opts"), config);
         datePickerController.createDatePicker(opts);
       });
  
       return this;
 
    };
-   $.fn.hydraSlider = function(settings) {
-     var config = {'foo': 'bar'};
+   
+   /*
+   *  Initialize all Permissions Sliders within the given selector
+   */
+   $.fn.hydraPermissionsSlider = function(settings) {
+     var config = {
+       labelSrc   : 'text',
+       sliderOpts : {
+		    change: function(event, ui) { 
+          var associatedSelect = $(ui.handle).parent().prev()
+          $.fn.hydraMetadata.updatePermission(associatedSelect);
+          }
+        }
+		  }
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+ 				$(this).selectToUISlider(config).hide();
      });
  
      return this;
  
    };
    
+   /*
+   *  Initialize the form for inserting new Person (individual) permissions
+   */
    $.fn.hydraNewPermissionsForm = function(settings) {
-     var config = {'foo': 'bar'};
+     var config = { 
+         clearForm: true,        // clear all form fields after successful submit 
+         timeout:   2000,
+         success:   $fn.hydraMetadata.addPersonPermission  // post-submit callback 
+     };
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       $(this).ajaxForm(config);
      });
  
      return this;
  
    };
    
+   
+   /*
+   *  Initialize the form for inserting new Person (individual) permissions
+   *  ex. $("#add-contributor-box").hydraNewContributorForm
+   */
    $.fn.hydraNewContributorForm = function(settings) {
-     var config = {'foo': 'bar'};
+     var config = {};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       $("#re-run-add-contributor-action", this).click(function() {
+         addContributor("person");
+       });
+       $("#add_person", this).click(function() {
+         addContributor("person");
+       });
+       $("#add_organization", this).click(function() {
+         addContributor("organization");
+       });
+       $("#add_conference", this).click(function() {
+         addContributor("conference");
+       });
      });
  
      return this;
  
    };
    
-   $.fn.hydraAddTextFieldButton = function(settings) {
-     var config = {'foo': 'bar'};
+   $.fn.hydraAddTextFieldAddButton = function(settings) {
+     var config = {};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
-     });
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+           $.fn.hydraMetadata.insertTextField(this, e);
+           e.preventDefault();
+       })     
+      });
  
      return this;
  
    };
    
    
-   $.fn.hydraAddTextileFieldButton = function(settings) {
-     var config = {'foo': 'bar'};
+   $.fn.hydraTextileFieldAddButton = function(settings) {
+     var config = {};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+         $.fn.hydraMetadata.insertTextileField(this, e);
+         e.preventDefault();
+       })
      });
  
      return this;
  
    };
    
-   $.fn.hydraDeleteFieldButton = function(settings) {
-     var config = {'foo': 'bar'};
+   $.fn.hydraFieldDeleteButton = function(settings) {
+     var config = {};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+         $.fn.hydraMetadata.deleteFieldValue(this, e);
+         e.preventDefault();
+       })     
+      });
+ 
+     return this;
+ 
+   };
+   
+   $.fn.hydraContributorDeleteButton = function(settings) {
+     var config = {};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+          $.fn.hydraMetadata.deleteContributor(this, e);
+          e.preventDefault();
+        })
      });
  
      return this;
  
    };
    
-   $.fn.hydraDeleteContributorButton = function(settings) {
-     var config = {'foo': 'bar'};
+   $.fn.hydraFileAssetDeleteButton = function(settings) {
+     var config = {};
  
      if (settings) $.extend(config, settings);
  
      this.each(function() {
-       // element-specific code here
-     });
- 
-     return this;
- 
-   };
-   
-   $.fn.hydraDeleteFileAssetButton = function(settings) {
-     var config = {'foo': 'bar'};
- 
-     if (settings) $.extend(config, settings);
- 
-     this.each(function() {
-       // element-specific code here
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+           $.fn.hydraMetadata.deleteFileAsset(this, e);
+           e.preventDefault();
+         })
      });
  
      return this;
