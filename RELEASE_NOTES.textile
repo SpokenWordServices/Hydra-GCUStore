@@ -1,6 +1,7 @@
+!http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png(hydrangea logo)!
 h1. Release Notes & Known Issues -- Hydrangea Beta1
 
-This release of Hydrangea is meant to provide a first look at the reference implementation for the Hydra Framework.  The work on this code is ongoing.  You are welcome to pull updates from github at your leisure and post any questions or suggestions to the "hydra-tech mailing list":http://groups.google.com/group/hydra-tech.  If you find bugs or wish to submit feature requests, please post them to the "Hydra Jira":https://jira.duraspace.org/browse/HYDRA
+This release of Hydrangea is meant to provide a first look at the reference implementation for the Hydra Framework.  The work on this code is ongoing.  You are welcome to pull updates from github at your leisure and post any questions or suggestions to the "hydra-tech mailing list":http://groups.google.com/group/hydra-tech.  If you find bugs or wish to submit feature requests, please post them to the "Hydra Jira":https://jira.duraspace.org/browse/HYDRA.
 
 Hydrangea is meant to serve as an example of what you can build with the Hydra framework.  It is not meant to function as a freestanding, out of the box solution.  A number of complete, configurable Hydra "heads" are currently under development.  These heads will serve as the out of box solutions for content types such as 
 
@@ -50,4 +51,6 @@ Edit permissions are not enforced on all REST API methods.  This does not impact
 
 Deleting a field value currently empties out the node in the XML but leaves the empty node in the document.
 
-(Browser-specific) The "Upload files" link does not work in Safari
+(Browser-specific) The "Upload files" link does not work in Safari.
+
+
