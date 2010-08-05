@@ -1,5 +1,7 @@
 !http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png(Hydrangea)!
 
+h1. Introduction and Installation Instructions
+
 Hydrangea is the reference implementation of the Hydra framework, which builds on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
 
 For a more thorough overview of the Hydra framework, see "HYDRA_OVERVIEW.textile":http://github.com/projecthydra/hydrangea/blob/master/HYDRA_OVERVIEW.textile
