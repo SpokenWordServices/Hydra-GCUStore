@@ -244,9 +244,10 @@
      },
      
      // Submit a destroy request
-     deleteFileAsset: function(el, url) {
-       var $el = $(el);
-       var $fileAssetNode = $el.closest(".file_asset");
+     deleteFileAsset: function(el) {
+       var $fileAssetNode = $(el).closest(".file_asset");
+       var url = $(el).attr("href");
+       
        $.ajax({
          type: "DELETE",
          url: url,
