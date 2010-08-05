@@ -44,36 +44,43 @@ div.accordion-section h2.section-title {
 
 .multi_inline label {
 	position: absolute;
-	top: 1.5em;
+	top: 2em;
 	left: 0;
 	font-size: .9em;
 }
 
-span.editable-text {display:inline-block; width: 100%; background-color: white;}
+
+li.name_first {width: 49%;}
+li.name_last {width: 49%;} 
+
+
+span.editable-text {display:inline-block; width: 100%; background-color: white; height: 1.5em; overflow: hidden;}
 
 /* set field sizes for fields with label to left */
 
 dd.title span.editable-text {width: 42em;}
-dd.language span.editable-text {width: 6em;}
+dd.language span.editable-text {width: 8em;}
 dd.journal span.editable-text {width: 42em;}
 dd.publisher span.editable-text {width: 23em;}
 dd.issn span.editable-text {width: 8em;}
+dd.organiztion span.editable-text {width: 42em;} /* TYPO in HTML */
+dd.conference span.editable-text {width: 42em;}
 
-dd.publication_date {width:42em; height: 3em;}
+dd.publication_date {width:44em;}
 dd.publication_date span.editable-text {width: 8em;}
 
 /* set field sizes for fields with label underneath */
 
 dd.person {width: 43em;}
-dd.person .name_first span.editable-text {width: 18em;}
-dd.person .name_last span.editable-text {width: 22em;}
-dd.person .affiliation span.editable-text {width: 41em;}
-dd.organization span.editable-text {width: 41em;}
-dd.conference span.editable-text {width: 41em;}
-dd.citation .citation_volume span.editable-text {width: 6em;}
-dd.citation .citation_issue span.editable-text {width: 6em;}
-dd.citation .start_page span.editable-text {width: 6em;}
-dd.citation .end_page span.editable-text {width: 6em;}
+dd.person .name_first span.editable-text {width: 14em;}
+dd.person .name_last span.editable-text {width: 14em;}
+dd.person .affiliation span.editable-text {width: 42em;}
+dd.organization span.editable-text {width: 42em;}
+dd.conference span.editable-text {width: 42em;}
+dd.citation .citation_volume span.editable-text {width: 5em;}
+dd.citation .citation_issue span.editable-text {width: 5em;}
+dd.citation .start_page span.editable-text {width: 5em;}
+dd.citation .end_page span.editable-text {width: 5em;}
 
 
 /*
@@ -160,7 +167,8 @@ a.destructive {
 	border-bottom: none;
     position: absolute;
 	top: 2px;
-	right: -15px;	
+	right: -25px;	
+	width: 20px;
 } 
 
 td a.destructive {
