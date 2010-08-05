@@ -171,7 +171,6 @@ div#search select#search_field {display: none;}
 	border-bottom: none;}
 .queryName, .filterName {padding-right:14px;}
 
-http://hydra-dev.stanford.edu:3000/plugin_assets/blacklight/stylesheets/application.css?1276032462
 
 
 /* Fluid edit control overrides */
@@ -188,7 +187,7 @@ a.flc-undo-redoControl, a.flc-undo-undoControl {
 	font-size: .9em;
 }
 	
-.flc-undo-redoControl {
+a.flc-undo-redoControl {
 	background-image:url("/images/icons/redo.png") !important;
 }
 
