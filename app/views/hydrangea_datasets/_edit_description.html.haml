@@ -1,5 +1,5 @@
-%form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"hydrangea_article"), :method=>"post","data-resourceType"=>"hydrangea_article", "accept-charset"=>"utf-8"}
-  %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
+%form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets"), :method=>"post","data-resourceType"=>"hydrangea_dataset", "accept-charset"=>"utf-8"}
+  %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_dataset"}
   %dl
     %dt
       = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")

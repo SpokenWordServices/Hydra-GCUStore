@@ -1,3 +1,6 @@
+/*
+  We are gradually phasing out these functions in favor of the functions defined in jquery.hydraMetadata.js
+*/
 (function($) {
 
   var CatalogEdit = function(options, $element) {
