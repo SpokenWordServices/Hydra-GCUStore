@@ -30,7 +30,8 @@ ol dl {
 
 dl dt {
 	float:left;
-	width:9em;
+	max-width:9em;
+	white-space: nowrap;
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
@@ -196,8 +197,10 @@ a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
 	border-bottom: 1px dotted #2E4F81;
 }
 
-.editable-text input[type=text] {
-	width: 90% !important;
+fieldset dl dd input {
+	padding: 0px;
+	margin-left: -4px;
+	margin-top: -1px;
 	font-weight: normal !important;
 	color: #000 !important;
 	}

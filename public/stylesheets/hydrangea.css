@@ -58,30 +58,31 @@ span.editable-text {display:inline-block; width: 100%; background-color: white; 
 
 /* set field sizes for fields with label to left */
 
-dd.title span.editable-text {width: 42em;}
-dd.language span.editable-text {width: 8em;}
-dd.journal span.editable-text {width: 42em;}
-dd.publisher span.editable-text {width: 23em;}
-dd.issn span.editable-text {width: 8em;}
-dd.organiztion span.editable-text {width: 42em;} /* TYPO in HTML */
-dd.conference span.editable-text {width: 42em;}
+dd.title span.editable-text {width: 400px;}
+dd.language span.editable-text {width: 100px;}
+dd.journal span.editable-text {width: 400px;}
+dd.publisher span.editable-text {width: 200px;}
+dd.issn span.editable-text {width: 100px;}
+dd.organiztion span.editable-text {width: 400px;} /* TYPO in HTML */
+dd.conference span.editable-text {width: 400px;}
 
 dd.publication_date {width:44em;}
-dd.publication_date span.editable-text {width: 8em;}
+dd.publication_date span.editable-text {width: 100px;}
 
 /* set field sizes for fields with label underneath */
 
-dd.person {width: 43em;}
-dd.person .name_first span.editable-text {width: 14em;}
-dd.person .name_last span.editable-text {width: 14em;}
-dd.person .affiliation span.editable-text {width: 42em;}
-dd.organization span.editable-text {width: 42em;}
-dd.conference span.editable-text {width: 42em;}
-dd.citation .citation_volume span.editable-text {width: 5em;}
-dd.citation .citation_issue span.editable-text {width: 5em;}
-dd.citation .start_page span.editable-text {width: 5em;}
-dd.citation .end_page span.editable-text {width: 5em;}
+/*dd.person {width: 43em;} */
+dd.person .name_first span.editable-text {width: 175px;}
+dd.person .name_last span.editable-text {width: 175px;}
+dd.person .affiliation span.editable-text {width: 400px;}
+dd.organization span.editable-text {width: 400px;}
+dd.conference span.editable-text {width: 400px;}
+dd.citation .citation_volume span.editable-text {width: 100px;}
+dd.citation .citation_issue span.editable-text {width: 100px;}
+dd.citation .start_page span.editable-text {width: 100px;}
+dd.citation .end_page span.editable-text {width: 100px;}
 
+div#abstract-text textarea {display: block; width: 450px !important;}
 
 /*
 	LAYOUT TOOLS
@@ -162,12 +163,11 @@ a.destructive {
 	background-position: 0 0;
 	background-repeat:no-repeat;
 	color: transparent;
-	margin-left: -19px;
 	overflow:hidden;
 	border-bottom: none;
     position: absolute;
 	top: 2px;
-	right: -25px;	
+	right: -35px;	
 	width: 20px;
 } 
 
