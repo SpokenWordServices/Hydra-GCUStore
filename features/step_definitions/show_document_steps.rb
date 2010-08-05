@@ -48,7 +48,7 @@ end
 
 Then /^I (should|should not) see a delete (field|contributor) button for "([^\"]*)"$/ do |bool,type,target|
   if bool == "should"
-    response.should have_selector("a", :class=>"destructive #{type}", :href=>path_to(target))
+    response.should have_selector("a.destructive", :href=>path_to(target))
   else
     response.should_not have_selector("a", :class=>"destructive #{type}", :href=>path_to(target))
   end
@@ -57,9 +57,9 @@ end
 Then /^I (should|should not) see a button to delete "([^\"]*)" from "([^\"]*)"$/ do |bool,target,container|
   path_name = "#{target} with #{container} as its container"
   if bool == "should"
-    response.should have_selector("a", :class=>"destructive", :href=>path_to(path_name))
+    response.should have_selector("a", :class=>"destroy_file_asset", :href=>path_to(path_name))
   else
-    response.should_not have_selector("a", :class=>"destructive", :href=>path_to(path_name))
+    response.should_not have_selector("a", :class=>"destroy_file_asset", :href=>path_to(path_name))
   end
 end
 
