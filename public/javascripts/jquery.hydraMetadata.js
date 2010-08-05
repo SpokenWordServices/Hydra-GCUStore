@@ -337,21 +337,30 @@
       var $this = $(this);
       var $editNode = $(".textile-edit", this).first();  
       var $textNode = $(".textile-text", this).first();  
-           
+      var $closestForm =  $editNode.closest("form")
       var name = $editNode.attr("name");      
-      var assetUrl = $editNode.closest("form").attr("action");
-      var submitUrl = $.fn.hydraMetadata.appendFormat(assetUrl, {format: "textile"}) + params
-
-      var params = {
+      
+      // collect submit parameters.  These should probably be shoved into a data hash instead of a url string...
+      // var field_param = $editNode.fieldSerialize();
+      var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
+      var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize();
+      var update_params = content_type_param + "&" + field_selectors
+      
+      var assetUrl = $closestForm.attr("action") + "?" + update_params;
+      var submitUrl = $.fn.hydraMetadata.appendFormat(assetUrl, {format: "textile"}) 
+      
+      // These params are all you need to load the value from AssetsController.show
+      // Note: the field value must match the field name in solr (minus the solr suffix)
+      var load_params = {
         datastream  : $editNode.attr('data-datastream-name'),
         field       : $editNode.attr("rel"),
         field_index : $this.index()
       }
-
+      
       var nodeSpecificSettings = {
         tooltip   : "Click to edit "+$this.attr("id")+" ...",
         name      : name,
-        loadurl  : assetUrl + "?" + $.param(params)
+        loadurl  : assetUrl + "?" + $.param(load_params)
       }
 
       $textNode.editable(submitUrl, $.extend(nodeSpecificSettings, config));

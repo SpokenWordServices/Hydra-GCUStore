@@ -18,9 +18,8 @@
   	  $metaDataForm = $("form#document_metadata", $el);
   	  $fileAssetsList = $("#file_assets", $el);
       bindDomEvents();
-      // setUpInlineEdits();
       $(".editable-container").hydraTextField();
-      setUpTextileEditables();      
+      $(".textile-container").hydraTextileField();
       setUpDatePicker();
       setUpSliders();
       setUpNewPermissionsForm();
@@ -232,10 +231,10 @@
         var assetUrl = $closestForm.attr("action");
         
         var fieldName = $editNode.attr("rel");
-        var field_param = $editNode.fieldSerialize();
+        // var field_param = $editNode.fieldSerialize();
         var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
         var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize()
-        var params = field_param + "&" + content_type_param + "&" + field_selectors
+        var params = content_type_param + "&" + field_selectors
         
         var submitUrl = appendFormat(assetUrl, {format: "textile"}) + params
 
