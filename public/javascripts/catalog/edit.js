@@ -15,12 +15,13 @@
   	  $metaDataForm = $("form#document_metadata", $el);
   	  $fileAssetsList = $("#file_assets", $el);
       bindDomEvents();
-      setUpInlineEdits();
+      // setUpInlineEdits();
+      $(".editable-container").hydraTextField();
       setUpTextileEditables();      
       setUpDatePicker();
       setUpSliders();
       setUpNewPermissionsForm();
-      setUpNewContributorForm();
+      $("#add-contributor-box").hydraNewContributorForm();
   	};
 
   	function bindDomEvents () {
@@ -36,10 +37,11 @@
         removeFieldValue(this, e);
         e.preventDefault();
       });
-      $metaDataForm.delegate("a.destructive.contributor", "click", function(e) {
-        removeContributor(this, e);
-        e.preventDefault();
-      });
+      // $metaDataForm.delegate("a.destructive.contributor", "click", function(e) {
+      //   removeContributor(this, e);
+      //   e.preventDefault();
+      // });
+      $(".contributor a.destructive").hydraContributorDeleteButton();
       
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);

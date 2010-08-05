@@ -80,27 +80,15 @@
           
      addContributor: function(type) {
        var content_type = $("form#new_contributor > input#content_type").first().attr("value");
-       var insertion_point_selector = "#"+type+"_entries";
+       var contributors_group_selector = "."+type+".contributor";
+       
        var url = $("form#new_contributor").attr("action");
 
        $.post(url, {contributor_type: type, content_type: content_type},function(data) {
-         $(insertion_point_selector).append(data);
-         fluid.inlineEdits("#"+$(data).attr("id"), {
-             selectors : {
-               editables : ".editable-container",
-               text : ".editable-text",
-               edit: ".editable-edit"
-             },
-             componentDecorators: {
-               type: "fluid.undoDecorator"
-             },
-             listeners : {
-               onFinishEdit : hydraFinishEditListener,
-               modelChanged : hydraModelChangedListener
-             },
-             defaultViewText: "click to edit"
-         });
-
+         $(contributors_group_selector).last().after(data);
+         $inserted = $(contributors_group_selector).last()
+         $(".editable-container", $inserted).hydraTextField();
+         $("a.destructive", $inserted).hydraContributorDeleteButton();
        });
      },
      
@@ -151,10 +139,10 @@
          dataType: "html",
          beforeSend: function() {
    				$contributorNode.animate({'backgroundColor':'#fb6c6c'},300);
-   			},
-   			success: function() {
-   				$contributorNode.slideUp(300,function() {
-   					$contributorNode.remove();
+         },
+   			 success: function() {
+           $contributorNode.slideUp(300,function() {
+             $contributorNode.remove();
    				});
          }        
        });
@@ -481,16 +469,16 @@
  
      this.each(function() {
        $("#re-run-add-contributor-action", this).click(function() {
-         addContributor("person");
+         $.fn.hydraMetadata.addContributor("person");
        });
        $("#add_person", this).click(function() {
-         addContributor("person");
+         $.fn.hydraMetadata.addContributor("person");
        });
        $("#add_organization", this).click(function() {
-         addContributor("organization");
+         $.fn.hydraMetadata.addContributor("organization");
        });
        $("#add_conference", this).click(function() {
-         addContributor("conference");
+         $.fn.hydraMetadata.addContributor("conference");
        });
      });
  
