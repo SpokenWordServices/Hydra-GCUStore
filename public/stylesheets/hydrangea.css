@@ -200,7 +200,7 @@ a:hover.addval {
 }
 
 a#inline {
-	padding-top:5em;
+	top:5em;
 	position:absolute;
 	}
 
