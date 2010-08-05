@@ -8,8 +8,5 @@
 
       <%= get_data_with_label(document, "Date:", 'date_t') %>  
       <%= get_data_with_label(document, "Type:", 'medium_t') %>
-      <% if editor? %>
-        <%= get_data_with_label(document, "Access:", 'access_t', :default=>"private") %>
-      <% end -%>
   </dl>
 </div>
