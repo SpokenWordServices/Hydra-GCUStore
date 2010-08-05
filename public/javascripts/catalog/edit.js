@@ -15,12 +15,13 @@
   	  $metaDataForm = $("form#document_metadata", $el);
   	  $fileAssetsList = $("#file_assets", $el);
       bindDomEvents();
-      setUpInlineEdits();
+      // setUpInlineEdits();
+      $(".editable-container").hydraTextField();
       setUpTextileEditables();      
       setUpDatePicker();
       setUpSliders();
       setUpNewPermissionsForm();
-      setUpNewContributorForm();
+      $("#add-contributor-box").hydraNewContributorForm();
   	};
 
   	function bindDomEvents () {
