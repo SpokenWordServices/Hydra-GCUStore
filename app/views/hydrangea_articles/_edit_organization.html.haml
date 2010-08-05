@@ -15,4 +15,4 @@
     -# Generate the field selectors and delete button for the whole person entry
     - if params[:action] == "edit"
       = field_selectors_for("descMetadata", [{:person=>organization_counter}])
-      %a.destructive.contributor{:href=>asset_contributor_path(@document_fedora.pid, "organization", organization_counter)} X
+      %a.destructive.destroy_contributor{:href=>asset_contributor_path(@document_fedora.pid, "organization", organization_counter)} X

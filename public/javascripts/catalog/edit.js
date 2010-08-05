@@ -36,10 +36,11 @@
         removeFieldValue(this, e);
         e.preventDefault();
       });
-      $metaDataForm.delegate("a.destructive.contributor", "click", function(e) {
-        removeContributor(this, e);
-        e.preventDefault();
-      });
+      // $metaDataForm.delegate("a.destructive.contributor", "click", function(e) {
+      //   removeContributor(this, e);
+      //   e.preventDefault();
+      // });
+      $(".contributor a.destructive").hydraContributorDeleteButton();
       
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);
