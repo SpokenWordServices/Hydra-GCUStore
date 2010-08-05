@@ -20,7 +20,7 @@ float:left;
 }
 
 .slider .ui-slider-label {
-	margin-top:-3.5em;
+	margin-top:-3em;
 }
 
 .slider a.remove {
@@ -41,4 +41,4 @@ width:1.5em;
 	color:red;
 }
 
-#document_metadata > fieldset { border:1px dotted #CCCCCC; margin-top: 10px; padding-top: 20px;}
+fieldset.slider { border:1px dotted #CCCCCC; margin-top: 10px; padding-top: 20px;}

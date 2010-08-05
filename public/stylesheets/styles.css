@@ -2,10 +2,8 @@
 label {color: #666666; font-weight: normal;}
 legend {position: absolute; top: -9999px; left: -9999px;}
 fieldset {
-		border-top: 0;
-		border-left: 0;
-		border-right: 0;
-		border-bottom: 1px dotted #eeeeee !important;
+		border: 0 none;
+		border-bottom: 1px dotted #cccccc ;
 		padding-bottom: .5em;
 		margin-bottom: .5em;}
 
@@ -18,27 +16,28 @@ select {
 	font-size:.9em;
 }
 
+select.metadata-dd {width: 8em;}
 
 dl {
 	overflow:hidden;
 	margin-top:0;
 	padding-top:0;
-	max-width: 55em;
+	max-width: 56em;
 }
 ol dl {
 	border-bottom: none;
 	}
 
-dt {
+dl dt {
 	float:left;
-	width:8em;
+	width:9em;
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
 	margin: 5px;
 	}
 
-dd {
+dl dd {
 	float: left;
 	color: #000000;
 	margin: 5px;
@@ -46,15 +45,16 @@ dd {
 	position: relative;
 	}
 	
-dd#topic_tag li {
+dl dd#topic_tag li {
 	padding: 2px 0;
+	position: relative;
 	}
 
-dd ol, dd ul {
+dl dd ol, dl dd ul {
 	margin: 0px; padding: 0px;
 	}
 
-dd ol li, dd ul li {
+dl dd ol li, dl dd ul li {
 	list-style-type: none;
 }
 
@@ -118,12 +118,19 @@ div#search select#search_field {display: none;}
 	padding:3px;
 }
 
+.yui-t2 #yui-main .yui-b {
+	padding-top: 1em !important;
+}
+
 #showUtils {
 	text-align: center;
 	}
 
 #showUtils .back_to_cat {
-	float:left; 
+	left:-200px;
+	position:absolute;
+	font-size: 1.2em;
+	top: 1em;
 }
 #showUtils #previousNextDocument {
 	display: inline;
@@ -146,12 +153,23 @@ div#search select#search_field {display: none;}
 #appliedParams h3 {position:relative; padding:0px; margin:0;background-color:#FFFFFF; border: none; overflow:visible; font-weight: normal; display: inline;}
 #appliedParams img {display: none;}
 .appliedFilter {display:inline; background-color:#ffffff; padding:0px; margin: 0px; border:none;position:relative;}
-#appliedParams div {position:relative; padding:1em 0 0 0; background:#FFFFFF;}
+#appliedParams div {
+	line-height:22px; 
+	padding:1em 0 0 0; 
+	background:#FFFFFF;}
 .appliedFilter .btnRemove{display:inline; position:absolute; right:-30px; top:0; background:url("/images/icons/delete.png") no-repeat center center; border-left:none;}
 .appliedFilter a.btnRemove {border:none;}
-#appliedParams a#startOverLink{display:block; position:absolute; top:50%; right:0px; margin-top:-12px; padding:0 10px 3px 15px; line-height:22px; text-decoration:none; color:#fff;  border-bottom: none;}
+#appliedParams a#startOverLink{
+	position: relative;
+	background-position: left top;
+	float: left;
+	padding:0 2em 3px 1em; 
+	margin: 0;
+	line-height:22px; 
+	text-decoration:none; 
+	color:#fff; 
+	border-bottom: none;}
 .queryName, .filterName {padding-right:14px;}
-
 
 
 
@@ -169,7 +187,7 @@ a.flc-undo-redoControl, a.flc-undo-undoControl {
 	font-size: .9em;
 }
 	
-.flc-undo-redoControl {
+a.flc-undo-redoControl {
 	background-image:url("/images/icons/redo.png") !important;
 }
 
@@ -178,8 +196,10 @@ a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
 	border-bottom: 1px dotted #2E4F81;
 }
 
-.editableText input[type=text] {
-	width: 90% !important;
+fieldset dl dd input {
+	padding: 0px;
+	margin-left: -4px;
+	margin-top: -1px;
 	font-weight: normal !important;
 	color: #000 !important;
 	}
@@ -195,14 +215,14 @@ li.editable, li.editable_textarea, li.editable_date_picker {
   clear:right;
 }
 
-dd .editableText {
+dd .fl-inlineEdit-invitation-text {
   color: #CCCCCC !important;
   font-style: italic;
   border  : 1px dashed #CCCCCC;
   padding : 1px 3px;
 }
 
-dd :hover.editableText {
+dd :hover.editable-text {
 	color: #00cc00 !important;
 }
 

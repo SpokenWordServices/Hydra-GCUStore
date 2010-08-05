@@ -39,41 +39,50 @@ div.accordion-section h2.section-title {
 
 .multi_inline span.editable-text {
 	float:left;
-	margin: 0 1em 1em 0;
+	margin: 0 0 1em 0;
 }
 
 .multi_inline label {
 	position: absolute;
 	top: 2em;
-	left: 3px;
+	left: 0;
 	font-size: .9em;
 }
 
-span.editable-text {display:inline-block; width: 100%; background-color: white;}
+
+li.name_first {width: 49%;}
+li.name_last {width: 49%;} 
+
+
+span.editable-text {display:inline-block; width: 100%; background-color: white; height: 1.5em; overflow: hidden;}
 
 /* set field sizes for fields with label to left */
 
-dd.title span.editable-text {width: 42em;}
-dd.language span.editable-text {width: 6em;}
-dd.journal span.editable-text {width: 42em;}
-dd.publisher span.editable-text {width: 23em;}
-dd.issn span.editable-text {width: 8em;}
+dd.title span.editable-text {width: 400px;}
+dd.language span.editable-text {width: 100px;}
+dd.journal span.editable-text {width: 400px;}
+dd.publisher span.editable-text {width: 200px;}
+dd.issn span.editable-text {width: 100px;}
+dd.organiztion span.editable-text {width: 400px;} /* TYPO in HTML */
+dd.conference span.editable-text {width: 400px;}
 
-dd.publication_date {width:42em; margin-bottom:20px;}
-dd.publication_date span.editable-text {width: 8em;}
+dd.publication_date {width:44em;}
+dd.publication_date span.editable-text {width: 100px;}
 
 /* set field sizes for fields with label underneath */
 
-dd.person .name_first span.editable-text {width: 18em;}
-dd.person .name_last span.editable-text {width: 22em;}
-dd.person .affiliation span.editable-text {width: 42em;}
-dd.organization span.editable-text {width: 42em;}
-dd.conference span.editable-text {width: 42em;}
-dd.citation .citation_volume span.editable-text {width: 6em;}
-dd.citation .citation_issue span.editable-text {width: 6em;}
-dd.citation .start_page span.editable-text {width: 6em;}
-dd.citation .end_page span.editable-text {width: 6em;}
+/*dd.person {width: 43em;} */
+dd.person .name_first span.editable-text {width: 175px;}
+dd.person .name_last span.editable-text {width: 175px;}
+dd.person .affiliation span.editable-text {width: 400px;}
+dd.organization span.editable-text {width: 400px;}
+dd.conference span.editable-text {width: 400px;}
+dd.citation .citation_volume span.editable-text {width: 100px;}
+dd.citation .citation_issue span.editable-text {width: 100px;}
+dd.citation .start_page span.editable-text {width: 100px;}
+dd.citation .end_page span.editable-text {width: 100px;}
 
+div#abstract-text textarea {display: block; width: 450px !important;}
 
 /*
 	LAYOUT TOOLS
@@ -136,7 +145,7 @@ ul#create-asset-menu li:hover {background-color: #666; color: #fff;}
 
 div#add-contributor-box .ui-widget {font-size: .9em;}
 div#add-contributor-box .ui-button {padding: 0;}
-div#add-contributor-box {position:relative; margin-top: 15px; color:#333; margin: 5px 0 0 20px;}
+div#add-contributor-box {position:relative; color:#333; margin: 0 0 5px 0;}
 div#add-contributor-box input,  div#add-contributor-box button {color:#333; height: 2.2em;}
 div#add-contributor-box button {padding: 0 0;}
 input#re-run-add-contributor-action {margin-right: -0.5em; padding: 0 0.6em !important;}
@@ -154,10 +163,12 @@ a.destructive {
 	background-position: 0 0;
 	background-repeat:no-repeat;
 	color: transparent;
-	margin-left: -19px;
 	overflow:hidden;
-	padding-left:16px;
 	border-bottom: none;
+    position: absolute;
+	top: 2px;
+	right: -25px;	
+	width: 20px;
 } 
 
 td a.destructive {
@@ -187,3 +198,22 @@ a:hover.addval {
 {
  display: none;
 }
+
+a#inline {
+	top:5em;
+	position:absolute;
+	}
+
+div#ft {
+	text-align: center;
+	margin: 20px;
+	padding: 5px;
+	border-top: 1px dotted #cccccc;
+	}
+
+div.solrQuery {display: none;}
+
+div.powered_by {
+	font-size:0.9em;
+	font-weight:bold;
+	}
