@@ -30,8 +30,7 @@ ol dl {
 
 dl dt {
 	float:left;
-	max-width:9em;
-	white-space: nowrap;
+	width:9em;
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
