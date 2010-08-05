@@ -1,8 +1,6 @@
 - stylesheet_links << "../javascripts/date-picker/css/datepicker" 
--# javascript_includes << infusion_javascripts(:inline_edit, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) 
 
-- javascript_includes << ["../infusion/framework/core/js/jquery.keyboard-a11y.js", "../infusion/lib/swfobject/js/swfobject.js", "../infusion/lib/swfupload/js/swfupload.js", "../infusion/framework/core/js/Fluid.js", "../infusion/components/inlineEdit/js/InlineEdit.js", "../infusion/components/inlineEdit/js/InlineEditIntegrations.js", "../infusion/framework/core/js/ProgressiveEnhancement.js", "../infusion/components/progress/js/Progress.js", "../infusion/components/uploader/js/FileQueue.js", "../infusion/components/uploader/js/SWFUploadManager.js", "../infusion/components/uploader/js/Scroller.js", "../infusion/components/uploader/js/Uploader.js", {:cache=>true, :plugin=>"fluid-infusion"}]
-
+- javascript_includes << infusion_javascripts(:default_no_jquery, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) 
 - javascript_includes << "jquery.jeditable.mini" 
 - javascript_includes << "date-picker/js/datepicker" 
 - javascript_includes << "jquery.form.js"

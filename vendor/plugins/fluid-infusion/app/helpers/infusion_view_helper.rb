@@ -23,6 +23,20 @@ module InfusionViewHelper
     paths = opts[:include_base] ? base_paths : []
     
     case type
+    when :default_no_jquery
+      paths = ["../infusion/framework/core/js/jquery.keyboard-a11y.js", 
+        "../infusion/lib/swfobject/js/swfobject.js", 
+        "../infusion/lib/swfupload/js/swfupload.js", 
+        "../infusion/framework/core/js/Fluid.js", 
+        "../infusion/components/inlineEdit/js/InlineEdit.js", 
+        "../infusion/components/inlineEdit/js/InlineEditIntegrations.js", 
+        "../infusion/framework/core/js/ProgressiveEnhancement.js", 
+        "../infusion/components/progress/js/Progress.js", 
+        "../infusion/components/uploader/js/FileQueue.js", 
+        "../infusion/components/uploader/js/SWFUploadManager.js", 
+        "../infusion/components/uploader/js/Scroller.js", 
+        "../infusion/components/uploader/js/Uploader.js"]
+      
     when :uploader
       paths << '../infusion/framework/core/js/ProgressiveEnhancement.js'
 
