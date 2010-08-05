@@ -1,9 +1,53 @@
-h1. Release Notes & Known Issues -- Hydrangea Beta
+h1. Release Notes & Known Issues -- Hydrangea Beta1
 
+This release of Hydrangea is meant to provide a first look at the reference implementation for the Hydra Framework.  The work on this code is ongoing.  You are welcome to pull updates from github at your leisure and post any questions or suggestions to the "hydra-tech mailing list":http://groups.google.com/group/hydra-tech.  If you find bugs or wish to submit feature requests, please post them to the "Hydra Jira":https://jira.duraspace.org/browse/HYDRA
+
+Hydrangea is meant to serve as an example of what you can build with the Hydra framework.  It is not meant to function as a freestanding, out of the box solution.  A number of complete, configurable Hydra "heads" are currently under development.  These heads will serve as the out of box solutions for content types such as 
+
+* Electronic Theses & Dissertations
+* Journal Pre-prints
+* Scientific Datasets
+* Scanned Archival Manuscripts
+
+If you are interested in collaborating on one of these heads, or if you are interested in creating your own Hydra head for a different domain, please let the us know.  We have a strong community of institutions and vendors actively engaged in this open development process.
+
+h2. A Note About Content Created with this Beta Release
+
+We strongly encourage treating any content created in the Beta release as disposable.  Your optimal upgrade path from Beta to Release Candidate and 1.0 will be to delete all of the content from your Beta repository and start over with a fresh copy of Fedora.
+
+There are a number of changes planned for the upcoming Release Candidate that will change the location of a few metadata fields.  In particular, the following fields will be affected:
+
+* Permissions Settings
+* Journal Citation Details (Volume, Pages, etc.)
+
+When you update from the Beta version, any metadata you have entered into these fields will effectively disappear.  Any permissions settings will also be erased.
+
+We will also be changing the way that dates are handled.  Any dates that are not in ISO 8601 format may cause conflicts and/or errors when you upgrade.
 
 
 h2. Features Planned for Version 1.0
 
-Gems will be managed using Bundler.  This will make installation of gem dependencies even easier.
+A few of the features planned for Hydrangea 1.0
+
+* Rearrange code to lend itself to re-use and easier upgrade path
+* User Interface refinements & testing
+* Substantial user testing & subsequent bug fixes
+* Simple hooks for adding & managing facets & sort fields
+* Unit tests for javascript code
+* More Cucumber test coverage
+* Gems will be managed using Bundler.  This will make installation of gem dependencies even easier.
+* The URL structure will be changing to use /view where /catalog currently appears
+* More complete implementation of a sample "Dataset" model
+* Basic hooks for workflow ("Publish" button)
+
+We will also post guidelines for production deployment of Hydra heads.
 
 h2. Known Issues
+
+Entries in the rightsMetadata datastream are not created according to the Hydra RightsMetadata schema.  This does not break anything within the application itself, but it does mean that the application will not parse correctly constructed metadata that has been created according to the official schema.  It also means that any permissions settings entered in the Beta will effectively disappear when you upgrade to a version that uses the rightsMetadata properly.
+
+Edit permissions are not enforced on all REST API methods.  This does not impact the end user experience, but it does present a substantial security flaw, meaning that you should only put disposable content into this Beta version of the application.
+
+Deleting a field value currently empties out the node in the XML but leaves the empty node in the document.
+
+(Browser-specific) The "Upload files" link does not work in Safari
