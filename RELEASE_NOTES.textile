@@ -1,5 +1,4 @@
-!http://github.com/projecthydra/hydrangea/blob/master/public/images/hydrangea_logo_h50_white_bg.png(hydrangea logo)!
-
+!http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png(hydrangea logo)!
 h1. Release Notes & Known Issues -- Hydrangea Beta1
 
 This release of Hydrangea is meant to provide a first look at the reference implementation for the Hydra Framework.  The work on this code is ongoing.  You are welcome to pull updates from github at your leisure and post any questions or suggestions to the "hydra-tech mailing list":http://groups.google.com/group/hydra-tech.  If you find bugs or wish to submit feature requests, please post them to the "Hydra Jira":https://jira.duraspace.org/browse/HYDRA.
