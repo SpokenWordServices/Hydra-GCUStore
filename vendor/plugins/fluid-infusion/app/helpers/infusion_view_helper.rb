@@ -25,9 +25,14 @@ module InfusionViewHelper
     case type
     when :uploader
       paths << '../infusion/framework/core/js/ProgressiveEnhancement.js'
-    # TinyMCE wasn't playing nice so I've denied it the opportunity to see the light of day. - MZ
-    # when :tinyMCE
-    #   paths << 'http://tinymce-fluid.appspot.com/tiny_mce.js'
+
+      #<!-- Uploader dependencies; these will be merged into a new Uploader.js at the end -->
+      paths << "infusion/lib/swfobject/js/swfobject.js"
+      paths << "infusion/lib/swfupload/js/swfupload.js"
+      paths << "infusion/components/uploader/js/FileQueue.js"
+      paths << "infusion/components/uploader/js/SWFUploadManager.js"
+      paths << "infusion/components/uploader/js/Scroller.js"
+      paths << "infusion/components/uploader/js/Uploader.js"
     end
     
     if opts[:extras] 

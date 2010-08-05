@@ -5,6 +5,7 @@ function async_load(url, divid) {
     dataType: "html",
     success: function(data){
             $(divid).html(data);
+            $("#file_assets  .editable-container").hydraTextField();
           }
   });
   // $(divid).load(url);
