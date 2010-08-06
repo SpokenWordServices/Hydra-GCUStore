@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
 		} else {
 			$(".active").siblings().hide()
 			$(".active").toggleClass("active");
-			$(this).siblings().toggle();
+			$(this).siblings().slideToggle();
 			$(this).addClass("active");
 		}
 
