@@ -77,7 +77,7 @@ Run the Rspec tests to make sure everything is working properly.
 {cd to wherever you cloned hydrangea, then...}
 rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
 rake hydra:import_fixture pid=hydrangea:fixture_mods_article3
-rake hydra:import_fixture pid=hydrangea:fixtture_file_asset1
+rake hydra:import_fixture pid=hydrangea:fixture_file_asset1
 rake spec
 </pre>
 
