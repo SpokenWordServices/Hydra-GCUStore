@@ -48,8 +48,8 @@ jQuery(document).ready(function($) {
 		if($(this).hasClass("active")) {
 			
 		} else {
-			$(".active").siblings().hide()
-			$(".active").toggleClass("active");
+			$(".accordion-section .active").siblings().hide()
+			$(".accordion-section .active").toggleClass("active");
 			$(this).siblings().slideToggle();
 			$(this).addClass("active");
 		}
