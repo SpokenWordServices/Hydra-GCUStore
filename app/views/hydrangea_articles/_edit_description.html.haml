@@ -28,12 +28,9 @@
           %li#add_conference Add a conference
     
     %ol
-      %li
-        = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
-      %li
-        = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
-      %li
-        = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
+      = render :partial=>"hydrangea_articles/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
+      = render :partial=>"hydrangea_articles/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:organization)
+      = render :partial=>"hydrangea_articles/edit_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:conference)
 
   %fieldset#abstract_fields
     %legend Abstract
