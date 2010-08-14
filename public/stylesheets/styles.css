@@ -47,7 +47,6 @@ dl dd {
 	
 dl dd#topic_tag li {
 	padding: 2px 0;
-	position: relative;
 	}
 
 dl dd ol, dl dd ul {
@@ -213,6 +212,10 @@ input.flc-inlineEdit-edit {
 li.editable, li.editable_textarea, li.editable_date_picker {
   list-style-type: none;
   clear:right;
+}
+
+li.editable-container {
+  position: relative;
 }
 
 dd .fl-inlineEdit-invitation-text {
