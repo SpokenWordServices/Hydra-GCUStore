@@ -24,6 +24,10 @@
       setUpSliders();
       setUpNewPermissionsForm();
       $("#add-contributor-box").hydraNewContributorForm();
+      $("a.inline").fancybox({
+      		'hideOnContentClick': true,
+      		'autoDimensions' : false
+      	});
   	};
 
   	function bindDomEvents () {

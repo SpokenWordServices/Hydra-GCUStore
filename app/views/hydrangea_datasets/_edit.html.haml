@@ -8,6 +8,8 @@
 - javascript_includes << "catalog/edit"
 - javascript_includes << "/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" 
 - javascript_includes << "jquery.notice.js" 
+- javascript_includes << "fancybox/jquery.fancybox-1.3.1.pack.js"
+- stylesheet_links << "../javascripts/fancybox/jquery.fancybox-1.3.1.css"
 
 // For slider controls
 - javascript_includes << "select_to_ui_slider/selectToUISlider.jQuery.js"
@@ -56,5 +58,6 @@
 - sidebar_items << capture do 
   =# render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} 
   =# render :partial=>'facets' 
+  = delete_asset_link(params[:id], "dataset")
 
 = async_load_tag(asset_file_assets_path(params[:id]), 'uploads')
