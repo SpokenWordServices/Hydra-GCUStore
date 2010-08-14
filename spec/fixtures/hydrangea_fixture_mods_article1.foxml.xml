@@ -104,13 +104,13 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <name type="corporate"> 
         <namePart>NSF</namePart> 
         <role> 
-          <roleTerm authority="marcrelator" type="text">Other</roleTerm> 
+          <roleTerm authority="marcrelator" type="text">Funder</roleTerm> 
         </role> 
       </name> 
       <name type="conference"> 
         <namePart>some conference</namePart> 
         <role> 
-          <roleTerm authority="marcrelator" type="text">Other</roleTerm> 
+          <roleTerm authority="marcrelator" type="text">Host</roleTerm> 
         </role> 
       </name>
       

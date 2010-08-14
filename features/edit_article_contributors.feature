@@ -25,11 +25,11 @@ Feature: Edit Article Contributors
     And I should see a delete contributor button for "the 2nd person entry in hydrangea:fixture_mods_article1"
     
     Then I should see "NSF"
-    And I should see "Other" within "select[rel=organization_0_role_text]"    
+    And I should see "Funder" within "select[rel=organization_0_role_text]"    
     And I should see a delete contributor button for "the 1st organization entry in hydrangea:fixture_mods_article1"
     
     Then I should see "some conference"
-    And I should see "Other" within "select[rel=conference_0_role_text]"    
+    And I should see "Host" within "select[rel=conference_0_role_text]"    
     And I should see a delete contributor button for "the 1st conference entry in hydrangea:fixture_mods_article1"
     
   Scenario: Viewing contributors in browse mode
@@ -53,10 +53,10 @@ Feature: Edit Article Contributors
     And I should not see a delete contributor button for "the 2nd person entry in hydrangea:fixture_mods_article1"
 
     Then I should see "NSF"
-    And I should see "Other" within "select[rel=organization_0_role_text]"    
+    And I should see "Funder" within "select[rel=organization_0_role_text]"    
     And I should not see a delete contributor button for "the 1st organization entry in hydrangea:fixture_mods_article1"
 
     Then I should see "some conference"
-    And I should see "Other" within "select[rel=conference_0_role_text]"    
+    And I should see "Host" within "select[rel=conference_0_role_text]"    
     And I should not see a delete contributor button for "the 1st conference entry in hydrangea:fixture_mods_article1"
     

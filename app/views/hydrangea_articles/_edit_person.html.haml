@@ -1,12 +1,16 @@
 - person = edit_person
 - person_counter = edit_person_counter
 - base_id = "person_#{person_counter}"
-
+- if @document_fedora.class.respond_to?(:person_relator_terms)
+  - choices = @document_fedora.class.person_relator_terms
+- else
+  - choices = Hydra::ModsArticle.person_relator_terms
+  
 %li
   %dl.person.contributor{:id=>base_id}
     %dt
       = fedora_field_label("descMetadata", [{:person=>person_counter}, :role, :text], "Person's Role:")
-      = fedora_select(@document_fedora,"descMetadata", [{:person=>person_counter}, :role, :text], :choices=>Hydra::ModsArticle.common_relator_terms.values)
+      = fedora_select(@document_fedora,"descMetadata", [{:person=>person_counter}, :role, :text], :choices=>choices.values.sort)
     %dd.multi_inline.person
       %ul
         %li.name_first
