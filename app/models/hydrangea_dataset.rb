@@ -10,7 +10,7 @@ class HydrangeaDataset < ActiveFedora::Base
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
   
   # Uses the Hydra MODS Article profile for tracking most of the descriptive metadata
-  has_metadata :name => "descMetadata", :type => Hydra::ModsArticle 
+  has_metadata :name => "descMetadata", :type => Hydra::ModsDataset
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|

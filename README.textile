@@ -99,6 +99,7 @@ You must ingest some more fixtures:
   rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
   rake hydra:import_fixture pid=hydrangea:fixture_uploaded_svg1
   rake hydra:import_fixture pid=hydrangea:fixture_archivist_only_mods_article
+  rake hydra:import_fixture pid=hydrangea:fixture_mods_dataset1
 </pre>
 
 Then run your tests.

@@ -69,6 +69,22 @@ dd.conference span.editable-text {width: 400px;}
 dd.publication_date {width:44em;}
 dd.publication_date span.editable-text {width: 100px;}
 
+/* !! Requires Attention !! */
+/* dataset fields */
+dd.data_type {width: 190px;}
+dd.data_type select {width: 150px;}
+
+dd.location span.editable-text {width: 400px;}
+dd.contact_name span.editable-text {width: 150px;}
+dd.contact_email span.editable-text {width: 200px;}
+dd.keywords {width:600px}
+dd.grant {width:600px;}
+li.grant_agency {width: 59%;}
+li.grant_number {width: 39%;}
+li.grant_agency span.editable-text {width: 270px;}
+li.grant_number span.editable-text {width: 180px;}
+li.timespan_start {margin-right:10px;}
+
 /* set field sizes for fields with label underneath */
 
 /*dd.person {width: 43em;} */
@@ -82,7 +98,7 @@ dd.citation .citation_issue span.editable-text {width: 100px;}
 dd.citation .start_page span.editable-text {width: 100px;}
 dd.citation .end_page span.editable-text {width: 100px;}
 
-div#abstract-text textarea {display: block; width: 450px !important;}
+div.textile-text.text textarea {display: block; width: 450px !important;}
 
 /*
 	LAYOUT TOOLS
