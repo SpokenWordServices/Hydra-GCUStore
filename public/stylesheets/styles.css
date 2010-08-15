@@ -159,7 +159,6 @@ div#search select#search_field {display: none;}
 .appliedFilter .btnRemove{display:inline; position:absolute; right:-30px; top:0; background:url("/images/icons/delete.png") no-repeat center center; border-left:none;}
 .appliedFilter a.btnRemove {border:none;}
 #appliedParams a#startOverLink{
-	position: relative;
 	background-position: left top;
 	float: left;
 	padding:0 2em 3px 1em; 
