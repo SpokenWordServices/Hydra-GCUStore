@@ -1,5 +1,9 @@
 
-label {color: #666666; font-weight: normal;}
+label {
+	color:#555555;
+	font-weight:bold;
+	font-size: .9em;
+}
 legend {position: absolute; top: -9999px; left: -9999px;}
 fieldset {
 		border: 0 none;
@@ -16,7 +20,7 @@ select {
 	font-size:.9em;
 }
 
-select.metadata-dd {width: 8em;}
+select.metadata-dd {width:10em;}
 
 dl {
 	overflow:hidden;
@@ -30,17 +34,17 @@ ol dl {
 
 dl dt {
 	float:left;
-	width:9em;
+	width:7em;
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
-	margin: 5px;
+	margin-top: 1em;
 	}
 
 dl dd {
 	float: left;
 	color: #000000;
-	margin: 5px;
+	margin-top: 1em;
 	max-width: 44em;
 	position: relative;
 	}
@@ -55,6 +59,10 @@ dl dd ol, dl dd ul {
 
 dl dd ol li, dl dd ul li {
 	list-style-type: none;
+}
+
+dl.person dt label {
+	position: absolute; top: -9999px; left: -9999px;
 }
 
 #documents {
@@ -124,6 +132,11 @@ div#search select#search_field {display: none;}
 #showUtils {
 	text-align: center;
 	}
+	
+div.sidebar {
+	position: relative;
+}
+
 
 #showUtils .back_to_cat {
 	left:-200px;
@@ -141,7 +154,6 @@ div#search select#search_field {display: none;}
 
 .edit-browse .toggle {
 	margin: 0px 5px;}
-
 
 
 
@@ -189,10 +201,17 @@ a.flc-undo-redoControl {
 	background-image:url("/images/icons/redo.png") !important;
 }
 
-a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
+span.flc-undo {
+	display:inline-block;
+	height:12px;
+	overflow:hidden;
+	width:20px;
+}
+
+/* a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
 	color:#2E4F81;
 	border-bottom: 1px dotted #2E4F81;
-}
+}*/
 
 fieldset dl dd input {
 	padding: 0px;
