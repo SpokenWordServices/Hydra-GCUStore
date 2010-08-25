@@ -9,21 +9,14 @@ h1.site_title {
 /* Accordion control */
 
 div.accordion-section {
-    border-left:1px solid #CFE2EF;
-	border-right:1px solid #CFE2EF;
-	border-bottom:1px solid #CFE2EF;
-	background:url("/images/accordion.png") repeat-x scroll left top #FFF;
+    border: 1px solid #cccccc;
+	background:url("/images/accordion-gradient.png") repeat-x scroll left top #FFF;
     overflow: auto;
 	padding: 10px;
 }
 
-div.accordion-section:hover {
-background:url("/images/accordion-hover.png") repeat-x scroll left top #FFFFFF;
-}
-
 div.accordion-section h2.section-title {
     margin: -8px 0 10px 0;
-	font-size:1.2em;
 }
 
 
@@ -37,11 +30,10 @@ div.accordion-section h2.section-title {
 	margin: 0px; padding: 0px;}
 
 .multi_inline ul li {
-    font-weight: normal;
-    top:-1.2em;	
 	display:inline-block;
 	list-style-type:none;
 	position: relative;
+	margin-bottom: .5em;
 }
 
 
@@ -52,9 +44,9 @@ div.accordion-section h2.section-title {
 
 .multi_inline label {
 	position: absolute;
-	top: -1em;
+	top: 2em;
 	left: 0;
-	font-size:0.8em;
+	font-size: .9em;
 }
 
 
@@ -62,17 +54,11 @@ li.name_first {width: 49%;}
 li.name_last {width: 49%;} 
 
 
-span.editable-text {
-	display:inline-block; 
-	width: 100%; 
-	background-color: transparent; 
-	height: 1.5em; 
-	overflow: hidden;
-	border: 1px dashed #dfdfdf;}
+span.editable-text {display:inline-block; width: 100%; background-color: white; height: 1.5em; overflow: hidden;}
 
 /* set field sizes for fields with label to left */
 
-dd.title span.editable-text {width: 470px;}
+dd.title span.editable-text {width: 400px;}
 dd.language span.editable-text {width: 100px;}
 dd.journal span.editable-text {width: 400px;}
 dd.publisher span.editable-text {width: 200px;}
@@ -83,84 +69,36 @@ dd.conference span.editable-text {width: 400px;}
 dd.publication_date {width:44em;}
 dd.publication_date span.editable-text {width: 100px;}
 
+/* !! Requires Attention !! */
 /* dataset fields */
-dd.data_type {width: 120px;}
-dd.data_type select {width: 120px;}
+dd.data_type {width: 190px;}
+dd.data_type select {width: 150px;}
 
-dd.location span.editable-text {width: 470px;}
+dd.location span.editable-text {width: 400px;}
 dd.contact_name span.editable-text {width: 150px;}
 dd.contact_email span.editable-text {width: 200px;}
-dd.keywords {width:500px}
-dd.grant {width:500px;}
-li.grant_agency {width: 50%;}
-li.grant_number {width: 40%;}
-li.grant_agency span.editable-text {width: 280px;}
-li.grant_number span.editable-text {width: 150px;}
-li.timespan_start {margin-right:20px;}
-li.timespan_start span.editable-text {width: 85px;}
-li.timespan_end span.editable-text {width: 85px;}
+dd.keywords {width:600px}
+dd.grant {width:600px;}
+li.grant_agency {width: 59%;}
+li.grant_number {width: 39%;}
+li.grant_agency span.editable-text {width: 270px;}
+li.grant_number span.editable-text {width: 180px;}
+li.timespan_start {margin-right:10px;}
 
 /* set field sizes for fields with label underneath */
 
-dd.person .name_first span.editable-text {width: 200px;}
-dd.person .name_last span.editable-text {width: 200px;}
-dd.person .affiliation span.editable-text {width: 470px;}
-dd.organization span.editable-text {width: 470px;}
-dd.conference span.editable-text {width: 470px;}
+/*dd.person {width: 43em;} */
+dd.person .name_first span.editable-text {width: 175px;}
+dd.person .name_last span.editable-text {width: 175px;}
+dd.person .affiliation span.editable-text {width: 400px;}
+dd.organization span.editable-text {width: 400px;}
+dd.conference span.editable-text {width: 400px;}
 dd.citation .citation_volume span.editable-text {width: 100px;}
 dd.citation .citation_issue span.editable-text {width: 100px;}
 dd.citation .start_page span.editable-text {width: 100px;}
 dd.citation .end_page span.editable-text {width: 100px;}
 
-div.textile-text.text textarea {display: block; width: 470px !important;}
-
-dd.keywords span.editable-text {width: 470px;}
-
-div.textile-text {
-	border: 1px dashed #dfdfdf;
-	color:#CCCCCC;
-	font-style:italic;
-}
-
-div.textile-text:hover {
-	color: #00cc00;
-}
-
-
-fieldset dd div.textile-text p {
-	margin-top: 0;
-	padding-top: 0 !important;
-}
-
-
-
-/* File assets section */
-
-table#file_assets th {
-	color:#555555;
-	font-size:0.9em;
-	font-weight:bold;
-	text-align: left;
-	border-bottom: 1px dotted #cccccc;
-}
-
-table#file_assets td {
-	font-weight: normal;
-	text-align: left;
-	border-bottom: 1px dotted #cccccc;
-	vertical-align: top;
-}
-
-span#description-container:hover {
-	color: #00cc00;
-}
-
-span#description-container {
-	color:#CCCCCC;
-	font-style:italic;
-}
-
-
+div.textile-text.text textarea {display: block; width: 450px !important;}
 
 /*
 	LAYOUT TOOLS
@@ -265,7 +203,6 @@ a.addval {
 	font-weight: bold;
 	padding: 0 1px;
 	margin: 0 5px 0 3px;
-	display: block;
 	}
 	
 a:hover.addval {
@@ -278,17 +215,10 @@ a:hover.addval {
  display: none;
 }
 
-
-
-a.inline {
-	position: absolute;
-	top: 65px;
-	left: 0;
-}
-
-
-
-
+a#inline {
+	top:5em;
+	position:absolute;
+	}
 
 div#ft {
 	text-align: center;
@@ -300,21 +230,6 @@ div#ft {
 div.solrQuery {display: none;}
 
 div.powered_by {
-	background:url("/images/hydra_logo_h50_white_bg.png") no-repeat scroll center 15px transparent;
 	font-size:0.9em;
 	font-weight:bold;
-	height:70px;
 	}
-
-/* temporary fancybox styling */
-
-div#fancybox-wrap {
-height:100px !important;
-top:200px !important;
-width:300px !important;
-}
-
-div#fancybox-inner {
-height:90% !important;
-width:90% !important;
-}

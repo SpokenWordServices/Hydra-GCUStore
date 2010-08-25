@@ -1,9 +1,5 @@
 
-label {
-	color:#555555;
-	font-weight:bold;
-	font-size: .9em;
-}
+label {color: #666666; font-weight: normal;}
 legend {position: absolute; top: -9999px; left: -9999px;}
 fieldset {
 		border: 0 none;
@@ -20,7 +16,7 @@ select {
 	font-size:.9em;
 }
 
-select.metadata-dd {width:10em;}
+select.metadata-dd {width: 8em;}
 
 dl {
 	overflow:hidden;
@@ -34,23 +30,24 @@ ol dl {
 
 dl dt {
 	float:left;
-	width:7em;
+	width:9em;
 	text-align: right;
 	font-weight: normal;
 	color: #666666;
-	margin-top: 1em;
+	margin: 5px;
 	}
 
 dl dd {
 	float: left;
 	color: #000000;
-	margin-top: 1em;
+	margin: 5px;
 	max-width: 44em;
 	position: relative;
 	}
 	
 dl dd#topic_tag li {
 	padding: 2px 0;
+	position: relative;
 	}
 
 dl dd ol, dl dd ul {
@@ -59,10 +56,6 @@ dl dd ol, dl dd ul {
 
 dl dd ol li, dl dd ul li {
 	list-style-type: none;
-}
-
-dl.person dt label {
-	position: absolute; top: -9999px; left: -9999px;
 }
 
 #documents {
@@ -132,11 +125,6 @@ div#search select#search_field {display: none;}
 #showUtils {
 	text-align: center;
 	}
-	
-div.sidebar {
-	position: relative;
-}
-
 
 #showUtils .back_to_cat {
 	left:-200px;
@@ -158,6 +146,7 @@ div.sidebar {
 
 
 
+
 /* Override Blacklight search contraints/filters block */
 
 
@@ -171,6 +160,7 @@ div.sidebar {
 .appliedFilter .btnRemove{display:inline; position:absolute; right:-30px; top:0; background:url("/images/icons/delete.png") no-repeat center center; border-left:none;}
 .appliedFilter a.btnRemove {border:none;}
 #appliedParams a#startOverLink{
+	position: relative;
 	background-position: left top;
 	float: left;
 	padding:0 2em 3px 1em; 
@@ -201,17 +191,10 @@ a.flc-undo-redoControl {
 	background-image:url("/images/icons/redo.png") !important;
 }
 
-span.flc-undo {
-	display:inline-block;
-	height:12px;
-	overflow:hidden;
-	width:20px;
-}
-
-/* a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
+a.flc-undo-redoControl:hover, a.flc-undo-undoControl:hover {
 	color:#2E4F81;
 	border-bottom: 1px dotted #2E4F81;
-}*/
+}
 
 fieldset dl dd input {
 	padding: 0px;
@@ -230,10 +213,6 @@ input.flc-inlineEdit-edit {
 li.editable, li.editable_textarea, li.editable_date_picker {
   list-style-type: none;
   clear:right;
-}
-
-li.editable-container {
-  position: relative;
 }
 
 dd .fl-inlineEdit-invitation-text {

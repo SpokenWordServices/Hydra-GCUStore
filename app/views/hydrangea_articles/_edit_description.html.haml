@@ -3,13 +3,11 @@
     %legend Title
     %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"hydrangea_article"}
     %dl
-      - title = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :main_title], :label => "Title:")
       %dt
         = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
       %dd.title
         = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false)
     
-      - language = editable_metadata_field(@document_fedora, "descMetadata", [:title_info, :language], :label => "Language:")
       %dt
         = fedora_field_label("descMetadata", [:title_info, :language], "Language:")
       %dd.language
@@ -55,7 +53,6 @@
   %fieldset#topic_fields
     %legend Topics
     %dl
-      - topic_tag = editable_metadata_field(@document_fedora, "descMetadata", [:subject, :topic], :label => "Topic Tags:",:multiple=>true)
       %dt
         = fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:")
         = fedora_text_field_insert_link "descMetadata", [:subject, :topic]
