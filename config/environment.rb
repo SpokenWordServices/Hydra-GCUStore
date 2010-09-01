@@ -35,7 +35,7 @@ Rails::Initializer.run do |config|
   config.gem "httparty"
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
-  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller haml fluid-infusion hydra_repository stanford_salt white_list)
+  config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller haml fluid-infusion hydra_repository stanford_salt white_list hydrangea_articles hydrangea_datasets)
   
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
