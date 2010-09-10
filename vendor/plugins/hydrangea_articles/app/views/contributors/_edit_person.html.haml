@@ -26,4 +26,4 @@
       -# Generate the field selectors and delete button for the whole person entry
       - if params[:action] == "edit" || params[:action] == "create"
         = field_selectors_for("descMetadata", [{:person=>person_counter}])
-        %a.destructive.destroy_contributor{:href=>asset_contributor_path(@document_fedora.pid, "person", person_counter)} X
+        %a.destructive.destroy_contributor{:href=>asset_contributor_path(@document_fedora.pid, "person", person_counter), :title=>'Delete NAME OF Person'} Delete
