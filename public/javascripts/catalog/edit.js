@@ -294,7 +294,7 @@
       var new_value_index = values_list.children('li').size();
       var unique_id = fieldName + "_" + new_value_index;
       
-      var $item = $('<li class=\"editable-container field\" id="'+unique_id+'-container"><a href="#" class="destructive field">X</a><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
+      var $item = $('<li class=\"editable-container field\" id="'+unique_id+'-container"><a href="" class="destructive field">X</a><span class="editable-text" id="'+unique_id+'-text"></span><input class="editable-edit" id="'+unique_id+'" data-datastream-name="'+datastreamName+'" rel="'+fieldName+'" name="asset['+datastreamName+'][' + fieldName + '][' + new_value_index + ']"/></li>');
       $item.appendTo(values_list);
       var newVal = fluid.inlineEdit($item, {
                     selectors: {
@@ -322,7 +322,7 @@
       
       var assetUrl = $values_list.closest("form").attr("action");
 
-      var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="#" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+      var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
       $item.appendTo(values_list);
 
       $("div.textile", $item).editable(assetUrl+"&format=textile", {
