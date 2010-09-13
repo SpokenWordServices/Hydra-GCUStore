@@ -4,11 +4,11 @@
 	}
 
 .slider label {
-width:15%;
+width:10%;
 float:left;
-padding:7px;
-	clear: both;
-	text-align: right;
+padding:7px 28px 7px 7px;
+clear: both;
+text-align: right;
 }
 
 .slider .ui-slider {

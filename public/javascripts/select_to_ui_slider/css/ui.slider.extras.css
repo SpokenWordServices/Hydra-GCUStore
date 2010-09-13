@@ -1,3 +1,4 @@
+
 /*NEW SLIDER STYLES FOR SCALE, ETC*/
 /* slider widget */
 .ui-slider  {
@@ -84,6 +85,7 @@
 }
 .ui-slider span.ui-slider-label {
 	position: absolute;
+	left: -30px;
 }
 .ui-slider li span.ui-slider-label, .ui-slider dd span.ui-slider-label {
 	display: none;

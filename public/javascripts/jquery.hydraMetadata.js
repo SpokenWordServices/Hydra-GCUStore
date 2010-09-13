@@ -172,6 +172,7 @@
        if (newValue != oldValue) {
          var result = $.fn.hydraMetadata.saveEdit(editNode, newValue)
        }
+			
        return result;
      },
      

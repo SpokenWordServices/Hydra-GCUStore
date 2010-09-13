@@ -8,8 +8,8 @@
   %dd.contact_email
     = fedora_text_field(@document_fedora,"descMetadata", [:contact_email])
   %dt
-    = fedora_field_label("descMetadata", [:subject, :topic], "Keywords:")
-    = fedora_text_field_insert_link "descMetadata", [:subject, :topic] #, "add a keyword"
+    = fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:")
+    = fedora_text_field_insert_link "descMetadata", [:subject, :topic]
   %dd.keywords
     = fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic])
   %dt
