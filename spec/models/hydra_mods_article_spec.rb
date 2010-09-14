@@ -73,11 +73,17 @@ describe Hydra::ModsArticle do
   
   describe ".update_indexed_attributes" do
     it "should work for all of the fields we want to display" do
-      [ [:title_info, :main_title],[:abstract],[:subject, :topic],[:title_info, :language], [{:journal=>0}, :issue, :level], [{:journal=>0}, :issue, :start_page],[{:journal=>0}, :issue, :end_page] ].each do |pointer|
+      [ [:title_info, :main_title],[:abstract],[:subject, :topic], [{:journal=>0}, :issue, :level], [{:journal=>0}, :issue, :pages, :start],[{:journal=>0}, :issue, :pages, :end] ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
         @article_ds.update_indexed_attributes( {pointer=>{"0"=>test_val}} )
         @article_ds.get_values(pointer).first.should == test_val
       end
+    end
+    it "should work for fields that are attributes" do
+      pointer = [:title_info, :language]
+      test_val = "#{pointer.last.to_s} value"
+      @article_ds.update_indexed_attributes( {[:title_info, :language]=>{"0"=>test_val}} )
+      @article_ds.get_values(pointer).first.should == test_val
     end
   end
   
