@@ -25,48 +25,48 @@ describe Hydra::ModsArticle do
   end
   describe "insert_contributor" do
     it "should generate a new contributor of type (type) into the current xml, treating strings and symbols equally to indicate type and mark the datastream as dirty" do
-      @article_ds.retrieve(:person).length.should == 1
+      @article_ds.find_by_terms(:person).length.should == 1
       @article_ds.dirty?.should be_false
       node, index = @article_ds.insert_contributor("person")
       @article_ds.dirty?.should be_true
       
-      @article_ds.retrieve(:person).length.should == 2
+      @article_ds.find_by_terms(:person).length.should == 2
       node.to_xml.should == Hydra::ModsArticle.person_template.to_xml
       index.should == 1
       
       node, index = @article_ds.insert_contributor("person")
-      @article_ds.retrieve(:person).length.should == 3
+      @article_ds.find_by_terms(:person).length.should == 3
       index.should == 2
     end
     it "should support adding institutions" do
-      @article_ds.retrieve(:organization).length.should == 0
+      @article_ds.find_by_terms(:organization).length.should == 0
       node, index = @article_ds.insert_contributor("organization")
       node.to_xml.should == Hydra::ModsArticle.organization_template.to_xml
-      @article_ds.retrieve(:organization).length.should == 1
+      @article_ds.find_by_terms(:organization).length.should == 1
       index.should == 0
       
       node, index = @article_ds.insert_contributor("organization")
-      @article_ds.retrieve(:organization).length.should == 2
+      @article_ds.find_by_terms(:organization).length.should == 2
       index.should == 1
     end
     it "should support adding conferences" do
-      @article_ds.retrieve(:conference).length.should == 0
+      @article_ds.find_by_terms(:conference).length.should == 0
       node, index = @article_ds.insert_contributor("conference")
       node.to_xml.should == Hydra::ModsArticle.conference_template.to_xml
-      @article_ds.retrieve(:conference).length.should == 1
+      @article_ds.find_by_terms(:conference).length.should == 1
       index.should == 0
       
       node, index = @article_ds.insert_contributor("conference")
-      @article_ds.retrieve(:conference).length.should == 2
+      @article_ds.find_by_terms(:conference).length.should == 2
       index.should == 1
     end
   end
   
   describe "remove_contributor" do
     it "should remove the corresponding contributor from the xml and then mark the datastream as dirty" do
-      @article_ds.retrieve(:person).length.should == 1
+      @article_ds.find_by_terms(:person).length.should == 1
       result = @article_ds.remove_contributor("person", "0")
-      @article_ds.retrieve(:person).length.should == 0
+      @article_ds.find_by_terms(:person).length.should == 0
       @article_ds.should be_dirty
     end
   end
