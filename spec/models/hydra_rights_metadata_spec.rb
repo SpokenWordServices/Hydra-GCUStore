@@ -12,45 +12,45 @@ describe Hydra::RightsMetadata do
   describe "permissions" do
     describe "setter" do
       it "should create/update/delete permissions for the given user/group" do
-        @sample.class.accessor_constrained_xpath([:access, :person], "person_123").should == '//oxns:access/oxns:person[contains(., "person_123")]'
+        @sample.class.terminology.xpath_for(:access, :person, "person_123").should == '//oxns:access/oxns:machine/oxns:person[contains(., "person_123")]'
         
-        person_123_perms_xpath = @sample.class.accessor_constrained_xpath([:access, :person], "person_123")
-        group_zzz_perms_xpath = @sample.class.accessor_constrained_xpath([:access, :group], "group_zzz")
-
-        @sample.retrieve(person_123_perms_xpath).should be_empty 
+        person_123_perms_xpath = @sample.class.terminology.xpath_for(:access, :person, "person_123")
+        group_zzz_perms_xpath = @sample.class.terminology.xpath_for(:access, :group, "group_zzz")
+        
+        @sample.find_by_terms(person_123_perms_xpath).should be_empty 
         @sample.permissions({"person"=>"person_123"}, "edit").should == "edit"
         @sample.permissions({"group"=>"group_zzz"}, "edit").should == "edit"      
-
-        @sample.retrieve(person_123_perms_xpath).first.ancestors.first.attributes["type"].text.should == "edit"
-        @sample.retrieve(group_zzz_perms_xpath).first.ancestors.first.attributes["type"].text.should == "edit"
+        
+        @sample.find_by_terms(person_123_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "edit"
+        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "edit"
         
         @sample.permissions({"person"=>"person_123"}, "read")
         @sample.permissions({"group"=>"group_zzz"}, "read")
-        @sample.retrieve(person_123_perms_xpath).length.should == 1
+        @sample.find_by_terms(person_123_perms_xpath).length.should == 1
         
-        @sample.retrieve(person_123_perms_xpath).first.ancestors.first.attributes["type"].text.should == "read"
-        @sample.retrieve(group_zzz_perms_xpath).first.ancestors.first.attributes["type"].text.should == "read"
+        @sample.find_by_terms(person_123_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "read"
+        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "read"
       
         @sample.permissions({"person"=>"person_123"}, "none").should == "none"
         @sample.permissions({"group"=>"group_zzz"}, "none").should == "none"
-        @sample.retrieve(person_123_perms_xpath).should be_empty 
-        @sample.retrieve(person_123_perms_xpath).should be_empty 
+        @sample.find_by_terms(person_123_perms_xpath).should be_empty 
+        @sample.find_by_terms(person_123_perms_xpath).should be_empty 
       end
       it "should remove existing permissions (leaving only one permission level per user/group)" do
-        person_123_perms_xpath = @sample.class.accessor_constrained_xpath([:access, :person], "person_123")
-        group_zzz_perms_xpath = @sample.class.accessor_constrained_xpath([:access, :group], "group_zzz")
+        person_123_perms_xpath = @sample.class.terminology.xpath_for(:access, :person, "person_123")
+        group_zzz_perms_xpath = @sample.class.terminology.xpath_for(:access, :group, "group_zzz")
                         
-        @sample.retrieve(person_123_perms_xpath).length.should == 0
-        @sample.retrieve(group_zzz_perms_xpath).length.should == 0
+        @sample.find_by_terms(person_123_perms_xpath).length.should == 0
+        @sample.find_by_terms(group_zzz_perms_xpath).length.should == 0
         @sample.permissions({"person"=>"person_123"}, "read")
         @sample.permissions({"group"=>"group_zzz"}, "read")
-        @sample.retrieve(person_123_perms_xpath).length.should == 1
-        @sample.retrieve(group_zzz_perms_xpath).length.should == 1
+        @sample.find_by_terms(person_123_perms_xpath).length.should == 1
+        @sample.find_by_terms(group_zzz_perms_xpath).length.should == 1
         
         @sample.permissions({"person"=>"person_123"}, "edit")
         @sample.permissions({"group"=>"group_zzz"}, "edit")
-        @sample.retrieve(person_123_perms_xpath).length.should == 1
-        @sample.retrieve(group_zzz_perms_xpath).length.should == 1
+        @sample.find_by_terms(person_123_perms_xpath).length.should == 1
+        @sample.find_by_terms(group_zzz_perms_xpath).length.should == 1
       end
       it "should not impact other users permissions" do
         @sample.permissions({"person"=>"person_123"}, "read")
@@ -104,16 +104,16 @@ describe Hydra::RightsMetadata do
   
   describe "update_indexed_attributes" do
     it "should update the declared properties" do
-      @sample.retrieve(*[:edit_access, :person]).length.should == 0
-      @sample.update_properties([:edit_access, :person]=>"user id").should == {"edit_access_person"=>{"0"=>"user id"}}
-      @sample.retrieve(*[:edit_access, :person]).length.should == 1
-      @sample.retrieve(*[:edit_access, :person]).first.text.should == "user id"
+      @sample.find_by_terms(*[:edit_access, :person]).length.should == 0
+      @sample.update_values([:edit_access, :person]=>"user id").should == {"edit_access_person"=>{"0"=>"user id"}}
+      @sample.find_by_terms(*[:edit_access, :person]).length.should == 1
+      @sample.find_by_terms(*[:edit_access, :person]).first.text.should == "user id"
     end
   end
   describe "to_solr" do
     it "should populate solr doc with the correct fields" do
       params = {[:edit_access, :person]=>"Lil Kim", [:edit_access, :group]=>["group1","group2"], [:discover_access, :group]=>["public"],[:discover_access, :person]=>["Joe Schmoe"]}
-      @sample.update_properties(params)
+      @sample.update_values(params)
       solr_doc = @sample.to_solr
       
       solr_doc[:edit_access_person_t].should == "Lil Kim"

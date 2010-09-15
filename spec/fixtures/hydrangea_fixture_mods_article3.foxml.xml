@@ -129,20 +129,25 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   	</copyright>
   	<access type="discover">
   		<human></human>
+  		<machine>
+  		  
 		  <!-- this is a hack. should be nested in a <machine> tag -->
   			<policy>hydra-policy:4502</policy>
         <group>public</group>
+      </machine>
   	</access>
   	<access type="read">
   		<human></human>
-		  <!-- this is a hack. should be nested in a <machine> tag -->
+  		<machine>
         <group>researcher</group>
+      </machine>
   	</access>
   	<access type="edit">
   		<human></human>
-  		  <!-- this is a hack. should be nested in a <machine> tag -->
+  		<machine>
         <person>researcher1</person>
         <group>archivist</group>
+      </machine>
   	</access>
     <access type="etc">
             <!-- etc -->

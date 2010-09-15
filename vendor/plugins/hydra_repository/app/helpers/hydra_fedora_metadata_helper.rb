@@ -162,8 +162,8 @@ module HydraFedoraMetadataHelper
   end
   
   def fedora_text_area_insert_link(datastream_name, field_key, opts={})
-     field_name = field_name_for(field_key)
-     link_text = "Add #{field_key[1].to_s.titlecase}"
+    field_name = field_name_for(field_key)
+    link_text = "Add #{field_key[1].to_s.titlecase}"
     "<a class='addval textarea' href='#' data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" title='#{link_text}'>#{link_text}</a>"    
   end
   
@@ -182,7 +182,7 @@ module HydraFedoraMetadataHelper
   def field_selectors_for(datastream_name, field_key)
     result = ""
     if field_key.kind_of?(Array)
-      h_name = ActiveFedora::NokogiriDatastream.accessor_hierarchical_name(*field_key)
+      h_name = OM::XML::Terminology.term_hierarchical_name(*field_key)
       field_key.each do |pointer|
         if pointer.kind_of?(Hash)
           k = pointer.keys.first
@@ -260,7 +260,7 @@ module HydraFedoraMetadataHelper
   
   def field_name_for(field_key)
     if field_key.kind_of?(Array)
-      return ActiveFedora::NokogiriDatastream.accessor_hierarchical_name(*field_key)
+      return OM::XML::Terminology.term_hierarchical_name(*field_key)
     else
       field_key.to_s
     end
