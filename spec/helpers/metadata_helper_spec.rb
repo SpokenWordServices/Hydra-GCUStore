@@ -116,7 +116,7 @@ describe MetadataHelper do
       it "should support :multiple option" do
         textile = helper.editable_textile(@resource,"simple_ds","abstract",:multiple=>true)[:label] 
         textile.should match(/^abstract/) and
-        textile.should match(/<a.*>\+<\/a>$/)
+        textile.should match(/<a.*>\Add abstract<\/a>$/)
       end
     end
     
