@@ -8,11 +8,11 @@ GEM
     actionpack (2.3.5)
       activesupport (= 2.3.5)
       rack (~> 1.0.0)
-    active-fedora (1.1.13)
+    active-fedora (1.2.2)
       mime-types (>= 1.16)
       multipart-post
       nokogiri
-      om (>= 0.1.9)
+      om (>= 1.0)
       solr-ruby (>= 0.0.6)
       xml-simple (>= 1.0.12)
     activerecord (2.3.5)
@@ -98,7 +98,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  active-fedora (>= 1.1.13)
+  active-fedora (>= 1.2.2)
   authlogic (>= 0.1.0)
   block_helpers
   builder
