@@ -12,24 +12,24 @@ describe Hydra::RightsMetadata do
   describe "permissions" do
     describe "setter" do
       it "should create/update/delete permissions for the given user/group" do
-        @sample.class.terminology.xpath_for(:access, :person, "person_123").should == '//oxns:access/oxns:person[contains(., "person_123")]'
+        @sample.class.terminology.xpath_for(:access, :person, "person_123").should == '//oxns:access/oxns:machine/oxns:person[contains(., "person_123")]'
         
         person_123_perms_xpath = @sample.class.terminology.xpath_for(:access, :person, "person_123")
         group_zzz_perms_xpath = @sample.class.terminology.xpath_for(:access, :group, "group_zzz")
-
+        
         @sample.find_by_terms(person_123_perms_xpath).should be_empty 
         @sample.permissions({"person"=>"person_123"}, "edit").should == "edit"
         @sample.permissions({"group"=>"group_zzz"}, "edit").should == "edit"      
-
-        @sample.find_by_terms(person_123_perms_xpath).first.ancestors.first.attributes["type"].text.should == "edit"
-        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors.first.attributes["type"].text.should == "edit"
+        
+        @sample.find_by_terms(person_123_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "edit"
+        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "edit"
         
         @sample.permissions({"person"=>"person_123"}, "read")
         @sample.permissions({"group"=>"group_zzz"}, "read")
         @sample.find_by_terms(person_123_perms_xpath).length.should == 1
         
-        @sample.find_by_terms(person_123_perms_xpath).first.ancestors.first.attributes["type"].text.should == "read"
-        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors.first.attributes["type"].text.should == "read"
+        @sample.find_by_terms(person_123_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "read"
+        @sample.find_by_terms(group_zzz_perms_xpath).first.ancestors("access").first.attributes["type"].text.should == "read"
       
         @sample.permissions({"person"=>"person_123"}, "none").should == "none"
         @sample.permissions({"group"=>"group_zzz"}, "none").should == "none"
