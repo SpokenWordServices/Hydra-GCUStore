@@ -132,18 +132,18 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <machine></machine>
     </access>
     <access type="read">
-
       <human></human>
-      <machine></machine>
-      <group>archivist</group>
-      <group>public</group>
+      <machine>
+        <group>archivist</group>
+        <group>public</group>
+      </machine>
     </access>
     <access type="edit">
       <human></human>
-      <machine></machine>
-
-      <person>archivist1</person>
-      <group>researcher</group>
+      <machine>
+        <person>archivist1</person>
+        <group>researcher</group>
+      </machine>
     </access>
   </rightsMetadata>
 </foxml:xmlContent>
