@@ -25,7 +25,7 @@
           %option{:value=>choice_name, :selected=>group_permissions[choice_name].include?(role) } 
             = choice_label
 
-    / = render :partial=>"hydrangea_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].retrieve(:access_group), :locals=>{:choices => [{"No Access" => "no_access"},{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}] }
+    / = render :partial=>"hydrangea_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].find_by_terms(:access_group), :locals=>{:choices => [{"No Access" => "no_access"},{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}] }
 
   //
   //  Need to put control for adding new people here...
@@ -39,7 +39,7 @@
       - choice_name = choice.values.first
       - individual_permissions[choice_name] = get_values_from_datastream(@document_fedora,"rightsMetadata", ["#{choice_name}_access".to_sym, :person])
 
-    - @document_fedora.datastreams_in_memory["rightsMetadata"].retrieve(:access_person).each do |person_node|      
+    - @document_fedora.datastreams_in_memory["rightsMetadata"].find_by_terms(:access_person).each do |person_node|      
       / ie. asset[access_person][researcher1]
       - person_id = person_node.text
       - field_name = "#{person_id}_access"
@@ -55,4 +55,4 @@
             = choice_label
       %a.remove{:href=>'#', :title=>"Remove permissions for #{person_id}"} X
     
-    / = render :partial=>"hydrangea_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].retrieve(:access_person), :locals=>{:choices => [{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}] }
+    / = render :partial=>"hydrangea_articles/permissions_select", :collection=>@document_fedora.datastreams_in_memory["rightsMetadata"].find_by_terms(:access_person), :locals=>{:choices => [{"Discover" => "discover"}, {"Read" => "read"}, {"Edit" => "edit"}] }
