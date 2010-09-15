@@ -25,15 +25,6 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  config.gem 'om', :version=>">= 0.1.10"
-  config.gem 'active-fedora', :version=>">= 1.2.0"
-  config.gem 'RedCloth'
-  config.gem 'solrizer', :version=>">= 0.1.2"
-  config.gem 'authlogic', :version=>">= 0.1.0"
-  config.gem "block_helpers", :source => "http://gemcutter.org"
-  config.gem 'haml'
-  config.gem "httparty"
-  config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/blacklight/vendor/plugins"]  
   config.plugins = %W(engines blacklight acts_as_taggable_on_steroids resource_controller haml fluid-infusion hydra_repository stanford_salt white_list hydrangea_articles hydrangea_datasets)
   
