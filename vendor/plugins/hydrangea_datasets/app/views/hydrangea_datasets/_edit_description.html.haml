@@ -21,7 +21,7 @@
     %legend Researchers (a primary researcher is required)
 
     %ol
-      = render :partial=>"contributors/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].retrieve(:person)
+      = render :partial=>"contributors/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person)
 
     // Button for adding person/conference/organization
     - if params[:action] == "edit"
