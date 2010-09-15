@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '>=2.3.5', '<3.0.0
+gem 'rails', '>=2.3.5', '<3.0.0'
 
 gem 'active-fedora', '>=1.2.2'  
 gem 'authlogic', '>=0.1.0'
