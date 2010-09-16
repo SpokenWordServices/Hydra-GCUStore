@@ -1,0 +1,37 @@
+- journal = show_journal
+- journal_counter = show_journal_counter
+- base_id = "journal_#{journal_counter}"
+
+%dl
+  %dt
+    = fedora_field_label("descMetadata", [{:journal => journal_counter}, :title_info, :main_title], "Journal Title:")
+  %dd.journal
+    = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :title_info, :main_title])
+  %dt
+    = fedora_field_label("descMetadata", [{:journal => journal_counter},:origin_info, :publisher], "Publisher:")
+  %dd.publisher
+    = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:origin_info, :publisher])
+  %dt
+    = fedora_field_label("descMetadata", [{:journal => journal_counter}, :issn], "ISSN:")
+  %dd.issn
+    = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :issn])
+  %dt
+    = fedora_field_label("descMetadata", [{:journal => journal_counter},:issue,:publication_date], "Publication Date:")
+  %dd.publication_date
+    = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:issue,:publication_date])
+    
+  %dt Citation
+  %dd.multi_inline.citation
+    %ul
+      %li.citation_volume
+        = fedora_field_label("descMetadata", [{:journal => journal_counter},:issue,:volume], "Volume:")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:issue,:volume])
+      %li.citation_issue
+        = fedora_field_label("descMetadata", [{:journal => journal_counter},:issue,:level], "(Issue):")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:issue,:level])
+      %li.start_page
+        = fedora_field_label("descMetadata", [{:journal => journal_counter},:issue,:start_page], "Start Page")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:issue,:start_page])
+      %li.end_page
+        = fedora_field_label("descMetadata", [{:journal => journal_counter},:issue,:end_page], "End Page")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:issue,:end_page])

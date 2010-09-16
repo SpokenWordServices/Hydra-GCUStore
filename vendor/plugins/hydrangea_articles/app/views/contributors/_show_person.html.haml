@@ -1,0 +1,21 @@
+- person = show_person
+- person_counter = show_person_counter
+- person_name = "#{get_values_from_datastream(@document_fedora,'descMetadata', [{:person=>person_counter}, :first_name])} #{get_values_from_datastream(@document_fedora,'descMetadata', [{:person=>person_counter}, :last_name])}"
+- base_id = "person_#{person_counter}"
+
+%li
+  %dl.person.contributor{:id=>base_id}
+    %dt
+      = fedora_field_label("descMetadata", [{:person=>person_counter}, :role, :text], "Person's Role:")
+      = get_values_from_datastream(@document_fedora,"descMetadata", [{:person=>person_counter}, :role, :text])
+    %dd.multi_inline.person
+      %ul
+        %li.name_first
+          = fedora_field_label("descMetadata", [{:person=>person_counter}, :first_name], "First Name")
+          = get_values_from_datastream(@document_fedora,"descMetadata", [{:person=>person_counter}, :first_name])
+        %li.name_last
+          = fedora_field_label("descMetadata", [{:person=>person_counter}, :last_name], "Last Name")
+          = get_values_from_datastream(@document_fedora,"descMetadata", [{:person=>person_counter}, :last_name])
+        %li.affiliation
+          = fedora_field_label("descMetadata", [{:person=>person_counter}, :institution], "Institution")
+          = get_values_from_datastream(@document_fedora,"descMetadata", [{:person=>person_counter}, :institution])

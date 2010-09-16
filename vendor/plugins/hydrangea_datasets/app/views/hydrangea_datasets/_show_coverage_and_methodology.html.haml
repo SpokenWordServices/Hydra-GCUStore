@@ -1,0 +1,23 @@
+%dl
+  %dt
+    = fedora_field_label("descMetadata", [:data_type], "Type:")
+  %dd.data_type
+    = get_values_from_datastream(@document_fedora,"descMetadata", [:data_type])
+  %dt
+    %label Timespan
+  %dd.multi_inline.timespan
+    %ul
+      %li.timespan_start
+        = fedora_field_label("descMetadata", [:timespan_start], "Start")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_start])
+      %li.timespan_end
+        = fedora_field_label("descMetadata", [:timespan_end], "End")
+        = get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_end])     
+  %dt
+    = fedora_field_label("descMetadata", [:location], "Location:")
+  %dd.location
+    = get_values_from_datastream(@document_fedora,"descMetadata", [:location])
+  %dt
+    = fedora_field_label("descMetadata", [:methodology], "Methodology:")
+  %dd.methodology
+    = get_values_from_datastream(@document_fedora,"descMetadata", [:methodology])
