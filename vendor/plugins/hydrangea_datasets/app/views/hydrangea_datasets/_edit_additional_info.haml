@@ -16,13 +16,15 @@
     %label Grant(s)
     -# link to insert another grant ...
   %dd.multi_inline.grant
-    %ul
-      %li.grant_agency
-        = fedora_field_label("descMetadata", [{:organization=>0}, :namePart], "Granting agency")
-        = fedora_text_field(@document_fedora,"descMetadata", [{:organization=>0}, :namePart])
-      %li.grant_number
-        = fedora_field_label("descMetadata", [:grant_number], "Grant number")
-        = fedora_text_field(@document_fedora,"descMetadata", [:grant_number])
+    %ol
+      %li
+        %ul
+          %li.grant_agency
+            = fedora_field_label("descMetadata", [{:organization=>0}, :namePart], "Granting agency")
+            = fedora_text_field(@document_fedora,"descMetadata", [{:organization=>0}, :namePart])
+          %li.grant_number
+            = fedora_field_label("descMetadata", [:grant_number], "Grant number")
+            = fedora_text_field(@document_fedora,"descMetadata", [:grant_number])
   %dt
     = fedora_field_label("descMetadata", [:data_quality], "Notes about data quality:")
   %dd.data_quality
