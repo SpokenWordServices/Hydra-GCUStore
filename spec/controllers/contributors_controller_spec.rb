@@ -18,7 +18,7 @@ describe ContributorsController do
         mock_document.expects(:save)
         HydrangeaArticle.expects(:find).with("_PID_").returns(mock_document)
         post :create, :asset_id=>"_PID_", :controller => "contributors", :content_type => "hydrangea_article", :contributor_type=>type
-        response.should render_template "hydrangea_articles/_edit_#{type}"
+        response.should render_template "contributors/_edit_#{type}"
       end
     end
   end
