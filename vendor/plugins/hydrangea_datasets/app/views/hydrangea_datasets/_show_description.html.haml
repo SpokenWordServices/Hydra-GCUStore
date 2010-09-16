@@ -1,17 +1,20 @@
-%fieldset
-  %legend Title
-  %dl
-    %dt
-      = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
-    %dd.title
-      = get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title])
-    %dd.multi_inline.completeness
-      %ul
-        %li
-          =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "ongoing", "ongoing, to be updated")
-          = get_values_from_datastream(@document_fedora,"descMetadata", [:interval])
-        %li
-          =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "completed", "Completed")
+- unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty?
+  %fieldset
+    %legend Title
+    %dl
+      %dt
+        = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
+      %dd.title
+        = get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title])
+
+      - unless get_values_from_datastream(@document_fedora,"descMetadata", [:interval]).first.empty?
+        %dd.multi_inline.completeness
+          %ul
+            %li
+              =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "ongoing", "ongoing, to be updated")
+              = get_values_from_datastream(@document_fedora,"descMetadata", [:interval])
+            %li
+              =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "completed", "Completed")
       
 
 %fieldset
