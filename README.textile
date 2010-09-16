@@ -35,19 +35,10 @@ git submodule update
 
 This will pull all of the code.  The 'git submodule update' command is pulling a copy of hydra-jetty into the jetty directory within hydrangea.
 
-You are now in your working copy of hydrangea.  Use rake to install the gem dependencies (this might not work perfectly - we're still preparing this code for distribution).
+You are now in your working copy of hydrangea.  Use bundler to install the gem dependencies.
 
 <pre>
-rake gems:install
-</pre>
-
-Review the output from running gems:install and make sure that there were no errors.  Depending on what operating system you're on, you might have to install library dependencies in order for all of the gems to install successfully.  In particular, nokogiri and sqlite3 require native C-libraries such as libxml2, libxslt and libsqlite3. 
-
-
-Now install the development dependencies (not required for runtime, but required to run tests)
-
-<pre>
-gem install rcov rspec rspec-rails cucumber cucumber-rails webrat database_cleaner ruby-debug mocha httparty
+bundle install
 </pre>
 
 Run your database migrations (only need to do this once after cloning the git repository).
@@ -55,31 +46,40 @@ Run your database migrations (only need to do this once after cloning the git re
 rake db:migrate
 </pre>
 
-Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.
-
-First, copy hydrangea's solr configs into the hydra-jetty solr cores. (You only need to do this when you first clone the jetty submodule and when Hydrangea's solr configurations change)
-<pre>
-  cp solr/conf/* jetty/solr/development-core/conf/
-  cp solr/conf/* jetty/solr/test-core/conf/
-</pre>
-
-Then start jetty:
+Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.  We have created rake tasks to make this easier.  For a full listing of rake tasks provided by Hydra, run 
 
 <pre>
-cd jetty 
-java -jar start.jar
+rake --describe hydra
 </pre>
 
-... leave that running and open a new terminal window.  cd to wherever you checked out hydrangea 
+<pre>
+rake hydra:jetty:load
+</pre>
+
+Import the fixture objects that are used by the rspec and cucumber tests
+
+<pre>
+rake hydra:default_fixtures:load
+</pre>
+
+If you have already loaded these fixtures before, you should refresh them with 
+
+<pre>
+rake hydra:default_fixtures:refresh
+</pre>
 
 Run the Rspec tests to make sure everything is working properly.
 <pre>
-{cd to wherever you cloned hydrangea, then...}
-rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
-rake hydra:import_fixture pid=hydrangea:fixture_mods_article3
-rake hydra:import_fixture pid=hydrangea:fixture_file_asset1
 rake spec
 </pre>
+
+If all of the RSpec tests are passing, try the Cucumber tests
+
+<pre>
+rake cucumber
+</pre>
+
+If you have all of the RSpec and Cucumber tests passing, then the application is installed correctly.
 
 Now run the rails lighttpd server
 
@@ -89,23 +89,13 @@ script/server
 
 If all goes well, you will be able to see an empty copy of hydrangea at http://localhost:3000
 
+h3. Stopping the server when you're done
 
+To stop the rails app, press ctl+c in the window where you ran script/server
 
-h3. To get cucumber features to pass
-
-You must ingest some more fixtures:
-
+To stop jetty, use the rake task
 <pre>
-  rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
-  rake hydra:import_fixture pid=hydrangea:fixture_uploaded_svg1
-  rake hydra:import_fixture pid=hydrangea:fixture_archivist_only_mods_article
-  rake hydra:import_fixture pid=hydrangea:fixture_mods_dataset1
-</pre>
-
-Then run your tests.
-
-<pre>
-  rake cucumber
+  rake hydra:jetty:stop
 </pre>
 
 h2. Acknowledgements
