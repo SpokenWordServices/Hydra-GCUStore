@@ -17,7 +17,7 @@ class ContributorsController < ApplicationController
     ct = params[:contributor_type]
     inserted_node, new_node_index = @document_fedora.insert_contributor(ct)
     @document_fedora.save
-    partial_name = "hydrangea_articles/edit_#{ct}"
+    partial_name = "contributors/edit_#{ct}"
     render :partial=>partial_name, :locals=>{"edit_#{ct}".to_sym =>inserted_node, "edit_#{ct}_counter".to_sym =>new_node_index}, :layout=>false
   end
   def destroy
