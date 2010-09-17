@@ -1,5 +1,14 @@
 %dl
   %dt
+    = fedora_field_label("descMetadata", [:data_type], "Data Collection")  
+  %dd.multi_inline.completeness
+    %ul
+      %li
+        = fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"ongoing", "Ongoing, to be Updated"})
+        = fedora_select(@document_fedora,"descMetadata", [:interval], :choices=>Hydra::ModsDataset.interval_choices)
+      %li
+        = fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"completed", "Completed"})
+  %dt
     = fedora_field_label("descMetadata", [:data_type], "Type:")
   %dd.data_type
     = fedora_select(@document_fedora,"descMetadata", [:data_type], :choices=>Hydra::ModsDataset.data_type_choices.sort)

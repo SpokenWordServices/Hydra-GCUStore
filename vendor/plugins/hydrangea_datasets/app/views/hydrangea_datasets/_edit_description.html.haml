@@ -8,15 +8,7 @@
         = fedora_field_label("descMetadata", [:title_info, :main_title], "Title:")
       %dd.title
         = fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false)
-      %dd.multi_inline.completeness
-        %ul
-          %li
-            =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "ongoing", "ongoing, to be updated")
-            = fedora_select(@document_fedora,"descMetadata", [:interval], :choices=>Hydra::ModsDataset.interval_choices)
-          %li
-            =# fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "completed", "Completed")
         
-
   %fieldset
     %legend Researchers (a primary researcher is required)
 

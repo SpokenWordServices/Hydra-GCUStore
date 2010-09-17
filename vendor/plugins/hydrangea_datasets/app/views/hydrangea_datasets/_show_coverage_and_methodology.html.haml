@@ -1,4 +1,12 @@
 %dl
+  
+  - unless get_values_from_datastream(@document_fedora,"descMetadata", [:interval]).first.empty?
+    %dt
+      = fedora_field_label("descMetadata", [:data_type], "Data Collection")  
+    %dd.multi_inline.completeness
+      = get_values_from_datastream(@document_fedora, "descMetadata", [:completeness])
+      = get_values_from_datastream(@document_fedora,"descMetadata", [:interval])
+  
   - unless get_values_from_datastream(@document_fedora,"descMetadata", [:data_type]).first.empty?
     %dt
       = fedora_field_label("descMetadata", [:data_type], "Type:")
