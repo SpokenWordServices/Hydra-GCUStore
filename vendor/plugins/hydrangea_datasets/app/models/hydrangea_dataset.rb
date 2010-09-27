@@ -28,9 +28,11 @@ class HydrangeaDataset < ActiveFedora::Base
     m.field 'gps', :string
     m.field 'region', :string    
     m.field 'site', :string    
-    m.field 'ecosystem', :string    
-    m.field 'grant_organization', :string
-    m.field 'grant_number', :string
+    m.field 'ecosystem', :string  
+    m.field 'grants' do |g|    
+      g.field 'grant_organization', :string
+      g.field 'grant_number', :string
+    end
     m.field 'data_quality', :string
     m.field 'contact_name', :string
     m.field 'contact_email', :string
