@@ -5,28 +5,33 @@
     %ul
       %li
         = fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"ongoing", "Ongoing, to be Updated"})
-        = fedora_select(@document_fedora,"descMetadata", [:interval], :choices=>Hydra::ModsDataset.interval_choices)
+        = fedora_select(@document_fedora,"HydraDataset", [:interval], :choices=>Hydra::ModsDataset.interval_choices)
       %li
         = fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"completed", "Completed"})
-  %dt
-    = fedora_field_label("descMetadata", [:data_type], "Type:")
-  %dd.data_type
-    = fedora_select(@document_fedora,"descMetadata", [:data_type], :choices=>Hydra::ModsDataset.data_type_choices.sort)
+        = fedora_select(@document_fedora,"HydraDataset", [:completed], :choices=>Hydra::ModsDataset.completed_choices)  
   %dt
     %label Timespan
   %dd.multi_inline.timespan
     %ul
       %li.timespan_start
-        = fedora_field_label("descMetadata", [:timespan_start], "Start")
-        = fedora_text_field(@document_fedora,"descMetadata", [:timespan_start], :multiple=>false)
+        = fedora_field_label("HydraDataset", [:timespan_start], "Start")
+        = fedora_text_field(@document_fedora,"HydraDataset", [:timespan_start], :multiple=>false)
       %li.timespan_end
-        = fedora_field_label("descMetadata", [:timespan_end], "End")
-        = fedora_text_field(@document_fedora,"descMetadata", [:timespan_end], :multiple=>false)     
+        = fedora_field_label("HydraDataset", [:timespan_end], "End")
+        = fedora_text_field(@document_fedora,"HydraDataset", [:timespan_end], :multiple=>false)     
   %dt
-    = fedora_field_label("descMetadata", [:location], "Location:")
-  %dd.location
-    = fedora_text_field(@document_fedora,"descMetadata", [:location], :multiple=>false)
+    = fedora_field_label("HydraDataset", [:gps], "GPS Coordinates")
+  %dd.gps
+    = fedora_text_field(@document_fedora,"HydraDataset", [:gps], :multiple=>false)
   %dt
-    = fedora_field_label("descMetadata", [:methodology], "Methodology:")
-  %dd.methodology
-    = fedora_text_area(@document_fedora,"descMetadata", [:methodology], :multiple=>false)
+    = fedora_field_label("HydraDataset", [:region], "Region")
+  %dd.region
+    = fedora_text_field(@document_fedora,"HydraDataset", [:region], :multiple=>false)    
+  %dt
+    = fedora_field_label("HydraDataset", [:site], "Site")
+  %dd.site
+    = fedora_text_field(@document_fedora,"HydraDataset", [:site], :multiple=>false)    
+  %dt
+    = fedora_field_label("HydraDataset", [:ecosystem], "Ecosystem Type")
+  %dd.ecosystem
+    = fedora_text_field(@document_fedora,"HydraDataset", [:ecoysystem], :multiple=>false)     
