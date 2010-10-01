@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* CSS Document */
+
 h1.site_title {
 	background:url("/images/hydrangea_logo.png") no-repeat scroll left top transparent;
 	height:42px;
@@ -6,99 +9,147 @@ h1.site_title {
 }
 
 
-/* Accordion control */
+/* zebra striped search results */
 
-div.accordion-section {
-    border: 1px solid #cccccc;
-	background:url("/images/accordion-gradient.png") repeat-x scroll left top #FFF;
-    overflow: auto;
-	padding: 10px;
+#documents .odd .documentHeader {
+	background-color:white;
 }
-
-div.accordion-section h2.section-title {
-    margin: -8px 0 10px 0;
+#documents .even, #documents .even .documentHeader {
+	background-color:#f6f6f6;
 }
 
 
-#new_contributor {
-  display: none;
+/* Results navigation */
+
+#sortAndPerPage  {
+	padding:3px;
 }
+
+.yui-t2 #yui-main .yui-b {
+	padding-top: 1em !important;
+}
+
+#showUtils {
+	text-align: center;
+	}
+
+#showUtils .back_to_cat {
+	float: left;
+}
+#showUtils #previousNextDocument {
+	display: inline;
+	}
+
+#showUtils .edit-browse {
+	float: right;
+	}
+
+.edit-browse .toggle {
+	margin: 0px 5px;}
+
+
+/* Search results table view */
+
+#documents {
+	background-color: #ffffff;
+	}
+
+#documents table {
+	width: 100%;
+	background-color: #ffffff;
+	}
+	
+#documents table th {
+	text-align: left;
+	font-size: .9em;
+	border-top: 1px dotted #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+
+/* Side-by-side definition list label-value pairs */
+
+
+dl {
+	overflow:hidden;
+	margin-top:0;
+	padding-top:0;
+}
+
+dl dt {
+	clear: left; 
+	float:left;
+	width:10em;
+	text-align: right;
+	font-weight: bold;
+	font-size: .9em;
+	margin-top: 1.7em;
+	}
+
+dl dd {
+	float: left;
+	width: 45em;
+	margin-top: 1.5em;
+	margin-right: 25px;
+	position: relative;
+	}
+
+dd ol, dd ul {
+	margin: 0px; padding: 0px;
+	}
+
+dd ol li, dd ul li {
+	list-style-type: none;
+}
+
+
 
 /* Multiple fields in one line */
 
 .multi_inline ul, fieldset ol {
 	margin: 0px; padding: 0px;}
+	
 
 .multi_inline ul li {
 	display:inline-block;
 	list-style-type:none;
 	position: relative;
-	margin-bottom: .5em;
+	height: 3em;
 }
 
-
-.multi_inline span.editable-text {
-	float:left;
-	margin: 0 0 1em 0;
-}
 
 .multi_inline label {
+	color: #999999;
 	position: absolute;
-	top: 2em;
+	font-weight: normal;
+	top: -1.3em;
 	left: 0;
-	font-size: .9em;
+	font-size:0.8em;
+	white-space: nowrap;
 }
 
+/* File asset table */
 
-li.name_first {width: 49%;}
-li.name_last {width: 49%;} 
+table#file_assets {
+	width: 100%;
+	background-color: #ffffff;
+	}
+
+table#file_assets  th {
+	text-align: left;
+	font-size: .9em;
+	border: 1px solid #eeeeee;
+	background-color: #f6f6f6;
+}
+
+table#file_assets  td {
+	text-align: left;
+	border: 1px solid #eeeeee;
+}
+
+table#file_assets > col {width: auto;}
 
 
-span.editable-text {display:inline-block; width: 100%; background-color: white; height: 1.5em; overflow: hidden;}
-
-/* set field sizes for fields with label to left */
-
-dd.title span.editable-text {width: 400px;}
-dd.language span.editable-text {width: 100px;}
-dd.journal span.editable-text {width: 400px;}
-dd.publisher span.editable-text {width: 200px;}
-dd.issn span.editable-text {width: 100px;}
-dd.organiztion span.editable-text {width: 400px;} /* TYPO in HTML */
-dd.conference span.editable-text {width: 400px;}
-
-dd.publication_date {width:44em;}
-dd.publication_date span.editable-text {width: 100px;}
-
-/* !! Requires Attention !! */
-/* dataset fields */
-dd.data_type {width: 190px;}
-dd.data_type select {width: 150px;}
-
-dd.location span.editable-text {width: 400px;}
-dd.contact_name span.editable-text {width: 150px;}
-dd.contact_email span.editable-text {width: 200px;}
-dd.keywords {width:600px}
-dd.grant {width:600px;}
-li.grant_agency {width: 59%;}
-li.grant_number {width: 39%;}
-li.grant_agency span.editable-text {width: 270px;}
-li.grant_number span.editable-text {width: 180px;}
-li.timespan_start {margin-right:10px;}
-
-/* set field sizes for fields with label underneath */
-
-/*dd.person {width: 43em;} */
-dd.person .name_first span.editable-text {width: 175px;}
-dd.person .name_last span.editable-text {width: 175px;}
-dd.person .affiliation span.editable-text {width: 400px;}
-dd.organization span.editable-text {width: 400px;}
-dd.conference span.editable-text {width: 400px;}
-dd.citation .citation_volume span.editable-text {width: 100px;}
-dd.citation .citation_issue span.editable-text {width: 100px;}
-dd.citation .start_page span.editable-text {width: 100px;}
-dd.citation .end_page span.editable-text {width: 100px;}
-
-div.textile-text.text textarea {display: block; width: 450px !important;}
 
 /*
 	LAYOUT TOOLS
@@ -136,43 +187,18 @@ div.textile-text.text textarea {display: block; width: 450px !important;}
 
 
 
-/* styles for "add new" split button */
-
+/* Adjust the jquery split button */
 
 .ui-widget {font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;}
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-	background:url("../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png") repeat-x scroll 50% 50% #DFEFFC;
-	border:1px solid #C5DBEC;
-	color:#2E6E9E;
-	font-weight:bold;
-	outline:medium none;
-}
-.ui-state-default .ui-icon {
-background-image:url("../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-icons_2e4f81_256x240.png");
-}
-
-div#create-asset-box .ui-widget {font-size: 1em;}
-div#create-asset-box {position:relative; margin-top: 15px; color:#333;}
-div#create-asset-box input, div#create-asset-box button {color:#333;}
-input#re-run-action{margin-right: -0.5em;}
-ul#create-asset-menu {display: none; overflow: auto; background: #f6f6f6 url('../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer; top: 2.3em; right: 2em;}
-ul#create-asset-menu li {padding: 5px 12px; margin:0; list-style: none;}
-ul#create-asset-menu li:hover {background-color: #666; color: #fff;}
-
+div#create-asset-box .ui-widget {font-size: 1em; margin-top: 1em;}
 div#add-contributor-box .ui-widget {font-size: .9em;}
-div#add-contributor-box .ui-button {padding: 0;}
-div#add-contributor-box {position:relative; color:#333; margin: 0 0 5px 0;}
-div#add-contributor-box input,  div#add-contributor-box button {color:#333; height: 2.2em;}
-div#add-contributor-box button {padding: 0 0;}
-input#re-run-add-contributor-action {margin-right: -0.5em; padding: 0 0.6em !important;}
-ul#add-contributor-menu {display: none; overflow: auto; background: #f6f6f6 url('../plugin_assets/blacklight/stylesheets/jquery/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png') repeat-x scroll 50% 50%; position: absolute; border: 1px solid #ccc; z-index: 500; padding: 0; margin: 0; cursor: pointer; left: 0; }
-ul#add-contributor-menu li {padding: 5px 12px; margin:0; list-style: none;}
-ul#add-contributor-menu li:hover {background-color: #666; color: #fff;}
-
+.ui-buttonset .ui-button {margin-right:-0.5em;}
 
 
 
 /* Delete multiple-value field */
+
+.editable-container {position: relative;}
 
 a.destructive {
     background-image:url("/images/icons/delete-blue.png");
@@ -182,7 +208,7 @@ a.destructive {
 	overflow:hidden;
 	border-bottom: none;
     position: absolute;
-	top: 2px;
+	top: 1px;
 	right: -25px;	
 	width: 20px;
 } 
@@ -197,12 +223,8 @@ a:hover.destructive {
 	}
 
 a.addval {
-	background:none repeat scroll 0 0 #F6F6F6;
-	border:1px solid #EEEEEE;
-	font-size: 13px;
-	font-weight: bold;
-	padding: 0 1px;
-	margin: 0 5px 0 3px;
+	display: inline-block;
+	font-weight: normal;
 	}
 	
 a:hover.addval {
@@ -220,6 +242,12 @@ a#inline {
 	position:absolute;
 	}
 
+
+
+/* Footer */
+
+
+
 div#ft {
 	text-align: center;
 	margin: 20px;
@@ -227,9 +255,13 @@ div#ft {
 	border-top: 1px dotted #cccccc;
 	}
 
-div.solrQuery {display: none;}
-
 div.powered_by {
+	background:url("/images/hydra_logo_h50_white_bg.png") no-repeat scroll center 15px transparent;
 	font-size:0.9em;
 	font-weight:bold;
+	height:70px;
 	}
+	
+	
+	
+	
