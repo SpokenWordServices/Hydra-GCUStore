@@ -1,0 +1,41 @@
+<dl>
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:data_type]).first.empty? %>
+    <dt>
+      <%= fedora_field_label("descMetadata", [:data_type], "Type:") %>
+    </dt>
+    <dd class="data_type">
+      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:data_type]) %>
+    </dd>
+  <% unless (get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_start]).first.empty? || get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_end]).first.empty?) %>
+    <dt>
+      <label>Timespan</label>
+    </dt>
+    <dd class="multi_inline timespan">
+      <ul>
+      </ul>
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_start]).first.empty? %>
+        <li class="timespan_start">
+          <%= fedora_field_label("descMetadata", [:timespan_start], "Start") %>
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_start]) %>
+        </li>
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_end]).first.empty? %>
+        <li class="timespan_end">
+          <%= fedora_field_label("descMetadata", [:timespan_end], "End") %>
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:timespan_end]) %>
+        </li>
+    </dd>
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:location]).first.empty? %>
+    <dt>
+      <%= fedora_field_label("descMetadata", [:location], "Location:") %>
+    </dt>
+    <dd class="location">
+      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:location]) %>
+    </dd>
+    <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:methodology]).first.empty? %>
+      <dt>
+      </dt>
+      <%= fedora_field_label("descMetadata", [:methodology], "Methodology:") %>
+      <dd class="methodology">
+      </dd>
+      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:methodology]) %>
+</dl>

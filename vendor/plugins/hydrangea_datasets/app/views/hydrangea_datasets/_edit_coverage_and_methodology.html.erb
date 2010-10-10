@@ -1,0 +1,35 @@
+<dl>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:data_type], "Type:") %>
+  </dt>
+  <dd class="data_type">
+    <%= fedora_select(@document_fedora,"descMetadata", [:data_type], :choices=>Hydra::ModsDataset.data_type_choices.sort) %>
+  </dd>
+  <dt>
+    <label>Timespan</label>
+  </dt>
+  <dd class="multi_inline timespan">
+    <ul>
+      <li class="timespan_start">
+        <%= fedora_field_label("descMetadata", [:timespan_start], "Start") %>
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:timespan_start], :multiple=>false) %>
+      </li>
+      <li class="timespan_end">
+        <%= fedora_field_label("descMetadata", [:timespan_end], "End") %>
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:timespan_end], :multiple=>false) %>
+      </li>
+    </ul>
+  </dd>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:location], "Location:") %>
+  </dt>
+  <dd class="location">
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:location], :multiple=>false) %>
+  </dd>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:methodology], "Methodology:") %>
+  </dt>
+  <dd class="methodology">
+    <%= fedora_text_area(@document_fedora,"descMetadata", [:methodology], :multiple=>false) %>
+  </dd>
+</dl>
