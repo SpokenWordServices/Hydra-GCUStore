@@ -8,7 +8,7 @@
   <% choices = Hydra::ModsArticle.organization_relator_terms %>
 <% end %>
 <li>
-  <dl class="organization contributor" :id=>base_id>
+  <dl class="organization contributor" id="<%= base_id %>">
     <dt>
       <%= fedora_field_label("descMetadata", [{:organization => organization_counter}, :role, :text], "Organization's Role:") %>
       <%= fedora_select(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text], :choices=>choices.values.sort) %>
@@ -22,7 +22,7 @@
       </ul>
       <% if (params[:action] == "edit" && !organization_name.empty?) %>
         <%= field_selectors_for("descMetadata", [{:person=>organization_counter}]) %>
-        <a class="destructive destroy_contributor" :href=>asset_contributor_path(@document_fedora.pid, "organization", organization_counter), :title=>"Delete '#{organization_name>"} Delete</a>
+        <a class="destructive destroy_contributor" href="<%= asset_contributor_path(@document_fedora.pid, "organization", organization_counter) %>" title="Delete '<%= organization_name %>"> Delete</a>
       <% end %>
     </dd>
   </dl>

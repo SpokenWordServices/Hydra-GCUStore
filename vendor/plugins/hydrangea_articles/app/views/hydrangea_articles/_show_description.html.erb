@@ -8,6 +8,7 @@
       <dd class="title">
         <%= get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]) %>
       </dd>
+    <% end %>
     <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :language]).first.empty? %>
       <dt>
         <%= fedora_field_label("descMetadata", [:title_info, :language], "Language:") %>
@@ -15,6 +16,7 @@
       <dd class="language">
         <%= get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :language]) %>
       </dd>
+    <% end %>
   </dl>
 </fieldset>
 <fieldset id="contributor_fields">
@@ -32,7 +34,7 @@
       <dt>
         <%= fedora_field_label("descMetadata", [:abstract], "Abstract:") %>
       </dt>
-      <dd id="abstract" "data-datastream-name"=>"descMetadata">
+      <dd id="abstract">
         <%= get_values_from_datastream(@document_fedora,"descMetadata", [:abstract]) %>
       </dd>
     </dl>
