@@ -14,24 +14,24 @@
   %dd.multi_inline.timespan
     %ul
       %li.timespan_start
-        = fedora_field_label("HydraDataset", [:timespan_start], "Start")
-        = fedora_text_field(@document_fedora,"HydraDataset", [:timespan_start], :multiple=>false)
+        = fedora_field_label("HydraDataset", :timespan_start, "Start")
+        = fedora_text_field(@document_fedora,"HydraDataset", :timespan_start, :multiple=>false)
       %li.timespan_end
-        = fedora_field_label("HydraDataset", [:timespan_end], "End")
-        = fedora_text_field(@document_fedora,"HydraDataset", [:timespan_end], :multiple=>false)     
+        = fedora_field_label("HydraDataset", :timespan_end, "End")
+        = fedora_text_field(@document_fedora,"HydraDataset", :timespan_end, :multiple=>false)     
   %dt
-    = fedora_field_label("HydraDataset", [:gps], "GPS Coordinates")
+    = fedora_field_label("HydraDataset", :gps, "GPS Coordinates")
   %dd.gps
-    = fedora_text_field(@document_fedora,"HydraDataset", [:gps], :multiple=>false)
+    = fedora_text_field(@document_fedora,"HydraDataset", :gps, :multiple=>false)
   %dt
-    = fedora_field_label("HydraDataset", [:region], "Region")
+    = fedora_field_label("HydraDataset", :region, "Region")
   %dd.region
-    = fedora_text_field(@document_fedora,"HydraDataset", [:region], :multiple=>false)    
+    = fedora_text_field(@document_fedora,"HydraDataset", :region, :multiple=>false)    
   %dt
-    = fedora_field_label("HydraDataset", [:site], "Site")
+    = fedora_field_label("HydraDataset", :site, "Site")
   %dd.site
-    = fedora_text_field(@document_fedora,"HydraDataset", [:site], :multiple=>false)    
+    = fedora_text_field(@document_fedora,"HydraDataset", :site, :multiple=>false)    
   %dt
-    = fedora_field_label("HydraDataset", [:ecosystem], "Ecosystem Type")
+    = fedora_field_label("HydraDataset", :ecosystem, "Ecosystem Type")
   %dd.ecosystem
-    = fedora_text_field(@document_fedora,"HydraDataset", [:ecoysystem], :multiple=>false)     
+    = fedora_text_field(@document_fedora,"HydraDataset", :ecoysystem, :multiple=>false)     
