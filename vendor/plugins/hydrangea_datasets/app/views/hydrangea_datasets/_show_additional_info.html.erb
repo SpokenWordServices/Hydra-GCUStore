@@ -6,6 +6,7 @@
     <dd class="contact_name">
       <%= get_values_from_datastream(@document_fedora,"descMetadata", [:contact_name]) %>
     </dd>
+	<% end %>
   <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:contact_email]).first.empty? %>
     <dt>
       <%= fedora_field_label("descMetadata", [:contact_email], "Email:") %>
@@ -13,6 +14,7 @@
     <dd class="contact_email">
       <%= get_values_from_datastream(@document_fedora,"descMetadata", [:contact_email]) %>
     </dd>
+	<% end %>
   <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
     <dt>
       <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
@@ -20,6 +22,7 @@
     <dd class="keywords">
       <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
     </dd>
+	<% end %>
   <dt>
     <label>Grant(s)</label>
   </dt>
@@ -41,6 +44,7 @@
       </li>
     </ol>
   </dd>
+	<% end %>
   <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:data_quality]).first.empty? %>
     <dt>
       <%= fedora_field_label("descMetadata", [:data_quality], "Notes about data quality:") %>
@@ -48,4 +52,5 @@
     <dd class="data_quality">
       <%= get_values_from_datastream(@document_fedora,"descMetadata", [:data_quality]) %>
     </dd>
+	<% end %>
 </dl>

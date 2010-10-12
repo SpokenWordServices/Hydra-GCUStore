@@ -1,0 +1,12 @@
+
+%li
+  %dl.grant
+    %dt
+    %dd.multi_inline.grant
+      %ul
+        %li.grant_agency
+          = fedora_field_label("HydraDataset", :grant_organization, "Granting agency")
+          = get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization)
+        %li.grant_number
+          = fedora_field_label("HydraDataset", :grant_number, "Grant number")
+          = get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number)
