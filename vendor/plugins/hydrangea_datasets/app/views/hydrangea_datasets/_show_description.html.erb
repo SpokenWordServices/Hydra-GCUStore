@@ -1,0 +1,40 @@
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
+  <fieldset>
+    <legend>Title</legend>
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
+      </dt>
+      <dd class="title">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]) %>
+      </dd>
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:interval]).first.empty? %>
+        <dd class="multi_inline completeness">
+          <ul>
+            <li>
+              <%= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "ongoing", "ongoing, to be updated") %>
+              <%= get_values_from_datastream(@document_fedora,"descMetadata", [:interval]) %>
+            </li>
+            <li>
+              <%= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "completed", "Completed") %>
+            </li>
+          </ul>
+        </dd>
+	<% end %>
+    </dl>
+  </fieldset>
+<% end %>
+<fieldset>
+  <legend>Researchers (a primary researcher is required)</legend>
+  <ol>
+    <%= render :partial=>"contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
+  </ol>
+</fieldset>
+<fieldset>
+  <legend>Coverage and Methodology (required)</legend>
+  <%= render :partial=>"hydrangea_datasets/show_coverage_and_methodology" %>
+</fieldset>
+<fieldset>
+  <legend>Additional Info (optional)</legend>
+  <%= render :partial=>"hydrangea_datasets/show_additional_info" %>
+</fieldset>
