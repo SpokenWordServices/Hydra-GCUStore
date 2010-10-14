@@ -30,19 +30,22 @@
     - if flash[:notice]
       .notice
         = flash[:notice]
-    %div.accordion-section
-      %h2.section-title Describe the Dataset
-      = render :partial => 'hydrangea_datasets/edit_description'
+     
+    %div#accordion
+      %h2 
+        %a{:href => "#"} Describe the Dataset
+      %div#description
+        = render :partial => 'hydrangea_datasets/edit_description'
 
-    %div.accordion-section
-      %h2.section-title Upload Files
+      %h2        
+        %a{:href => "#"} Upload Files
       %div#uploads{'data-pid' => params[:id]}
 
-    %div.accordion-section#permissions
-      %h2.section-title Set permissions
-      %span#permissions
+      %h2
+        %a{:href => "#"} Set permissions
+      %div#permissions
         = render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]}
-      
+        
     // This hidden form really belongs elsewhere, but putting it inside of an 
     // accordion section un-hides it, so I stuck it here for now. -MZ
     

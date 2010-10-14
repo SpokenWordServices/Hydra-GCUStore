@@ -1,15 +1,15 @@
 %dl
-  - unless get_values_from_datastream(@document_fedora,"descMetadata", [:contact_name]).first.empty?
+  - unless get_values_from_datastream(@document_fedora,"HydraDataset", :contact_name).first.empty?
     %dt
-      = fedora_field_label("descMetadata", [:contact_name], "Contact:")
+      = fedora_field_label("HydraDataset", :contact_name, "Contact:")
     %dd.contact_name
-      = get_values_from_datastream(@document_fedora,"descMetadata", [:contact_name])
+      = get_values_from_datastream(@document_fedora,"HydraDataset", :contact_name)
 
-  - unless get_values_from_datastream(@document_fedora,"descMetadata", [:contact_email]).first.empty?  
+  - unless get_values_from_datastream(@document_fedora,"HydraDataset", :contact_email).first.empty?  
     %dt
-      = fedora_field_label("descMetadata", [:contact_email], "Email:")
+      = fedora_field_label("HydraDataset", :contact_email, "Email:")
     %dd.contact_email
-      = get_values_from_datastream(@document_fedora,"descMetadata", [:contact_email])
+      = get_values_from_datastream(@document_fedora,"HydraDataset", :contact_email)
   
   - unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty?
     %dt
@@ -20,22 +20,14 @@
   %dt
     %label Grant(s)
     -# link to insert another grant ...
-  %dd.multi_inline.grant
-    %ol
-      %li
-        %ul
-          - unless get_values_from_datastream(@document_fedora,"descMetadata", [{:organization=>0}, :namePart]).first.empty?
-            %li.grant_agency
-              = fedora_field_label("descMetadata", [{:organization=>0}, :namePart], "Granting agency")
-              = get_values_from_datastream(@document_fedora,"descMetadata", [{:organization=>0}, :namePart])
+    %dd.multi_inline.grant
+      %ol
+        %li
+          %ul
+            = render :partial=>"grants/show" #, :collection=>@document_fedora.datastreams_in_memory["HydraDataset"]
 
-          - unless get_values_from_datastream(@document_fedora,"descMetadata", [:grant_number]).first.empty?
-            %li.grant_number
-              = fedora_field_label("descMetadata", [:grant_number], "Grant number")
-              = get_values_from_datastream(@document_fedora,"descMetadata", [:grant_number])
-
-  - unless get_values_from_datastream(@document_fedora,"descMetadata", [:data_quality]).first.empty?  
+  - unless get_values_from_datastream(@document_fedora,"HydraDataset", :data_quality).first.empty?  
     %dt
-      = fedora_field_label("descMetadata", [:data_quality], "Notes about data quality:")
+      = fedora_field_label("HydraDataset", :data_quality, "Notes about data quality:")
     %dd.data_quality
-      = get_values_from_datastream(@document_fedora,"descMetadata", [:data_quality])
+      = get_values_from_datastream(@document_fedora,"HydraDataset", :data_quality)

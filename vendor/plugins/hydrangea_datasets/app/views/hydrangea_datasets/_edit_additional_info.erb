@@ -1,0 +1,46 @@
+<dl>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:contact_name], "Contact:") %>
+  </dt>
+  <dd class="contact_name">
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:contact_name]) %>
+  </dd>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:contact_email], "Email:") %>
+  </dt>
+  <dd class="contact_email">
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:contact_email]) %>
+  </dd>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
+    <%= fedora_text_field_insert_link "descMetadata", [:subject, :topic] %>
+  </dt>
+  <dd class="keywords">
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic]) %>
+  </dd>
+  <dt>
+    <label>Grant(s)</label>
+  </dt>
+  <dd class="multi_inline grant">
+    <ol>
+      <li>
+        <ul>
+          <li class="grant_agency">
+            <%= fedora_field_label("descMetadata", [{:organization=>0}, :namePart], "Granting agency") %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:organization=>0}, :namePart]) %>
+          </li>
+          <li class="grant_number">
+            <%= fedora_field_label("descMetadata", [:grant_number], "Grant number") %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:grant_number]) %>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </dd>
+  <dt>
+    <%= fedora_field_label("descMetadata", [:data_quality], "Notes about data quality:") %>
+  </dt>
+  <dd class="data_quality">
+    <%= fedora_text_area(@document_fedora,"descMetadata", [:data_quality], :multiple=>false) %>
+  </dd>
+</dl>

@@ -1,17 +1,15 @@
 require 'mediashelf/active_fedora_helper'
+
 class GrantssController < ApplicationController
   include MediaShelf::ActiveFedoraHelper
   before_filter :require_solr, :require_fedora
+  
   def new
     render :partial=>"grants/new"
   end
+  
   def create
-    # if params[:content_type]
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
-    # end
-    # unless af_model 
-    #   af_model = HydrangeaArticle
-    # end
     @document_fedora = af_model.find(params[:asset_id])
     
     ct = params[:grant_type]
@@ -20,6 +18,7 @@ class GrantssController < ApplicationController
     partial_name = "grants/edit"
     render :partial=>partial_name, :layout=>false
   end
+  
   def destroy
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     @document_fedora = af_model.find(params[:asset_id])
@@ -27,4 +26,5 @@ class GrantssController < ApplicationController
     result = @document_fedora.save
     render :text=>result.inspect
   end
+  
 end
