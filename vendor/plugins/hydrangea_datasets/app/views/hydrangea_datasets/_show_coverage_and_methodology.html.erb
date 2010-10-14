@@ -1,4 +1,4 @@
-<dl>
+
   <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :interval).first.empty? %>
     <dt>
       <%= fedora_field_label("descMetadata", [:data_type], "Data Collection") %>
@@ -37,85 +37,10 @@
           <%= get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_end) %>
         </li>
 		<% end %>
-    </dd>
-	<% end %>
-
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :gps).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", :gps, "GPS Coordinates") %>
-    </dt>
-    <dd class="gps">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", :gps) %>
-    </dd>
-	<% end %>
-
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :region).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", :region, "Region") %>
-    </dt>
-    <dd class="region">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", :region) %>
-    </dd>
-	<% end %>
-
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :site).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", :site, "Site") %>
-    </dt>
-    <dd class="site">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", :site) %>
-    </dd>
-	<% end %>
-	
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :ecosystem).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", :ecosystem, "Ecosystem Type") %>
-    </dt>
-    <dd class="ecosystem">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", :ecoysystem) %>
-    </dd>
-	<% end %>
-
-    <dt>
-      <%= fedora_field_label("descMetadata", [:data_type], "Data Collection") %>
-    </dt>
-    <dd class="multi_inline completeness">
-      <%= get_values_from_datastream(@document_fedora, "HydraDataset", :completeness) %>
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", :interval) %>
-    </dd>
-  
-	<% unless get_values_from_datastream(@document_fedora,"HydraDataset", :data_type).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", :data_type, "Type:") %>
-    </dt>
-    <dd class="data_type">
-      <%= get_values_from_datastream(@document_fedora, "HydraDataset", :data_type) %>
-    </dd>
-	<% end %>
-  
-	<% unless (get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_start).first.empty? || get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_end).first.empty?) %>
-    <dt>
-      <label>Timespan</label>
-    </dt>
-    <dd class="multi_inline timespan">
-      <ul>
-      <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_start).first.empty? %>
-        <li class="timespan_start">
-          <%= fedora_field_label("HydraDataset", :timespan_start, "Start") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_start) %>
-        </li>
-      	<% end %>
-
-		<% unless get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_end).first.empty? %>
-        <li class="timespan_end">
-          <%= fedora_field_label("HydraDataset", :timespan_end, "End") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :timespan_end) %>
-        </li>
-		<% end %>
 		</ul>
     </dd>
 	<% end %>
-	
+
   <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :gps).first.empty? %>
     <dt>
       <%= fedora_field_label("HydraDataset", :gps, "GPS Coordinates") %>
@@ -123,8 +48,8 @@
     <dd class="gps">
       <%= get_values_from_datastream(@document_fedora,"HydraDataset", :gps) %>
     </dd>
-   <% end %>
-	
+	<% end %>
+
   <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :region).first.empty? %>
     <dt>
       <%= fedora_field_label("HydraDataset", :region, "Region") %>
@@ -142,7 +67,7 @@
       <%= get_values_from_datastream(@document_fedora,"HydraDataset", :site) %>
     </dd>
 	<% end %>
-
+	
   <% unless get_values_from_datastream(@document_fedora,"HydraDataset", :ecosystem).first.empty? %>
     <dt>
       <%= fedora_field_label("HydraDataset", :ecosystem, "Ecosystem Type") %>
@@ -151,6 +76,3 @@
       <%= get_values_from_datastream(@document_fedora,"HydraDataset", :ecoysystem) %>
     </dd>
 	<% end %>
-	
-</dl>
-​

@@ -1,47 +1,42 @@
-<dl>
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_name]).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", [:contact_name], "Contact:") %>
-    </dt>
-    <dd class="contact_name">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_name]) %>
-    </dd>
+ <% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_name]).first.empty? %>
+   <dt>
+     <%= fedora_field_label("HydraDataset", [:contact_name], "Contact:") %>
+   </dt>
+   <dd class="contact_name">
+     <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_name]) %>
+   </dd>
 	<% end %>
 	
-  <% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_email]).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", [:contact_email], "Email:") %>
-    </dt>
-    <dd class="contact_email">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_email]) %>
-    </dd>
+ <% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_email]).first.empty? %>
+   <dt>
+     <%= fedora_field_label("HydraDataset", [:contact_email], "Email:") %>
+   </dt>
+   <dd class="contact_email">
+     <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:contact_email]) %>
+   </dd>
 	<% end %>
 	
-  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
-    <dt>
-      <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
-    </dt>
-    <dd class="keywords">
-      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
-    </dd>
-	<% end %>
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
+   <dt>
+     <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
+   </dt>
+   <dd class="keywords">
+     <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
+   </dd>
+<% end %>
 	
-  <dt>
-    <label>Grant(s)</label>
-  </dt>
-  <dd class="multi_inline grant">
-	  <dd class="multi_inline grant">
-	    <%= render :partial=>"grants/show" %>
-	  </dd>
-  </dd>
-  
+ <dt>
+   <label>Grant(s)</label>
+ </dt>
+ <dd class="multi_inline grant">
+ 	<%= render :partial=>"grants/show" %>
+ </dd>
+ 
 	<% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:data_quality]).first.empty? %>
-    <dt>
-      <%= fedora_field_label("HydraDataset", [:data_quality], "Notes about data quality:") %>
-    </dt>
-    <dd class="data_quality">
-      <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:data_quality]) %>
-    </dd>
+   <dt>
+     <%= fedora_field_label("HydraDataset", [:data_quality], "Notes about data quality:") %>
+   </dt>
+   <dd class="data_quality">
+     <%= get_values_from_datastream(@document_fedora,"HydraDataset", [:data_quality]) %>
+   </dd>
 	<% end %>
-	
-</dl>

@@ -1,33 +1,36 @@
 <dl>
   <dt>
-    <%= fedora_field_label("HydraDataset", [:contact_name], "Contact:") %>
+    <%= fedora_field_label("HydraDataset", :contact_name, "Contact:") %>
   </dt>
   <dd class="contact_name">
-    <%= fedora_text_field(@document_fedora,"HydraDataset", [:contact_name]) %>
+    <%= fedora_text_field(@document_fedora,"HydraDataset", :contact_name, :multiple=>false) %>
   </dd>
   <dt>
-    <%= fedora_field_label("HydraDataset", [:contact_email], "Email:") %>
+    <%= fedora_field_label("HydraDataset", :contact_email, "Email:") %>
   </dt>
   <dd class="contact_email">
-    <%= fedora_text_field(@document_fedora,"HydraDataset", [:contact_email]) %>
+    <%= fedora_text_field(@document_fedora,"HydraDataset", :contact_email, :multiple=>false) %>
   </dd>
   <dt>
     <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
     <%= fedora_text_field_insert_link "descMetadata", [:subject, :topic] %>
   </dt>
   <dd class="keywords">
-    <%= fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic]) %>
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic], :multiple=>false) %>
   </dd>
-  <dt>
+  
+ <dt>
     <label>Grant(s)</label>
   </dt>
   <dd class="multi_inline grant">
     <%= render :partial=>"grants/edit" %>
   </dd>
+
   <dt>
-    <%= fedora_field_label("HydraDataset", [:data_quality], "Notes about data quality:") %>
+    <%= fedora_field_label("HydraDataset", :data_quality, "Notes about data quality:") %>
   </dt>
   <dd class="data_quality">
-    <%= fedora_text_area(@document_fedora,"HydraDataset", [:data_quality], :multiple=>false) %>
+    <%= fedora_text_area(@document_fedora,"HydraDataset", :data_quality, :multiple=>false) %>
   </dd>
+
 </dl>

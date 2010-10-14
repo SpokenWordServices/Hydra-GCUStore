@@ -9,24 +9,13 @@
       <dd class="title">
         <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false) %>
       </dd>
-      <dd class="multi_inline completeness">
-        <ul>
-          <li>
-            <%#= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "ongoing", "ongoing, to be updated") %>
-            <%= fedora_select(@document_fedora,"HydraDataset", [:interval], :choices=>Hydra::ModsDataset.interval_choices) %>
-          </li>
-          <li>
-            <%#= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], "completed", "Completed") %>
-          </li>
-        </ul>
-      </dd>
-    </dl>
+     </dl>
   </fieldset>
   <fieldset>
     <legend>Researchers (a primary researcher is required)</legend>
     <ol>
       <%= render :partial=>"contributors/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
-    </ol>    
+    </ol>  
     <%# Button for adding person/conference/organization %>
     <% if params[:action] == "edit" %>
       <% format = document_partial_name(@document) %>

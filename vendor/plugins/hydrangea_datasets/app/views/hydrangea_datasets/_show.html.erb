@@ -1,7 +1,6 @@
 <% javascript_includes << "/plugin_assets/fluid-infusion/infusion-1.2-src/lib/jquery/ui/js/jquery.ui.accordion.js" %>
 <% javascript_includes << 'custom' %>
 <% javascript_includes << "catalog/show" %>
-<<<<<<< HEAD
 
 <div class="document_viewer" id="cover_container">
   <div id="accordion">
@@ -9,9 +8,9 @@
     <h2 class="section-title"><a href="#">Description</a></h2>
     <%= render :partial => 'hydrangea_datasets/show_description' %>
 
-    <h2 class="section-title"> <a href="#">Download Files</a></h2>
-    <div id="uploads" "data-pid"="<%=params[:id]%>" >
-	
+    <h2 class="section-title"><a href="#">Download Files</a></h2>
+    <div id="uploads" data-pid=<%= params[:id] %>></div>
+
   </div>
-<%= async_load_tag(asset_file_assets_path(params[:id]), 'uploads') %>
+	
 </div>

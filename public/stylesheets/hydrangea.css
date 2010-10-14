@@ -102,7 +102,9 @@ dd ol li, dd ul li {
 	list-style-type: none;
 }
 
-
+dd li {
+	width: 175px;
+}
 
 /* Multiple fields in one line */
 

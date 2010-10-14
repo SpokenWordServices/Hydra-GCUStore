@@ -1,37 +1,14 @@
-<li>
-  <dl class="grant">
-    <dt>
-    </dt>
-    <dd class="multi_inline grant">
-      <ul>
-        <li class="grant_agency">
-          <%= fedora_field_label("HydraDataset", :grant_organization, "Granting agency") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization) %>
-        </li>
-        <li class="grant_number">
-          <%= fedora_field_label("HydraDataset", :grant_number, "Grant number") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number) %>
-        </li>
-      </ul>
-    </dd>
-  </dl>
-</li>
-<li>
-  <dl class="grant">
-    <dt>
-    </dt>
-    <dd class="multi_inline grant">
-      <ul>
-        <li class="grant_agency">
-          <%= fedora_field_label("HydraDataset", :grant_organization, "Granting agency") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization) %>
-        </li>
-        <li class="grant_number">
-          <%= fedora_field_label("HydraDataset", :grant_number, "Grant number") %>
-          <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number) %>
-        </li>
-      </ul>
-    </dd>
-  </dl>
-</li>
-​
+<ul>
+<% unless get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization).first.empty? %> 
+ <li class="grant_agency">
+    <%= fedora_field_label("HydraDataset", :grant_organization, "Granting agency") %>
+    <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization) %>
+  </li>
+<% end %>
+<% unless get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number).first.empty? %> 
+  <li class="grant_number">
+    <%= fedora_field_label("HydraDataset", :grant_number, "Grant number") %>
+    <%= get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number) %>
+  </li>
+<% end %>
+</ul>
