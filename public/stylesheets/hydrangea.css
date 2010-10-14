@@ -88,7 +88,7 @@ dl dt {
 
 dl dd {
 	float: left;
-	width: 45em;
+	width: 30em;
 	margin-top: 1.5em;
 	margin-right: 25px;
 	position: relative;
@@ -107,10 +107,11 @@ dd ol li, dd ul li {
 /* Multiple fields in one line */
 
 .multi_inline ul, fieldset ol {
-	margin: 0px; padding: 0px;}
-	
+	margin: 0px; padding: 0px;
+}
 
-.multi_inline ul li {
+
+.multi_inline ul li, .multi_inline ol li {
 	display:inline-block;
 	list-style-type:none;
 	position: relative;
