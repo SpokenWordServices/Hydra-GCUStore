@@ -5,14 +5,14 @@
   <style type="text/css" media="screen">
     input.editable-edit, input.textile-edit {display:none}
   </style>
-<div class="document_viewer#cover_container">
+<div class="document_viewer" id="cover_container">
   <div class="accordion-section">
     <h2 class="section-title">Description</h2>
     <%= render :partial => 'hydrangea_datasets/show_description' %>
   </div>
   <div class="accordion-section">
     <h2 class="section-title">Download Files</h2>
-    <div id="uploads" 'data-pid' => params[:id]>
+    <div id="uploads" "data-pid"="<%= params[:id] %>" >
     </div>
   </div>
 <%= async_load_tag(asset_file_assets_path(params[:id]), 'uploads') %>
