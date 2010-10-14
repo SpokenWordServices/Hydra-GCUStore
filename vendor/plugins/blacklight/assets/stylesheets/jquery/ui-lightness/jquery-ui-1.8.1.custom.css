@@ -491,7 +491,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
    See also public/javascripts/custom.js
  */
 
-h2.ui-state-hover,
+/*h2.ui-state-hover,
 h2.ui-widget-content
 h2.ui-state-hover,
 h2.ui-widget-header
@@ -516,7 +516,7 @@ background: none !important;
 font-weight: inherit !important;
 color: inherit !important;
 }
-
+*/
 
 
 
