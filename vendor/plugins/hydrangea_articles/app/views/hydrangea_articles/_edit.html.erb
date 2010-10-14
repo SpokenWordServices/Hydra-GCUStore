@@ -33,21 +33,22 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
-    <div class="accordion-section">
-      <h2 class="section-title">Describe the Article</h2>
-      <%= render :partial => 'hydrangea_articles/edit_description' %>
+
+  <div id="accordion">
+
+    <h2 class="section-title"><a href="#">Description</a></h2>
+    <%= render :partial => 'hydrangea_articles/edit_description' %>
+
+    <h2 class="section-title"><a href="#">Upload Files</a></h2>
+    <div id="uploads" data-pid=<%= params[:id] %>></div>
+
+    <h2 class="section-title"><a href="#">Set permissions</a></h2>
+    <div id="permissions">
+      <%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]} %>
     </div>
-    <div class="accordion-section">
-      <h2 class="section-title">Upload Files</h2>
-      <div id="uploads" 'data-pid' => params[:id]>
-      </div>
-    </div>
-    <div id="permissions" class="accordion-section">
-      <h2 class="section-title">Set permissions</h2>
-      <span id="permissions">
-        <%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]} %>
-      </span> 
-    </div>    
+
+  </div>
+  
     <%#
     // This hidden form really belongs elsewhere, but putting it inside of an 
     // accordion section un-hides it, so I stuck it here for now. -MZ
