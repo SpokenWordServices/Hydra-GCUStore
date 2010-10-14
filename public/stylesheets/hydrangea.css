@@ -201,7 +201,8 @@ div#add-contributor-box .ui-widget {font-size: .9em;}
 
 /* Delete multiple-value field */
 
-.editable-container {position: relative;}
+.editable-container, .textile-container {position: relative;}
+
 
 a.destructive {
     background-image:url("/images/icons/delete-blue.png");
