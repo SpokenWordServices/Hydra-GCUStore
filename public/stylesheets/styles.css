@@ -78,7 +78,7 @@ fieldset dl dd input {
   font-style: italic;
 }
 
-.editable-text:hover,  .textile-container .text:hover {color: #009900 !important;}
+.editable-text:hover,  .textile-text .text:hover {color: #009900 !important;}
 
 	/* undo-redo - show only the icon until the cursor hovers over, then display the text */
 a.flc-undo-redoControl, a.flc-undo-undoControl {

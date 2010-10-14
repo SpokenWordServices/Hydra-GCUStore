@@ -29,7 +29,6 @@
         </li>
       </ul>
       <% if ( (params[:action] == "edit" || params[:action] == "create") && !person_name.strip.empty? ) %>
-        <%= "--#{person_name}--" %>
         <%= field_selectors_for("descMetadata", [{:person=>person_counter}]) %>
         <a class="destructive destroy_contributor" href="<%= asset_contributor_path(@document_fedora.pid, "person", person_counter) %>" title="Delete '<%= person_name %>'"> Delete</a>
       <% end %>

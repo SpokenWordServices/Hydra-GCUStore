@@ -88,7 +88,7 @@ dl dt {
 
 dl dd {
 	float: left;
-	width: 45em;
+	width: 30em;
 	margin-top: 1.5em;
 	margin-right: 25px;
 	position: relative;
@@ -102,15 +102,18 @@ dd ol li, dd ul li {
 	list-style-type: none;
 }
 
-
+dd li {
+	width: 175px;
+}
 
 /* Multiple fields in one line */
 
 .multi_inline ul, fieldset ol {
-	margin: 0px; padding: 0px;}
-	
+	margin: 0px; padding: 0px;
+}
 
-.multi_inline ul li {
+
+.multi_inline ul li, .multi_inline ol li {
 	display:inline-block;
 	list-style-type:none;
 	position: relative;
@@ -198,7 +201,8 @@ div#add-contributor-box .ui-widget {font-size: .9em;}
 
 /* Delete multiple-value field */
 
-.editable-container {position: relative;}
+.editable-container, .textile-container {position: relative;}
+
 
 a.destructive {
     background-image:url("/images/icons/delete-blue.png");
