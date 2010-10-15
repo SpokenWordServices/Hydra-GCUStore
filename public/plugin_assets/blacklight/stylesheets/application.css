@@ -21,7 +21,7 @@ hr {border:none; height:1px; background-color:#ccc;}
 
 /* Links */
 a:link, a:visited, a:active {border-bottom: 1px dotted #aaa; color: #2e4f81; text-decoration: none;}
-
+a:hover {color: #029;}
 
 /* Header Container Layout */
 #hd {margin: 0em 2em 0 2em; padding: 2em 0 2em 0; border-bottom: 1px dotted #ccc;}
