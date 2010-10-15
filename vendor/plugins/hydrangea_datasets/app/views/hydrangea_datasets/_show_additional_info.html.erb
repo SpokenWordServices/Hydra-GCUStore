@@ -24,14 +24,15 @@
      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
    </dd>
 <% end %>
-	
- <dt>
+
+<% unless get_values_from_datastream(@document_fedora,"HydraDataset", :grant_organization).first.empty? && get_values_from_datastream(@document_fedora,"HydraDataset", :grant_number).first.empty? %> 
    <label>Grant(s)</label>
  </dt>
  <dd class="multi_inline grant">
  	<%= render :partial=>"grants/show" %>
  </dd>
- 
+ <% end %>
+
 	<% unless get_values_from_datastream(@document_fedora,"HydraDataset", [:data_quality]).first.empty? %>
    <dt>
      <%= fedora_field_label("HydraDataset", [:data_quality], "Notes about data quality:") %>
