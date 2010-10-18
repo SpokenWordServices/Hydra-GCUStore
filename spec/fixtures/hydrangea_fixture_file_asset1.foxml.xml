@@ -37,6 +37,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/hydrangea:fixture_file_asset1">
     <hasModel xmlns="info:fedora/fedora-system:def/relations-external#" rdf:resource="info:fedora/afmodel:FileAsset"></hasModel>
+    <isPartOf xmlns="info:fedora/fedora-system:def/relations-external#" rdf:resource="info:fedora/hydrangea:fixture_mods_article3"></isPartOf>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>

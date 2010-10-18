@@ -33,12 +33,13 @@ div#search select#search_field {display: none;}
 
 /* Custom bits of data forms */
 
-legend {position: absolute; top: -9999px; left: -9999px;}
-	
+legend {
+	color: #999;
+}
+
 fieldset {
-		padding: 0 0 .5em 0;
-		margin-bottom: 0;
-		border-bottom: 1px solid #eeeeee;
+		padding: .5em;
+		border: 1px solid #eeeeee;
 	}
 
 select {
@@ -78,7 +79,7 @@ fieldset dl dd input {
   font-style: italic;
 }
 
-.editable-text:hover,  .textile-container .text:hover {color: #009900 !important;}
+.editable-text:hover,  .textile-text .text:hover {color: #009900 !important;}
 
 	/* undo-redo - show only the icon until the cursor hovers over, then display the text */
 a.flc-undo-redoControl, a.flc-undo-undoControl {

@@ -1,0 +1,22 @@
+<dl>
+
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
+      </dt>
+      <dd class="title">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]) %>
+      </dd>
+
+
+<% end %>
+
+  <ol>
+    <%= render :partial=>"contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
+  </ol>
+
+  <%= render :partial=>"hydrangea_datasets/show_coverage_and_methodology" %>
+
+  <%= render :partial=>"hydrangea_datasets/show_additional_info" %>
+
+</dl>
