@@ -3,23 +3,23 @@ GEM
   remote: http://gemcutter.org/
   specs:
     RedCloth (4.2.3)
-    actionmailer (2.3.9)
-      actionpack (= 2.3.9)
-    actionpack (2.3.9)
-      activesupport (= 2.3.9)
+    actionmailer (2.3.10)
+      actionpack (= 2.3.10)
+    actionpack (2.3.10)
+      activesupport (= 2.3.10)
       rack (~> 1.1.0)
-    active-fedora (1.2.2)
+    active-fedora (1.2.3)
       mime-types (>= 1.16)
       multipart-post
       nokogiri
       om (>= 1.0)
       solr-ruby (>= 0.0.6)
       xml-simple (>= 1.0.12)
-    activerecord (2.3.9)
-      activesupport (= 2.3.9)
-    activeresource (2.3.9)
-      activesupport (= 2.3.9)
-    activesupport (2.3.9)
+    activerecord (2.3.10)
+      activesupport (= 2.3.10)
+    activeresource (2.3.10)
+      activesupport (= 2.3.10)
+    activesupport (2.3.10)
     authlogic (2.1.6)
       activesupport
     block_helpers (0.3.3)
@@ -39,7 +39,7 @@ GEM
     database_cleaner (0.5.2)
     diff-lcs (1.1.2)
     facets (2.8.4)
-    gherkin (2.2.8)
+    gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     haml (3.0.21)
@@ -60,12 +60,12 @@ GEM
     rack (1.1.0)
     rack-test (0.5.6)
       rack (>= 1.0)
-    rails (2.3.9)
-      actionmailer (= 2.3.9)
-      actionpack (= 2.3.9)
-      activerecord (= 2.3.9)
-      activeresource (= 2.3.9)
-      activesupport (= 2.3.9)
+    rails (2.3.10)
+      actionmailer (= 2.3.10)
+      actionpack (= 2.3.10)
+      activerecord (= 2.3.10)
+      activeresource (= 2.3.10)
+      activesupport (= 2.3.10)
       rake (>= 0.8.3)
     rake (0.8.7)
     rcov (0.9.9)
@@ -101,7 +101,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  active-fedora (= 1.2.2)
+  active-fedora (= 1.2.3)
   authlogic (>= 0.1.0)
   block_helpers
   builder
