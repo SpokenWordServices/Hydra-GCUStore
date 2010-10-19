@@ -12,15 +12,15 @@
     <%= fedora_text_field(@document_fedora,"HydraDataset", :contact_email, :multiple=>false) %>
   </dd>
   <dt>
-    <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
+    <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic(s):") %>
     <%= fedora_text_field_insert_link "descMetadata", [:subject, :topic] %>
   </dt>
-  <dd class="keywords">
-    <%= fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic], :multiple=>false) %>
+  <dd id="topic_tag" class="topic_tag">
+    <%= fedora_text_field(@document_fedora,"descMetadata", [:subject, :topic], :multiple=>true) %>
   </dd>
   
  <dt>
-    <label>Grant(s)</label>
+    <label>Grant(s):</label>
   </dt>
   <dd class="multi_inline grant">
     <%= render :partial=>"grants/edit" %>
