@@ -171,7 +171,6 @@
 		  var content_type = $("form#document_metadata > input#content_type").first().attr("value");
 		  var insertion_point_selector = "#grants";
 		  var url = $("form#document_metadata").attr("action").split('?')[0] + '/grants/new';
-			alert(url);
 		  $.get(url, {content_type: content_type},function(data) {
 		    alert(data);
 				$(insertion_point_selector).append(data);
