@@ -172,7 +172,6 @@
 		  var insertion_point_selector = "#grants";
 		  var url = $("form#document_metadata").attr("action").split('?')[0] + '/grants/new';
 		  $.get(url, {content_type: content_type},function(data) {
-		    alert(data);
 				$(insertion_point_selector).append(data);
 		    fluid.inlineEdits("#"+$(data).attr("id"), {
 		        selectors : {
