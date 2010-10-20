@@ -2,15 +2,22 @@
 <% grant = edit %>
 <% grant_counter = edit_counter %>
 
-<% base_id = "grant_#{grant_counter}" %>
-<ul id="<%= base_id %>">
-  <li class="grant_agency">
-    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
-    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
-  </li>
+<% grant_name = "#{get_values_from_datastream(@document_fedora,'hydraDataset', [{:grant=>grant_counter}, :organization])} #{get_values_from_datastream(@document_fedora,'hydraDataset', [{:grant=>grant_counter}, :number])}" %>
 
-  <li class="grant_number">
-    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
-    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
-  </li>
-</ul>
+<% base_id = "grant_#{grant_counter}" %>
+
+		<ul class="multi_inline grant" id="<%= base_id %>">
+		  <li class="grant_agency">
+		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
+		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
+		  </li>
+
+		  <li class="grant_number">
+		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
+		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
+		  </li>
+		</ul>
+		<% if ( (params[:action] == "edit" || params[:action] == "create") && !grant_name.strip.empty? ) %>
+  			<%= field_selectors_for("hydraDataset", [{:grant=>grant_counter}]) %>
+  			<a class="destructive destroy_grant" href="<%= asset_grant_path(@document_fedora.pid, "grant", grant_counter) %>" title="Delete '<%= grant_name %>'"> Delete</a>
+		<% end %>

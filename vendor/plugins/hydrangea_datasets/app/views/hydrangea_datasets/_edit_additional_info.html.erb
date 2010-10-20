@@ -24,7 +24,9 @@
   	<%= fedora_text_field_insert_link "hydraDataset", [:grant] %>  
   </dt>
   <dd class="multi_inline grant" id="grants">	
+
 	<%= render :partial=>"grants/edit", :collection=>@document_fedora.datastreams_in_memory["hydraDataset"].find_by_terms(:grant) %>			
+
   </dd>
 
   <dt>

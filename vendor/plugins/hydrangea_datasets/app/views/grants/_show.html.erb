@@ -2,17 +2,24 @@
 <% grant_counter = show_counter %>
 
 <% base_id = "grant_#{grant_counter}" %>
-<ul id="<%= base_id %>">
-<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:grant, :organization]).first.empty? %> 
-  <li class="grant_agency">
-    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
-    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
-  </li>
-<% end %>
-<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:grant, :number]).first.empty? %> 
-  <li class="grant_number">
-    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
-    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
-  </li>
-<% end %>
-</ul>
+<li>
+<dl class="grant" id="<%= base_id %>">
+	<dt></dt>
+	<dd class="multi_inline grant">
+		<ul id="<%= base_id %>" class="grant">
+		<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:grant, :organization]).first.empty? %> 
+		  <li class="grant_agency">
+		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
+		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
+		  </li>
+		<% end %>
+		<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:grant, :number]).first.empty? %> 
+		  <li class="grant_number">
+		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
+		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
+		  </li>
+		<% end %>
+		</ul>
+	</dd>
+</dl>
+</li>

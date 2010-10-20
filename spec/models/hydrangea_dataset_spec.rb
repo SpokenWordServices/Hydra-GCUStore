@@ -21,8 +21,8 @@ describe HydrangeaDataset do
     it "should remove the corresponding grant from the xml and then mark the datastream as dirty" do
       pending
       dataset_ds = @dataset.datastreams_in_memory["hydraDataset"]
-      dataset_ds.expects(:remove_grant).with("person","3")
-      node, index = @dataset.remove_grant("person", "3")
+      dataset_ds.expects(:remove_grant).with("3")
+      node, index = @dataset.remove_grant("3")
     end
   end
   

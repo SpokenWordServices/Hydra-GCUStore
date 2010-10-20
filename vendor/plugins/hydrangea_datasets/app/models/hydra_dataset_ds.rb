@@ -77,6 +77,12 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
     return node, index
   end
 
+  # Remove the grant entry identified by @index
+  def remove_grant(index)
+    self.find_by_terms({:grant=>index.to_i}).first.remove
+    self.dirty = true
+  end
+  
 
   def self.completed_choices
     ["Time Series",

@@ -52,6 +52,8 @@
       //   e.preventDefault();
       // });
       $(".contributor a.destructive").hydraContributorDeleteButton();
+
+      $(".grant a.destructive").hydraGrantDeleteButton();
       
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);
@@ -193,6 +195,7 @@
 		};
 
 		function removeGrant(element) {
+			alert(element.html());
 		  var content_type = $("form#document_metadata > input#content_type").first().attr("value");
 		  var url = $(element).attr("href");
 		  var $grantNode = $(element).closest(".grant")

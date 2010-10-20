@@ -136,6 +136,27 @@
        // Must submit to permissions controller.  (can't submit as regular metadata update to assets controller update method)
        // because we need to trigger the RightsMetadata update_permissions methods.
      },
+
+     deleteGrant: function(element) {
+       var content_type = $("form#document_metadata > input#content_type").first().attr("value");
+       var url = $(element).attr("href");
+			 var $grantNode = $(element).prev();
+
+       $.ajax({
+         type: "DELETE",
+         url: url,
+         dataType: "html",
+         beforeSend: function() {
+   				$grantNode.animate({'backgroundColor':'#fb6c6c'},300);
+         },
+   			 success: function() {
+           $grantNode.slideUp(300,function() {
+             $grantNode.remove();
+   				});
+         }        
+       });
+       
+     },
      
      deleteContributor: function(element) {
        var content_type = $("form#new_contributor > input#content_type").first().attr("value");
@@ -572,6 +593,24 @@
      return this;
  
    };
+
+   $.fn.hydraGrantDeleteButton = function(settings) {
+     var config = {};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       $(this).unbind('click.hydra').bind('click.hydra', function(e) {
+          $.fn.hydraMetadata.deleteGrant(this, e);
+          e.preventDefault();
+        });
+     });
+ 
+     return this;
+ 
+   };
+
+
    
    $.fn.hydraContributorDeleteButton = function(settings) {
      var config = {};
