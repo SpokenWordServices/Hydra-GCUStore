@@ -1,7 +1,7 @@
 class HydraDatasetDs < ActiveFedora::NokogiriDatastream 
   
   set_terminology do |t|
-    t.root(:path=>"hydraDataset", :xmlns=>"http://www.loc.gov/mods/v3")
+    t.root(:path=>"hydraDataset", :xmlns=>"http://yourmediashelf.com/schemas/hydra-dataset/v0")
     t.completed
     t.interval
     t.data_type
@@ -60,7 +60,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
   # Inserts a new grant into the xml document
   # We should probably write a helper that auto-generates this for you.
   def insert_grant
-    node = Hydra::HydraDatasetDs.grant_template
+    node = self.class.grant_template
     nodeset = self.find_by_terms(:grant)
     
     unless nodeset.nil?
