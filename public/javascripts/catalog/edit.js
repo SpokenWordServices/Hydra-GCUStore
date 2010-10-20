@@ -170,8 +170,8 @@
 		function addGrant() {
 		  var content_type = $("form#document_metadata > input#content_type").first().attr("value");
 		  var insertion_point_selector = "#grants";
-		  var url = $("form#document_metadata").attr("action").split('?')[0] + '/grants/new';
-		  $.get(url, {content_type: content_type},function(data) {
+		  var url = $("form#document_metadata").attr("action").split('?')[0] + '/grants';
+		  $.post(url, {content_type: content_type},function(data) {
 				$(insertion_point_selector).append(data);
 		    fluid.inlineEdits("#"+$(data).attr("id"), {
 		        selectors : {

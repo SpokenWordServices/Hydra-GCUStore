@@ -13,7 +13,11 @@ class GrantsController < ApplicationController
     @document_fedora = af_model.find(params[:asset_id])
     inserted_node, new_node_index = @document_fedora.insert_grant
     @document_fedora.save
-    render :partial=>"grants_edit", :locals=>{"edit_grant".to_sym =>inserted_node, "edit_grant_counter".to_sym =>new_node_index}, :layout=>false    
+    logger.info "x"
+    logger.info inserted_node
+    logger.info new_node_index
+    logger.info "x"
+    render :partial=>"grants/edit", :locals=>{"edit".to_sym =>inserted_node, "edit_counter".to_sym =>new_node_index}, :layout=>false    
   end
   
   def destroy
