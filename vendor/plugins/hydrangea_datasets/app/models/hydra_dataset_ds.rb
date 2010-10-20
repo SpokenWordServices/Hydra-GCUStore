@@ -41,10 +41,11 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
         xml.contact_email
       }   
     end
+
     return builder.doc
   end
   
-  # Generates a new Person node
+  # Generates a new Grant node
   def self.grant_template
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.grant {
@@ -54,6 +55,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
     end
     return builder.doc.root
   end
+ 
   
   # Inserts a new grant into the xml document
   # We should probably write a helper that auto-generates this for you.
@@ -74,6 +76,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
     
     return node, index
   end
+
 
   def self.completed_choices
     ["Time Series",
