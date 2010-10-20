@@ -1,8 +1,8 @@
-class HydraDatasetDs < NokogiriDatastream
+class HydraDatasetDs < ActiveFedora::NokogiriDatastream 
   
   set_terminology do |t|
     t.root(:path=>"hydraDataset", :xmlns=>"http://www.loc.gov/mods/v3")
-    t.completeness
+    t.completed
     t.interval
     t.data_type
     t.timespan_start
@@ -23,7 +23,7 @@ class HydraDatasetDs < NokogiriDatastream
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.hydraDataset(:xmlns=>"http://yourmediashelf.com/schemas/hydra-dataset/v0") {
-        xml.completeness
+        xml.completed
         xml.interval
         xml.data_type
         xml.timespan_start
@@ -40,6 +40,7 @@ class HydraDatasetDs < NokogiriDatastream
         xml.contact_name
         xml.contact_email
       }   
+    end
     return builder.doc
   end
   
@@ -72,6 +73,29 @@ class HydraDatasetDs < NokogiriDatastream
     end
     
     return node, index
+  end
+
+  def self.completed_choices
+    ["Time Series",
+     "Snapshot / Sample"
+    ]
+  end
+
+  
+  def self.interval_choices
+    ["Monthly",
+     "Quarterly",
+     "Semi-annually",
+     "Annually",
+     "Irregular"
+    ]
+  end
+  
+  def self.data_type_choices
+    ["transect",
+     "observation",
+     "data logging",
+     "remote sensing"]
   end
 
 end
