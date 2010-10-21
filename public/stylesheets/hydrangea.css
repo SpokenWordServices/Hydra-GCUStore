@@ -223,10 +223,16 @@ a.destroy_grant {
 	background-repeat:no-repeat;
 	color: transparent;
 	border-bottom: none;
-	top: 25px;
-	right: 0px;	
+	top: -12px;
+	right: 20px;	
 	width: 20px;
 }
+
+dl.grant {
+   margin-top: -22px;
+   margin-left: -10px;
+}
+
 
 td a.destructive {
 	margin-left: 0px;

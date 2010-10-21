@@ -140,8 +140,7 @@
      deleteGrant: function(element) {
        var content_type = $("form#document_metadata > input#content_type").first().attr("value");
        var url = $(element).attr("href");
-			 var $grantNode = $(element).prev();
-
+			 var $grantNode = $(element).closest(".grant");
        $.ajax({
          type: "DELETE",
          url: url,

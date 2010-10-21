@@ -6,18 +6,23 @@
 
 <% base_id = "grant_#{grant_counter}" %>
 
-		<ul class="multi_inline grant" id="<%= base_id %>">
-		  <li class="grant_agency">
-		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
-		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
-		  </li>
+	<dl class="grant" id="<%= base_id %>">
+		<dt></dt>
+		<dd class="multi_inline grant">
+			<ul>
+			  <li class="grant_agency">
+			    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :organization], "Granting agency") %>
+			    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :organization], :multiple=>false) %>
+			  </li>
 
-		  <li class="grant_number">
-		    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
-		    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
-		  </li>
-		</ul>
-		<% if ( (params[:action] == "edit" || params[:action] == "create") && !grant_name.strip.empty? ) %>
-  			<%= field_selectors_for("hydraDataset", [{:grant=>grant_counter}]) %>
-  			<a class="destructive destroy_grant" href="<%= asset_grant_path(@document_fedora.pid, "grant", grant_counter) %>" title="Delete '<%= grant_name %>'"> Delete</a>
-		<% end %>
+			  <li class="grant_number">
+			    <%= fedora_field_label("hydraDataset", [{:grant=>grant_counter}, :number], "Grant number") %>
+			    <%= fedora_text_field(@document_fedora, "hydraDataset", [{:grant=>grant_counter}, :number], :multiple=>false) %>
+			  </li>
+			</ul>
+			<% if ( (params[:action] == "edit" || params[:action] == "create") && !grant_name.strip.empty? ) %>
+	  			<%= field_selectors_for("hydraDataset", [{:grant=>grant_counter}]) %>
+	  			<a class="destructive destroy_grant" href="<%= asset_grant_path(@document_fedora.pid, "grant", grant_counter) %>" title="Delete '<%= grant_name %>'"> Delete</a>
+			<% end %>
+		</dd>
+	</dl>
