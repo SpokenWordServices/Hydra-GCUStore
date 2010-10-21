@@ -10,31 +10,19 @@ describe HydrangeaDataset do
   end
   
   describe "insert_grant" do
-    it "should generate a new contributor of type (type) into the current xml, treating strings and symbols equally to indicate type, and then mark the datastream as dirty" do
+    it "should generate a new grant into the current xml, treating strings and symbols equally to indicate type, and then mark the datastream as dirty" do
       dataset_ds = @dataset.datastreams_in_memory["hydraDataset"]
       dataset_ds.expects(:insert_grant)
-      node, index = @dataset.insert_grant
+      node, index = @dataset.datastreams_in_memory["hydraDataset"].insert_grant
     end
   end
   
   describe "remove_grant" do
     it "should remove the corresponding grant from the xml and then mark the datastream as dirty" do
-      pending
       dataset_ds = @dataset.datastreams_in_memory["hydraDataset"]
       dataset_ds.expects(:remove_grant).with("3")
-      node, index = @dataset.remove_grant("3")
+      node, index = @dataset.datastreams_in_memory["hydraDataset"].remove_grant("3")
     end
   end
-  
-  describe "apply_depositor_metadata" do
-    it "should set depositor info in the properties and rightsMetadata datastreams" do
-      rights_ds = @dataset.datastreams_in_memory["rightsMetadata"]
-      prop_ds = @dataset.datastreams_in_memory["properties"]
 
-      node, index = @dataset.apply_depositor_metadata("Depositor Name")
-      
-      prop_ds.depositor_values.should == ["Depositor Name"]
-      rights_ds.get_values([:edit_access, :person]).should == ["Depositor Name"]
-    end
-  end
 end
