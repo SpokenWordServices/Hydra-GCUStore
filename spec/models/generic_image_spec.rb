@@ -40,27 +40,14 @@ describe GenericImage do
   end
   
   describe '#content=' do
-    it "create a content datastream when given an image file" do
-      mock_datastream = mock("content datastream")
-      #mock_image.expects(:derive_all)
-      
-      Fedora::Repository.expects(:do_method).returns(mock_datastream)
-      f = File.new("#{Rails.root}/spec/fixtures/image.tiff")
-      @hydra_image.content=f
-      
-      
-      
-      #mock_orphan = mock("orphan file asset", :containers=>[])
-      #mock_orphan.expects(:delete)
-      #HydraImage.stub(:load_instance).and_return(mock_image)  
-      #HydraImage.expects(:load_instance).with("_hydra_image_pid_").returns(mock_image)
-      #FileAsset.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan)
-      
-      
-      
-      #FileAsset.garbage_collect("_non_orphan_pid_")
-      #FileAsset.garbage_collect("_orphan_pid_")
+    it "shoutld create a content datastream when given an image file" do
     end
   end
+
+  describe '#derive_all' do
+    it "should create a max, screen and thumbnail file" do 
+    end
+  end
+
   
 end
