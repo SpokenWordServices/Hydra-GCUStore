@@ -36,4 +36,13 @@ describe HydrangeaArticle do
       rights_ds.get_values([:edit_access, :person]).should == ["Depositor Name"]
     end
   end
+  
+  describe ".to_solr" do
+    it "should return the necessary facets" do
+      @article.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
+      solr_doc = @article.to_solr
+      solr_doc[:person_institution_t].should == "my org"        
+      solr_doc[:person_institution_facet].should == "my org"        
+    end
+  end
 end
