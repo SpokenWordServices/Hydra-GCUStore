@@ -105,12 +105,14 @@ describe FileAssetsController do
       FileAsset.expects(:new).returns(mock_fa)
       mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename)
       mock_fa.expects(:label=).with(filename)
+      mock_fa.stubs(:pid).returns("foo:pid")
       xhr :post, :create, :Filedata=>mock_file, :Filename=>filename
     end
     it "if container_id is provided, should initialize a Base stub of the container, add the file asset to its relationships, and save both objects" do
       mock_file = mock("File")
       filename = "Foo File"
       mock_fa = mock("FileAsset", :save)
+      mock_fa.stubs(:pid).returns("foo:pid")
       FileAsset.expects(:new).returns(mock_fa)
       mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename)
       mock_fa.expects(:label=).with(filename)
@@ -200,6 +202,7 @@ describe FileAssetsController do
         filename = "My File Name"
         post :create, {:Filedata=>test_file, :Filename=>filename, :container_id=>@test_container.pid}
         assigns(:file_asset).relationships[:self][:is_part_of].should == ["info:fedora/#{@test_container.pid}"] 
+        retrieved_fa = FileAsset.load_instance(@test_fa.pid).relationships[:self][:is_part_of].should == ["info:fedora/#{@test_container.pid}"]
       end
       it "should retain previously existing relationships in container object" do
         test_file = fixture("empty_file.txt")

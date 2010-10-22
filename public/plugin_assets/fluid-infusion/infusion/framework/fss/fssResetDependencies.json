@@ -1,6 +1,0 @@
-{"fssReset": {
-   	"name": "Reset",
-   	"description": "A css reset file based on the YUI reset.",
-	"cssFiles": "fss-reset.css"
-}}
-

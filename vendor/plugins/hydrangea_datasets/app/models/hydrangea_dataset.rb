@@ -19,22 +19,6 @@ class HydrangeaDataset < ActiveFedora::Base
   end
   
   # A place to put extra extra metadata values
-  has_metadata :name => "HydraDataset", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'completeness', :string
-    m.field 'interval', :string
-    m.field 'data_type', :string
-    m.field 'timespan_start', :string
-    m.field 'timespan_end', :string
-    m.field 'gps', :string
-    m.field 'region', :string    
-    m.field 'site', :string    
-    m.field 'ecosystem', :string    
-    m.field 'grant_organization', :string
-    m.field 'grant_number', :string
-    m.field 'data_quality', :string
-    m.field 'contact_name', :string
-    m.field 'contact_email', :string
-  end
-
+  has_metadata :name => "hydraDataset", :type => HydraDatasetDs
   
 end

@@ -35,6 +35,10 @@
         insertValue(this, e);
         e.preventDefault();
       });
+  	  $metaDataForm.delegate("a.addval.grant", "click", function(e) {
+				addGrant(this, e);
+        e.preventDefault();
+      });
       $metaDataForm.delegate("a.addval.textarea", "click", function(e) {
         insertTextileValue(this, e);
         e.preventDefault();
@@ -48,6 +52,8 @@
       //   e.preventDefault();
       // });
       $(".contributor a.destructive").hydraContributorDeleteButton();
+
+      $(".grant a.destructive").hydraGrantDeleteButton();
       
       $metaDataForm.delegate('select.metadata-dd', 'change', function(e) {
         saveSelect(this);
@@ -150,6 +156,65 @@
           defaultViewText: "click to edit"
       });
   	};
+
+		// 
+		// Grants
+		// 
+		//
+		// Use Ajax to add a grant to the page
+		//
+		function setUpNewGrantForm () {
+		  $(".addval.grant").click(function() {
+		    addGrant();
+		  });
+		}
+
+		function addGrant() {
+		  var content_type = $("form#document_metadata > input#content_type").first().attr("value");
+		  var insertion_point_selector = "#grants";
+		  var url = $("form#document_metadata").attr("action").split('?')[0] + '/grants';
+		  $.post(url, {content_type: content_type},function(data) {
+				$(insertion_point_selector).append(data);
+		    fluid.inlineEdits("#"+$(data).attr("id"), {
+		        selectors : {
+		          editables : ".editable-container",
+		          text : ".editable-text",
+		          edit: ".editable-edit"
+		        },
+		        componentDecorators: {
+		          type: "fluid.undoDecorator"
+		        },
+		        listeners : {
+		          onFinishEdit : hydraFinishEditListener,
+		          modelChanged : hydraModelChangedListener
+		        },
+		        defaultViewText: "click to edit"
+		    });
+
+		  });
+		};
+
+		function removeGrant(element) {
+			alert(element.html());
+		  var content_type = $("form#document_metadata > input#content_type").first().attr("value");
+		  var url = $(element).attr("href");
+		  var $grantNode = $(element).closest(".grant")
+
+		  $.ajax({
+		    type: "DELETE",
+		    url: url,
+		    dataType: "html",
+		    beforeSend: function() {
+					$contributorNode.animate({'backgroundColor':'#fb6c6c'},300);
+				},
+				success: function() {
+					$contributorNode.slideUp(300,function() {
+						$contributorNode.remove();
+					});
+		    }        
+		  });
+
+		};
   	
     // 
     // Contributors
