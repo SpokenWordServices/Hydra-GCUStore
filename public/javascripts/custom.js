@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
 
 	// activate accordion behavior for all accordion-section elements
 	$("#accordion").accordion({
-	    autoHeight: true,
+	    autoHeight: false,
 	    clearStyle: false,
 	    collapsible: false,
 	    active: 0,
