@@ -2,6 +2,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
   
   set_terminology do |t|
     t.root(:path=>"hydraDataset", :xmlns=>"http://yourmediashelf.com/schemas/hydra-dataset/v0")
+    t.completeness
     t.completed
     t.interval
     t.data_type
@@ -23,6 +24,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.hydraDataset(:xmlns=>"http://yourmediashelf.com/schemas/hydra-dataset/v0") {
+        xml.completeness
         xml.completed
         xml.interval
         xml.data_type

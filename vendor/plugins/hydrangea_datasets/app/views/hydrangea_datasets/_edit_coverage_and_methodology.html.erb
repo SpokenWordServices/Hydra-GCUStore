@@ -2,13 +2,13 @@
   <dt>
     <%= fedora_field_label("descMetadata", [:data_type], "Data Collection")  %>
   </dt>
-  <dd class="multi_inline.completeness"
+  <dd class="multi_inline.completeness">
     <ul>
       <li>
-        <%= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"ongoing", "Ongoing, to be Updated"}) %>
+        <%= fedora_radio_button(@document_fedora, "hydraDataset", [:completeness], {"ongoing", "Ongoing, to be Updated"}) %>
         <%= fedora_select(@document_fedora, "hydraDataset", :interval, :choices => HydraDatasetDs.interval_choices) %>    
       <li>
-        <%= fedora_radio_button(@document_fedora, "descMetadata", [:completeness], {"completed", "Completed"}) %>    
+        <%= fedora_radio_button(@document_fedora, "hydraDataset", [:completeness], {"completed", "Completed"}) %>    
         <%= fedora_select(@document_fedora, "hydraDataset", :completed, :choices => HydraDatasetDs.completed_choices)   %>    
 	<li>
 	</ul>
@@ -18,11 +18,11 @@
   <dd class="multi_inline timespan">
     <ul>
       <li class="timespan_start">
-		<%= fedora_field_label("hydraDataset", :timespan_start, "Start") %>    
+		<%= fedora_field_label("hydraDataset", :timespan_start, "Start Date/Time") %>    
 		<%= fedora_text_field(@document_fedora, "hydraDataset", :timespan_start, :multiple=>false) %>    
 	  </li>
       <li class="timespan_end">
-		<%= fedora_field_label("hydraDataset", :timespan_end, "End") %>    
+		<%= fedora_field_label("hydraDataset", :timespan_end, "End Date/Time") %>    
 		<%= fedora_text_field(@document_fedora, "hydraDataset", :timespan_end, :multiple=>false) %>  
 	  </li>
 	</ul>

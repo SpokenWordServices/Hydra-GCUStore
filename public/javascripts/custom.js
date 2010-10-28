@@ -37,62 +37,29 @@ Hydrangea.FileUploader = function() {
   };
 }();
 
-// Accordion Behavior
+
 jQuery(document).ready(function($) {
-
-	// Replaced cumbersome jQuery UI Accordion with this much simpler version (Paul Wenzel)
-	// 
-	//     $('.accordion-section').children(":not(.section-title)").hide();
-	// 
-	//     $('.accordion-section .section-title').click(function(){
-	// 	if($(this).hasClass("active")) {
-	// 		
-	// 	} else {
-	// 		$(".accordion-section .active").siblings().hide()
-	// 		$(".accordion-section .active").toggleClass("active");
-	// 		$(this).siblings().slideToggle();
-	// 		$(this).addClass("active");
-	// 	}
-	// 
-	//      });
-	// 
-	// $('.accordion-section .section-title:first').click();
-	// $('.accordion-section .section-title:first').addClass("active");
-	// 
-
-
-	// activate accordion behavior for all accordion-section elements
+	// Accordion Behavior
 	$("#accordion").accordion({
 	    autoHeight: false,
 	    clearStyle: false,
 	    collapsible: false,
 	    active: 0,
-	    icons: false,
-	});	// 
-		// 
-		// .bind("accordionchangestart",
-		// function(event, ui) {
-		// 	//console.log('accordionchangestart triggered');
-		// 	$(".activeAccordion").removeClass("activeAccordion");
-		// 	
-		// }).bind("accordionchange",
-		// function(event, ui) {
-		// 	//console.log('accordionchange triggered');
-		// 	 $(this).addClass("activeAccordion");
-		// });
-		// 
-    // open up the first accordion-section by "clicking"
-	//     $(".accordion:first h2").click();
-	// $(".accordion:first").addClass("activeAccordion");
-
-    // Disable styles inherited by jQuery UI (see also bottom of public/plugin_assets/blacklight/stylesheets/jquery/ui-lightness/jquery-ui-1.8.1.custom.css)
-    // 	
-    // $(".ui-accordion-content").removeClass("ui-accordion ui-widget ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active");
-    // $(".ui-accordion h2").removeClass("ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-default ui-corner-all").css('cursor', 'pointer');
-    // $("div.ui-widget").css({
-    //     "font": "inherit",
-    //     "font-size": "inherit",
-    //     'line-height': 'inherit'
-    // });
-
+	    icons: false
+	});	
+	
+	
+	// FORM BEHAVIOR	
+	if ( $("input:radio").filter("[value=completed]").attr("checked", false) && $("input:radio").filter("[value=ongoing]").attr("checked","checked")) {
+		$("input:radio").filter("[value=completed]").attr("checked","checked");
+	}
+	
+	$("input:radio").change(function() {
+		if ($(this + ':checked').val() == "ongoing" ) {
+			$(".timespan_end label").text('Latest Date/Time');
+		} else {
+			$(".timespan_end label").text('End Date/Time');
+		}
+	});
+		
 });
