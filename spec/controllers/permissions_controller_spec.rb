@@ -28,7 +28,7 @@ describe PermissionsController do
   describe "create" do
     it "should create a new permissions entry" do
       stub_solrizer = stub("solrizer", :solrize)
-      Solrizer::Solrizer.stubs(:new).returns(stub_solrizer)
+      Solrizer::Fedora::Solrizer.stubs(:new).returns(stub_solrizer)
       mock_ds = mock("Datastream")
       Hydra::RightsMetadata.stubs(:from_xml).returns(mock_ds)
       mock_ds.expects(:permissions).with({"person" => "_person_id_"}, "read")
@@ -50,7 +50,7 @@ describe PermissionsController do
   describe "update" do
     it "should call Hydra::RightsMetadata properties setter" do
       stub_solrizer = stub("solrizer", :solrize)
-      Solrizer::Solrizer.stubs(:new).returns(stub_solrizer)
+      Solrizer::Fedora::Solrizer.stubs(:new).returns(stub_solrizer)
       mock_ds = mock("Datastream")
       Hydra::RightsMetadata.stubs(:from_xml).returns(mock_ds)
       mock_ds.expects(:update_permissions).with({"group" => {"_group_id_"=>"discover"}})

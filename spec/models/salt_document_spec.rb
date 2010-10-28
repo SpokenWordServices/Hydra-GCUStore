@@ -59,7 +59,7 @@ describe SaltDocument do
       #@document.expects(:update_index).returns("Successfully updated index.")
       mock_solrizer = mock("solrizer")
       mock_solrizer.expects(:solrize).with(@document)
-      Solrizer::Solrizer.expects(:new).returns( mock_solrizer )
+      Solrizer::Fedora::Solrizer.expects(:new).returns( mock_solrizer )
       @document.save
     end
   end

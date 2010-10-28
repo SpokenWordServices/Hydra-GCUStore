@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '>=2.3.5', '<3.0.0'
 
-gem 'active-fedora', '1.2.4'  
+gem 'active-fedora', '1.2.6'  
 gem 'authlogic', '>=0.1.0'
 gem 'builder'
 gem 'columnize'
@@ -28,13 +28,15 @@ gem 'RedCloth'
 gem 'rsolr'
 gem 'rsolr-ext'
 gem 'solr-ruby'
-gem 'solrizer', '>=0.2.0'
+gem 'solrizer', '>=0.3.1'
+gem 'solrizer-fedora'
 gem 'sqlite3-ruby'
 gem 'term-ansicolor'
 gem 'trollop'
 gem 'webrat'
 gem 'will_paginate'
 gem 'xml-simple'
+
 
 source 'http://gemcutter.org'
 
