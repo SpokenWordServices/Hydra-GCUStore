@@ -24,13 +24,16 @@ describe MediaShelf::ActiveFedoraHelper do
     it "should accept camel cased OR underscored model name"  
   end
 
-  describe "get_af_object_from_solr_doc" do
-    it "should return an ActiveFedora object given a valid solr doc" do
+  describe "load_af_instance_from_solr" do
+    it "should return an ActiveFedora object given a valid solr doc same as loading from Fedora" do
       pid = "hydrangea:fixture_mods_article1"
       result = ActiveFedora::Base.find_by_solr(pid)
       solr_doc = result.hits.first 
-      af_obj = helper.get_af_object_from_solr_doc(solr_doc)
-      af_obj.parts.length.should == 1
+      solr_af_obj = helper.load_af_instance_from_solr(solr_doc)
+      fed_af_obj = ActiveFedora::Base.load_instance(pid)
+      #check both inbound and outbound match
+      fed_af_obj.outbound_relationships.should == solr_af_obj.outbound_relationships
+      fed_af_obj.inbound_relationships.should == solr_af_obj.inbound_relationships
     end
   end
   
