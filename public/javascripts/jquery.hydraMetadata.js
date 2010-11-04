@@ -90,7 +90,6 @@
      addContributor: function(type) {
        var content_type = $("form#new_contributor > input#content_type").first().attr("value");
        var contributors_group_selector = "."+type+".contributor";
-
        var url = $("form#new_contributor").attr("action");
 
        $.post(url, {contributor_type: type, content_type: content_type},function(data) {
@@ -98,6 +97,7 @@
          $inserted = $(contributors_group_selector).last();
          $(".editable-container", $inserted).hydraTextField();
          $("a.destructive", $inserted).hydraContributorDeleteButton();
+				$("#re-run-add-contributor-action").val("Add a " + type);
        });
      },
      
@@ -527,7 +527,10 @@
  
      this.each(function() {
        $("#re-run-add-contributor-action", this).click(function() {
-         $.fn.hydraMetadata.addContributor("person");
+				 contributor_label = $(this).val().split(' ');
+				 contributor_type = contributor_label[contributor_label.length-1];
+				 if (contributor_type == "researcher") {contributor_type = "person";};
+         $.fn.hydraMetadata.addContributor(contributor_type);
        });
        $("#add_person", this).click(function() {
          $.fn.hydraMetadata.addContributor("person");

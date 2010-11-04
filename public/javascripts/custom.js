@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
 	
 	
 	// FORM BEHAVIOR	
-	if ( $("input:radio").filter("[value=completed]").attr("checked", false) && $("input:radio").filter("[value=ongoing]").attr("checked","checked")) {
+	if ( $("input:radio").filter("[value=completed]").attr("checked", false) && $("input:radio").filter("[value=ongoing]").attr("checked",false)) {
 		$("input:radio").filter("[value=completed]").attr("checked","checked");
 	}
 	
@@ -61,5 +61,9 @@ jQuery(document).ready(function($) {
 			$(".timespan_end label").text('End Date/Time');
 		}
 	});
+	
+	if ( $("input:radio").filter("[value=publicdomain]").attr("checked", false) && $("input:radio").filter("[value=odc-by]").attr("checked",false) && $("input:radio").filter("[value=odc-odbl]").attr("checked",false)) {
+		$("input:radio").filter("[value=publicdomain]").attr("checked","checked");
+	}
 		
 });

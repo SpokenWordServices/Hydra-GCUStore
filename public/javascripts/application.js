@@ -12,6 +12,15 @@ $(function() {
       $('#create-asset-menu').show() : $('#create-asset-menu').hide();
     })
   .parent().buttonset();
+	
+	if ($('#content_type').val()) {
+		the_selected_content_type = $('#content_type').val();
+		the_selected_content_type_label = $('#create-asset-menu li[onclick*="' + the_selected_content_type + '"]').html();
+		$("#re-run-action").val(the_selected_content_type_label);
+		$('#re-run-action')[0].onclick = function(){ location.href='/assets/new?content_type=' + the_selected_content_type; };		
+	}
+	
+	
   
   $('#create-asset-menu').mouseleave(function(){
     $('#create-asset-menu').hide();

@@ -128,8 +128,8 @@ fluid_1_2 = fluid_1_2 || {};
         },
         
         strings: {
-            undo: "undo edit",
-            redo: "redo edit"
+            undo: "undo",
+            redo: "redo"
         },
                     
         renderer: defaultRenderer
