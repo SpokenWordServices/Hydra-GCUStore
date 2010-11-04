@@ -16,6 +16,11 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
       t.organization
       t.number
     }
+    t.ownership
+    t.send_notifications
+    t.embargo
+    t.embargo_description
+    t.license
     t.data_quality
     t.contact_name
     t.contact_email
@@ -38,6 +43,11 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
           xml.organization
           xml.number
         }
+        xml.ownership
+        xml.send_notifications
+        xml.embargo
+        xml.embargo_description
+        xml.license        
         xml.data_quality
         xml.contact_name
         xml.contact_email
@@ -85,6 +95,20 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
     self.dirty = true
   end
   
+  def self.ownership_choices
+    ["Select...",
+     "I am the owner of this dataset and am authorized to deposit it",
+     "I am working on behalf of the owner, who has authorized me to deposit it."
+    ]
+  end
+
+  def self.embargo_choices
+    ["No embargo: data can be published immediately",
+     "Embargo for 6 months from date of deposit",
+     "Embargo for 1 year from date of deposit",
+     "Embargo for 2 years from date of deposit",    
+    ]
+  end
 
   def self.completed_choices
     ["Time Series",

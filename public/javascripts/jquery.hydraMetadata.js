@@ -90,7 +90,6 @@
      addContributor: function(type) {
        var content_type = $("form#new_contributor > input#content_type").first().attr("value");
        var contributors_group_selector = "."+type+".contributor";
-
        var url = $("form#new_contributor").attr("action");
 
        $.post(url, {contributor_type: type, content_type: content_type},function(data) {
@@ -98,6 +97,7 @@
          $inserted = $(contributors_group_selector).last();
          $(".editable-container", $inserted).hydraTextField();
          $("a.destructive", $inserted).hydraContributorDeleteButton();
+				$("#re-run-add-contributor-action").val("Add a " + type);
        });
      },
      
@@ -233,6 +233,7 @@
        var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize();
 
        var params = field_param + "&" + content_type_param + "&" + field_selectors + "&_method=put";
+       
        $.ajax({
          type: "PUT",
          url: url,
@@ -372,13 +373,12 @@
       
       // collect submit parameters.  These should probably be shoved into a data hash instead of a url string...
       // var field_param = $editNode.fieldSerialize();
-      var content_type_param = $("input#content_type", $closestForm).fieldSerialize();
       var field_selectors = $("input.fieldselector[rel="+$editNode.attr("rel")+"]").fieldSerialize();
-      var update_params = content_type_param + "&" + field_selectors;
       
-      var assetUrl = $closestForm.attr("action") + "?" + update_params;
+      //Field Selectors are the only update params to be passed in the url
+      var assetUrl = $closestForm.attr("action") + "&" + field_selectors;
       var submitUrl = $.fn.hydraMetadata.appendFormat(assetUrl, {format: "textile"});
-      
+
       // These params are all you need to load the value from AssetsController.show
       // Note: the field value must match the field name in solr (minus the solr suffix)
       var load_params = {
@@ -527,7 +527,10 @@
  
      this.each(function() {
        $("#re-run-add-contributor-action", this).click(function() {
-         $.fn.hydraMetadata.addContributor("person");
+				 contributor_label = $(this).val().split(' ');
+				 contributor_type = contributor_label[contributor_label.length-1];
+				 if (contributor_type == "researcher") {contributor_type = "person";};
+         $.fn.hydraMetadata.addContributor(contributor_type);
        });
        $("#add_person", this).click(function() {
          $.fn.hydraMetadata.addContributor("person");

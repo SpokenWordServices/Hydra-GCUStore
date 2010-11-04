@@ -1,0 +1,38 @@
+<dl>
+
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:contact_name]).first.empty? %>
+	  <dt>
+	    <%= fedora_field_label("hydraDataset", [:contact_name], "Contact:") %>
+	  </dt>
+	  <dd class="contact_name">
+	    <%= get_values_from_datastream(@document_fedora,"hydraDataset", [:contact_name]) %>
+	  </dd>
+	<% end %>
+
+
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:ownership]).first.empty? %>
+	  <dt>
+	    <%= fedora_field_label("hydraDataset", :ownership, "Right to deposit") %>
+	  </dt>
+	  <dd class="right_to_deposit">
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:ownership]) %>
+	  </dd>
+	<% end %>
+
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:send_notifications]).first.empty? %>
+	  <dt>
+	    <%= fedora_field_label("hydraDataset", :send_notifications, "Send notifications to (Email address)") %>
+	  </dt>
+	  <dd class="send_notifications">   
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:send_notifications]) %>
+	  </dd>
+	<% end %>
+
+	<dt>
+	  <%= fedora_field_label("hydraDataset", :license, "Send notifications to (Email address)") %>
+	</dt>
+	<dd class="send_notifications">   
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:license]) %>
+	</dd>
+
+</dl>

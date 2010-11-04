@@ -8,9 +8,14 @@
     <h2 class="section-title"><a href="#">Description</a></h2>
     <%= render :partial => 'hydrangea_datasets/show_description' %>
 
+    <h2 class="section-title"><a href="#">Rights & Intellectual Property</a></h2>
+    <%= render :partial => 'hydrangea_datasets/show_rights' %>
+
     <h2 class="section-title"><a href="#">Download Files</a></h2>
     <div id="uploads" data-pid=<%= params[:id] %>></div>
 
   </div>
 	
 </div>
+
+<%= async_load_tag(asset_file_assets_path(params[:id]), 'uploads') %>
