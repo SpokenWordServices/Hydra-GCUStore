@@ -1,3 +1,10 @@
+<% if params[:files] %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#accordion").accordion({active: 2});
+    });
+  </script>
+<% end %>
 <% stylesheet_links << "../javascripts/date-picker/css/datepicker" %>
 <% javascript_includes << infusion_javascripts(:default_no_jquery, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) %>
 <% javascript_includes << "jquery.jeditable.mini" %>
