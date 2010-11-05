@@ -86,7 +86,7 @@ GEM
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     solr-ruby (0.0.8)
-    solrizer (0.3.0)
+    solrizer (0.3.1)
       mediashelf-loggable
       nokogiri
       nokogiri
@@ -143,7 +143,7 @@ DEPENDENCIES
   ruby-debug
   ruby-debug-base
   solr-ruby
-  solrizer (>= 0.3.0)
+  solrizer (>= 0.3.1)
   solrizer-fedora
   sqlite3-ruby
   term-ansicolor
