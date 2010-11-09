@@ -10,12 +10,12 @@
 	<% end %>
 
 
-	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:ownership]).first.empty? %>
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:right_to_deposit]).first.empty? %>
 	  <dt>
-	    <%= fedora_field_label("hydraDataset", :ownership, "Right to deposit") %>
+	    <%= fedora_field_label("hydraDataset", :right_to_deposit, "Right to deposit") %>
 	  </dt>
 	  <dd class="right_to_deposit">
-		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:ownership]) %>
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:right_to_deposit]) %>
 	  </dd>
 	<% end %>
 

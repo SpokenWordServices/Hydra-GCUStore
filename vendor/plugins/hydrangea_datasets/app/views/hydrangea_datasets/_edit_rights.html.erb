@@ -1,17 +1,17 @@
-<dl>
+le<dl>
  <fieldset>
   <legend>Ownership & Right to Deposit</legend>
   <dt>
-    <%= fedora_field_label("hydraDataset", :ownership, "Right to deposit") %>
+    <%= fedora_field_label("hydraDataset", :right_to_deposit, "Right to deposit") %>
   </dt>
   <dd class="right_to_deposit">
-    <%= fedora_select(@document_fedora, "hydraDataset", :ownership, :choices => HydraDatasetDs.ownership_choices)   %>    
-  </dd>
+    <%= fedora_select(@document_fedora, "hydraDataset", :right_to_deposit, :choices => HydraDatasetDs.ownership_choices)   %>    
+  </dd> 
   <dt>
-    <%= fedora_field_label("hydraDataset", :send_notifications, "Send notifications to (Email address)") %>
+    <%= fedora_field_label("hydraDataset", :notification_email, "Send notifications to (Email address)") %>
   </dt>
   <dd class="send_notifications">   
-    <%= fedora_text_field(@document_fedora,"hydraDataset", :send_notifications, :multiple=>false) %>
+    <%= fedora_text_field(@document_fedora,"hydraDataset", :notification_email, :multiple=>false) %>
   </dd>
 </fieldset>
 
@@ -19,16 +19,16 @@
 <fieldset>
   <legend>Embargo</legend>
   <dt>
-    <%= fedora_field_label("hydraDataset", :embargo, "Embargo") %>
+    <%= fedora_field_label("rightsMetadata", [:embargo, :embargo_release_date], "Embargo") %>
   </dt>
   <dd class="embargo">
-    <%= fedora_select(@document_fedora, "hydraDataset", :embargo, :choices => HydraDatasetDs.embargo_choices)   %>    
+    <%= fedora_select(@document_fedora, "rightsMetadata", [:embargo, :embargo_release_date], :choices => HydraDatasetDs.embargo_choices)   %>    
   </dd>
   <dt>
-    <%= fedora_field_label("hydraDataset", :embargo_description, "Reason for embargo (optional)") %>
+    <%= fedora_field_label("rightsMetadata", [:embargo, :human_readable], "Reason for embargo (optional)") %>
   </dt>
   <dd class="embargo_description">
-    <%= fedora_text_field(@document_fedora,"hydraDataset", :embargo_description, :multiple=>false) %>
+    <%= fedora_text_field(@document_fedora,"rightsMetadata", [:embargo, :human_readable], :multiple=>false) %>
   </dd>
 </fieldset>
 
