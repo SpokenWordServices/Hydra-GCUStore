@@ -16,10 +16,8 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
       t.organization
       t.number
     }
-    t.ownership
-    t.send_notifications
-    t.embargo
-    t.embargo_description
+    t.right_to_deposit
+    t.notification_email
     t.license
     t.data_quality
     t.contact_name
@@ -43,10 +41,8 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
           xml.organization
           xml.number
         }
-        xml.ownership
-        xml.send_notifications
-        xml.embargo
-        xml.embargo_description
+        xml.right_to_deposit
+        xml.notification_email
         xml.license        
         xml.data_quality
         xml.contact_name
