@@ -5,7 +5,7 @@ le<dl>
     <%= fedora_field_label("hydraDataset", :right_to_deposit, "Right to deposit") %>
   </dt>
   <dd class="right_to_deposit">
-    <%= fedora_select(@document_fedora, "hydraDataset", :right_to_deposit, :choices => HydraDatasetDs.ownership_choices)   %>    
+    <%= fedora_select(@document_fedora, "hydraDataset", :right_to_deposit, :choices => HydraDatasetDs.right_to_deposit_choices)   %>    
   </dd> 
   <dt>
     <%= fedora_field_label("hydraDataset", :notification_email, "Send notifications to (Email address)") %>

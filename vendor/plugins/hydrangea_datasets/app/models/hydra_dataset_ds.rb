@@ -91,7 +91,7 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
     self.dirty = true
   end
   
-  def self.ownership_choices
+  def self.right_to_deposit_choices
     ["Select...",
      "I am the owner of this dataset and am authorized to deposit it",
      "I am working on behalf of the owner, who has authorized me to deposit it."
