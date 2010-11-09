@@ -103,10 +103,11 @@ class HydraDatasetDs < ActiveFedora::NokogiriDatastream
   end
 
   def self.embargo_choices
-    ["No embargo: data can be published immediately",
-     "Embargo for 6 months from date of deposit",
-     "Embargo for 1 year from date of deposit",
-     "Embargo for 2 years from date of deposit",    
+    [
+     ["No embargo: data can be published immediately", Date.today.to_s("Y-m-D")],
+     ["Embargo for 6 months from date of deposit", (Date.today+6.months).to_s("Y-m-D")],
+     ["Embargo for 1 year from date of deposit", (Date.today+1.year).to_s("Y-m-D")],
+     ["Embargo for 2 years from date of deposit", (Date.today+2.years).to_s("Y-m-D")],    
     ]
   end
 
