@@ -1,38 +1,38 @@
 <dl>
 
-	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", :contact_name).first.empty? %>
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:contact_name]).first.empty? %>
 	  <dt>
-	    <%= fedora_field_label("hydraDataset", :contact_name, "Contact:") %>
+	    <%= fedora_field_label("hydraDataset", [:contact_name], "Contact:") %>
 	  </dt>
 	  <dd class="contact_name">
-	    <%= get_values_from_datastream(@document_fedora,"hydraDataset", :contact_name) %>
+	    <%= get_values_from_datastream(@document_fedora,"hydraDataset", [:contact_name]) %>
 	  </dd>
 	<% end %>
 
 
-	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", :right_to_deposit).first.empty? %>
+	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:right_to_deposit]).first.empty? %>
 	  <dt>
-	    <%= fedora_field_label("hydraDataset", :right_to_deposit, "Right to deposit") %>
+	    <%= fedora_field_label("hydraDataset", [:right_to_deposit], "Right to deposit") %>
 	  </dt>
 	  <dd class="right_to_deposit">
-		<%= get_values_from_datastream(@document_fedora,"hydraDataset", :right_to_deposit) %>
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:right_to_deposit]) %>
 	  </dd>
 	<% end %>
 
 	<% unless get_values_from_datastream(@document_fedora,"hydraDataset", :notification_email).first.empty? %>
 	  <dt>
-	    <%= fedora_field_label("hydraDataset", :notification_email, "Send notifications to (Email address)") %>
+	    <%= fedora_field_label("hydraDataset", [:notification_email], "Send notifications to (Email address)") %>
 	  </dt>
 	  <dd class="send_notifications">   
-		<%= get_values_from_datastream(@document_fedora,"hydraDataset", :notification_email) %>
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:notification_email]) %>
 	  </dd>
 	<% end %>
 
 	<dt>
-	  <%= fedora_field_label("hydraDataset", :license, "License") %>
+	  <%= fedora_field_label("hydraDataset", [:license], "License") %>
 	</dt>
 	<dd class="send_notifications">   
-		<%= get_values_from_datastream(@document_fedora,"hydraDataset", :license) %>
+		<%= get_values_from_datastream(@document_fedora,"hydraDataset", [:license]) %>
 	</dd>
 
 </dl>

@@ -2,16 +2,16 @@
  <fieldset>
   <legend>Ownership & Right to Deposit</legend>
   <dt>
-    <%= fedora_field_label("hydraDataset", :right_to_deposit, "Right to deposit") %>
+    <%= fedora_field_label("hydraDataset", [:right_to_deposit], "Right to deposit") %>
   </dt>
   <dd class="right_to_deposit">
-    <%= fedora_select(@document_fedora, "hydraDataset", :right_to_deposit, :choices => HydraDatasetDs.right_to_deposit_choices)   %>    
+    <%= fedora_select(@document_fedora, "hydraDataset", [:right_to_deposit], :choices => HydraDatasetDs.right_to_deposit_choices)   %>    
   </dd> 
   <dt>
-    <%= fedora_field_label("hydraDataset", :notification_email, "Send notifications to (Email address)") %>
+    <%= fedora_field_label("hydraDataset", [:notification_email], "Send notifications to (Email address)") %>
   </dt>
-  <dd class="send_notifications">   
-    <%= fedora_text_field(@document_fedora,"hydraDataset", :notification_email, :multiple=>false) %>
+  <dd class="send_notifications">  
+    <%= fedora_text_field(@document_fedora, "hydraDataset", [:notification_email], :multiple=>false) %>
   </dd>
 </fieldset>
 
@@ -28,7 +28,7 @@
     <%= fedora_field_label("rightsMetadata", [:embargo, :human_readable], "Reason for embargo (optional)") %>
   </dt>
   <dd class="embargo_description">
-    <%= fedora_text_field(@document_fedora,"rightsMetadata", [:embargo, :human_readable], :multiple=>false) %>
+    <%= fedora_text_field(@document_fedora, "rightsMetadata", [:embargo, :human_readable], :multiple=>false) %>
   </dd>
 </fieldset>
 
@@ -39,9 +39,9 @@
   </dt>
   <dd class="license">
 	<ul>
-	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", :license, {"publicdomain", "<a href='#'>Public Domain Dedication and License</a> - Public Domain for datasets"}) %></li>
-	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", :license, {"odc-by", "<a href='#'>Attribution License (ODBC-By)</a> - Attribution for data/databases"}) %></li>
-	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", :license, {"odc-odbl", "<a href='#'>Open Database License (ODC-ODbL)</a> - Share-Alike for data/databases"}) %></li>
+	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", [:license], {"publicdomain", "<a href='#'>Public Domain Dedication and License</a> - Public Domain for datasets"}) %></li>
+	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", [:license], {"odc-by", "<a href='#'>Attribution License (ODBC-By)</a> - Attribution for data/databases"}) %></li>
+	<li style="margin-left:-100px;width:450px;"><%= fedora_radio_button(@document_fedora, "hydraDataset", [:license], {"odc-odbl", "<a href='#'>Open Database License (ODC-ODbL)</a> - Share-Alike for data/databases"}) %></li>
 	</ul>
   </dd>
 </fieldset>

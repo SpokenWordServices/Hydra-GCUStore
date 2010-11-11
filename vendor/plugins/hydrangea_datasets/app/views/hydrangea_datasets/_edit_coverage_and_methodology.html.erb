@@ -6,10 +6,10 @@
     <ul>
       <li>
         <%= fedora_radio_button(@document_fedora, "hydraDataset", [:completeness], {"ongoing", "Ongoing, to be Updated"}) %>
-        <%= fedora_select(@document_fedora, "hydraDataset", :interval, :choices => HydraDatasetDs.interval_choices) %>    
+        <%= fedora_select(@document_fedora, "hydraDataset", [:interval], :choices => HydraDatasetDs.interval_choices) %>    
       <li>
         <%= fedora_radio_button(@document_fedora, "hydraDataset", [:completeness], {"completed", "Completed"}) %>    
-        <%= fedora_select(@document_fedora, "hydraDataset", :completed, :choices => HydraDatasetDs.completed_choices)   %>    
+        <%= fedora_select(@document_fedora, "hydraDataset", [:completed], :choices => HydraDatasetDs.completed_choices)   %>    
 	<li>
 	</ul>
   </dd>
@@ -18,36 +18,36 @@
   <dd class="multi_inline timespan">
     <ul>
       <li class="timespan_start">
-		<%= fedora_field_label("hydraDataset", :timespan_start, "Start Date/Time") %>    
-		<%= fedora_text_field(@document_fedora, "hydraDataset", :timespan_start, :multiple=>false) %>    
+		<%= fedora_field_label("hydraDataset", [:timespan_start], "Start Date/Time") %>    
+		<%= fedora_text_field(@document_fedora, "hydraDataset", [:timespan_start], :multiple=>false) %>    
 	  </li>
       <li class="timespan_end">
-		<%= fedora_field_label("hydraDataset", :timespan_end, "End Date/Time") %>    
-		<%= fedora_text_field(@document_fedora, "hydraDataset", :timespan_end, :multiple=>false) %>  
+		<%= fedora_field_label("hydraDataset", [:timespan_end], "End Date/Time") %>    
+		<%= fedora_text_field(@document_fedora, "hydraDataset", [:timespan_end], :multiple=>false) %>  
 	  </li>
 	</ul>
   <dt>
-    <%= fedora_field_label("hydraDataset", :gps, "GPS Coordinates") %>    
+    <%= fedora_field_label("hydraDataset", [:gps], "GPS Coordinates") %>    
 </dt>
   <dd class="gps">
-    <%= fedora_text_field(@document_fedora, "hydraDataset", :gps, :multiple=>false) %>    
+    <%= fedora_text_field(@document_fedora, "hydraDataset", [:gps], :multiple=>false) %>    
 	</dd>
   <dt>
-    <%= fedora_field_label("hydraDataset", :region, "Region") %>    
+    <%= fedora_field_label("hydraDataset", [:region], "Region") %>    
 	</dt>
   <dd class="region">
-    <%=  fedora_text_field(@document_fedora, "hydraDataset", :region, :multiple=>false) %>    
+    <%=  fedora_text_field(@document_fedora, "hydraDataset", [:region], :multiple=>false) %>    
 	</dd>
   <dt>
-    <%= fedora_field_label("hydraDataset", :site, "Site") %>    
+    <%= fedora_field_label("hydraDataset", [:site], "Site") %>    
 	</dt>
   <dd class="site">
-    <%= fedora_text_field(@document_fedora, "hydraDataset", :site, :multiple=>false)  %>       
+    <%= fedora_text_field(@document_fedora, "hydraDataset", [:site], :multiple=>false)  %>       
 	</dd>
   <dt>
-    <%= fedora_field_label("hydraDataset", :ecosystem, "Ecosystem Type") %>    
+    <%= fedora_field_label("hydraDataset", [:ecosystem], "Ecosystem Type") %>    
 	</dt>
   <dd class="ecosystem">
-    <%= fedora_text_field(@document_fedora, "hydraDataset", :ecosystem, :multiple=>false)  %>    
+    <%= fedora_text_field(@document_fedora, "hydraDataset", [:ecosystem], :multiple=>false)  %>    
 	</dd>
 </dl>

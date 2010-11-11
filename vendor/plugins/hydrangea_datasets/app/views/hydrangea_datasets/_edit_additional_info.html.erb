@@ -1,15 +1,15 @@
 <dl>
   <dt>
-    <%= fedora_field_label("hydraDataset", :contact_name, "Contact:") %>
+    <%= fedora_field_label("hydraDataset", [:contact_name], "Contact:") %>
   </dt>
   <dd class="contact_name">
-    <%= fedora_text_field(@document_fedora,"hydraDataset", :contact_name, :multiple=>false) %>
+    <%= fedora_text_field(@document_fedora,"hydraDataset", [:contact_name], :multiple=>false) %>
   </dd>
   <dt>
-    <%= fedora_field_label("hydraDataset", :contact_email, "Email:") %>
+    <%= fedora_field_label("hydraDataset", [:contact_email], "Email:") %>
   </dt>
   <dd class="contact_email">
-    <%= fedora_text_field(@document_fedora,"hydraDataset", :contact_email, :multiple=>false) %>
+    <%= fedora_text_field(@document_fedora,"hydraDataset", [:contact_email], :multiple=>false) %>
   </dd>
   <dt>
     <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic(s):") %>
@@ -28,10 +28,10 @@
   </dd>
 
   <dt>
-    <%= fedora_field_label("hydraDataset", :data_quality, "Notes about data quality:") %>
+    <%= fedora_field_label("hydraDataset", [:data_quality], "Notes about data quality:") %>
   </dt>
   <dd class="data_quality">
-    <%= fedora_text_area(@document_fedora,"hydraDataset", :data_quality, :multiple=>false) %>
+    <%= fedora_text_area(@document_fedora,"hydraDataset", [:data_quality], :multiple=>false) %>
   </dd>
 
 </dl>
