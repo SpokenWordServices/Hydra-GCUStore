@@ -57,8 +57,17 @@ jQuery(document).ready(function($) {
 	    clearStyle: false,
 	    collapsible: false,
 	    active: 0,
-	    icons: false
+	    icons: false,
+			fillSpace: true	
 	});	
+	$(function() {
+			$("#accordion").resizable({
+				minHeight: 140,
+				resize: function() {
+					$( "#accordion" ).accordion( "resize" );
+				}
+			});
+		});
 	
 	
 	// FORM BEHAVIOR	
