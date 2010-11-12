@@ -65,4 +65,15 @@ describe FileAsset do
       @file_asset.containers(:response_format=>:id_array).should == [@asset3.pid,@asset2.pid,@asset1.pid]
     end
   end
+
+  describe ".containers_ids" do
+    it "should return an array of container ids instead of objects" do
+       #test all possible combinations...
+      #none
+      @file_asset.containers_ids.should == []
+      #is_part_of
+      @file_asset.part_of_append(@asset1)
+      @file_asset.containers_ids.should == [@asset1.pid]
+    end
+  end
 end
