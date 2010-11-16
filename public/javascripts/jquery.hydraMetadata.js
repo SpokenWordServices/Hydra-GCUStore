@@ -415,8 +415,7 @@
  
      return this;
    };
-   
-   
+
    // 
    // This method relies on some options being saved in the dom element's data, which is populated by a little script inserted by the fedora_date_select helper.  
    // For example:
@@ -612,7 +611,6 @@
  
    };
 
-
    
    $.fn.hydraContributorDeleteButton = function(settings) {
      var config = {};
@@ -624,6 +622,23 @@
           $.fn.hydraMetadata.deleteContributor(this, e);
           e.preventDefault();
         });
+     });
+ 
+     return this;
+ 
+   };
+
+
+   $.fn.hydraSelectMenu = function(settings) {
+     var config = {};
+ 
+     if (settings) $.extend(config, settings);
+ 
+     this.each(function() {
+       $(this).unbind('change.hydra').bind('change.hydra', function(e) {
+           $.fn.hydraMetadata.saveSelect(this, e);
+           e.preventDefault();
+         });
      });
  
      return this;
