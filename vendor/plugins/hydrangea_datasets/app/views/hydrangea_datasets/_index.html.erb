@@ -1,21 +1,3 @@
-<tr class="document" class="<%= cycle("even","odd") %>">
-  <td>
-    <%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %>
-  </td>
-  <td>
-    <% creator = get_person_from_role(document, "Creator") %>
-    <%= [creator[:last], creator[:first]].join(", ") unless creator.nil? %>
-  </td>
-  <td>
-    <%= DateTime.parse(document.get(:system_create_dt)).to_time %>
-  </td>
-  <td>
-    <%= (document.get(:medium_t) || document_type(document)).gsub("Hydrangea","") %>
-  </td>
-  <td>
-    <%= get_file_asset_count(document)%>
-  </td>
-  <td>
-    Created
-  </td>
-</tr>
+<% display_type =  params[:display_type].nil? ? 'table' : params[:display_type] %>
+
+<%= render :partial => "hydrangea_datasets/index_#{display_type}", :locals => {:document => document, :counter => counter } %>
