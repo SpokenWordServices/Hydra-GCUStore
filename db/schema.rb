@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101105214243) do
+ActiveRecord::Schema.define(:version => 20090529214829) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(:version => 20101105214243) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "user_attributes", :force => true do |t|
-    t.integer "user_id",     :null => false
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "affiliation"
-    t.string  "photo"
   end
 
   create_table "users", :force => true do |t|
