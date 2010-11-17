@@ -96,5 +96,16 @@ describe Hydra::ModsArticle do
       # Hydra::ModsArticle.xml_template.to_xml.should have_tag "mods[xmlns:xlink=http://www.w3.org/1999/xlink][xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance][xmlns=http://www.loc.gov/mods/v3][version=3.3]"
     end
   end
-  
+ 
+  describe "#to_solr" do
+    it "should add an object_type_facet with 'Article' as the value" do
+      solr_doc = @article_ds.to_solr
+      solr_doc[:object_type_facet].should == 'Article'
+    end
+    it "should include and respond to methods from Hydra::CommonModsIndexMethods" do
+      Hydra::ModsArticle.included_modules.should include Hydra::CommonModsIndexMethods
+      @article_ds.should respond_to :extract_person_full_names
+      @article_ds.should respond_to :extract_person_organizations
+    end
+  end
 end

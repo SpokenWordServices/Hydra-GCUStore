@@ -66,16 +66,29 @@ Blacklight.configure(:shared) do |config|
   # solr fields that will be treated as facets by the blacklight application
   #   The ordering of the field names is the order of the display 
   config[:facet] = {
-    :field_names => ["date_t",
-      "title_t",
-      "medium_t",
-      "location_t"
+    :field_names => [
+      "object_type_facet",
+      "person_full_name_facet",
+      "mods_organization_facet",
+      "topic_tag_facet",
+      "language_lang_code_facet",
+      "mods_journal_title_info_facet",
+      "gps_facet",
+      "region_facet",
+      "site_facet",
+      "ecosystem_facet"
       ],
     :labels => {
-      "date_t"=>"Date",
-      "title_t"=>"Title",
-      "medium_t"=>"Content Type",
-      "location_t"=>"Location"
+      "object_type_facet"=>"Type",
+      "person_full_name_facet"=>"Person",
+      "mods_organization_facet"=>"Organization",
+      "topic_tag_facet"=>"Topic",
+      "language_lang_code_facet"=>"Language",
+      "mods_journal_title_info_facet"=>"Journal",
+      "gps_facet"=>"GPS Coordinates",
+      "region_facet"=>"Region",
+      "site_facet"=>"Site",
+      "ecosystem_facet"=>"Ecosystem"
     },
     :limits=> {nil=>10}
   }
