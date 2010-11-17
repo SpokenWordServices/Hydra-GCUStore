@@ -38,6 +38,11 @@ describe GenericImage do
     @hydra_image.should respond_to(:thumbnail)
     @hydra_image.should respond_to(:thumbnail=)
   end
+
+  it "should create a max datastream when setting max value to image file" do
+    f = File.new(File.join( File.dirname(__FILE__), "../fixtures/image.jp2" ))
+    @hydra_image.max = f
+  end
   
   describe '#content=' do
     it "shoutld create a content datastream when given an image file" do
