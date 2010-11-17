@@ -18,7 +18,15 @@ describe Hydra::AccessControlsEnforcement do
        query.should match(/_query_\:\"#{type}_access_person_t\:#{current_user.login}/)
      end
    end
-   
+   it "should return superuser access level" do
+     pending()
+     user = mock("User")
+     user.stubs(:is_being_superuser?).returns true
+     query = build_lucene_query("string")
+     ["discover","edit","read"].each do |type|
+       query.should match(/_query_\:\"#{type}_access_person_t\:[* TO *]/)
+     end
+   end
  end
 end
 
