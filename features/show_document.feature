@@ -19,7 +19,12 @@ Feature: Show a document
     Given I am on the show document page for hydrangea:fixture_archivist_only_mods_article
     Then I should be on the search page
     And I should see "You do not have sufficient access privileges to read this document, which has been marked private" within ".notice"
-    
+  
+  Scenario: Superuser visits Document Show Page for a private document
+    Given I am a superuser
+    And I am on the show document page for hydrangea:fixture_archivist_only_mods_article
+    Then I should see "Article for Archivist Eyes Only"
+  
   Scenario: Archivist visits Show Page for Restricted Document
     Given I am logged in as "archivist1" 
     And I am on the show document page for hydrangea:fixture_archivist_only_mods_article

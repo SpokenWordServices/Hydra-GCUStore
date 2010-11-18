@@ -20,6 +20,8 @@ tmp/performance
 
 rerun.txt
 
+db/schema.rb
+
 .project
 .buildpath
 .rvmrc
