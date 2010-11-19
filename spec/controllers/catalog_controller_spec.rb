@@ -65,8 +65,9 @@ describe CatalogController do
         assigns("response").docs.count.should == @public_only_results.docs.count
       end
       it "should return all documents if role does have permissions" do
-        pending("revisit this when superuser role/group is implemented")
-        mock_user = mock("User", :login=>"archivist1")
+        pending("adjusted for superuser, but assertions aren't working as with test above")
+        mock_user = mock("User", :login=>"BigWig")
+        session[:superuser_mode] = true
         controller.stubs(:current_user).returns(mock_user)
         get :index
         # assigns["response"].docs.should include(@public_only_results.first)

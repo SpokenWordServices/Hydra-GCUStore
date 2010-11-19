@@ -36,6 +36,7 @@ describe CatalogController do
     
     it "should quietly switch session state to browse if user does not have edit permissions" do
       mock_user = stub("User", :login=>"nobody_special")
+      mock_user.stubs(:is_being_superuser?).returns(false)
       controller.stubs(:current_user).returns(mock_user)
       
       controller.session[:viewing_context] = "edit"
@@ -49,6 +50,7 @@ describe CatalogController do
     it "should enforce edit permissions, redirecting to show action and resetting session context if user does not have edit permissions" do
       mock_user = mock("User")
       mock_user.stubs(:login).returns("patron1")
+      mock_user.stubs(:is_being_superuser?).returns(false)
       controller.stubs(:current_user).returns(mock_user)
       
       get :edit, :id=>"hydrangea:fixture_mods_article1"

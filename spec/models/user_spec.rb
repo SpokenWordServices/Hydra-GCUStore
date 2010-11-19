@@ -65,6 +65,43 @@ describe User do
       @user.affiliation.should == 'Test University'
     end
   end
+  
+  describe "superuser" do
+    before(:each) do
+      @user = User.create(:login=>"testuser", :email=> "testuser@example.com", :password=> "password", :password_confirmation => "password")
+    end
+    it "should know if a user can be a superuser" do
+      superuser = Superuser.create(:id => 20, :user_id => @user.id)
+      @user.extend(Hydra::SuperuserAttributes)
+      @user.can_be_superuser?.should be_true
+    end
+
+    it "should know if a user shouldn't be a superuser" do
+      @user.extend(Hydra::SuperuserAttributes)
+      @user.can_be_superuser?.should be_false
+    end
+
+    it "should know if the user is being a superuser" do
+      superuser = Superuser.create(:id => 50, :user_id => @user.id)
+      @user.extend(Hydra::SuperuserAttributes)
+      session = { :superuser_mode => true }
+      @user.is_being_superuser?(session).should be_true
+    end
+
+    it "should not let a non-superuser be a superuser" do
+      @user.extend(Hydra::SuperuserAttributes)
+      session = {}
+      @user.is_being_superuser?(session).should be_false
+    end
+
+    it "should know if the user is not being a superuser even if the user can be a superuser" do
+      superuser = Superuser.create(:id => 60, :user_id => @user.id)
+      @user.extend(Hydra::SuperuserAttributes)
+      @user.can_be_superuser?.should be_true
+      session = {}
+      @user.is_being_superuser?(session).should be_false
+    end
+  end
 end
 
 module UserTestAttributes

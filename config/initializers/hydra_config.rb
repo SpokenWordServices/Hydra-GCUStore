@@ -6,3 +6,4 @@
 #   User.send(:include, MyLocalLDAPAttributes)
 # As long as your module includes methods for full_name, affiliation, and photo the personalization_helper should function correctly
 User.send(:include, Hydra::GenericUserAttributes)
+
