@@ -56,7 +56,7 @@ GEM
     mocha (0.9.9)
       rake
     multipart-post (1.0.1)
-    nokogiri (1.4.4)
+    nokogiri (1.4.3)
     om (1.0.0)
       facets
       nokogiri (>= 1.4.2)
@@ -129,7 +129,7 @@ DEPENDENCIES
   mime-types
   mocha
   multipart-post
-  nokogiri
+  nokogiri (= 1.4.3)
   om (>= 1.0.0)
   rack
   rack-test
@@ -151,6 +151,3 @@ DEPENDENCIES
   webrat
   will_paginate
   xml-simple
-
-METADATA
-  version: 1.0.6
