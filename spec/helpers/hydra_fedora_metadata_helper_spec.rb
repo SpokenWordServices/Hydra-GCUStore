@@ -127,7 +127,7 @@ describe HydraFedoraMetadataHelper do
   describe "fedora_select" do
     it "should generate a select with values from the given datastream" do
       generated_html = helper.fedora_select(@resource,"simple_ds","subject", :choices=>["topic1","topic2", "topic3"])
-      generated_html.should have_tag "select.metadata-dd[name=?]", "asset[simple_ds][subject]" do
+      generated_html.should have_tag "select.metadata-dd[name=?]", "asset[simple_ds][subject][0]" do
         with_tag "[rel=?]", "subject" 
         with_tag "option[value=topic1][selected=selected]"
         with_tag "option[value=topic2][selected=selected]"

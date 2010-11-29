@@ -43,6 +43,7 @@ bundle install
 Run your database migrations (only need to do this once after cloning the git repository).
 <pre>
 rake db:migrate
+rake db:migrate:plugins
 </pre>
 
 Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.  We have created rake tasks to make this easier.  For a full listing of rake tasks provided by Hydra, run 
