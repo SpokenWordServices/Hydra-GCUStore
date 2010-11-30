@@ -289,4 +289,13 @@ div.powered_by {
 	font-weight:bold;
 	height:70px;
 	}
+
+a.thumbnail-container {
+	width: 75px;
+	padding: 2px;
+	border: 1px solid #b4b4b4;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
 	
