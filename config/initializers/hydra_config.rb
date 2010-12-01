@@ -5,5 +5,7 @@
 # For example you could create a module for your local LDAP instance called MyLocalLDAPUserAttributes:
 #   User.send(:include, MyLocalLDAPAttributes)
 # As long as your module includes methods for full_name, affiliation, and photo the personalization_helper should function correctly
+#
+# NOTE: For your development environment, also specify the module in lib/user_attributes_loader.rb
 User.send(:include, Hydra::GenericUserAttributes)
 
