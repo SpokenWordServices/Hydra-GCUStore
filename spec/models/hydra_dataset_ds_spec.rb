@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require "active_fedora"
 require "nokogiri"
 
-describe Hydra::ModsArticle do
+describe Hydra::HydraDatasetDs do
   
   before(:each) do
     Fedora::Repository.stubs(:instance).returns(stub_everything())
@@ -17,7 +17,7 @@ describe Hydra::ModsArticle do
     end
   end
   
-  describe "insert_contributor" do
+  describe "insert_grant" do
     it "should generate a new grant into the current xml and mark the datastream as dirty" do
       @dataset_ds.find_by_terms(:grant).length.should == 1
       @dataset_ds.dirty?.should be_false
@@ -34,7 +34,7 @@ describe Hydra::ModsArticle do
     end
   end
   
-  describe "remove_contributor" do
+  describe "remove_grant" do
     it "should remove the corresponding contributor from the xml and then mark the datastream as dirty" do
       pending
       @dataset_ds.find_by_terms(:grant).length.should == 1
