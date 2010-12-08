@@ -53,12 +53,14 @@ GEM
     marc (0.4.1)
     mediashelf-loggable (0.4.0)
     mime-types (1.16)
-    mocha (0.9.9)
+    mocha (0.9.10)
       rake
     multipart-post (1.0.1)
     nokogiri (1.4.3.1)
-    om (1.0.0)
+    om (1.0.1)
       facets
+      facets
+      nokogiri
       nokogiri (>= 1.4.2)
     rack (1.1.0)
     rack-test (0.5.6)
@@ -130,7 +132,7 @@ DEPENDENCIES
   mocha
   multipart-post
   nokogiri (= 1.4.3.1)
-  om (>= 1.0.0)
+  om (>= 1.0.1)
   rack
   rack-test
   rails (>= 2.3.5, < 3.0.0)
@@ -151,3 +153,6 @@ DEPENDENCIES
   webrat
   will_paginate
   xml-simple
+
+METADATA
+  version: 1.0.6

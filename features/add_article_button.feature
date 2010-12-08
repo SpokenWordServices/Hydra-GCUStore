@@ -1,4 +1,4 @@
-@create
+@create @split_button
 Feature: Create Asset or Dataset Split Button
   In order to create new Assets or Datasets
   As an editor 

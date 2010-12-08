@@ -1,4 +1,4 @@
-@show 
+@show @articles
 Feature: Show a document
   In order to [goal]
   [stakeholder]
