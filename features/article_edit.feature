@@ -7,7 +7,8 @@ Feature: Edit a document
   Scenario: Visit Document Edit Page
     Given I am logged in as "archivist1" 
     And I am on the edit document page for hydrangea:fixture_mods_article1 
-    Then I should see an inline edit containing "ARTICLE TITLE"
+    Then I should see "ARTICLE TITLE" within "h1.document_heading"
+    And I should see an inline edit containing "ARTICLE TITLE"
 
   Scenario: Viewing browse/edit buttons
     Given I am logged in as "archivist1" 
