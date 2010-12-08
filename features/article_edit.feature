@@ -1,4 +1,4 @@
-@edit 
+@edit @articles
 Feature: Edit a document
   In order to [goal]
   [stakeholder]
