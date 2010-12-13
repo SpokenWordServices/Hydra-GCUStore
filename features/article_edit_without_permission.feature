@@ -1,4 +1,4 @@
-@wip
+@wip @articles
 Feature: Edit an article without permission
   As a logged-in user
   attempt to edit an article
