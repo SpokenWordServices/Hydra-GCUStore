@@ -1,4 +1,4 @@
-These notes were provided by Simon Lamb at University of Hull.
+These notes were provided by Simon Lamb at University of Hull.  *Please let us know if they drift out of date.*
 
 Test platform: Windows 7 x64 - running on VMWare Workstation 7 (3gb ram, 50GB HD)
  
