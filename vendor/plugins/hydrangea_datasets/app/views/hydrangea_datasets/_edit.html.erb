@@ -15,9 +15,17 @@
 <% javascript_includes << "jquery.hydraMetadata.js" %>
 <% javascript_includes << "/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" %>
 <% javascript_includes << "jquery.notice.js" %>
+
+<%# For DatePicker> %>
+<%- javascript_includes << "jquery.ui.widget.js" %>
+<%- javascript_includes << "jquery.ui.datepicker.js" %>
+<%- javascript_includes << "mediashelf.datepicker.js" %>
+<%- javascript_includes << "mediashelf.placeholder.js" %>
+
 <%# For Fancybox> %>
 <% javascript_includes << "fancybox/jquery.fancybox-1.3.1.pack.js" %>
 <% stylesheet_links << "../javascripts/fancybox/jquery.fancybox-1.3.1.css" %>
+
 <%# For slider controls %>
 <% javascript_includes << "select_to_ui_slider/selectToUISlider.jQuery.js" %>
 <% stylesheet_links << ["../javascripts/select_to_ui_slider/css/ui.slider.extras.css"] %>

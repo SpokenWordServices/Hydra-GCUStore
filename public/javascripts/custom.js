@@ -87,5 +87,31 @@ jQuery(document).ready(function($) {
 	if ( $("input:radio").filter("[value=publicdomain]").attr("checked", false) && $("input:radio").filter("[value=odc-by]").attr("checked",false) && $("input:radio").filter("[value=odc-odbl]").attr("checked",false)) {
 		$("input:radio").filter("[value=publicdomain]").attr("checked","checked");
 	}
+	
+	// ADD THE DATEPICKER CLASS TO _DATE FIELDS
+	//	<input type="text" class="datepicker" size="30" name="d1" value="" placeholder="YYYY-MM-DD"/>
+	$('input[name*=_date]').addClass('datepicker');
+	fluid.defaults('inlineEdit').blurHandlerBinder = function(that) {
+		// This is just fluid's normal default handling of a blur event:
+		that.editField.blur(
+			function (evt) {
+				if (that.isEditing())
+					that.finish();
+				return false;
+			}
+		);
+		
+		// InlineEdit doesn't watch for change events on the input field, which means that it doesn't
+		// pick up a new date from the datepicker. We fix this by adding a change observer which fires
+		// the same update of the Fluid model that a blur event does.
+		that.editField.change(
+			function (evt) {
+				if (!that.isEditing() && that.editView.value != that.model.value)
+					that.finish();
+				return true;
+			}
+		)
+	}
+	
 		
 });
