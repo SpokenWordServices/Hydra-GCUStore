@@ -1,0 +1,65 @@
+These notes were provided by Simon Lamb at University of Hull.  *Please let us know if they drift out of date.*
+
+Test platform: Windows 7 x64 - running on VMWare Workstation 7 (3gb ram, 50GB HD)
+ 
+ 
+Download and Install* Ruby 1.8.7 from http://rubyinstaller.org/
+*Note some people have issues installing Ruby to c:\ruby, installing to ie. c:\Development\ruby187 worked without issue.
+1. gem install -v=2.3.5 rails
+2. git clone git://github.com/projecthydra/hydrangea.git
+3. cd hydrangea
+4. git submodule init
+5. git submodule update
+6. rake gems:install (installs all req gems)
+ 
+First issues:-
+        Download sqlite3.dll (http://www.sqlite.org/download.html) – place in $RUBY_INSTALL_DIR/bin
+    Issue RedCloth fails to build ‘Can’t find Make’
+    rsolr - Error Whilte generating documentation for builder=2.1.2 ... MESSAGE: Unhandled special: Special: type=17
+ 
+Workarounds:
+        Install devkit - http://wiki.github.com/oneclick/rubyinstaller/development-kit
+                Download Dev http://github.com/oneclick/rubyinstaller/downloads
+                1. Run the devkit*.exe - install to C:\Development\DevKit
+                2. Execute ruby dk.rb init - This creates the config.yml - check the ruby libraries are accurate
+                3. Execute ruby dk.rb review - Check that the config.yml is as expected
+                4. Execute ruby dk.rb install - This installs/updates an operating_system.rb into relevant directory to implement RubyGems pre_install hook, and a devkit.rb helper library into RUBY_HOME\lib\ruby\site_ruby
+                5. Confirm that the ruby environment is correctly using DevKit by: gem install rdiscount (GEM) --platform=ruby
+                        RDiscount should install correctly..
+ 
+Now using the devkit untility retry installing RedCloth
+        gem install RedCloth --platform=ruby
+(Should now succeed)
+ 
+7. gem install rcov rspec rspec-rails cucumber cucumber-rails webrat database_cleaner ruby-debug mocha httparty
+8. rake db:migrate
+ 
+9.   cp solr/conf/* jetty/solr/development-core/conf/
+     cp solr/conf/* jetty/solr/test-core/conf/
+ 
+10. start jetty.... cd jetty
+java -jar start.jar
+ 
+Rspec tests:
+rake hydra:import_fixture pid=hydrangea:fixture_mods_article1
+rake hydra:import_fixture pid=hydrangea:fixture_mods_article3
+rake hydra:import_fixture pid=hydrangea:fixture_file_asset1
+ 
+rake spec  (warns that win32Console is needed to use colours) there:
+ gem install win32console
+run again, should work fine with colours now...
+ 
+Cucumber tests:-
+ 
+  rake hydra:import_fixture pid=hydrangea:fixture_mods_article2
+  rake hydra:import_fixture pid=hydrangea:fixture_uploaded_svg1
+  rake hydra:import_fixture pid=hydrangea:fixture_archivist_only_mods_article
+  rake hydra:import_fixture pid=hydrangea:fixture_mods_dataset1
+ 
+  rake cucumber
+ 
+Displays warning already initialized constant ENABLE_SOLR_UPDATES, not sure if this is common??
+ 
+Apart from that All passed...!
+ 
+Script/server – http://localhost:3000 – Works a treat!!
