@@ -64,7 +64,7 @@
         <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic(s):") %>
       </dt>
       <dd id="topic_tag" class="topic_tag">
-        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
       </dd>
     </dl>
   </fieldset>

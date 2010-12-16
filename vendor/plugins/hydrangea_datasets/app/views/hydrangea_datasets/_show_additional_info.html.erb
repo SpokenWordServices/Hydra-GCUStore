@@ -1,3 +1,6 @@
+<fieldset id="additional_info">
+<legend>Additional Info</legend>
+<dl>
  <% unless get_values_from_datastream(@document_fedora,"hydraDataset", [:contact_name]).first.empty? %>
    <dt>
      <%= fedora_field_label("hydraDataset", [:contact_name], "Contact:") %>
@@ -21,12 +24,13 @@
      <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic Tags:") %>
    </dt>
    <dd class="keywords">
-     <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]) %>
+     <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
    </dd>
 <% end %>
 
 <% unless get_values_from_datastream(@document_fedora,"hydraDataset", [{:grant=>0}, :organization]).first.empty? && get_values_from_datastream(@document_fedora,"hydraDataset", [{:grant=>0}, :number]).first.empty? %> 
-   <label>Grant(s)</label>
+ <dt> 
+  <label>Grant(s)</label>
  </dt>
  <dd class="multi_inline grant">
  	<%= render :partial=>"grants/show", :collection=>@document_fedora.datastreams_in_memory["hydraDataset"].find_by_terms(:grant) %>
@@ -41,3 +45,5 @@
      <%= get_values_from_datastream(@document_fedora,"hydraDataset", [:data_quality]) %>
    </dd>
 	<% end %>
+</dl>
+</fieldset>

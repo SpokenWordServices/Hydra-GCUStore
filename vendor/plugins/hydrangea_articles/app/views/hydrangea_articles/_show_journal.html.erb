@@ -1,7 +1,7 @@
 <% journal = show_journal %>
 <% journal_counter = show_journal_counter %>
 <% base_id = "journal_#{journal_counter}" %>
-
+<dl>
   <% unless get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :title_info, :main_title]).first.empty? %>
     <dt>
       <%= fedora_field_label("descMetadata", [{:journal => journal_counter}, :title_info, :main_title], "Journal Title:") %>
@@ -74,3 +74,4 @@
     </ul>
   </dd>
 <% end %>
+</dl>
