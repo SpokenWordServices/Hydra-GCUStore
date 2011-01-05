@@ -318,7 +318,7 @@
           }                    
           $this.siblings().first().editable(submitUrl, {
             method    : "PUT",
-            indicator : "<img src='/images/ajax-loader.gif'>",
+            indicator : "<img src='/plugin_assets/hydra_repository/images/ajax-loader.gif'>",
             type      : "textarea",
             submit    : "OK",
             cancel    : "Cancel",
@@ -387,12 +387,12 @@
       
       var assetUrl = $values_list.closest("form").attr("action");
 
-      var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="" class="destructive"><img src="/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
+      var $item = jQuery('<li class=\"field_value textile_value\" name="asset[' + fieldName + '][' + new_value_index + ']"><a href="" class="destructive"><img src="/plugin_assets/hydra_repository/images/delete.png" border="0" /></a><div class="textile" id="'+fieldName+'_'+new_value_index+'">click to edit</div></li>');
       $item.appendTo(values_list);
 
       $("div.textile", $item).editable(assetUrl+"&format=textile", {
           method    : "PUT",
-          indicator : "<img src='/images/ajax-loader.gif'>",
+          indicator : "<img src='/plugin_assets/hydra_repository/images/ajax-loader.gif'>",
           loadtext  : "",
           type      : "textarea",
           submit    : "OK",

@@ -6,8 +6,7 @@
   </script>
 <% end %>
 <% javascript_includes << "/plugin_assets/fluid-infusion/infusion-1.2-src/lib/jquery/ui/js/jquery.ui.accordion.js" %>
-<% javascript_includes << 'custom' %>
-<% javascript_includes << "catalog/show" %>
+<% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
 <div class="document_viewer" id="cover_container">
   <div id="accordion">
