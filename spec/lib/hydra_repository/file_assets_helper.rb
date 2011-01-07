@@ -29,6 +29,7 @@ describe Hydra::FileAssetsHelper do
   
   describe "create_asset_from_params" do
     it "should create a new file asset, choosing which type based on info from params hash" do
+      pending
       sample_params = {:Filedata => "fake blob", :Filename=>"my_filename.wav"}
       helper.stubs(:params).returns( sample_params )
       
