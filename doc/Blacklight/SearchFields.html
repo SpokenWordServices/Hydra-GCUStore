@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::SearchFields</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span>
+     &raquo; 
+    <span class="title">SearchFields</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::SearchFields
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1">ActiveSupport::Memoizable</dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/blacklight/lib/blacklight/search_fields.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Module to deal with accessing (and setting some defaults) in an array of
+hashes that describe Blacklight search fields.  Requires the base class
+this module is added to implements a #config method that returns a hash,
+where config[:search_fields] will be an array of hashes describing search
+fields.
+</p>
+<h1>Search Field Configuration Hash =</h1>
+<dl>
+<dt>:key</dt><dd><p>
+&#8220;title&#8221;, required, unique key used in search URLs to specify
+search_field 
+</p>
+</dd>
+<dt>:display_label</dt><dd><p>
+&#8220;Title&#8221;,  # user-displayable label, optional, if not supplied
+:key.titlecase will be used
+</p>
+</dd>
+<dt>:qt</dt><dd><p>
+&#8220;search&#8221;, # Solr qt param, request handler, usually can be left
+blank; defaults to Blacklight.config[:default_solr_params][:qt] if not
+specified. 
+</p>
+</dd>
+<dt>:solr_parameters</dt><dd><p>
+=> &#8220;something&#8221; # optional hash of additional parameters
+to pass to solr for searches on this field.
+</p>
+</dd>
+<dt>:solr_local_parameters</dt><dd><p>
+=> &#8220;$something&#8221; # optional hash of additional parameters
+that will be passed using Solr LocalParams syntax, that can use dollar sign
+to reference other solr variables.
+</p>
+</dd>
+<dt>:include_in_simple_select</dt><dd><p>
+false.  Defaults to true, but you can set to false to have a search field
+defined for deep-links or BL extensions, but not actually included in the
+HTML select for simple search choice.
+</p>
+</dd>
+</dl>
+<p>
+Optionally you can supply a :key, which is what Blacklight will use to
+identify this search field in HTTP query params. If no :key is supplied,
+one will be computed from the :display_label. If that will result in a
+collision of keys, you should supply one explicitly.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_search_field-instance_method" title="#default_search_field (instance method)">- (Object) <strong>default_search_field</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns default search field, used for simpler display in history, etc.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#label_for_search_field-instance_method" title="#label_for_search_field (instance method)">- (Object) <strong>label_for_search_field</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Shortcut for commonly needed operation, look up display label for the key
+specified.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_field_def_for_key-instance_method" title="#search_field_def_for_key (instance method)">- (Object) <strong>search_field_def_for_key</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Looks up a search field config hash from search_field_list having a certain
+supplied :key.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_field_list-instance_method" title="#search_field_list (instance method)">- (Object) <strong>search_field_list</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Looks up search field config list from config[:search_fields], and
+&#8216;normalizes&#8217; all field config hashes using normalize_config
+method.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_field_options_for_select-instance_method" title="#search_field_options_for_select (instance method)">- (Object) <strong>search_field_options_for_select</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns suitable argument to options_for_select method, to create an html
+select based on #search_field_list.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="default_search_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>default_search_field</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns default search field, used for simpler display in history, etc. if
+not set in config, defaults to first field listed in #search_field_list
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/search_fields.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='default_search_field identifier id'>default_search_field</span>
+  <span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:default_search_field</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='search_field_list identifier id'>search_field_list</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="label_for_search_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>label_for_search_field</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Shortcut for commonly needed operation, look up display label for the key
+specified. Returns &#8220;Keyword&#8221; if a label can&#8217;t be found.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/search_fields.rb', line 70</span>
+
+<span class='def def kw'>def</span> <span class='label_for_search_field identifier id'>label_for_search_field</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='field_def identifier id'>field_def</span> <span class='assign token'>=</span> <span class='search_field_def_for_key identifier id'>search_field_def_for_key</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='field_def identifier id'>field_def</span> <span class='andop op'>&amp;&amp;</span> <span class='field_def identifier id'>field_def</span><span class='lbrack token'>[</span><span class='symbol val'>:display_label</span><span class='rbrack token'>]</span>
+     <span class='field_def identifier id'>field_def</span><span class='lbrack token'>[</span><span class='symbol val'>:display_label</span><span class='rbrack token'>]</span>
+  <span class='else else kw'>else</span>
+     <span class='string val'>&quot;Keyword&quot;</span>
+  <span class='end end kw'>end</span>            
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_field_def_for_key-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_field_def_for_key</strong>(key) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Looks up a search field config hash from search_field_list having a certain
+supplied :key.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/search_fields.rb', line 55</span>
+
+<span class='def def kw'>def</span> <span class='search_field_def_for_key identifier id'>search_field_def_for_key</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='key identifier id'>key</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+  <span class='search_field_list identifier id'>search_field_list</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='c identifier id'>c</span><span class='bitor op'>|</span> <span class='c identifier id'>c</span><span class='lbrack token'>[</span><span class='symbol val'>:key</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='key identifier id'>key</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_field_list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_field_list</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Looks up search field config list from config[:search_fields], and
+&#8216;normalizes&#8217; all field config hashes using normalize_config
+method.  Memoized for efficiency of normalization.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/search_fields.rb', line 33</span>
+
+<span class='def def kw'>def</span> <span class='search_field_list identifier id'>search_field_list</span>
+  <span class='normalized identifier id'>normalized</span> <span class='assign token'>=</span> <span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:search_fields</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='obj identifier id'>obj</span><span class='bitor op'>|</span> <span class='normalize_config identifier id'>normalize_config</span><span class='lparen token'>(</span><span class='obj identifier id'>obj</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+
+  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='duplicates identifier id'>duplicates</span> <span class='assign token'>=</span> <span class='normalized identifier id'>normalized</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='h identifier id'>h</span><span class='bitor op'>|</span> <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='symbol val'>:key</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='uniq! fid id'>uniq!</span><span class='rparen token'>)</span>
+    <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;Duplicate keys found in search_field config: #{duplicates.inspect}&quot;</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='normalized identifier id'>normalized</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_field_options_for_select-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_field_options_for_select</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns suitable argument to options_for_select method, to create an html
+select based on #search_field_list. Skips search_fields marked
+:include_in_simple_select => false
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/search_fields.rb', line 47</span>
+
+<span class='def def kw'>def</span> <span class='search_field_options_for_select identifier id'>search_field_options_for_select</span>
+  <span class='search_field_list identifier id'>search_field_list</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field_def identifier id'>field_def</span><span class='bitor op'>|</span>
+    <span class='lbrack token'>[</span><span class='field_def identifier id'>field_def</span><span class='lbrack token'>[</span><span class='symbol val'>:display_label</span><span class='rbrack token'>]</span><span class='comma token'>,</span>  <span class='field_def identifier id'>field_def</span><span class='lbrack token'>[</span><span class='symbol val'>:key</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span> <span class='unless unless_mod kw'>unless</span> <span class='field_def identifier id'>field_def</span><span class='lbrack token'>[</span><span class='symbol val'>:include_in_simple_select</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='false false kw'>false</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='compact identifier id'>compact</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:28 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

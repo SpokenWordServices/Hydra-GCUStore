@@ -1,0 +1,1001 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::Solr::Document::MarcExport</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Solr.html" title="Blacklight::Solr (module)">Solr</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Document.html" title="Blacklight::Solr::Document (module)">Document</a></span></span>
+     &raquo; 
+    <span class="title">MarcExport</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::Solr::Document::MarcExport
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Marc.html" title="Blacklight::Solr::Document::Marc (module)">Marc</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Written for use with Blacklight::Solr::Document::Marc, but you can use it
+for your own custom Blacklight document Marc extension too &#8212; just
+include this module in any document extension (or any other class) that
+provides a #to_marc returning a ruby-marc object.  This module will add in
+export_as translation methods for a variety of formats.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_export_formats-class_method" title="register_export_formats (class method)">+ (Object) <strong>register_export_formats</strong>(document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_apa_citation_txt-instance_method" title="#export_as_apa_citation_txt (instance method)">- (Object) <strong>export_as_apa_citation_txt</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+TODO This exporting as formatted citation thing should be re-thought
+redesigned at some point to be more general purpose, but this is in-line
+with what we had before, but at least now attached to the document
+extension where it belongs.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_endnote-instance_method" title="#export_as_endnote (instance method)">- (Object) <strong>export_as_endnote</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Endnote Import Format.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_marc-instance_method" title="#export_as_marc (instance method)">- (Object) <strong>export_as_marc</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_marcxml-instance_method" title="#export_as_marcxml (instance method)">- (Object) <strong>export_as_marcxml</strong> </a>
+    
+
+    
+      (also: #export_as_xml)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_mla_citation_txt-instance_method" title="#export_as_mla_citation_txt (instance method)">- (Object) <strong>export_as_mla_citation_txt</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_openurl_ctx_kev-instance_method" title="#export_as_openurl_ctx_kev (instance method)">- (Object) <strong>export_as_openurl_ctx_kev</strong>(format = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Exports as an OpenURL KEV (key-encoded value) query string.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as_refworks_marc_txt-instance_method" title="#export_as_refworks_marc_txt (instance method)">- (Object) <strong>export_as_refworks_marc_txt</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This format used to be called &#8216;refworks&#8217;, which wasn&#8217;t
+really accurate, sounds more like &#8216;refworks tagged format&#8217;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_apa-instance_method" title="#to_apa (instance method)">- (Object) <strong>to_apa</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_mla-instance_method" title="#to_mla (instance method)">- (Object) <strong>to_mla</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_zotero-instance_method" title="#to_zotero (instance method)">- (Object) <strong>to_zotero</strong>(format) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+DEPRECATED stuff left in for backwards compatibility, but should be gotten
+rid of eventually.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="register_export_formats-class_method">
+  
+    + (<tt>Object</tt>) <strong>register_export_formats</strong>(document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='register_export_formats identifier id'>register_export_formats</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:xml</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:marc</span><span class='comma token'>,</span> <span class='string val'>&quot;application/marc&quot;</span><span class='rparen token'>)</span>
+  <span class='comment val'># marcxml content type: </span>
+  <span class='comment val'># http://tools.ietf.org/html/draft-denenberg-mods-etc-media-types-00</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:marcxml</span><span class='comma token'>,</span> <span class='string val'>&quot;application/marcxml+xml&quot;</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:openurl_ctx_kev</span><span class='comma token'>,</span> <span class='string val'>&quot;application/x-openurl-ctx-kev&quot;</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:refworks_marc_txt</span><span class='comma token'>,</span> <span class='string val'>&quot;text/plain&quot;</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:endnote</span><span class='comma token'>,</span> <span class='string val'>&quot;application/x-endnote-refer&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="export_as_apa_citation_txt-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_apa_citation_txt</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+TODO This exporting as formatted citation thing should be re-thought
+redesigned at some point to be more general purpose, but this is in-line
+with what we had before, but at least now attached to the document
+extension where it belongs.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 34</span>
+
+<span class='def def kw'>def</span> <span class='export_as_apa_citation_txt identifier id'>export_as_apa_citation_txt</span>
+  <span class='apa_citation identifier id'>apa_citation</span><span class='lparen token'>(</span> <span class='to_marc identifier id'>to_marc</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_endnote-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_endnote</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Endnote Import Format. See the EndNote User Guide at: <a
+href="http://www.endnote.com/support/enx3man-terms-win.asp">www.endnote.com/support/enx3man-terms-win.asp</a>
+Chapter 7: Importing Reference Data into EndNote / Creating a Tagged
+“EndNote Import” File
+</p>
+<p>
+Note: This code is copied from what used to be in the previous version in
+ApplicationHelper#render_to_endnote.  It does NOT produce very good endnote
+import format; the %0 is likely to be entirely illegal, the rest of the
+data is barely correct but messy. TODO, a new version of this, or better
+yet just an export_as_ris instead, which will be more general purpose.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 121</span>
+
+<span class='def def kw'>def</span> <span class='export_as_endnote identifier id'>export_as_endnote</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
+  <span class='end_note_format identifier id'>end_note_format</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+    <span class='string val'>&quot;%A&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;100.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%C&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;260.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%D&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;260.c&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%E&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;700.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%I&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;260.b&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%J&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;440.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%@&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;020.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%_@&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;022.a&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%T&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;245.a,245.b&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%U&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;856.u&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;%7&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;250.a&quot;</span>
+  <span class='rbrace token'>}</span>
+  <span class='marc_obj identifier id'>marc_obj</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span>
+
+  <span class='comment val'># TODO. This was inherited functionality (although refactored),</span>
+  <span class='comment val'># but it wasn't actually clear that :display_type would</span>
+  <span class='comment val'># be used this way. This should be rewritten to guess</span>
+  <span class='comment val'># from actual Marc instead, probably.</span>
+  <span class='format_str identifier id'>format_str</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:display_type</span><span class='rbrack token'>]</span>
+  <span class='format_str identifier id'>format_str</span> <span class='assign token'>=</span> <span class='format_str identifier id'>format_str</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='format_str identifier id'>format_str</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span>
+  <span class='format_str identifier id'>format_str</span> <span class='assign token'>=</span> <span class='format_str identifier id'>format_str</span><span class='dot token'>.</span><span class='titlecase identifier id'>titlecase</span>
+  
+  <span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='string val'>''</span>
+  <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;%0 #{ format_str }\n&quot;</span>
+  <span class='comment val'># If there is some reliable way of getting the language of a record we can add it here</span>
+  <span class='comment val'>#text &lt;&lt; &quot;%G #{record['language'].first}\n&quot;</span>
+  <span class='end_note_format identifier id'>end_note_format</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span><span class='value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='values identifier id'>values</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;,&quot;</span><span class='rparen token'>)</span>
+    <span class='first_value identifier id'>first_value</span> <span class='assign token'>=</span> <span class='values identifier id'>values</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'.'</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>1</span>
+      <span class='second_value identifier id'>second_value</span> <span class='assign token'>=</span> <span class='values identifier id'>values</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'.'</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='second_value identifier id'>second_value</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+    
+    <span class='if if kw'>if</span> <span class='marc_obj identifier id'>marc_obj</span><span class='lbrack token'>[</span><span class='first_value identifier id'>first_value</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
+      <span class='marc_obj identifier id'>marc_obj</span><span class='dot token'>.</span><span class='find_all identifier id'>find_all</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='f identifier id'>f</span><span class='bitor op'>|</span> <span class='lparen token'>(</span><span class='first_value identifier id'>first_value</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span> <span class='eqq op'>===</span> <span class='f identifier id'>f</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span>
+        <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='lbrack token'>[</span><span class='first_value identifier id'>first_value</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='or or kw'>or</span> <span class='field identifier id'>field</span><span class='lbrack token'>[</span><span class='second_value identifier id'>second_value</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+          <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{key.gsub('_','')}&quot;</span>
+          <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='lbrack token'>[</span><span class='first_value identifier id'>first_value</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+            <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot; #{field[first_value[1]].to_s}&quot;</span>
+          <span class='end end kw'>end</span>
+          <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='lbrack token'>[</span><span class='second_value identifier id'>second_value</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+            <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot; #{field[second_value[1]].to_s}&quot;</span>
+          <span class='end end kw'>end</span>
+          <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;\n&quot;</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='text identifier id'>text</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_marc-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_marc</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 20</span>
+
+<span class='def def kw'>def</span> <span class='export_as_marc identifier id'>export_as_marc</span>
+  <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='to_marc identifier id'>to_marc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_marcxml-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_marcxml</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='export_as_xml-instance_method'>export_as_xml</span></span>
+    </span>
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='export_as_marcxml identifier id'>export_as_marcxml</span>
+  <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='to_xml identifier id'>to_xml</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_mla_citation_txt-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_mla_citation_txt</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 38</span>
+
+<span class='def def kw'>def</span> <span class='export_as_mla_citation_txt identifier id'>export_as_mla_citation_txt</span>
+  <span class='mla_citation identifier id'>mla_citation</span><span class='lparen token'>(</span> <span class='to_marc identifier id'>to_marc</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_openurl_ctx_kev-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_openurl_ctx_kev</strong>(format = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Exports as an OpenURL KEV (key-encoded value) query string. For use to
+create COinS, among other things. COinS are for Zotero, among other things.
+TODO: This is wierd and fragile code, it should use ruby OpenURL gem
+instead to work a lot more sensibly. The &#8220;format&#8221; argument was
+in the old marc.marc.to_zotero call, but didn&#8217;t neccesarily do what
+it thought it did anyway. Left in for now for backwards compatibilty, but
+should be replaced by just ruby OpenURL.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 50</span>
+
+<span class='def def kw'>def</span> <span class='export_as_openurl_ctx_kev identifier id'>export_as_openurl_ctx_kev</span><span class='lparen token'>(</span><span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>  
+  <span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'245'</span><span class='rbrace token'>}</span>
+  <span class='author identifier id'>author</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'100'</span><span class='rbrace token'>}</span>
+  <span class='publisher_info identifier id'>publisher_info</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'260'</span><span class='rbrace token'>}</span>
+  <span class='edition identifier id'>edition</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'250'</span><span class='rbrace token'>}</span>
+  <span class='isbn identifier id'>isbn</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'020'</span><span class='rbrace token'>}</span>
+  <span class='issn identifier id'>issn</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='eq op'>==</span> <span class='string val'>'022'</span><span class='rbrace token'>}</span>
+  <span class='unless unless kw'>unless</span> <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='format identifier id'>format</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span> <span class='colon op'>:</span> <span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span>
+  <span class='end end kw'>end</span>
+ 
+    <span class='if if kw'>if</span> <span class='format identifier id'>format</span> <span class='eq op'>==</span> <span class='string val'>'book'</span>
+      <span class='return return kw'>return</span> <span class='dstring node'>&quot;ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;amp;rft.genre=book&amp;amp;rft.btitle=#{(title.nil? or title['a'].nil?) ? &quot;&quot; : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? &quot;&quot; : CGI::escape(title['b'])}&amp;amp;rft.title=#{(title.nil? or title['a'].nil?) ? &quot;&quot; : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? &quot;&quot; : CGI::escape(title['b'])}&amp;amp;rft.au=#{(author.nil? or author['a'].nil?) ? &quot;&quot; : CGI::escape(author['a'])}&amp;amp;rft.date=#{(publisher_info.nil? or publisher_info['c'].nil?) ? &quot;&quot; : CGI::escape(publisher_info['c'])}&amp;amp;rft.pub=#{(publisher_info.nil? or publisher_info['a'].nil?) ? &quot;&quot; : CGI::escape(publisher_info['a'])}&amp;amp;rft.edition=#{(edition.nil? or edition['a'].nil?) ? &quot;&quot; : CGI::escape(edition['a'])}&amp;amp;rft.isbn=#{(isbn.nil? or isbn['a'].nil?) ? &quot;&quot; : isbn['a']}&quot;</span>
+    <span class='elsif elsif kw'>elsif</span> <span class='lparen token'>(</span><span class='format identifier id'>format</span> <span class='match op'>=~</span> <span class='regexp val'>/journal/i</span><span class='rparen token'>)</span> <span class='comment val'># checking using include because institutions may use formats like Journal or Journal/Magazine</span>
+      <span class='return return kw'>return</span>  <span class='dstring node'>&quot;ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;amp;rft.genre=article&amp;amp;rft.title=#{(title.nil? or title['a'].nil?) ? &quot;&quot; : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? &quot;&quot; : CGI::escape(title['b'])}&amp;amp;rft.atitle=#{(title.nil? or title['a'].nil?) ? &quot;&quot; : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? &quot;&quot; : CGI::escape(title['b'])}&amp;amp;rft.date=#{(publisher_info.nil? or publisher_info['c'].nil?) ? &quot;&quot; : CGI::escape(publisher_info['c'])}&amp;amp;rft.issn=#{(issn.nil? or issn['a'].nil?) ? &quot;&quot; : issn['a']}&quot;</span>
+    <span class='else else kw'>else</span>
+       <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;ctx_ver=Z39.88-2004&amp;amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;amp;&quot;</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;rft.title=&quot;</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='title identifier id'>title</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span>  <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='title identifier id'>title</span><span class='lbrack token'>[</span><span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='dot token'>.</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='lbrack token'>[</span><span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;&amp;amp;rft.creator=&quot;</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='author identifier id'>author</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='author identifier id'>author</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='author identifier id'>author</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;&amp;amp;rft.date=&quot;</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='publisher_info identifier id'>publisher_info</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='publisher_info identifier id'>publisher_info</span><span class='lbrack token'>[</span><span class='string val'>'c'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='publisher_info identifier id'>publisher_info</span><span class='lbrack token'>[</span><span class='string val'>'c'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span>  <span class='string val'>&quot;&amp;amp;rft.pub=&quot;</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='publisher_info identifier id'>publisher_info</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='or or kw'>or</span> <span class='publisher_info identifier id'>publisher_info</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='publisher_info identifier id'>publisher_info</span><span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+       <span class='value identifier id'>value</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;&amp;amp;rft.format=&quot;</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='integer val'>? </span><span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='CGI constant id'>CGI</span><span class='colon2 op'>::</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+      <span class='return return kw'>return</span> <span class='value identifier id'>value</span>
+   <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as_refworks_marc_txt-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as_refworks_marc_txt</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This format used to be called &#8216;refworks&#8217;, which wasn&#8217;t
+really accurate, sounds more like &#8216;refworks tagged format&#8217;.
+Which this is not, it&#8217;s instead some weird under-documented Refworks 
+proprietary marc-ish in text/plain format. See <a
+href="http://robotlibrarian.billdueber.com/sending-marcish-data-to-refworks">robotlibrarian.billdueber.com/sending-marcish-data-to-refworks</a>/
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 84</span>
+
+<span class='def def kw'>def</span> <span class='export_as_refworks_marc_txt identifier id'>export_as_refworks_marc_txt</span>
+  <span class='comment val'># plugin/gem weirdness means we do need to manually require</span>
+  <span class='comment val'># here.</span>
+  <span class='comment val'># As of 11 May 2010, Refworks has a problem with UTF-8 if it's decomposed,</span>
+  <span class='comment val'># it seems to want C form normalization, although RefWorks support</span>
+  <span class='comment val'># couldn't tell me that. -jrochkind</span>
+  <span class='require identifier id'>require</span> <span class='string val'>'unicode'</span>    
+
+  <span class='fields identifier id'>fields</span> <span class='assign token'>=</span> <span class='to_marc identifier id'>to_marc</span><span class='dot token'>.</span><span class='find_all identifier id'>find_all</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='f identifier id'>f</span><span class='bitor op'>|</span> <span class='lparen token'>(</span><span class='string val'>'000'</span><span class='dot2 op'>..</span><span class='string val'>'999'</span><span class='rparen token'>)</span> <span class='eqq op'>===</span> <span class='f identifier id'>f</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span> <span class='rbrace token'>}</span>
+  <span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;LEADER #{to_marc.leader}&quot;</span>
+  <span class='fields identifier id'>fields</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span>
+  <span class='unless unless kw'>unless</span> <span class='lbrack token'>[</span><span class='string val'>&quot;940&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;999&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='MARC constant id'>MARC</span><span class='colon2 op'>::</span><span class='ControlField constant id'>ControlField</span><span class='rparen token'>)</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{field.tag}    #{field.value}\n&quot;</span>
+    <span class='else else kw'>else</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{field.tag} &quot;</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='dot token'>.</span><span class='indicator1 identifier id'>indicator1</span> <span class='integer val'>? </span><span class='field identifier id'>field</span><span class='dot token'>.</span><span class='indicator1 identifier id'>indicator1</span> <span class='colon op'>:</span> <span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='dot token'>.</span><span class='indicator2 identifier id'>indicator2</span> <span class='integer val'>? </span><span class='field identifier id'>field</span><span class='dot token'>.</span><span class='indicator2 identifier id'>indicator2</span> <span class='colon op'>:</span> <span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot; &quot;</span>
+        <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='s identifier id'>s</span><span class='bitor op'>|</span> <span class='s identifier id'>s</span><span class='dot token'>.</span><span class='code identifier id'>code</span> <span class='eq op'>==</span> <span class='string val'>'a'</span> <span class='question op'>?</span> <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{s.value}&quot;</span> <span class='colon op'>:</span> <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot; |#{s.code}#{s.value}&quot;</span><span class='rbrace token'>}</span>
+      <span class='text identifier id'>text</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;\n&quot;</span>
+     <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='Unicode constant id'>Unicode</span><span class='dot token'>.</span><span class='normalize_C identifier id'>normalize_C</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_apa-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_apa</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 184</span>
+
+<span class='def def kw'>def</span> <span class='to_apa identifier id'>to_apa</span>
+  <span class='warn identifier id'>warn</span><span class='lparen token'>(</span><span class='string val'>&quot;[DEPRECATION] Call document.export_as_apa_citation instead.&quot;</span><span class='rparen token'>)</span>
+  <span class='export_as_apa_citation identifier id'>export_as_apa_citation</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_mla-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_mla</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 189</span>
+
+<span class='def def kw'>def</span> <span class='to_mla identifier id'>to_mla</span>
+  <span class='warn identifier id'>warn</span><span class='lparen token'>(</span><span class='string val'>&quot;[DEPRECATION] Call document.export_as_mla_citation instead.&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_zotero-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_zotero</strong>(format) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+DEPRECATED stuff left in for backwards compatibility, but should be gotten
+rid of eventually.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc_export.rb', line 179</span>
+
+<span class='def def kw'>def</span> <span class='to_zotero identifier id'>to_zotero</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='rparen token'>)</span>
+  <span class='warn identifier id'>warn</span><span class='lparen token'>(</span><span class='string val'>&quot;[DEPRECATION]  Simply call document.export_as_openurl_kev to get an openURL kev context object suitable for including in a COinS; then have view code make the span for the COinS. &quot;</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;&lt;span class=\&quot;Z3988\&quot; title=\&quot;#{export_as_openurl_kev(format)}\&quot;&gt;&lt;/span&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:36 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

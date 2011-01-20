@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hydra::CommonModsIndexMethods</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">CommonModsIndexMethods</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hydra::CommonModsIndexMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="ModsArticle.html" title="Hydra::ModsArticle (class)">ModsArticle</a></span>, <span class='object_link'><a href="ModsDataset.html" title="Hydra::ModsDataset (class)">ModsDataset</a></span>, <span class='object_link'><a href="ModsGenericContent.html" title="Hydra::ModsGenericContent (class)">ModsGenericContent</a></span>, <span class='object_link'><a href="ModsImage.html" title="Hydra::ModsImage (class)">ModsImage</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/hydra_repository/lib/hydra/common_mods_index_methods.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Provides some helper methods for indexing compound or non-standard facets
+</p>
+<h2>Methods</h2>
+<p>
+extract_person_full_names
+</p>
+<pre class="code">
+  <span class='This constant id'>This</span> <span class='method identifier id'>method</span> <span class='returns identifier id'>returns</span> <span class='an identifier id'>an</span> <span class='array identifier id'>array</span> <span class='of identifier id'>of</span> <span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Field constant id'>Field</span> <span class='objects identifier id'>objects</span> <span class='which identifier id'>which</span> <span class='combine identifier id'>combine</span> <span class='Lastname constant id'>Lastname</span><span class='comma token'>,</span> <span class='Firstname constant id'>Firstname</span>
+</pre>
+<p>
+extract_person_organizations
+</p>
+<pre class="code">
+  <span class='This constant id'>This</span> <span class='method identifier id'>method</span> <span class='returns identifier id'>returns</span> <span class='an identifier id'>an</span> <span class='array identifier id'>array</span> <span class='of identifier id'>of</span> <span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Field constant id'>Field</span> <span class='objects identifier id'>objects</span> <span class='which identifier id'>which</span> <span class='extract identifier id'>extract</span> <span class='the identifier id'>the</span> <span class='persons identifier id'>persons</span> <span class='affiliation identifier id'>affiliation</span> <span class='and and kw'>and</span> <span class='puts identifier id'>puts</span> <span class='it identifier id'>it</span> <span class='in in kw'>in</span> <span class='an identifier id'>an</span> <span class='mods_organization_facet identifier id'>mods_organization_facet</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_person_full_names-instance_method" title="#extract_person_full_names (instance method)">- (Object) <strong>extract_person_full_names</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Extracts the first and last names of persons and creates Solr::Field
+objects with for person_full_name_facet.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_person_organizations-instance_method" title="#extract_person_organizations (instance method)">- (Object) <strong>extract_person_organizations</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Extracts the affiliations of persons and creates Solr::Field objects for
+them.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="extract_person_full_names-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_person_full_names</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Extracts the first and last names of persons and creates Solr::Field
+objects with for person_full_name_facet
+</p>
+<h2>Returns:</h2>
+<p>
+An array of Solr::Field objects
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/common_mods_index_methods.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='extract_person_full_names identifier id'>extract_person_full_names</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='symbol val'>:person</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='inject identifier id'>inject</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='names identifier id'>names</span><span class='comma token'>,</span> <span class='person identifier id'>person</span><span class='bitor op'>|</span>
+    <span class='name_parts identifier id'>name_parts</span> <span class='assign token'>=</span> <span class='person identifier id'>person</span><span class='dot token'>.</span><span class='children identifier id'>children</span><span class='dot token'>.</span><span class='inject identifier id'>inject</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='hash identifier id'>hash</span><span class='comma token'>,</span><span class='child identifier id'>child</span><span class='bitor op'>|</span>
+      <span class='hash identifier id'>hash</span><span class='lbrack token'>[</span><span class='child identifier id'>child</span><span class='dot token'>.</span><span class='get_attribute identifier id'>get_attribute</span><span class='lparen token'>(</span><span class='symbol val'>:type</span><span class='rparen token'>)</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='child identifier id'>child</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='if if_mod kw'>if</span> <span class='lbrack token'>[</span><span class='string val'>&quot;family&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;given&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='child identifier id'>child</span><span class='dot token'>.</span><span class='get_attribute identifier id'>get_attribute</span><span class='lparen token'>(</span><span class='symbol val'>:type</span><span class='rparen token'>)</span>
+      <span class='hash identifier id'>hash</span>
+    <span class='end end kw'>end</span>
+    <span class='names identifier id'>names</span> <span class='lshft op'>&lt;&lt;</span> <span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Field constant id'>Field</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='string val'>&quot;person_full_name_facet&quot;</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='lbrack token'>[</span><span class='name_parts identifier id'>name_parts</span><span class='lbrack token'>[</span><span class='string val'>&quot;family&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='name_parts identifier id'>name_parts</span><span class='lbrack token'>[</span><span class='string val'>&quot;given&quot;</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;, &quot;</span><span class='rparen token'>)</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='name_parts identifier id'>name_parts</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span> <span class='eq op'>==</span> <span class='lbrack token'>[</span><span class='string val'>&quot;family&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;given&quot;</span><span class='rbrack token'>]</span>
+    <span class='names identifier id'>names</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="extract_person_organizations-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_person_organizations</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Extracts the affiliations of persons and creates Solr::Field objects for
+them
+</p>
+<h2>Returns:</h2>
+<p>
+An array of Solr::Field objects
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/common_mods_index_methods.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='extract_person_organizations identifier id'>extract_person_organizations</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='symbol val'>:person</span><span class='comma token'>,</span><span class='symbol val'>:affiliation</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='org identifier id'>org</span><span class='bitor op'>|</span> <span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Field constant id'>Field</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='symbol val'>:mods_organization_facet=</span><span class='gt op'>&gt;</span><span class='org identifier id'>org</span><span class='dot token'>.</span><span class='text identifier id'>text</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:30 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

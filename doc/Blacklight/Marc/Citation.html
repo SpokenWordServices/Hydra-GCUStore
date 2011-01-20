@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::Marc::Citation</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Marc.html" title="Blacklight::Marc (module)">Marc</a></span></span>
+     &raquo; 
+    <span class="title">Citation</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::Marc::Citation
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Document.html" title="Blacklight::Marc::Document (class)">Document</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight/marc/citation.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+This module is DEPRECATED, and will go away. It has been replaced by code
+using the new document extension framework. See
+Blacklight::Solr::Document::Marc and Blacklight::Solr::Document::MarcExport
+This code should not really be changed, or used anymore. It is frozen and
+deprecated until removed.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_apa-instance_method" title="#to_apa (instance method)">- (Object) <strong>to_apa</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_mla-instance_method" title="#to_mla (instance method)">- (Object) <strong>to_mla</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_zotero-instance_method" title="#to_zotero (instance method)">- (Object) <strong>to_zotero</strong>(format) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="to_apa-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_apa</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/marc/citation.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='to_apa identifier id'>to_apa</span>
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+  <span class='apa_citation identifier id'>apa_citation</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_mla-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_mla</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/marc/citation.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='to_mla identifier id'>to_mla</span>
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+  <span class='mla_citation identifier id'>mla_citation</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_zotero-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_zotero</strong>(format) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/marc/citation.rb', line 18</span>
+
+<span class='def def kw'>def</span> <span class='to_zotero identifier id'>to_zotero</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+  <span class='z3988_span identifier id'>z3988_span</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='marc identifier id'>marc</span><span class='comma token'>,</span> <span class='format identifier id'>format</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

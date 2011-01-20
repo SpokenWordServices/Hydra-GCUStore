@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: HashAsHiddenFields</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (H)</a> &raquo; 
+    
+    
+    <span class="title">HashAsHiddenFields</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: HashAsHiddenFields
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="ApplicationHelper.html" title="ApplicationHelper (module)">ApplicationHelper</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/app/helpers/hash_as_hidden_fields.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Rails Helper methods to take a hash and turn it to form <input
+type=&#8220;hidden&#8221;> fields, works with hash nested with other hashes
+and arrays, standard rails serialization style.  Oddly while Hash#to_query
+will do this for a URL query parameters, there seems to be no built in way
+to do it to create hidden form fields instead. 
+</p>
+<p>
+Code taken from <a
+href="http://marklunds.com/articles/one/314">marklunds.com/articles/one/314</a>
+</p>
+<p>
+This is used to serialize a complete current query from current params to
+form fields used for sort and change per-page
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hash_as_hidden_fields-instance_method" title="#hash_as_hidden_fields (instance method)">- (Object) <strong>hash_as_hidden_fields</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Writes out zero or more <input type=&#8220;hidden&#8221;> elements,
+completely representing a hash passed in using Rails-style request
+parameters for hashes nested with arrays and other hashes.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="hash_as_hidden_fields-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hash_as_hidden_fields</strong>(hash) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Writes out zero or more <input type=&#8220;hidden&#8221;> elements,
+completely representing a hash passed in using Rails-style request
+parameters for hashes nested with arrays and other hashes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/hash_as_hidden_fields.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='hash_as_hidden_fields identifier id'>hash_as_hidden_fields</span><span class='lparen token'>(</span><span class='hash identifier id'>hash</span><span class='rparen token'>)</span>
+  
+  <span class='hidden_fields identifier id'>hidden_fields</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='flatten_hash identifier id'>flatten_hash</span><span class='lparen token'>(</span><span class='hash identifier id'>hash</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='notop op'>!</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span>
+    <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+      <span class='hidden_fields identifier id'>hidden_fields</span> <span class='lshft op'>&lt;&lt;</span> <span class='hidden_field_tag identifier id'>hidden_field_tag</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='symbol val'>:id</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>          
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='hidden_fields identifier id'>hidden_fields</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:37 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

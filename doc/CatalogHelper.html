@@ -1,0 +1,1211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: CatalogHelper</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo; 
+    
+    
+    <span class="title">CatalogHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: CatalogHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/app/helpers/catalog_helper.rb<span class="defines">,<br />
+  vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+
+
+  
+  
+  
+  
+  <h3 class="inherited">Constants included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#MaxPerPage-constant" title="Blacklight::SolrHelper::MaxPerPage (constant)">MaxPerPage</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#admin_info-instance_method" title="#admin_info (instance method)">- (Object) <strong>admin_info</strong>(doc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#author_list-instance_method" title="#author_list (instance method)">- (Object) <strong>author_list</strong>(doc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#depositor_string-instance_method" title="#depositor_string (instance method)">- (Object) <strong>depositor_string</strong>(depositor = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_date-instance_method" title="#format_date (instance method)">- (Object) <strong>format_date</strong>(date) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_num-instance_method" title="#format_num (instance method)">- (Object) <strong>format_num</strong>(num) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shortcut for built-in Rails helper, &#8220;number_with_delimiter&#8221;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_person_string-instance_method" title="#format_person_string (instance method)">- (Object) <strong>format_person_string</strong>(first_name, last_name, affiliation, opt = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_children-instance_method" title="#get_children (instance method)">- (Object) <strong>get_children</strong>(pid) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_persons_from_roles-instance_method" title="#get_persons_from_roles (instance method)">- (Object) <strong>get_persons_from_roles</strong>(doc, roles, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_search_parameters%3F-instance_method" title="#has_search_parameters? (instance method)">- (Boolean) <strong>has_search_parameters?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#item_page_entry_info-instance_method" title="#item_page_entry_info (instance method)">- (Object) <strong>item_page_entry_info</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Like the mysteriously named #page_entry_info above, but for an individual
+item show page.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#journal_info-instance_method" title="#journal_info (instance method)">- (Object) <strong>journal_info</strong>(doc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#page_entries_info-instance_method" title="#page_entries_info (instance method)">- (Object) <strong>page_entries_info</strong>(collection, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Displays the &#8220;showing X through Y of N&#8221; message.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#refworks_export_url-instance_method" title="#refworks_export_url (instance method)">- (Object) <strong>refworks_export_url</strong>(document = @document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Export to Refworks URL, called in _show_tools.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_class-instance_method" title="#render_document_class (instance method)">- (Object) <strong>render_document_class</strong>(document = @document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_sidebar_partial-instance_method" title="#render_document_sidebar_partial (instance method)">- (Object) <strong>render_document_sidebar_partial</strong>(document = @document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#researcher_list-instance_method" title="#researcher_list (instance method)">- (Object) <strong>researcher_list</strong>(doc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_field_label-instance_method" title="#search_field_label (instance method)">- (Object) <strong>search_field_label</strong>(params) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Look up search field user-displayable label based on params[:qt] and
+configuration.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#short_abstract-instance_method" title="#short_abstract (instance method)">- (Object) <strong>short_abstract</strong>(doc, max = 250) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_for-instance_method" title="Blacklight::SolrHelper#facet_limit_for (method)">#facet_limit_for</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_hash-instance_method" title="Blacklight::SolrHelper#facet_limit_hash (method)">#facet_limit_hash</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_facet_pagination-instance_method" title="Blacklight::SolrHelper#get_facet_pagination (method)">#get_facet_pagination</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_opensearch_response-instance_method" title="Blacklight::SolrHelper#get_opensearch_response (method)">#get_opensearch_response</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_search_results-instance_method" title="Blacklight::SolrHelper#get_search_results (method)">#get_search_results</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_single_doc_via_search-instance_method" title="Blacklight::SolrHelper#get_single_doc_via_search (method)">#get_single_doc_via_search</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_doc_id-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_doc_id (method)">#get_solr_response_for_doc_id</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_field_values-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_field_values (method)">#get_solr_response_for_field_values</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#included-class_method" title="Blacklight::SolrHelper.included (method)">included</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#max_per_page-instance_method" title="Blacklight::SolrHelper#max_per_page (method)">#max_per_page</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_doc_params-instance_method" title="Blacklight::SolrHelper#solr_doc_params (method)">#solr_doc_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_facet_params-instance_method" title="Blacklight::SolrHelper#solr_facet_params (method)">#solr_facet_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_opensearch_params-instance_method" title="Blacklight::SolrHelper#solr_opensearch_params (method)">#solr_opensearch_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_param_quote-instance_method" title="Blacklight::SolrHelper#solr_param_quote (method)">#solr_param_quote</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_search_params-instance_method" title="Blacklight::SolrHelper#solr_search_params (method)">#solr_search_params</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="admin_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>admin_info</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 71</span>
+
+<span class='def def kw'>def</span> <span class='admin_info identifier id'>admin_info</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='info identifier id'>info</span> <span class='assign token'>=</span><span class='string val'>&quot;Deposited: \#{format_date(DateTime.parse(doc.get(:system_create_dt)).to_time)}\n| By: \#{depositor_string(doc.get(:depositor_t))}\n| Status: Created\n&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="author_list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>author_list</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 20</span>
+
+<span class='def def kw'>def</span> <span class='author_list identifier id'>author_list</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='get_persons_from_roles identifier id'>get_persons_from_roles</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span><span class='lbrack token'>[</span><span class='string val'>'author'</span><span class='comma token'>,</span><span class='string val'>'collaborator'</span><span class='comma token'>,</span><span class='string val'>'creator'</span><span class='comma token'>,</span><span class='string val'>'contributor'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='person identifier id'>person</span><span class='bitor op'>|</span> <span class='format_person_string identifier id'>format_person_string</span><span class='lparen token'>(</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:first</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:last</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:institution</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="depositor_string-instance_method">
+  
+    - (<tt>Object</tt>) <strong>depositor_string</strong>(depositor = nil) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='depositor_string identifier id'>depositor_string</span> <span class='depositor identifier id'>depositor</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span>
+  <span class='dstring node'>&quot;#{depositor}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='depositor identifier id'>depositor</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> 
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format_date-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format_date</strong>(date) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='format_date identifier id'>format_date</span> <span class='date identifier id'>date</span>
+  <span class='date identifier id'>date</span><span class='dot token'>.</span><span class='strftime identifier id'>strftime</span><span class='lparen token'>(</span><span class='string val'>&quot;%Y-%m-%d %I:%M%p&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot; 0&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/([AP])M/</span><span class='comma token'>,</span><span class='string val'>'\1'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format_num-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format_num</strong>(num) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+shortcut for built-in Rails helper, &#8220;number_with_delimiter&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span> <span class='number_with_delimiter identifier id'>number_with_delimiter</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format_person_string-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format_person_string</strong>(first_name, last_name, affiliation, opt = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 42</span>
+
+<span class='def def kw'>def</span> <span class='format_person_string identifier id'>format_person_string</span> <span class='first_name identifier id'>first_name</span><span class='comma token'>,</span> <span class='last_name identifier id'>last_name</span><span class='comma token'>,</span> <span class='affiliation identifier id'>affiliation</span><span class='comma token'>,</span> <span class='opt identifier id'>opt</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_children-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_children</strong>(pid) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 11</span>
+
+<span class='def def kw'>def</span> <span class='get_children identifier id'>get_children</span> <span class='pid identifier id'>pid</span>
+  <span class='par identifier id'>par</span> <span class='assign token'>=</span> <span class='solr_facet_params identifier id'>solr_facet_params</span><span class='lparen token'>(</span><span class='symbol val'>:is_part_of_s</span><span class='rparen token'>)</span>
+  <span class='query identifier id'>query</span><span class='assign token'>=</span><span class='dstring node'>&quot;_query_:\&quot;{!dismax qf=$qf_dismax pf=$pf_dismax}is_part_of_s:info\\:fedora/#{pid.gsub(&quot;:&quot;,'\:')}\&quot;&quot;</span> 
+  <span class='comment val'># start query of with user supplied query term</span>
+    <span class='comment val'>#q &lt;&lt; &quot;_query_:\&quot;{!dismax qf=$qf_dismax pf=$pf_dismax}#{user_query}\&quot;&quot;</span>
+  <span class='lparen token'>(</span><span class='response identifier id'>response</span><span class='comma token'>,</span> <span class='document_list identifier id'>document_list</span><span class='rparen token'>)</span> <span class='assign token'>=</span> <span class='get_search_results identifier id'>get_search_results</span><span class='lparen token'>(</span> <span class='symbol val'>:q=</span><span class='gt op'>&gt;</span><span class='query identifier id'>query</span> <span class='rparen token'>)</span>
+  <span class='par identifier id'>par</span><span class='dot token'>.</span><span class='inspect identifier id'>inspect</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_persons_from_roles-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_persons_from_roles</strong>(doc, roles, opts = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='get_persons_from_roles identifier id'>get_persons_from_roles</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span><span class='roles identifier id'>roles</span><span class='comma token'>,</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='i identifier id'>i</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+  <span class='persons identifier id'>persons</span> <span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='while while kw'>while</span> <span class='i identifier id'>i</span> <span class='lt op'>&lt;</span> <span class='integer val'>10</span>
+    <span class='persons_roles identifier id'>persons_roles</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span> <span class='comment val'># reset the array</span>
+    <span class='persons_roles identifier id'>persons_roles</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='dstring node'>&quot;person_#{i}_role_t&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='w identifier id'>w</span><span class='bitor op'>|</span><span class='w identifier id'>w</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='rbrace token'>}</span> <span class='unless unless_mod kw'>unless</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='dstring node'>&quot;person_#{i}_role_t&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='if if kw'>if</span> <span class='persons_roles identifier id'>persons_roles</span> <span class='and and kw'>and</span> <span class='lparen token'>(</span><span class='persons_roles identifier id'>persons_roles</span> <span class='bitand op'>&amp;</span> <span class='roles identifier id'>roles</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+      <span class='persons identifier id'>persons</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:first</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='dstring node'>&quot;person_#{i}_first_name_t&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:last=</span><span class='gt op'>&gt;</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='dstring node'>&quot;person_#{i}_last_name_t&quot;</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:institution</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='dstring node'>&quot;person_#{i}_institution_t&quot;</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+    <span class='i identifier id'>i</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='persons identifier id'>persons</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_search_parameters?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>has_search_parameters?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 61</span>
+
+<span class='def def kw'>def</span> <span class='has_search_parameters? fid id'>has_search_parameters?</span>
+  <span class='notop op'>!</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:q</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span> <span class='or or kw'>or</span> <span class='notop op'>!</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span> <span class='or or kw'>or</span> <span class='notop op'>!</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:search_field</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="item_page_entry_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>item_page_entry_info</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Like the mysteriously named #page_entry_info above, but for an individual
+item show page. Displays &#8220;showing X of Y items&#8221; message. Code
+should call this method rather than interrogating session directly, because
+implementation of where this data is stored/retrieved may change.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 38</span>
+
+<span class='def def kw'>def</span> <span class='item_page_entry_info identifier id'>item_page_entry_info</span>
+  <span class='dstring node'>&quot;Showing item &lt;b&gt;#{session[:search][:counter].to_i} of #{format_num(session[:search][:total])}&lt;/b&gt; from your search.&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="journal_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>journal_info</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 48</span>
+
+<span class='def def kw'>def</span> <span class='journal_info identifier id'>journal_info</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_title_info_main_title_t</span><span class='rparen token'>)</span>
+  <span class='pub_date identifier id'>pub_date</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_issue_publication_date_t</span><span class='rparen token'>)</span>
+  <span class='volume identifier id'>volume</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_issue_volume_t</span><span class='rparen token'>)</span>
+  <span class='issue identifier id'>issue</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_issue_volume_t</span><span class='rparen token'>)</span>
+  <span class='start_page identifier id'>start_page</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_issue_pages_start_t</span><span class='rparen token'>)</span> 
+  <span class='end_page identifier id'>end_page</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:journal_issue_end_page_t</span><span class='rparen token'>)</span>
+  <span class='journal_info identifier id'>journal_info</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{title}. #{pub_date}; #{volume} ( #{issue} ): #{start_page} - #{end_page}&quot;</span>
+  <span class='journal_info identifier id'>journal_info</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span> <span class='if if_mod kw'>if</span> <span class='journal_info identifier id'>journal_info</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='regexp val'>/^\.\s+;\s+\(\s+\)\:\s+-\s*$/</span><span class='rparen token'>)</span>
+  <span class='journal_info identifier id'>journal_info</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="page_entries_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>page_entries_info</strong>(collection, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Displays the &#8220;showing X through Y of N&#8221; message. Not sure why
+that&#8217;s called &#8220;page_entries_info&#8221;. Not entirely sure what
+collection argument is supposed to duck-type too, but an
+RSolr::Ext::Response works.  Perhaps it duck-types to something from
+will_paginate?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='page_entries_info identifier id'>page_entries_info</span><span class='lparen token'>(</span><span class='collection identifier id'>collection</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+    <span class='start identifier id'>start</span> <span class='assign token'>=</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='next_page identifier id'>next_page</span> <span class='eq op'>==</span> <span class='integer val'>2</span> <span class='question op'>?</span> <span class='integer val'>1</span> <span class='colon op'>:</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='previous_page identifier id'>previous_page</span> <span class='mult op'>*</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='per_page identifier id'>per_page</span> <span class='plus op'>+</span> <span class='integer val'>1</span>
+    <span class='total_hits identifier id'>total_hits</span> <span class='assign token'>=</span> <span class='@response ivar id'>@response</span><span class='dot token'>.</span><span class='total identifier id'>total</span>
+    <span class='start_num identifier id'>start_num</span> <span class='assign token'>=</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='start identifier id'>start</span><span class='rparen token'>)</span>
+    <span class='end_num identifier id'>end_num</span> <span class='assign token'>=</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='start identifier id'>start</span> <span class='plus op'>+</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='per_page identifier id'>per_page</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+    <span class='total_num identifier id'>total_num</span> <span class='assign token'>=</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='total_hits identifier id'>total_hits</span><span class='rparen token'>)</span>
+
+    <span class='entry_name identifier id'>entry_name</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:entry_name</span><span class='rbrack token'>]</span> <span class='orop op'>||</span>
+      <span class='lparen token'>(</span><span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span><span class='integer val'>? </span><span class='string val'>'entry'</span> <span class='colon op'>:</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='underscore identifier id'>underscore</span><span class='dot token'>.</span><span class='sub identifier id'>sub</span><span class='lparen token'>(</span><span class='string val'>'_'</span><span class='comma token'>,</span> <span class='string val'>' '</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+
+    <span class='if if kw'>if</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='total_pages identifier id'>total_pages</span> <span class='lt op'>&lt;</span> <span class='integer val'>2</span>
+      <span class='case case kw'>case</span> <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
+      <span class='when when kw'>when</span> <span class='integer val'>0</span><span class='semicolon token'>;</span> <span class='dstring node'>&quot;No #{entry_name.pluralize} found&quot;</span>
+      <span class='when when kw'>when</span> <span class='integer val'>1</span><span class='semicolon token'>;</span> <span class='dstring node'>&quot;Displaying &lt;b&gt;1&lt;/b&gt; #{entry_name}&quot;</span>
+      <span class='else else kw'>else</span><span class='semicolon token'>;</span>   <span class='dstring node'>&quot;Displaying &lt;b&gt;all #{total_num}&lt;/b&gt; #{entry_name.pluralize}&quot;</span>
+      <span class='end end kw'>end</span>
+    <span class='else else kw'>else</span>
+      <span class='dstring node'>&quot;Displaying #{entry_name.pluralize} &lt;b&gt;#{start_num} - #{end_num}&lt;/b&gt; of &lt;b&gt;#{total_num}&lt;/b&gt;&quot;</span>
+    <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="refworks_export_url-instance_method">
+  
+    - (<tt>Object</tt>) <strong>refworks_export_url</strong>(document = @document) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Export to Refworks URL, called in _show_tools
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 49</span>
+
+<span class='def def kw'>def</span> <span class='refworks_export_url identifier id'>refworks_export_url</span><span class='lparen token'>(</span><span class='document identifier id'>document</span> <span class='assign token'>=</span> <span class='@document ivar id'>@document</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;http://www.refworks.com/express/expressimport.asp?vendor=#{CGI.escape(application_name)}&amp;filter=MARC%20Format&amp;encoding=65001&amp;url=#{CGI.escape(catalog_path(document[:id], :format =&gt; 'refworks_marc_txt', :only_path =&gt; false))}&quot;</span>        
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_class-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_class</strong>(document = @document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 53</span>
+
+<span class='def def kw'>def</span> <span class='render_document_class identifier id'>render_document_class</span><span class='lparen token'>(</span><span class='document identifier id'>document</span> <span class='assign token'>=</span> <span class='@document ivar id'>@document</span><span class='rparen token'>)</span>
+ <span class='string val'>'blacklight-'</span> <span class='plus op'>+</span> <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:index</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:record_display_type</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='parameterize identifier id'>parameterize</span> <span class='rescue rescue kw'>rescue</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_sidebar_partial-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_sidebar_partial</strong>(document = @document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 57</span>
+
+<span class='def def kw'>def</span> <span class='render_document_sidebar_partial identifier id'>render_document_sidebar_partial</span><span class='lparen token'>(</span><span class='document identifier id'>document</span> <span class='assign token'>=</span> <span class='@document ivar id'>@document</span><span class='rparen token'>)</span>
+  <span class='render identifier id'>render</span> <span class='symbol val'>:partial</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'show_sidebar'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="researcher_list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>researcher_list</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='researcher_list identifier id'>researcher_list</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='get_persons_from_roles identifier id'>get_persons_from_roles</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span><span class='lbrack token'>[</span><span class='string val'>'research team head'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='person identifier id'>person</span><span class='bitor op'>|</span> <span class='format_person_string identifier id'>format_person_string</span><span class='lparen token'>(</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:first</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:last</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='person identifier id'>person</span><span class='lbrack token'>[</span><span class='symbol val'>:institution</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_field_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_field_label</strong>(params) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Look up search field user-displayable label based on params[:qt] and
+configuration.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/catalog_helper.rb', line 44</span>
+
+<span class='def def kw'>def</span> <span class='search_field_label identifier id'>search_field_label</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='rparen token'>)</span>
+  <span class='h identifier id'>h</span><span class='lparen token'>(</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='label_for_search_field identifier id'>label_for_search_field</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:search_field</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="short_abstract-instance_method">
+  
+    - (<tt>Object</tt>) <strong>short_abstract</strong>(doc, max = 250) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='short_abstract identifier id'>short_abstract</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span><span class='max identifier id'>max</span><span class='assign token'>=</span><span class='integer val'>250</span><span class='rparen token'>)</span>
+  <span class='abstract identifier id'>abstract</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='symbol val'>:abstract_t</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='abstract identifier id'>abstract</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='return return kw'>return</span> <span class='string val'>&quot;&quot;</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='abstract identifier id'>abstract</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='lt op'>&lt;</span> <span class='max identifier id'>max</span>
+    <span class='return return kw'>return</span> <span class='abstract identifier id'>abstract</span>
+  <span class='else else kw'>else</span>
+    <span class='return return kw'>return</span> <span class='abstract identifier id'>abstract</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='max identifier id'>max</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='dot token'>.</span><span class='concat identifier id'>concat</span><span class='lparen token'>(</span><span class='string val'>&quot;...&quot;</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:37 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

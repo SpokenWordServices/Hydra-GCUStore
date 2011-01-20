@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hydra::FileAssetsHelper</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">FileAssetsHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hydra::FileAssetsHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../FileAssetsController.html" title="FileAssetsController (class)">FileAssetsController</a></span>, <span class='object_link'><a href="../GenericContentObjectsController.html" title="GenericContentObjectsController (class)">GenericContentObjectsController</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_posted_blob_to_asset-instance_method" title="#add_posted_blob_to_asset (instance method)">- (FileAsset) <strong>add_posted_blob_to_asset</strong>(asset = @file_asset) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Puts the contents of params[:Filedata] (posted blob) into a datastream
+within the given @asset.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asset_class_from_params-instance_method" title="#asset_class_from_params (instance method)">- (Constant) <strong>asset_class_from_params</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is pre-Hydra code that created an AudioAsset, VideoAsset or ImageAsset
+based on the current params in the controller.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#choose_model_by_filename-instance_method" title="#choose_model_by_filename (instance method)">- (Object) <strong>choose_model_by_filename</strong>(filename) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#choose_model_by_filename_extension-instance_method" title="#choose_model_by_filename_extension (instance method)">- (Constant) <strong>choose_model_by_filename_extension</strong>(extension) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Rudimentary method to choose an Asset class based on a filename extension.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_and_save_file_asset_from_params-instance_method" title="#create_and_save_file_asset_from_params (instance method)">- (FileAsset) <strong>create_and_save_file_asset_from_params</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a File Asset, adding the posted blob to the File Asset&#8217;s
+datastreams and saves the File Asset.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_asset_from_params-instance_method" title="#create_asset_from_params (instance method)">- (FileAsset) <strong>create_asset_from_params</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a File Asset and sets its label from params[:Filename].
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_posted_blob_to_asset-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>) <strong>add_posted_blob_to_asset</strong>(asset = @file_asset) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Puts the contents of params[:Filedata] (posted blob) into a datastream
+within the given @asset
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>)</span>
+      
+      
+        <span class='name'>the</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+File Asset to add the blob to
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the File Asset
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 21</span>
+
+<span class='def def kw'>def</span> <span class='add_posted_blob_to_asset identifier id'>add_posted_blob_to_asset</span><span class='lparen token'>(</span><span class='asset identifier id'>asset</span><span class='assign token'>=</span><span class='@file_asset ivar id'>@file_asset</span><span class='rparen token'>)</span>
+  <span class='asset identifier id'>asset</span><span class='dot token'>.</span><span class='add_file_datastream identifier id'>add_file_datastream</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filedata</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:label=</span><span class='gt op'>&gt;</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filename</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:mimeType=</span><span class='gt op'>&gt;</span><span class='mime_type identifier id'>mime_type</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filename</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="asset_class_from_params-instance_method">
+  
+    - (<tt>Constant</tt>) <strong>asset_class_from_params</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is pre-Hydra code that created an AudioAsset, VideoAsset or ImageAsset
+based on the current params in the controller.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Constant</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the recommended Asset class
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 39</span>
+
+<span class='def def kw'>def</span> <span class='asset_class_from_params identifier id'>asset_class_from_params</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:type</span><span class='rparen token'>)</span>
+    <span class='chosen_type identifier id'>chosen_type</span> <span class='assign token'>=</span> <span class='case case kw'>case</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:type</span><span class='rbrack token'>]</span>
+    <span class='when when kw'>when</span> <span class='string val'>&quot;AudioAsset&quot;</span>
+      <span class='AudioAsset constant id'>AudioAsset</span>
+    <span class='when when kw'>when</span> <span class='string val'>&quot;VideoAsset&quot;</span>
+      <span class='VideoAsset constant id'>VideoAsset</span>
+    <span class='when when kw'>when</span> <span class='string val'>&quot;ImageAsset&quot;</span>
+      <span class='ImageAsset constant id'>ImageAsset</span>
+    <span class='else else kw'>else</span>
+      <span class='FileAsset constant id'>FileAsset</span>
+    <span class='end end kw'>end</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:Filename</span><span class='rparen token'>)</span>
+    <span class='chosen_type identifier id'>chosen_type</span> <span class='assign token'>=</span> <span class='choose_model_by_filename identifier id'>choose_model_by_filename</span><span class='lparen token'>(</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filename</span><span class='rbrack token'>]</span> <span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='chosen_type identifier id'>chosen_type</span> <span class='assign token'>=</span> <span class='FileAsset constant id'>FileAsset</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='return return kw'>return</span> <span class='chosen_type identifier id'>chosen_type</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="choose_model_by_filename-instance_method">
+  
+    - (<tt>Object</tt>) <strong>choose_model_by_filename</strong>(filename) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='choose_model_by_filename identifier id'>choose_model_by_filename</span><span class='lparen token'>(</span><span class='filename identifier id'>filename</span><span class='rparen token'>)</span>
+  <span class='choose_model_by_filename_extension identifier id'>choose_model_by_filename_extension</span><span class='lparen token'>(</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='extname identifier id'>extname</span><span class='lparen token'>(</span><span class='filename identifier id'>filename</span><span class='rparen token'>)</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="choose_model_by_filename_extension-instance_method">
+  
+    - (<tt>Constant</tt>) <strong>choose_model_by_filename_extension</strong>(extension) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Rudimentary method to choose an Asset class based on a filename extension
+</p>
+<p>
+Recognized extensions:  AudioAsset => &#8220;.wav&#8221;,
+&#8220;.mp3&#8221;, &#8220;.aiff&#8221; VideoAsset => &#8220;.mov&#8221;,
+&#8220;.flv&#8221;, &#8220;.mp4&#8221; ImageAsset => &#8220;.jpeg&#8221;,
+&#8220;.jpg&#8221;, &#8220;.gif&#8221;, &#8220;.png&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <span class='name'>extension</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Constant</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the recommended Asset class.  Default: FileAsset
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 73</span>
+
+<span class='def def kw'>def</span> <span class='choose_model_by_filename_extension identifier id'>choose_model_by_filename_extension</span><span class='lparen token'>(</span><span class='extension identifier id'>extension</span><span class='rparen token'>)</span>
+  <span class='case case kw'>case</span> <span class='extension identifier id'>extension</span>
+  <span class='when when kw'>when</span> <span class='string val'>&quot;.wav&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.mp3&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.aiff&quot;</span>
+    <span class='AudioAsset constant id'>AudioAsset</span>
+  <span class='when when kw'>when</span> <span class='string val'>&quot;.mov&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.flv&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.mp4&quot;</span>
+    <span class='VideoAsset constant id'>VideoAsset</span>
+  <span class='when when kw'>when</span> <span class='string val'>&quot;.jpeg&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.jpg&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.gif&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;.png&quot;</span>
+    <span class='ImageAsset constant id'>ImageAsset</span>
+  <span class='else else kw'>else</span>
+   <span class='FileAsset constant id'>FileAsset</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_and_save_file_asset_from_params-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>) <strong>create_and_save_file_asset_from_params</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a File Asset, adding the posted blob to the File Asset&#8217;s
+datastreams and saves the File Asset
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the File Asset
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 6</span>
+
+<span class='def def kw'>def</span> <span class='create_and_save_file_asset_from_params identifier id'>create_and_save_file_asset_from_params</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:Filedata</span><span class='rparen token'>)</span>
+    <span class='@file_asset ivar id'>@file_asset</span> <span class='assign token'>=</span> <span class='create_asset_from_params identifier id'>create_asset_from_params</span>
+    <span class='add_posted_blob_to_asset identifier id'>add_posted_blob_to_asset</span>
+    <span class='@file_asset ivar id'>@file_asset</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+    <span class='return return kw'>return</span> <span class='@file_asset ivar id'>@file_asset</span>
+  <span class='else else kw'>else</span>
+    <span class='render identifier id'>render</span> <span class='symbol val'>:text</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;400 Bad Request&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>400</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_asset_from_params-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>) <strong>create_asset_from_params</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a File Asset and sets its label from params[:Filename]
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../FileAsset.html" title="FileAsset (class)">FileAsset</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the File Asset
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='create_asset_from_params identifier id'>create_asset_from_params</span>    
+  <span class='file_asset identifier id'>file_asset</span> <span class='assign token'>=</span> <span class='FileAsset constant id'>FileAsset</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  <span class='file_asset identifier id'>file_asset</span><span class='dot token'>.</span><span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filename</span><span class='rbrack token'>]</span>
+  
+  <span class='return return kw'>return</span> <span class='file_asset identifier id'>file_asset</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:28 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -63,8 +63,9 @@ Spec::Runner.configure do |config|
     if defined?(@index_full_text) && @index_full_text
       url = Blacklight.solr_config['fulltext']['url']
     else
-      url = Blacklight.solr_config['default']['url']
+      url = Blacklight.solr_config[:url]
     end
+  
     @bl_solr = Solr::Connection.new(url, :autocommit => :on )
   end
   

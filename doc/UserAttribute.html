@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: UserAttribute</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo; 
+    
+    
+    <span class="title">UserAttribute</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: UserAttribute
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">UserAttribute</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/hydra_repository/app/models/user_attribute.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_by_login-class_method" title="find_by_login (class method)">+ (Object) <strong>find_by_login</strong>(login) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Finds the user_attributes based on login.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#full_name-instance_method" title="#full_name (instance method)">- (string) <strong>full_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Concatenates first and last name.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="find_by_login-class_method">
+  
+    + (<tt>Object</tt>) <strong>find_by_login</strong>(login) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Finds the user_attributes based on login
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the user attribute object or nil
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11
+12
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/user_attribute.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_login identifier id'>find_by_login</span><span class='lparen token'>(</span><span class='login identifier id'>login</span><span class='rparen token'>)</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='find_by_login identifier id'>find_by_login</span><span class='lparen token'>(</span><span class='login identifier id'>login</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='user identifier id'>user</span>
+    <span class='UserAttribute constant id'>UserAttribute</span><span class='dot token'>.</span><span class='find_by_user_id identifier id'>find_by_user_id</span><span class='lparen token'>(</span><span class='user identifier id'>user</span><span class='dot token'>.</span><span class='id identifier id'>id</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='nil nil kw'>nil</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="full_name-instance_method">
+  
+    - (<tt>string</tt>) <strong>full_name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Concatenates first and last name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>string</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the first_name + last_name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/user_attribute.rb', line 19</span>
+
+<span class='def def kw'>def</span> <span class='full_name identifier id'>full_name</span>
+  <span class='fn identifier id'>fn</span> <span class='assign token'>=</span> <span class='first_name identifier id'>first_name</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='integer val'>? </span><span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='first_name identifier id'>first_name</span>
+  <span class='ln identifier id'>ln</span> <span class='assign token'>=</span> <span class='last_name identifier id'>last_name</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='integer val'>? </span><span class='string val'>&quot;&quot;</span> <span class='colon op'>:</span> <span class='last_name identifier id'>last_name</span>
+  <span class='lbrack token'>[</span><span class='fn identifier id'>fn</span><span class='comma token'>,</span> <span class='ln identifier id'>ln</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:34 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

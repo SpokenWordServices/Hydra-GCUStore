@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Djatoka</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (D)</a> &raquo; 
+    
+    
+    <span class="title">Djatoka</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Djatoka
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Djatoka</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">HTTParty</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/lib/djatoka.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_image-class_method" title="get_image (class method)">+ (Object) <strong>get_image</strong>(source_url, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#region-class_method" title="region (class method)">+ (Object) <strong>region</strong>(source_url, region_value, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Uses Djatoka to retrieve a redion of the image from @source_url according
+to @scale_value Accepts optional hash that will be passed through to
+djatoka as-is scale_value is passed through to djatoka as svc.scale.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scale-class_method" title="scale (class method)">+ (Object) <strong>scale</strong>(source_url, scale_value, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Uses Djatoka to scale the image from @source_url according to @scale_value
+Accepts optional hash that will be passed through to djatoka as-is
+scale_value is passed through to djatoka as svc.scale.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="get_image-class_method">
+  
+    + (<tt>Object</tt>) <strong>get_image</strong>(source_url, options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/djatoka.rb', line 46</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='get_image identifier id'>get_image</span><span class='lparen token'>(</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='symbol val'>:svc_id</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;info:lanl-repo/svc/getRegion&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:rft_id=</span><span class='gt op'>&gt;</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='string val'>&quot;svc.format&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;image/jpeg&quot;</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;get_region options: #{options.inspect}&quot;</span>
+  <span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='string val'>&quot;&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:query</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="region-class_method">
+  
+    + (<tt>Object</tt>) <strong>region</strong>(source_url, region_value, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Uses Djatoka to retrieve a redion of the image from @source_url according
+to @scale_value Accepts optional hash that will be passed through to
+djatoka as-is scale_value is passed through to djatoka as svc.scale. From
+the Djatoka docs: svc.region - Y,X,H,W.
+</p>
+<ul>
+<li><p>
+Y is the down inset value (positive) from 0 on the y axis at the max image
+resolution.
+</p>
+</li>
+<li><p>
+X is the right inset value (positive) from 0 on the x axis at the max image
+resolution.
+</p>
+</li>
+<li><p>
+H is the height of the image provided as response.
+</p>
+</li>
+<li><p>
+W is the width of the image provided as response.
+</p>
+</li>
+<li><p>
+All values may either be absolute pixel values (e.g. 100,100,256,256),
+float values (e.g. 0.1,0.1,0.1,0.1), or a combination (e.g.
+0.1,0.1,256,256).
+</p>
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/djatoka.rb', line 41</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='region identifier id'>region</span><span class='lparen token'>(</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='region_value identifier id'>region_value</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='string val'>&quot;svc.region&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='region_value identifier id'>region_value</span><span class='rparen token'>)</span>
+  <span class='get_image identifier id'>get_image</span><span class='lparen token'>(</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="scale-class_method">
+  
+    + (<tt>Object</tt>) <strong>scale</strong>(source_url, scale_value, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Uses Djatoka to scale the image from @source_url according to @scale_value
+Accepts optional hash that will be passed through to djatoka as-is
+scale_value is passed through to djatoka as svc.scale. From the Djatoka
+docs: svc.scale - Request specific output size by scaling extracted
+resource. Option 1) Define a long-side dimension (e.g., svc.scale=96)
+</p>
+<ul>
+<li><p>
+Nearest resolution level, rounded up, is used for level parameter
+</p>
+</li>
+<li><p>
+Uses the aspect ratio to calculate second value
+</p>
+</li>
+</ul>
+<p>
+Option 2) Define absolute w,h values (e.g. 1024,768)
+</p>
+<ul>
+<li><p>
+Images is scaled to the dimensions you specify.
+</p>
+</li>
+<li><p>
+Value must be less than 2X current resolution
+</p>
+</li>
+</ul>
+<p>
+Option 3) Define a single dimension (e.g. 1024,0) with or without Level
+Parameter
+</p>
+<ul>
+<li><p>
+Uses the aspect ratio to calculate second value
+</p>
+</li>
+</ul>
+<p>
+Option 4) Use a single decimal scaling factor (e.g. 0.854)
+</p>
+<ul>
+<li><p>
+Current resolution = 1.0
+</p>
+</li>
+<li><p>
+50% Resolution = 0.5
+</p>
+</li>
+<li><p>
+150% Resolution = 1.5
+</p>
+</li>
+<li><p>
+Value must be greater than 0 and less than 2
+</p>
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/djatoka.rb', line 26</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='scale identifier id'>scale</span><span class='lparen token'>(</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='scale_value identifier id'>scale_value</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='string val'>&quot;svc.scale&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='scale_value identifier id'>scale_value</span><span class='rparen token'>)</span>
+  <span class='get_image identifier id'>get_image</span><span class='lparen token'>(</span><span class='source_url identifier id'>source_url</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:37 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

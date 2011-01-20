@@ -1,0 +1,1642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Hydra::ModsArticle</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">ModsArticle</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Hydra::ModsArticle
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveFedora::NokogiriDatastream</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveFedora::NokogiriDatastream</li>
+          
+            <li class="next">Hydra::ModsArticle</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="CommonModsIndexMethods.html" title="Hydra::CommonModsIndexMethods (module)">CommonModsIndexMethods</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/lib/hydra/mods_article.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#common_relator_terms-class_method" title="common_relator_terms (class method)">+ (Object) <strong>common_relator_terms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#conference_relator_terms-class_method" title="conference_relator_terms (class method)">+ (Object) <strong>conference_relator_terms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#conference_template-class_method" title="conference_template (class method)">+ (Object) <strong>conference_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generates a new Conference node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dc_relator_terms-class_method" title="dc_relator_terms (class method)">+ (Object) <strong>dc_relator_terms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#full_name_template-class_method" title="full_name_template (class method)">+ (Object) <strong>full_name_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#organization_relator_terms-class_method" title="organization_relator_terms (class method)">+ (Object) <strong>organization_relator_terms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#organization_template-class_method" title="organization_template (class method)">+ (Object) <strong>organization_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generates a new Organization node Uses
+mods:name[@type=&#8220;corporate&#8221;].
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#person_relator_terms-class_method" title="person_relator_terms (class method)">+ (Object) <strong>person_relator_terms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#person_template-class_method" title="person_template (class method)">+ (Object) <strong>person_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generates a new Person node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid_child_types-class_method" title="valid_child_types (class method)">+ (Object) <strong>valid_child_types</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml_template-class_method" title="xml_template (class method)">+ (Object) <strong>xml_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generates an empty Mods Article (used when you call ModsArticle.new without
+passing in existing xml).
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#insert_contributor-instance_method" title="#insert_contributor (instance method)">- (Object) <strong>insert_contributor</strong>(type, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Inserts a new contributor (mods:name) into the mods document creates
+contributors of type :person, :organization, or :conference.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_contributor-instance_method" title="#remove_contributor (instance method)">- (Object) <strong>remove_contributor</strong>(contributor_type, index) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Remove the contributor entry identified by @contributor_type and @index.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_solr-instance_method" title="#to_solr (instance method)">- (Object) <strong>to_solr</strong>(solr_doc = Solr::Document.new) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="CommonModsIndexMethods.html" title="Hydra::CommonModsIndexMethods (module)">CommonModsIndexMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="CommonModsIndexMethods.html#extract_person_full_names-instance_method" title="Hydra::CommonModsIndexMethods#extract_person_full_names (method)">#extract_person_full_names</a></span>, <span class='object_link'><a href="CommonModsIndexMethods.html#extract_person_organizations-instance_method" title="Hydra::CommonModsIndexMethods#extract_person_organizations (method)">#extract_person_organizations</a></span></p>
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="common_relator_terms-class_method">
+  
+    + (<tt>Object</tt>) <strong>common_relator_terms</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 215</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='common_relator_terms identifier id'>common_relator_terms</span>
+   <span class='lbrace token'>{</span><span class='string val'>&quot;aut&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;clb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Collaborator&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;com&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Compiler&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;ctb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contributor&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;cre&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Creator&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;edt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Editor&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;ill&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Illustrator&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;oth&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Other&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;trl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Translator&quot;</span><span class='comma token'>,</span>
+    <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="conference_relator_terms-class_method">
+  
+    + (<tt>Object</tt>) <strong>conference_relator_terms</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245
+246
+247</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 243</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='conference_relator_terms identifier id'>conference_relator_terms</span>
+  <span class='lbrace token'>{</span>
+    <span class='string val'>&quot;hst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Host&quot;</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="conference_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>conference_template</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generates a new Conference node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 164</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='conference_template identifier id'>conference_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;conference&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='role identifier id'>role</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='roleTerm identifier id'>roleTerm</span><span class='lparen token'>(</span><span class='symbol val'>:authority=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;marcrelator&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;text&quot;</span><span class='rparen token'>)</span>
+      <span class='rbrace token'>}</span>                          
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='root identifier id'>root</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="dc_relator_terms-class_method">
+  
+    + (<tt>Object</tt>) <strong>dc_relator_terms</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 256</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='dc_relator_terms identifier id'>dc_relator_terms</span>
+ <span class='lbrace token'>{</span><span class='string val'>&quot;acp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Art copyist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;act&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Actor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;adp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Adapter&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aft&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author of afterword, colophon, etc.&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;anl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Analyst&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;anm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Animator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ann&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Annotator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ant&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bibliographic antecedent&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;app&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Applicant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aqt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author in quotations or text abstracts&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;arc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Architect&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ard&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Artistic director &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;arr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Arranger&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;art&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Artist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;asg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Assignee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;asn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Associated name&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;att&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Attributed name&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;auc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Auctioneer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aud&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author of dialog&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aui&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author of introduction&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aus&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author of screenplay&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;aut&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bdd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Binding designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bjd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bookjacket designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bkd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Book designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bkp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Book producer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bnd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Binder&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bpd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bookplate designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;bsl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bookseller&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ccp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Conceptor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;chr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Choreographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;clb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Collaborator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cli&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Client&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cll&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Calligrapher&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;clt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Collotyper&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cmm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Commentator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cmp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Composer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cmt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Compositor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cng&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Cinematographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cnd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Conductor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cns&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Censor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;coe&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestant -appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;col&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Collector&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;com&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Compiler&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cos&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cot&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestant -appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cov&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Cover designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cpc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Copyright claimant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cpe&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Complainant-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cph&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Copyright holder&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cpl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Complainant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cpt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Complainant-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cre&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Creator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;crp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Correspondent&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;crr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Corrector&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;csl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Consultant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;csp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Consultant to a project&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Costume designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ctb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contributor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cte&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestee-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ctg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Cartographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ctr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contractor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cts&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ctt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contestee-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cur&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Curator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;cwt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Commentator for written text&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dfd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Defendant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dfe&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Defendant-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dft&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Defendant-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dgg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Degree grantor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dis&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Dissertant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dln&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Delineator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dnc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Dancer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dnr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Donor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dpc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Depicted&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dpt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Depositor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;drm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Draftsman&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;drt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Director&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dsr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Distributor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dtc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Data contributor &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dte&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Dedicatee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dtm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Data manager &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dto&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Dedicator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;dub&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Dubious author&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;edt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Editor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;egr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Engraver&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;elg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Electrician &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;elt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Electrotyper&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;eng&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Engineer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;etr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Etcher&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;exp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Expert&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;fac&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Facsimilist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;fld&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Field director &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;flm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Film editor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;fmo&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Former owner&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;fpy&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;First party&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;fnd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Funder&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;frg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Forger&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;gis&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Geographic information specialist &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;grt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Graphic technician&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;hnr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Honoree&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;hst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Host&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ill&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Illustrator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ilu&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Illuminator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ins&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Inscriber&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;inv&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Inventor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;itr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Instrumentalist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ive&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Interviewee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ivr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Interviewer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lbr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Laboratory &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lbt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Librettist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ldr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Laboratory director &quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;led&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Lead&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lee&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelee-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lel&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;len&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Lender&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;let&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelee-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lgd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Lighting designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lie&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelant-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lil&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lit&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Libelant-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lsa&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Landscape architect&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lse&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Licensee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lso&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Licensor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ltg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Lithographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;lyr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Lyricist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mcp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Music copyist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mfr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Manufacturer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mdc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Metadata contact&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mod&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Moderator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mon&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Monitor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mrk&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Markup editor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;msd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Musical director&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mte&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Metal-engraver&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;mus&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Musician&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;nrt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Narrator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;opn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Opponent&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;org&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Originator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;orm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Organizer of meeting&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;oth&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Other&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;own&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Owner&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pat&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Patron&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pbd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Publishing director&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pbl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Publisher&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pdr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Project director&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pfr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Proofreader&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pht&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Photographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;plt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Platemaker&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pma&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Permitting agency&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pmn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Production manager&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pop&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Printer of plates&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ppm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Papermaker&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ppt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Puppeteer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Process contact&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Production personnel&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prf&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Performer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Programmer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Printmaker&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pro&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Producer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;prt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Printer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pta&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Patent applicant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pte&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Plaintiff -appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ptf&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Plaintiff&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;pth&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Patent holder&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ptt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Plaintiff-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rbr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Rubricator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rce&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Recording engineer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rcp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Recipient&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;red&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Redactor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ren&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Renderer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;res&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Researcher&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rev&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Reviewer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rps&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Repository&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rpt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Reporter&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rpy&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Responsible party&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rse&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Respondent-appellee&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rsg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Restager&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rsp&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Respondent&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Respondent-appellant&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rth&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Research team head&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;rtm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Research team member&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sad&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Scientific advisor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sce&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Scenarist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;scl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Sculptor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;scr&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Scribe&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sds&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Sound designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sec&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Secretary&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sgn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Signer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sht&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Supporting host&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;sng&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Singer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;spk&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Speaker&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;spn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Sponsor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;spy&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Second party&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;srv&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Surveyor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;std&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Set designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;stl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Storyteller&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;stm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Stage manager&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;stn&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Standards body&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;str&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Stereotyper&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;tcd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Technical director&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;tch&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Teacher&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;ths&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Thesis advisor&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;trc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Transcriber&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;trl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Translator&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;tyd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Type designer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;tyg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Typographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;vdg&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Videographer&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;voc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Vocalist&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;wam&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Writer of accompanying material&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;wdc&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Woodcutter&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;wde&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Wood -engraver&quot;</span><span class='comma token'>,</span>
+  <span class='string val'>&quot;wit&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Witness&quot;</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="full_name_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>full_name_template</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 142</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='full_name_template identifier id'>full_name_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='full_name identifier id'>full_name</span><span class='lparen token'>(</span><span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;personal&quot;</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='root identifier id'>root</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="organization_relator_terms-class_method">
+  
+    + (<tt>Object</tt>) <strong>organization_relator_terms</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+249
+250
+251
+252
+253
+254</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 249</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='organization_relator_terms identifier id'>organization_relator_terms</span>
+  <span class='lbrace token'>{</span>
+    <span class='string val'>&quot;fnd&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Funder&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;hst&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Host&quot;</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="organization_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>organization_template</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generates a new Organization node Uses
+mods:name[@type=&#8220;corporate&#8221;]
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 151</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='organization_template identifier id'>organization_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;corporate&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='role identifier id'>role</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='roleTerm identifier id'>roleTerm</span><span class='lparen token'>(</span><span class='symbol val'>:authority=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;marcrelator&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;text&quot;</span><span class='rparen token'>)</span>
+      <span class='rbrace token'>}</span>                          
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='root identifier id'>root</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="person_relator_terms-class_method">
+  
+    + (<tt>Object</tt>) <strong>person_relator_terms</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 228</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='person_relator_terms identifier id'>person_relator_terms</span>
+  <span class='lbrace token'>{</span><span class='string val'>&quot;aut&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Author&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;clb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Collaborator&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;com&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Compiler&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;cre&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Creator&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;ctb&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Contributor&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;edt&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Editor&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;ill&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Illustrator&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;res&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Researcher&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;rth&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Research team head&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;rtm&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Research team member&quot;</span><span class='comma token'>,</span>
+   <span class='string val'>&quot;trl&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Translator&quot;</span>
+   <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="person_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>person_template</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generates a new Person node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 128</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='person_template identifier id'>person_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;personal&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;family&quot;</span><span class='rparen token'>)</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;given&quot;</span><span class='rparen token'>)</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='affiliation identifier id'>affiliation</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='role identifier id'>role</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='roleTerm identifier id'>roleTerm</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;text&quot;</span><span class='rparen token'>)</span>
+      <span class='rbrace token'>}</span>
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='root identifier id'>root</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="valid_child_types-class_method">
+  
+    + (<tt>Object</tt>) <strong>valid_child_types</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+472
+473
+474</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 472</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='valid_child_types identifier id'>valid_child_types</span>
+  <span class='lbrack token'>[</span><span class='string val'>&quot;data&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;supporting file&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;profile&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;lorem ipsum&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;dolor&quot;</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="xml_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>xml_template</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generates an empty Mods Article (used when you call ModsArticle.new without
+passing in existing xml)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 70</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='xml_template identifier id'>xml_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='mods identifier id'>mods</span><span class='lparen token'>(</span><span class='symbol val'>:version=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;3.3&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;xmlns:xlink&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;http://www.w3.org/1999/xlink&quot;</span><span class='comma token'>,</span>
+       <span class='string val'>&quot;xmlns:xsi&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class='comma token'>,</span>
+       <span class='string val'>&quot;xmlns&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;http://www.loc.gov/mods/v3&quot;</span><span class='comma token'>,</span>
+       <span class='string val'>&quot;xsi:schemaLocation&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='titleInfo identifier id'>titleInfo</span><span class='lparen token'>(</span><span class='symbol val'>:lang=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='title identifier id'>title</span>
+         <span class='rbrace token'>}</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;personal&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;given&quot;</span><span class='rparen token'>)</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='namePart identifier id'>namePart</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;family&quot;</span><span class='rparen token'>)</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='affiliation identifier id'>affiliation</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='role identifier id'>role</span> <span class='lbrace token'>{</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='roleTerm identifier id'>roleTerm</span><span class='lparen token'>(</span><span class='symbol val'>:authority=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;marcrelator&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;text&quot;</span><span class='rparen token'>)</span>
+           <span class='rbrace token'>}</span>
+         <span class='rbrace token'>}</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='typeOfResource identifier id'>typeOfResource</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='genre identifier id'>genre</span><span class='lparen token'>(</span><span class='symbol val'>:authority=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;marcgt&quot;</span><span class='rparen token'>)</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='language identifier id'>language</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='languageTerm identifier id'>languageTerm</span><span class='lparen token'>(</span><span class='symbol val'>:authority=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;iso639-2b&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;code&quot;</span><span class='rparen token'>)</span>
+         <span class='rbrace token'>}</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='abstract identifier id'>abstract</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='subject identifier id'>subject</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='topic identifier id'>topic</span>
+         <span class='rbrace token'>}</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='relatedItem identifier id'>relatedItem</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;host&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='titleInfo identifier id'>titleInfo</span> <span class='lbrace token'>{</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='title identifier id'>title</span>
+           <span class='rbrace token'>}</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='identifier identifier id'>identifier</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;issn&quot;</span><span class='rparen token'>)</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='originInfo identifier id'>originInfo</span> <span class='lbrace token'>{</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='publisher identifier id'>publisher</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='dateIssued identifier id'>dateIssued</span>
+           <span class='rbrace token'>}</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='part identifier id'>part</span> <span class='lbrace token'>{</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='detail identifier id'>detail</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;volume&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+               <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='number identifier id'>number</span>
+             <span class='rbrace token'>}</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='detail identifier id'>detail</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;number&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+               <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='number identifier id'>number</span>
+             <span class='rbrace token'>}</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='extent identifier id'>extent</span><span class='lparen token'>(</span><span class='symbol val'>:unit=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;pages&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+               <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='start identifier id'>start</span>
+               <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='end identifier id'>end</span>
+             <span class='rbrace token'>}</span>
+             <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='date identifier id'>date</span>
+           <span class='rbrace token'>}</span>
+         <span class='rbrace token'>}</span>
+         <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='location identifier id'>location</span> <span class='lbrace token'>{</span>
+           <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='url identifier id'>url</span>
+         <span class='rbrace token'>}</span>
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="insert_contributor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>insert_contributor</strong>(type, opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Inserts a new contributor (mods:name) into the mods document creates
+contributors of type :person, :organization, or :conference
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 178</span>
+
+<span class='def def kw'>def</span> <span class='insert_contributor identifier id'>insert_contributor</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='case case kw'>case</span> <span class='type identifier id'>type</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span> 
+  <span class='when when kw'>when</span> <span class='symbol val'>:person</span>
+    <span class='node identifier id'>node</span> <span class='assign token'>=</span> <span class='Hydra constant id'>Hydra</span><span class='colon2 op'>::</span><span class='ModsArticle constant id'>ModsArticle</span><span class='dot token'>.</span><span class='person_template identifier id'>person_template</span>
+    <span class='nodeset identifier id'>nodeset</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='symbol val'>:person</span><span class='rparen token'>)</span>
+  <span class='when when kw'>when</span> <span class='symbol val'>:organization</span>
+    <span class='node identifier id'>node</span> <span class='assign token'>=</span> <span class='Hydra constant id'>Hydra</span><span class='colon2 op'>::</span><span class='ModsArticle constant id'>ModsArticle</span><span class='dot token'>.</span><span class='organization_template identifier id'>organization_template</span>
+    <span class='nodeset identifier id'>nodeset</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='symbol val'>:organization</span><span class='rparen token'>)</span>
+  <span class='when when kw'>when</span> <span class='symbol val'>:conference</span>
+    <span class='node identifier id'>node</span> <span class='assign token'>=</span> <span class='Hydra constant id'>Hydra</span><span class='colon2 op'>::</span><span class='ModsArticle constant id'>ModsArticle</span><span class='dot token'>.</span><span class='conference_template identifier id'>conference_template</span>
+    <span class='nodeset identifier id'>nodeset</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='symbol val'>:conference</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='ActiveFedora constant id'>ActiveFedora</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{type} is not a valid argument for Hydra::ModsArticle.insert_contributor&quot;</span><span class='rparen token'>)</span>
+    <span class='node identifier id'>node</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+    <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='unless unless kw'>unless</span> <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='if if kw'>if</span> <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='ng_xml identifier id'>ng_xml</span><span class='dot token'>.</span><span class='root identifier id'>root</span><span class='dot token'>.</span><span class='add_child identifier id'>add_child</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span>
+      <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+    <span class='else else kw'>else</span>
+      <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='after identifier id'>after</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span>
+      <span class='index identifier id'>index</span> <span class='assign token'>=</span> <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+    <span class='end end kw'>end</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='dirty identifier id'>dirty</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='return return kw'>return</span> <span class='node identifier id'>node</span><span class='comma token'>,</span> <span class='index identifier id'>index</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_contributor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_contributor</strong>(contributor_type, index) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Remove the contributor entry identified by @contributor_type and @index
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 210</span>
+
+<span class='def def kw'>def</span> <span class='remove_contributor identifier id'>remove_contributor</span><span class='lparen token'>(</span><span class='contributor_type identifier id'>contributor_type</span><span class='comma token'>,</span> <span class='index identifier id'>index</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span> <span class='lbrace token'>{</span><span class='contributor_type identifier id'>contributor_type</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='index identifier id'>index</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='rbrace token'>}</span> <span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='remove identifier id'>remove</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='dirty identifier id'>dirty</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_solr-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_solr</strong>(solr_doc = Solr::Document.new) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+476
+477
+478
+479
+480
+481
+482</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/mods_article.rb', line 476</span>
+
+<span class='def def kw'>def</span> <span class='to_solr identifier id'>to_solr</span><span class='lparen token'>(</span><span class='solr_doc identifier id'>solr_doc</span><span class='assign token'>=</span><span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Document constant id'>Document</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='solr_doc identifier id'>solr_doc</span><span class='rparen token'>)</span>
+  <span class='extract_person_full_names identifier id'>extract_person_full_names</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='pfn identifier id'>pfn</span><span class='bitor op'>|</span> <span class='solr_doc identifier id'>solr_doc</span> <span class='lshft op'>&lt;&lt;</span> <span class='pfn identifier id'>pfn</span> <span class='rbrace token'>}</span>
+  <span class='extract_person_organizations identifier id'>extract_person_organizations</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='org identifier id'>org</span><span class='bitor op'>|</span> <span class='solr_doc identifier id'>solr_doc</span> <span class='lshft op'>&lt;&lt;</span> <span class='org identifier id'>org</span> <span class='rbrace token'>}</span>
+  <span class='solr_doc identifier id'>solr_doc</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:object_type_facet</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Article&quot;</span><span class='rbrace token'>}</span>
+  <span class='solr_doc identifier id'>solr_doc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:29 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

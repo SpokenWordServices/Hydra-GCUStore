@@ -1,0 +1,3985 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: ApplicationHelper</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo; 
+    
+    
+    <span class="title">ApplicationHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: ApplicationHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="HashAsHiddenFields.html" title="HashAsHiddenFields (module)">HashAsHiddenFields</a></span>, <span class='object_link'><a href="HydraHelper.html" title="HydraHelper (module)">HydraHelper</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html" title="RenderConstraintsHelper (module)">RenderConstraintsHelper</a></span>, Stanford::SearchworksHelper</dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/app/helpers/application_helper.rb<span class="defines">,<br />
+  app/helpers/application_helper.rb,<br /> vendor/plugins/hydra_repository/app/helpers/application_helper.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Methods added to this helper will be available to all templates in the
+application.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_facet_params-instance_method" title="#add_facet_params (instance method)">- (Object) <strong>add_facet_params</strong>(field, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+adds the value and/or field to params[:f] Does NOT remove request keys and
+otherwise ensure that the hash is suitable for a redirect.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_facet_params_and_redirect-instance_method" title="#add_facet_params_and_redirect (instance method)">- (Object) <strong>add_facet_params_and_redirect</strong>(field, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in catalog/facet action, facets.rb view, for a click on a facet value.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#application_name-instance_method" title="#application_name (instance method)">- (Object) <strong>application_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#citation_title-instance_method" title="#citation_title (instance method)">- (Object) <strong>citation_title</strong>(document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in citation view for displaying the title.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#convert_options_to_javascript_with_data%21-instance_method" title="#convert_options_to_javascript_with_data! (instance method)">- (Object) <strong>convert_options_to_javascript_with_data!</strong>(html_options, url = '') </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is derived from <tt>convert_options_to_javascript</tt> from module
+<tt>UrlHelper</tt> in <tt>url_helper.rb</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_heading-instance_method" title="#document_heading (instance method)">- (Object) <strong>document_heading</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in the show view for displaying the main solr document heading.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_partial_name-instance_method" title="#document_partial_name (instance method)">- (Object) <strong>document_partial_name</strong>(document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+currently only used by the render_document_partial helper method (below).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_show_field_labels-instance_method" title="#document_show_field_labels (instance method)">- (Object) <strong>document_show_field_labels</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_show/_default partial.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_show_fields-instance_method" title="#document_show_fields (instance method)">- (Object) <strong>document_show_fields</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_show/_default partial.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_show_html_title-instance_method" title="#document_show_html_title (instance method)">- (Object) <strong>document_show_html_title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in the show view for setting the main html document title.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_show_link_field-instance_method" title="#document_show_link_field (instance method)">- (Object) <strong>document_show_link_field</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in the document list partial (search view) for creating a link to the
+document show action.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#facet_field_labels-instance_method" title="#facet_field_labels (instance method)">- (Object) <strong>facet_field_labels</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_facets partial.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#facet_field_names-instance_method" title="#facet_field_names (instance method)">- (Object) <strong>facet_field_names</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_facets partial.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#facet_in_params%3F-instance_method" title="#facet_in_params? (instance method)">- (Boolean) <strong>facet_in_params?</strong>(field, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+true or false, depending on whether the field and value is in params[:f].
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_num-instance_method" title="#format_num (instance method)">- (Object) <strong>format_num</strong>(num) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+shortcut for built-in Rails helper, &#8220;number_with_delimiter&#8221;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_data_with_linked_label-instance_method" title="#get_data_with_linked_label (instance method)">- (Object) <strong>get_data_with_linked_label</strong>(doc, label, field_string, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index_field_labels-instance_method" title="#index_field_labels (instance method)">- (Object) <strong>index_field_labels</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the _index_partials/_default view.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index_field_names-instance_method" title="#index_field_names (instance method)">- (Object) <strong>index_field_names</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_index_partials/_default view.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#item_in_folder%3F-instance_method" title="#item_in_folder? (instance method)">- (Boolean) <strong>item_in_folder?</strong>(doc_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+determines if the given document id is in the folder.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_back_to_catalog-instance_method" title="#link_back_to_catalog (instance method)">- (Object) <strong>link_back_to_catalog</strong>(opts = {:label=&gt;'Back to Search'}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+link_back_to_catalog(:label=>&#8217;Back to Search&#8217;) Create a link
+back to the index screen, keeping the user&#8217;s facet, query and paging
+choices intact by using session.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_document-instance_method" title="#link_to_document (instance method)">- (Object) <strong>link_to_document</strong>(doc, opts = {:label=&gt;Blacklight.config[:index][:show_link].to_sym, :counter =&gt; nil,:title =&gt; nil}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+link_to_document(doc, :label=>&#8217;VIEW&#8217;, :counter => 3) Use the
+catalog_path RESTful route to create a link to the show page for a specific
+item.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_next_document-instance_method" title="#link_to_next_document (instance method)">- (Object) <strong>link_to_next_document</strong>(next_document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_previous_document-instance_method" title="#link_to_previous_document (instance method)">- (Object) <strong>link_to_previous_document</strong>(previous_document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_previous_search-instance_method" title="#link_to_previous_search (instance method)">- (Object) <strong>link_to_previous_search</strong>(params) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Search History and Saved Searches display.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_query-instance_method" title="#link_to_query (instance method)">- (Object) <strong>link_to_query</strong>(query) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+create link to query (e.g. spelling suggestion).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to_with_data-instance_method" title="#link_to_with_data (instance method)">- (Object) <strong>link_to_with_data</strong>(*args, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is an updated <tt>link_to</tt> that allows you to pass a <tt>data</tt>
+hash along with the <tt>html_options</tt> which are then written to the
+generated form for non-GET requests.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#linked_label-instance_method" title="#linked_label (instance method)">- (Object) <strong>linked_label</strong>(field, field_string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_javascript_function_with_data-instance_method" title="#method_javascript_function_with_data (instance method)">- (Object) <strong>method_javascript_function_with_data</strong>(method, url = '', href = nil, data = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is derived from <tt>method_javascript_function</tt> from module
+<tt>UrlHelper</tt> in <tt>url_helper.rb</tt>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_facet_params-instance_method" title="#remove_facet_params (instance method)">- (Object) <strong>remove_facet_params</strong>(field, value, source_params = params) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+copies the current params (or whatever is passed in as the 3rd arg) removes
+the field value from params[:f] removes the field if there are no more
+values in params[:f][field] removes additional params (page, id, etc..).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_body_class-instance_method" title="#render_body_class (instance method)">- (Object) <strong>render_body_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_functions_partial-instance_method" title="#render_document_functions_partial (instance method)">- (Object) <strong>render_document_functions_partial</strong>(document = @document, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_heading-instance_method" title="#render_document_heading (instance method)">- (Object) <strong>render_document_heading</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_index_label-instance_method" title="#render_document_index_label (instance method)">- (Object) <strong>render_document_index_label</strong>(doc, opts) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_list_partial-instance_method" title="#render_document_list_partial (instance method)">- (Object) <strong>render_document_list_partial</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_partial-instance_method" title="#render_document_partial (instance method)">- (Object) <strong>render_document_partial</strong>(doc, action_name, locals = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Overriding Blacklight&#8217;s render_document_partial given a doc and
+action_name, this method attempts to render a partial template based on the
+value of doc[:format] if this value is blank (nil/empty) the
+&#8220;default&#8221; is used if the partial is not found, the
+&#8220;default&#8221; partial is rendered instead.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_show_field_label-instance_method" title="#render_document_show_field_label (instance method)">- (Object) <strong>render_document_show_field_label</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_document_show_field_value-instance_method" title="#render_document_show_field_value (instance method)">- (Object) <strong>render_document_show_field_value</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_endnote_texts-instance_method" title="#render_endnote_texts (instance method)">- (Object) <strong>render_endnote_texts</strong>(documents) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+puts together a collection of documents into one endnote export string.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_facet_count-instance_method" title="#render_facet_count (instance method)">- (Object) <strong>render_facet_count</strong>(num) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Renders a count value for facet limits.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_facet_limit-instance_method" title="#render_facet_limit (instance method)">- (Object) <strong>render_facet_limit</strong>(solr_field) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+used in the catalog/_facets partial and elsewhere Renders a single section
+for facet limit with a specified solr field used for faceting.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_facet_value-instance_method" title="#render_facet_value (instance method)">- (Object) <strong>render_facet_value</strong>(facet_solr_field, item, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Standard display of a facet value in a list.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_head_content-instance_method" title="#render_head_content (instance method)">- (Object) <strong>render_head_content</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This method should be included in any Blacklight layout, including custom
+ones.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_index_field_label-instance_method" title="#render_index_field_label (instance method)">- (Object) <strong>render_index_field_label</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_index_field_value-instance_method" title="#render_index_field_value (instance method)">- (Object) <strong>render_index_field_value</strong>(args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_js_includes-instance_method" title="#render_js_includes (instance method)">- (Object) <strong>render_js_includes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Assumes controller has a #js_includes method, array with each element being
+a set of arguments for javsascript_include_tag.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_link_rel_alternates-instance_method" title="#render_link_rel_alternates (instance method)">- (Object) <strong>render_link_rel_alternates</strong>(document = @document, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create <link rel=&#8220;alternate&#8221;> links from a documents
+dynamically provided export formats.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_refworks_texts-instance_method" title="#render_refworks_texts (instance method)">- (Object) <strong>render_refworks_texts</strong>(documents) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+puts together a collection of documents into one refworks export string.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_selected_facet_value-instance_method" title="#render_selected_facet_value (instance method)">- (Object) <strong>render_selected_facet_value</strong>(facet_solr_field, item) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Standard display of a SELECTED facet value, no link, special span with
+class, and &#8216;remove&#8217; button.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render_stylesheet_includes-instance_method" title="#render_stylesheet_includes (instance method)">- (Object) <strong>render_stylesheet_includes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Assumes controller has a #stylesheet_link_tag method, array with each
+element being a set of arguments for stylesheet_link_tag See
+#render_head_content for instructions on local code or plugins adding
+stylesheets.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_as_hidden_fields-instance_method" title="#search_as_hidden_fields (instance method)">- (Object) <strong>search_as_hidden_fields</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Create form input type=hidden fields representing the entire search
+context, for inclusion in a form meant to change some aspect of it, like
+re-sort or change records per page.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_fields-instance_method" title="#search_fields (instance method)">- (Object) <strong>search_fields</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in the search form partial for building a select tag.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sidebar_items-instance_method" title="#sidebar_items (instance method)">- (Object) <strong>sidebar_items</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+collection of items to be rendered in the @sidebar.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sort_fields-instance_method" title="#sort_fields (instance method)">- (Object) <strong>sort_fields</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Used in the document_list partial (search view) for building a select
+element.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#with_format-instance_method" title="#with_format (instance method)">- (Object) <strong>with_format</strong>(format, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Use case, you want to render an html partial from an XML (say, atom)
+template.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HydraHelper.html" title="HydraHelper (module)">HydraHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HydraHelper.html#async_load_tag-instance_method" title="HydraHelper#async_load_tag (method)">#async_load_tag</a></span>, <span class='object_link'><a href="HydraHelper.html#document_fedora_show_html_title-instance_method" title="HydraHelper#document_fedora_show_html_title (method)">#document_fedora_show_html_title</a></span>, <span class='object_link'><a href="HydraHelper.html#edit_and_browse_links-instance_method" title="HydraHelper#edit_and_browse_links (method)">#edit_and_browse_links</a></span>, <span class='object_link'><a href="HydraHelper.html#facet_value_hits-instance_method" title="HydraHelper#facet_value_hits (method)">#facet_value_hits</a></span>, <span class='object_link'><a href="HydraHelper.html#get_html_data_with_label-instance_method" title="HydraHelper#get_html_data_with_label (method)">#get_html_data_with_label</a></span>, <span class='object_link'><a href="HydraHelper.html#get_textile_data_with_label-instance_method" title="HydraHelper#get_textile_data_with_label (method)">#get_textile_data_with_label</a></span>, <span class='object_link'><a href="HydraHelper.html#grouped_result_count-instance_method" title="HydraHelper#grouped_result_count (method)">#grouped_result_count</a></span>, <span class='object_link'><a href="HydraHelper.html#grouping_facet-instance_method" title="HydraHelper#grouping_facet (method)">#grouping_facet</a></span>, <span class='object_link'><a href="HydraHelper.html#javascript_includes-instance_method" title="HydraHelper#javascript_includes (method)">#javascript_includes</a></span>, <span class='object_link'><a href="HydraHelper.html#link_to_multifacet-instance_method" title="HydraHelper#link_to_multifacet (method)">#link_to_multifacet</a></span>, <span class='object_link'><a href="HydraHelper.html#stylesheet_links-instance_method" title="HydraHelper#stylesheet_links (method)">#stylesheet_links</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="RenderConstraintsHelper.html" title="RenderConstraintsHelper (module)">RenderConstraintsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="RenderConstraintsHelper.html#render_constraint_element-instance_method" title="RenderConstraintsHelper#render_constraint_element (method)">#render_constraint_element</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_constraints-instance_method" title="RenderConstraintsHelper#render_constraints (method)">#render_constraints</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_constraints_filters-instance_method" title="RenderConstraintsHelper#render_constraints_filters (method)">#render_constraints_filters</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_constraints_query-instance_method" title="RenderConstraintsHelper#render_constraints_query (method)">#render_constraints_query</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_search_to_s-instance_method" title="RenderConstraintsHelper#render_search_to_s (method)">#render_search_to_s</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_search_to_s_element-instance_method" title="RenderConstraintsHelper#render_search_to_s_element (method)">#render_search_to_s_element</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_search_to_s_filters-instance_method" title="RenderConstraintsHelper#render_search_to_s_filters (method)">#render_search_to_s_filters</a></span>, <span class='object_link'><a href="RenderConstraintsHelper.html#render_search_to_s_q-instance_method" title="RenderConstraintsHelper#render_search_to_s_q (method)">#render_search_to_s_q</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HashAsHiddenFields.html" title="HashAsHiddenFields (module)">HashAsHiddenFields</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HashAsHiddenFields.html#hash_as_hidden_fields-instance_method" title="HashAsHiddenFields#hash_as_hidden_fields (method)">#hash_as_hidden_fields</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_facet_params-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_facet_params</strong>(field, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+adds the value and/or field to params[:f] Does NOT remove request keys and
+otherwise ensure that the hash is suitable for a redirect. See
+add_facet_params_and_redirect
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+308
+309
+310
+311
+312
+313
+314</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 308</span>
+
+<span class='def def kw'>def</span> <span class='add_facet_params identifier id'>add_facet_params</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='opasgn op'>||=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='push identifier id'>push</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add_facet_params_and_redirect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_facet_params_and_redirect</strong>(field, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in catalog/facet action, facets.rb view, for a click on a facet value.
+Add on the facet params to existing search constraints. Remove any
+paginator-specific request params, or other request params that should be
+removed for a &#8216;fresh&#8217; display.  Change the action to
+&#8216;index&#8217; to send them back to catalog/index with their new facet
+choice.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 323</span>
+
+<span class='def def kw'>def</span> <span class='add_facet_params_and_redirect identifier id'>add_facet_params_and_redirect</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='new_params identifier id'>new_params</span> <span class='assign token'>=</span> <span class='add_facet_params identifier id'>add_facet_params</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># Delete page, if needed. </span>
+  <span class='new_params identifier id'>new_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:page</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># Delete any request params from facet-specific action, needed</span>
+  <span class='comment val'># to redir to index action properly. </span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='colon2 op'>::</span><span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='FacetPaginator constant id'>FacetPaginator</span><span class='dot token'>.</span><span class='request_keys identifier id'>request_keys</span><span class='dot token'>.</span><span class='values identifier id'>values</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='paginator_key identifier id'>paginator_key</span><span class='bitor op'>|</span> 
+    <span class='new_params identifier id'>new_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='paginator_key identifier id'>paginator_key</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='new_params identifier id'>new_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:id</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># Force action to be index. </span>
+  <span class='new_params identifier id'>new_params</span><span class='lbrack token'>[</span><span class='symbol val'>:action</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;index&quot;</span>
+
+  <span class='new_params identifier id'>new_params</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="application_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>application_name</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='application_name identifier id'>application_name</span>
+  <span class='string val'>'Hydrangea (Hydra Demo App)'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="citation_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>citation_title</strong>(document) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in citation view for displaying the title
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 209</span>
+
+<span class='def def kw'>def</span> <span class='citation_title identifier id'>citation_title</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='rparen token'>)</span>
+  <span class='document identifier id'>document</span><span class='lbrack token'>[</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:html_title</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="convert_options_to_javascript_with_data!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>convert_options_to_javascript_with_data!</strong>(html_options, url = '') 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is derived from <tt>convert_options_to_javascript</tt> from module
+<tt>UrlHelper</tt> in <tt>url_helper.rb</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 486</span>
+
+<span class='def def kw'>def</span> <span class='convert_options_to_javascript_with_data! fid id'>convert_options_to_javascript_with_data!</span><span class='lparen token'>(</span><span class='html_options identifier id'>html_options</span><span class='comma token'>,</span> <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='confirm identifier id'>confirm</span><span class='comma token'>,</span> <span class='popup identifier id'>popup</span> <span class='assign token'>=</span> <span class='html_options identifier id'>html_options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='string val'>&quot;confirm&quot;</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='html_options identifier id'>html_options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='string val'>&quot;popup&quot;</span><span class='rparen token'>)</span>
+
+  <span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='href identifier id'>href</span> <span class='assign token'>=</span> <span class='html_options identifier id'>html_options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='string val'>&quot;method&quot;</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='html_options identifier id'>html_options</span><span class='lbrack token'>[</span><span class='string val'>'href'</span><span class='rbrack token'>]</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='html_options identifier id'>html_options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='string val'>&quot;data&quot;</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='stringify_keys identifier id'>stringify_keys</span> <span class='if if_mod kw'>if</span> <span class='data identifier id'>data</span>
+  
+  <span class='html_options identifier id'>html_options</span><span class='lbrack token'>[</span><span class='string val'>&quot;onclick&quot;</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='case case kw'>case</span>
+    <span class='when when kw'>when</span> <span class='method identifier id'>method</span>
+      <span class='dstring node'>&quot;#{method_javascript_function_with_data(method, url, href, data)}return false;&quot;</span>
+    <span class='else else kw'>else</span>
+      <span class='html_options identifier id'>html_options</span><span class='lbrack token'>[</span><span class='string val'>&quot;onclick&quot;</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_heading-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_heading</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in the show view for displaying the main solr document heading
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 196</span>
+
+<span class='def def kw'>def</span> <span class='document_heading identifier id'>document_heading</span>
+  <span class='@document ivar id'>@document</span><span class='lbrack token'>[</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:heading</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_partial_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_partial_name</strong>(document) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+currently only used by the render_document_partial helper method (below)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254
+255
+256
+257</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 251</span>
+
+<span class='def def kw'>def</span> <span class='document_partial_name identifier id'>document_partial_name</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='document identifier id'>document</span><span class='lbrack token'>[</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:display_type</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='return return kw'>return</span> <span class='document identifier id'>document</span><span class='lbrack token'>[</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:display_type</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;info:fedora/afmodel:&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='underscore identifier id'>underscore</span><span class='dot token'>.</span><span class='pluralize identifier id'>pluralize</span>
+  <span class='else else kw'>else</span>
+    <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_show_field_labels-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_show_field_labels</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_show/_default partial
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+234
+235
+236</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 234</span>
+
+<span class='def def kw'>def</span> <span class='document_show_field_labels identifier id'>document_show_field_labels</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show_fields</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:labels</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_show_fields-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_show_fields</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_show/_default partial
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 229</span>
+
+<span class='def def kw'>def</span> <span class='document_show_fields identifier id'>document_show_fields</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show_fields</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:field_names</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_show_html_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_show_html_title</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in the show view for setting the main html document title
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 204</span>
+
+<span class='def def kw'>def</span> <span class='document_show_html_title identifier id'>document_show_html_title</span>
+  <span class='@document ivar id'>@document</span><span class='lbrack token'>[</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:show</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:html_title</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_show_link_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document_show_link_field</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in the document list partial (search view) for creating a link to the
+document show action
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 219</span>
+
+<span class='def def kw'>def</span> <span class='document_show_link_field identifier id'>document_show_link_field</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:index</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:show_link</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="facet_field_labels-instance_method">
+  
+    - (<tt>Object</tt>) <strong>facet_field_labels</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_facets partial
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 149</span>
+
+<span class='def def kw'>def</span> <span class='facet_field_labels identifier id'>facet_field_labels</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:facet</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:labels</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="facet_field_names-instance_method">
+  
+    - (<tt>Object</tt>) <strong>facet_field_names</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_facets partial
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 154</span>
+
+<span class='def def kw'>def</span> <span class='facet_field_names identifier id'>facet_field_names</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:facet</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:field_names</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="facet_in_params?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>facet_in_params?</strong>(field, value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+true or false, depending on whether the field and value is in params[:f]
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+362
+363
+364</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 362</span>
+
+<span class='def def kw'>def</span> <span class='facet_in_params? fid id'>facet_in_params?</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format_num-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format_num</strong>(num) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+shortcut for built-in Rails helper, &#8220;number_with_delimiter&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+369</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 369</span>
+
+<span class='def def kw'>def</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span> <span class='number_with_delimiter identifier id'>number_with_delimiter</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_data_with_linked_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_data_with_linked_label</strong>(doc, label, field_string, opts = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/application_helper.rb', line 10</span>
+
+<span class='def def kw'>def</span> <span class='get_data_with_linked_label identifier id'>get_data_with_linked_label</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='label identifier id'>label</span><span class='comma token'>,</span> <span class='field_string identifier id'>field_string</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+ 
+  <span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:default</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='notop op'>!</span><span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='field_string identifier id'>field_string</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='field identifier id'>field</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:default</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='field identifier id'>field</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='field_string identifier id'>field_string</span><span class='rbrack token'>]</span>
+  <span class='delim identifier id'>delim</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:delimiter</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:delimiter</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='string val'>&quot;&lt;br/&gt;&quot;</span>
+  <span class='if if kw'>if</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='field_string identifier id'>field_string</span><span class='rbrack token'>]</span>
+    <span class='text identifier id'>text</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;&lt;dt&gt;#{label}&lt;/dt&gt;&lt;dd&gt;&quot;</span>
+    <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:each</span><span class='rparen token'>)</span>
+      <span class='text identifier id'>text</span> <span class='opasgn op'>+=</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='l identifier id'>l</span><span class='bitor op'>|</span> 
+        <span class='linked_label identifier id'>linked_label</span><span class='lparen token'>(</span><span class='l identifier id'>l</span><span class='comma token'>,</span> <span class='field_string identifier id'>field_string</span><span class='rparen token'>)</span>
+      <span class='end end kw'>end</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='delim identifier id'>delim</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='text identifier id'>text</span> <span class='opasgn op'>+=</span> <span class='linked_label identifier id'>linked_label</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='field_string identifier id'>field_string</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+    <span class='text identifier id'>text</span> <span class='opasgn op'>+=</span> <span class='string val'>&quot;&lt;/dd&gt;&quot;</span>
+    <span class='text identifier id'>text</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index_field_labels-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index_field_labels</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the _index_partials/_default view
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 180</span>
+
+<span class='def def kw'>def</span> <span class='index_field_labels identifier id'>index_field_labels</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:index_fields</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:labels</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index_field_names-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index_field_names</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_index_partials/_default view
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 175</span>
+
+<span class='def def kw'>def</span> <span class='index_field_names identifier id'>index_field_names</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:index_fields</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:field_names</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="item_in_folder?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>item_in_folder?</strong>(doc_id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+determines if the given document id is in the folder
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+527
+528
+529</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 527</span>
+
+<span class='def def kw'>def</span> <span class='item_in_folder? fid id'>item_in_folder?</span><span class='lparen token'>(</span><span class='doc_id identifier id'>doc_id</span><span class='rparen token'>)</span>
+  <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:folder_document_ids</span><span class='rbrack token'>]</span> <span class='andop op'>&amp;&amp;</span> <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:folder_document_ids</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='doc_id identifier id'>doc_id</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='true true kw'>true</span> <span class='colon op'>:</span> <span class='false false kw'>false</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_back_to_catalog-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_back_to_catalog</strong>(opts = {:label=&gt;'Back to Search'}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+link_back_to_catalog(:label=>&#8217;Back to Search&#8217;) Create a link
+back to the index screen, keeping the user&#8217;s facet, query and paging
+choices intact by using session.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+404
+405
+406
+407
+408
+409
+410</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 404</span>
+
+<span class='def def kw'>def</span> <span class='link_back_to_catalog identifier id'>link_back_to_catalog</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='symbol val'>:label=</span><span class='gt op'>&gt;</span><span class='string val'>'Back to Search'</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='query_params identifier id'>query_params</span> <span class='assign token'>=</span> <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:search</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:search</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span> <span class='colon op'>:</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='query_params identifier id'>query_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:counter</span>
+  <span class='query_params identifier id'>query_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:total</span>
+  <span class='link_url identifier id'>link_url</span> <span class='assign token'>=</span> <span class='catalog_index_path identifier id'>catalog_index_path</span><span class='lparen token'>(</span><span class='query_params identifier id'>query_params</span><span class='rparen token'>)</span>
+  <span class='link_to identifier id'>link_to</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='link_url identifier id'>link_url</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_document</strong>(doc, opts = {:label=&gt;Blacklight.config[:index][:show_link].to_sym, :counter =&gt; nil,:title =&gt; nil}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+link_to_document(doc, :label=>&#8217;VIEW&#8217;, :counter => 3) Use the
+catalog_path RESTful route to create a link to the show page for a specific
+item.  catalog_path accepts a HashWithIndifferentAccess object. The solr
+query params are stored in the session, so we only need the
+<tt>counter</tt> param here. We also need to know if we are viewing to
+document as part of search results.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 397</span>
+
+<span class='def def kw'>def</span> <span class='link_to_document identifier id'>link_to_document</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='symbol val'>:label=</span><span class='gt op'>&gt;</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:index</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:show_link</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span><span class='comma token'>,</span> <span class='symbol val'>:counter</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span><span class='symbol val'>:title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='case case kw'>case</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span>
+    <span class='when when kw'>when</span> <span class='Symbol constant id'>Symbol</span>
+      <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='when when kw'>when</span> <span class='String constant id'>String</span>
+      <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span>
+    <span class='else else kw'>else</span>
+      <span class='raise identifier id'>raise</span> <span class='string val'>'Invalid label argument'</span>
+    <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='label identifier id'>label</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='link_to_with_data identifier id'>link_to_with_data</span><span class='lparen token'>(</span><span class='label identifier id'>label</span><span class='comma token'>,</span> <span class='catalog_path identifier id'>catalog_path</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:method</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:put</span><span class='comma token'>,</span> <span class='symbol val'>:data</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:counter</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:counter</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='symbol val'>:title=</span><span class='gt op'>&gt;</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_next_document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_next_document</strong>(next_document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+436
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 436</span>
+
+<span class='def def kw'>def</span> <span class='link_to_next_document identifier id'>link_to_next_document</span><span class='lparen token'>(</span><span class='next_document identifier id'>next_document</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='if if_mod kw'>if</span> <span class='next_document identifier id'>next_document</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
+  <span class='link_to_document identifier id'>link_to_document</span> <span class='next_document identifier id'>next_document</span><span class='comma token'>,</span> <span class='symbol val'>:label=</span><span class='gt op'>&gt;</span><span class='string val'>'Next »'</span><span class='comma token'>,</span> <span class='symbol val'>:counter</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:search</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:counter</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='plus op'>+</span> <span class='integer val'>1</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_previous_document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_previous_document</strong>(previous_document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+431
+432
+433
+434</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 431</span>
+
+<span class='def def kw'>def</span> <span class='link_to_previous_document identifier id'>link_to_previous_document</span><span class='lparen token'>(</span><span class='previous_document identifier id'>previous_document</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='if if_mod kw'>if</span> <span class='previous_document identifier id'>previous_document</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
+  <span class='link_to_document identifier id'>link_to_document</span> <span class='previous_document identifier id'>previous_document</span><span class='comma token'>,</span> <span class='symbol val'>:label=</span><span class='gt op'>&gt;</span><span class='string val'>'« Previous'</span><span class='comma token'>,</span> <span class='symbol val'>:counter</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:search</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:counter</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='minus op'>-</span> <span class='integer val'>1</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_previous_search-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_previous_search</strong>(params) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Search History and Saved Searches display
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 269</span>
+
+<span class='def def kw'>def</span> <span class='link_to_previous_search identifier id'>link_to_previous_search</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='rparen token'>)</span>
+  <span class='link_to identifier id'>link_to</span><span class='lparen token'>(</span><span class='render_search_to_s identifier id'>render_search_to_s</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='catalog_index_path identifier id'>catalog_index_path</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_query-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_query</strong>(query) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+create link to query (e.g. spelling suggestion)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+376
+377
+378
+379
+380
+381
+382
+383</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 376</span>
+
+<span class='def def kw'>def</span> <span class='link_to_query identifier id'>link_to_query</span><span class='lparen token'>(</span><span class='query identifier id'>query</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:page</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:action</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:q</span><span class='rbrack token'>]</span><span class='assign token'>=</span><span class='query identifier id'>query</span>
+  <span class='link_url identifier id'>link_url</span> <span class='assign token'>=</span> <span class='catalog_index_path identifier id'>catalog_index_path</span><span class='lparen token'>(</span><span class='p identifier id'>p</span><span class='rparen token'>)</span>
+  <span class='link_to identifier id'>link_to</span><span class='lparen token'>(</span><span class='query identifier id'>query</span><span class='comma token'>,</span> <span class='link_url identifier id'>link_url</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="link_to_with_data-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to_with_data</strong>(*args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is an updated <tt>link_to</tt> that allows you to pass a <tt>data</tt>
+hash along with the <tt>html_options</tt> which are then written to the
+generated form for non-GET requests. The key is the form element name and
+the value is the value:
+</p>
+<pre class="code">
+ <span class='link_to_with_data identifier id'>link_to_with_data</span><span class='lparen token'>(</span><span class='string val'>'Name'</span><span class='comma token'>,</span> <span class='some_path identifier id'>some_path</span><span class='lparen token'>(</span><span class='some_id identifier id'>some_id</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='symbol val'>:method</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:post</span><span class='comma token'>,</span> <span class='symbol val'>:html</span><span class='rparen token'>)</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 459</span>
+
+<span class='def def kw'>def</span> <span class='link_to_with_data identifier id'>link_to_with_data</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+    <span class='options identifier id'>options</span>      <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span> <span class='orop op'>||</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='html_options identifier id'>html_options</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='second identifier id'>second</span>
+    <span class='concat identifier id'>concat</span><span class='lparen token'>(</span><span class='link_to identifier id'>link_to</span><span class='lparen token'>(</span><span class='capture identifier id'>capture</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='comma token'>,</span> <span class='html_options identifier id'>html_options</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='name identifier id'>name</span>         <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='options identifier id'>options</span>      <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='second identifier id'>second</span> <span class='orop op'>||</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='html_options identifier id'>html_options</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='third identifier id'>third</span>
+
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='url_for identifier id'>url_for</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+
+    <span class='if if kw'>if</span> <span class='html_options identifier id'>html_options</span>
+      <span class='html_options identifier id'>html_options</span> <span class='assign token'>=</span> <span class='html_options identifier id'>html_options</span><span class='dot token'>.</span><span class='stringify_keys identifier id'>stringify_keys</span>
+      <span class='href identifier id'>href</span> <span class='assign token'>=</span> <span class='html_options identifier id'>html_options</span><span class='lbrack token'>[</span><span class='string val'>'href'</span><span class='rbrack token'>]</span>
+      <span class='convert_options_to_javascript_with_data! fid id'>convert_options_to_javascript_with_data!</span><span class='lparen token'>(</span><span class='html_options identifier id'>html_options</span><span class='comma token'>,</span> <span class='url identifier id'>url</span><span class='rparen token'>)</span>
+      <span class='tag_options identifier id'>tag_options</span> <span class='assign token'>=</span> <span class='tag_options identifier id'>tag_options</span><span class='lparen token'>(</span><span class='html_options identifier id'>html_options</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='tag_options identifier id'>tag_options</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+    <span class='end end kw'>end</span>
+
+    <span class='href_attr identifier id'>href_attr</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;href=\&quot;#{url}\&quot;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='href identifier id'>href</span>
+    <span class='dstring node'>&quot;&lt;a #{href_attr}#{tag_options}&gt;#{h(name) || h(url)}&lt;/a&gt;&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="linked_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>linked_label</strong>(field, field_string) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/application_helper.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='linked_label identifier id'>linked_label</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='field_string identifier id'>field_string</span><span class='rparen token'>)</span>
+  <span class='link_to identifier id'>link_to</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='add_facet_params identifier id'>add_facet_params</span><span class='lparen token'>(</span><span class='field_string identifier id'>field_string</span><span class='comma token'>,</span> <span class='field identifier id'>field</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='string val'>&quot;controller&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;catalog&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:action=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;index&quot;</span><span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="method_javascript_function_with_data-instance_method">
+  
+    - (<tt>Object</tt>) <strong>method_javascript_function_with_data</strong>(method, url = '', href = nil, data = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is derived from <tt>method_javascript_function</tt> from module
+<tt>UrlHelper</tt> in <tt>url_helper.rb</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 502</span>
+
+<span class='def def kw'>def</span> <span class='method_javascript_function_with_data identifier id'>method_javascript_function_with_data</span><span class='lparen token'>(</span><span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='string val'>''</span><span class='comma token'>,</span> <span class='href identifier id'>href</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='data identifier id'>data</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='action identifier id'>action</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='href identifier id'>href</span> <span class='andop op'>&amp;&amp;</span> <span class='url identifier id'>url</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='dstring node'>&quot;'#{url}'&quot;</span> <span class='colon op'>:</span> <span class='string val'>'this.href'</span>
+  <span class='submit_function identifier id'>submit_function</span> <span class='assign token'>=</span>
+    <span class='string val'>&quot;var f = document.createElement('form'); f.style.display = 'none'; &quot;</span> <span class='plus op'>+</span>
+    <span class='dstring node'>&quot;this.parentNode.appendChild(f); f.method = 'POST'; f.action = #{action};&quot;</span><span class='plus op'>+</span>
+    <span class='string val'>&quot;if(event.metaKey || event.ctrlKey){f.target = '_blank';};&quot;</span> <span class='comment val'># if the command or control key is being held down while the link is clicked set the form's target to _blank</span>
+  <span class='if if kw'>if</span> <span class='data identifier id'>data</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span>
+      <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;var d = document.createElement('input'); d.setAttribute('type', 'hidden'); &quot;</span>
+      <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;d.setAttribute('name', '#{key}'); d.setAttribute('value', '#{value}'); f.appendChild(d);&quot;</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='unless unless kw'>unless</span> <span class='method identifier id'>method</span> <span class='eq op'>==</span> <span class='symbol val'>:post</span>
+    <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); &quot;</span>
+    <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;m.setAttribute('name', '_method'); m.setAttribute('value', '#{method}'); f.appendChild(m);&quot;</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='protect_against_forgery? fid id'>protect_against_forgery?</span>
+    <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;var s = document.createElement('input'); s.setAttribute('type', 'hidden'); &quot;</span>
+    <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;s.setAttribute('name', '#{request_forgery_protection_token}'); s.setAttribute('value', '#{escape_javascript form_authenticity_token}'); f.appendChild(s);&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='submit_function identifier id'>submit_function</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;f.submit();&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_facet_params-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_facet_params</strong>(field, value, source_params = params) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+copies the current params (or whatever is passed in as the 3rd arg) removes
+the field value from params[:f] removes the field if there are no more
+values in params[:f][field] removes additional params (page, id, etc..)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 345</span>
+
+<span class='def def kw'>def</span> <span class='remove_facet_params identifier id'>remove_facet_params</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='source_params identifier id'>source_params</span><span class='assign token'>=</span><span class='params identifier id'>params</span><span class='rparen token'>)</span>
+  <span class='p identifier id'>p</span> <span class='assign token'>=</span> <span class='source_params identifier id'>source_params</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span><span class='dot token'>.</span><span class='symbolize_keys! fid id'>symbolize_keys!</span>
+  <span class='comment val'># need to dup the facet values too,</span>
+  <span class='comment val'># if the values aren't dup'd, then the values</span>
+  <span class='comment val'># from the session will get remove in the show view...</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span><span class='dot token'>.</span><span class='symbolize_keys! fid id'>symbolize_keys!</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:page</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:id</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:counter</span>
+  <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:commit</span>
+  <span class='comment val'>#return p unless p[field]</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span> <span class='minus op'>-</span> <span class='lbrack token'>[</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span>
+  <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='p identifier id'>p</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
+  <span class='p identifier id'>p</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_body_class-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_body_class</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 135</span>
+
+<span class='def def kw'>def</span> <span class='render_body_class identifier id'>render_body_class</span>
+  <span class='lbrack token'>[</span><span class='string val'>'blacklight-'</span> <span class='plus op'>+</span> <span class='@controller ivar id'>@controller</span><span class='dot token'>.</span><span class='controller_name identifier id'>controller_name</span><span class='comma token'>,</span> <span class='string val'>'blacklight-'</span> <span class='plus op'>+</span> <span class='lbrack token'>[</span><span class='@controller ivar id'>@controller</span><span class='dot token'>.</span><span class='controller_name identifier id'>controller_name</span><span class='comma token'>,</span> <span class='@controller ivar id'>@controller</span><span class='dot token'>.</span><span class='action_name identifier id'>action_name</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'-'</span><span class='rparen token'>)</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='join identifier id'>join</span> <span class='string val'>&quot; &quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_functions_partial-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_functions_partial</strong>(document = @document, options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 170</span>
+
+<span class='def def kw'>def</span> <span class='render_document_functions_partial identifier id'>render_document_functions_partial</span> <span class='document identifier id'>document</span><span class='assign token'>=</span><span class='@document ivar id'>@document</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_heading-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_heading</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+199
+200
+201</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 199</span>
+
+<span class='def def kw'>def</span> <span class='render_document_heading identifier id'>render_document_heading</span>
+  <span class='string val'>'&lt;h1&gt;'</span> <span class='plus op'>+</span> <span class='document_heading identifier id'>document_heading</span> <span class='plus op'>+</span> <span class='string val'>'&lt;/h1&gt;'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_index_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_index_label</strong>(doc, opts) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+385
+386
+387
+388
+389
+390
+391</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 385</span>
+
+<span class='def def kw'>def</span> <span class='render_document_index_label identifier id'>render_document_index_label</span> <span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span>
+  <span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='label identifier id'>label</span> <span class='opasgn op'>||=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='instance_of? fid id'>instance_of?</span> <span class='Symbol constant id'>Symbol</span>
+  <span class='label identifier id'>label</span> <span class='opasgn op'>||=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='instance_of? fid id'>instance_of?</span> <span class='String constant id'>String</span>
+  <span class='label identifier id'>label</span> <span class='opasgn op'>||=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='instance_of? fid id'>instance_of?</span> <span class='Proc constant id'>Proc</span>
+  <span class='label identifier id'>label</span> <span class='opasgn op'>||=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='id identifier id'>id</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_list_partial-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_list_partial</strong>(options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 166</span>
+
+<span class='def def kw'>def</span> <span class='render_document_list_partial identifier id'>render_document_list_partial</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_partial-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_partial</strong>(doc, action_name, locals = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Overriding Blacklight&#8217;s render_document_partial given a doc and
+action_name, this method attempts to render a partial template based on the
+value of doc[:format] if this value is blank (nil/empty) the
+&#8220;default&#8221; is used if the partial is not found, the
+&#8220;default&#8221; partial is rendered instead
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 259</span>
+
+<span class='def def kw'>def</span> <span class='render_document_partial identifier id'>render_document_partial</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='action_name identifier id'>action_name</span><span class='comma token'>,</span> <span class='locals identifier id'>locals</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='document_partial_name identifier id'>document_partial_name</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='Rails constant id'>Rails</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span><span class='lparen token'>(</span><span class='dstring node'>&quot;attempting to render #{format}/_#{action_name}&quot;</span><span class='rparen token'>)</span>
+    <span class='render identifier id'>render</span> <span class='symbol val'>:partial=</span><span class='gt op'>&gt;</span><span class='dstring node'>&quot;#{format}/#{action_name}&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:locals=</span><span class='gt op'>&gt;</span><span class='lbrace token'>{</span><span class='symbol val'>:document=</span><span class='gt op'>&gt;</span><span class='doc identifier id'>doc</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='locals identifier id'>locals</span><span class='rparen token'>)</span>
+  <span class='rescue rescue kw'>rescue</span> <span class='ActionView constant id'>ActionView</span><span class='colon2 op'>::</span><span class='MissingTemplate constant id'>MissingTemplate</span>
+    <span class='Rails constant id'>Rails</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span><span class='lparen token'>(</span><span class='dstring node'>&quot;rendering default partial catalog/_#{action_name}_partials/default&quot;</span><span class='rparen token'>)</span>
+    <span class='render identifier id'>render</span> <span class='symbol val'>:partial=</span><span class='gt op'>&gt;</span><span class='dstring node'>&quot;catalog/_#{action_name}_partials/default&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:locals=</span><span class='gt op'>&gt;</span><span class='lbrace token'>{</span><span class='symbol val'>:document=</span><span class='gt op'>&gt;</span><span class='doc identifier id'>doc</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='locals identifier id'>locals</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_show_field_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_show_field_label</strong>(args) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 238</span>
+
+<span class='def def kw'>def</span> <span class='render_document_show_field_label identifier id'>render_document_show_field_label</span> <span class='args identifier id'>args</span> 
+  <span class='field identifier id'>field</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span>
+  <span class='html_escape identifier id'>html_escape</span> <span class='document_show_field_labels identifier id'>document_show_field_labels</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_document_show_field_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_document_show_field_value</strong>(args) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+243
+244
+245
+246
+247
+248</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 243</span>
+
+<span class='def def kw'>def</span> <span class='render_document_show_field_value identifier id'>render_document_show_field_value</span> <span class='args identifier id'>args</span>
+  <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span>
+  <span class='value identifier id'>value</span> <span class='opasgn op'>||=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:document</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:document</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span>
+  <span class='return return kw'>return</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='html_escape identifier id'>html_escape</span> <span class='v identifier id'>v</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span> <span class='string val'>&quot;&lt;br /&gt;&quot;</span> <span class='if if_mod kw'>if</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span> <span class='Array constant id'>Array</span>
+  <span class='html_escape identifier id'>html_escape</span> <span class='value identifier id'>value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_endnote_texts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_endnote_texts</strong>(documents) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+puts together a collection of documents into one endnote export string
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+543
+544
+545
+546
+547
+548
+549
+550
+551</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 543</span>
+
+<span class='def def kw'>def</span> <span class='render_endnote_texts identifier id'>render_endnote_texts</span><span class='lparen token'>(</span><span class='documents identifier id'>documents</span><span class='rparen token'>)</span>
+  <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='string val'>''</span>
+  <span class='documents identifier id'>documents</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='doc identifier id'>doc</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:to_marc</span><span class='rparen token'>)</span>
+      <span class='val identifier id'>val</span> <span class='opasgn op'>+=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='export_as_endnote identifier id'>export_as_endnote</span> <span class='plus op'>+</span> <span class='string val'>&quot;\n&quot;</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='val identifier id'>val</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_facet_count-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_facet_count</strong>(num) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Renders a count value for facet limits. Can be over-ridden locally to
+change style, for instance not use parens. And can be called by plugins to
+get consistent display.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 300</span>
+
+<span class='def def kw'>def</span> <span class='render_facet_count identifier id'>render_facet_count</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span>
+  <span class='content_tag identifier id'>content_tag</span><span class='lparen token'>(</span><span class='string val'>&quot;span&quot;</span><span class='comma token'>,</span>  <span class='string val'>&quot;(&quot;</span> <span class='plus op'>+</span> <span class='format_num identifier id'>format_num</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;)&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:class</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;count&quot;</span><span class='rparen token'>)</span> 
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_facet_limit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_facet_limit</strong>(solr_field) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+used in the catalog/_facets partial and elsewhere Renders a single section
+for facet limit with a specified solr field used for faceting. Can be
+over-ridden for custom display on a per-facet basis.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+162
+163
+164</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 162</span>
+
+<span class='def def kw'>def</span> <span class='render_facet_limit identifier id'>render_facet_limit</span><span class='lparen token'>(</span><span class='solr_field identifier id'>solr_field</span><span class='rparen token'>)</span>
+  <span class='render identifier id'>render</span><span class='lparen token'>(</span> <span class='symbol val'>:partial</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;catalog/facet_limit&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:locals</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:solr_field</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='solr_field identifier id'>solr_field</span> <span class='rbrace token'>}</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_facet_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_facet_value</strong>(facet_solr_field, item, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Standard display of a facet value in a list. Used in both _facets sidebar
+partial and catalog/facet expanded list. Will output facet value name as a
+link to add that to your restrictions, with count in parens.  first arg
+item is a facet value item from rsolr-ext. options consist of:
+:suppress_link => true # do not make it a link, used for an already
+selected value for instance
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+284
+285
+286</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 284</span>
+
+<span class='def def kw'>def</span> <span class='render_facet_value identifier id'>render_facet_value</span><span class='lparen token'>(</span><span class='facet_solr_field identifier id'>facet_solr_field</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>    
+  <span class='link_to_unless identifier id'>link_to_unless</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:suppress_link</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='add_facet_params_and_redirect identifier id'>add_facet_params_and_redirect</span><span class='lparen token'>(</span><span class='facet_solr_field identifier id'>facet_solr_field</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='symbol val'>:class</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;facet_select label&quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot; &quot;</span> <span class='plus op'>+</span> <span class='render_facet_count identifier id'>render_facet_count</span><span class='lparen token'>(</span><span class='item identifier id'>item</span><span class='dot token'>.</span><span class='hits identifier id'>hits</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_head_content-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_head_content</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method should be included in any Blacklight layout, including custom
+ones. It will output results of #render_js_includes,
+#render_stylesheet_includes, and all the content of 
+current_controller#extra_head_content.
+</p>
+<p>
+Uses controller methods #extra_head_content, #javascript_includes, and
+#stylesheet_links to find content. Tolerates it if those methods
+don&#8217;t exist, silently skipping. 
+</p>
+<p>
+By a layout outputting this in html HEAD, it provides an easy way for local
+config or extra plugins to add HEAD content.
+</p>
+<p>
+Add your own css or remove the defaults by simply editing
+controller.stylesheet_links, controller.javascript_includes, or
+controller.extra_head_content. 
+</p>
+<p>
+in an initializer or other startup file (plugin init.rb?):
+</p>
+<h2>Apply to all actions in all controllers:</h2>
+<pre class="code">
+  <span class='ApplicationController constant id'>ApplicationController</span><span class='dot token'>.</span><span class='before_filter identifier id'>before_filter</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='controller identifier id'>controller</span><span class='bitor op'>|</span>
+    <span class='comment val'># remove default jquery-ui theme.</span>
+    <span class='controller identifier id'>controller</span><span class='dot token'>.</span><span class='stylesheet_links identifier id'>stylesheet_links</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='args identifier id'>args</span><span class='bitor op'>|</span>
+      <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='delete_if identifier id'>delete_if</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='a identifier id'>a</span><span class='bitor op'>|</span> <span class='a identifier id'>a</span> <span class='match op'>=~</span> <span class='regexp val'>/^|\/jquery-ui-[\d.]+\.custom\.css$/</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+
+    <span class='comment val'># add in a different jquery-ui theme, or any other css or what have you</span>
+    <span class='controller identifier id'>controller</span><span class='dot token'>.</span><span class='stylesheet_links identifier id'>stylesheet_links</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'my_css.css'</span>
+
+    <span class='controller identifier id'>controller</span><span class='dot token'>.</span><span class='javascript_includes identifier id'>javascript_includes</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;my_local_behaviors.js&quot;</span>
+
+    <span class='controller identifier id'>controller</span><span class='dot token'>.</span><span class='extra_head_content identifier id'>extra_head_content</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'&lt;link rel=&quot;something&quot; href=&quot;something&quot;&gt;'</span>
+  <span class='end end kw'>end</span>
+</pre>
+<h2>Apply to a particular action in a particular controller:</h2>
+<pre class="code">
+  <span class='CatalogController constant id'>CatalogController</span><span class='dot token'>.</span><span class='before_filter identifier id'>before_filter</span> <span class='symbol val'>:only</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:show</span> <span class='bitor op'>|</span><span class='controller identifier id'>controller</span><span class='bitor op'>|</span>
+    <span class='controller identifier id'>controller</span><span class='dot token'>.</span><span class='extra_head_content identifier id'>extra_head_content</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'&lt;link rel=&quot;something&quot; href=&quot;something&quot;&gt;'</span>
+  <span class='end end kw'>end</span>
+</pre>
+<h2>Or in a view file that wants to add certain header content? no problem:</h2>
+<pre class="code">
+  <span class='lt op'>&lt;</span><span class='string val'>%  </span><span class='stylesheet_links identifier id'>stylesheet_links</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;mystylesheet.css&quot;</span> <span class='mod op'>%</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='string val'>%  </span><span class='javascript_includes identifier id'>javascript_includes</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;my_js.js&quot;</span> <span class='mod op'>%</span><span class='gt op'>&gt;</span>
+  <span class='lt op'>&lt;</span><span class='string val'>%  </span><span class='extra_head_content identifier id'>extra_head_content</span> <span class='lshft op'>&lt;&lt;</span> <span class='capture identifier id'>capture</span> <span class='do do kw'>do</span> <span class='string val'>%&gt;
+      &lt;%= tag :link, { :href =&gt;</span> <span class='some_method_for_something identifier id'>some_method_for_something</span><span class='comma token'>,</span> <span class='symbol val'>:rel</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;alternate&quot;</span> <span class='rbrace token'>}</span> <span class='mod op'>%</span><span class='gt op'>&gt;</span> 
+  <span class='lt op'>&lt;</span><span class='string val'>%  </span><span class='end end kw'>end</span> <span class='mod op'>%</span><span class='gt op'>&gt;</span>
+</pre>
+<h2>Full power of javascript_include_tag and stylesheet_link_tag</h2>
+<p>
+Note that the elements added to stylesheet_links and javascript_links are
+arguments to Rails javascript_include_tag and stylesheet_link_tag
+respectively, you can pass complex arguments. eg:
+</p>
+<p>
+stylesheet_links << [&#8220;stylesheet1.css&#8221;,
+&#8220;stylesheet2.css&#8221;, => &#8220;mykey&#8221;]
+javascript_includes << [&#8220;myjavascript.js&#8221;, {:plugin =>
+:myplugin} ]
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 71</span>
+
+<span class='def def kw'>def</span> <span class='render_head_content identifier id'>render_head_content</span>
+  <span class='render_stylesheet_includes identifier id'>render_stylesheet_includes</span> <span class='plus op'>+</span>
+  <span class='render_js_includes identifier id'>render_js_includes</span> <span class='plus op'>+</span>
+  <span class='lparen token'>(</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:extra_head_content</span><span class='rparen token'>)</span> <span class='question op'>?</span>
+      <span class='extra_head_content identifier id'>extra_head_content</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span> <span class='colon op'>:</span>
+    <span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_index_field_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_index_field_label</strong>(args) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 184</span>
+
+<span class='def def kw'>def</span> <span class='render_index_field_label identifier id'>render_index_field_label</span> <span class='args identifier id'>args</span>
+  <span class='field identifier id'>field</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span>
+  <span class='html_escape identifier id'>html_escape</span> <span class='index_field_labels identifier id'>index_field_labels</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_index_field_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_index_field_value</strong>(args) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 189</span>
+
+<span class='def def kw'>def</span> <span class='render_index_field_value identifier id'>render_index_field_value</span> <span class='args identifier id'>args</span>
+  <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span>
+  <span class='value identifier id'>value</span> <span class='opasgn op'>||=</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:document</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:document</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='args identifier id'>args</span><span class='lbrack token'>[</span><span class='symbol val'>:field</span><span class='rbrack token'>]</span>
+  <span class='html_escape identifier id'>html_escape</span> <span class='value identifier id'>value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_js_includes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_js_includes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Assumes controller has a #js_includes method, array with each element being
+a set of arguments for javsascript_include_tag. See #render_head_content
+for instructions on local code or plugins adding js files.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 98</span>
+
+<span class='def def kw'>def</span> <span class='render_js_includes identifier id'>render_js_includes</span>
+  <span class='return return kw'>return</span> <span class='string val'>&quot;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:javascript_includes</span><span class='rparen token'>)</span>    
+
+  <span class='javascript_includes identifier id'>javascript_includes</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='args identifier id'>args</span><span class='bitor op'>|</span>
+    <span class='javascript_include_tag identifier id'>javascript_include_tag</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_link_rel_alternates-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_link_rel_alternates</strong>(document = @document, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create <link rel=&#8220;alternate&#8221;> links from a documents
+dynamically provided export formats. Currently not used by standard BL
+layouts, but available for your custom layouts to provide link rel
+alternates.
+</p>
+<p>
+Returns empty string if no links available. 
+</p>
+<p>
+:unique => true, will ensure only one link is output for every content
+type, as required eg in atom. Which one &#8216;wins&#8217; is arbitrary.
+:exclude => array of format shortnames, formats to not include at all.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 115</span>
+
+<span class='def def kw'>def</span> <span class='render_link_rel_alternates identifier id'>render_link_rel_alternates</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='assign token'>=</span><span class='@document ivar id'>@document</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='symbol val'>:unique</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='comma token'>,</span> <span class='symbol val'>:exclude</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>  
+
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span> <span class='if if_mod kw'>if</span> <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>  
+
+  <span class='seen identifier id'>seen</span> <span class='assign token'>=</span> <span class='Set constant id'>Set</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span>
+  <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='export_formats identifier id'>export_formats</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='comma token'>,</span> <span class='spec identifier id'>spec</span><span class='bitor op'>|</span>
+    <span class='unless unless kw'>unless</span><span class='lparen token'>(</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:exclude</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='rparen token'>)</span> <span class='orop op'>||</span>
+           <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:unique</span><span class='rbrack token'>]</span> <span class='andop op'>&amp;&amp;</span> <span class='seen identifier id'>seen</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='spec identifier id'>spec</span><span class='lbrack token'>[</span><span class='symbol val'>:content_type</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+           <span class='rparen token'>)</span>
+      <span class='html identifier id'>html</span> <span class='lshft op'>&lt;&lt;</span> <span class='tag identifier id'>tag</span><span class='lparen token'>(</span><span class='symbol val'>:link</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:rel=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;alternate&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:title=</span><span class='gt op'>&gt;</span><span class='format identifier id'>format</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='spec identifier id'>spec</span><span class='lbrack token'>[</span><span class='symbol val'>:content_type</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:href=</span><span class='gt op'>&gt;</span> <span class='catalog_url identifier id'>catalog_url</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='comma token'>,</span>  <span class='format identifier id'>format</span><span class='rparen token'>)</span><span class='rbrace token'>}</span><span class='rparen token'>)</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>&quot;\n&quot;</span>
+      
+      <span class='seen identifier id'>seen</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='spec identifier id'>spec</span><span class='lbrack token'>[</span><span class='symbol val'>:content_type</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:unique</span><span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='html identifier id'>html</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_refworks_texts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_refworks_texts</strong>(documents) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+puts together a collection of documents into one refworks export string
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+532
+533
+534
+535
+536
+537
+538
+539
+540</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 532</span>
+
+<span class='def def kw'>def</span> <span class='render_refworks_texts identifier id'>render_refworks_texts</span><span class='lparen token'>(</span><span class='documents identifier id'>documents</span><span class='rparen token'>)</span>
+  <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='string val'>''</span>
+  <span class='documents identifier id'>documents</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='doc identifier id'>doc</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:to_marc</span><span class='rparen token'>)</span>
+      <span class='val identifier id'>val</span> <span class='opasgn op'>+=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='export_as_refworks_marc_txt identifier id'>export_as_refworks_marc_txt</span> <span class='plus op'>+</span> <span class='string val'>&quot;\n&quot;</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='val identifier id'>val</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_selected_facet_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_selected_facet_value</strong>(facet_solr_field, item) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Standard display of a SELECTED facet value, no link, special span with
+class, and &#8216;remove&#8217; button.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+290
+291
+292
+293
+294
+295</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 290</span>
+
+<span class='def def kw'>def</span> <span class='render_selected_facet_value identifier id'>render_selected_facet_value</span><span class='lparen token'>(</span><span class='facet_solr_field identifier id'>facet_solr_field</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='rparen token'>)</span>
+  <span class='string val'>'&lt;span class=&quot;selected label&quot;&gt;'</span> <span class='plus op'>+</span>
+  <span class='render_facet_value identifier id'>render_facet_value</span><span class='lparen token'>(</span><span class='facet_solr_field identifier id'>facet_solr_field</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='comma token'>,</span> <span class='symbol val'>:suppress_link</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='rparen token'>)</span> <span class='plus op'>+</span>
+  <span class='string val'>'&lt;/span&gt;'</span> <span class='plus op'>+</span>
+  <span class='link_to identifier id'>link_to</span><span class='lparen token'>(</span><span class='string val'>&quot;[remove]&quot;</span><span class='comma token'>,</span> <span class='remove_facet_params identifier id'>remove_facet_params</span><span class='lparen token'>(</span><span class='facet_solr_field identifier id'>facet_solr_field</span><span class='comma token'>,</span> <span class='item identifier id'>item</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='params identifier id'>params</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='symbol val'>:class</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;remove&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render_stylesheet_includes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>render_stylesheet_includes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Assumes controller has a #stylesheet_link_tag method, array with each
+element being a set of arguments for stylesheet_link_tag See
+#render_head_content for instructions on local code or plugins adding
+stylesheets.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 84</span>
+
+<span class='def def kw'>def</span> <span class='render_stylesheet_includes identifier id'>render_stylesheet_includes</span>
+  <span class='return return kw'>return</span> <span class='string val'>&quot;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:stylesheet_links</span><span class='rparen token'>)</span>
+  
+  <span class='stylesheet_links identifier id'>stylesheet_links</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='args identifier id'>args</span><span class='bitor op'>|</span>
+    <span class='stylesheet_link_tag identifier id'>stylesheet_link_tag</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_as_hidden_fields-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_as_hidden_fields</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Create form input type=hidden fields representing the entire search
+context, for inclusion in a form meant to change some aspect of it, like
+re-sort or change records per page. Can pass in params hash as :params =>
+hash, otherwise defaults to #params. Can pass in certain top-level params
+keys to <em>omit</em>, defaults to :page
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 417</span>
+
+<span class='def def kw'>def</span> <span class='search_as_hidden_fields identifier id'>search_as_hidden_fields</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  
+  <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='symbol val'>:params</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='comma token'>,</span> <span class='symbol val'>:omit_keys</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:page</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='my_params identifier id'>my_params</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:params</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:omit_keys</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='omit_key identifier id'>omit_key</span><span class='bitor op'>|</span> <span class='my_params identifier id'>my_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='omit_key identifier id'>omit_key</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+  <span class='comment val'># removing action and controller from duplicate params so that we don't get hidden fields for them.</span>
+  <span class='my_params identifier id'>my_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:action</span><span class='rparen token'>)</span>
+  <span class='my_params identifier id'>my_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:controller</span><span class='rparen token'>)</span>
+  <span class='comment val'># hash_as_hidden_fields in hash_as_hidden_fields.rb</span>
+  <span class='return return kw'>return</span> <span class='hash_as_hidden_fields identifier id'>hash_as_hidden_fields</span><span class='lparen token'>(</span><span class='my_params identifier id'>my_params</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_fields-instance_method">
+  
+    - (<tt>Object</tt>) <strong>search_fields</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in the search form partial for building a select tag
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 224</span>
+
+<span class='def def kw'>def</span> <span class='search_fields identifier id'>search_fields</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='search_field_options_for_select identifier id'>search_field_options_for_select</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sidebar_items-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sidebar_items</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+collection of items to be rendered in the @sidebar
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 140</span>
+
+<span class='def def kw'>def</span> <span class='sidebar_items identifier id'>sidebar_items</span>
+  <span class='@sidebar_items ivar id'>@sidebar_items</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sort_fields-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sort_fields</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Used in the document_list partial (search view) for building a select
+element
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+214
+215
+216</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 214</span>
+
+<span class='def def kw'>def</span> <span class='sort_fields identifier id'>sort_fields</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:sort_fields</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="with_format-instance_method">
+  
+    - (<tt>Object</tt>) <strong>with_format</strong>(format, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Use case, you want to render an html partial from an XML (say, atom)
+template. Rails API kind of lets us down, we need to hack Rails internals 
+a bit. code taken from: <a
+href="http://stackoverflow.com/questions/339130/how-do-i-render-a-partial-of-a-different-format-in-rails">stackoverflow.com/questions/339130/how-do-i-render-a-partial-of-a-different-format-in-rails</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+445
+446
+447
+448
+449
+450
+451</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/helpers/application_helper.rb', line 445</span>
+
+<span class='def def kw'>def</span> <span class='with_format identifier id'>with_format</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='old_format identifier id'>old_format</span> <span class='assign token'>=</span> <span class='@template_format ivar id'>@template_format</span>
+  <span class='@template_format ivar id'>@template_format</span> <span class='assign token'>=</span> <span class='format identifier id'>format</span>
+  <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span>
+  <span class='@template_format ivar id'>@template_format</span> <span class='assign token'>=</span> <span class='old_format identifier id'>old_format</span>
+  <span class='return return kw'>return</span> <span class='result identifier id'>result</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:29 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

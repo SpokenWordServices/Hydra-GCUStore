@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: DownloadsController</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (D)</a> &raquo; 
+    
+    
+    <span class="title">DownloadsController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: DownloadsController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">DownloadsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span>, <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/app/controllers/downloads_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Note: Actual downloads are handled by the index method insead of the show
+method in order to avoid ActionController being clever with the
+filenames/extensions/formats.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/RepositoryController.html#downloadables-instance_method" title="Hydra::RepositoryController#downloadables (method)">#downloadables</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#included-class_method" title="Hydra::RepositoryController.included (method)">included</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#solr_name-instance_method" title="Hydra::RepositoryController#solr_name (method)">#solr_name</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#load_af_instance_from_solr-instance_method" title="MediaShelf::ActiveFedoraHelper#load_af_instance_from_solr (method)">#load_af_instance_from_solr</a></span>, <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#retrieve_af_model-instance_method" title="MediaShelf::ActiveFedoraHelper#retrieve_af_model (method)">#retrieve_af_model</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#current_user-instance_method" title="ApplicationController#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="ApplicationController.html#default_html_head-instance_method" title="ApplicationController#default_html_head (method)">#default_html_head</a></span>, <span class='object_link'><a href="ApplicationController.html#error-instance_method" title="ApplicationController#error (method)">#error</a></span>, <span class='object_link'><a href="ApplicationController.html#extra_head_content-instance_method" title="ApplicationController#extra_head_content (method)">#extra_head_content</a></span>, <span class='object_link'><a href="ApplicationController.html#javascript_includes-instance_method" title="ApplicationController#javascript_includes (method)">#javascript_includes</a></span>, <span class='object_link'><a href="ApplicationController.html#stylesheet_links-instance_method" title="ApplicationController#stylesheet_links (method)">#stylesheet_links</a></span>, <span class='object_link'><a href="ApplicationController.html#user_class-instance_method" title="ApplicationController#user_class (method)">#user_class</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HydraAccessControlsHelper.html" title="HydraAccessControlsHelper (module)">HydraAccessControlsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HydraAccessControlsHelper.html#editor%3F-instance_method" title="HydraAccessControlsHelper#editor? (method)">#editor?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#reader%3F-instance_method" title="HydraAccessControlsHelper#reader? (method)">#reader?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#test_permission-instance_method" title="HydraAccessControlsHelper#test_permission (method)">#test_permission</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Note: Actual downloads are handled by the index method insead of the show
+method in order to avoid ActionController being clever with the
+filenames/extensions/formats. To download a datastream, pass the datastream
+id as ?document_id=#dsid in the url
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/controllers/downloads_controller.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='index identifier id'>index</span>
+  <span class='fedora_object identifier id'>fedora_object</span> <span class='assign token'>=</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:asset_id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:download_id</span><span class='rbrack token'>]</span>
+    <span class='@datastream ivar id'>@datastream</span> <span class='assign token'>=</span> <span class='fedora_object identifier id'>fedora_object</span><span class='dot token'>.</span><span class='datastreams identifier id'>datastreams</span><span class='lbrack token'>[</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:download_id</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+    <span class='send_data identifier id'>send_data</span> <span class='@datastream ivar id'>@datastream</span><span class='dot token'>.</span><span class='content identifier id'>content</span><span class='comma token'>,</span> <span class='symbol val'>:filename=</span><span class='gt op'>&gt;</span><span class='@datastream ivar id'>@datastream</span><span class='dot token'>.</span><span class='label identifier id'>label</span><span class='comma token'>,</span> <span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='@datastream ivar id'>@datastream</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>&quot;mimeType&quot;</span><span class='rbrack token'>]</span>
+    <span class='comment val'>#send_data( Fedora::Repository.instance.fetch_custom(params[:document_id], &quot;datastreams/#{datastream_id}/content&quot;) )</span>
+  <span class='else else kw'>else</span>
+    <span class='@datastreams ivar id'>@datastreams</span> <span class='assign token'>=</span> <span class='downloadables identifier id'>downloadables</span><span class='lparen token'>(</span> <span class='fedora_object identifier id'>fedora_object</span> <span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

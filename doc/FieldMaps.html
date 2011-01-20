@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: FieldMaps</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (F)</a> &raquo; 
+    
+    
+    <span class="title">FieldMaps</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: FieldMaps
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/field_maps.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="FORMAT-constant" class="">FORMAT =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'v'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Video)</span><span class='comma token'>,</span>
+  <span class='string val'>'a'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Book)</span><span class='comma token'>,</span>
+  <span class='string val'>'t'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Book)</span><span class='comma token'>,</span>
+  <span class='string val'>'m'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Computer File)</span><span class='comma token'>,</span>
+  <span class='string val'>'c'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Musical Score)</span><span class='comma token'>,</span>
+  <span class='string val'>'d'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Musical Score)</span><span class='comma token'>,</span>
+  <span class='string val'>'j'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Musical Recording)</span><span class='comma token'>,</span>
+  <span class='string val'>'i'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Non-musical Recording)</span><span class='comma token'>,</span>
+  <span class='string val'>'serials'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Serials)</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+        <dt id="LANGUAGE-constant" class="">LANGUAGE =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'???'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>''</span><span class='comma token'>,</span>
+  <span class='string val'>'aar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Afar)</span><span class='comma token'>,</span>
+  <span class='string val'>'abk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Abkhaz)</span><span class='comma token'>,</span>
+  <span class='string val'>'ace'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Achinese)</span><span class='comma token'>,</span>
+  <span class='string val'>'ach'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Acoli)</span><span class='comma token'>,</span>
+  <span class='string val'>'ada'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Adangme)</span><span class='comma token'>,</span>
+  <span class='string val'>'ady'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Adygei)</span><span class='comma token'>,</span>
+  <span class='string val'>'afa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Afroasiatic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'afh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Afrihili (Artificial language))</span><span class='comma token'>,</span>
+  <span class='string val'>'afr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Afrikaans)</span><span class='comma token'>,</span>
+  <span class='string val'>'ajm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Aljamia)</span><span class='comma token'>,</span>
+  <span class='string val'>'aka'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Akan)</span><span class='comma token'>,</span>
+  <span class='string val'>'akk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Akkadian)</span><span class='comma token'>,</span>
+  <span class='string val'>'alb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Albanian)</span><span class='comma token'>,</span>
+  <span class='string val'>'ale'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Aleut)</span><span class='comma token'>,</span>
+  <span class='string val'>'alg'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Algonquian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'amh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Amharic)</span><span class='comma token'>,</span>
+  <span class='string val'>'ang'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(English, Old (ca. 450-1100))</span><span class='comma token'>,</span>
+  <span class='string val'>'apa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Apache languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'ara'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Arabic)</span><span class='comma token'>,</span>
+  <span class='string val'>'arc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Aramaic)</span><span class='comma token'>,</span>
+  <span class='string val'>'arg'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Aragonese Spanish)</span><span class='comma token'>,</span>
+  <span class='string val'>'arm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Armenian)</span><span class='comma token'>,</span>
+  <span class='string val'>'arn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mapuche)</span><span class='comma token'>,</span>
+  <span class='string val'>'arp'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Arapaho)</span><span class='comma token'>,</span>
+  <span class='string val'>'art'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Artificial (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'arw'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Arawak)</span><span class='comma token'>,</span>
+  <span class='string val'>'asm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Assamese)</span><span class='comma token'>,</span>
+  <span class='string val'>'ast'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bable)</span><span class='comma token'>,</span>
+  <span class='string val'>'ath'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Athapascan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'aus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Australian languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'ava'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Avaric)</span><span class='comma token'>,</span>
+  <span class='string val'>'ave'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Avestan)</span><span class='comma token'>,</span>
+  <span class='string val'>'awa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Awadhi)</span><span class='comma token'>,</span>
+  <span class='string val'>'aym'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Aymara)</span><span class='comma token'>,</span>
+  <span class='string val'>'aze'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Azerbaijani)</span><span class='comma token'>,</span>
+  <span class='string val'>'bad'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Banda)</span><span class='comma token'>,</span>
+  <span class='string val'>'bai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bamileke languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'bak'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bashkir)</span><span class='comma token'>,</span>
+  <span class='string val'>'bal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Baluchi)</span><span class='comma token'>,</span>
+  <span class='string val'>'bam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bambara)</span><span class='comma token'>,</span>
+  <span class='string val'>'ban'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Balinese)</span><span class='comma token'>,</span>
+  <span class='string val'>'baq'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Basque)</span><span class='comma token'>,</span>
+  <span class='string val'>'bas'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Basa)</span><span class='comma token'>,</span>
+  <span class='string val'>'bat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Baltic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'bej'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Beja)</span><span class='comma token'>,</span>
+  <span class='string val'>'bel'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Belarusian)</span><span class='comma token'>,</span>
+  <span class='string val'>'bem'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bemba)</span><span class='comma token'>,</span>
+  <span class='string val'>'ben'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bengali)</span><span class='comma token'>,</span>
+  <span class='string val'>'ber'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Berber (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'bho'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bhojpuri)</span><span class='comma token'>,</span>
+  <span class='string val'>'bih'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bihari)</span><span class='comma token'>,</span>
+  <span class='string val'>'bik'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bikol)</span><span class='comma token'>,</span>
+  <span class='string val'>'bin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Edo)</span><span class='comma token'>,</span>
+  <span class='string val'>'bis'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bislama)</span><span class='comma token'>,</span>
+  <span class='string val'>'bla'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Siksika)</span><span class='comma token'>,</span>
+  <span class='string val'>'bnt'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bantu (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'bos'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bosnian)</span><span class='comma token'>,</span>
+  <span class='string val'>'bra'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Braj)</span><span class='comma token'>,</span>
+  <span class='string val'>'bre'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Breton)</span><span class='comma token'>,</span>
+  <span class='string val'>'btk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Batak)</span><span class='comma token'>,</span>
+  <span class='string val'>'bua'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Buriat)</span><span class='comma token'>,</span>
+  <span class='string val'>'bug'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bugis)</span><span class='comma token'>,</span>
+  <span class='string val'>'bul'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Bulgarian)</span><span class='comma token'>,</span>
+  <span class='string val'>'bur'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Burmese)</span><span class='comma token'>,</span>
+  <span class='string val'>'cad'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Caddo)</span><span class='comma token'>,</span>
+  <span class='string val'>'cai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Central American Indian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Khmer)</span><span class='comma token'>,</span>
+  <span class='string val'>'car'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Carib)</span><span class='comma token'>,</span>
+  <span class='string val'>'cat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Catalan)</span><span class='comma token'>,</span>
+  <span class='string val'>'cau'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Caucasian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'ceb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cebuano)</span><span class='comma token'>,</span>
+  <span class='string val'>'cel'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Celtic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cha'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chamorro)</span><span class='comma token'>,</span>
+  <span class='string val'>'chb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chibcha)</span><span class='comma token'>,</span>
+  <span class='string val'>'che'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chechen)</span><span class='comma token'>,</span>
+  <span class='string val'>'chg'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chagatai)</span><span class='comma token'>,</span>
+  <span class='string val'>'chi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chinese)</span><span class='comma token'>,</span>
+  <span class='string val'>'chk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Truk)</span><span class='comma token'>,</span>
+  <span class='string val'>'chm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mari)</span><span class='comma token'>,</span>
+  <span class='string val'>'chn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chinook jargon)</span><span class='comma token'>,</span>
+  <span class='string val'>'cho'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Choctaw)</span><span class='comma token'>,</span>
+  <span class='string val'>'chp'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chipewyan)</span><span class='comma token'>,</span>
+  <span class='string val'>'chr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cherokee)</span><span class='comma token'>,</span>
+  <span class='string val'>'chu'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Church Slavic)</span><span class='comma token'>,</span>
+  <span class='string val'>'chv'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chuvash)</span><span class='comma token'>,</span>
+  <span class='string val'>'chy'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cheyenne)</span><span class='comma token'>,</span>
+  <span class='string val'>'cmc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Chamic languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'cop'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Coptic)</span><span class='comma token'>,</span>
+  <span class='string val'>'cor'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cornish)</span><span class='comma token'>,</span>
+  <span class='string val'>'cos'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Corsican)</span><span class='comma token'>,</span>
+  <span class='string val'>'cpe'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Creoles and Pidgins, English-based (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cpf'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Creoles and Pidgins, French-based (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cpp'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Creoles and Pidgins, Portuguese-based (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cre'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cree)</span><span class='comma token'>,</span>
+  <span class='string val'>'crh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Crimean Tatar)</span><span class='comma token'>,</span>
+  <span class='string val'>'crp'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Creoles and Pidgins (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Cushitic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'cze'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Czech)</span><span class='comma token'>,</span>
+  <span class='string val'>'dak'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dakota)</span><span class='comma token'>,</span>
+  <span class='string val'>'dan'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Danish)</span><span class='comma token'>,</span>
+  <span class='string val'>'dar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dargwa)</span><span class='comma token'>,</span>
+  <span class='string val'>'day'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dayak)</span><span class='comma token'>,</span>
+  <span class='string val'>'del'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Delaware)</span><span class='comma token'>,</span>
+  <span class='string val'>'den'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Slave)</span><span class='comma token'>,</span>
+  <span class='string val'>'dgr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dogrib)</span><span class='comma token'>,</span>
+  <span class='string val'>'din'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dinka)</span><span class='comma token'>,</span>
+  <span class='string val'>'div'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Divehi)</span><span class='comma token'>,</span>
+  <span class='string val'>'doi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dogri)</span><span class='comma token'>,</span>
+  <span class='string val'>'dra'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dravidian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'dua'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Duala)</span><span class='comma token'>,</span>
+  <span class='string val'>'dum'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dutch, Middle (ca. 1050-1350))</span><span class='comma token'>,</span>
+  <span class='string val'>'dut'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dutch)</span><span class='comma token'>,</span>
+  <span class='string val'>'dyu'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dyula)</span><span class='comma token'>,</span>
+  <span class='string val'>'dzo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Dzongkha)</span><span class='comma token'>,</span>
+  <span class='string val'>'efi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Efik)</span><span class='comma token'>,</span>
+  <span class='string val'>'egy'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Egyptian)</span><span class='comma token'>,</span>
+  <span class='string val'>'eka'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ekajuk)</span><span class='comma token'>,</span>
+  <span class='string val'>'elx'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Elamite)</span><span class='comma token'>,</span>
+  <span class='string val'>'eng'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(English)</span><span class='comma token'>,</span>
+  <span class='string val'>'enm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(English, Middle (1100-1500))</span><span class='comma token'>,</span>
+  <span class='string val'>'epo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Esperanto)</span><span class='comma token'>,</span>
+  <span class='string val'>'esk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Eskimo languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'esp'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Esperanto)</span><span class='comma token'>,</span>
+  <span class='string val'>'est'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Estonian)</span><span class='comma token'>,</span>
+  <span class='string val'>'eth'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ethiopic)</span><span class='comma token'>,</span>
+  <span class='string val'>'ewe'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ewe)</span><span class='comma token'>,</span>
+  <span class='string val'>'ewo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ewondo)</span><span class='comma token'>,</span>
+  <span class='string val'>'fan'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Fang)</span><span class='comma token'>,</span>
+  <span class='string val'>'fao'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Faroese)</span><span class='comma token'>,</span>
+  <span class='string val'>'far'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Faroese)</span><span class='comma token'>,</span>
+  <span class='string val'>'fat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Fanti)</span><span class='comma token'>,</span>
+  <span class='string val'>'fij'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Fijian)</span><span class='comma token'>,</span>
+  <span class='string val'>'fin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Finnish)</span><span class='comma token'>,</span>
+  <span class='string val'>'fiu'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Finno-Ugrian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'fon'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Fon)</span><span class='comma token'>,</span>
+  <span class='string val'>'fre'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(French)</span><span class='comma token'>,</span>
+  <span class='string val'>'fri'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Frisian)</span><span class='comma token'>,</span>
+  <span class='string val'>'frm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(French, Middle (ca. 1400-1600))</span><span class='comma token'>,</span>
+  <span class='string val'>'fro'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(French, Old (ca. 842-1400))</span><span class='comma token'>,</span>
+  <span class='string val'>'fry'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Frisian)</span><span class='comma token'>,</span>
+  <span class='string val'>'ful'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Fula)</span><span class='comma token'>,</span>
+  <span class='string val'>'fur'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Friulian)</span><span class='comma token'>,</span>
+  <span class='string val'>'gaa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ga)</span><span class='comma token'>,</span>
+  <span class='string val'>'gae'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Scottish Gaelic)</span><span class='comma token'>,</span>
+  <span class='string val'>'gag'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Galician)</span><span class='comma token'>,</span>
+  <span class='string val'>'gal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Oromo)</span><span class='comma token'>,</span>
+  <span class='string val'>'gay'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gayo)</span><span class='comma token'>,</span>
+  <span class='string val'>'gba'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gbaya)</span><span class='comma token'>,</span>
+  <span class='string val'>'gem'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Germanic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'geo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Georgian)</span><span class='comma token'>,</span>
+  <span class='string val'>'ger'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(German)</span><span class='comma token'>,</span>
+  <span class='string val'>'gez'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ethiopic)</span><span class='comma token'>,</span>
+  <span class='string val'>'gil'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gilbertese)</span><span class='comma token'>,</span>
+  <span class='string val'>'gla'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Scottish Gaelic)</span><span class='comma token'>,</span>
+  <span class='string val'>'gle'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Irish)</span><span class='comma token'>,</span>
+  <span class='string val'>'glg'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Galician)</span><span class='comma token'>,</span>
+  <span class='string val'>'glv'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Manx)</span><span class='comma token'>,</span>
+  <span class='string val'>'gmh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(German, Middle High (ca. 1050-1500))</span><span class='comma token'>,</span>
+  <span class='string val'>'goh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(German, Old High (ca. 750-1050))</span><span class='comma token'>,</span>
+  <span class='string val'>'gon'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gondi)</span><span class='comma token'>,</span>
+  <span class='string val'>'gor'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gorontalo)</span><span class='comma token'>,</span>
+  <span class='string val'>'got'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gothic)</span><span class='comma token'>,</span>
+  <span class='string val'>'grb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Grebo)</span><span class='comma token'>,</span>
+  <span class='string val'>'grc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Greek, Ancient (to 1453))</span><span class='comma token'>,</span>
+  <span class='string val'>'gre'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Greek, Modern (1453- ))</span><span class='comma token'>,</span>
+  <span class='string val'>'grn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Guarani)</span><span class='comma token'>,</span>
+  <span class='string val'>'gua'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Guarani)</span><span class='comma token'>,</span>
+  <span class='string val'>'guj'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gujarati)</span><span class='comma token'>,</span>
+  <span class='string val'>'gwi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Gwich'in)</span><span class='comma token'>,</span>
+  <span class='string val'>'hai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Haida)</span><span class='comma token'>,</span>
+  <span class='string val'>'hat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Haitian French Creole)</span><span class='comma token'>,</span>
+  <span class='string val'>'hau'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hausa)</span><span class='comma token'>,</span>
+  <span class='string val'>'haw'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hawaiian)</span><span class='comma token'>,</span>
+  <span class='string val'>'heb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hebrew)</span><span class='comma token'>,</span>
+  <span class='string val'>'her'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Herero)</span><span class='comma token'>,</span>
+  <span class='string val'>'hil'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hiligaynon)</span><span class='comma token'>,</span>
+  <span class='string val'>'him'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Himachali)</span><span class='comma token'>,</span>
+  <span class='string val'>'hin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hindi)</span><span class='comma token'>,</span>
+  <span class='string val'>'hit'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hittite)</span><span class='comma token'>,</span>
+  <span class='string val'>'hmn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hmong)</span><span class='comma token'>,</span>
+  <span class='string val'>'hmo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hiri Motu)</span><span class='comma token'>,</span>
+  <span class='string val'>'hun'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hungarian)</span><span class='comma token'>,</span>
+  <span class='string val'>'hup'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Hupa)</span><span class='comma token'>,</span>
+  <span class='string val'>'iba'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Iban)</span><span class='comma token'>,</span>
+  <span class='string val'>'ibo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Igbo)</span><span class='comma token'>,</span>
+  <span class='string val'>'ice'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Icelandic)</span><span class='comma token'>,</span>
+  <span class='string val'>'ido'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ido)</span><span class='comma token'>,</span>
+  <span class='string val'>'iii'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sichuan Yi)</span><span class='comma token'>,</span>
+  <span class='string val'>'ijo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ijo)</span><span class='comma token'>,</span>
+  <span class='string val'>'iku'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Inuktitut)</span><span class='comma token'>,</span>
+  <span class='string val'>'ile'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Interlingue)</span><span class='comma token'>,</span>
+  <span class='string val'>'ilo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Iloko)</span><span class='comma token'>,</span>
+  <span class='string val'>'ina'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Interlingua (International Auxiliary Language Association))</span><span class='comma token'>,</span>
+  <span class='string val'>'inc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Indic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'ind'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Indonesian)</span><span class='comma token'>,</span>
+  <span class='string val'>'ine'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Indo-European (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'inh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ingush)</span><span class='comma token'>,</span>
+  <span class='string val'>'int'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Interlingua (International Auxiliary Language Association))</span><span class='comma token'>,</span>
+  <span class='string val'>'ipk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Inupiaq)</span><span class='comma token'>,</span>
+  <span class='string val'>'ira'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Iranian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'iri'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Irish)</span><span class='comma token'>,</span>
+  <span class='string val'>'iro'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Iroquoian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'ita'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Italian)</span><span class='comma token'>,</span>
+  <span class='string val'>'jav'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Javanese)</span><span class='comma token'>,</span>
+  <span class='string val'>'jpn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Japanese)</span><span class='comma token'>,</span>
+  <span class='string val'>'jpr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Judeo-Persian)</span><span class='comma token'>,</span>
+  <span class='string val'>'jrb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Judeo-Arabic)</span><span class='comma token'>,</span>
+  <span class='string val'>'kaa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kara-Kalpak)</span><span class='comma token'>,</span>
+  <span class='string val'>'kab'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kabyle)</span><span class='comma token'>,</span>
+  <span class='string val'>'kac'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kachin)</span><span class='comma token'>,</span>
+  <span class='string val'>'kal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kalatdlisut)</span><span class='comma token'>,</span>
+  <span class='string val'>'kam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kamba)</span><span class='comma token'>,</span>
+  <span class='string val'>'kan'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kannada)</span><span class='comma token'>,</span>
+  <span class='string val'>'kar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Karen)</span><span class='comma token'>,</span>
+  <span class='string val'>'kas'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kashmiri)</span><span class='comma token'>,</span>
+  <span class='string val'>'kau'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kanuri)</span><span class='comma token'>,</span>
+  <span class='string val'>'kaw'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kawi)</span><span class='comma token'>,</span>
+  <span class='string val'>'kaz'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kazakh)</span><span class='comma token'>,</span>
+  <span class='string val'>'kbd'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kabardian)</span><span class='comma token'>,</span>
+  <span class='string val'>'kha'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Khasi)</span><span class='comma token'>,</span>
+  <span class='string val'>'khi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Khoisan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'khm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Khmer)</span><span class='comma token'>,</span>
+  <span class='string val'>'kho'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Khotanese)</span><span class='comma token'>,</span>
+  <span class='string val'>'kik'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kikuyu)</span><span class='comma token'>,</span>
+  <span class='string val'>'kin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kinyarwanda)</span><span class='comma token'>,</span>
+  <span class='string val'>'kir'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kyrgyz)</span><span class='comma token'>,</span>
+  <span class='string val'>'kmb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kimbundu)</span><span class='comma token'>,</span>
+  <span class='string val'>'kok'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Konkani)</span><span class='comma token'>,</span>
+  <span class='string val'>'kom'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Komi)</span><span class='comma token'>,</span>
+  <span class='string val'>'kon'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kongo)</span><span class='comma token'>,</span>
+  <span class='string val'>'kor'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Korean)</span><span class='comma token'>,</span>
+  <span class='string val'>'kos'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kusaie)</span><span class='comma token'>,</span>
+  <span class='string val'>'kpe'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kpelle)</span><span class='comma token'>,</span>
+  <span class='string val'>'kro'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kru)</span><span class='comma token'>,</span>
+  <span class='string val'>'kru'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kurukh)</span><span class='comma token'>,</span>
+  <span class='string val'>'kua'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kuanyama)</span><span class='comma token'>,</span>
+  <span class='string val'>'kum'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kumyk)</span><span class='comma token'>,</span>
+  <span class='string val'>'kur'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kurdish)</span><span class='comma token'>,</span>
+  <span class='string val'>'kus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kusaie)</span><span class='comma token'>,</span>
+  <span class='string val'>'kut'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kutenai)</span><span class='comma token'>,</span>
+  <span class='string val'>'lad'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ladino)</span><span class='comma token'>,</span>
+  <span class='string val'>'lah'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lahnda)</span><span class='comma token'>,</span>
+  <span class='string val'>'lam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lamba)</span><span class='comma token'>,</span>
+  <span class='string val'>'lan'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Occitan (post-1500))</span><span class='comma token'>,</span>
+  <span class='string val'>'lao'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lao)</span><span class='comma token'>,</span>
+
+  <span class='string val'>'lap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'lat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Latin)</span><span class='comma token'>,</span>
+  <span class='string val'>'lav'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Latvian)</span><span class='comma token'>,</span>
+  <span class='string val'>'lez'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lezgian)</span><span class='comma token'>,</span>
+  <span class='string val'>'lim'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Limburgish)</span><span class='comma token'>,</span>
+  <span class='string val'>'lin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lingala)</span><span class='comma token'>,</span>
+  <span class='string val'>'lit'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lithuanian)</span><span class='comma token'>,</span>
+  <span class='string val'>'lol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mongo-Nkundu)</span><span class='comma token'>,</span>
+  <span class='string val'>'loz'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lozi)</span><span class='comma token'>,</span>
+  <span class='string val'>'ltz'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Letzeburgesch)</span><span class='comma token'>,</span>
+  <span class='string val'>'lua'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Luba-Lulua)</span><span class='comma token'>,</span>
+  <span class='string val'>'lub'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Luba-Katanga)</span><span class='comma token'>,</span>
+  <span class='string val'>'lug'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ganda)</span><span class='comma token'>,</span>
+  <span class='string val'>'lui'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Luiseno)</span><span class='comma token'>,</span>
+  <span class='string val'>'lun'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lunda)</span><span class='comma token'>,</span>
+  <span class='string val'>'luo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Luo (Kenya and Tanzania))</span><span class='comma token'>,</span>
+  <span class='string val'>'lus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lushai)</span><span class='comma token'>,</span>
+  <span class='string val'>'mac'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Macedonian)</span><span class='comma token'>,</span>
+  <span class='string val'>'mad'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Madurese)</span><span class='comma token'>,</span>
+  <span class='string val'>'mag'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Magahi)</span><span class='comma token'>,</span>
+  <span class='string val'>'mah'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Marshallese)</span><span class='comma token'>,</span>
+  <span class='string val'>'mai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Maithili)</span><span class='comma token'>,</span>
+  <span class='string val'>'mak'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Makasar)</span><span class='comma token'>,</span>
+  <span class='string val'>'mal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Malayalam)</span><span class='comma token'>,</span>
+  <span class='string val'>'man'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mandingo)</span><span class='comma token'>,</span>
+  <span class='string val'>'mao'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Maori)</span><span class='comma token'>,</span>
+  <span class='string val'>'map'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Austronesian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'mar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Marathi)</span><span class='comma token'>,</span>
+  <span class='string val'>'mas'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Masai)</span><span class='comma token'>,</span>
+  <span class='string val'>'max'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Manx)</span><span class='comma token'>,</span>
+  <span class='string val'>'may'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Malay)</span><span class='comma token'>,</span>
+  <span class='string val'>'mdr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mandar)</span><span class='comma token'>,</span>
+  <span class='string val'>'men'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mende)</span><span class='comma token'>,</span>
+  <span class='string val'>'mga'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Irish, Middle (ca. 1100-1550))</span><span class='comma token'>,</span>
+  <span class='string val'>'mic'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Micmac)</span><span class='comma token'>,</span>
+  <span class='string val'>'min'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Minangkabau)</span><span class='comma token'>,</span>
+  <span class='string val'>'mis'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Miscellaneous languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'mkh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mon-Khmer (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'mla'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Malagasy)</span><span class='comma token'>,</span>
+  <span class='string val'>'mlg'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Malagasy)</span><span class='comma token'>,</span>
+  <span class='string val'>'mlt'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Maltese)</span><span class='comma token'>,</span>
+  <span class='string val'>'mnc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Manchu)</span><span class='comma token'>,</span>
+  <span class='string val'>'mni'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Manipuri)</span><span class='comma token'>,</span>
+  <span class='string val'>'mno'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Manobo languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'moh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mohawk)</span><span class='comma token'>,</span>
+  <span class='string val'>'mol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Moldavian)</span><span class='comma token'>,</span>
+  <span class='string val'>'mon'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mongolian)</span><span class='comma token'>,</span>
+  <span class='string val'>'mos'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Moore)</span><span class='comma token'>,</span>
+  <span class='string val'>'mul'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Multiple languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'mun'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Munda (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'mus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Creek)</span><span class='comma token'>,</span>
+  <span class='string val'>'mwr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Marwari)</span><span class='comma token'>,</span>
+  <span class='string val'>'myn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Mayan languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'nah'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nahuatl)</span><span class='comma token'>,</span>
+  <span class='string val'>'nai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(North American Indian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'nap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Neapolitan Italian)</span><span class='comma token'>,</span>
+  <span class='string val'>'nau'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nauru)</span><span class='comma token'>,</span>
+  <span class='string val'>'nav'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Navajo)</span><span class='comma token'>,</span>
+  <span class='string val'>'nbl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ndebele (South Africa))</span><span class='comma token'>,</span>
+  <span class='string val'>'nde'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ndebele (Zimbabwe))</span><span class='comma token'>,</span>
+  <span class='string val'>'ndo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ndonga)</span><span class='comma token'>,</span>
+  <span class='string val'>'nds'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Low German)</span><span class='comma token'>,</span>
+  <span class='string val'>'nep'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nepali)</span><span class='comma token'>,</span>
+  <span class='string val'>'new'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Newari)</span><span class='comma token'>,</span>
+  <span class='string val'>'nia'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nias)</span><span class='comma token'>,</span>
+  <span class='string val'>'nic'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Niger-Kordofanian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'niu'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Niuean)</span><span class='comma token'>,</span>
+  <span class='string val'>'nno'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Norwegian (Nynorsk))</span><span class='comma token'>,</span>
+  <span class='string val'>'nob'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Norwegian (Bokmal))</span><span class='comma token'>,</span>
+  <span class='string val'>'nog'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nogai)</span><span class='comma token'>,</span>
+  <span class='string val'>'non'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Old Norse)</span><span class='comma token'>,</span>
+  <span class='string val'>'nor'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Norwegian)</span><span class='comma token'>,</span>
+  <span class='string val'>'nso'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Northern Sotho)</span><span class='comma token'>,</span>
+  <span class='string val'>'nub'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nubian languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'nya'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nyanja)</span><span class='comma token'>,</span>
+  <span class='string val'>'nym'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nyamwezi)</span><span class='comma token'>,</span>
+  <span class='string val'>'nyn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nyankole)</span><span class='comma token'>,</span>
+  <span class='string val'>'nyo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nyoro)</span><span class='comma token'>,</span>
+  <span class='string val'>'nzi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nzima)</span><span class='comma token'>,</span>
+  <span class='string val'>'oci'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Occitan (post-1500))</span><span class='comma token'>,</span>
+  <span class='string val'>'oji'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ojibwa)</span><span class='comma token'>,</span>
+  <span class='string val'>'ori'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Oriya)</span><span class='comma token'>,</span>
+  <span class='string val'>'orm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Oromo)</span><span class='comma token'>,</span>
+  <span class='string val'>'osa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Osage)</span><span class='comma token'>,</span>
+  <span class='string val'>'oss'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ossetic)</span><span class='comma token'>,</span>
+  <span class='string val'>'ota'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Turkish, Ottoman)</span><span class='comma token'>,</span>
+  <span class='string val'>'oto'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Otomian languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'paa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Papuan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'pag'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Pangasinan)</span><span class='comma token'>,</span>
+  <span class='string val'>'pal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Pahlavi)</span><span class='comma token'>,</span>
+  <span class='string val'>'pam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Pampanga)</span><span class='comma token'>,</span>
+  <span class='string val'>'pan'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Panjabi)</span><span class='comma token'>,</span>
+  <span class='string val'>'pap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Papiamento)</span><span class='comma token'>,</span>
+  <span class='string val'>'pau'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Palauan)</span><span class='comma token'>,</span>
+  <span class='string val'>'peo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Old Persian (ca. 600-400 B.C.))</span><span class='comma token'>,</span>
+  <span class='string val'>'per'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Persian)</span><span class='comma token'>,</span>
+  <span class='string val'>'phi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Philippine (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'phn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Phoenician)</span><span class='comma token'>,</span>
+  <span class='string val'>'pli'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Pali)</span><span class='comma token'>,</span>
+  <span class='string val'>'pol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Polish)</span><span class='comma token'>,</span>
+  <span class='string val'>'pon'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ponape)</span><span class='comma token'>,</span>
+  <span class='string val'>'por'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Portuguese)</span><span class='comma token'>,</span>
+  <span class='string val'>'pra'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Prakrit languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'pro'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Provencal (to 1500))</span><span class='comma token'>,</span>
+  <span class='string val'>'pus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Pushto)</span><span class='comma token'>,</span>
+  <span class='string val'>'que'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Quechua)</span><span class='comma token'>,</span>
+  <span class='string val'>'raj'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Rajasthani)</span><span class='comma token'>,</span>
+  <span class='string val'>'rap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Rapanui)</span><span class='comma token'>,</span>
+  <span class='string val'>'rar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Rarotongan)</span><span class='comma token'>,</span>
+  <span class='string val'>'roa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Romance (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'roh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Raeto-Romance)</span><span class='comma token'>,</span>
+  <span class='string val'>'rom'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Romani)</span><span class='comma token'>,</span>
+  <span class='string val'>'rum'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Romanian)</span><span class='comma token'>,</span>
+  <span class='string val'>'run'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Rundi)</span><span class='comma token'>,</span>
+  <span class='string val'>'rus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Russian)</span><span class='comma token'>,</span>
+  <span class='string val'>'sad'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sandawe)</span><span class='comma token'>,</span>
+  <span class='string val'>'sag'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sango (Ubangi Creole))</span><span class='comma token'>,</span>
+  <span class='string val'>'sah'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yakut)</span><span class='comma token'>,</span>
+  <span class='string val'>'sai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(South American Indian (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'sal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Salishan languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'sam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Samaritan Aramaic)</span><span class='comma token'>,</span>
+  <span class='string val'>'san'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sanskrit)</span><span class='comma token'>,</span>
+  <span class='string val'>'sao'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Samoan)</span><span class='comma token'>,</span>
+  <span class='string val'>'sas'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sasak)</span><span class='comma token'>,</span>
+  <span class='string val'>'sat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Santali)</span><span class='comma token'>,</span>
+  <span class='string val'>'scc'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Serbian)</span><span class='comma token'>,</span>
+  <span class='string val'>'sco'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Scots)</span><span class='comma token'>,</span>
+  <span class='string val'>'scr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Croatian)</span><span class='comma token'>,</span>
+  <span class='string val'>'sel'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Selkup)</span><span class='comma token'>,</span>
+  <span class='string val'>'sem'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Semitic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'sga'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Irish, Old (to 1100))</span><span class='comma token'>,</span>
+  <span class='string val'>'sgn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sign languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'shn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Shan)</span><span class='comma token'>,</span>
+  <span class='string val'>'sho'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Shona)</span><span class='comma token'>,</span>
+  <span class='string val'>'sid'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sidamo)</span><span class='comma token'>,</span>
+  <span class='string val'>'sin'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sinhalese)</span><span class='comma token'>,</span>
+  <span class='string val'>'sio'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Siouan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'sit'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sino-Tibetan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'sla'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Slavic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'slo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Slovak)</span><span class='comma token'>,</span>
+  <span class='string val'>'slv'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Slovenian)</span><span class='comma token'>,</span>
+  <span class='string val'>'sma'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Southern Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'sme'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Northern Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'smi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'smj'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Lule Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'smn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Inari Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'smo'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Samoan)</span><span class='comma token'>,</span>
+  <span class='string val'>'sms'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Skolt Sami)</span><span class='comma token'>,</span>
+  <span class='string val'>'sna'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Shona)</span><span class='comma token'>,</span>
+  <span class='string val'>'snd'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sindhi)</span><span class='comma token'>,</span>
+  <span class='string val'>'snh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sinhalese)</span><span class='comma token'>,</span>
+  <span class='string val'>'snk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Soninke)</span><span class='comma token'>,</span>
+  <span class='string val'>'sog'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sogdian)</span><span class='comma token'>,</span>
+  <span class='string val'>'som'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Somali)</span><span class='comma token'>,</span>
+  <span class='string val'>'son'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Songhai)</span><span class='comma token'>,</span>
+  <span class='string val'>'sot'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sotho)</span><span class='comma token'>,</span>
+  <span class='string val'>'spa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Spanish)</span><span class='comma token'>,</span>
+  <span class='string val'>'srd'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sardinian)</span><span class='comma token'>,</span>
+  <span class='string val'>'srr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Serer)</span><span class='comma token'>,</span>
+  <span class='string val'>'ssa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Nilo-Saharan (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'sso'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sotho)</span><span class='comma token'>,</span>
+  <span class='string val'>'ssw'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Swazi)</span><span class='comma token'>,</span>
+  <span class='string val'>'suk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sukuma)</span><span class='comma token'>,</span>
+  <span class='string val'>'sun'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sundanese)</span><span class='comma token'>,</span>
+  <span class='string val'>'sus'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Susu)</span><span class='comma token'>,</span>
+  <span class='string val'>'sux'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sumerian)</span><span class='comma token'>,</span>
+  <span class='string val'>'swa'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Swahili)</span><span class='comma token'>,</span>
+  <span class='string val'>'swe'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Swedish)</span><span class='comma token'>,</span>
+  <span class='string val'>'swz'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Swazi)</span><span class='comma token'>,</span>
+  <span class='string val'>'syr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Syriac)</span><span class='comma token'>,</span>
+  <span class='string val'>'tag'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tagalog)</span><span class='comma token'>,</span>
+  <span class='string val'>'tah'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tahitian)</span><span class='comma token'>,</span>
+  <span class='string val'>'tai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tai (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'taj'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tajik)</span><span class='comma token'>,</span>
+  <span class='string val'>'tam'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tamil)</span><span class='comma token'>,</span>
+  <span class='string val'>'tar'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tatar)</span><span class='comma token'>,</span>
+  <span class='string val'>'tat'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tatar)</span><span class='comma token'>,</span>
+  <span class='string val'>'tel'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Telugu)</span><span class='comma token'>,</span>
+  <span class='string val'>'tem'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Temne)</span><span class='comma token'>,</span>
+  <span class='string val'>'ter'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Terena)</span><span class='comma token'>,</span>
+  <span class='string val'>'tet'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tetum)</span><span class='comma token'>,</span>
+  <span class='string val'>'tgk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tajik)</span><span class='comma token'>,</span>
+  <span class='string val'>'tgl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tagalog)</span><span class='comma token'>,</span>
+  <span class='string val'>'tha'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Thai)</span><span class='comma token'>,</span>
+  <span class='string val'>'tib'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tibetan)</span><span class='comma token'>,</span>
+  <span class='string val'>'tig'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tigre)</span><span class='comma token'>,</span>
+  <span class='string val'>'tir'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tigrinya)</span><span class='comma token'>,</span>
+  <span class='string val'>'tiv'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tiv)</span><span class='comma token'>,</span>
+  <span class='string val'>'tkl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tokelauan)</span><span class='comma token'>,</span>
+  <span class='string val'>'tli'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tlingit)</span><span class='comma token'>,</span>
+  <span class='string val'>'tmh'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tamashek)</span><span class='comma token'>,</span>
+  <span class='string val'>'tog'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tonga (Nyasa))</span><span class='comma token'>,</span>
+  <span class='string val'>'ton'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tongan)</span><span class='comma token'>,</span>
+  <span class='string val'>'tpi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tok Pisin)</span><span class='comma token'>,</span>
+  <span class='string val'>'tru'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Truk)</span><span class='comma token'>,</span>
+  <span class='string val'>'tsi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tsimshian)</span><span class='comma token'>,</span>
+  <span class='string val'>'tsn'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tswana)</span><span class='comma token'>,</span>
+  <span class='string val'>'tso'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tsonga)</span><span class='comma token'>,</span>
+  <span class='string val'>'tsw'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tswana)</span><span class='comma token'>,</span>
+  <span class='string val'>'tuk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Turkmen)</span><span class='comma token'>,</span>
+  <span class='string val'>'tum'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tumbuka)</span><span class='comma token'>,</span>
+  <span class='string val'>'tup'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tupi languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'tur'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Turkish)</span><span class='comma token'>,</span>
+  <span class='string val'>'tut'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Altaic (Other))</span><span class='comma token'>,</span>
+  <span class='string val'>'tvl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tuvaluan)</span><span class='comma token'>,</span>
+  <span class='string val'>'twi'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Twi)</span><span class='comma token'>,</span>
+  <span class='string val'>'tyv'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Tuvinian)</span><span class='comma token'>,</span>
+  <span class='string val'>'udm'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Udmurt)</span><span class='comma token'>,</span>
+  <span class='string val'>'uga'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ugaritic)</span><span class='comma token'>,</span>
+  <span class='string val'>'uig'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Uighur)</span><span class='comma token'>,</span>
+  <span class='string val'>'ukr'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Ukrainian)</span><span class='comma token'>,</span>
+  <span class='string val'>'umb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Umbundu)</span><span class='comma token'>,</span>
+  <span class='string val'>'und'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Undetermined)</span><span class='comma token'>,</span>
+  <span class='string val'>'urd'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Urdu)</span><span class='comma token'>,</span>
+  <span class='string val'>'uzb'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Uzbek)</span><span class='comma token'>,</span>
+  <span class='string val'>'vai'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Vai)</span><span class='comma token'>,</span>
+  <span class='string val'>'ven'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Venda)</span><span class='comma token'>,</span>
+  <span class='string val'>'vie'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Vietnamese)</span><span class='comma token'>,</span>
+  <span class='string val'>'vol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Volapuk)</span><span class='comma token'>,</span>
+  <span class='string val'>'vot'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Votic)</span><span class='comma token'>,</span>
+  <span class='string val'>'wak'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Wakashan languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'wal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Walamo)</span><span class='comma token'>,</span>
+  <span class='string val'>'war'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Waray)</span><span class='comma token'>,</span>
+  <span class='string val'>'was'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Washo)</span><span class='comma token'>,</span>
+  <span class='string val'>'wel'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Welsh)</span><span class='comma token'>,</span>
+  <span class='string val'>'wen'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Sorbian languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'wln'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Walloon)</span><span class='comma token'>,</span>
+  <span class='string val'>'wol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Wolof)</span><span class='comma token'>,</span>
+  <span class='string val'>'xal'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Kalmyk)</span><span class='comma token'>,</span>
+  <span class='string val'>'xho'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Xhosa)</span><span class='comma token'>,</span>
+  <span class='string val'>'yao'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yao (Africa))</span><span class='comma token'>,</span>
+  <span class='string val'>'yap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yapese)</span><span class='comma token'>,</span>
+  <span class='string val'>'yid'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yiddish)</span><span class='comma token'>,</span>
+  <span class='string val'>'yor'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yoruba)</span><span class='comma token'>,</span>
+  <span class='string val'>'ypk'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Yupik languages)</span><span class='comma token'>,</span>
+  <span class='string val'>'zap'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zapotec)</span><span class='comma token'>,</span>
+  <span class='string val'>'zen'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zenaga)</span><span class='comma token'>,</span>
+  <span class='string val'>'zha'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zhuang)</span><span class='comma token'>,</span>
+  <span class='string val'>'znd'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zande)</span><span class='comma token'>,</span>
+  <span class='string val'>'zul'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zulu)</span><span class='comma token'>,</span>
+  <span class='string val'>'zun'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>%(Zuni)</span><span class='comma token'>,</span>
+  <span class='string val'>'zxx'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>''</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:30 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

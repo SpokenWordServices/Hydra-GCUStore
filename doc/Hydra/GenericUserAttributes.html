@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hydra::GenericUserAttributes</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (G)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">GenericUserAttributes</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hydra::GenericUserAttributes
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/lib/hydra/generic_user_attributes.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="USER_ATTRIBUTES-constant" class="">USER_ATTRIBUTES =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrack token'>[</span><span class='string val'>'first_name'</span><span class='comma token'>,</span><span class='string val'>'last_name'</span><span class='comma token'>,</span><span class='string val'>'full_name'</span><span class='comma token'>,</span><span class='string val'>'affiliation'</span><span class='comma token'>,</span><span class='string val'>'photo'</span><span class='rbrack token'>]</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_attributes-instance_method" title="#user_attributes (instance method)">- (Object) <strong>user_attributes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieves the UserAttribute object for the user.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="user_attributes=-instance_method"></span>
+      <span id="user_attributes-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="user_attributes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>user_attributes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieves the UserAttribute object for the user.  This defaults to the
+packaged ActiveRecord object, but can be overwritten with #user_attributes=
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+an object containing the user&#8217;s attributes.  If providing a localized
+class, be sure to include the default attributes of first_name, last_name,
+full_name, affiliation and photo.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/generic_user_attributes.rb', line 19</span>
+
+<span class='def def kw'>def</span> <span class='user_attributes identifier id'>user_attributes</span>
+  <span class='@user_attributes ivar id'>@user_attributes</span> <span class='opasgn op'>||=</span> <span class='user_attribute identifier id'>user_attribute</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:27 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

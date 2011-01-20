@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: FileAsset</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (F)</a> &raquo; 
+    
+    
+    <span class="title">FileAsset</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: FileAsset
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveFedora::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveFedora::Base</li>
+          
+            <li class="next">FileAsset</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Hydra/ModelMethods.html" title="Hydra::ModelMethods (module)">Hydra::ModelMethods</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/app/models/file_asset.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="AudioAsset.html" title="AudioAsset (class)">AudioAsset</a></span>, <span class='object_link'><a href="ImageAsset.html" title="ImageAsset (class)">ImageAsset</a></span>, <span class='object_link'><a href="VideoAsset.html" title="VideoAsset (class)">VideoAsset</a></span></p>
+</div>
+
+
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#garbage_collect-class_method" title="garbage_collect (class method)">+ (Object) <strong>garbage_collect</strong>(pid) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+deletes the object identified by pid if it does not have any objects
+asserting has_collection_member.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_file_datastream-instance_method" title="#add_file_datastream (instance method)">- (Object) <strong>add_file_datastream</strong>(file, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+augments add_file_datastream to also put file size (in bytes/KB/MB/GB/TB)
+in dc:extent.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bits_to_human_readable-instance_method" title="#bits_to_human_readable (instance method)">- (Object) <strong>bits_to_human_readable</strong>(num) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns a human readable filesize appropriate for the given number of bytes
+(ie. automatically chooses
+&#8216;bytes&#8217;,&#8217;KB&#8217;,&#8217;MB&#8217;,&#8217;GB&#8217;,&#8217;TB&#8217;)
+Based on a bit of python code posted here: <a
+href="http://blogmag.net/blog/read/38/Print_human_readable_file_size">blogmag.net/blog/read/38/Print_human_readable_file_size</a>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#containers-instance_method" title="#containers (instance method)">- (Array) <strong>containers</strong>(opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Mimic the relationship accessor that would be created if a containers
+relationship existed Decided to create this method instead because it
+combines more than one relationship list from is_member_of_collection and
+part_of.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#containers_from_solr-instance_method" title="#containers_from_solr (instance method)">- (Array) <strong>containers_from_solr</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Calls <tt>containers</tt> with the option to load objects found from solr
+instead of Fedora.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#containers_ids-instance_method" title="#containers_ids (instance method)">- (Array) <strong>containers_ids</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Calls <tt>containers</tt> with the :id_array option to return a list of
+pids for containers found.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#label%3D-instance_method" title="#label= (instance method)">- (Object) <strong>label=</strong>(label) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/ModelMethods.html" title="Hydra::ModelMethods (module)">Hydra::ModelMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/ModelMethods.html#apply_depositor_metadata-instance_method" title="Hydra::ModelMethods#apply_depositor_metadata (method)">#apply_depositor_metadata</a></span>, <span class='object_link'><a href="Hydra/ModelMethods.html#insert_contributor-instance_method" title="Hydra::ModelMethods#insert_contributor (method)">#insert_contributor</a></span>, <span class='object_link'><a href="Hydra/ModelMethods.html#remove_contributor-instance_method" title="Hydra::ModelMethods#remove_contributor (method)">#remove_contributor</a></span>, <span class='object_link'><a href="Hydra/ModelMethods.html#set_collection_type-instance_method" title="Hydra::ModelMethods#set_collection_type (method)">#set_collection_type</a></span></p>
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="garbage_collect-class_method">
+  
+    + (<tt>Object</tt>) <strong>garbage_collect</strong>(pid) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+deletes the object identified by pid if it does not have any objects
+asserting has_collection_member
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='garbage_collect identifier id'>garbage_collect</span><span class='lparen token'>(</span><span class='pid identifier id'>pid</span><span class='rparen token'>)</span>
+  <span class='begin begin kw'>begin</span> 
+    <span class='obj identifier id'>obj</span> <span class='assign token'>=</span> <span class='FileAsset constant id'>FileAsset</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='pid identifier id'>pid</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='containers identifier id'>containers</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+      <span class='obj identifier id'>obj</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span>
+    <span class='end end kw'>end</span>
+  <span class='rescue rescue kw'>rescue</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_file_datastream-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_file_datastream</strong>(file, opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+augments add_file_datastream to also put file size (in bytes/KB/MB/GB/TB)
+in dc:extent
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 41</span>
+
+<span class='def def kw'>def</span> <span class='add_file_datastream identifier id'>add_file_datastream</span><span class='lparen token'>(</span><span class='file identifier id'>file</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span>
+  <span class='if if kw'>if</span> <span class='file identifier id'>file</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:size</span><span class='rparen token'>)</span>
+    <span class='size identifier id'>size</span> <span class='assign token'>=</span> <span class='bits_to_human_readable identifier id'>bits_to_human_readable</span><span class='lparen token'>(</span><span class='file identifier id'>file</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='rparen token'>)</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='file identifier id'>file</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='rparen token'>)</span>
+    <span class='size identifier id'>size</span> <span class='assign token'>=</span> <span class='bits_to_human_readable identifier id'>bits_to_human_readable</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='lparen token'>(</span><span class='file identifier id'>file</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='size identifier id'>size</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='datastreams_in_memory identifier id'>datastreams_in_memory</span><span class='lbrack token'>[</span><span class='string val'>&quot;descMetadata&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='extent_values identifier id'>extent_values</span> <span class='assign token'>=</span> <span class='size identifier id'>size</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bits_to_human_readable-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bits_to_human_readable</strong>(num) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns a human readable filesize appropriate for the given number of bytes
+(ie. automatically chooses
+&#8216;bytes&#8217;,&#8217;KB&#8217;,&#8217;MB&#8217;,&#8217;GB&#8217;,&#8217;TB&#8217;)
+Based on a bit of python code posted here: <a
+href="http://blogmag.net/blog/read/38/Print_human_readable_file_size">blogmag.net/blog/read/38/Print_human_readable_file_size</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='bits_to_human_readable identifier id'>bits_to_human_readable</span><span class='lparen token'>(</span><span class='num identifier id'>num</span><span class='rparen token'>)</span>
+    <span class='lbrack token'>[</span><span class='string val'>'bytes'</span><span class='comma token'>,</span><span class='string val'>'KB'</span><span class='comma token'>,</span><span class='string val'>'MB'</span><span class='comma token'>,</span><span class='string val'>'GB'</span><span class='comma token'>,</span><span class='string val'>'TB'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='x identifier id'>x</span><span class='bitor op'>|</span>
+      <span class='if if kw'>if</span> <span class='num identifier id'>num</span> <span class='lt op'>&lt;</span> <span class='float val'>1024.0</span>
+        <span class='return return kw'>return</span> <span class='dstring node'>&quot;#{num.to_i} #{x}&quot;</span>
+      <span class='else else kw'>else</span>
+        <span class='num identifier id'>num</span> <span class='assign token'>=</span> <span class='num identifier id'>num</span><span class='div op'>/</span><span class='float val'>1024.0</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="containers-instance_method">
+  
+    - (<tt>Array</tt>) <strong>containers</strong>(opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Mimic the relationship accessor that would be created if a containers
+relationship existed Decided to create this method instead because it
+combines more than one relationship list from is_member_of_collection and
+part_of
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>opts</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The options hash that can contain a :response_format value of :id_array,
+:solr, or :load_from_solr
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Objects found through inbound has_collection_member and part_of
+relationships
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 58</span>
+
+<span class='def def kw'>def</span> <span class='containers identifier id'>containers</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='is_member_array identifier id'>is_member_array</span> <span class='assign token'>=</span> <span class='is_member_of_collection identifier id'>is_member_of_collection</span><span class='lparen token'>(</span><span class='symbol val'>:response_format=</span><span class='gt op'>&gt;</span><span class='symbol val'>:id_array</span><span class='rparen token'>)</span>
+    
+  <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='is_member_array identifier id'>is_member_array</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='string val'>&quot;This object has inbound collection member assertions.  hasCollectionMember will no longer be used to track file_object relationships after active_fedora 1.3.  Use isPartOf assertions in the RELS-EXT of child objects instead.&quot;</span>
+    <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:response_format</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='symbol val'>:solr</span> <span class='orop op'>||</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:response_format</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='symbol val'>:load_from_solr</span>
+      <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='warn identifier id'>warn</span> <span class='string val'>&quot;:solr and :load_from_solr response formats for containers search only uses parts relationships (usage of hasCollectionMember is no longer supported)&quot;</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='part_of identifier id'>part_of</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='con_result identifier id'>con_result</span> <span class='assign token'>=</span> <span class='is_member_of_collection identifier id'>is_member_of_collection</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+      <span class='part_of_result identifier id'>part_of_result</span> <span class='assign token'>=</span> <span class='part_of identifier id'>part_of</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+      <span class='ary identifier id'>ary</span> <span class='assign token'>=</span> <span class='con_result identifier id'>con_result</span><span class='plus op'>+</span><span class='part_of_result identifier id'>part_of_result</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='ary identifier id'>ary</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='part_of identifier id'>part_of</span><span class='lparen token'>(</span><span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='result identifier id'>result</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="containers_from_solr-instance_method">
+  
+    - (<tt>Array</tt>) <strong>containers_from_solr</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Calls <tt>containers</tt> with the option to load objects found from solr
+instead of Fedora.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+ActiveFedora::Base objects populated via solr
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 86</span>
+
+<span class='def def kw'>def</span> <span class='containers_from_solr identifier id'>containers_from_solr</span>
+  <span class='containers identifier id'>containers</span><span class='lparen token'>(</span><span class='symbol val'>:response_format</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:load_from_solr</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="containers_ids-instance_method">
+  
+    - (<tt>Array</tt>) <strong>containers_ids</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Calls <tt>containers</tt> with the :id_array option to return a list of
+pids for containers found.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Container ids (via is_member_of_collection and part_of relationships)
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 80</span>
+
+<span class='def def kw'>def</span> <span class='containers_ids identifier id'>containers_ids</span>
+  <span class='containers identifier id'>containers</span><span class='lparen token'>(</span><span class='symbol val'>:response_format</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:id_array</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="label=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>label=</strong>(label) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/models/file_asset.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='label= identifier id'>label=</span><span class='lparen token'>(</span><span class='label identifier id'>label</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span>
+  <span class='datastreams_in_memory identifier id'>datastreams_in_memory</span><span class='lbrack token'>[</span><span class='string val'>&quot;descMetadata&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='title_values identifier id'>title_values</span> <span class='assign token'>=</span> <span class='label identifier id'>label</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

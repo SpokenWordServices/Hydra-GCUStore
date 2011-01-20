@@ -1,0 +1,758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::Solr::Document</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (D)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Solr.html" title="Blacklight::Solr (module)">Solr</a></span></span>
+     &raquo; 
+    <span class="title">Document</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::Solr::Document
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../../SolrDocument.html" title="SolrDocument (class)">SolrDocument</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight/solr/document.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Introduction</h1>
+<p>
+Blacklight::Solr::Document is the module with logic for a class
+representing an individual document returned from Solr results.  It can be
+added in to any local class you want, but in default Blacklight a
+SolrDocument class is provided for you which is pretty much a blank class
+&#8220;include&#8220;ing Blacklight::Solr::Document.
+</p>
+<p>
+Blacklight::Solr::Document mixes in Rsolr::Ext::Model to the calling class.
+It also provides some DefaultFinders.
+</p>
+<p>
+It also provides support for Document Extensions, which advertise supported
+transformation formats.
+</p>
+<h1>Document Extensions</h1>
+<p>
+An Blacklight::Solr::Document extension is simply a ruby module which is
+mixed in to individual Document instances.  The intended use case is for
+documents containing some particular format of source material, such as
+Marc. An extension can be registered with your document class, along with a
+block containing custom logic for which documents to apply the extension
+to.
+</p>
+<p>
+SolrDocument.use_extension(MyExtension) {|document|
+my_logic_on_document(document}
+</p>
+<p>
+MyExtension will be mixed-in (using ruby &#8216;extend&#8217;) only to
+those documents where the block results in true.
+</p>
+<h2>Transformation conventions</h2>
+<p>
+The main use case for extensions is for transforming a Document to another
+format. Either to another type of Ruby object, or to an exportable string
+in a certain format. 
+</p>
+<p>
+The convention for methods contained in extensions that transform to a ruby
+object is &#8220;to_*&#8221;.  For instance, &#8220;to_marc&#8221; would
+return a Ruby Marc object.
+</p>
+<p>
+The convention for methods contained in extensions that transform to an
+exportable file of some kind is &#8220;export_as_*&#8221;.  For instance,
+&#8220;export_as_marc21&#8221; would return a String object containing
+valid marc21, and &#8220;export_as_marcxml&#8221; would return a String
+object containing valid marcxml.
+</p>
+<p>
+The tokens used after &#8220;export_as&#8221; should normally be the format
+names as registered with Rails Mime::Type.
+</p>
+<h2>Advertising export formats</h2>
+<p>
+If an extension advertises what export formats it can provide, than those
+formats will automatically be delivered by the Blacklight catalog/show
+controller, and potentially automatically advertised in various places that
+advertise available formats. (UnAPI; HTML link rel=alternate; Atom  link
+rel=alterate; etc).
+</p>
+<p>
+Export formats are &#8216;registered&#8217; by calling the #will_export_as
+method on a Document instance. An extension would usually do this in a
+self.extended method, so it can be called on Documents that have the given
+extension added to them. For instance:
+</p>
+<pre class="code">
+  <span class='module module kw'>module</span> <span class='DemoMarcExtension constant id'>DemoMarcExtension</span>
+    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extended identifier id'>extended</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='rparen token'>)</span>
+      <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:marc21</span><span class='comma token'>,</span> <span class='string val'>&quot;application/marc&quot;</span><span class='rparen token'>)</span>
+      <span class='document identifier id'>document</span><span class='dot token'>.</span><span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='symbol val'>:marcxml</span><span class='comma token'>,</span> <span class='string val'>&quot;application/marcxml+xml&quot;</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+
+    <span class='def def kw'>def</span> <span class='export_as_marc21 identifier id'>export_as_marc21</span> <span class='semicolon token'>;</span> <span class='something identifier id'>something</span> <span class='semicolon token'>;</span> <span class='end end kw'>end</span>
+    <span class='def def kw'>def</span> <span class='export_as_marcxml identifier id'>export_as_marcxml</span> <span class='semicolon token'>;</span> <span class='something identifier id'>something</span> <span class='semicolon token'>;</span> <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+</pre>
+<h2>Extension Parameters</h2>
+<p>
+Every class that includes Blacklight::Solr::Document gets a
+#extension_parameters method for saving arbitrary parameters on class-wide
+level that can be retrieved by extensions. These are arbitrary, just
+conventions with a given extension. For instance:
+SolrDocument.extension_parameters[:marc_source_field] =
+&#8220;solr_stored_field_name&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Document/DublinCore.html" title="Blacklight::Solr::Document::DublinCore (module)">DublinCore</a></span>, <span class='object_link'><a href="Document/ExtendableClassMethods.html" title="Blacklight::Solr::Document::ExtendableClassMethods (module)">ExtendableClassMethods</a></span>, <span class='object_link'><a href="Document/Marc.html" title="Blacklight::Solr::Document::Marc (module)">Marc</a></span>, <span class='object_link'><a href="Document/MarcExport.html" title="Blacklight::Solr::Document::MarcExport (module)">MarcExport</a></span>
+    
+   
+    
+  
+</p>
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(base) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+When this module is included, it includes the RSolr::Ext::Doc module
+(provides the #find method etc..).
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#apply_extensions-instance_method" title="#apply_extensions (instance method)">- (Object) <strong>apply_extensions</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Needs to be called in initializer of class including this module, to apply
+all registered extensions on a per-document basis.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_as-instance_method" title="#export_as (instance method)">- (Object) <strong>export_as</strong>(short_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Call with a format shortname, export_as(:marc), simply returns
+#export_as_marc .
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_formats-instance_method" title="#export_formats (instance method)">- (Object) <strong>export_formats</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Collects formats that this doc can export as.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_semantic_values-instance_method" title="#to_semantic_values (instance method)">- (Object) <strong>to_semantic_values</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns a hash keyed by semantic tokens (see
+ExtendableClassMethods#semantic_fields), value is an array of strings.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#will_export_as-instance_method" title="#will_export_as (instance method)">- (Object) <strong>will_export_as</strong>(short_name, content_type = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Register exportable formats supported by the individual document.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="included-class_method">
+  
+    + (<tt>Object</tt>) <strong>included</strong>(base) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+When this module is included, it includes the RSolr::Ext::Doc module
+(provides the #find method etc..)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 78</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='RSolr constant id'>RSolr</span><span class='colon2 op'>::</span><span class='Ext constant id'>Ext</span><span class='colon2 op'>::</span><span class='Model constant id'>Model</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span> <span class='ExtendableClassMethods constant id'>ExtendableClassMethods</span>
+  
+  <span class='comment val'># Provide a class-level hash for extension parameters</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='class_eval identifier id'>class_eval</span> <span class='do do kw'>do</span>
+    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extension_parameters identifier id'>extension_parameters</span>
+      <span class='comment val'>## This variable should NOT be @@, since we're in a class method,</span>
+      <span class='comment val'># it's just @ to be a class variable. Confusing, but it</span>
+      <span class='comment val'># passes the tests this way.       </span>
+      <span class='@extension_parameters ivar id'>@extension_parameters</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>      
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># after_initialize hook comes from RSolr::Ext::Model, I think.</span>
+  <span class='comment val'># We need to make sure all extensions get applied.</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='after_initialize identifier id'>after_initialize</span> <span class='do do kw'>do</span> 
+    <span class='apply_extensions identifier id'>apply_extensions</span> 
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="apply_extensions-instance_method">
+  
+    - (<tt>Object</tt>) <strong>apply_extensions</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Needs to be called in initializer of class including this module, to apply
+all registered extensions on a per-document basis
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 108</span>
+
+<span class='def def kw'>def</span> <span class='apply_extensions identifier id'>apply_extensions</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='registered_extensions identifier id'>registered_extensions</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span> <span class='registration identifier id'>registration</span><span class='bitor op'>|</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span><span class='lparen token'>(</span> <span class='registration identifier id'>registration</span><span class='lbrack token'>[</span><span class='symbol val'>:module_obj</span><span class='rbrack token'>]</span> <span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='registration identifier id'>registration</span><span class='lbrack token'>[</span><span class='symbol val'>:condition_proc</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='registration identifier id'>registration</span><span class='lbrack token'>[</span><span class='symbol val'>:condition_proc</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span> <span class='self self kw'>self</span> <span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_as-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_as</strong>(short_name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Call with a format shortname, export_as(:marc), simply returns
+#export_as_marc . Later we may expand the design to allow you to register
+an arbitrary method name instead of insisting on the convention, so clients
+should call this method so they&#8217;ll still keep working if we do that.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 172</span>
+
+<span class='def def kw'>def</span> <span class='export_as identifier id'>export_as</span><span class='lparen token'>(</span><span class='short_name identifier id'>short_name</span><span class='rparen token'>)</span>
+  <span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='dstring node'>&quot;export_as_#{short_name.to_s}&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="export_formats-instance_method">
+  
+    - (<tt>Object</tt>) <strong>export_formats</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Collects formats that this doc can export as. Returns a hash, keys are
+format short-names that can be exported. Hash includes:
+</p>
+<pre class="code">
+ <span class='symbol val'>:content</span><span class='minus op'>-</span><span class='type identifier id'>type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='mime identifier id'>mime</span><span class='minus op'>-</span><span class='content identifier id'>content</span><span class='minus op'>-</span><span class='type identifier id'>type</span>
+ <span class='maybe identifier id'>maybe</span> <span class='more identifier id'>more</span> <span class='later identifier id'>later</span>
+</pre>
+<p>
+To see if a given export format is supported by this document, simply call
+document.export_formats.keys.include?(:my_format) Then call #export_as! to
+do the export.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 163</span>
+
+<span class='def def kw'>def</span> <span class='export_formats identifier id'>export_formats</span>
+  <span class='@export_formats ivar id'>@export_formats</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_semantic_values-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_semantic_values</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns a hash keyed by semantic tokens (see
+ExtendableClassMethods#semantic_fields), value is an array of strings.
+(Array to handle multi-value fields). If no value(s) available, empty array
+is returned. 
+</p>
+<p>
+Default implementation here uses ExtendableClassMethods#semantic_fields to
+just take values from Solr stored fields.  Extensions can over-ride this
+method to provide better/different lookup, but extensions should call super
+and modify hash returned, to avoid unintentionally erasing values provided
+by other extensions.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 185</span>
+
+<span class='def def kw'>def</span> <span class='to_semantic_values identifier id'>to_semantic_values</span>
+  <span class='unless unless kw'>unless</span> <span class='@semantic_value_hash ivar id'>@semantic_value_hash</span>
+    <span class='@semantic_value_hash ivar id'>@semantic_value_hash</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='comment val'># default to empty array   </span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='field_semantics identifier id'>field_semantics</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='key identifier id'>key</span><span class='comma token'>,</span> <span class='solr_field identifier id'>solr_field</span><span class='bitor op'>|</span>
+      <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='solr_field identifier id'>solr_field</span><span class='rbrack token'>]</span>
+      <span class='comment val'># Make single and multi-values all arrays, so clients</span>
+      <span class='comment val'># don't have to know.</span>
+      <span class='unless unless kw'>unless</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+        <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='value identifier id'>value</span><span class='rbrack token'>]</span> <span class='unless unless_mod kw'>unless</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span>      
+        <span class='@semantic_value_hash ivar id'>@semantic_value_hash</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='@semantic_value_hash ivar id'>@semantic_value_hash</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="will_export_as-instance_method">
+  
+    - (<tt>Object</tt>) <strong>will_export_as</strong>(short_name, content_type = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Register exportable formats supported by the individual document. Usually
+called by an extension in it&#8217;s self.extended method, to register the
+formats that extension can export. 
+</p>
+<p>
+some_document.will_export_as(:some_format, &#8220;application/type&#8221;)
+means that the document (usually via an extension) has a method
+&#8220;export_as_some_format&#8221; which returns a String of content that
+is described by the mime content_type given. 
+</p>
+<p>
+The format name should ideally <em>already</em> be registered with Rails
+Mime::Type, in your application initializer, representing the content type
+given.  However, this method will attempt to register it using
+Mime::Type.register_alias if it&#8217;s not previously registered. This is
+a bit sketchy though.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 129</span>
+
+<span class='def def kw'>def</span> <span class='will_export_as identifier id'>will_export_as</span><span class='lparen token'>(</span><span class='short_name identifier id'>short_name</span><span class='comma token'>,</span> <span class='content_type identifier id'>content_type</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='comment val'>#Lookup in Rails Mime::Type, register if needed, otherwise take</span>
+  <span class='comment val'># content-type from registration if needed. This uses</span>
+  <span class='comment val'># some 'api' to Mime::Type that may or may not be entirely</span>
+  <span class='comment val'># public, the fact that a Mime::CONST is registered for every</span>
+  <span class='comment val'># type. But that's the only way to do the kind of check we need, sorry.</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='mime_type identifier id'>mime_type</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;Mime::#{short_name.to_s.upcase}&quot;</span><span class='dot token'>.</span><span class='constantize identifier id'>constantize</span>
+    <span class='content_type identifier id'>content_type</span> <span class='assign token'>=</span> <span class='mime_type identifier id'>mime_type</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='unless unless_mod kw'>unless</span> <span class='content_type identifier id'>content_type</span>      
+  <span class='rescue rescue kw'>rescue</span> <span class='NameError constant id'>NameError</span>
+    <span class='comment val'># not registered, we need to register. Use register_alias to be least</span>
+    <span class='comment val'># likely to interfere with host app. </span>
+    <span class='Mime constant id'>Mime</span><span class='colon2 op'>::</span><span class='Type constant id'>Type</span><span class='dot token'>.</span><span class='register_alias identifier id'>register_alias</span><span class='lparen token'>(</span><span class='content_type identifier id'>content_type</span><span class='comma token'>,</span> <span class='short_name identifier id'>short_name</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># if content_type is nil, look it up from Rails Mime::Type</span>
+  <span class='if if kw'>if</span> <span class='content_type identifier id'>content_type</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='comment val'># Accurate lookup in Rails Mime::Type is kind of pain, it doesn't</span>
+    <span class='comment val'># really provide the right API.</span>
+    <span class='if if kw'>if</span> <span class='defined? defined kw'>defined?</span><span class='lparen token'>(</span><span class='type_const_name identifier id'>type_const_name</span><span class='rparen token'>)</span>
+      <span class='content_type identifier id'>content_type</span> <span class='assign token'>=</span> <span class='type_const_name identifier id'>type_const_name</span><span class='dot token'>.</span><span class='constantize identifier id'>constantize</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+    <span class='end end kw'>end</span>    
+  <span class='end end kw'>end</span>    
+  <span class='export_formats identifier id'>export_formats</span><span class='lbrack token'>[</span><span class='short_name identifier id'>short_name</span><span class='rbrack token'>]</span> <span class='assign token'>=</span>  <span class='lbrace token'>{</span><span class='symbol val'>:content_type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='content_type identifier id'>content_type</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

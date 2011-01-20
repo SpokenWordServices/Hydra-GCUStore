@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::Solr::Document::ExtendableClassMethods</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (E)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Solr.html" title="Blacklight::Solr (module)">Solr</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Document.html" title="Blacklight::Solr::Document (module)">Document</a></span></span>
+     &raquo; 
+    <span class="title">ExtendableClassMethods</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::Solr::Document::ExtendableClassMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/blacklight/lib/blacklight/solr/document.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Certain class-level modules needed for the document-specific extendability
+architecture
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#registered_extensions-instance_method" title="#registered_extensions (instance method)">- (Object) <strong>registered_extensions</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns array of hashes of registered extensions.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#field_semantics-instance_method" title="#field_semantics (instance method)">- (Object) <strong>field_semantics</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Class-level method for accessing/setting semantic mappings for solr stored
+fields.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use_extension-instance_method" title="#use_extension (instance method)">- (Object) <strong>use_extension</strong>(module_obj, &amp;condition) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Register an extension module with the class.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="registered_extensions=-instance_method"></span>
+      <span id="registered_extensions-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="registered_extensions-instance_method">
+  
+    - (<tt>Object</tt>) <strong>registered_extensions</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns array of hashes of registered extensions. Each hash has a
+:module_obj key and a :condition_proc key. Usually this method is only used
+internally in #apply_extensions, but if you want to zero out all previously
+registered extensions you can call: SolrDocument.registered_extensions =
+nil
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 211</span>
+
+<span class='def def kw'>def</span> <span class='registered_extensions identifier id'>registered_extensions</span>
+  <span class='@registered_extensions ivar id'>@registered_extensions</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="field_semantics-instance_method">
+  
+    - (<tt>Object</tt>) <strong>field_semantics</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Class-level method for accessing/setting semantic mappings for solr stored
+fields. Can be set by local app, key is a symbol for a semantic, value is a
+solr <em>stored</em> field.
+</p>
+<p>
+Stored field can be single or multi-value. In some cases clients may only
+use the first value from a multi-value field.
+</p>
+<p>
+Currently documented semantic tokens, not all may be used by core BL, but
+some may be used by plugins present or future.  :title, :author, :year,
+:language => User-presentable strings.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 238</span>
+
+<span class='def def kw'>def</span> <span class='field_semantics identifier id'>field_semantics</span>
+  <span class='@field_semantics ivar id'>@field_semantics</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="use_extension-instance_method">
+  
+    - (<tt>Object</tt>) <strong>use_extension</strong>(module_obj, &amp;condition) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Register an extension module with the class. A block taking one parameter
+can be supplied; the block will be passed an instance of  a Document, and
+the extension will be applied only if the block evaluates as true. If no
+condition is given, the extension will be applied to every instance of the
+class.
+</p>
+<p>
+SolrDocument.use_extension( SomeExtensionModule ) { | document |
+should_apply_some_extension?(document) } SolrDocument.use_extension(
+SomeExtensionModule) # will be applied to all docs
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+223
+224
+225</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document.rb', line 223</span>
+
+<span class='def def kw'>def</span> <span class='use_extension identifier id'>use_extension</span><span class='lparen token'>(</span> <span class='module_obj identifier id'>module_obj</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='condition identifier id'>condition</span> <span class='rparen token'>)</span>
+  <span class='registered_extensions identifier id'>registered_extensions</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:module_obj</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='module_obj identifier id'>module_obj</span><span class='comma token'>,</span> <span class='symbol val'>:condition_proc</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='condition identifier id'>condition</span><span class='rbrace token'>}</span>    
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:35 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

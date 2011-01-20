@@ -1,4 +1,5 @@
 module Blacklight
+
   
   autoload :CoreExt, 'blacklight/core_ext.rb'
   # load up the CoreExt by referencing it:
@@ -28,7 +29,7 @@ module Blacklight
   # I've just put master here now, should it say when it's running under master?  (Master?)
   # We need to find a better way of increasing this number automatically during releases, but this is a good way for now.
   def self.version
-    "master"
+    "2.7.0"
   end
   
   def self.init
@@ -36,8 +37,7 @@ module Blacklight
     solr_config = YAML::load(File.open("#{RAILS_ROOT}/config/solr.yml"))
     raise "The #{RAILS_ENV} environment settings were not found in the solr.yml config" unless solr_config[RAILS_ENV]
     
-    Blacklight.solr_config = solr_config[RAILS_ENV]
-    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]["default"]['url']
+    Blacklight.solr_config[:url] = solr_config[RAILS_ENV]['url']
     
     if Gem.available? 'curb'
       require 'curb'
@@ -58,6 +58,14 @@ module Blacklight
   def self.logger
     RAILS_DEFAULT_LOGGER
   end
+
+  #############  
+  # Methods for figuring out path to BL plugin, and then locate various files
+  # either in the app itself or defaults in the plugin -- whether you are running
+  # from the plugin itself or from an actual app using te plugin.
+  # In a seperate module so it can be used by both Blacklight class, and
+  # by rake tasks without loading the whole Rails environment. 
+  #############
   
   # returns the full path the the blacklight plugin installation
   def self.root
@@ -72,9 +80,9 @@ module Blacklight
   # Example:
   # full_path_to_solr_marc_jar = Blacklight.locate_path 'solr_marc', 'SolrMarc.jar'
   
-  def self.locate_path *subpath_fragments
+  def self.locate_path(*subpath_fragments)
     subpath = subpath_fragments.join('/')
-    base_match = [Rails.root, Blacklight.root].find do |base|
+    base_match = [Rails.root, self.root].find do |base|
       File.exists? File.join(base, subpath)
     end
     File.join(base_match.to_s, subpath) if base_match

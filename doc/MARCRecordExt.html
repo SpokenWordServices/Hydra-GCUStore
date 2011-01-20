@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: MARCRecordExt</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo; 
+    
+    
+    <span class="title">MARCRecordExt</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: MARCRecordExt
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/marc_record_ext.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract-instance_method" title="#extract (instance method)">- (Object) <strong>extract</strong>(input, regexp = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+input is a string in the format of: field:subfield multiple fields can be
+given, use a single space to separate example: record.extract &#8216;245:a
+245:b&#8217;.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format-instance_method" title="#format (instance method)">- (Object) <strong>format</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+<a
+href="http://www.itsmarc.com/crs/Bib0021.htm#Leader_06_Definition">www.itsmarc.com/crs/Bib0021.htm#Leader_06_Definition</a>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#isbn-instance_method" title="#isbn (instance method)">- (Object) <strong>isbn</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+extracts valid isbns.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#languages-instance_method" title="#languages (instance method)">- (Object) <strong>languages</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+returns the mapped language value.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid_isbn%3F-instance_method" title="#valid_isbn? (instance method)">- (Boolean) <strong>valid_isbn?</strong>(isbn, c_map = '0123456789X') </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+<a
+href="http://woss.name/2005/09/09/isbn-validation-part-2">woss.name/2005/09/09/isbn-validation-part-2</a>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#values_for-instance_method" title="#values_for (instance method)">- (Object) <strong>values_for</strong>(field_name, subs = nil, value_regx = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This methods returns a single dimensional array of values for subfields (it
+also removes blank values) if subs is specified, only the matching
+subfields are returned if subs is nil, the all subfields are returned the
+value_regx can be used to match the value of the subfield.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="extract-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract</strong>(input, regexp = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+input is a string in the format of: field:subfield multiple fields can be
+given, use a single space to separate example: record.extract &#8216;245:a
+245:b&#8217;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='input identifier id'>input</span><span class='comma token'>,</span> <span class='regexp identifier id'>regexp</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='hash identifier id'>hash</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='input identifier id'>input</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>' '</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='item identifier id'>item</span><span class='bitor op'>|</span>
+    <span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='item identifier id'>item</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+    <span class='next next kw'>next</span> <span class='unless unless_mod kw'>unless</span> <span class='k identifier id'>k</span>
+    <span class='hash identifier id'>hash</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='rbrack token'>]</span><span class='opasgn op'>||=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='hash identifier id'>hash</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='rbrack token'>]</span> <span class='lshft op'>&lt;&lt;</span> <span class='v identifier id'>v</span> <span class='if if_mod kw'>if</span> <span class='v identifier id'>v</span>
+  <span class='end end kw'>end</span>
+  <span class='hash identifier id'>hash</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='comma token'>,</span><span class='subfields identifier id'>subfields</span><span class='bitor op'>|</span>
+    <span class='values_for identifier id'>values_for</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='subfields identifier id'>subfields</span><span class='comma token'>,</span> <span class='regexp identifier id'>regexp</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+<a
+href="http://www.itsmarc.com/crs/Bib0021.htm#Leader_06_Definition">www.itsmarc.com/crs/Bib0021.htm#Leader_06_Definition</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 84</span>
+
+<span class='def def kw'>def</span> <span class='format identifier id'>format</span>
+  <span class='char_6 identifier id'>char_6</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='leader identifier id'>leader</span><span class='lbrack token'>[</span><span class='float val'>6</span><span class='dot3 op'>...</span><span class='integer val'>7</span><span class='rbrack token'>]</span>
+  <span class='char_7 identifier id'>char_7</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='leader identifier id'>leader</span><span class='lbrack token'>[</span><span class='float val'>7</span><span class='dot3 op'>...</span><span class='integer val'>8</span><span class='rbrack token'>]</span>
+  <span class='if if kw'>if</span> <span class='char_6 identifier id'>char_6</span> <span class='eq op'>==</span> <span class='string val'>'a'</span> <span class='and and kw'>and</span> <span class='dstring node'>%W(a c d m)</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='char_7 identifier id'>char_7</span>
+    <span class='code identifier id'>code</span> <span class='assign token'>=</span> <span class='string val'>'a'</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='dstring node'>%W(b s)</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='char_7 identifier id'>char_7</span>
+    <span class='code identifier id'>code</span> <span class='assign token'>=</span> <span class='string val'>'serials'</span>
+  <span class='else else kw'>else</span>
+    <span class='code identifier id'>code</span> <span class='assign token'>=</span> <span class='char_6 identifier id'>char_6</span>
+  <span class='end end kw'>end</span>
+  <span class='FieldMaps constant id'>FieldMaps</span><span class='colon2 op'>::</span><span class='FORMAT constant id'>FORMAT</span><span class='lbrack token'>[</span><span class='code identifier id'>code</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='string val'>'Unknown'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="isbn-instance_method">
+  
+    - (<tt>Object</tt>) <strong>isbn</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+extracts valid isbns
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 63</span>
+
+<span class='def def kw'>def</span> <span class='isbn identifier id'>isbn</span>
+  <span class='values identifier id'>values</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='string val'>'020:a'</span><span class='rparen token'>)</span>
+  <span class='comment val'># go through each value</span>
+  <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='select identifier id'>select</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='comment val'># &quot;select&quot; collects values only if the last line of this block is true</span>
+    <span class='comment val'># split on a space, grab the first</span>
+    <span class='isbn identifier id'>isbn</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>' '</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='comment val'># is it valid?</span>
+    <span class='valid_isbn? fid id'>valid_isbn?</span><span class='lparen token'>(</span><span class='isbn identifier id'>isbn</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="languages-instance_method">
+  
+    - (<tt>Object</tt>) <strong>languages</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns the mapped language value
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 75</span>
+
+<span class='def def kw'>def</span> <span class='languages identifier id'>languages</span>
+  <span class='values identifier id'>values</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='string val'>'008'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='lbrack token'>[</span><span class='float val'>35</span><span class='dot2 op'>..</span><span class='integer val'>37</span><span class='rbrack token'>]</span><span class='rbrack token'>]</span>
+  <span class='values identifier id'>values</span> <span class='opasgn op'>+=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='string val'>'041:a 041:d'</span><span class='rparen token'>)</span>
+  <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='uniq! fid id'>uniq!</span>
+  <span class='mapped identifier id'>mapped</span> <span class='assign token'>=</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='code identifier id'>code</span><span class='bitor op'>|</span> <span class='FieldMaps constant id'>FieldMaps</span><span class='colon2 op'>::</span><span class='LANGUAGE constant id'>LANGUAGE</span><span class='lbrack token'>[</span><span class='code identifier id'>code</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span>
+  <span class='mapped identifier id'>mapped</span><span class='dot token'>.</span><span class='reject identifier id'>reject</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="valid_isbn?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid_isbn?</strong>(isbn, c_map = '0123456789X') 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+<a
+href="http://woss.name/2005/09/09/isbn-validation-part-2">woss.name/2005/09/09/isbn-validation-part-2</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 52</span>
+
+<span class='def def kw'>def</span> <span class='valid_isbn? fid id'>valid_isbn?</span><span class='lparen token'>(</span><span class='isbn identifier id'>isbn</span><span class='comma token'>,</span> <span class='c_map identifier id'>c_map</span> <span class='assign token'>=</span> <span class='string val'>'0123456789X'</span><span class='rparen token'>)</span>
+  <span class='sum identifier id'>sum</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+  <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='isbn identifier id'>isbn</span>
+  <span class='match identifier id'>match</span> <span class='assign token'>=</span> <span class='isbn identifier id'>isbn</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='integer val'>-2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/\d/</span><span class='rparen token'>)</span>
+  <span class='match identifier id'>match</span><span class='dot token'>.</span><span class='each_with_index identifier id'>each_with_index</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='c identifier id'>c</span><span class='comma token'>,</span><span class='i identifier id'>i</span><span class='bitor op'>|</span>
+    <span class='sum identifier id'>sum</span> <span class='opasgn op'>+=</span> <span class='c identifier id'>c</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='mult op'>*</span> <span class='lparen token'>(</span><span class='i identifier id'>i</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='isbn identifier id'>isbn</span><span class='lbrack token'>[</span><span class='integer val'>-1</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='c_map identifier id'>c_map</span><span class='lbrack token'>[</span><span class='sum identifier id'>sum</span> <span class='mod op'>%</span> <span class='c_map identifier id'>c_map</span><span class='dot token'>.</span><span class='length identifier id'>length</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="values_for-instance_method">
+  
+    - (<tt>Object</tt>) <strong>values_for</strong>(field_name, subs = nil, value_regx = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This methods returns a single dimensional array of values for subfields (it
+also removes blank values) if subs is specified, only the matching
+subfields are returned if subs is nil, the all subfields are returned the
+value_regx can be used to match the value of the subfield
+</p>
+<h1>example: values_for &#8216;045&#8217;, [:a]</h1>
+<h1>parameters</h1>
+<p>
+field_name - &#8216;045&#8217; etc. subs - [:a, :b] etc. value_regx - a
+Regexp
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_record_ext.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='values_for identifier id'>values_for</span><span class='lparen token'>(</span><span class='field_name identifier id'>field_name</span><span class='comma token'>,</span> <span class='subs identifier id'>subs</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='value_regx identifier id'>value_regx</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='subs identifier id'>subs</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='subs identifier id'>subs</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='subs identifier id'>subs</span><span class='rbrack token'>]</span> <span class='unless unless_mod kw'>unless</span> <span class='subs identifier id'>subs</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='fields identifier id'>fields</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='tag identifier id'>tag</span><span class='eq op'>==</span><span class='field_name identifier id'>field_name</span> <span class='and and kw'>and</span> <span class='notop op'>!</span> <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+      <span class='field identifier id'>field</span><span class='dot token'>.</span><span class='subfields identifier id'>subfields</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='subfield identifier id'>subfield</span><span class='bitor op'>|</span>
+        <span class='next next kw'>next</span> <span class='if if_mod kw'>if</span> <span class='notop op'>!</span> <span class='subs identifier id'>subs</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span> <span class='and and kw'>and</span> <span class='notop op'>!</span> <span class='subs identifier id'>subs</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='subfield identifier id'>subfield</span><span class='dot token'>.</span><span class='code identifier id'>code</span><span class='rparen token'>)</span>
+        <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='value_regx identifier id'>value_regx</span> <span class='integer val'>? </span><span class='subfield identifier id'>subfield</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='value_regx identifier id'>value_regx</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='subfield identifier id'>subfield</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+        <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span> <span class='integer val'>? </span><span class='nil nil kw'>nil</span> <span class='colon op'>:</span> <span class='v identifier id'>v</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span><span class='dot token'>.</span><span class='reject identifier id'>reject</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

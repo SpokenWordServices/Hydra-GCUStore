@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Hydra::RepositoryController</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">RepositoryController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Hydra::RepositoryController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="../MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></dd>
+      
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="../AssetsController.html" title="AssetsController (class)">AssetsController</a></span>, <span class='object_link'><a href="../CatalogController.html" title="CatalogController (class)">CatalogController</a></span>, <span class='object_link'><a href="../DownloadsController.html" title="DownloadsController (class)">DownloadsController</a></span>, <span class='object_link'><a href="../FileAssetsController.html" title="FileAssetsController (class)">FileAssetsController</a></span>, <span class='object_link'><a href="../GenericContentObjectsController.html" title="GenericContentObjectsController (class)">GenericContentObjectsController</a></span>, <span class='object_link'><a href="../GetController.html" title="GetController (class)">GetController</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/lib/hydra/repository_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Hydra-repository Contoller is a controller layer mixin. It is in the
+controller scope: request params, session etc.
+</p>
+<p>
+NOTE: Be careful when creating variables here as they may be overriding
+something that already exists. The ActionController docs: <a
+href="http://api.rubyonrails.org/classes/ActionController/Base.html">api.rubyonrails.org/classes/ActionController/Base.html</a>
+</p>
+<p>
+Override these methods in your own controller for customizations:
+</p>
+<p>
+class HomeController < ActionController::Base
+</p>
+<pre class="code">
+  
+  <span class='include identifier id'>include</span> <span class='Stanford constant id'>Stanford</span><span class='colon2 op'>::</span><span class='SolrHelper constant id'>SolrHelper</span>
+  
+  <span class='def def kw'>def</span> <span class='solr_search_params identifier id'>solr_search_params</span>
+    <span class='super super kw'>super</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span> <span class='symbol val'>:per_page=</span><span class='gt op'>&gt;</span><span class='integer val'>10</span>
+  <span class='end end kw'>end</span>
+  
+</pre>
+<p>
+end
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(c) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#downloadables-instance_method" title="#downloadables (instance method)">- (Object) <strong>downloadables</strong>(fedora_object = @fedora_object, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns a list of datastreams for download.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#solr_name-instance_method" title="#solr_name (instance method)">- (Object) <strong>solr_name</strong>(field_name, field_type = :text) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../MediaShelf/ActiveFedoraHelper.html#load_af_instance_from_solr-instance_method" title="MediaShelf::ActiveFedoraHelper#load_af_instance_from_solr (method)">#load_af_instance_from_solr</a></span>, <span class='object_link'><a href="../MediaShelf/ActiveFedoraHelper.html#retrieve_af_model-instance_method" title="MediaShelf::ActiveFedoraHelper#retrieve_af_model (method)">#retrieve_af_model</a></span></p>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="included-class_method">
+  
+    + (<tt>Object</tt>) <strong>included</strong>(c) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/repository_controller.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='c identifier id'>c</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='c identifier id'>c</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:helper_method</span><span class='rparen token'>)</span>
+    <span class='c identifier id'>c</span><span class='dot token'>.</span><span class='helper_method identifier id'>helper_method</span> <span class='symbol val'>:solr_name</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="downloadables-instance_method">
+  
+    - (<tt>Object</tt>) <strong>downloadables</strong>(fedora_object = @fedora_object, opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns a list of datastreams for download. Uses user&#8217;s roles and
+&#8220;mime_type&#8221; value in submitted params to decide what to return.
+if you pass the optional argument of :canonical=>true, it will return the
+canonical datastream for this object (a single object not a hash of
+datastreams)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/repository_controller.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='downloadables identifier id'>downloadables</span><span class='lparen token'>(</span><span class='fedora_object identifier id'>fedora_object</span><span class='assign token'>=</span><span class='@fedora_object ivar id'>@fedora_object</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:canonical</span><span class='rbrack token'>]</span>
+    <span class='mime_type identifier id'>mime_type</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:mime_type</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:mime_type</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='string val'>&quot;application/pdf&quot;</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='filter_datastreams_for_mime_type identifier id'>filter_datastreams_for_mime_type</span><span class='lparen token'>(</span><span class='fedora_object identifier id'>fedora_object</span><span class='dot token'>.</span><span class='datastreams identifier id'>datastreams</span><span class='comma token'>,</span> <span class='mime_type identifier id'>mime_type</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='sort identifier id'>sort</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='editor? fid id'>editor?</span> 
+    <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='string val'>&quot;mime_type&quot;</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;all&quot;</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='fedora_object identifier id'>fedora_object</span><span class='dot token'>.</span><span class='datastreams identifier id'>datastreams</span>
+    <span class='else else kw'>else</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+      <span class='fedora_object identifier id'>fedora_object</span><span class='dot token'>.</span><span class='datastreams identifier id'>datastreams</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dsid identifier id'>dsid</span><span class='comma token'>,</span><span class='ds identifier id'>ds</span><span class='bitor op'>|</span>
+        <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='new_object? fid id'>new_object?</span>
+          <span class='mime_type identifier id'>mime_type</span> <span class='assign token'>=</span> <span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>&quot;mimeType&quot;</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>&quot;mimeType&quot;</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='string val'>&quot;&quot;</span>
+          <span class='if if kw'>if</span> <span class='mime_type identifier id'>mime_type</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>&quot;pdf&quot;</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='label identifier id'>label</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>&quot;_TEXT.xml&quot;</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='label identifier id'>label</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>&quot;_METS.xml&quot;</span><span class='rparen token'>)</span>
+           <span class='result identifier id'>result</span><span class='lbrack token'>[</span><span class='dsid identifier id'>dsid</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ds identifier id'>ds</span>
+          <span class='end end kw'>end</span> 
+        <span class='end end kw'>end</span> 
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='Hash constant id'>Hash</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='fedora_object identifier id'>fedora_object</span><span class='dot token'>.</span><span class='datastreams identifier id'>datastreams</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dsid identifier id'>dsid</span><span class='comma token'>,</span><span class='ds identifier id'>ds</span><span class='bitor op'>|</span>
+       <span class='if if kw'>if</span> <span class='ds identifier id'>ds</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>&quot;mimeType&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>&quot;pdf&quot;</span><span class='rparen token'>)</span>
+         <span class='result identifier id'>result</span><span class='lbrack token'>[</span><span class='dsid identifier id'>dsid</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='ds identifier id'>ds</span>
+       <span class='end end kw'>end</span>  
+     <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span> 
+  <span class='comment val'># puts &quot;downloadables result: #{result}&quot;</span>
+  <span class='return return kw'>return</span> <span class='result identifier id'>result</span>    
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="solr_name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>solr_name</strong>(field_name, field_type = :text) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/repository_controller.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='solr_name identifier id'>solr_name</span><span class='lparen token'>(</span><span class='field_name identifier id'>field_name</span><span class='comma token'>,</span> <span class='field_type identifier id'>field_type</span> <span class='assign token'>=</span> <span class='symbol val'>:text</span><span class='rparen token'>)</span>
+  <span class='colon3 op'>::</span><span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='SolrService constant id'>SolrService</span><span class='dot token'>.</span><span class='solr_name identifier id'>solr_name</span><span class='lparen token'>(</span><span class='field_name identifier id'>field_name</span><span class='comma token'>,</span> <span class='field_type identifier id'>field_type</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

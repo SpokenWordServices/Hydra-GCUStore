@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: ApplicationController</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo; 
+    
+    
+    <span class="title">ApplicationController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ApplicationController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActionController::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next">ApplicationController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="HydraAccessControlsHelper.html" title="HydraAccessControlsHelper (module)">HydraAccessControlsHelper</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/blacklight/app/controllers/application_controller.rb<span class="defines">,<br />
+  app/controllers/application_controller.rb,<br /> vendor/plugins/hydra_repository/app/controllers/application_controller.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Filters added to this controller apply to all controllers in the
+application. Likewise, all the methods added will be available for all
+controllers.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="AssetsController.html" title="AssetsController (class)">AssetsController</a></span>, <span class='object_link'><a href="BookmarksController.html" title="BookmarksController (class)">BookmarksController</a></span>, <span class='object_link'><a href="CatalogController.html" title="CatalogController (class)">CatalogController</a></span>, <span class='object_link'><a href="DownloadsController.html" title="DownloadsController (class)">DownloadsController</a></span>, <span class='object_link'><a href="FeedbackController.html" title="FeedbackController (class)">FeedbackController</a></span>, <span class='object_link'><a href="FileAssetsController.html" title="FileAssetsController (class)">FileAssetsController</a></span>, <span class='object_link'><a href="FolderController.html" title="FolderController (class)">FolderController</a></span>, <span class='object_link'><a href="GenericContentObjectsController.html" title="GenericContentObjectsController (class)">GenericContentObjectsController</a></span>, <span class='object_link'><a href="GetController.html" title="GetController (class)">GetController</a></span>, <span class='object_link'><a href="PermissionsController.html" title="PermissionsController (class)">PermissionsController</a></span>, <span class='object_link'><a href="SavedSearchesController.html" title="SavedSearchesController (class)">SavedSearchesController</a></span>, <span class='object_link'><a href="SearchHistoryController.html" title="SearchHistoryController (class)">SearchHistoryController</a></span>, <span class='object_link'><a href="UserSessionsController.html" title="UserSessionsController (class)">UserSessionsController</a></span>, <span class='object_link'><a href="UsersController.html" title="UsersController (class)">UsersController</a></span></p>
+</div>
+
+
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_user-instance_method" title="#current_user (instance method)">- (Object) <strong>current_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_html_head-instance_method" title="#default_html_head (instance method)">- (Object) <strong>default_html_head</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+before filter to set up our default html HEAD content.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#error-instance_method" title="#error (instance method)">- (Object) <strong>error</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+test for exception notifier plugin.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extra_head_content-instance_method" title="#extra_head_content (instance method)">- (Object) <strong>extra_head_content</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+An array of strings to be added to HTML HEAD section of view.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#javascript_includes-instance_method" title="#javascript_includes (instance method)">- (Object) <strong>javascript_includes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Array, where each element is an array of arguments to Rails
+javascript_include_tag helper.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stylesheet_links-instance_method" title="#stylesheet_links (instance method)">- (Object) <strong>stylesheet_links</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Array, where each element is an array of arguments to Rails
+stylesheet_link_tag helper.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_class-instance_method" title="#user_class (instance method)">- (Object) <strong>user_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HydraAccessControlsHelper.html" title="HydraAccessControlsHelper (module)">HydraAccessControlsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HydraAccessControlsHelper.html#editor%3F-instance_method" title="HydraAccessControlsHelper#editor? (method)">#editor?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#reader%3F-instance_method" title="HydraAccessControlsHelper#reader? (method)">#reader?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#test_permission-instance_method" title="HydraAccessControlsHelper#test_permission (method)">#test_permission</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="current_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>current_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 96</span>
+
+<span class='def def kw'>def</span> <span class='current_user identifier id'>current_user</span>
+  <span class='return return kw'>return</span> <span class='@current_user ivar id'>@current_user</span> <span class='if if_mod kw'>if</span> <span class='defined? defined kw'>defined?</span><span class='lparen token'>(</span><span class='@current_user ivar id'>@current_user</span><span class='rparen token'>)</span>
+  <span class='@current_user ivar id'>@current_user</span> <span class='assign token'>=</span> <span class='current_user_session identifier id'>current_user_session</span> <span class='andop op'>&amp;&amp;</span> <span class='current_user_session identifier id'>current_user_session</span><span class='dot token'>.</span><span class='user identifier id'>user</span>
+  <span class='@current_user ivar id'>@current_user</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span><span class='lparen token'>(</span><span class='Hydra constant id'>Hydra</span><span class='colon2 op'>::</span><span class='SuperuserAttributes constant id'>SuperuserAttributes</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="default_html_head-instance_method">
+  
+    - (<tt>Object</tt>) <strong>default_html_head</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+before filter to set up our default html HEAD content. Sub-class
+controllers can over-ride this method, or instead turn off the
+before_filter if they like. See: <a
+href="http://api.rubyonrails.org/classes/ActionController/Filters/ClassMethods.html">api.rubyonrails.org/classes/ActionController/Filters/ClassMethods.html</a>
+for how to turn off a filter in a sub-class and such.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='default_html_head identifier id'>default_html_head</span>
+  <span class='comment val'># when working offline, comment out the above uncomment the next line:</span>
+  <span class='comment val'>#javascript_includes &lt;&lt; ['jquery-1.4.2.min.js', 'jquery-ui-1.8.1.custom.min.js', { :plugin=&gt;:blacklight } ]</span>
+
+  <span class='javascript_includes identifier id'>javascript_includes</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'</span><span class='comma token'>,</span> <span class='string val'>'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js'</span><span class='rbrack token'>]</span>
+  <span class='javascript_includes identifier id'>javascript_includes</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'application'</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:plugin=</span><span class='gt op'>&gt;</span><span class='symbol val'>:hydra_repository</span><span class='comma token'>,</span> <span class='symbol val'>:media=</span><span class='gt op'>&gt;</span><span class='string val'>'all'</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span>
+  
+  <span class='javascript_includes identifier id'>javascript_includes</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'blacklight'</span><span class='comma token'>,</span> <span class='string val'>'application'</span><span class='comma token'>,</span> <span class='string val'>'accordion'</span><span class='comma token'>,</span> <span class='lbrace token'>{</span> <span class='symbol val'>:plugin=</span><span class='gt op'>&gt;</span><span class='symbol val'>:blacklight</span> <span class='rbrace token'>}</span> <span class='rbrack token'>]</span>
+  
+  <span class='stylesheet_links identifier id'>stylesheet_links</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'yui'</span><span class='comma token'>,</span> <span class='string val'>'jquery/ui-lightness/jquery-ui-1.8.1.custom.css'</span><span class='comma token'>,</span> <span class='string val'>'application'</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:plugin=</span><span class='gt op'>&gt;</span><span class='symbol val'>:blacklight</span><span class='comma token'>,</span> <span class='symbol val'>:media=</span><span class='gt op'>&gt;</span><span class='string val'>'all'</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span>
+  <span class='stylesheet_links identifier id'>stylesheet_links</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'redmond/jquery-ui-1.8.5.custom.css'</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:plugin=</span><span class='gt op'>&gt;</span><span class='symbol val'>:hydra_repository</span><span class='comma token'>,</span> <span class='symbol val'>:media=</span><span class='gt op'>&gt;</span><span class='string val'>'all'</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span>      
+  <span class='stylesheet_links identifier id'>stylesheet_links</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrack token'>[</span><span class='string val'>'styles'</span><span class='comma token'>,</span> <span class='string val'>'hydrangea'</span><span class='comma token'>,</span> <span class='string val'>&quot;hydrangea-split-button.css&quot;</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:plugin=</span><span class='gt op'>&gt;</span><span class='symbol val'>:hydra_repository</span><span class='comma token'>,</span><span class='symbol val'>:media=</span><span class='gt op'>&gt;</span><span class='string val'>'all'</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="error-instance_method">
+  
+    - (<tt>Object</tt>) <strong>error</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+test for exception notifier plugin
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='error identifier id'>error</span>
+  <span class='raise identifier id'>raise</span> <span class='RuntimeError constant id'>RuntimeError</span><span class='comma token'>,</span> <span class='string val'>&quot;Generating a test error...&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="extra_head_content-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extra_head_content</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+An array of strings to be added to HTML HEAD section of view. See
+ApplicationHelper#render_head_content for details.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 46</span>
+
+<span class='def def kw'>def</span> <span class='extra_head_content identifier id'>extra_head_content</span>
+  <span class='@extra_head_content ivar id'>@extra_head_content</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="javascript_includes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>javascript_includes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Array, where each element is an array of arguments to Rails
+javascript_include_tag helper. See ApplicationHelper#render_head_content
+for details.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='javascript_includes identifier id'>javascript_includes</span>
+  <span class='@javascript_includes ivar id'>@javascript_includes</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="stylesheet_links-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stylesheet_links</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Array, where each element is an array of arguments to Rails
+stylesheet_link_tag helper. See ApplicationHelper#render_head_content for
+details.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='stylesheet_links identifier id'>stylesheet_links</span>
+  <span class='@stylesheet_links ivar id'>@stylesheet_links</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_class-instance_method">
+  
+    - (<tt>Object</tt>) <strong>user_class</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/application_controller.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='user_class identifier id'>user_class</span><span class='semicolon token'>;</span> <span class='User constant id'>User</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:27 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

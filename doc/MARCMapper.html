@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: MARCMapper</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo; 
+    
+    
+    <span class="title">MARCMapper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: MARCMapper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">MARCMapper</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/marc_mapper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_marc_file-class_method" title="from_marc_file (class method)">+ (Object) <strong>from_marc_file</strong>(marc_file, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+pass in a path to a marc file a block can be used for logging etc..
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="from_marc_file-class_method">
+  
+    + (<tt>Object</tt>) <strong>from_marc_file</strong>(marc_file, &amp;blk) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+pass in a path to a marc file a block can be used for logging etc..
+</p>
+<p>
+mapper.from_marc_file(&#8217;/path/to/data.mrc&#8217;) do |mapped_doc|
+</p>
+<pre class="code">
+  <span class='comment val'># do something here... logging etc..</span>
+</pre>
+<p>
+end
+</p>
+<p>
+this returns an array of documents (hashes)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/marc_mapper.rb', line 18</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='from_marc_file identifier id'>from_marc_file</span><span class='lparen token'>(</span><span class='marc_file identifier id'>marc_file</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  
+  <span class='@mapper ivar id'>@mapper</span> <span class='assign token'>=</span> <span class='BlockMapper constant id'>BlockMapper</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  
+  <span class='comment val'># add custom methods to each marc record</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='before_each_source_item identifier id'>before_each_source_item</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span> <span class='MARCRecordExt constant id'>MARCRecordExt</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># remove ; / . , : and spaces from the end</span>
+  <span class='cleanup_regexp identifier id'>cleanup_regexp</span> <span class='assign token'>=</span> <span class='regexp val'>/( |;|\/|\.|,|:)+$/</span>
+  <span class='comment val'># after_each_mapped_value gets executed for each mapped item</span>
+  <span class='comment val'># ... after it has been mapped</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='after_each_mapped_value identifier id'>after_each_mapped_value</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='field identifier id'>field</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+    <span class='comment val'>#puts &quot;cleaning up #{field} value(s) before adding to solr...&quot;</span>
+    <span class='if if kw'>if</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='String constant id'>String</span><span class='rparen token'>)</span>
+      <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='cleanup_regexp identifier id'>cleanup_regexp</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span> <span class='comment val'># clean this string and return</span>
+    <span class='elsif elsif kw'>elsif</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Array constant id'>Array</span><span class='rparen token'>)</span>
+      <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='vv identifier id'>vv</span><span class='bitor op'>|</span><span class='vv identifier id'>vv</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='cleanup_regexp identifier id'>cleanup_regexp</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span><span class='rbrace token'>}</span> <span class='comment val'># clean each value and return a new array</span>
+    <span class='else else kw'>else</span>
+      <span class='v identifier id'>v</span> <span class='comment val'># just return whatever it is</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:id</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='lbrack token'>[</span><span class='string val'>'001'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot; &quot;</span><span class='comma token'>,</span><span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>&quot;/&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># titles (text)</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:title_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='values_for identifier id'>values_for</span> <span class='string val'>'245'</span><span class='comma token'>,</span> <span class='string val'>'a'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:sub_title_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='values_for identifier id'>values_for</span> <span class='string val'>'245'</span><span class='comma token'>,</span> <span class='string val'>'b'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:alt_titles_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'240:b 700:t 710:t 711:t 440:a 490:a 505:a 830:a'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:title_added_entry_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='values_for identifier id'>values_for</span> <span class='string val'>'700'</span><span class='comma token'>,</span> <span class='string val'>'t'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># title sort</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:title_sort</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'245:a'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:author_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'100:a 110:a 111:a 130:a 700:a 710:a 711:a'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:published_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'260:a'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:isbn_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='isbn identifier id'>isbn</span> <span class='comment val'># in MARCRecordExt module</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:material_type_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='values_for identifier id'>values_for</span> <span class='string val'>'300'</span><span class='comma token'>,</span> <span class='string val'>'a'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># subject (text)</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:subject_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'600:a 610:a 611:a 630:a 650:a 651:a 655:a 690:a'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># subject (facets)</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:subject_era_facet</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'650:d 650:y 651:y 655:y'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:geographic_subject_facet</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'650:c 650:z 651:a 651:x 651:z 655:z'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:language_facet</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='languages identifier id'>languages</span> <span class='comment val'># in MARCRecordExt module</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># format fields</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:format_facet</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='format identifier id'>format</span> <span class='comment val'># in MARCRecordExt module</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># downcased, format, spaces converted to _</span>
+  <span class='comment val'># This can be used for the partial view mapping</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:format_code_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='format identifier id'>format</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/ _/</span><span class='comma token'>,</span> <span class='string val'>' '</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/ /</span><span class='comma token'>,</span> <span class='string val'>'_'</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># grab some vernacular for demonstration purposes (e.g. &quot;did you mean&quot;)</span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:vern_t</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span> <span class='string val'>'880:a 880:b 880:c 880:e 880:f 880:p 880:t'</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># _display is stored, but not indexed</span>
+  <span class='comment val'># don't store a string, store marc21 so we can read it back out</span>
+  <span class='comment val'># into a MARC::Record object </span>
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='symbol val'>:marc_display</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='rec identifier id'>rec</span><span class='dot token'>.</span><span class='to_xml identifier id'>to_xml</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='reader identifier id'>reader</span> <span class='assign token'>=</span> <span class='MARC constant id'>MARC</span><span class='colon2 op'>::</span><span class='Reader constant id'>Reader</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='marc_file identifier id'>marc_file</span><span class='rparen token'>)</span>
+  
+  <span class='@mapper ivar id'>@mapper</span><span class='dot token'>.</span><span class='run identifier id'>run</span><span class='lparen token'>(</span><span class='reader identifier id'>reader</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

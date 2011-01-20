@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (B)</a> &raquo; 
+    
+    
+    <span class="title">Blacklight</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="Blacklight/Configurable.html" title="Blacklight::Configurable (module)">Configurable</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html" title="Blacklight::SearchFields (module)">SearchFields</a></span></dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Blacklight/CatalogHelper.html" title="Blacklight::CatalogHelper (module)">CatalogHelper</a></span>, <span class='object_link'><a href="Blacklight/Configurable.html" title="Blacklight::Configurable (module)">Configurable</a></span>, <span class='object_link'><a href="Blacklight/CoreExt.html" title="Blacklight::CoreExt (module)">CoreExt</a></span>, <span class='object_link'><a href="Blacklight/Marc.html" title="Blacklight::Marc (module)">Marc</a></span>, <span class='object_link'><a href="Blacklight/Routes.html" title="Blacklight::Routes (module)">Routes</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html" title="Blacklight::SearchFields (module)">SearchFields</a></span>, <span class='object_link'><a href="Blacklight/Solr.html" title="Blacklight::Solr (module)">Solr</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">SolrHelper</a></span>, <span class='object_link'><a href="Blacklight/User.html" title="Blacklight::User (module)">User</a></span>
+    
+   
+    
+  
+</p>
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#solr-class_method" title="solr (class method)">+ (Object) <strong>solr</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute solr.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#solr_config-class_method" title="solr_config (class method)">+ (Object) <strong>solr_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute solr_config.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#init-class_method" title="init (class method)">+ (Object) <strong>init</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#locate_path-class_method" title="locate_path (class method)">+ (Object) <strong>locate_path</strong>(*subpath_fragments) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Searches Rails.root then Blacklight.root for a valid path returns a full
+path if a valid path is found returns nil if nothing is found.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger-class_method" title="logger (class method)">+ (Object) <strong>logger</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#root-class_method" title="root (class method)">+ (Object) <strong>root</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+returns the full path the the blacklight plugin installation.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#version-class_method" title="version (class method)">+ (Object) <strong>version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Just returning a string for the Blacklight version number.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Blacklight/SearchFields.html" title="Blacklight::SearchFields (module)">SearchFields</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SearchFields.html#default_search_field-instance_method" title="Blacklight::SearchFields#default_search_field (method)">default_search_field</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html#label_for_search_field-instance_method" title="Blacklight::SearchFields#label_for_search_field (method)">label_for_search_field</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html#search_field_def_for_key-instance_method" title="Blacklight::SearchFields#search_field_def_for_key (method)">search_field_def_for_key</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html#search_field_list-instance_method" title="Blacklight::SearchFields#search_field_list (method)">search_field_list</a></span>, <span class='object_link'><a href="Blacklight/SearchFields.html#search_field_options_for_select-instance_method" title="Blacklight::SearchFields#search_field_options_for_select (method)">search_field_options_for_select</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Blacklight/Configurable.html" title="Blacklight::Configurable (module)">Configurable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/Configurable.html#config-instance_method" title="Blacklight::Configurable#config (method)">config</a></span>, <span class='object_link'><a href="Blacklight/Configurable.html#configs-instance_method" title="Blacklight::Configurable#configs (method)">configs</a></span>, <span class='object_link'><a href="Blacklight/Configurable.html#configure-instance_method" title="Blacklight::Configurable#configure (method)">configure</a></span>, <span class='object_link'><a href="Blacklight/Configurable.html#reset_configs%21-instance_method" title="Blacklight::Configurable#reset_configs! (method)">reset_configs!</a></span></p>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="solr=-class_method"></span>
+      <span id="solr-class_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="solr-class_method">
+  
+    + (<tt>Object</tt>) <strong>solr</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute solr
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='solr identifier id'>solr</span>
+  <span class='@solr ivar id'>@solr</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="solr_config=-class_method"></span>
+      <span id="solr_config-class_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="solr_config-class_method">
+  
+    + (<tt>Object</tt>) <strong>solr_config</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute solr_config
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='solr_config identifier id'>solr_config</span>
+  <span class='@solr_config ivar id'>@solr_config</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="init-class_method">
+  
+    + (<tt>Object</tt>) <strong>init</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='init identifier id'>init</span>
+  
+  <span class='solr_config identifier id'>solr_config</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='colon2 op'>::</span><span class='load identifier id'>load</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{RAILS_ROOT}/config/solr.yml&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='dstring node'>&quot;The #{RAILS_ENV} environment settings were not found in the solr.yml config&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='RAILS_ENV constant id'>RAILS_ENV</span><span class='rbrack token'>]</span>
+  
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='symbol val'>:url</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='RAILS_ENV constant id'>RAILS_ENV</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='string val'>'url'</span><span class='rbrack token'>]</span>
+  
+  <span class='if if kw'>if</span> <span class='Gem constant id'>Gem</span><span class='dot token'>.</span><span class='available? fid id'>available?</span> <span class='string val'>'curb'</span>
+    <span class='require identifier id'>require</span> <span class='string val'>'curb'</span>
+    <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span> <span class='assign token'>=</span> <span class='RSolr constant id'>RSolr</span><span class='colon2 op'>::</span><span class='Ext constant id'>Ext</span><span class='dot token'>.</span><span class='connect identifier id'>connect</span><span class='lparen token'>(</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr_config identifier id'>solr_config</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='symbol val'>:adapter=</span><span class='gt op'>&gt;</span><span class='symbol val'>:curb</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span> <span class='assign token'>=</span> <span class='RSolr constant id'>RSolr</span><span class='colon2 op'>::</span><span class='Ext constant id'>Ext</span><span class='dot token'>.</span><span class='connect identifier id'>connect</span><span class='lparen token'>(</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr_config identifier id'>solr_config</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='comment val'># set the SolrDocument.connection to Blacklight.solr</span>
+  <span class='SolrDocument constant id'>SolrDocument</span><span class='dot token'>.</span><span class='connection identifier id'>connection</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span>
+  <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span><span class='lparen token'>(</span><span class='dstring node'>&quot;BLACKLIGHT: running version #{Blacklight.version}&quot;</span><span class='rparen token'>)</span>
+  <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span><span class='lparen token'>(</span><span class='dstring node'>&quot;BLACKLIGHT: initialized with Blacklight.solr_config: #{Blacklight.solr_config.inspect}&quot;</span><span class='rparen token'>)</span>
+  <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span><span class='lparen token'>(</span><span class='dstring node'>&quot;BLACKLIGHT: initialized with Blacklight.solr: #{Blacklight.solr.inspect}&quot;</span><span class='rparen token'>)</span>
+  <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span><span class='lparen token'>(</span><span class='dstring node'>&quot;BLACKLIGHT: initialized with Blacklight.config: #{Blacklight.config.inspect}&quot;</span><span class='rparen token'>)</span>
+  
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="locate_path-class_method">
+  
+    + (<tt>Object</tt>) <strong>locate_path</strong>(*subpath_fragments) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Searches Rails.root then Blacklight.root for a valid path returns a full
+path if a valid path is found returns nil if nothing is found. First looks
+in Rails.root, then Blacklight.root
+</p>
+<p>
+Example: full_path_to_solr_marc_jar = Blacklight.locate_path
+&#8216;solr_marc&#8217;, &#8216;SolrMarc.jar&#8217;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 83</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='locate_path identifier id'>locate_path</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='subpath_fragments identifier id'>subpath_fragments</span><span class='rparen token'>)</span>
+  <span class='subpath identifier id'>subpath</span> <span class='assign token'>=</span> <span class='subpath_fragments identifier id'>subpath_fragments</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'/'</span><span class='rparen token'>)</span>
+  <span class='base_match identifier id'>base_match</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='Rails constant id'>Rails</span><span class='dot token'>.</span><span class='root identifier id'>root</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='root identifier id'>root</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='base identifier id'>base</span><span class='bitor op'>|</span>
+    <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='comma token'>,</span> <span class='subpath identifier id'>subpath</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='base_match identifier id'>base_match</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='subpath identifier id'>subpath</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='base_match identifier id'>base_match</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="logger-class_method">
+  
+    + (<tt>Object</tt>) <strong>logger</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 58</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='logger identifier id'>logger</span>
+  <span class='RAILS_DEFAULT_LOGGER constant id'>RAILS_DEFAULT_LOGGER</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="root-class_method">
+  
+    + (<tt>Object</tt>) <strong>root</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns the full path the the blacklight plugin installation
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 71</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='root identifier id'>root</span>
+  <span class='@root ivar id'>@root</span> <span class='opasgn op'>||=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='__FILE__ __file__ kw'>__FILE__</span><span class='comma token'>,</span> <span class='string val'>'..'</span><span class='comma token'>,</span> <span class='string val'>'..'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="version-class_method">
+  
+    + (<tt>Object</tt>) <strong>version</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Just returning a string for the Blacklight version number. I&#8217;ve just
+put master here now, should it say when it&#8217;s running under master? 
+(Master?) We need to find a better way of increasing this number
+automatically during releases, but this is a good way for now.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='version identifier id'>version</span>
+  <span class='string val'>&quot;2.7.0&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:35 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

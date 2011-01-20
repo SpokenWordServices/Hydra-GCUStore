@@ -111,12 +111,16 @@ describe ApplicationHelper do
 
   describe "search_as_hidden_fields" do
     def params
-      {:q => "query", :sort => "sort", :per_page => "20", :search_field => "search_field", :page => 100, :arbitrary_key => "arbitrary_value", :f => {"field" => ["value1", "value2"]}}
+      {:q => "query", :sort => "sort", :per_page => "20", :search_field => "search_field", :page => 100, :arbitrary_key => "arbitrary_value", :f => {"field" => ["value1", "value2"]}, :controller => "catalog", :action => "index"}
     end
     describe "for default arguments" do
       it "should default to omitting :page" do
         search_as_hidden_fields.should have_tag("input[type=hidden]", 7)
         search_as_hidden_fields.should_not have_tag("input[name=page]") 
+      end
+      it "should not return action and controller hidden elements" do
+        search_as_hidden_fields.should_not have_tag("input[name=action]")
+        search_as_hidden_fields.should_not have_tag("input[name=controller]")
       end
       describe "for omit_keys parameter" do
         it "should not include those keys" do
@@ -207,6 +211,29 @@ describe ApplicationHelper do
       @document = SolrDocument.new(Blacklight.config[:show][:heading] => "A Fake Document")
 
       render_document_heading.should have_tag("h1", :text => document_heading, :count => 1)
+     end
+   end
+
+   describe "link_to_document" do
+     it "should consist of the document title wrapped in a <a>" do
+      data = {'id'=>'123456','title_display'=>['654321'] }
+      @document = SolrDocument.new(data)
+      link_to_document(@document, { :label => :title_display }).should have_tag("a", :text => '654321', :count => 1)
+     end
+     it "should accept and return a string label" do
+      data = {'id'=>'123456','title_display'=>['654321'] }
+      @document = SolrDocument.new(data)
+      link_to_document(@document, { :label => "title_display" }).should have_tag("a", :text => 'title_display', :count => 1)
+     end
+     it "should accept and return a Proc" do
+      data = {'id'=>'123456','title_display'=>['654321'] }
+      @document = SolrDocument.new(data)
+      link_to_document(@document, { :label => Proc.new { |doc, opts| doc.get(:id) + ": " + doc.get(:title_display) } }).should have_tag("a", :text => '123456: 654321', :count => 1)
+     end
+     it "should return id when label is missing" do
+      data = {'id'=>'123456'}
+      @document = SolrDocument.new(data)
+      link_to_document(@document, { :label => :title_display }).should have_tag("a", :text => '123456', :count => 1)
      end
    end
 
@@ -308,23 +335,26 @@ describe ApplicationHelper do
          def self.extended(document)
            document.will_export_as(:weird, "application/weird")
            document.will_export_as(:weirder, "application/weirder")
+           document.will_export_as(:weird_dup, "application/weird")
          end
          def export_as_weird ; "weird" ; end
          def export_as_weirder ; "weirder" ; end
+         def export_as_weird_dup ; "weird_dup" ; end
       end
       MockDocument.use_extension(MockExtension)
     before(:each) do
       @doc_id = "MOCK_ID1"
       @document = MockDocument.new(:id => @doc_id)
-    end
-    it "generates <link rel=alternate> tags" do
       params[:controller] = "controller"
       params[:action] = "action"
+    end
+    it "generates <link rel=alternate> tags" do
+
 
       response = render_link_rel_alternates(@document)
 
       @document.export_formats.each_pair do |format, spec|
-        response.should have_tag("link[type=#{ spec[:content_type]  }]") do |matches|
+        response.should have_tag("link[href$=.#{ format  }]") do |matches|
           matches.length.should == 1
           tag = matches[0]
           tag.attributes["rel"].should == "alternate"
@@ -332,6 +362,15 @@ describe ApplicationHelper do
           tag.attributes["href"].should === catalog_url(@doc_id, format)
         end        
       end
+    end
+    it "respects :unique=>true" do
+      response = render_link_rel_alternates(@document, :unique => true)
+      response.should have_tag("link[type=application/weird]", :count => 1)
+    end
+    it "excludes formats from :exclude" do
+      response = render_link_rel_alternates(@document, :exclude => [:weird_dup])
+
+      response.should_not have_tag("link[href$=.weird_dup]")
     end
     
   end

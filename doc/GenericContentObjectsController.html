@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: GenericContentObjectsController</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (G)</a> &raquo; 
+    
+    
+    <span class="title">GenericContentObjectsController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: GenericContentObjectsController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">GenericContentObjectsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html" title="Hydra::AssetsControllerHelper (module)">Hydra::AssetsControllerHelper</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html" title="Hydra::FileAssetsHelper (module)">Hydra::FileAssetsHelper</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span>, <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/hydra_repository/app/controllers/generic_content_objects_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+
+
+  
+  
+  
+  
+  <h3 class="inherited">Constants included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#MaxPerPage-constant" title="Blacklight::SolrHelper::MaxPerPage (constant)">MaxPerPage</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_for-instance_method" title="Blacklight::SolrHelper#facet_limit_for (method)">#facet_limit_for</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_hash-instance_method" title="Blacklight::SolrHelper#facet_limit_hash (method)">#facet_limit_hash</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_facet_pagination-instance_method" title="Blacklight::SolrHelper#get_facet_pagination (method)">#get_facet_pagination</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_opensearch_response-instance_method" title="Blacklight::SolrHelper#get_opensearch_response (method)">#get_opensearch_response</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_search_results-instance_method" title="Blacklight::SolrHelper#get_search_results (method)">#get_search_results</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_single_doc_via_search-instance_method" title="Blacklight::SolrHelper#get_single_doc_via_search (method)">#get_single_doc_via_search</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_doc_id-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_doc_id (method)">#get_solr_response_for_doc_id</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_field_values-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_field_values (method)">#get_solr_response_for_field_values</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#included-class_method" title="Blacklight::SolrHelper.included (method)">included</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#max_per_page-instance_method" title="Blacklight::SolrHelper#max_per_page (method)">#max_per_page</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_doc_params-instance_method" title="Blacklight::SolrHelper#solr_doc_params (method)">#solr_doc_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_facet_params-instance_method" title="Blacklight::SolrHelper#solr_facet_params (method)">#solr_facet_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_opensearch_params-instance_method" title="Blacklight::SolrHelper#solr_opensearch_params (method)">#solr_opensearch_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_param_quote-instance_method" title="Blacklight::SolrHelper#solr_param_quote (method)">#solr_param_quote</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_search_params-instance_method" title="Blacklight::SolrHelper#solr_search_params (method)">#solr_search_params</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#load_af_instance_from_solr-instance_method" title="MediaShelf::ActiveFedoraHelper#load_af_instance_from_solr (method)">#load_af_instance_from_solr</a></span>, <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#retrieve_af_model-instance_method" title="MediaShelf::ActiveFedoraHelper#retrieve_af_model (method)">#retrieve_af_model</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/RepositoryController.html#downloadables-instance_method" title="Hydra::RepositoryController#downloadables (method)">#downloadables</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#included-class_method" title="Hydra::RepositoryController.included (method)">included</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#solr_name-instance_method" title="Hydra::RepositoryController#solr_name (method)">#solr_name</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/FileAssetsHelper.html" title="Hydra::FileAssetsHelper (module)">Hydra::FileAssetsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/FileAssetsHelper.html#add_posted_blob_to_asset-instance_method" title="Hydra::FileAssetsHelper#add_posted_blob_to_asset (method)">#add_posted_blob_to_asset</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html#asset_class_from_params-instance_method" title="Hydra::FileAssetsHelper#asset_class_from_params (method)">#asset_class_from_params</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html#choose_model_by_filename-instance_method" title="Hydra::FileAssetsHelper#choose_model_by_filename (method)">#choose_model_by_filename</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html#choose_model_by_filename_extension-instance_method" title="Hydra::FileAssetsHelper#choose_model_by_filename_extension (method)">#choose_model_by_filename_extension</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html#create_and_save_file_asset_from_params-instance_method" title="Hydra::FileAssetsHelper#create_and_save_file_asset_from_params (method)">#create_and_save_file_asset_from_params</a></span>, <span class='object_link'><a href="Hydra/FileAssetsHelper.html#create_asset_from_params-instance_method" title="Hydra::FileAssetsHelper#create_asset_from_params (method)">#create_asset_from_params</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/AssetsControllerHelper.html" title="Hydra::AssetsControllerHelper (module)">Hydra::AssetsControllerHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/AssetsControllerHelper.html#apply_depositor_metadata-instance_method" title="Hydra::AssetsControllerHelper#apply_depositor_metadata (method)">#apply_depositor_metadata</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html#prep_updater_method_args-instance_method" title="Hydra::AssetsControllerHelper#prep_updater_method_args (method)">#prep_updater_method_args</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html#set_collection_type-instance_method" title="Hydra::AssetsControllerHelper#set_collection_type (method)">#set_collection_type</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#current_user-instance_method" title="ApplicationController#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="ApplicationController.html#default_html_head-instance_method" title="ApplicationController#default_html_head (method)">#default_html_head</a></span>, <span class='object_link'><a href="ApplicationController.html#error-instance_method" title="ApplicationController#error (method)">#error</a></span>, <span class='object_link'><a href="ApplicationController.html#extra_head_content-instance_method" title="ApplicationController#extra_head_content (method)">#extra_head_content</a></span>, <span class='object_link'><a href="ApplicationController.html#javascript_includes-instance_method" title="ApplicationController#javascript_includes (method)">#javascript_includes</a></span>, <span class='object_link'><a href="ApplicationController.html#stylesheet_links-instance_method" title="ApplicationController#stylesheet_links (method)">#stylesheet_links</a></span>, <span class='object_link'><a href="ApplicationController.html#user_class-instance_method" title="ApplicationController#user_class (method)">#user_class</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HydraAccessControlsHelper.html" title="HydraAccessControlsHelper (module)">HydraAccessControlsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HydraAccessControlsHelper.html#editor%3F-instance_method" title="HydraAccessControlsHelper#editor? (method)">#editor?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#reader%3F-instance_method" title="HydraAccessControlsHelper#reader? (method)">#reader?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#test_permission-instance_method" title="HydraAccessControlsHelper#test_permission (method)">#test_permission</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/controllers/generic_content_objects_controller.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='create identifier id'>create</span> 
+  <span class='unless unless kw'>unless</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:Filedata</span><span class='rparen token'>)</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;No file to process&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:container_id</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='andop op'>&amp;&amp;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filedata</span><span class='rbrack token'>]</span>
+    <span class='af_base identifier id'>af_base</span> <span class='assign token'>=</span>  <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:container_id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='af_model identifier id'>af_model</span> <span class='assign token'>=</span> <span class='retrieve_af_model identifier id'>retrieve_af_model</span><span class='lparen token'>(</span> <span class='af_base identifier id'>af_base</span><span class='dot token'>.</span><span class='relationships identifier id'>relationships</span><span class='lbrack token'>[</span><span class='symbol val'>:self</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:has_model</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;:&quot;</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>-1</span><span class='rbrack token'>]</span> <span class='rparen token'>)</span>
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span> <span class='dstring node'>&quot;#########: af_model = #{af_model.to_s}&quot;</span>
+    <span class='generic_content_object identifier id'>generic_content_object</span> <span class='assign token'>=</span> <span class='af_model identifier id'>af_model</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:container_id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='generic_content_object identifier id'>generic_content_object</span><span class='dot token'>.</span><span class='content identifier id'>content</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='symbol val'>:file</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filedata</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:file_name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:Filename</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span> <span class='string val'>&quot;#########: set the content&quot;</span>
+    <span class='generic_content_object identifier id'>generic_content_object</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span> <span class='dstring node'>&quot;#########: saved #{generic_content_object.pid} with new content #{params[:Filename]}&quot;</span>
+    <span class='if if kw'>if</span> <span class='af_model identifier id'>af_model</span> <span class='eq op'>==</span> <span class='GenericImage constant id'>GenericImage</span>
+      <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span> <span class='string val'>&quot;#########: deriving images&quot;</span>
+      <span class='generic_content_object identifier id'>generic_content_object</span><span class='dot token'>.</span><span class='derive_all identifier id'>derive_all</span>
+      <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='debug identifier id'>debug</span> <span class='string val'>&quot;#########: finished deriving images&quot;</span>
+    <span class='end end kw'>end</span>   
+  <span class='end end kw'>end</span>
+  <span class='render identifier id'>render</span> <span class='symbol val'>:nothing</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:34 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Documentation by YARD 0.6.4</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><p><img src="http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png" title="Hydrangea" alt="Hydrangea" /></p>
+<h1>Hydrangea &amp; the Hydra Framework</h1>
+<h2>Introduction and Installation Instructions</h2>
+<p>Hydrangea is the reference implementation of the Hydra framework, which builds on <a href="http://projectblacklight.org">Blacklight</a>, <a href="http://yourmediashelf.com/activefedora">ActiveFedora</a> and <a href="http://rubyonrails.org">Ruby on Rails</a></p>
+<p>For a more thorough overview of the Hydra framework, see <a href="http://github.com/projecthydra/hydrangea/blob/master/HYDRA_OVERVIEW.textile">HYDRA_OVERVIEW.textile</a></p>
+<h3>Prerequisites</h3>
+<p>Hydrangea requires Ruby version 1.8.7.  It will not run on Ruby 1.8.6.  If you need to upgrade Ruby, consider using <a href="http://rvm.beginrescueend.com/"><span class="caps">RVM</span></a> to do so, especially in your development environment.</p>
+<p>Other Requirements:</p>
+<ul>
+	<li><a href="http://git-scm.com/">git</a></li>
+	<li><a href="http://rubygems.org/pages/download">rubygems</a></li>
+	<li><a href="http://gembundler.com/">bundler</a> (gem install bundler)</li>
+</ul>
+<h3>Basic installation &amp; Running RSpec tests</h3>
+<p>This is based on Matt Zumwalt&#8217;s <a href="http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv">Hydra Stack: Getting Started</a> notes from LibDevConX in March 2010.</p>
+<p>Clone the git repository from github and pull the copy of jetty</p>
+<pre class="code">
+<span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='projecthydra identifier id'>projecthydra</span><span class='div op'>/</span><span class='hydrangea identifier id'>hydrangea</span><span class='dot token'>.</span><span class='git identifier id'>git</span>
+<span class='cd identifier id'>cd</span> <span class='hydrangea identifier id'>hydrangea</span>
+<span class='git identifier id'>git</span> <span class='submodule identifier id'>submodule</span> <span class='init identifier id'>init</span>
+<span class='git identifier id'>git</span> <span class='submodule identifier id'>submodule</span> <span class='update identifier id'>update</span>
+</pre>
+<p><strong>Note:</strong> <em>It&#8217;s OK if &#8216;git submodule init&#8217; returns &#8216;No submodule mapping found in .gitmodules for path &#8217;vendor/plugins/blacklight/data&#8217;</em></p>
+<p>This will pull all of the code.  The &#8216;git submodule update&#8217; command is pulling a copy of hydra-jetty into the jetty directory within hydrangea.</p>
+<p>You are now in your working copy of hydrangea.  Use bundler to install the gem dependencies.</p>
+<pre class="code">
+<span class='bundle identifier id'>bundle</span> <span class='install identifier id'>install</span>
+</pre>
+<p>Run your database migrations (only need to do this once after cloning the git repository).
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='db identifier id'>db</span><span class='symbol val'>:migrate</span>
+<span class='rake identifier id'>rake</span> <span class='db identifier id'>db</span><span class='symbol val'>:migrate</span><span class='symbol val'>:plugins</span>
+</pre></p>
+<p>Now run the bundled copy of Jetty, which has Fedora and Solr installed &amp; configured to work with Hydra.  We have created rake tasks to make this easier.  For a full listing of rake tasks provided by Hydra, run</p>
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='describe identifier id'>describe</span> <span class='hydra identifier id'>hydra</span>
+</pre>
+
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='hydra identifier id'>hydra</span><span class='symbol val'>:jetty</span><span class='symbol val'>:load</span>
+</pre>
+<p>Import the fixture objects that are used by the rspec and cucumber tests</p>
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='hydra identifier id'>hydra</span><span class='symbol val'>:default_fixtures</span><span class='symbol val'>:load</span>
+</pre>
+<p>If you have already loaded these fixtures before, you should refresh them with</p>
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='hydra identifier id'>hydra</span><span class='symbol val'>:default_fixtures</span><span class='symbol val'>:refresh</span>
+</pre>
+<p>Run the Rspec tests to make sure everything is working properly.
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='spec identifier id'>spec</span>
+</pre></p>
+<p>If all of the RSpec tests are passing, try the Cucumber tests</p>
+<pre class="code">
+<span class='rake identifier id'>rake</span> <span class='cucumber identifier id'>cucumber</span>
+</pre>
+<p>If you have all of the RSpec and Cucumber tests passing, then the application is installed correctly.</p>
+<p>Now run the rails lighttpd server</p>
+<pre class="code">
+<span class='script identifier id'>script</span><span class='div op'>/</span><span class='server identifier id'>server</span>
+</pre>
+<p>If all goes well, you will be able to see an empty copy of hydrangea at http://localhost:3000</p>
+<h3>Create the sample user &#8220;archivist1&#8221;</h3>
+<p>The fixture objects are set up to control permissions for a user named archivist1.  To create this user, click &#8220;login&#8221; then click &#8220;create one&#8221; and create a new user named archivist1 with whatever password you want.  Now when you log in as archivist1 you will be able to see more records and you will be able to edit some of them.</p>
+<h3>Stopping the server when you&#8217;re done</h3>
+<p>To stop the rails app, press ctl+c in the window where you ran script/server</p>
+<p>To stop jetty, use the rake task
+<pre class="code">
+  <span class='rake identifier id'>rake</span> <span class='hydra identifier id'>hydra</span><span class='symbol val'>:jetty</span><span class='symbol val'>:stop</span>
+</pre></p>
+<h2>Acknowledgements</h2>
+<h3>Design &amp; Strategic Contributions</h3>
+<p>The Hydra Framework would not exist without the extensive design effort undertaken by representatives of repository initiatives from Stanford University, University of Virginia and University of Hull.  Contributors to that effort include Tom Cramer, Lynn McRae, Martha Sites, Richard Green, and Chris Awre.</p>
+<p>Thorny Staples from Fedora Commons &amp; DuraSpace deserves special thanks for putting all of these people in the same room together.</p>
+<h3>Technical Contributions</h3>
+<p><strong>Technical Lead:</strong> Matt Zumwalt (<a href="http://yourmediashelf.com">MediaShelf</a>)
+<strong>User Interface &amp; User Experience Designer:</strong> Jennifer Vine</p>
+<p>Developers:
+Eddie Shin, Jessie Keck, Christopher Jesuderai, McClain Looney, Luke Francl, Dan Weinand, Ken Earley, Paul Wenzel</p>
+<p>Testers:
+Charles Kerns, Bess Sadler, Richard Green, Tom Lauderman, Mark Matienzo</p>
+<h3>Additional thanks</h3>
+<p>Project Blacklight and the Blacklight contributors
+Willy Mene, who created one of the &#8220;Hydra head&#8221; prototypes on which Hydrangea is based.
+Chris Fitzpatrick &amp; Douglas Kim, who created the first version of Solrizer and then thoroughly exercised it.
+Naomi Dushay, whose knowledge of solr is impeccable.
+Stu Snydman, project manager for the <span class="caps">SALT</span> Hydra prototype.</p></div></div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:25 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

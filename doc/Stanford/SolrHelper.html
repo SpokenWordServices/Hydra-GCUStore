@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Stanford::SolrHelper</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'>Stanford</span>
+     &raquo; 
+    <span class="title">SolrHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Stanford::SolrHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="SearchworksHelper.html" title="Stanford::SearchworksHelper (module)">SearchworksHelper</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/stanford/solr_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Stanford SolrHelper is a controller layer mixin. It is in the controller
+scope: request params, session etc.
+</p>
+<p>
+NOTE: Be careful when creating variables here as they may be overriding
+something that already exists. The ActionController docs: <a
+href="http://api.rubyonrails.org/classes/ActionController/Base.html">api.rubyonrails.org/classes/ActionController/Base.html</a>
+</p>
+<p>
+Override these methods in your own controller for customizations:
+</p>
+<p>
+class HomeController < ActionController::Base
+</p>
+<pre class="code">
+  
+  <span class='include identifier id'>include</span> <span class='Stanford constant id'>Stanford</span><span class='colon2 op'>::</span><span class='SolrHelper constant id'>SolrHelper</span>
+  
+  <span class='def def kw'>def</span> <span class='solr_search_params identifier id'>solr_search_params</span>
+    <span class='super super kw'>super</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span> <span class='symbol val'>:per_page=</span><span class='gt op'>&gt;</span><span class='integer val'>10</span>
+  <span class='end end kw'>end</span>
+  
+</pre>
+<p>
+end
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#advanced_search_facet_params-instance_method" title="#advanced_search_facet_params (instance method)">- (Object) <strong>advanced_search_facet_params</strong>(extra_controller_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+returns a params hash for the advanced search facet field solr query.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_advanced_search_facets-instance_method" title="#get_advanced_search_facets (instance method)">- (Object) <strong>get_advanced_search_facets</strong>(extra_controller_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+a solr query method given a user query, return a solr response containing
+both result docs and facets
+</p>
+<ul>
+<li><p>
+mixes in the Blacklight::Solr::SpellingSuggestions module.
+</p>
+</li>
+</ul>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_docs_for_field_values-instance_method" title="#get_docs_for_field_values (instance method)">- (Object) <strong>get_docs_for_field_values</strong>(values, field) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+given a field name and array of values, get the matching SOLR documents.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_home_facets-instance_method" title="#get_home_facets (instance method)">- (Object) <strong>get_home_facets</strong>(extra_controller_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+a solr query method given a user query, return a solr response containing
+both result docs and facets
+</p>
+<ul>
+<li><p>
+mixes in the Blacklight::Solr::SpellingSuggestions module.
+</p>
+</li>
+</ul>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_next_terms-instance_method" title="#get_next_terms (instance method)">- (Object) <strong>get_next_terms</strong>(curr_value, field, how_many) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+given a field name and a field value, get the next &#8220;alphabetic&#8221;
+N .
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#home_facet_params-instance_method" title="#home_facet_params (instance method)">- (Object) <strong>home_facet_params</strong>(extra_controller_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+returns a params hash for a home facet field solr query.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="advanced_search_facet_params-instance_method">
+  
+    - (<tt>Object</tt>) <strong>advanced_search_facet_params</strong>(extra_controller_params = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns a params hash for the advanced search facet field solr query. used
+primary by the get_facet_pagination method
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 34</span>
+
+<span class='def def kw'>def</span> <span class='advanced_search_facet_params identifier id'>advanced_search_facet_params</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='input identifier id'>input</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='deep_merge identifier id'>deep_merge</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='rparen token'>)</span>
+  <span class='lbrace token'>{</span>
+    <span class='symbol val'>:qt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:default_qt</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='symbol val'>:per_page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>0</span><span class='comma token'>,</span>
+    <span class='symbol val'>:phrase_filters</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='input identifier id'>input</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.callnum_top_facet.facet.sort&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;false&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.format.facet.sort&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;false&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.building_facet.facet.sort&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;false&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.access_facet.facet.sort&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;false&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.language.facet.limit&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>100</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_advanced_search_facets-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_advanced_search_facets</strong>(extra_controller_params = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+a solr query method given a user query, return a solr response containing
+both result docs and facets
+</p>
+<ul>
+<li><p>
+mixes in the Blacklight::Solr::SpellingSuggestions module
+</p>
+<ul>
+<li><p>
+the response will have a spelling_suggestions method
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 52</span>
+
+<span class='def def kw'>def</span> <span class='get_advanced_search_facets identifier id'>get_advanced_search_facets</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='advanced_search_facet_params identifier id'>advanced_search_facet_params</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_docs_for_field_values-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_docs_for_field_values</strong>(values, field) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+given a field name and array of values, get the matching SOLR documents
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 93</span>
+
+<span class='def def kw'>def</span> <span class='get_docs_for_field_values identifier id'>get_docs_for_field_values</span><span class='lparen token'>(</span><span class='values identifier id'>values</span><span class='comma token'>,</span> <span class='field identifier id'>field</span><span class='rparen token'>)</span>
+  <span class='value_str identifier id'>value_str</span> <span class='assign token'>=</span> <span class='string val'>&quot;(\&quot;&quot;</span> <span class='plus op'>+</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\&quot; OR \&quot;&quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;\&quot;)&quot;</span>
+  <span class='solr_params identifier id'>solr_params</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+    <span class='symbol val'>:qt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;standard&quot;</span><span class='comma token'>,</span>   <span class='comment val'># need boolean for OR</span>
+    <span class='symbol val'>:q</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>&quot;#{field}:#{value_str}&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>'fl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;*&quot;</span><span class='comma token'>,</span>
+    <span class='string val'>'facet'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'false'</span><span class='comma token'>,</span>
+    <span class='string val'>'spellcheck'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'false'</span>
+  <span class='rbrace token'>}</span>
+  
+  <span class='solr_response identifier id'>solr_response</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='solr_params identifier id'>solr_params</span>
+  <span class='solr_response identifier id'>solr_response</span><span class='dot token'>.</span><span class='docs identifier id'>docs</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_home_facets-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_home_facets</strong>(extra_controller_params = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+a solr query method given a user query, return a solr response containing
+both result docs and facets
+</p>
+<ul>
+<li><p>
+mixes in the Blacklight::Solr::SpellingSuggestions module
+</p>
+<ul>
+<li><p>
+the response will have a spelling_suggestions method
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='get_home_facets identifier id'>get_home_facets</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='home_facet_params identifier id'>home_facet_params</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_next_terms-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_next_terms</strong>(curr_value, field, how_many) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+given a field name and a field value, get the next &#8220;alphabetic&#8221;
+N 
+</p>
+<pre class="code">
+ <span class='terms identifier id'>terms</span> <span class='for for kw'>for</span> <span class='the identifier id'>the</span> <span class='field identifier id'>field</span> 
+ <span class='returns identifier id'>returns</span> <span class='array identifier id'>array</span> <span class='of identifier id'>of</span> <span class='one identifier id'>one</span> <span class='element identifier id'>element</span> <span class='hashes identifier id'>hashes</span> <span class='with identifier id'>with</span> <span class='key identifier id'>key</span><span class='assign token'>=</span><span class='term identifier id'>term</span> <span class='and and kw'>and</span> <span class='value identifier id'>value</span><span class='assign token'>=</span><span class='count identifier id'>count</span>
+</pre>
+<p>
+NOTE:  terms in index are case sensitive!  Okay for shelfkey &#8230;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 68</span>
+
+<span class='def def kw'>def</span> <span class='get_next_terms identifier id'>get_next_terms</span><span class='lparen token'>(</span><span class='curr_value identifier id'>curr_value</span><span class='comma token'>,</span> <span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='how_many identifier id'>how_many</span><span class='rparen token'>)</span>
+    <span class='comment val'># TermsComponent Query to get the terms</span>
+    <span class='solr_params identifier id'>solr_params</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+      <span class='string val'>'terms.fl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='field identifier id'>field</span><span class='comma token'>,</span>
+      <span class='string val'>'terms.lower'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='curr_value identifier id'>curr_value</span><span class='comma token'>,</span>
+      <span class='symbol val'>:per_page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='how_many identifier id'>how_many</span>
+    <span class='rbrace token'>}</span>
+    <span class='solr_response identifier id'>solr_response</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='send_request identifier id'>send_request</span><span class='lparen token'>(</span><span class='string val'>'/alphaTerms'</span><span class='comma token'>,</span> <span class='solr_params identifier id'>solr_params</span><span class='rparen token'>)</span>
+    
+    <span class='comment val'># create array of one element hashes with key=term and value=count</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='terms identifier id'>terms</span> <span class='opasgn op'>||=</span> <span class='solr_response identifier id'>solr_response</span><span class='lbrack token'>[</span><span class='string val'>'terms'</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='field_terms identifier id'>field_terms</span> <span class='opasgn op'>||=</span> <span class='terms identifier id'>terms</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='comment val'># field_terms is an array of value, then num hits, then next value, then hits ...</span>
+    <span class='i identifier id'>i</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+    <span class='until until kw'>until</span> <span class='result identifier id'>result</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='eq op'>==</span> <span class='how_many identifier id'>how_many</span> <span class='orop op'>||</span> <span class='i identifier id'>i</span> <span class='geq op'>&gt;=</span> <span class='field_terms identifier id'>field_terms</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='do do kw'>do</span>
+      <span class='term_hash identifier id'>term_hash</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='field_terms identifier id'>field_terms</span><span class='lbrack token'>[</span><span class='i identifier id'>i</span><span class='rbrack token'>]</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='field_terms identifier id'>field_terms</span><span class='lbrack token'>[</span><span class='i identifier id'>i</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+      <span class='result identifier id'>result</span> <span class='lshft op'>&lt;&lt;</span> <span class='term_hash identifier id'>term_hash</span>
+      <span class='i identifier id'>i</span> <span class='assign token'>=</span> <span class='i identifier id'>i</span> <span class='plus op'>+</span> <span class='integer val'>2</span>
+    <span class='end end kw'>end</span>
+    
+    <span class='result identifier id'>result</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># given a field name and array of values, get the matching SOLR documents</span>
+  <span class='def def kw'>def</span> <span class='get_docs_for_field_values identifier id'>get_docs_for_field_values</span><span class='lparen token'>(</span><span class='values identifier id'>values</span><span class='comma token'>,</span> <span class='field identifier id'>field</span><span class='rparen token'>)</span>
+    <span class='value_str identifier id'>value_str</span> <span class='assign token'>=</span> <span class='string val'>&quot;(\&quot;&quot;</span> <span class='plus op'>+</span> <span class='values identifier id'>values</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\&quot; OR \&quot;&quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>&quot;\&quot;)&quot;</span>
+    <span class='solr_params identifier id'>solr_params</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+      <span class='symbol val'>:qt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;standard&quot;</span><span class='comma token'>,</span>   <span class='comment val'># need boolean for OR</span>
+      <span class='symbol val'>:q</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dstring node'>&quot;#{field}:#{value_str}&quot;</span><span class='comma token'>,</span>
+      <span class='string val'>'fl'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;*&quot;</span><span class='comma token'>,</span>
+      <span class='string val'>'facet'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'false'</span><span class='comma token'>,</span>
+      <span class='string val'>'spellcheck'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'false'</span>
+    <span class='rbrace token'>}</span>
+    
+    <span class='solr_response identifier id'>solr_response</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='solr_params identifier id'>solr_params</span>
+    <span class='solr_response identifier id'>solr_response</span><span class='dot token'>.</span><span class='docs identifier id'>docs</span>
+  <span class='end end kw'>end</span>
+
+
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="home_facet_params-instance_method">
+  
+    - (<tt>Object</tt>) <strong>home_facet_params</strong>(extra_controller_params = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns a params hash for a home facet field solr query. used primary by
+the get_facet_pagination method
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/stanford/solr_helper.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='home_facet_params identifier id'>home_facet_params</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='input identifier id'>input</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='deep_merge identifier id'>deep_merge</span><span class='lparen token'>(</span><span class='extra_controller_params identifier id'>extra_controller_params</span><span class='rparen token'>)</span>
+  <span class='lbrace token'>{</span>
+    <span class='symbol val'>:qt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:default_qt</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='symbol val'>:per_page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>0</span><span class='comma token'>,</span>
+    <span class='symbol val'>:phrase_filters</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='input identifier id'>input</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>&quot;f.callnum_top_facet.facet.sort&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;false&quot;</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

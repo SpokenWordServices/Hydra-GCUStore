@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: BlockMapper</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (B)</a> &raquo; 
+    
+    
+    <span class="title">BlockMapper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: BlockMapper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">BlockMapper</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/block_mapper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A generic mapping class for &#8220;collections&#8221; bm = BlockMapper.new
+bm.before_each {|rec,index| # do something here like: rec.extend(MyMethods)
+} bm.map :indexer, &#8216;Matt&#8217; bm.map :id do |rec,index|
+</p>
+<pre class="code">
+  <span class='rec identifier id'>rec</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span>
+</pre>
+<p>
+end
+</p>
+<p>
+mapped_data = bm.run(my_collection_of_somethings)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_each_mapped_value_blk-instance_method" title="#after_each_mapped_value_blk (instance method)">- (Object) <strong>after_each_mapped_value_blk</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute after_each_mapped_value_blk.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#before_each_source_item_blk-instance_method" title="#before_each_source_item_blk (instance method)">- (Object) <strong>before_each_source_item_blk</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute before_each_source_item_blk.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mappings-instance_method" title="#mappings (instance method)">- (Object) <strong>mappings</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute mappings.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_each_mapped_value-instance_method" title="#after_each_mapped_value (instance method)">- (Object) <strong>after_each_mapped_value</strong>(&amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#before_each_source_item-instance_method" title="#before_each_source_item (instance method)">- (Object) <strong>before_each_source_item</strong>(&amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (BlockMapper) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of BlockMapper.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-instance_method" title="#map (instance method)">- (Object) <strong>map</strong>(output_field_name, value = nil, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">- (Object) <strong>run</strong>(collection, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="BlockMapper (class)">BlockMapper</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of BlockMapper
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 18</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
+  <span class='@mappings ivar id'>@mappings</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="after_each_mapped_value_blk-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="after_each_mapped_value_blk-instance_method">
+  
+    - (<tt>Object</tt>) <strong>after_each_mapped_value_blk</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute after_each_mapped_value_blk
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='after_each_mapped_value_blk identifier id'>after_each_mapped_value_blk</span>
+  <span class='@after_each_mapped_value_blk ivar id'>@after_each_mapped_value_blk</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="before_each_source_item_blk-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="before_each_source_item_blk-instance_method">
+  
+    - (<tt>Object</tt>) <strong>before_each_source_item_blk</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute before_each_source_item_blk
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='before_each_source_item_blk identifier id'>before_each_source_item_blk</span>
+  <span class='@before_each_source_item_blk ivar id'>@before_each_source_item_blk</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="mappings-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="mappings-instance_method">
+  
+    - (<tt>Object</tt>) <strong>mappings</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute mappings
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='mappings identifier id'>mappings</span>
+  <span class='@mappings ivar id'>@mappings</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="after_each_mapped_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>after_each_mapped_value</strong>(&amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='after_each_mapped_value identifier id'>after_each_mapped_value</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='@after_each_mapped_value_blk ivar id'>@after_each_mapped_value_blk</span><span class='assign token'>=</span><span class='blk identifier id'>blk</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="before_each_source_item-instance_method">
+  
+    - (<tt>Object</tt>) <strong>before_each_source_item</strong>(&amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='before_each_source_item identifier id'>before_each_source_item</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='@before_each_source_item_blk ivar id'>@before_each_source_item_blk</span> <span class='assign token'>=</span> <span class='blk identifier id'>blk</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="map-instance_method">
+  
+    - (<tt>Object</tt>) <strong>map</strong>(output_field_name, value = nil, &amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='output_field_name identifier id'>output_field_name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='raise identifier id'>raise</span> <span class='string val'>'Can provide a value (second arg) or a block, not both'</span> <span class='if if_mod kw'>if</span> <span class='value identifier id'>value</span> <span class='and and kw'>and</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='@mappings ivar id'>@mappings</span> <span class='lshft op'>&lt;&lt;</span> <span class='lbrace token'>{</span><span class='symbol val'>:field_name=</span><span class='gt op'>&gt;</span><span class='output_field_name identifier id'>output_field_name</span><span class='comma token'>,</span> <span class='symbol val'>:value=</span><span class='gt op'>&gt;</span><span class='value identifier id'>value</span><span class='comma token'>,</span> <span class='symbol val'>:blk=</span><span class='gt op'>&gt;</span><span class='blk identifier id'>blk</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="run-instance_method">
+  
+    - (<tt>Object</tt>) <strong>run</strong>(collection, &amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/block_mapper.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='run identifier id'>run</span><span class='lparen token'>(</span><span class='collection identifier id'>collection</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='blk identifier id'>blk</span><span class='rparen token'>)</span>
+  <span class='docs identifier id'>docs</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='collection identifier id'>collection</span><span class='dot token'>.</span><span class='each_with_index identifier id'>each_with_index</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='bitor op'>|</span>
+    <span class='@before_each_source_item_blk ivar id'>@before_each_source_item_blk</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span><span class='index identifier id'>index</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@before_each_source_item_blk ivar id'>@before_each_source_item_blk</span>
+    <span class='doc identifier id'>doc</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='@mappings ivar id'>@mappings</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='m identifier id'>m</span><span class='bitor op'>|</span>
+      <span class='field identifier id'>field</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='symbol val'>:field_name</span><span class='rbrack token'>]</span>
+      <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='symbol val'>:blk</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='symbol val'>:blk</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rec identifier id'>rec</span><span class='comma token'>,</span> <span class='index identifier id'>index</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+      <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='@after_each_mapped_value_blk ivar id'>@after_each_mapped_value_blk</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='field identifier id'>field</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@after_each_mapped_value_blk ivar id'>@after_each_mapped_value_blk</span>
+      <span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='field identifier id'>field</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span>
+    <span class='end end kw'>end</span>
+    <span class='yield yield kw'>yield</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='comma token'>,</span> <span class='index identifier id'>index</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+    <span class='docs identifier id'>docs</span> <span class='lshft op'>&lt;&lt;</span> <span class='doc identifier id'>doc</span>
+  <span class='end end kw'>end</span>
+  <span class='docs identifier id'>docs</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:32 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

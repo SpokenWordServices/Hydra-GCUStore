@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::Solr::Document::Marc</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (M)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Solr.html" title="Blacklight::Solr (module)">Solr</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Document.html" title="Blacklight::Solr::Document (module)">Document</a></span></span>
+     &raquo; 
+    <span class="title">Marc</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::Solr::Document::Marc
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="MarcExport.html" title="Blacklight::Solr::Document::MarcExport (module)">MarcExport</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight/solr/document/marc.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+This is a document extension meant to be mixed into a
+Blacklight::Solr::Document class, such as SolrDocument. It provides support
+for restoration of MARC data (xml or binary) from a Solr stored field, and
+then provides various transformations/exports of that Marc via the included
+Blacklight::Solr::Document::MarcExport module.
+</p>
+<p>
+This extension would normally be registered using 
+Blacklight::Solr::Document#use_extension.  eg:
+</p>
+<p>
+SolrDocument.use_extension( Blacklight::Solr::Document::Marc ) { |document|
+my_logic_for_document_has_marc?( document ) }
+</p>
+<p>
+This extension also expects a :marc_source_field and :marc_format_type to
+be registered with the hosting classes extension_parameters. In an
+initializer or other startup code:
+SolrDocument.extension_paramters[:marc_source_field] =
+&#8220;name_of_solr_stored_field&#8221;
+SolrDocument.extension_parameters[:marc_format_type] = :marc21 # or
+:marcxml
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extended-class_method" title="extended (class method)">+ (Object) <strong>extended</strong>(document) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#marc-instance_method" title="#marc (instance method)">- (Object) <strong>marc</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+DEPRECATED.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_marc-instance_method" title="#to_marc (instance method)">- (Object) <strong>to_marc</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+ruby-marc object.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="MarcExport.html" title="Blacklight::Solr::Document::MarcExport (module)">MarcExport</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="MarcExport.html#export_as_apa_citation_txt-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_apa_citation_txt (method)">#export_as_apa_citation_txt</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_endnote-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_endnote (method)">#export_as_endnote</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_marc-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_marc (method)">#export_as_marc</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_marcxml-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_marcxml (method)">#export_as_marcxml</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_mla_citation_txt-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_mla_citation_txt (method)">#export_as_mla_citation_txt</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_openurl_ctx_kev-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_openurl_ctx_kev (method)">#export_as_openurl_ctx_kev</a></span>, <span class='object_link'><a href="MarcExport.html#export_as_refworks_marc_txt-instance_method" title="Blacklight::Solr::Document::MarcExport#export_as_refworks_marc_txt (method)">#export_as_refworks_marc_txt</a></span>, <span class='object_link'><a href="MarcExport.html#register_export_formats-class_method" title="Blacklight::Solr::Document::MarcExport.register_export_formats (method)">register_export_formats</a></span>, <span class='object_link'><a href="MarcExport.html#to_apa-instance_method" title="Blacklight::Solr::Document::MarcExport#to_apa (method)">#to_apa</a></span>, <span class='object_link'><a href="MarcExport.html#to_mla-instance_method" title="Blacklight::Solr::Document::MarcExport#to_mla (method)">#to_mla</a></span>, <span class='object_link'><a href="MarcExport.html#to_zotero-instance_method" title="Blacklight::Solr::Document::MarcExport#to_zotero (method)">#to_zotero</a></span></p>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="extended-class_method">
+  
+    + (<tt>Object</tt>) <strong>extended</strong>(document) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extended identifier id'>extended</span><span class='lparen token'>(</span><span class='document identifier id'>document</span><span class='rparen token'>)</span>
+  <span class='comment val'># Register our exportable formats, we inherit these from MarcExport    </span>
+  <span class='Blacklight constant id'>Blacklight</span><span class='colon2 op'>::</span><span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Document constant id'>Document</span><span class='colon2 op'>::</span><span class='MarcExport constant id'>MarcExport</span><span class='dot token'>.</span><span class='register_export_formats identifier id'>register_export_formats</span><span class='lparen token'>(</span> <span class='document identifier id'>document</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="marc-instance_method">
+  
+    - (<tt>Object</tt>) <strong>marc</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+DEPRECATED. Here for legacy purposes, but use to_marc instead. Or
+internally, use the protected _marc_helper method to get the (somewhat
+confusingly named)  Blacklight::Marc::Document helper object.
+</p>
+<p>
+This method gets attached to a SolrDocument. it uses the marc_source_field
+and marc_format_type class attributes to create the
+Blacklight::Marc::Document instance. Only returns a
+Blacklight::Marc::Document instance if the self.class.marc_source_field key
+exists.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc.rb', line 38</span>
+
+<span class='def def kw'>def</span> <span class='marc identifier id'>marc</span>
+  <span class='warn identifier id'>warn</span> <span class='string val'>&quot;[DEPRECATION] aDocument.marc is deprecated.  Please use aDocument.respond_to?(:to_marc) / aDocument.respond_to?(:marc),  or aDocument.exports_as.keys.include?(:some_format) / aDocument.export_as(:some_format) instead.&quot;</span>
+
+  <span class='_marc_helper identifier id'>_marc_helper</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_marc-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_marc</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+ruby-marc object
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/solr/document/marc.rb', line 45</span>
+
+<span class='def def kw'>def</span> <span class='to_marc identifier id'>to_marc</span>
+  <span class='@_ruby_marc_obj ivar id'>@_ruby_marc_obj</span> <span class='opasgn op'>||=</span> <span class='load_marc identifier id'>load_marc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:32 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: ActiveRecord::Acts::Taggable::SingletonMethods</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../ActiveRecord.html" title="ActiveRecord (module)">ActiveRecord</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Acts.html" title="ActiveRecord::Acts (module)">Acts</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Taggable.html" title="ActiveRecord::Acts::Taggable (module)">Taggable</a></span></span>
+     &raquo; 
+    <span class="title">SingletonMethods</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: ActiveRecord::Acts::Taggable::SingletonMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/blacklight/lib/taggable_pagination.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#paginate_by_tag-instance_method" title="#paginate_by_tag (instance method)">- (Object) <strong>paginate_by_tag</strong>(tag, options = {}, find_options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tagging_counts-instance_method" title="#tagging_counts (instance method)">- (Object) <strong>tagging_counts</strong>(tag) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="paginate_by_tag-instance_method">
+  
+    - (<tt>Object</tt>) <strong>paginate_by_tag</strong>(tag, options = {}, find_options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/taggable_pagination.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='paginate_by_tag identifier id'>paginate_by_tag</span><span class='lparen token'>(</span><span class='tag identifier id'>tag</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='find_options identifier id'>find_options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='per_page identifier id'>per_page</span><span class='comma token'>,</span> <span class='total identifier id'>total</span> <span class='assign token'>=</span> <span class='wp_parse_options identifier id'>wp_parse_options</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='comment val'>#WillPaginate::Finder::ClassMethods.send(:wp_parse_options, options)</span>
+  <span class='offset identifier id'>offset</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='minus op'>-</span> <span class='integer val'>1</span><span class='rparen token'>)</span> <span class='mult op'>*</span> <span class='per_page identifier id'>per_page</span>
+  <span class='find_options identifier id'>find_options</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='symbol val'>:offset</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='offset identifier id'>offset</span><span class='comma token'>,</span> <span class='symbol val'>:limit</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='per_page identifier id'>per_page</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='rparen token'>)</span>
+  <span class='items identifier id'>items</span> <span class='assign token'>=</span> <span class='tag identifier id'>tag</span> <span class='integer val'>? </span><span class='find_tagged_with identifier id'>find_tagged_with</span><span class='lparen token'>(</span><span class='tag identifier id'>tag</span><span class='comma token'>,</span> <span class='find_options identifier id'>find_options</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='paginate identifier id'>paginate</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:page</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span> <span class='symbol val'>:per_page</span>
+  <span class='count identifier id'>count</span> <span class='assign token'>=</span> <span class='tag identifier id'>tag</span> <span class='integer val'>? </span><span class='tagging_counts identifier id'>tagging_counts</span><span class='lparen token'>(</span><span class='tag identifier id'>tag</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='count identifier id'>count</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='returning identifier id'>returning</span> <span class='WillPaginate constant id'>WillPaginate</span><span class='colon2 op'>::</span><span class='Collection constant id'>Collection</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='comma token'>,</span> <span class='per_page identifier id'>per_page</span><span class='comma token'>,</span> <span class='count identifier id'>count</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='p identifier id'>p</span><span class='bitor op'>|</span>
+    <span class='p identifier id'>p</span><span class='dot token'>.</span><span class='replace identifier id'>replace</span> <span class='items identifier id'>items</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="tagging_counts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>tagging_counts</strong>(tag) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/taggable_pagination.rb', line 10</span>
+
+<span class='def def kw'>def</span> <span class='tagging_counts identifier id'>tagging_counts</span><span class='lparen token'>(</span><span class='tag identifier id'>tag</span><span class='rparen token'>)</span>
+  <span class='count_by_sql identifier id'>count_by_sql</span><span class='lparen token'>(</span><span class='string val'>&quot;select count(*) FROM tags, taggings WHERE &quot;</span> <span class='plus op'>+</span> <span class='sanitize_sql identifier id'>sanitize_sql</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='string val'>'tags.name = ? AND tags.id = taggings.tag_id AND taggings.taggable_type = ?'</span><span class='comma token'>,</span> <span class='tag identifier id'>tag</span><span class='comma token'>,</span> <span class='name identifier id'>name</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:33 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

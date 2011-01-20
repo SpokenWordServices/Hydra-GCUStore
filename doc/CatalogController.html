@@ -1,0 +1,1382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: CatalogController</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo; 
+    
+    
+    <span class="title">CatalogController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: CatalogController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">CatalogController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Blacklight/CatalogHelper.html" title="Blacklight::CatalogHelper (module)">Blacklight::CatalogHelper</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span>, <span class='object_link'><a href="Hydra/AccessControlsEnforcement.html" title="Hydra::AccessControlsEnforcement (module)">Hydra::AccessControlsEnforcement</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html" title="Hydra::AssetsControllerHelper (module)">Hydra::AssetsControllerHelper</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">app/controllers/catalog_controller.rb<span class="defines">,<br />
+  vendor/plugins/blacklight/app/controllers/catalog_controller.rb,<br /> vendor/plugins/hydra_repository/app/controllers/catalog_controller.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Constants included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#MaxPerPage-constant" title="Blacklight::SolrHelper::MaxPerPage (constant)">MaxPerPage</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#availability-instance_method" title="#availability (instance method)">- (Object) <strong>availability</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+single document availability info.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#citation-instance_method" title="#citation (instance method)">- (Object) <strong>citation</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+citation action.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit-instance_method" title="#edit (instance method)">- (Object) <strong>edit</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#email-instance_method" title="#email (instance method)">- (Object) <strong>email</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Email Action (this will only be accessed when the Email link is clicked by
+a non javascript browser).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#endnote-instance_method" title="#endnote (instance method)">- (Object) <strong>endnote</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+grabs a bunch of documents to export to endnote.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#facet-instance_method" title="#facet (instance method)">- (Object) <strong>facet</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+displays values and pagination links for a single facet field.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#image-instance_method" title="#image (instance method)">- (Object) <strong>image</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+single document image resource.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">- (Object) <strong>index</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+get search results from the solr index.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#librarian_view-instance_method" title="#librarian_view (instance method)">- (Object) <strong>librarian_view</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-instance_method" title="#map (instance method)">- (Object) <strong>map</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+collection/search UI via Google maps.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#opensearch-instance_method" title="#opensearch (instance method)">- (Object) <strong>opensearch</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+method to serve up XML OpenSearch description and JSON autocomplete
+response.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send_email_record-instance_method" title="#send_email_record (instance method)">- (Object) <strong>send_email_record</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+action for sending email.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#show_with_customizations-instance_method" title="#show_with_customizations (instance method)">- (Object) <strong>show_with_customizations</strong> </a>
+    
+
+    
+      (also: #show)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sms-instance_method" title="#sms (instance method)">- (Object) <strong>sms</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+SMS action (this will only be accessed when the SMS link is clicked by a
+non javascript browser).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#status-instance_method" title="#status (instance method)">- (Object) <strong>status</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+single document availability status (true/false).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+updates the search counter (allows the show view to paginate).
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/RepositoryController.html" title="Hydra::RepositoryController (module)">Hydra::RepositoryController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/RepositoryController.html#downloadables-instance_method" title="Hydra::RepositoryController#downloadables (method)">#downloadables</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#included-class_method" title="Hydra::RepositoryController.included (method)">included</a></span>, <span class='object_link'><a href="Hydra/RepositoryController.html#solr_name-instance_method" title="Hydra::RepositoryController#solr_name (method)">#solr_name</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html" title="MediaShelf::ActiveFedoraHelper (module)">MediaShelf::ActiveFedoraHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#load_af_instance_from_solr-instance_method" title="MediaShelf::ActiveFedoraHelper#load_af_instance_from_solr (method)">#load_af_instance_from_solr</a></span>, <span class='object_link'><a href="MediaShelf/ActiveFedoraHelper.html#retrieve_af_model-instance_method" title="MediaShelf::ActiveFedoraHelper#retrieve_af_model (method)">#retrieve_af_model</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Blacklight/SolrHelper.html" title="Blacklight::SolrHelper (module)">Blacklight::SolrHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_for-instance_method" title="Blacklight::SolrHelper#facet_limit_for (method)">#facet_limit_for</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#facet_limit_hash-instance_method" title="Blacklight::SolrHelper#facet_limit_hash (method)">#facet_limit_hash</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_facet_pagination-instance_method" title="Blacklight::SolrHelper#get_facet_pagination (method)">#get_facet_pagination</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_opensearch_response-instance_method" title="Blacklight::SolrHelper#get_opensearch_response (method)">#get_opensearch_response</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_search_results-instance_method" title="Blacklight::SolrHelper#get_search_results (method)">#get_search_results</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_doc_id-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_doc_id (method)">#get_solr_response_for_doc_id</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#get_solr_response_for_field_values-instance_method" title="Blacklight::SolrHelper#get_solr_response_for_field_values (method)">#get_solr_response_for_field_values</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#included-class_method" title="Blacklight::SolrHelper.included (method)">included</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#max_per_page-instance_method" title="Blacklight::SolrHelper#max_per_page (method)">#max_per_page</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_doc_params-instance_method" title="Blacklight::SolrHelper#solr_doc_params (method)">#solr_doc_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_facet_params-instance_method" title="Blacklight::SolrHelper#solr_facet_params (method)">#solr_facet_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_opensearch_params-instance_method" title="Blacklight::SolrHelper#solr_opensearch_params (method)">#solr_opensearch_params</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_param_quote-instance_method" title="Blacklight::SolrHelper#solr_param_quote (method)">#solr_param_quote</a></span>, <span class='object_link'><a href="Blacklight/SolrHelper.html#solr_search_params-instance_method" title="Blacklight::SolrHelper#solr_search_params (method)">#solr_search_params</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Hydra/AssetsControllerHelper.html" title="Hydra::AssetsControllerHelper (module)">Hydra::AssetsControllerHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Hydra/AssetsControllerHelper.html#apply_depositor_metadata-instance_method" title="Hydra::AssetsControllerHelper#apply_depositor_metadata (method)">#apply_depositor_metadata</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html#prep_updater_method_args-instance_method" title="Hydra::AssetsControllerHelper#prep_updater_method_args (method)">#prep_updater_method_args</a></span>, <span class='object_link'><a href="Hydra/AssetsControllerHelper.html#set_collection_type-instance_method" title="Hydra::AssetsControllerHelper#set_collection_type (method)">#set_collection_type</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#current_user-instance_method" title="ApplicationController#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="ApplicationController.html#default_html_head-instance_method" title="ApplicationController#default_html_head (method)">#default_html_head</a></span>, <span class='object_link'><a href="ApplicationController.html#error-instance_method" title="ApplicationController#error (method)">#error</a></span>, <span class='object_link'><a href="ApplicationController.html#extra_head_content-instance_method" title="ApplicationController#extra_head_content (method)">#extra_head_content</a></span>, <span class='object_link'><a href="ApplicationController.html#javascript_includes-instance_method" title="ApplicationController#javascript_includes (method)">#javascript_includes</a></span>, <span class='object_link'><a href="ApplicationController.html#stylesheet_links-instance_method" title="ApplicationController#stylesheet_links (method)">#stylesheet_links</a></span>, <span class='object_link'><a href="ApplicationController.html#user_class-instance_method" title="ApplicationController#user_class (method)">#user_class</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HydraAccessControlsHelper.html" title="HydraAccessControlsHelper (module)">HydraAccessControlsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HydraAccessControlsHelper.html#editor%3F-instance_method" title="HydraAccessControlsHelper#editor? (method)">#editor?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#reader%3F-instance_method" title="HydraAccessControlsHelper#reader? (method)">#reader?</a></span>, <span class='object_link'><a href="HydraAccessControlsHelper.html#test_permission-instance_method" title="HydraAccessControlsHelper#test_permission (method)">#test_permission</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="availability-instance_method">
+  
+    - (<tt>Object</tt>) <strong>availability</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+single document availability info
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 73</span>
+
+<span class='def def kw'>def</span> <span class='availability identifier id'>availability</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="citation-instance_method">
+  
+    - (<tt>Object</tt>) <strong>citation</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+citation action
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 93</span>
+
+<span class='def def kw'>def</span> <span class='citation identifier id'>citation</span>
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='get_solr_response_for_field_values identifier id'>get_solr_response_for_field_values</span><span class='lparen token'>(</span><span class='string val'>&quot;id&quot;</span><span class='comma token'>,</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>edit</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/controllers/catalog_controller.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='edit identifier id'>edit</span>
+  <span class='af_base identifier id'>af_base</span> <span class='assign token'>=</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='the_model identifier id'>the_model</span> <span class='assign token'>=</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='ContentModel constant id'>ContentModel</span><span class='dot token'>.</span><span class='known_models_for identifier id'>known_models_for</span><span class='lparen token'>(</span> <span class='af_base identifier id'>af_base</span> <span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+  <span class='if if kw'>if</span> <span class='the_model identifier id'>the_model</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='the_model identifier id'>the_model</span> <span class='assign token'>=</span> <span class='DcDocument constant id'>DcDocument</span>
+  <span class='end end kw'>end</span>
+  <span class='@document_fedora ivar id'>@document_fedora</span> <span class='assign token'>=</span> <span class='the_model identifier id'>the_model</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='comment val'>#fedora_object = ActiveFedora::Base.load_instance(params[:id])</span>
+  <span class='comment val'>#params[:action] = &quot;edit&quot;</span>
+  <span class='comment val'>#@downloadables = downloadables( @document_fedora )</span>
+  <span class='show_without_customizations identifier id'>show_without_customizations</span>
+  <span class='enforce_edit_permissions identifier id'>enforce_edit_permissions</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="email-instance_method">
+  
+    - (<tt>Object</tt>) <strong>email</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Email Action (this will only be accessed when the Email link is clicked by
+a non javascript browser)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 97</span>
+
+<span class='def def kw'>def</span> <span class='email identifier id'>email</span>
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='get_solr_response_for_field_values identifier id'>get_solr_response_for_field_values</span><span class='lparen token'>(</span><span class='string val'>&quot;id&quot;</span><span class='comma token'>,</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="endnote-instance_method">
+  
+    - (<tt>Object</tt>) <strong>endnote</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+grabs a bunch of documents to export to endnote
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 105</span>
+
+<span class='def def kw'>def</span> <span class='endnote identifier id'>endnote</span>
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='get_solr_response_for_field_values identifier id'>get_solr_response_for_field_values</span><span class='lparen token'>(</span><span class='string val'>&quot;id&quot;</span><span class='comma token'>,</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='endnote identifier id'>endnote</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="facet-instance_method">
+  
+    - (<tt>Object</tt>) <strong>facet</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+displays values and pagination links for a single facet field
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='facet identifier id'>facet</span>
+  <span class='@pagination ivar id'>@pagination</span> <span class='assign token'>=</span> <span class='get_facet_pagination identifier id'>get_facet_pagination</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='params identifier id'>params</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="image-instance_method">
+  
+    - (<tt>Object</tt>) <strong>image</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+single document image resource
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 65</span>
+
+<span class='def def kw'>def</span> <span class='image identifier id'>image</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="index-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+get search results from the solr index
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='index identifier id'>index</span>
+  <span class='@extra_controller_params ivar id'>@extra_controller_params</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='comment val'># The query lucene query builder should take care of the perms now.</span>
+  <span class='comment val'>#if current_user.nil?</span>
+  <span class='comment val'>#  enforce_search_permissions</span>
+  <span class='comment val'>#end</span>
+
+  <span class='lparen token'>(</span><span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@document_list ivar id'>@document_list</span><span class='rparen token'>)</span> <span class='assign token'>=</span> <span class='get_search_results identifier id'>get_search_results</span><span class='lparen token'>(</span> <span class='@extra_controller_params ivar id'>@extra_controller_params</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='symbol val'>:q=</span><span class='gt op'>&gt;</span><span class='build_lucene_query identifier id'>build_lucene_query</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:q</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='rparen token'>)</span>
+  <span class='@filters ivar id'>@filters</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:f</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='html identifier id'>html</span> <span class='lbrace token'>{</span> <span class='save_current_search_params identifier id'>save_current_search_params</span> <span class='rbrace token'>}</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='rss identifier id'>rss</span>  <span class='lbrace token'>{</span> <span class='render identifier id'>render</span> <span class='symbol val'>:layout</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='rescue rescue kw'>rescue</span> <span class='RSolr constant id'>RSolr</span><span class='colon2 op'>::</span><span class='RequestError constant id'>RequestError</span>
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Unparseable search error: #{params.inspect}&quot;</span> <span class='rparen token'>)</span> 
+    <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:notice</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;Sorry, I don't understand your search.&quot;</span> 
+    <span class='redirect_to identifier id'>redirect_to</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'index'</span><span class='comma token'>,</span> <span class='symbol val'>:q</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span> <span class='comma token'>,</span> <span class='symbol val'>:f</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
+  <span class='rescue rescue kw'>rescue</span> 
+    <span class='logger identifier id'>logger</span><span class='dot token'>.</span><span class='error identifier id'>error</span><span class='lparen token'>(</span><span class='dstring node'>&quot;Unknown error: #{params.inspect}&quot;</span> <span class='rparen token'>)</span> 
+    <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:notice</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;Sorry, you've encountered an error. Try a different search.&quot;</span> 
+    <span class='redirect_to identifier id'>redirect_to</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'index'</span><span class='comma token'>,</span> <span class='symbol val'>:q</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span> <span class='comma token'>,</span> <span class='symbol val'>:f</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="librarian_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>librarian_view</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 112</span>
+
+<span class='def def kw'>def</span> <span class='librarian_view identifier id'>librarian_view</span>
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@document ivar id'>@document</span> <span class='assign token'>=</span> <span class='get_solr_response_for_doc_id identifier id'>get_solr_response_for_doc_id</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="map-instance_method">
+  
+    - (<tt>Object</tt>) <strong>map</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+collection/search UI via Google maps
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 77</span>
+
+<span class='def def kw'>def</span> <span class='map identifier id'>map</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="opensearch-instance_method">
+  
+    - (<tt>Object</tt>) <strong>opensearch</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+method to serve up XML OpenSearch description and JSON autocomplete
+response
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 81</span>
+
+<span class='def def kw'>def</span> <span class='opensearch identifier id'>opensearch</span>
+  <span class='respond_to identifier id'>respond_to</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='format identifier id'>format</span><span class='bitor op'>|</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span> <span class='do do kw'>do</span>
+      <span class='render identifier id'>render</span> <span class='symbol val'>:layout</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
+    <span class='end end kw'>end</span>
+    <span class='format identifier id'>format</span><span class='dot token'>.</span><span class='json identifier id'>json</span> <span class='do do kw'>do</span>
+      <span class='render identifier id'>render</span> <span class='symbol val'>:json</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='get_opensearch_response identifier id'>get_opensearch_response</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send_email_record-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send_email_record</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+action for sending email.  This is meant to post from the form and to do
+processing
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 117</span>
+
+<span class='def def kw'>def</span> <span class='send_email_record identifier id'>send_email_record</span>
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='get_solr_response_for_field_values identifier id'>get_solr_response_for_field_values</span><span class='lparen token'>(</span><span class='string val'>&quot;id&quot;</span><span class='comma token'>,</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:to</span><span class='rbrack token'>]</span>
+    <span class='from identifier id'>from</span> <span class='assign token'>=</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span> <span class='comment val'># host w/o port for From address (from address cannot have port#)</span>
+    <span class='host identifier id'>host</span> <span class='assign token'>=</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span>
+    <span class='host identifier id'>host</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;:#{request.port}&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='port identifier id'>port</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='comment val'># host w/ port for linking</span>
+    <span class='case case kw'>case</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:style</span><span class='rbrack token'>]</span>
+      <span class='when when kw'>when</span> <span class='string val'>'sms'</span>
+        <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:carrier</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+          <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:to</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='neq op'>!=</span> <span class='integer val'>10</span>
+            <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:error</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;You must enter a valid 10 digit phone number&quot;</span>
+          <span class='else else kw'>else</span>
+            <span class='email identifier id'>email</span> <span class='assign token'>=</span> <span class='RecordMailer constant id'>RecordMailer</span><span class='dot token'>.</span><span class='create_sms_record identifier id'>create_sms_record</span><span class='lparen token'>(</span><span class='@documents ivar id'>@documents</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:to</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:carrier</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:carrier</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='from identifier id'>from</span><span class='comma token'>,</span> <span class='host identifier id'>host</span><span class='rparen token'>)</span>
+          <span class='end end kw'>end</span>
+        <span class='else else kw'>else</span>
+          <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:error</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;You must select a carrier&quot;</span>
+        <span class='end end kw'>end</span>
+      <span class='when when kw'>when</span> <span class='string val'>'email'</span>
+        <span class='if if kw'>if</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:to</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='regexp val'>/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/</span><span class='rparen token'>)</span>
+          <span class='email identifier id'>email</span> <span class='assign token'>=</span> <span class='RecordMailer constant id'>RecordMailer</span><span class='dot token'>.</span><span class='create_email_record identifier id'>create_email_record</span><span class='lparen token'>(</span><span class='@documents ivar id'>@documents</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:to</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:message</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:message</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='from identifier id'>from</span><span class='comma token'>,</span> <span class='host identifier id'>host</span><span class='rparen token'>)</span>
+        <span class='else else kw'>else</span>
+          <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:error</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;You must enter a valid email address&quot;</span>
+        <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+    <span class='RecordMailer constant id'>RecordMailer</span><span class='dot token'>.</span><span class='deliver identifier id'>deliver</span><span class='lparen token'>(</span><span class='email identifier id'>email</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:error</span><span class='rbrack token'>]</span>
+    <span class='if if kw'>if</span> <span class='@documents ivar id'>@documents</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='eq op'>==</span> <span class='integer val'>1</span>
+      <span class='redirect_to identifier id'>redirect_to</span> <span class='catalog_path identifier id'>catalog_path</span><span class='lparen token'>(</span><span class='@documents ivar id'>@documents</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='redirect_to identifier id'>redirect_to</span> <span class='folder_index_path identifier id'>folder_index_path</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='flash identifier id'>flash</span><span class='lbrack token'>[</span><span class='symbol val'>:error</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='string val'>&quot;You must enter a recipient in order to send this message&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="show_with_customizations-instance_method">
+  
+    - (<tt>Object</tt>) <strong>show_with_customizations</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='show-instance_method'>show</span></span>
+    </span>
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/controllers/catalog_controller.rb', line 47</span>
+
+<span class='def def kw'>def</span> <span class='show_with_customizations identifier id'>show_with_customizations</span>
+  <span class='show_without_customizations identifier id'>show_without_customizations</span>
+  <span class='enforce_viewing_context_for_show_requests identifier id'>enforce_viewing_context_for_show_requests</span>
+  <span class='af_base identifier id'>af_base</span> <span class='assign token'>=</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='the_model identifier id'>the_model</span> <span class='assign token'>=</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='colon2 op'>::</span><span class='ContentModel constant id'>ContentModel</span><span class='dot token'>.</span><span class='known_models_for identifier id'>known_models_for</span><span class='lparen token'>(</span> <span class='af_base identifier id'>af_base</span> <span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+  <span class='if if kw'>if</span> <span class='the_model identifier id'>the_model</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='the_model identifier id'>the_model</span> <span class='assign token'>=</span> <span class='DcDocument constant id'>DcDocument</span>
+  <span class='end end kw'>end</span>
+  <span class='@document_fedora ivar id'>@document_fedora</span> <span class='assign token'>=</span> <span class='the_model identifier id'>the_model</span><span class='dot token'>.</span><span class='load_instance identifier id'>load_instance</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='params identifier id'>params</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='symbol val'>:qt=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;dismax&quot;</span><span class='comma token'>,</span><span class='symbol val'>:q=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;*:*&quot;</span><span class='comma token'>,</span><span class='symbol val'>:rows=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;0&quot;</span><span class='comma token'>,</span><span class='symbol val'>:facet=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;true&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:facets=</span><span class='gt op'>&gt;</span><span class='lbrace token'>{</span><span class='symbol val'>:fields=</span><span class='gt op'>&gt;</span><span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='config identifier id'>config</span><span class='lbrack token'>[</span><span class='symbol val'>:facet</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:field_names</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span><span class='rbrace token'>}</span>
+  <span class='@facet_lookup ivar id'>@facet_lookup</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr identifier id'>solr</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='params identifier id'>params</span>
+  <span class='enforce_read_permissions identifier id'>enforce_read_permissions</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sms-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sms</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+SMS action (this will only be accessed when the SMS link is clicked by a
+non javascript browser)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 101</span>
+
+<span class='def def kw'>def</span> <span class='sms identifier id'>sms</span> 
+  <span class='@response ivar id'>@response</span><span class='comma token'>,</span> <span class='@documents ivar id'>@documents</span> <span class='assign token'>=</span> <span class='get_solr_response_for_field_values identifier id'>get_solr_response_for_field_values</span><span class='lparen token'>(</span><span class='string val'>&quot;id&quot;</span><span class='comma token'>,</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="status-instance_method">
+  
+    - (<tt>Object</tt>) <strong>status</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+single document availability status (true/false)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 69</span>
+
+<span class='def def kw'>def</span> <span class='status identifier id'>status</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+updates the search counter (allows the show view to paginate)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/app/controllers/catalog_controller.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='update identifier id'>update</span>
+  <span class='session identifier id'>session</span><span class='lbrack token'>[</span><span class='symbol val'>:search</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:counter</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:counter</span><span class='rbrack token'>]</span>
+  <span class='redirect_to identifier id'>redirect_to</span> <span class='symbol val'>:action</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;show&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:27 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

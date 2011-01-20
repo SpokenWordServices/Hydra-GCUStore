@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: MetadataHelper</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo; 
+    
+    
+    <span class="title">MetadataHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: MetadataHelper
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">WhiteListHelper</dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/hydra_repository/app/helpers/metadata_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#editable_metadata_field-instance_method" title="#editable_metadata_field (instance method)">- (Object) <strong>editable_metadata_field</strong>(resource, datastream_name, field_key, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Convenience method for creating editable metadata fields.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#metadata_field-instance_method" title="#metadata_field (instance method)">- (Object) <strong>metadata_field</strong>(resource, datastream_name, field_key, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#single_value_inline_edit-instance_method" title="#single_value_inline_edit (instance method)">- (Object) <strong>single_value_inline_edit</strong>(resource, datastream_name, field_key, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="editable_metadata_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>editable_metadata_field</strong>(resource, datastream_name, field_key, opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Convenience method for creating editable metadata fields.  Defaults to
+creating single-value field, but creates multi-value field if :multiple =>
+true Field name can be provided as a string or a symbol (ie.
+&#8220;title&#8221; or :title)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/metadata_helper.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='editable_metadata_field identifier id'>editable_metadata_field</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>    
+  <span class='case case kw'>case</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:type</span><span class='rbrack token'>]</span>
+  <span class='when when kw'>when</span> <span class='symbol val'>:text_area</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='editable_textile identifier id'>editable_textile</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+  <span class='when when kw'>when</span> <span class='symbol val'>:editable_textile</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='editable_textile identifier id'>editable_textile</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+  <span class='when when kw'>when</span> <span class='symbol val'>:date_picker</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='date_select identifier id'>date_select</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+
+  <span class='when when kw'>when</span> <span class='symbol val'>:select</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='metadata_drop_down identifier id'>metadata_drop_down</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:multiple</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='multi_value_inline_edit identifier id'>multi_value_inline_edit</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='single_value_inline_edit identifier id'>single_value_inline_edit</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='result identifier id'>result</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="metadata_field-instance_method">
+  
+    - (<tt>Object</tt>) <strong>metadata_field</strong>(resource, datastream_name, field_key, opts = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7
+8
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/metadata_helper.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='metadata_field identifier id'>metadata_field</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='datastream_name identifier id'>datastream_name</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='raise identifier id'>raise</span> <span class='ArgumentError constant id'>ArgumentError</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>&quot;This method expects arguments of the form (resource, datastream_name, field_key, opts={})&quot;</span><span class='rparen token'>)</span> 
+  <span class='end end kw'>end</span>
+  <span class='comment val'># If user does not have edit permission, display non-editable metadata</span>
+  <span class='comment val'># If user has edit permission, display editable metadata</span>
+  <span class='editable_metadata_field identifier id'>editable_metadata_field</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="single_value_inline_edit-instance_method">
+  
+    - (<tt>Object</tt>) <strong>single_value_inline_edit</strong>(resource, datastream_name, field_key, opts = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/app/helpers/metadata_helper.rb', line 38</span>
+
+<span class='def def kw'>def</span> <span class='single_value_inline_edit identifier id'>single_value_inline_edit</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>    
+    <span class='field_params identifier id'>field_params</span> <span class='assign token'>=</span> <span class='field_update_params identifier id'>field_update_params</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span>
+    <span class='field_name identifier id'>field_name</span> <span class='assign token'>=</span> <span class='field_params identifier id'>field_params</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:field_name</span><span class='rparen token'>)</span>
+    
+    <span class='if if kw'>if</span> <span class='opts identifier id'>opts</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:label</span><span class='rparen token'>)</span> 
+      <span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='opts identifier id'>opts</span><span class='lbrack token'>[</span><span class='symbol val'>:label</span><span class='rbrack token'>]</span>
+    <span class='else else kw'>else</span>
+      <span class='label identifier id'>label</span> <span class='assign token'>=</span> <span class='field_name identifier id'>field_name</span>
+    <span class='end end kw'>end</span>
+    
+    <span class='field_value identifier id'>field_value</span> <span class='assign token'>=</span> <span class='get_values_from_datastream identifier id'>get_values_from_datastream</span><span class='lparen token'>(</span><span class='resource identifier id'>resource</span><span class='comma token'>,</span> <span class='datastream_name identifier id'>datastream_name</span><span class='comma token'>,</span> <span class='field_key identifier id'>field_key</span><span class='comma token'>,</span> <span class='opts identifier id'>opts</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='string val'>&quot;&lt;ol&gt;&quot;</span>
+      <span class='z identifier id'>z</span> <span class='assign token'>=</span> <span class='string val'>&quot;0&quot;</span>
+      <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='add_param identifier id'>add_param</span><span class='lparen token'>(</span><span class='field_params identifier id'>field_params</span><span class='dot token'>.</span><span class='to_query identifier id'>to_query</span><span class='comma token'>,</span><span class='dstring node'>&quot;asset[#{datastream_name}][#{field_name}][#{z}]&quot;</span><span class='rparen token'>)</span>
+      <span class='result identifier id'>result</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;&lt;li class=\&quot;editable\&quot; name=\&quot;#{name}\&quot;&gt;&quot;</span>
+<span class='result identifier id'>result</span> <span class='string val'>&quot;      result &lt;&lt; \&quot;&lt;/li&gt;\&quot;\n    result &lt;&lt; \&quot;&lt;/ol&gt;\&quot;\n    \n    return :label=&gt;label, :field=&gt; result\n  end\n  \n  def multi_value_inline_edit(resource, datastream_name, field_key, opts={})    \n    field_params = field_update_params(resource, datastream_name, field_key, opts)\n    field_name = field_params.delete(:field_name)\n    \n    if opts.has_key?(:label) \n      label = opts[:label]\n    else\n      label = field_name.dup\n    end\n    label &lt;&lt; \&quot;&lt;a class='addval input' href='#'&gt;+&lt;/a&gt;\&quot;\n    opts[:default] = \&quot;\&quot; unless opts[:default]\n    result = \&quot;\&quot;\n    result &lt;&lt; \&quot;&lt;ol&gt;\&quot;\n      #Output all of the current field values.\n      datastream = resource.datastreams[datastream_name]\n      vlist = get_values_from_datastream(resource, datastream_name, field_key, opts)\n      vlist.each_with_index do |field_value,z|\n        name = add_param(field_params.to_query,\&quot;asset[\#{datastream_name}][\#{field_name}][\#{z}]\&quot;)\n        result &lt;&lt; \&quot;&lt;li class=\\\&quot;editable\\\&quot; name=\\\&quot;\#{name}\\\&quot;&gt;\&quot;\n          result &lt;&lt; \&quot;&lt;a href='' title='Delete \\'\#{h(field_value)}\\' class='destructive'&gt;&lt;img src='/plugin_assets/hydra_repository/images/delete.png' alt='Delete'&gt;&lt;/a&gt;\&quot; unless z == 0\n        result &lt;&lt; \&quot;&lt;span class=\\\&quot;editableText\\\&quot;&gt;\#{h(field_value)}&lt;/span&gt;\&quot;\n      result &lt;&lt; \&quot;&lt;/li&gt;\&quot;\n    end\n    result &lt;&lt; \&quot;&lt;/ol&gt;\&quot;\n    \n    return :label=&gt;label, :field =&gt; result\n  end\n  \n  def editable_textile(resource, datastream_name, field_key, opts={})    \n    field_params = field_update_params(resource, datastream_name, field_key, opts)\n    field_name = field_params.delete(:field_name)\n    \n    if opts.has_key?(:label) \n      label = opts[:label]\n    else\n      label = field_name.dup\n    end\n    if opts[:multiple]\n      label &lt;&lt; \&quot;&lt;a class='addval textArea' href='#'&gt;Add \#{field_name}&lt;/a&gt;\&quot;\n    end\n    escaped_field_name=field_name.gsub(/_/, '+')\n    \n    opts[:default] = \&quot;\&quot;\n    result = \&quot;\&quot;\n    result &lt;&lt; \&quot;&lt;ol&gt;\&quot;\n      vlist = get_values_from_datastream(resource, datastream_name, field_key, opts)\n      vlist.each_with_index do |field_value,z|\n        name = add_param(field_params.to_query,\&quot;asset[\#{datastream_name}][\#{field_name}][\#{z}]\&quot;)\n        processed_field_value = white_list( RedCloth.new(field_value, [:sanitize_html]).to_html)\n          field_id = \&quot;\#{field_name}_\#{z}\&quot;\n          result &lt;&lt; \&quot;&lt;li name=\\\&quot;\#{name}\\\&quot;  class=\\\&quot;field_value textile_value\\\&quot;&gt;\&quot;\n            # Not sure why there is we're not allowing the for the first textile to be deleted, but this was in the original helper.\n            result &lt;&lt; \&quot;&lt;a href='' title='Delete \\'\#{processed_field_value}\\'' class='destructive'&gt;&lt;img src='/plugin_assets/hydra_repository/images/delete.png' alt='Delete'&gt;&lt;/a&gt;\&quot; unless z == 0\n            result &lt;&lt; \&quot;&lt;div class=\\\&quot;textile\\\&quot; id=\\\&quot;\#{field_id}\\\&quot;&gt;\#{processed_field_value}&lt;/div&gt;\&quot;\n          result &lt;&lt; \&quot;&lt;/li&gt;\&quot;\n    end\n    result &lt;&lt; \&quot;&lt;/ol&gt;\&quot;\n    \n    return :label=&gt;label, :field=&gt;result\n  end\n  \n  # Returns an HTML select with options populated from opts[:choices].\n  # If opts[:choices] is not provided, or if it's not a Hash, a single_value_inline_edit will be returned instead.\n  # Will capitalize the key for each choice when displaying it in the options list.  The value is left alone.\n  def metadata_drop_down(resource, datastream_name, field_key, opts={})    \n    field_params = field_update_params(resource, datastream_name, field_key, opts)\n    field_name = field_params.delete(:field_name)\n\n    if opts[:choices].nil? || !opts[:choices].kind_of?(Hash)\n      single_value_inline_edit(resource, datastream_name, field_key, opts)\n    else\n      if opts.has_key?(:label) \n        label = opts[:label]\n      else\n        label = field_name\n      end      \n      \n      result = \&quot;\&quot;      \n      choices = opts[:choices]\n      field_value = get_values_from_datastream(resource, datastream_name, field_key, opts).first\n      z = \&quot;0\&quot;\n      name = add_param(field_params.to_query,\&quot;asset[\#{datastream_name}][\#{field_name}][\#{z}]\&quot;)\n      \n      if field_value.nil?\n        result &lt;&lt; \&quot;&lt;select name=\\\&quot;\#{name}\\\&quot; class=\\\&quot;metadata-dd\\\&quot;&gt;\&quot;\n      else\n        choices.delete_if {|k, v| v == field_value || v == field_value.capitalize }\n        result &lt;&lt; \&quot;&lt;select name=\\\&quot;\#{name}\\\&quot; class=\\\&quot;metadata-dd\\\&quot;&gt;&lt;option value=\\\&quot;\#{field_value}\\\&quot; selected=\\\&quot;selected\\\&quot;&gt;\#{h(field_value.capitalize)}&lt;/option&gt;\&quot;\n      end\n        choices.each_pair do |k,v|\n          result &lt;&lt; \&quot;&lt;option value=\\\&quot;\#{v}\\\&quot;&gt;\#{h(k)}&lt;/option&gt;\&quot;\n        end\n      result &lt;&lt; \&quot;&lt;/select&gt;\&quot;\n      return :label=&gt;label, :field=&gt;result\n    end\n  end\n  \n  def date_select(resource, datastream_name, field_key, opts={})\n    field_params = field_update_params(resource, datastream_name, field_key, opts)\n    field_name = field_params.delete(:field_name)\n    \n    if opts.has_key?(:label) \n      label = opts[:label]\n    else\n      label = field_name\n    end\n    \n    z = \&quot;0\&quot; # single-values only \n    \n    result = \&quot;\&quot;\n    \n    value = get_values_from_datastream(resource, datastream_name, field_key, opts).first\n    field_value = value.nil? ? \&quot;\&quot; : value\n        \n    field_value[/(\\d+)-(\\d+)-(\\d+)/]\n    year = ($1.nil? or $1.empty?) ? \&quot;\&quot; : $1.to_i\n    month = ($2.nil? or $2.empty?) ? \&quot;-1\&quot; : $2\n    day = ($3.nil? or $3.empty?) ? \&quot;-1\&quot; : $3\n    \n    # Make sure that month and day values are double-digit\n    [month, day].each {|v| v.length == 1 ? v.insert(0, \&quot;0\&quot;) : nil }\n    \n    \n    year_options = Array.new(101) {|i| 1910+i}\n    # year_options = Array.new(4) {|i| 1990+i}\n    \n    year_options.insert(0, [\&quot;Year\&quot;, \&quot;-1\&quot;])\n    name = add_param(field_params.to_query,\&quot;asset[\#{datastream_name}][\#{field_name}][\#{z}]\&quot;)\n    result &lt;&lt; \&quot;&lt;div class=\\\&quot;date-select\\\&quot; name=\\\&quot;\#{name}\\\&quot;&gt;\&quot;\n      result &lt;&lt; \&quot;&lt;input class=\\\&quot;controlled-date-part w4em\\\&quot; style=\\\&quot;width:4em;\\\&quot; type=\\\&quot;text\\\&quot; id=\\\&quot;\#{field_name}_\#{z}-sel-y\\\&quot; name=\\\&quot;\#{field_name}_\#{z}-sel-y\\\&quot; maxlength=\\\&quot;4\\\&quot; value=\\\&quot;\#{year}\\\&quot; /&gt;\&quot;    \n      result &lt;&lt; \&quot;&lt;select class=\\\&quot;controlled-date-part\\\&quot; id=\\\&quot;\#{field_name}_\#{z}-sel-mm\\\&quot; name=\\\&quot;\#{field_name}_\#{z}-sel-mm\\\&quot;&gt;\&quot;\n        result &lt;&lt; options_for_select([[\&quot;Month\&quot;,\&quot;-1\&quot;],[\&quot;January\&quot;, \&quot;01\&quot;],[\&quot;February\&quot;, \&quot;02\&quot;],[\&quot;March\&quot;, \&quot;03\&quot;],\n                                      [\&quot;April\&quot;, \&quot;04\&quot;],[\&quot;May\&quot;, \&quot;05\&quot;],[\&quot;June\&quot;, \&quot;06\&quot;],[\&quot;July\&quot;, \&quot;07\&quot;],[\&quot;August\&quot;, \&quot;08\&quot;],\n                                      [\&quot;September\&quot;, \&quot;09\&quot;],[\&quot;October\&quot;, \&quot;10\&quot;],[\&quot;November\&quot;, \&quot;11\&quot;],[\&quot;December\&quot;, \&quot;12\&quot;]\n                                      ], month)\n      result &lt;&lt; \&quot;&lt;/select&gt; / \&quot;\n      result &lt;&lt; \&quot;&lt;select class=\\\&quot;controlled-date-part\\\&quot; id=\\\&quot;\#{field_name}_\#{z}-sel-dd\\\&quot; name=\\\&quot;\#{field_name}_\#{z}-sel-dd\\\&quot;&gt;\&quot;\n        result &lt;&lt; options_for_select([[\&quot;Day\&quot;,\&quot;-1\&quot;],\&quot;01\&quot;, \&quot;02\&quot;, \&quot;03\&quot;, \&quot;04\&quot;, \&quot;05\&quot;, \&quot;06\&quot;, \&quot;07\&quot;, \&quot;08\&quot;, \&quot;09\&quot;, \&quot;10\&quot;, \&quot;11\&quot;, \&quot;12\&quot;, \&quot;13\&quot;, \&quot;14\&quot;, \&quot;15\&quot;, \&quot;16\&quot;, \&quot;17\&quot;, \&quot;18\&quot;, \&quot;19\&quot;, \&quot;20\&quot;, \&quot;21\&quot;, \&quot;22\&quot;, \&quot;23\&quot;, \&quot;24\&quot;, \&quot;25\&quot;, \&quot;26\&quot;, \&quot;27\&quot;, \&quot;28\&quot;, \&quot;29\&quot;, \&quot;30\&quot;, \&quot;31\&quot;], day)\n      result &lt;&lt; \&quot;&lt;/select&gt;\&quot;\n    result &lt;&lt; \&quot;&lt;/div&gt;\&quot;\n    result &lt;&lt; &lt;&lt;-EOF\n    &lt;script type=\&quot;text/javascript\&quot;&gt;\n    // &lt;![CDATA[  \n      // since the form element ids need to be generated on the server side for the options, the options are attached to the wrapping div via the jQuery data() method.\n      $('div.date-select[name=\&quot;asset[\#{field_name}][\#{z}]\&quot;]').data(\&quot;opts\&quot;, {                            \n        formElements:{\&quot;\#{field_name}_\#{z}-sel-dd\&quot;:\&quot;d\&quot;,\&quot;\#{field_name}_\#{z}-sel-y\&quot;:\&quot;Y\&quot;,\&quot;\#{field_name}_\#{z}-sel-mm\&quot;:\&quot;m\&quot;}         \n      });          \n    // ]]&gt;\n    &lt;/script&gt;\n    EOF\n    return :label=&gt;label, :field=&gt;result\n  end\n  \n  def field_update_params(resource, datastream_name, field_key, opts={})\n    \n    url_params = {}\n    # url_params = {\&quot;datastream\&quot;=&gt;datastream_name}\n    if resource.kind_of?(String)\n      ds = ActiveFedora::NokogiriDatastream.new\n    else\n      ds = resource.datastreams_in_memory[datastream_name]\n    end\n    \n    if ds.kind_of?(ActiveFedora::NokogiriDatastream)\n      field_name = OM::XML::Terminology.term_hierarchical_name(*field_key)\n      url_params[:field_name] = field_name\n      url_params[\&quot;field_selectors\&quot;] = {datastream_name=&gt;{field_name =&gt; field_key} }\n    else\n      field_name = field_key.to_s\n      url_params[:field_name] = field_name\n    end\n    # url_params[\&quot;asset\&quot;][datastream_name] = {field_name =&gt; }\n    return url_params\n  end\n  \n  def get_values_from_datastream(resource, datastream_name, field_key, opts={})\n    if opts.has_key?(:values)\n      values = opts[:values]\n      if values.nil? then values = [opts.fetch(:default, \&quot;\&quot;)] end\n      return values\n    else\n      return resource.get_values_from_datastream(datastream_name, field_key, opts.fetch(:default, \&quot;\&quot;))\n    end\n  end\n  \n  def add_param(query_string, new_param)\n    if query_string.empty?\n      return new_param\n    else\n      return query_string + \&quot;&amp;\&quot; + new_param\n    end\n  end\n  \n  def custom_dom_id(resource)\n    classname = resource.class.to_s.gsub(/[A-Z]+/,'\\1_\\0').downcase[1..-1]\n    url = \&quot;\#{classname}_\#{resource.pid}\&quot;   \n  end\n  \n  def prefab_editable_metadata_field(resource, datastream_name, field_key, opts={})\n    field_name = field_key.to_s\n    result = \&quot;\&quot;\n    generated_stuff = editable_metadata_field(@document_fedora, \&quot;rightsMetadata\&quot;, :discover_access_group, :label =&gt; \&quot;Discover Access:\&quot;, :type=&gt;:select, :choices=&gt;{\&quot;Public\&quot; =&gt; \&quot;public\&quot;,\&quot;Researchers\&quot; =&gt; \&quot;researcher\&quot;, \&quot;Archivists\&quot; =&gt; \&quot;archivist\&quot;, \&quot;Archivists\&quot; =&gt; \&quot;archivist\&quot;})      \n    result &lt;&lt; \&quot;&lt;dt&gt;\&quot;\n    result &lt;&lt; \&quot;&lt;label for=\\'\#{field_name}\\\&quot;&gt;\&quot;\n    result &lt;&lt; generated_stuff[:label]\n    result &lt;&lt; \&quot;&lt;/dt&gt;\&quot;\n    \n    result &lt;&lt; \&quot;&lt;dd id=\\\&quot;\#{field_name}\\\&quot;&gt;\&quot;\n    result &lt;&lt; generated_stuff[:field]\n    result &lt;&lt; \&quot;&lt;/dd&gt;\&quot;\n  end\n  \nend\n&quot;</span><span class='editableText identifier id'>editableText</span>\<span class='dstring node'>&quot;&gt;#{h(field_value)}&lt;/span&gt;&quot;</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:37 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

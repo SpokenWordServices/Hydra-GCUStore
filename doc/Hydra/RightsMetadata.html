@@ -1,0 +1,641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Hydra::RightsMetadata</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Hydra.html" title="Hydra (module)">Hydra</a></span></span>
+     &raquo; 
+    <span class="title">RightsMetadata</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Hydra::RightsMetadata
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveFedora::NokogiriDatastream</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveFedora::NokogiriDatastream</li>
+          
+            <li class="next">Hydra::RightsMetadata</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml_template-class_method" title="xml_template (class method)">+ (Object) <strong>xml_template</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Generates an empty Mods Article (used when you call ModsArticle.new without
+passing in existing xml).
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#groups-instance_method" title="#groups (instance method)">- (Object) <strong>groups</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Reports on which groups have which permissions.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#individuals-instance_method" title="#individuals (instance method)">- (Object) <strong>individuals</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Reports on which groups have which permissions.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#permissions-instance_method" title="#permissions (instance method)">- (Object) <strong>permissions</strong>(selector, new_access_level = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the permissions for the selected person/group If new_access_level
+is provided, updates the selected person/group access_level to the one
+specified  A new_access_level of &#8220;none&#8221; will remove all
+access_levels for the selected person/group ie.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#quick_search_by_type-instance_method" title="#quick_search_by_type (instance method)">- (Object) <strong>quick_search_by_type</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This method limits the respons to known access levels.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_permissions-instance_method" title="#update_permissions (instance method)">- (Object) <strong>update_permissions</strong>(params) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Updates permissions for all of the persons and groups in a hash Currently
+restricts actor type to group or person.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="xml_template-class_method">
+  
+    + (<tt>Object</tt>) <strong>xml_template</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Generates an empty Mods Article (used when you call ModsArticle.new without
+passing in existing xml)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='xml_template identifier id'>xml_template</span>
+  <span class='builder identifier id'>builder</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='xml identifier id'>xml</span><span class='bitor op'>|</span>
+    <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='rightsMetadata identifier id'>rightsMetadata</span><span class='lparen token'>(</span><span class='symbol val'>:version=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;0.1&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;xmlns&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='copyright identifier id'>copyright</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='human identifier id'>human</span>
+      <span class='rbrace token'>}</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='access identifier id'>access</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;discover&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='human identifier id'>human</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='machine identifier id'>machine</span>
+      <span class='rbrace token'>}</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='access identifier id'>access</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;read&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='human identifier id'>human</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='machine identifier id'>machine</span>
+      <span class='rbrace token'>}</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='access identifier id'>access</span><span class='lparen token'>(</span><span class='symbol val'>:type=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;edit&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='human identifier id'>human</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='machine identifier id'>machine</span>
+      <span class='rbrace token'>}</span>
+      <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='embargo identifier id'>embargo</span><span class='lbrace token'>{</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='human identifier id'>human</span>
+        <span class='xml identifier id'>xml</span><span class='dot token'>.</span><span class='machine identifier id'>machine</span>
+      <span class='rbrace token'>}</span>        
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='builder identifier id'>builder</span><span class='dot token'>.</span><span class='doc identifier id'>doc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="groups-instance_method">
+  
+    - (<tt>Object</tt>) <strong>groups</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Reports on which groups have which permissions
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 104</span>
+
+<span class='def def kw'>def</span> <span class='groups identifier id'>groups</span>
+  <span class='return return kw'>return</span> <span class='quick_search_by_type identifier id'>quick_search_by_type</span><span class='lparen token'>(</span><span class='symbol val'>:group</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="individuals-instance_method">
+  
+    - (<tt>Object</tt>) <strong>individuals</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Reports on which groups have which permissions
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 110</span>
+
+<span class='def def kw'>def</span> <span class='individuals identifier id'>individuals</span>
+  <span class='return return kw'>return</span> <span class='quick_search_by_type identifier id'>quick_search_by_type</span><span class='lparen token'>(</span><span class='symbol val'>:person</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="permissions-instance_method">
+  
+    - (<tt>Object</tt>) <strong>permissions</strong>(selector, new_access_level = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the permissions for the selected person/group If new_access_level
+is provided, updates the selected person/group access_level to the one
+specified  A new_access_level of &#8220;none&#8221; will remove all
+access_levels for the selected person/group ie. 
+permissions(Hydra::RightsMetadata.:person=&gt;&amp;:person=&gt;&amp;#8220;person123&amp;:person=&gt;&amp;#8220;person123&amp;#8221;)
+</p>
+<h1>> Hydra::RightsMetadata.&amp;&amp;#8220;person123&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;edit&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;edit&amp;#8221;</h1>
+<p>
+permissions(Hydra::RightsMetadata.:person=&gt;&amp;:person=&gt;&amp;#8220;person123&amp;:person=&gt;&amp;#8220;person123&amp;#8221;, &#8220;read&#8221;)
+</p>
+<h1>> Hydra::RightsMetadata.&amp;&amp;#8220;person123&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;read&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;read&amp;#8221;</h1>
+<p>
+permissions(Hydra::RightsMetadata.:person=&gt;&amp;:person=&gt;&amp;#8220;person123&amp;:person=&gt;&amp;#8220;person123&amp;#8221;)
+</p>
+<h1>> Hydra::RightsMetadata.&amp;&amp;#8220;person123&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;read&amp;&amp;#8220;person123&amp;#8221;=&gt;&amp;#8220;read&amp;#8221;</h1>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 78</span>
+
+<span class='def def kw'>def</span> <span class='permissions identifier id'>permissions</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='comma token'>,</span> <span class='new_access_level identifier id'>new_access_level</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  
+  <span class='type identifier id'>type</span> <span class='assign token'>=</span> <span class='selector identifier id'>selector</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+  <span class='actor identifier id'>actor</span> <span class='assign token'>=</span> <span class='selector identifier id'>selector</span><span class='dot token'>.</span><span class='values identifier id'>values</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+  <span class='if if kw'>if</span> <span class='new_access_level identifier id'>new_access_level</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='xpath identifier id'>xpath</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='terminology identifier id'>terminology</span><span class='dot token'>.</span><span class='xpath_for identifier id'>xpath_for</span><span class='lparen token'>(</span><span class='symbol val'>:access</span><span class='comma token'>,</span> <span class='type identifier id'>type</span><span class='comma token'>,</span> <span class='actor identifier id'>actor</span><span class='rparen token'>)</span>
+    <span class='nodeset identifier id'>nodeset</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='xpath identifier id'>xpath</span><span class='rparen token'>)</span>
+    <span class='if if kw'>if</span> <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+      <span class='return return kw'>return</span> <span class='string val'>&quot;none&quot;</span>
+    <span class='else else kw'>else</span>
+      <span class='return return kw'>return</span> <span class='nodeset identifier id'>nodeset</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='ancestors identifier id'>ancestors</span><span class='lparen token'>(</span><span class='string val'>&quot;access&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='lbrack token'>[</span><span class='string val'>&quot;type&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='text identifier id'>text</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='remove_all_permissions identifier id'>remove_all_permissions</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
+    <span class='unless unless kw'>unless</span> <span class='new_access_level identifier id'>new_access_level</span> <span class='eq op'>==</span> <span class='string val'>&quot;none&quot;</span> 
+      <span class='access_type_symbol identifier id'>access_type_symbol</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{new_access_level}_access&quot;</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+      <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='update_values identifier id'>update_values</span><span class='lparen token'>(</span><span class='lbrack token'>[</span><span class='access_type_symbol identifier id'>access_type_symbol</span><span class='comma token'>,</span> <span class='type identifier id'>type</span><span class='rbrack token'>]</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='string val'>&quot;-1&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='actor identifier id'>actor</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='dirty identifier id'>dirty</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+    <span class='return return kw'>return</span> <span class='new_access_level identifier id'>new_access_level</span>
+  <span class='end end kw'>end</span>
+    
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="quick_search_by_type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>quick_search_by_type</strong>(type) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method limits the respons to known access levels.  Probably runs a bit
+faster than .permissions().
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 125</span>
+
+<span class='def def kw'>def</span> <span class='quick_search_by_type identifier id'>quick_search_by_type</span><span class='lparen token'>(</span><span class='type identifier id'>type</span><span class='rparen token'>)</span>
+  <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='lbrack token'>[</span><span class='lbrace token'>{</span><span class='symbol val'>:discover_access=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;discover&quot;</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='lbrace token'>{</span><span class='symbol val'>:read_access=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;read&quot;</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='lbrace token'>{</span><span class='symbol val'>:edit_access=</span><span class='gt op'>&gt;</span><span class='string val'>&quot;edit&quot;</span><span class='rbrace token'>}</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='access_levels_hash identifier id'>access_levels_hash</span><span class='bitor op'>|</span>
+    <span class='access_level identifier id'>access_level</span> <span class='assign token'>=</span> <span class='access_levels_hash identifier id'>access_levels_hash</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='access_level_name identifier id'>access_level_name</span> <span class='assign token'>=</span> <span class='access_levels_hash identifier id'>access_levels_hash</span><span class='dot token'>.</span><span class='values identifier id'>values</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_terms identifier id'>find_by_terms</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='lbrack token'>[</span><span class='access_level identifier id'>access_level</span><span class='comma token'>,</span> <span class='type identifier id'>type</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='entry identifier id'>entry</span><span class='bitor op'>|</span>
+      <span class='result identifier id'>result</span><span class='lbrack token'>[</span><span class='entry identifier id'>entry</span><span class='dot token'>.</span><span class='text identifier id'>text</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='access_level_name identifier id'>access_level_name</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='result identifier id'>result</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_permissions-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_permissions</strong>(params) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Updates permissions for all of the persons and groups in a hash Currently
+restricts actor type to group or person.  Any others will be ignored
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/hydra_repository/lib/hydra/rights_metadata.rb', line 117</span>
+
+<span class='def def kw'>def</span> <span class='update_permissions identifier id'>update_permissions</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='rparen token'>)</span>
+  <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='fetch identifier id'>fetch</span><span class='lparen token'>(</span><span class='string val'>&quot;group&quot;</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='group_id identifier id'>group_id</span><span class='comma token'>,</span> <span class='access_level identifier id'>access_level</span><span class='bitor op'>|</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='permissions identifier id'>permissions</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='string val'>&quot;group&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='group_id identifier id'>group_id</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='access_level identifier id'>access_level</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+  <span class='params identifier id'>params</span><span class='dot token'>.</span><span class='fetch identifier id'>fetch</span><span class='lparen token'>(</span><span class='string val'>&quot;person&quot;</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each_pair identifier id'>each_pair</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='group_id identifier id'>group_id</span><span class='comma token'>,</span> <span class='access_level identifier id'>access_level</span><span class='bitor op'>|</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='permissions identifier id'>permissions</span><span class='lparen token'>(</span><span class='lbrace token'>{</span><span class='string val'>&quot;person&quot;</span><span class='assign token'>=</span><span class='gt op'>&gt;</span><span class='group_id identifier id'>group_id</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='access_level identifier id'>access_level</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:26 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

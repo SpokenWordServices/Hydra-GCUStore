@@ -1,15 +1,20 @@
 $(document).ready(function() {
- $('#facets ul').each(function(){
-   var ul = $(this);
-   // find all ul's that don't have any span descendants with a class of "selected"
-   if($('span.selected', ul).length == 0){
-        // hide it
-        ul.hide();
-        // attach the toggle behavior to the h3 tag
-        $('h3', ul.parent()).click(function(){
-           // toggle the next ul sibling
-           $(this).next('ul').slideToggle();
-       });
-   }
-});
+  $('#facets h3').next("ul, div").each(function(){
+    var f_content = $(this);
+    $(f_content).prev('h3').addClass('twiddle');
+    // find all f_content's that don't have any span descendants with a class of "selected"
+    if($('span.selected', f_content).length == 0){
+      // hide it
+      f_content.hide();
+    } else {
+      $(this).addClass('twiddle-open');
+    }
+
+    // attach the toggle behavior to the h3 tag
+    $('h3', f_content.parent()).click(function(){
+      // toggle the content
+      $(this).toggleClass('twiddle-open');
+      $(f_content).slideToggle();
+    });
+  });
 });

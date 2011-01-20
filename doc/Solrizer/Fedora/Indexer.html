@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Solrizer::Fedora::Indexer</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (I)</a> &raquo; 
+    <span class='title'>Solrizer</span> &raquo; <span class='title'><span class='object_link'><a href="../Fedora.html" title="Solrizer::Fedora (module)">Fedora</a></span></span>
+     &raquo; 
+    <span class="title">Indexer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Solrizer::Fedora::Indexer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Solrizer::Fedora::Indexer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/solrizer/fedora/indexer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect-instance_method" title="#connect (instance method)">- (Object) <strong>connect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is an override to the base solrizer-fedora connect method in order to
+update the version of blacklight, which is returning a :url rather than a
+&#8216;url&#8217; in the solr_config[:url].
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="connect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>connect</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is an override to the base solrizer-fedora connect method in order to
+update the version of blacklight, which is returning a :url rather than a
+&#8216;url&#8217; in the solr_config[:url]
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/solrizer/fedora/indexer.rb', line 11</span>
+
+<span class='def def kw'>def</span> <span class='connect identifier id'>connect</span>
+
+  <span class='if if kw'>if</span> <span class='ActiveFedora constant id'>ActiveFedora</span><span class='dot token'>.</span><span class='fedora_config identifier id'>fedora_config</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='ActiveFedora constant id'>ActiveFedora</span><span class='dot token'>.</span><span class='init identifier id'>init</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='defined? defined kw'>defined?</span><span class='lparen token'>(</span><span class='Blacklight constant id'>Blacklight</span><span class='rparen token'>)</span>
+    <span class='solr_config identifier id'>solr_config</span> <span class='assign token'>=</span> <span class='Blacklight constant id'>Blacklight</span><span class='dot token'>.</span><span class='solr_config identifier id'>solr_config</span>
+  <span class='else else kw'>else</span>
+  
+    <span class='if if kw'>if</span> <span class='defined? defined kw'>defined?</span><span class='lparen token'>(</span><span class='RAILS_ROOT constant id'>RAILS_ROOT</span><span class='rparen token'>)</span>
+      <span class='config_path identifier id'>config_path</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='RAILS_ROOT constant id'>RAILS_ROOT</span><span class='comma token'>,</span> <span class='string val'>&quot;config&quot;</span><span class='rparen token'>)</span>
+      <span class='yaml identifier id'>yaml</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='dot token'>.</span><span class='load identifier id'>load</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='config_path identifier id'>config_path</span><span class='comma token'>,</span> <span class='string val'>&quot;solr.yml&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+      <span class='solr_config identifier id'>solr_config</span> <span class='assign token'>=</span> <span class='yaml identifier id'>yaml</span><span class='lbrack token'>[</span><span class='RAILS_ENV constant id'>RAILS_ENV</span><span class='rbrack token'>]</span>
+      <span class='puts identifier id'>puts</span> <span class='solr_config identifier id'>solr_config</span><span class='dot token'>.</span><span class='inspect identifier id'>inspect</span>
+    <span class='else else kw'>else</span>
+      <span class='config_path identifier id'>config_path</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='dirname identifier id'>dirname</span><span class='lparen token'>(</span><span class='__FILE__ __file__ kw'>__FILE__</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='string val'>&quot;..&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;..&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;..&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;config&quot;</span><span class='rparen token'>)</span>
+      <span class='yaml identifier id'>yaml</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='dot token'>.</span><span class='load identifier id'>load</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='config_path identifier id'>config_path</span><span class='comma token'>,</span> <span class='string val'>&quot;solr.yml&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    
+    
+      <span class='if if kw'>if</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>&quot;environment&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+        <span class='environment identifier id'>environment</span> <span class='assign token'>=</span> <span class='string val'>&quot;development&quot;</span>
+      <span class='else else kw'>else</span>
+        <span class='environment identifier id'>environment</span> <span class='assign token'>=</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>&quot;environment&quot;</span><span class='rbrack token'>]</span>
+      <span class='end end kw'>end</span>
+    
+      <span class='solr_config identifier id'>solr_config</span> <span class='assign token'>=</span> <span class='yaml identifier id'>yaml</span><span class='lbrack token'>[</span><span class='environment identifier id'>environment</span><span class='rbrack token'>]</span>
+      <span class='puts identifier id'>puts</span> <span class='solr_config identifier id'>solr_config</span><span class='dot token'>.</span><span class='inspect identifier id'>inspect</span>
+    <span class='end end kw'>end</span>
+  
+  <span class='end end kw'>end</span>
+    
+  <span class='if if kw'>if</span> <span class='index_full_text identifier id'>index_full_text</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='string val'>'fulltext'</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='string val'>'url'</span><span class='rbrack token'>]</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='solr_config identifier id'>solr_config</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='string val'>&quot;default&quot;</span><span class='rparen token'>)</span>
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='string val'>'default'</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='string val'>'url'</span><span class='rbrack token'>]</span>
+  <span class='elsif elsif kw'>elsif</span> <span class='solr_config identifier id'>solr_config</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='string val'>'url'</span><span class='rparen token'>)</span>
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='string val'>'url'</span><span class='rbrack token'>]</span>
+  <span class='else else kw'>else</span>
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='solr_config identifier id'>solr_config</span><span class='lbrack token'>[</span><span class='symbol val'>:url</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+  <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;HERE'S WHAT I THINK IS THE SOLR URL --&gt;  #{url}&quot;</span>
+  <span class='@connection ivar id'>@connection</span> <span class='assign token'>=</span> <span class='Solr constant id'>Solr</span><span class='colon2 op'>::</span><span class='Connection constant id'>Connection</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span> <span class='symbol val'>:autocommit</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:on</span> <span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:35 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

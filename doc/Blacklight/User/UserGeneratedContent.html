@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Blacklight::User::UserGeneratedContent</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (U)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Blacklight.html" title="Blacklight (module)">Blacklight</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../User.html" title="Blacklight::User (module)">User</a></span></span>
+     &raquo; 
+    <span class="title">UserGeneratedContent</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Blacklight::User::UserGeneratedContent
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(base) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bookmarked_document_ids-instance_method" title="#bookmarked_document_ids (instance method)">- (Object) <strong>bookmarked_document_ids</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document_is_bookmarked%3F-instance_method" title="#document_is_bookmarked? (instance method)">- (Boolean) <strong>document_is_bookmarked?</strong>(document_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#documents_to_bookmark%3D-instance_method" title="#documents_to_bookmark= (instance method)">- (Object) <strong>documents_to_bookmark=</strong>(docs) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_bookmarks%3F-instance_method" title="#has_bookmarks? (instance method)">- (Boolean) <strong>has_bookmarks?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="included-class_method">
+  
+    + (<tt>Object</tt>) <strong>included</strong>(base) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb', line 2</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='has_many identifier id'>has_many</span> <span class='symbol val'>:bookmarks</span><span class='comma token'>,</span> <span class='symbol val'>:dependent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:destroy</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='has_many identifier id'>has_many</span> <span class='symbol val'>:searches</span><span class='comma token'>,</span> <span class='symbol val'>:dependent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:destroy</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="bookmarked_document_ids-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bookmarked_document_ids</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='bookmarked_document_ids identifier id'>bookmarked_document_ids</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='bookmarks identifier id'>bookmarks</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='bm identifier id'>bm</span><span class='bitor op'>|</span><span class='bm identifier id'>bm</span><span class='dot token'>.</span><span class='document_id identifier id'>document_id</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="document_is_bookmarked?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>document_is_bookmarked?</strong>(document_id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb', line 13</span>
+
+<span class='def def kw'>def</span> <span class='document_is_bookmarked? fid id'>document_is_bookmarked?</span><span class='lparen token'>(</span><span class='document_id identifier id'>document_id</span><span class='rparen token'>)</span>
+  <span class='bookmarked_document_ids identifier id'>bookmarked_document_ids</span><span class='dot token'>.</span><span class='include? fid id'>include?</span> <span class='document_id identifier id'>document_id</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="documents_to_bookmark=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>documents_to_bookmark=</strong>(docs) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb', line 17</span>
+
+<span class='def def kw'>def</span> <span class='documents_to_bookmark= identifier id'>documents_to_bookmark=</span><span class='lparen token'>(</span><span class='docs identifier id'>docs</span><span class='rparen token'>)</span>
+  <span class='docs identifier id'>docs</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='doc identifier id'>doc</span><span class='bitor op'>|</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='bookmarks identifier id'>bookmarks</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='bookmarked_document_ids identifier id'>bookmarked_document_ids</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='lbrack token'>[</span><span class='symbol val'>:document_id</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_bookmarks?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>has_bookmarks?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/blacklight/lib/blacklight/user/user_generated_content.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='has_bookmarks? fid id'>has_bookmarks?</span><span class='semicolon token'>;</span> <span class='bookmarks identifier id'>bookmarks</span><span class='dot token'>.</span><span class='count identifier id'>count</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Jan 17 21:46:36 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
