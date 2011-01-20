@@ -7,7 +7,7 @@ nohup.out
 *.swp
 
 vendor/plugins/haml/init.rb
-
+vendor/plugins/blacklight/.git
 log/*
 coverage.data
 coverage/*
