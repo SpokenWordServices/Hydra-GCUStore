@@ -101,7 +101,7 @@ GEM
       nokogiri
       om
       solr-ruby
-    solrizer-fedora (0.1.0)
+    solrizer-fedora (0.1.1)
     sqlite3 (1.3.3)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
@@ -155,7 +155,7 @@ DEPENDENCIES
   ruby-debug-base
   solr-ruby
   solrizer (>= 0.3.1)
-  solrizer-fedora
+  solrizer-fedora (>= 0.1.1)
   sqlite3-ruby
   term-ansicolor
   trollop
