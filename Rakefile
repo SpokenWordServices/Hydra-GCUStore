@@ -22,4 +22,10 @@ end
 desc "Run the rspec examples without re-creating the test database first"
 Spec::Rake::SpecTask.new('spec_without_db') do |t|
   t.spec_files = FileList['spec/**/*.rb']
+  t.rcov = true
+  t.rcov_opts = %w{--exclude spec\/*,gems\/*,ruby\/* --aggregate coverage.data}
+end
+
+desc "Run all hydrangea tests"
+  task :alltests => ["set_test", "db:test:clone_structure", "hydra:default_fixtures:refresh", "spec_without_db", "cucumber"] do
 end
