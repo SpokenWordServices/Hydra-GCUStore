@@ -1,3 +1,5 @@
+namespace :blacklight do
+
 blacklight_plugin_dir = "#{File.dirname(__FILE__)}/../.."
 
 gem 'test-unit', '1.2.3' if RUBY_VERSION.to_f >= 1.9
@@ -185,4 +187,5 @@ namespace :spec do
   end
 end
 
+end
 end
