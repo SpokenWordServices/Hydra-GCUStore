@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require "active_fedora"
 require "nokogiri"
 
-describe Hydra::HydraDatasetDs do
+describe HydraDatasetDs do
   
   before(:each) do
     Fedora::Repository.stubs(:instance).returns(stub_everything())
