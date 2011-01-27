@@ -28,3 +28,4 @@ db/schema.rb
 
 /.bundle
 /.yardoc
+/doc
