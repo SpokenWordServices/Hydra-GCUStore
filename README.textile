@@ -56,16 +56,18 @@ rake --describe hydra
 rake hydra:jetty:load
 </pre>
 
-Import the fixture objects that are used by the rspec and cucumber tests
+Import the fixture objects that are used by the rspec and cucumber tests. Please note you must import them in both the development and test rails environments in order to be able to run the tests. 
 
 <pre>
 rake hydra:default_fixtures:load
+RAILS_ENV=test rake hydra:default_fixtures:load
 </pre>
 
 If you have already loaded these fixtures before, you should refresh them with 
 
 <pre>
-rake hydra:default_fixtures:refresh
+rake hydra:default_fixtures:refresh	
+RAILS_ENV=test rake hydra:default_fixtures:refresh
 </pre>
 
 Run the Rspec tests to make sure everything is working properly.
@@ -84,7 +86,7 @@ If you have all of the RSpec and Cucumber tests passing, then the application is
 Now run the rails lighttpd server
 
 <pre>
-script/server
+./script/server
 </pre>
 
 If all goes well, you will be able to see an empty copy of hydrangea at http://localhost:3000
