@@ -27,3 +27,4 @@ db/schema.rb
 .rvmrc
 
 /.bundle
+/.yardoc
