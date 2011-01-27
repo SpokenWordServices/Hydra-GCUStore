@@ -46,8 +46,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_blacklight_session',
-    :secret      => '3e37cf3b7a9a3359f437aac207241fd25c2e2a107f85b2e6d32e0b5e3795e75fdb094b9d045d8c40e9ae2b38063c8926ef01b1e03946652eadf96c653d6effa9'
+    :key => '_blacklight_session',
+    :secret => '3e37cf3b7a9a3359f437aac207241fd25c2e2a107f85b2e6d32e0b5e3795e75fdb094b9d045d8c40e9ae2b38063c8926ef01b1e03946652eadf96c653d6effa9'
   }
   
   # Use the database for sessions instead of the cookie-based default,
