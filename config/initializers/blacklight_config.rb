@@ -75,7 +75,7 @@ Blacklight.configure(:shared) do |config|
   # for human reading/writing, kind of like search_fields. Eg,
   # config[:facet] << {:field_name => "format", :label => "Format", :limit => 10}
   config[:facet] = {
-    :field_names => [
+    :field_names => (facet_fields = [
       "object_type_facet",
       "person_full_name_facet",
       "mods_organization_facet",
@@ -86,7 +86,7 @@ Blacklight.configure(:shared) do |config|
       "region_facet",
       "site_facet",
       "ecosystem_facet"
-      ],
+      ]),
     :labels => {
       "object_type_facet"=>"Type",
       "person_full_name_facet"=>"Person",
@@ -121,7 +121,7 @@ Blacklight.configure(:shared) do |config|
   # previously. Simply remove these lines if you'd rather use Solr request
   # handler defaults, or have no facets.
   config[:default_solr_params] ||= {}
-  #config[:default_solr_params][:"facet.field"] = facet_fields
+  config[:default_solr_params][:"facet.field"] = facet_fields
 
   # solr fields to be displayed in the index (search results) view
   #   The ordering of the field names is the order of the display 
