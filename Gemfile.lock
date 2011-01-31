@@ -3,11 +3,11 @@ GEM
   remote: http://gemcutter.org/
   specs:
     RedCloth (4.2.3)
-    actionmailer (2.3.10)
-      actionpack (= 2.3.10)
-    actionpack (2.3.10)
-      activesupport (= 2.3.10)
-      rack (~> 1.1.0)
+    actionmailer (2.3.5)
+      actionpack (= 2.3.5)
+    actionpack (2.3.5)
+      activesupport (= 2.3.5)
+      rack (~> 1.0.0)
     active-fedora (1.2.7)
       activeresource (< 3.0.0)
       mime-types (>= 1.16)
@@ -17,11 +17,11 @@ GEM
       solr-ruby (>= 0.0.6)
       solrizer (>= 0.3.0)
       xml-simple (>= 1.0.12)
-    activerecord (2.3.10)
-      activesupport (= 2.3.10)
-    activeresource (2.3.10)
-      activesupport (= 2.3.10)
-    activesupport (2.3.10)
+    activerecord (2.3.5)
+      activesupport (= 2.3.5)
+    activeresource (2.3.5)
+      activesupport (= 2.3.5)
+    activesupport (2.3.5)
     authlogic (2.1.6)
       activesupport
     block_helpers (0.3.3)
@@ -38,7 +38,7 @@ GEM
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
     curb (0.7.10)
-    database_cleaner (0.6.0)
+    database_cleaner (0.6.1)
     diff-lcs (1.1.2)
     facets (2.8.4)
     gherkin (2.3.3)
@@ -47,7 +47,7 @@ GEM
     httparty (0.7.3)
       crack (= 0.1.8)
     json (1.4.6)
-    json_pure (1.5.0)
+    json_pure (1.5.1)
     linecache (0.43)
     marc (0.4.1)
     mediashelf-loggable (0.4.0)
@@ -61,15 +61,15 @@ GEM
       facets
       nokogiri
       nokogiri (>= 1.4.2)
-    rack (1.1.0)
+    rack (1.0.1)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rails (2.3.10)
-      actionmailer (= 2.3.10)
-      actionpack (= 2.3.10)
-      activerecord (= 2.3.10)
-      activeresource (= 2.3.10)
-      activesupport (= 2.3.10)
+    rails (2.3.5)
+      actionmailer (= 2.3.5)
+      actionpack (= 2.3.5)
+      activerecord (= 2.3.5)
+      activeresource (= 2.3.5)
+      activesupport (= 2.3.5)
       rake (>= 0.8.3)
     rake (0.8.7)
     rcov (0.9.9)
@@ -102,7 +102,7 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     will_paginate (2.3.15)
-    xml-simple (1.0.13)
+    xml-simple (1.0.14)
     yard (0.6.4)
 
 PLATFORMS
@@ -135,7 +135,7 @@ DEPENDENCIES
   om (>= 1.0.1)
   rack
   rack-test
-  rails (>= 2.3.5, < 3.0.0)
+  rails (= 2.3.5)
   rake
   rcov
   rsolr (= 0.12.1)
