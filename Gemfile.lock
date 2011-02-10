@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   remote: http://gemcutter.org/
   specs:
-    RedCloth (4.2.3)
+    RedCloth (4.2.2)
     actionmailer (2.3.5)
       actionpack (= 2.3.5)
     actionpack (2.3.5)
@@ -109,7 +109,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  RedCloth
+  RedCloth (= 4.2.2)
   active-fedora (= 1.2.7)
   authlogic (>= 0.1.0)
   block_helpers
