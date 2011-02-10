@@ -1,7 +1,14 @@
 <%
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format progress features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-std_opts = "#{rerun_opts} --format rerun --out rerun.txt --strict --tags ~@wip"
+format_opts = "--format rerun --out rerun.txt --strict"
+std_opts = "#{rerun_opts} #{format_opts} --tags ~@overwritten --tags ~@wip --tags ~@pending"
+local_opts = "--tags @local --tags ~@wip --tags ~@pending"
+core_opts = "--tags ~@local --tags ~@wip --tags ~@pending"
+local_with_core_opts = "--tags ~@overwritten --tags ~@wip --tags ~@pending"
 %>
 default: <%= std_opts %>
 wip: --tags @wip:3 --wip features
+local_only: <%= local_opts %>
+core: <%= core_opts %>
+local_with_core: <%= local_with_core_opts %>
