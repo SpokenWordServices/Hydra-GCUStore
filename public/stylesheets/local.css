@@ -1,0 +1,273 @@
+/* Stylesheet for Hull Hydra  
+
+RG  090818
+
+*/
+
+/* Over-ride body etc in application.css */
+
+body {background: url('../images/bg.png') repeat-x top left; font: 0.8em Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif; line-height: 1.4; color:#333; margin: 0px; padding: 15px;}
+select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;}
+
+/* HEADER & FOOTER */
+
+#top-nav {
+
+}
+
+#uni-nav-links {
+	padding-top: 0px;
+	height: 26px;
+	background: url(/images/top_nav_bg_h_new.gif) repeat-x;
+}
+/* nav link image is 25px, 26px to give separation */
+/* nav link image is now 20px, 21px to give separation */
+
+#uni-nav-links ul {
+	margin-left: 15px;
+	margin-top: 0px;
+	width:400px;
+	float: left;
+	height: 15px;
+	padding-top: 5px;
+}
+/* padding top (5) removed for BL */
+
+/* ie workaround
+* html #uni-nav-links {
+	margin-top: 5px;
+	margin-left: 17px;
+}
+*/
+
+#uni-nav-links li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 12px;
+	padding-left: 8px;
+	padding-top: 0px;
+	color: #ffa381;
+	font-size: 1em;
+	border-right: 1px solid #d05256;
+}
+
+/* ie workaround */
+* html #uni-nav-links li {
+	padding-left: 12px;
+}
+
+#uni-nav-links a {
+       /*color: #8fb9c5;*/
+	color: #E0E0C0;
+	text-decoration: none;	
+}
+
+#uni-nav-links a:hover {
+	color: #FFFF3F;	
+	text-decoration: none;
+}
+
+#uni-nav-links li.no-border {
+	border-right: none;
+}
+
+#blacklight-user-links {
+    margin-right: 15px;
+	padding-top: 5px;
+	color: #d05256;
+	text-align: right;
+	font-size: 1em;
+}
+
+#logo {
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 55px;
+    background: url(/images/new-bw-logo.gif) no-repeat #000000;
+	background-position: right;
+ }
+ /*logo image is 51px, 55px to give margin */
+ 
+ #hullFooter {
+ 	height: 50px;
+	background: #e0e0e0;
+	padding-left: 10px;
+ 
+ }
+ 
+ .tableNoBorder {
+ border-width: 0px;
+ border-color: #e0e0e0;
+ border-collapse: collapse;
+ }
+
+#about {
+    margin-top: 0px;
+    margin-left: 0px;
+	padding-left: 5px;
+}
+
+#about ul {
+    margin-top: 0px;
+    margin-left: -400px;
+	width: 830px;
+	padding-left: 5px;
+}
+/* needed to override inherited ul */
+ 
+ /* INDEX & CATALOG DISPLAY */
+ 
+ table.index  {
+ width: 100%;
+ border-width: 0px;
+ padding: -10px;
+ }
+ 
+ table.index td {padding: 2px 5px}
+ 
+ table.resource {
+ table-layout: auto;
+ width: 100%;
+ border-width: 0px;
+ border-collapse: collapse;
+ background-color: #e2edfe;
+ text-align: center;
+ }
+ 
+ table.resource td {
+ width: 25%;
+ }
+  
+ td.label {
+ color: gray;
+ width: 120px;
+ text-align: right;
+ /* background-color: #fff7e5; */
+ }
+ 
+ td.greybox {
+ background: #e0e0e0;
+ border-width: 1px;
+ border-color: #505050;
+ }
+  
+.indexContainer, .splashContainer, .homeContainer, .iconContainer
+{
+width: 100%;
+position: relative;
+margin: 10px auto;
+line-height: 130%;
+clear: both;
+}
+
+.contentContainer
+{
+width: 100%;
+position: relative;
+overflow: hidden;
+line-height: 130%;
+clear: both;
+background-color: #e2edfe;
+}
+
+.indexCol1, .splashCol1
+{
+float: left;
+margin: 0;
+text-align: right;
+top: 0;
+color: #888;
+}
+
+.indexCol1 {width: 125px;}
+.splashCol1 {width: 150px;}
+
+.indexCol2
+{
+margin-left: 135px;
+margin-right: 130px;
+}
+/* indexCol1 width + 10px */
+
+.splashCol2
+{
+margin-left: 160px;
+}
+/* splashCol1 width + 10px */
+
+.indexImg
+{
+float: right;
+position: absolute;
+top: 0px;
+right: 0px;
+max-height: 90px;
+}
+
+.thumbnailImg
+{
+border: 1px solid #e2edfe;
+}
+
+.homeCol1 {
+top: 0px;
+float: left;
+margin-left: 10px;
+width: 400px;
+text-align: center;
+}
+
+.homeCol2 {
+top: 0px;
+margin-left: 420px;
+width: 200px; 
+padding: 5px;
+background-color: #ddd;
+}
+
+.contentCol1, .contentCol2, .contentCol3, .contentCol4, .iconCol1, .iconCol2, .iconCol3
+{
+float: left;
+text-align: center;
+top: 0;
+}
+
+.contentCol1, .contentCol2 { width: 30%; }
+.contentCol3, .contentCol4 { width: 20%; }
+
+.iconCol1, .iconCol2, .iconCol3 {width: 32%;}
+
+
+ /* Local facets */
+ 
+ #facets {font-size: 93%; padding: 1em 1em 1em 1em;
+ /* background-color: #d8e0ff; */
+   }
+  
+ #facets ul {border-bottom: 1px dotted #ccc; padding: 0.5em 0.5em 1em; margin: 0;
+ background-color: #e2edfe;
+ }
+  
+
+ #facets h3 {
+  cursor: pointer;
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:15px;
+}
+#facets h3 {
+  background-image:url('/images/facet_closed.png');
+}
+#facets h3.facet_selected{
+  background-image:url('/images/facet_open.png');
+}
+
+#slide_panel {
+	display: none;
+}
+
+#slide_link {}
+
+.slide_button {}
+
+.minus_icon {}
