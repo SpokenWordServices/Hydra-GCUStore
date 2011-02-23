@@ -1,4 +1,4 @@
-@show @wip
+@show @pending
 Feature: List downloads for a document
   In order to [goal]
   [stakeholder]

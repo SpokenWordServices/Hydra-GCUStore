@@ -5,8 +5,8 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-# This is not necessary because we're using Bundler
-# RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+# We need to make sure that rails 2.3.5 is used because that's what Blacklight uses
+RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')

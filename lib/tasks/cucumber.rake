@@ -26,6 +26,24 @@ begin
       t.profile = 'wip'
     end
 
+    Cucumber::Rake::Task.new({:local_only => 'db:test:prepare'}, 'Run features tagged with  @local') do |t|
+      t.binary = vendored_cucumber_bin 
+      t.fork = true
+      t.profile = 'local_only'
+    end
+
+    Cucumber::Rake::Task.new({:core_only => 'db:test:prepare'}, 'Run features NOT tagged with  @local') do |t|
+      t.binary = vendored_cucumber_bin 
+      t.fork = true
+      t.profile = 'core'
+    end
+
+    Cucumber::Rake::Task.new({:local_with_core => 'db:test:prepare'}, 'Run all features except those tagged with @overwritten') do |t|
+      t.binary = vendored_cucumber_bin 
+      t.fork = true
+      t.profile = 'local_with_core'
+    end
+
     desc 'Run all features'
     task :all => [:ok, :wip]
   end

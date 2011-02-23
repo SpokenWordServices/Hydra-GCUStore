@@ -1,4 +1,4 @@
-@wip @catalog
+@pending @catalog
 Feature: Search Results
   As a user
   In order to find the documents I'm searching for

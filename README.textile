@@ -104,6 +104,28 @@ To stop jetty, use the rake task
   rake hydra:jetty:stop
 </pre>
 
+h2. Custom Fedora Config
+
+If, for some reason, you would like to tweak the fedora instance that is bundled in the jetty, copy your custom fedora.fcfg file to {Rails.root}/fedora/conf/fedora.fcfg and issue the following command:
+
+<pre>
+ rake hydra:jetty:load
+</pre>
+
+One use-case for this is to permit you to define your own default pid-namespace for the application.  You would do this by changing the following line from:
+
+<pre>
+  <param name="pidNamespace" value="changeme">
+</pre>
+
+to 
+
+<pre>
+  <param name="pidNamespace" value="my-namespace">
+</pre>
+
+
+
 h2. Acknowledgements
 
 h3. Design & Strategic Contributions

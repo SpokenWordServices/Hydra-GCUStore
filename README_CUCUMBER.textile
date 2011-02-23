@@ -1,0 +1,62 @@
+!http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png(Hydrangea)!
+
+h1. Cucumber Usage
+
+In order to differentiate between core and local/custom behaviors in cucumber, we have implemented additional rake tasks and have linked the default behavior to one of these: rake cucumber:local_with_core.
+
+h2. Tasks
+
+The following rake tasks are available:
+
+h3. Default or Local Plus Core
+
+<pre>
+rake cucumber
+rake cucumber:local_with_core
+</pre>
+
+Runs all features except those marked with @pending, @wip, or @overwritten.  This should include all your custom features plus all core features that you have not overwritten.
+If you find that you have a core feature that you expect to fail due to local changes in behavioral expectations, you should tag the core feature with @overwritten so that it will be ignored by this rake task.
+
+The default task (rake cucumber) will check for previously failed tests and will run them prior to running the entire suite.
+
+h3. Work In Progress
+
+<pre>rake cucumber:wip</pre>
+
+Runs only features tagged with @wip.  This task assumes that the feature you are working will fail.
+
+h3. Local only
+
+<pre>rake cucumber:local_only</pre>
+
+Runs only features marked with the @local tag.  This is good to get a quick look at the status of your customized behaviors.
+
+h3. Core Only
+
+<pre>rake cucumber:core_only</pre>
+
+Runs all features not marked with the following tags: @wip, @local, and @pending.  This runs what would be the default feature set prior to any customization.
+
+h2. Tags
+
+The tasks rely on the following cucumber tags:
+
+@local
+
+Tag your custom cucumber features with @local.  These will be picked up by the default, local, and local_with_core tasks, but will be ignored by the core task.
+
+@overwritten
+
+Tag the core features whose behavior is no longer valid for your customized environment with @overwritten.  These features will be ignored by the default, local and local_with_core tasks, but picked up by core.
+
+@pending
+
+To have a feature completely ignored by cucumber, add the @pending tag.  Cucumber will ignore features marked with @pending.
+
+@wip
+
+In order to support cucumber's default wip (work in progress) functionality, you can tag any feature you are currently working on with @wip.  The current limit for this tag is set to 3.  
+These features will be ignored by all tasks except cucumber:wip.
+
+
