@@ -93,18 +93,15 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <subject>
       <topic>tiger shark</topic>
       <topic>luminescent</topic>
-
     </subject>
-    <note type="completeness">Klaus Daimler</note>
-    <note type="interval">Semi-annually</note>
-    <note type="datatype">observation</note>
-    <note type="timespan-start">2004/12/24</note>
+    <note type="completeness"></note>
+    <note type="interval"></note>
+    <note type="timespan-start"></note>
     <note type="timespan-end"></note>
-    <note type="location">(31.95216223802497,-25.3125)</note>
-    <note type="grant">201006</note>
-    <note type="data quality">These data are of the most impeccable quality.</note>
-    <note type="contact-name">Klaus Daimler</note>
-    <note type="contact-email">klaus@thebelafonte.info</note>
+    <note type="location"></note>
+    <note type="grant"></note>
+    <note type="contact-name"></note>
+    <note type="contact-email"></note>
   </mods>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -117,6 +114,34 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <hasModel xmlns="info:fedora/fedora-system:def/relations-external#" rdf:resource="info:fedora/afmodel:HydrangeaDataset"></hasModel>
   </rdf:Description>
 </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="hydraDataset" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="hydraDataset.0" LABEL="" CREATED="2010-08-14T04:41:49.267Z" MIMETYPE="text/xml" SIZE="974">
+<foxml:xmlContent>
+  <hydraDataset xmlns="http://yourmediashelf.com/schemas/hydra-dataset/v0"> 
+    <completeness></completeness> 
+    <completed></completed> 
+    <interval>Semi-annually</interval> 
+    <data_type></data_type> 
+    <timespan_start>2004/12/24</timespan_start> 
+    <timespan_end>2005/03/15</timespan_end> 
+    <gps>(31.95216223802497,-25.3125)</gps> 
+    <region>South Pacific</region> 
+    <site>The Tiger Shark&apos;s Lair</site> 
+    <ecosystem>Really Deep</ecosystem> 
+    <grant> 
+      <organization>NSF</organization> 
+      <number>099566</number> 
+    </grant> 
+    <right_to_deposit>I am the owner of this dataset and am authorized to deposit it</right_to_deposit> 
+    <notification_email>steve@thebelafonte.org</notification_email> 
+    <license></license> 
+    <data_quality>These data are of the most impeccable quality. </data_quality> 
+    <contact_name>Klaus Daimler</contact_name> 
+    <contact_email>klaus@thebelafonte.org</contact_email> 
+  </hydraDataset>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
