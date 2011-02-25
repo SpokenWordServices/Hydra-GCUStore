@@ -116,21 +116,20 @@ describe Hydra::RightsMetadata do
       @sample.update_values(params)
       solr_doc = @sample.to_solr
       
-      solr_doc[:edit_access_person_t].should == "Lil Kim"
-      solr_doc[:edit_access_group_t].should == "group1"
-      solr_doc[:edit_access_group_t].should include("group1")
-      solr_doc[:discover_access_person_t].should == "Joe Schmoe"
-      solr_doc[:discover_access_group_t].should == "public"
+      solr_doc["edit_access_person_t"].should == ["Lil Kim"]
+      solr_doc["edit_access_group_t"].sort.should == ["group1", "group2"]
+      solr_doc["discover_access_person_t"].should == ["Joe Schmoe"]
+      solr_doc["discover_access_group_t"].should == ["public"]
     end
     it "should solrize fixture content correctly" do
       fixture_xml = Nokogiri::XML::Document.parse( fixture("hydrangea_fixture_mods_article1.foxml.xml") )
       fixture_rights = fixture_xml.xpath("//foxml:datastream[@ID='rightsMetadata']/foxml:datastreamVersion[last()]/foxml:xmlContent").first.to_xml
       lsample = Hydra::RightsMetadata.from_xml(fixture_rights)
       solr_doc = lsample.to_solr
-      solr_doc[:edit_access_person_t].should == "researcher1"
-      solr_doc[:edit_access_group_t].should == "archivist"
-      solr_doc[:read_access_group_t].should == "public"
-      solr_doc[:discover_access_group_t].should == "public"
+      solr_doc["edit_access_person_t"].should == ["researcher1"]
+      solr_doc["edit_access_group_t"].should == ["archivist"]
+      solr_doc["read_access_group_t"].should == ["public"]
+      solr_doc["discover_access_group_t"].should == ["public"]
     end
   end
 end

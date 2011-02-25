@@ -8,14 +8,24 @@ GEM
     actionpack (2.3.5)
       activesupport (= 2.3.5)
       rack (~> 1.0.0)
-    active-fedora (1.2.7)
+    active-fedora (2.0.0)
       activeresource (< 3.0.0)
+      activeresource (< 3.0.0)
+      equivalent-xml
+      mediashelf-loggable
+      mime-types (>= 1.16)
       mime-types (>= 1.16)
       multipart-post
+      multipart-post
+      nokogiri
       nokogiri
       om (>= 1.0)
+      om (>= 1.0)
+      solr-ruby (>= 0.0.6)
       solr-ruby (>= 0.0.6)
       solrizer (>= 0.3.0)
+      solrizer (>= 1.0.0, < 2.0.0)
+      xml-simple (>= 1.0.12)
       xml-simple (>= 1.0.12)
     activerecord (2.3.5)
       activesupport (= 2.3.5)
@@ -37,14 +47,16 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    curb (0.7.10)
-    database_cleaner (0.6.1)
+    curb (0.7.12)
+    database_cleaner (0.6.4)
     diff-lcs (1.1.2)
+    equivalent-xml (0.1.6)
+      nokogiri
     facets (2.8.4)
     gherkin (2.3.3)
       json (~> 1.4.6)
     haml (3.0.25)
-    httparty (0.7.3)
+    httparty (0.7.4)
       crack (= 0.1.8)
     json (1.4.6)
     json_pure (1.5.1)
@@ -52,8 +64,7 @@ GEM
     marc (0.4.1)
     mediashelf-loggable (0.4.0)
     mime-types (1.16)
-    mocha (0.9.10)
-      rake
+    mocha (0.9.12)
     multipart-post (1.1.0)
     nokogiri (1.4.3.1)
     om (1.0.2)
@@ -87,13 +98,19 @@ GEM
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     solr-ruby (0.0.8)
-    solrizer (0.3.2)
+    solrizer (1.0.0)
+      mediashelf-loggable
       mediashelf-loggable
       nokogiri
       nokogiri
+      nokogiri
       om
-      solr-ruby
-    solrizer-fedora (0.1.1)
+      om (>= 1.0.0)
+      xml-simple
+    solrizer-fedora (1.0.0)
+      active-fedora (>= 2.0.0)
+      rsolr
+      solrizer (>= 1.0.0)
     sqlite3-ruby (1.2.5)
     term-ansicolor (1.0.5)
     trollop (1.16.2)
@@ -110,7 +127,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.2)
-  active-fedora (= 1.2.7)
+  active-fedora (= 2.0.0)
   authlogic (>= 0.1.0)
   block_helpers
   builder
@@ -145,8 +162,8 @@ DEPENDENCIES
   ruby-debug
   ruby-debug-base
   solr-ruby
-  solrizer (>= 0.3.1)
-  solrizer-fedora (>= 0.1.1)
+  solrizer (>= 1.0.0)
+  solrizer-fedora (>= 1.0.0)
   sqlite3-ruby (= 1.2.5)
   term-ansicolor
   trollop

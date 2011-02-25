@@ -22,7 +22,7 @@ describe Hydra::ModsDataset do
       @dataset_ds.update_indexed_attributes( {[:title_info, :main_title]=>{"0"=>"My Title"}} )
       Hydra::ModsDataset.terminology.xpath_for(:title).should == "//oxns:titleInfo/oxns:title"
       Hydra::ModsDataset.terminology.retrieve_term(:title).should be_kind_of(OM::XML::NamedTermProxy)
-      @dataset_ds.to_solr[:title_t].should == "My Title"
+      @dataset_ds.to_solr["title_t"].should == ["My Title"]
     end
     it "should add an object_type_facet with 'Dataset' as the value" do
       solr_doc = @dataset_ds.to_solr
