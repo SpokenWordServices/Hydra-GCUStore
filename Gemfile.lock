@@ -23,8 +23,8 @@ GEM
       om (>= 1.0)
       solr-ruby (>= 0.0.6)
       solr-ruby (>= 0.0.6)
-      solrizer (>= 0.3.0)
       solrizer (>= 1.0.0, < 2.0.0)
+      solrizer (>= 0.3.0)
       xml-simple (>= 1.0.12)
       xml-simple (>= 1.0.12)
     activerecord (2.3.5)
@@ -98,7 +98,7 @@ GEM
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     solr-ruby (0.0.8)
-    solrizer (1.0.0)
+    solrizer (1.0.1)
       mediashelf-loggable
       mediashelf-loggable
       nokogiri
@@ -107,10 +107,9 @@ GEM
       om
       om (>= 1.0.0)
       xml-simple
-    solrizer-fedora (1.0.0)
+    solrizer-fedora (1.0.1)
       active-fedora (>= 2.0.0)
-      rsolr
-      solrizer (>= 1.0.0)
+      solrizer (>= 0.3.0)
     sqlite3-ruby (1.2.5)
     term-ansicolor (1.0.5)
     trollop (1.16.2)
@@ -162,7 +161,7 @@ DEPENDENCIES
   ruby-debug
   ruby-debug-base
   solr-ruby
-  solrizer (>= 1.0.0)
+  solrizer (>= 1.0.1)
   solrizer-fedora (>= 1.0.0)
   sqlite3-ruby (= 1.2.5)
   term-ansicolor
