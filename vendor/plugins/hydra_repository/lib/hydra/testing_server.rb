@@ -19,7 +19,10 @@
 class Hydra::TestingServer
   require 'singleton'
   include Singleton
-  require 'win32/process' if RUBY_PLATFORM =~ /mswin32/
+  WINDOWS_PLATFORMS = ["mswin32","mingw","cygwin"]
+
+  
+  require 'win32/process' if RUBY_PLATFORM =~ /mswin32|mingw|cygwin/
   attr_accessor :port, :jetty_home, :solr_home, :quiet, :fedora_home
 
   # configure the singleton with some defaults
@@ -117,7 +120,7 @@ class Hydra::TestingServer
 
   def platform
     case RUBY_PLATFORM
-    when /mswin32/
+    when /mswin32|mingw|cygwin/
       return 'win'
     else
       return 'nix'
