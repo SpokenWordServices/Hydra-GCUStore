@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject PID="hull:3680" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+  <foxml:objectProperties>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Stanford University : the Hoover Tower"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-09T11:52:04.589Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-02-10T15:23:22.770Z"/>
+  </foxml:objectProperties>
+  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
+    <foxml:datastreamVersion CREATED="2011-02-09T11:52:04.589Z"
+      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
+      <foxml:xmlContent>
+        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+          <audit:record ID="AUDREC1">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>ingest</audit:action>
+            <audit:componentID/>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T11:52:04.589Z</audit:date>
+            <audit:justification>Created with Admin GUI "New Object" command</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC2">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>RELS-EXT</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T11:59:27.119Z</audit:date>
+            <audit:justification/>
+          </audit:record>
+          <audit:record ID="AUDREC3">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>rightsMetadata</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:04:11.796Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC4">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>contentMetadata</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:14:27.568Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC5">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>descMetadata</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:28:12.871Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC6">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>content</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:36:27.897Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC7">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>max</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:37:54.831Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC8">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>screen</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:39:26.708Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC9">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>addDatastream</audit:action>
+            <audit:componentID>thumbnail</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T12:40:45.905Z</audit:date>
+            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC10">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>modifyDatastreamByValue</audit:action>
+            <audit:componentID>RELS-EXT</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-09T13:30:09.537Z</audit:date>
+            <audit:justification/>
+          </audit:record>
+          <audit:record ID="AUDREC11">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>ingest</audit:action>
+            <audit:componentID/>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-10T15:23:22.770Z</audit:date>
+            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_3680.xml</audit:justification>
+          </audit:record>
+        </audit:auditTrail>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T11:52:04.589Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
+      ID="DC1.0" LABEL="Dublin Core Record for this object" MIMETYPE="text/xml" SIZE="400">
+      <foxml:xmlContent>
+        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+          <dc:title>Stanford University : the Hoover Tower</dc:title>
+          <dc:identifier>hull:3680</dc:identifier>
+        </oai_dc:dc>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T11:59:27.119Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
+      ID="RELS-EXT.0" LABEL="RDF Statements about this object" MIMETYPE="application/rdf+xml" SIZE="708">
+      <foxml:xmlContent>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="info:fedora/hull:3680">
+            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:GenericImage"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:genericImage" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:genericContent" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:staticImage" xmlns="info:fedora/fedora-system:def/model#"/>
+          </rdf:Description>
+        </rdf:RDF>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+    <foxml:datastreamVersion CREATED="2011-02-09T13:30:09.537Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
+      ID="RELS-EXT.1" LABEL="RDF Statements about this object" MIMETYPE="application/rdf+xml" SIZE="875">
+      <foxml:xmlContent>
+        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+          <rdf:Description rdf:about="info:fedora/hull:3680">
+            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:GenericImage"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:genericImage" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:genericContent" xmlns="info:fedora/fedora-system:def/model#"/>
+            <hasModel rdf:resource="info:fedora/hydra-cModel:staticImage" xmlns="info:fedora/fedora-system:def/model#"/>
+            <rel:isHidden>false</rel:isHidden>
+          </rdf:Description>
+        </rdf:RDF>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:04:11.796Z" ID="rightsMetadata.0" LABEL="Rights metadata"
+      MIMETYPE="text/xml" SIZE="881">
+      <foxml:xmlContent>
+        <rightsMetadata>
+          <copyright>
+            <human>Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</human>
+            <machine/>
+          </copyright>
+          <access type="discover">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="read">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="edit">
+            <human/>
+            <machine>
+              <group>administrator</group>
+            </machine>
+          </access>
+          <use>
+            <human/>
+            <machine/>
+          </use>
+        </rightsMetadata>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="contentMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:14:27.568Z" ID="contentMetadata.0" LABEL="Content metadata"
+      MIMETYPE="text/xml" SIZE="1367">
+      <foxml:xmlContent>
+        <contentMetadata type="image">
+          <resource displayLabel="Thumbnail" dissType="staticImage/thumbnail" dsID="thumbnail" id="Thumbnail"
+            objectID="hull:3680" sequence="1">
+            <file format="JPG" mimeType="image/jpg" name="thumbnail" size="57000">
+              <imageData height="120" width="160"/>
+              <location type="url">http://hydra.hull.ac.uk/assets/hull:3680/staticImage/thumbnail</location>
+            </file>
+          </resource>
+          <resource displayLabel="Screen size" dissType="staticImage/screen" dsID="screen" id="Screen size"
+            objectID="hull:3680" sequence="2">
+            <file format="JPG" mimeType="image/jpg" name="screen" size="6398000">
+              <imageData height="1280" width="1706"/>
+              <location type="url">http://hydra.hull.ac.uk/assets/hull:3680/staticImage/screen</location>
+            </file>
+          </resource>
+          <resource displayLabel="Maximum size" dissType="staticImage/max" dsID="max" id="Maximum size"
+            objectID="hull:3680" sequence="3">
+            <file format="JPG" mimeType="image/jpg" name="max" size="3149000">
+              <imageData height="2304" width="3072"/>
+              <location type="url">http://hydra.hull.ac.uk/assets/hull:3680/staticImage/max</location>
+            </file>
+          </resource>
+        </contentMetadata>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="descMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:28:12.871Z" ID="descMetadata.0" LABEL="MODS metadata"
+      MIMETYPE="text/xml" SIZE="2407">
+      <foxml:xmlContent>
+        <mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd">
+          <titleInfo>
+            <title>Stanford University : the Hoover Tower</title>
+          </titleInfo>
+          <name type="personal">
+            <namePart>Green, Richard A.</namePart>
+            <role>
+              <roleTerm type="text">creator</roleTerm>
+            </role>
+          </name>
+          <typeOfResource>stillImage</typeOfResource>
+          <genre>Photograph</genre>
+          <originInfo>
+            <publisher>The Hydra Project, The University of Hull</publisher>
+            <dateIssued encoding="w3cdtf" keyDate="yes">2011-02-09</dateIssued>
+          </originInfo>
+          <language>
+            <languageTerm type="text">English</languageTerm>
+            <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+          </language>
+          <physicalDescription>
+            <extent>Original image:  2304 x 3072 pixels</extent>
+            <internetMediaType>application/jpg</internetMediaType>
+            <digitalOrigin>born digital</digitalOrigin>
+          </physicalDescription>
+          <abstract>The Hoover Tower at Stanford University seen across Lasuen Mall. March 2010.</abstract>
+          <subject authority="UoH">
+            <topic>Stanford University</topic>
+          </subject>
+          <identifier type="fedora">hull:3680</identifier>
+          <location>
+            <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/assets/hull:3680</url>
+            <url access="raw object">http://hydra.hull.ac.uk/assets/hull:3680/staticImage/screen</url>
+          </location>
+          <accessCondition type="useAndReproduction">Creative Commons Attribution 2.0 UK: England and Wales. You are free: to copy, distribute, display, and perform the work; and to make derivative works, under the following conditions: Attribution. You must give the original author credit. See: http://creativecommons.org/licenses/by/2.0/uk/</accessCondition>
+          <recordInfo>
+            <recordContentSource>The University of Hull</recordContentSource>
+            <languageOfCataloging>
+              <languageTerm authority="iso639-2b">eng</languageTerm>
+            </languageOfCataloging>
+          </recordInfo>
+        </mods>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="content" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:36:27.897Z" ID="content.0" LABEL="Content" MIMETYPE="image/jpeg">
+      <foxml:contentLocation REF="http://rep1.adir.hull.ac.uk/public/hull3680-archive-110209122430.JPG" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="max" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:37:54.831Z" ID="max.0" LABEL="Full size image" MIMETYPE="image/jpeg">
+      <foxml:contentLocation REF="http://rep1.adir.hull.ac.uk/public/hull3680-fullSize-110209122430.JPG" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="screen" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:39:26.708Z" ID="screen.0" LABEL="Screen size image" MIMETYPE="image/jpeg">
+      <foxml:contentLocation REF="http://rep1.adir.hull.ac.uk/public/hull3680-screenSize-110209122506.JPG" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="thumbnail" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-09T12:40:45.905Z" ID="thumbnail.0" LABEL="Thumbnail" MIMETYPE="image/jpeg">
+      <foxml:contentLocation REF="http://rep1.adir.hull.ac.uk/public/hull3680-thumbnail-110209122430.JPG" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+</foxml:digitalObject>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject PID="hull:3112" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+  <foxml:objectProperties>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Accounting regulation in Egypt in relation to western influence - Kayed, Metwally Ahmed El-Sayed; "/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:44.777Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-02-23T10:50:44.777Z"/>
+    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+  </foxml:objectProperties>
+  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.777Z"
+      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
+      <foxml:xmlContent>
+        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+          <audit:record ID="AUDREC1">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>ingest</audit:action>
+            <audit:componentID/>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-23T10:50:44.777Z</audit:date>
+            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_3112.xml</audit:justification>
+          </audit:record>
+        </audit:auditTrail>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.824Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
+      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="1030">
+      <foxml:xmlContent>
+        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+          <dc:title>Accounting regulation in Egypt in relation to western influence</dc:title>
+          <dc:creator>Kayed, Metwally Ahmed El-Sayed</dc:creator>
+          <dc:subject>Management</dc:subject>
+          <dc:publisher>The University of Hull</dc:publisher>
+          <dc:date>1990</dc:date>
+          <dc:type>Thesis &amp; dissertation</dc:type>
+          <dc:format>application/pdf</dc:format>
+          <dc:identifier>Ethos PID : 239773</dc:identifier>
+          <dc:identifier>http://edocs.hull.ac.uk/download.jsp?pid=hull:3112</dc:identifier>
+          <dc:identifier>hull:3112</dc:identifier>
+          <dc:language>eng</dc:language>
+          <dc:rights>© 1990 Metwally Kayed. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
+        </oai_dc:dc>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="descMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.824Z" ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
+      <foxml:contentLocation
+        REF="http://local.fedora.server/fedora/objects/hull:3112/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.824Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
+      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="664">
+      <foxml:xmlContent>
+        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+          <rdf:Description rdf:about="info:fedora/hull:3112">
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"/>
+            <rel:isHidden>false</rel:isHidden>
+          </rdf:Description>
+        </rdf:RDF>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.825Z" ID="contentMetadata.0" LABEL="Content metadata"
+      MIMETYPE="text/xml" SIZE="367">
+      <foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJEb2N1
+              bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1bGw6MzExMiIgZHNJRD0iY29u
+              dGVudCIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiPjxmaWxlIGlkPSJjb250ZW50IiBm
+              b3JtYXQ9InBkZiIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iMjYzNDk1NjgiPjxsb2Nh
+              dGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjMxMTJhL2dl
+              bmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPjwvZmlsZT48L3Jlc291cmNlPjwvY29udGVudE1l
+              dGFkYXRhPg==
+</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.825Z" ID="rightsMetadata.0" LABEL="Rights metadata"
+      MIMETYPE="text/xml" SIZE="618">
+      <foxml:xmlContent>
+        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+          <copyright>
+            <human>© 1990 Metwally Kayed. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</human>
+            <machine/>
+          </copyright>
+          <access type="discover">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="read">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="edit">
+            <human/>
+            <machine>
+              <group>contentAccessTeam</group>
+            </machine>
+          </access>
+          <use>
+            <human/>
+            <machine/>
+          </use>
+        </rightsMetadata>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="M" ID="UKETD_DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:44.826Z" ID="UKETD_DC.0" LABEL="UKETD_DC metadata"
+      MIMETYPE="text/xml" SIZE="1501">
+      <foxml:binaryContent> 
+              PHVrZXRkX2RjOnVrZXRkZGMgeG1sbnM6dWtldGRfZGM9Imh0dHA6Ly9uYWNhLmNlbnRyYWwuY3JhbmZp
+              ZWxkLmFjLnVrL2V0aG9zLW9haS8yLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1l
+              bnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy8iIHhtbG5zOnVr
+              ZXRkdGVybXM9Imh0dHA6Ly9uYWNhLmNlbnRyYWwuY3JhbmZpZWxkLmFjLnVrL2V0aG9zLW9haS90ZXJt
+              cy8iIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxk
+              Yzp0aXRsZT5BY2NvdW50aW5nIHJlZ3VsYXRpb24gaW4gRWd5cHQgaW4gcmVsYXRpb24gdG8gd2VzdGVy
+              biBpbmZsdWVuY2U8L2RjOnRpdGxlPjxkYzpjcmVhdG9yPktheWVkLCBNZXR3YWxseSBBaG1lZCBFbC1T
+              YXllZDwvZGM6Y3JlYXRvcj48dWtldGR0ZXJtczpncmFudG51bWJlci8+PGRjdGVybXM6aXNzdWVkPjE5
+              OTA8L2RjdGVybXM6aXNzdWVkPjxkYzpzdWJqZWN0Pk1hbmFnZW1lbnQ8L2RjOnN1YmplY3Q+PGRjOnN1
+              YmplY3Q+RmluYW5jZTwvZGM6c3ViamVjdD48ZGM6c3ViamVjdD5UYXhhdGlvbjwvZGM6c3ViamVjdD48
+              ZGN0ZXJtczphYnN0cmFjdC8+PGRjOmRhdGU+MjAxMC0xMC0xOTwvZGM6ZGF0ZT48ZGM6Zm9ybWF0IHhz
+              aTp0eXBlPSJkY3Rlcm1zOklNVCI+YXBwbGljYXRpb24vcGRmPC9kYzpmb3JtYXQ+PGRjOmxhbmd1YWdl
+              IHhzaTp0eXBlPSJkY3Rlcm1zOklTTzYzOTIiPmVuZzwvZGM6bGFuZ3VhZ2U+PGRjOnR5cGU+VGhlc2lz
+              IG9yIGRpc3NlcnRhdGlvbjwvZGM6dHlwZT48dWtldGR0ZXJtczpxdWFsaWZpY2F0aW9ubGV2ZWw+RG9j
+              dG9yYWw8L3VrZXRkdGVybXM6cXVhbGlmaWNhdGlvbmxldmVsPjx1a2V0ZHRlcm1zOnF1YWxpZmljYXRp
+              b25uYW1lPlBoRDwvdWtldGR0ZXJtczpxdWFsaWZpY2F0aW9ubmFtZT48dWtldGR0ZXJtczppbnN0aXR1
+              dGlvbj5UaGUgVW5pdmVyc2l0eSBvZiBIdWxsPC91a2V0ZHRlcm1zOmluc3RpdHV0aW9uPjx1a2V0ZHRl
+              cm1zOmRlcGFydG1lbnQ+RGVwYXJ0bWVudCBvZiBBY2NvdW50aW5nPC91a2V0ZHRlcm1zOmRlcGFydG1l
+              bnQ+PGRjOnJpZ2h0cz7CqSAxOTkwIE1ldHdhbGx5IEtheWVkLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBO
+              byBwYXJ0IG9mIHRoaXMgcHVibGljYXRpb24gbWF5IGJlIHJlcHJvZHVjZWQgd2l0aG91dCB0aGUgd3Jp
+              dHRlbiBwZXJtaXNzaW9uIG9mIHRoZSBjb3B5cmlnaHQgaG9sZGVyLjwvZGM6cmlnaHRzPjxkY3Rlcm1z
+              OmlzUmVmZXJlbmNlZEJ5IHhzaTp0eXBlPSJkY3Rlcm1zOlVSSSI+aHR0cDovL2h5ZHJhLmh1bGwuYWMu
+              dWsvYXNzZXRzL2h1bGw6MzExMjwvZGN0ZXJtczppc1JlZmVyZW5jZWRCeT48ZGM6aWRlbnRpZmllciB4
+              c2k6dHlwZT0iZGN0ZXJtczpVUkkiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjMx
+              MTJhL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2RjOmlkZW50aWZpZXI+PC91a2V0ZF9kYzp1a2V0ZGRj
+              Pg==
+</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+</foxml:digitalObject>

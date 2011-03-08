@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject PID="hull:3573" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+  <foxml:objectProperties>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Kuwait's tax reformation, its alternatives and impact on a developing accounting profession - Al-Rashed, Wael E. R.; "/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:52.446Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-02-23T10:50:52.446Z"/>
+    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+  </foxml:objectProperties>
+  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.446Z"
+      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
+      <foxml:xmlContent>
+        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+          <audit:record ID="AUDREC1">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>ingest</audit:action>
+            <audit:componentID/>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-02-23T10:50:52.446Z</audit:date>
+            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_3573.xml</audit:justification>
+          </audit:record>
+        </audit:auditTrail>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.528Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
+      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="3058">
+      <foxml:xmlContent>
+        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+          <dc:title>Kuwait's tax reformation, its alternatives and impact on a developing accounting profession</dc:title>
+          <dc:creator>Al-Rashed, Wael E. R.</dc:creator>
+          <dc:subject>International trade</dc:subject>
+          <dc:description>Since the discovery of oil, Kuwait has witnessed a vast economic transition which has boosted a significant welfare state. However, in recent years the situation has changed, influencing the state budget and financial resources. The search for sources of income other than oil gave rise to the possibility of imposing taxes in a hitherto tax-free country. The 1955 tax law was applied only to foreign enterprises operating in Kuwait, and since then few attempts have been undertaken to reform it. 
+
+The purpose of this study is to examine the tax alternatives available to Kuwait, which could increase state revenues, and reduce the level of inequality among the population resulting from the government land purchasing programme adopted in the early sixties. It also aims, through an empirical investigation, to reveal the potential impact of tax reformation on the development of the emerging accounting profession in Kuwait.
+
+The determination of the most appropriate tax policy for Kuwait necessitates the examination of the views of those parties most concerned, who are defined in this study as the public, foreign investors, and accounting practitioners. Accordingly, questionnaires were designed, tested, distributed and analysed to reveal attitudes towards tax reformation. In addition, interviews with concerned persons in the country, including tax legislators, officials, and authors, were conducted, so as to further examine these attitudes and other aspects of tax introduction. Based on the findings of this investigation as well as the traditional literature survey, appropriate reforms are suggested, including reformation in the legislative, administrative, and technical considerations of the tax introduction.
+
+Moreover, recommendations concerning the development of the accounting profession to accommodate the new tax era are also made, including better organisation of the profession, and its contribution to taxation in Kuwait.</dc:description>
+          <dc:publisher>The University of Hull</dc:publisher>
+          <dc:date>1989-03</dc:date>
+          <dc:type>Thesis &amp; dissertation</dc:type>
+          <dc:format>application/pdf</dc:format>
+          <dc:identifier>Ethos PID : 276620</dc:identifier>
+          <dc:identifier>http://edocs.hull.ac.uk/download.jsp?pid=hull:3573</dc:identifier>
+          <dc:identifier>hull:3573</dc:identifier>
+          <dc:language>eng</dc:language>
+          <dc:rights>© 1989 Wael E.R. Al-Rashed. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
+        </oai_dc:dc>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="E" ID="descMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.528Z" ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
+      <foxml:contentLocation
+        REF="http://local.fedora.server/fedora/objects/hull:3573/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.528Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
+      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="664">
+      <foxml:xmlContent>
+        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+          <rdf:Description rdf:about="info:fedora/hull:3573">
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"/>
+            <rel:isHidden>false</rel:isHidden>
+          </rdf:Description>
+        </rdf:RDF>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.529Z" ID="contentMetadata.0" LABEL="Content metadata"
+      MIMETYPE="text/xml" SIZE="367">
+      <foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJEb2N1
+              bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1bGw6MzU3MyIgZHNJRD0iY29u
+              dGVudCIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiPjxmaWxlIGlkPSJjb250ZW50IiBm
+              b3JtYXQ9InBkZiIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iMTgwNjEzMTIiPjxsb2Nh
+              dGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjM1NzNhL2dl
+              bmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPjwvZmlsZT48L3Jlc291cmNlPjwvY29udGVudE1l
+              dGFkYXRhPg==
+</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.529Z" ID="rightsMetadata.0" LABEL="Rights metadata"
+      MIMETYPE="text/xml" SIZE="623">
+      <foxml:xmlContent>
+        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+          <copyright>
+            <human>© 1989 Wael E.R. Al-Rashed. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</human>
+            <machine/>
+          </copyright>
+          <access type="discover">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="read">
+            <human/>
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="edit">
+            <human/>
+            <machine>
+              <group>contentAccessTeam</group>
+            </machine>
+          </access>
+          <use>
+            <human/>
+            <machine/>
+          </use>
+        </rightsMetadata>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="M" ID="UKETD_DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.530Z" ID="UKETD_DC.0" LABEL="UKETD_DC metadata"
+      MIMETYPE="text/xml" SIZE="3700">
+      <foxml:binaryContent> 
+              PHVrZXRkX2RjOnVrZXRkZGMgeG1sbnM6dWtldGRfZGM9Imh0dHA6Ly9uYWNhLmNlbnRyYWwuY3JhbmZp
+              ZWxkLmFjLnVrL2V0aG9zLW9haS8yLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1l
+              bnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy8iIHhtbG5zOnVr
+              ZXRkdGVybXM9Imh0dHA6Ly9uYWNhLmNlbnRyYWwuY3JhbmZpZWxkLmFjLnVrL2V0aG9zLW9haS90ZXJt
+              cy8iIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxk
+              Yzp0aXRsZT5LdXdhaXQncyB0YXggcmVmb3JtYXRpb24sIGl0cyBhbHRlcm5hdGl2ZXMgYW5kIGltcGFj
+              dCBvbiBhIGRldmVsb3BpbmcgYWNjb3VudGluZyBwcm9mZXNzaW9uPC9kYzp0aXRsZT48ZGM6Y3JlYXRv
+              cj5BbC1SYXNoZWQsIFdhZWwgRS4gUi48L2RjOmNyZWF0b3I+PHVrZXRkdGVybXM6YWR2aXNvcj5Kb2hu
+              c29uLCBFLiBDLiAoc3VwZXJ2aXNvcik8L3VrZXRkdGVybXM6YWR2aXNvcj48dWtldGR0ZXJtczpncmFu
+              dG51bWJlci8+PGRjdGVybXM6aXNzdWVkPjE5ODktMDM8L2RjdGVybXM6aXNzdWVkPjx1a2V0ZHRlcm1z
+              OnNwb25zb3I+S3V3YWl0IFVuaXZlcnNpdHkgKHNwb25zb3IpPC91a2V0ZHRlcm1zOnNwb25zb3I+PGRj
+              OnN1YmplY3Q+SW50ZXJuYXRpb25hbCB0cmFkZTwvZGM6c3ViamVjdD48ZGM6c3ViamVjdD5NYW5hZ2Vt
+              ZW50PC9kYzpzdWJqZWN0PjxkYzpzdWJqZWN0PlBvbGl0aWNhbCBzY2llbmNlPC9kYzpzdWJqZWN0Pjxk
+              YzpzdWJqZWN0PlB1YmxpYyBhZG1pbmlzdHJhdGlvbjwvZGM6c3ViamVjdD48ZGN0ZXJtczphYnN0cmFj
+              dD5TaW5jZSB0aGUgZGlzY292ZXJ5IG9mIG9pbCwgS3V3YWl0IGhhcyB3aXRuZXNzZWQgYSB2YXN0IGVj
+              b25vbWljIHRyYW5zaXRpb24gd2hpY2ggaGFzIGJvb3N0ZWQgYSBzaWduaWZpY2FudCB3ZWxmYXJlIHN0
+              YXRlLiBIb3dldmVyLCBpbiByZWNlbnQgeWVhcnMgdGhlIHNpdHVhdGlvbiBoYXMgY2hhbmdlZCwgaW5m
+              bHVlbmNpbmcgdGhlIHN0YXRlIGJ1ZGdldCBhbmQgZmluYW5jaWFsIHJlc291cmNlcy4gVGhlIHNlYXJj
+              aCBmb3Igc291cmNlcyBvZiBpbmNvbWUgb3RoZXIgdGhhbiBvaWwgZ2F2ZSByaXNlIHRvIHRoZSBwb3Nz
+              aWJpbGl0eSBvZiBpbXBvc2luZyB0YXhlcyBpbiBhIGhpdGhlcnRvIHRheC1mcmVlIGNvdW50cnkuIFRo
+              ZSAxOTU1IHRheCBsYXcgd2FzIGFwcGxpZWQgb25seSB0byBmb3JlaWduIGVudGVycHJpc2VzIG9wZXJh
+              dGluZyBpbiBLdXdhaXQsIGFuZCBzaW5jZSB0aGVuIGZldyBhdHRlbXB0cyBoYXZlIGJlZW4gdW5kZXJ0
+              YWtlbiB0byByZWZvcm0gaXQuIAoKVGhlIHB1cnBvc2Ugb2YgdGhpcyBzdHVkeSBpcyB0byBleGFtaW5l
+              IHRoZSB0YXggYWx0ZXJuYXRpdmVzIGF2YWlsYWJsZSB0byBLdXdhaXQsIHdoaWNoIGNvdWxkIGluY3Jl
+              YXNlIHN0YXRlIHJldmVudWVzLCBhbmQgcmVkdWNlIHRoZSBsZXZlbCBvZiBpbmVxdWFsaXR5IGFtb25n
+              IHRoZSBwb3B1bGF0aW9uIHJlc3VsdGluZyBmcm9tIHRoZSBnb3Zlcm5tZW50IGxhbmQgcHVyY2hhc2lu
+              ZyBwcm9ncmFtbWUgYWRvcHRlZCBpbiB0aGUgZWFybHkgc2l4dGllcy4gSXQgYWxzbyBhaW1zLCB0aHJv
+              dWdoIGFuIGVtcGlyaWNhbCBpbnZlc3RpZ2F0aW9uLCB0byByZXZlYWwgdGhlIHBvdGVudGlhbCBpbXBh
+              Y3Qgb2YgdGF4IHJlZm9ybWF0aW9uIG9uIHRoZSBkZXZlbG9wbWVudCBvZiB0aGUgZW1lcmdpbmcgYWNj
+              b3VudGluZyBwcm9mZXNzaW9uIGluIEt1d2FpdC4KClRoZSBkZXRlcm1pbmF0aW9uIG9mIHRoZSBtb3N0
+              IGFwcHJvcHJpYXRlIHRheCBwb2xpY3kgZm9yIEt1d2FpdCBuZWNlc3NpdGF0ZXMgdGhlIGV4YW1pbmF0
+              aW9uIG9mIHRoZSB2aWV3cyBvZiB0aG9zZSBwYXJ0aWVzIG1vc3QgY29uY2VybmVkLCB3aG8gYXJlIGRl
+              ZmluZWQgaW4gdGhpcyBzdHVkeSBhcyB0aGUgcHVibGljLCBmb3JlaWduIGludmVzdG9ycywgYW5kIGFj
+              Y291bnRpbmcgcHJhY3RpdGlvbmVycy4gQWNjb3JkaW5nbHksIHF1ZXN0aW9ubmFpcmVzIHdlcmUgZGVz
+              aWduZWQsIHRlc3RlZCwgZGlzdHJpYnV0ZWQgYW5kIGFuYWx5c2VkIHRvIHJldmVhbCBhdHRpdHVkZXMg
+              dG93YXJkcyB0YXggcmVmb3JtYXRpb24uIEluIGFkZGl0aW9uLCBpbnRlcnZpZXdzIHdpdGggY29uY2Vy
+              bmVkIHBlcnNvbnMgaW4gdGhlIGNvdW50cnksIGluY2x1ZGluZyB0YXggbGVnaXNsYXRvcnMsIG9mZmlj
+              aWFscywgYW5kIGF1dGhvcnMsIHdlcmUgY29uZHVjdGVkLCBzbyBhcyB0byBmdXJ0aGVyIGV4YW1pbmUg
+              dGhlc2UgYXR0aXR1ZGVzIGFuZCBvdGhlciBhc3BlY3RzIG9mIHRheCBpbnRyb2R1Y3Rpb24uIEJhc2Vk
+              IG9uIHRoZSBmaW5kaW5ncyBvZiB0aGlzIGludmVzdGlnYXRpb24gYXMgd2VsbCBhcyB0aGUgdHJhZGl0
+              aW9uYWwgbGl0ZXJhdHVyZSBzdXJ2ZXksIGFwcHJvcHJpYXRlIHJlZm9ybXMgYXJlIHN1Z2dlc3RlZCwg
+              aW5jbHVkaW5nIHJlZm9ybWF0aW9uIGluIHRoZSBsZWdpc2xhdGl2ZSwgYWRtaW5pc3RyYXRpdmUsIGFu
+              ZCB0ZWNobmljYWwgY29uc2lkZXJhdGlvbnMgb2YgdGhlIHRheCBpbnRyb2R1Y3Rpb24uCgpNb3Jlb3Zl
+              ciwgcmVjb21tZW5kYXRpb25zIGNvbmNlcm5pbmcgdGhlIGRldmVsb3BtZW50IG9mIHRoZSBhY2NvdW50
+              aW5nIHByb2Zlc3Npb24gdG8gYWNjb21tb2RhdGUgdGhlIG5ldyB0YXggZXJhIGFyZSBhbHNvIG1hZGUs
+              IGluY2x1ZGluZyBiZXR0ZXIgb3JnYW5pc2F0aW9uIG9mIHRoZSBwcm9mZXNzaW9uLCBhbmQgaXRzIGNv
+              bnRyaWJ1dGlvbiB0byB0YXhhdGlvbiBpbiBLdXdhaXQuPC9kY3Rlcm1zOmFic3RyYWN0PjxkYzpkYXRl
+              PjIwMTEtMDEtMzE8L2RjOmRhdGU+PGRjOmZvcm1hdCB4c2k6dHlwZT0iZGN0ZXJtczpJTVQiPmFwcGxp
+              Y2F0aW9uL3BkZjwvZGM6Zm9ybWF0PjxkYzpsYW5ndWFnZSB4c2k6dHlwZT0iZGN0ZXJtczpJU082Mzky
+              Ij5lbmc8L2RjOmxhbmd1YWdlPjxkYzp0eXBlPlRoZXNpcyBvciBkaXNzZXJ0YXRpb248L2RjOnR5cGU+
+              PHVrZXRkdGVybXM6cXVhbGlmaWNhdGlvbmxldmVsPkRvY3RvcmFsPC91a2V0ZHRlcm1zOnF1YWxpZmlj
+              YXRpb25sZXZlbD48dWtldGR0ZXJtczpxdWFsaWZpY2F0aW9ubmFtZT5QaEQ8L3VrZXRkdGVybXM6cXVh
+              bGlmaWNhdGlvbm5hbWU+PHVrZXRkdGVybXM6aW5zdGl0dXRpb24+VGhlIFVuaXZlcnNpdHkgb2YgSHVs
+              bDwvdWtldGR0ZXJtczppbnN0aXR1dGlvbj48dWtldGR0ZXJtczpkZXBhcnRtZW50PkRlcGFydG1lbnQg
+              b2YgQWNjb3VudGluZzwvdWtldGR0ZXJtczpkZXBhcnRtZW50PjxkYzpyaWdodHM+wqkgMTk4OSBXYWVs
+              IEUuUi4gQWwtUmFzaGVkLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBObyBwYXJ0IG9mIHRoaXMgcHVibGlj
+              YXRpb24gbWF5IGJlIHJlcHJvZHVjZWQgd2l0aG91dCB0aGUgd3JpdHRlbiBwZXJtaXNzaW9uIG9mIHRo
+              ZSBjb3B5cmlnaHQgaG9sZGVyLjwvZGM6cmlnaHRzPjxkY3Rlcm1zOmlzUmVmZXJlbmNlZEJ5IHhzaTp0
+              eXBlPSJkY3Rlcm1zOlVSSSI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6MzU3Mzwv
+              ZGN0ZXJtczppc1JlZmVyZW5jZWRCeT48ZGM6aWRlbnRpZmllciB4c2k6dHlwZT0iZGN0ZXJtczpVUkki
+              Pmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjM1NzNhL2dlbmVyaWNDb250ZW50L2Nv
+              bnRlbnQ8L2RjOmlkZW50aWZpZXI+PC91a2V0ZF9kYzp1a2V0ZGRjPg==
+</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+</foxml:digitalObject>
