@@ -94,7 +94,7 @@
       <foxml:xmlContent>
         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:1765">
-            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:GenericContent"/>
+            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:HullGenericContent"/>
           </rdf:Description>
         </rdf:RDF>
       </foxml:xmlContent>
@@ -118,7 +118,7 @@
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:34.511Z" ID="rightsMetadata.0" LABEL="Rights metadata"
       MIMETYPE="text/xml" SIZE="661">
       <foxml:xmlContent>
-        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 2009 The University of Hull</human>
             <machine/>
@@ -126,6 +126,7 @@
           <access type="discover">
             <human/>
             <machine>
+              <group>public</group>
               <group>student</group>
               <group>staff</group>
               <group>contentAccessTeam</group>
@@ -134,6 +135,7 @@
           <access type="read">
             <human/>
             <machine>
+              <group>public</group>
               <group>student</group>
               <group>staff</group>
               <group>contentAccessTeam</group>
