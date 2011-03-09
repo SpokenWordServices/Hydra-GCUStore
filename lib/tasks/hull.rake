@@ -11,6 +11,7 @@ namespace :hull do
     task :load do
 
       fixture_files.each_with_index do |fixture,index|
+        ENV["pid"] = nil
         ENV["fixture"] = fixture
         Rake::Task["hydra:import_fixture"].invoke if index == 0
         Rake::Task["hydra:import_fixture"].execute if index > 0
