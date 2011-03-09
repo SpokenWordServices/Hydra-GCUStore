@@ -111,7 +111,7 @@
         <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:2653">
-            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:GenericContent"/>
+            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:HullGenericContent"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericContent"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
           </rdf:Description>
@@ -137,7 +137,7 @@
     <foxml:datastreamVersion CREATED="2011-02-23T10:57:03.386Z" ID="rightsMetadata.0" LABEL="Rights metadata"
       MIMETYPE="text/xml" SIZE="673">
       <foxml:xmlContent>
-        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</human>
             <machine/>

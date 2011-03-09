@@ -92,9 +92,11 @@
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:34.510Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
       ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="711">
       <foxml:xmlContent>
-        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:1765">
-            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:HullGenericContent"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericContent"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:compoundContent"/>
           </rdf:Description>
         </rdf:RDF>
       </foxml:xmlContent>

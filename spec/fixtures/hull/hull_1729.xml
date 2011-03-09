@@ -150,7 +150,7 @@ The work of RepoMMan and REMAP has now been taken up in an international collabo
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:33.234Z" ID="rightsMetadata.0" LABEL="Rights metadata"
       MIMETYPE="text/xml" SIZE="673">
       <foxml:xmlContent>
-        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</human>
             <machine/>

@@ -153,7 +153,7 @@
     <foxml:datastreamVersion CREATED="2011-02-09T12:04:08.732Z" ID="rightsMetadata.0" LABEL="Rights metadata"
       MIMETYPE="text/xml" SIZE="881">
       <foxml:xmlContent>
-        <rightsMetadata>
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</human>
             <machine/>

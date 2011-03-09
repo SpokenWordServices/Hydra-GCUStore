@@ -95,7 +95,7 @@ Moreover, recommendations concerning the development of the accounting professio
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.529Z" ID="rightsMetadata.0" LABEL="Rights metadata"
       MIMETYPE="text/xml" SIZE="623">
       <foxml:xmlContent>
-        <rightsMetadata xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/">
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 1989 Wael E.R. Al-Rashed. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</human>
             <machine/>
