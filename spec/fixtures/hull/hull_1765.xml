@@ -95,7 +95,7 @@
         <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:1765">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericContent"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:examPaper"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:compoundContent"/>
           </rdf:Description>

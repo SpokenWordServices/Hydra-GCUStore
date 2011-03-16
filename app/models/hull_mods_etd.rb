@@ -13,7 +13,8 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
-    t.abstract   
+    t.abstract
+       
     t.subject {
       t.topic
     }      
