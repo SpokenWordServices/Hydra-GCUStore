@@ -61,7 +61,7 @@ Several recommendations are made concerning the development of the accounting pr
   <foxml:datastream CONTROL_GROUP="E" ID="descMetadata" STATE="A" VERSIONABLE="true">
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.082Z" ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
       <foxml:contentLocation
-        REF="http://local.fedora.server/fedora/objects/hull:3500/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
+        REF="http://localhost:8983/fedora/objects/hull:3500/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
     </foxml:datastreamVersion>
   </foxml:datastream>
   <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">

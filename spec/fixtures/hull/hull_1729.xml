@@ -124,7 +124,6 @@ The work of RepoMMan and REMAP has now been taken up in an international collabo
         <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:1729">
-            <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:HydrangeaArticle"></hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericContent"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
           </rdf:Description>
@@ -188,6 +187,7 @@ The work of RepoMMan and REMAP has now been taken up in an international collabo
   <foxml:datastream CONTROL_GROUP="M" ID="content" STATE="A" VERSIONABLE="true">
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:33.234Z" ID="content.0" LABEL="content"
       MIMETYPE="application/pdf" SIZE="96337">
+      <foxml:contentDigest DIGEST="49f5f75e6e1a9d17150f625d428cb3f6" TYPE="MD5"/>
       <foxml:binaryContent> 
               JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFuZyhl
               bi1HQikgL1N0cnVjdFRyZWVSb290IDEwIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+Pg0KZW5k

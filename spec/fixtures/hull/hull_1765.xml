@@ -92,7 +92,8 @@
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:34.510Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
       ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="711">
       <foxml:xmlContent>
-        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:1765">
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericContent"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
@@ -113,7 +114,7 @@
               PSI0OTY2NCI+PGxvY2F0aW9uIHR5cGU9InVybCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRz
               L2h1bGw6MTc2NS9nZW5lcmljQ29udGVudC9jb250ZW50PC9sb2NhdGlvbj48L2ZpbGU+PC9yZXNvdXJj
               ZT48L2NvbnRlbnRNZXRhZGF0YT4=
-      </foxml:binaryContent>
+</foxml:binaryContent>
     </foxml:datastreamVersion>
   </foxml:datastream>
   <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
@@ -128,7 +129,6 @@
           <access type="discover">
             <human/>
             <machine>
-              <group>public</group>
               <group>student</group>
               <group>staff</group>
               <group>contentAccessTeam</group>
@@ -137,7 +137,6 @@
           <access type="read">
             <human/>
             <machine>
-              <group>public</group>
               <group>student</group>
               <group>staff</group>
               <group>contentAccessTeam</group>
@@ -161,9 +160,11 @@
       </foxml:xmlContent>
     </foxml:datastreamVersion>
   </foxml:datastream>
-<foxml:datastream ID="content" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-<foxml:datastreamVersion ID="content.0" LABEL="" CREATED="2011-03-04T02:18:56.034Z" MIMETYPE="application/pdf">
-<foxml:binaryContent> 
+  <foxml:datastream CONTROL_GROUP="M" ID="content" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-02-23T10:50:34.511Z" ID="content.0" LABEL="content"
+      MIMETYPE="application/pdf" SIZE="96083">
+      <foxml:contentDigest DIGEST="d8f887678cdad7daf97043ab2d85df48" TYPE="MD5"/>
+      <foxml:binaryContent> 
               JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFuZyhl
               bi1HQikgL1N0cnVjdFRyZWVSb290IDEwIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+Pg0KZW5k
               b2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDIvS2lkc1sgMyAwIFIgNyAwIFJdID4+DQpl
@@ -1766,7 +1767,7 @@
               IDEgMCBSL0luZm8gOSAwIFIvSURbPDhBNUMxOUJFMkRBMDFGNEFBMkI2M0VFNzkwQzE4OTk5Pjw4QTVD
               MTlCRTJEQTAxRjRBQTJCNjNFRTc5MEMxODk5OT5dIC9QcmV2IDk0ODY5L1hSZWZTdG0gOTQ1NDU+Pg0K
               c3RhcnR4cmVmDQo5NTkwNQ0KJSVFT0Y=
-</foxml:binaryContent> 
-</foxml:datastreamVersion>
-</foxml:datastream>
+</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
 </foxml:digitalObject>
