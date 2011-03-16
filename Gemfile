@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '2.3.5'
 
-gem 'active-fedora', '2.0.0'  
+gem 'active-fedora', '>=2.0.0'  
 gem 'authlogic', '>=0.1.0'
 gem 'builder'
 gem 'columnize'
