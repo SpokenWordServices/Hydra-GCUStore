@@ -1,7 +1,6 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"hull_etd")%>" method="post" data-resourceType="hull_etd" accept-charset="utf-8">
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"uketd_object")%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8">
 
   <fieldset id="title_fields">
-    <legend>Title</legend>
     <dl>
 	 	<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
       <dt>
@@ -12,6 +11,7 @@
       </dd>
 	 <% end %>
 	
+	 	<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :language]).first.empty? %>
         <%= fedora_field_label("descMetadata", [:title_info, :language], "Language:") %>
       </dt>
       <dd class="language">
@@ -22,20 +22,17 @@
     </dl>
   </fieldset>
 
-<!--
   <fieldset id="contributor_fields">
     <legend>Contributors</legend>
     <ol> 
-      <%#= render :partial=>"contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
-      <%#= render :partial=>"contributors/show_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:organization) %>
-      <%#= render :partial=>"contributors/show_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:conference) %>
+      <%= render :partial=>"contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
+      <%= render :partial=>"contributors/show_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:organization) %>
+      <%= render :partial=>"contributors/show_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:conference) %>
     </ol>    
   </fieldset>
--->
 
  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:abstract]).first.empty? %>
   <fieldset id="abstract_fields">
-    <legend>Abstract</legend>
     <dl>
       <dt>
         <%= fedora_field_label("descMetadata", [:abstract], "Abstract:") %>
@@ -49,7 +46,6 @@
 
  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
   <fieldset id="topic_fields">
-    <legend>Topics</legend>
     <dl>
       <dt>
         <%= fedora_field_label("descMetadata", [:subject, :topic], "Topic(s):") %>

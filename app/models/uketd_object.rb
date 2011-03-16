@@ -1,6 +1,6 @@
 require "hydra"
 
-class HullEtd < ActiveFedora::Base
+class UketdObject < ActiveFedora::Base
   
   include Hydra::ModelMethods
   
@@ -19,8 +19,9 @@ class HullEtd < ActiveFedora::Base
     m.field 'depositor', :string
   end
 
-  def to_solr(solr_doc=Hash.new)
-    super(solr_doc)
+  def to_solr(solr_doc=Hash.new, opts={})
+    super(solr_doc,opts)
+    solr_doc << { "has_model_s" => "UketdObject" }
     solr_doc
   end
 

@@ -2,11 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require "active_fedora"
 require "nokogiri"
 
-describe HullEtd do
+describe UketdObject do
   
   before(:each) do
     Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @etd = HullEtd.new
+    @etd = UketdObject.new
   end
   
   describe ".to_solr" do
@@ -16,6 +16,7 @@ describe HullEtd do
       solr_doc["person_institution_t"].should == ["my org" ]       
       solr_doc["person_institution_facet"].should == ["my org"]        
       solr_doc["object_type_facet"].should == "ETD"
+      solr_doc["has_model_s"].should == "UketdObject"
     end
   end
 end
