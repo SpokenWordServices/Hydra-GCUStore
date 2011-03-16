@@ -35,6 +35,28 @@ namespace :hull do
         end
     end
 
+    desc "Load the dependencies (sDeps,sDefs,etc.)"
+    task :load_dependencies => :environment do
+        puts "loading dependencies"
+        dependencies.each do |dependency|
+          pid = pid_from_path(dependency)
+          dependency_file = File.open(dependency,"r")
+          puts "Loading #{dependency}..."
+          r = Fedora::Repository.instance.ingest(dependency_file,pid)
+          puts "Loaded #{r.body}"
+        end
+    end
+
+    desc "Remove the dependencies (sDeps,sDefs,etc.)"
+    task :delete_dependencies do
+      dependencies.each_with_index do |dependency,index|
+        ENV['pid'] = pid_from_path(dependency)
+        puts "removing #{dependency}"
+        Rake::Task["hydra:delete"].invoke if index == 0
+        Rake::Task["hydra:delete"].execute if index > 0
+      end
+    end
+
     desc "Remove default hull fixtures"
     task :delete do
       fixture_files.each_with_index do |fixture,index|
@@ -57,6 +79,10 @@ end
 
 def fixture_files
   Dir.glob(File.join("#{Rails.root}","spec","fixtures","hull","*.xml"))
+end
+
+def dependencies
+  Dir.glob(File.join("#{Rails.root}","spec","fixtures","hull","dependencies","*.xml"))
 end
 
 def pid_from_path(path)

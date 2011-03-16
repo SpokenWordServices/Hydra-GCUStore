@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject PID="hydra:commonMetadataTransform" VERSION="1.1"
+  xmlns:foxml="info:fedora/fedora-system:def/foxml#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+  <foxml:objectProperties>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="XSL stylesheet for transforming metadata from MODS to OAI DC"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2009-07-13T16:01:36.845Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-01-18T17:08:42.953Z"/>
+  </foxml:objectProperties>
+  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
+    <foxml:datastreamVersion CREATED="2009-07-13T16:01:36.845Z"
+      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
+      <foxml:xmlContent>
+        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+          <audit:record ID="AUDREC1">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>modifyDatastreamByValue</audit:action>
+            <audit:componentID>XSL</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-01-18T11:00:10.685Z</audit:date>
+            <audit:justification/>
+          </audit:record>
+          <audit:record ID="AUDREC2">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>modifyDatastreamByValue</audit:action>
+            <audit:componentID>XSL</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-01-18T17:08:42.953Z</audit:date>
+            <audit:justification/>
+          </audit:record>
+        </audit:auditTrail>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2009-07-13T16:01:36.845Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
+      ID="DC1.0" LABEL="Dublin Core Record for this object" MIMETYPE="text/xml" SIZE="422">
+      <foxml:xmlContent>
+        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+          <dc:title>XSL stylesheet for transforming metadata</dc:title>
+          <dc:identifier>hydra:commonMetadataTransform</dc:identifier>
+        </oai_dc:dc>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream CONTROL_GROUP="X" ID="XSL" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2009-08-14T11:02:02.601Z" ID="XSL1.0" LABEL="Enter a label here."
+      MIMETYPE="text/xml" SIZE="3005">
+      <foxml:xmlContent>
+        <xsl:stylesheet version="1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:mets="http://www.loc.gov/METS/"
+          xmlns:mods="http://www.loc.gov/mods/v3" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:param name="format"/>
+          <xsl:output media-type="text/xml" method="xml"/>
+          <xsl:template match="/">
+            <xsl:choose>
+              <xsl:when test="$format='oai_dc'">
+                <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+                  xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+                  <dc:title>
+                    <xsl:value-of select="//mods:title"/>-<xsl:for-each select="//mods:subtitle">
+                      <xsl:value-of select="."/>
+                    </xsl:for-each>
+                  </dc:title>
+                  <dc:description>
+                    <xsl:value-of select="//mods:abstract"/>
+                  </dc:description>
+                  <xsl:for-each select="//mods:topic">
+                    <dc:subject>
+                      <xsl:value-of select="."/>
+                    </dc:subject>
+                  </xsl:for-each>
+                  <dc:publisher>
+                    <xsl:value-of select="//mods:publisher"/>
+                  </dc:publisher>
+                  <dc:type>
+                    <xsl:value-of select="//mods:genre"/>
+                  </dc:type>
+                  <dc:date>
+                    <xsl:value-of select="//mods:dateIssued"/>
+                  </dc:date>
+                  <dc:rights>
+                    <xsl:value-of select="//mods:accessCondition"/>
+                  </dc:rights>
+                  <dc:language>
+                    <xsl:value-of select="//mods:language"/>
+                  </dc:language>
+                  <xsl:for-each select="//mods:name">
+                    <xsl:if test="mods:roleTerm[@type='code']!='col'">
+                      <dc:contributor>
+                        <xsl:value-of select="mods:namePart"/>
+                      </dc:contributor>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <xsl:for-each select="//mods:identifier">
+                    <dc:identifier>
+                      <xsl:value-of select="."/>
+                    </dc:identifier>
+                  </xsl:for-each>
+                </oai_dc:dc>
+              </xsl:when>
+              <xsl:otherwise>
+                <h>
+                  <xsl:text>Invalid Format</xsl:text>
+                </h>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:template>
+        </xsl:stylesheet>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+    <foxml:datastreamVersion CREATED="2011-01-18T11:00:10.685Z" ID="XSL.1" LABEL="Enter a label here."
+      MIMETYPE="text/xml" SIZE="4098">
+      <foxml:xmlContent>
+        <xsl:stylesheet version="1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:mets="http://www.loc.gov/METS/"
+          xmlns:mods="http://www.loc.gov/mods/v3" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:param name="format"/>
+          <xsl:output media-type="text/xml" method="xml"/>
+          <xsl:template match="/">
+            <xsl:choose>
+              <xsl:when test="$format='oai_dc'">
+                <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+                  xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+                  <dc:title>
+                    <xsl:value-of select="//mods:title"/>
+                    <xsl:for-each select="//mods:subtitle">
+                                       -<xsl:value-of select="."/>
+                    </xsl:for-each>
+                  </dc:title>
+                  <xsl:for-each select="//mods:name">
+                    <xsl:choose>
+                      <xsl:when test="contains(mods:role/mods:roleTerm/text(), 'creator')">
+                        <dc:creator>
+                          <xsl:value-of select="mods:namePart"/>
+                        </dc:creator>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <dc:contributor>
+                          <xsl:value-of select="concat(mods:namePart, ' (', mods:role/mods:roleTerm, ')')"/>
+                        </dc:contributor>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:for-each>
+                  <dc:description>
+                    <xsl:value-of select="//mods:abstract"/>
+                  </dc:description>
+                  <xsl:for-each select="//mods:topic">
+                    <dc:subject>
+                      <xsl:value-of select="."/>
+                    </dc:subject>
+                  </xsl:for-each>
+                  <dc:publisher>
+                    <xsl:value-of select="//mods:publisher"/>
+                  </dc:publisher>
+                  <xsl:if test="//mods:typeOfResource">
+                    <dc:type>
+                      <xsl:value-of select="//mods:typeOfResource"/>
+                    </dc:type>
+                  </xsl:if>
+                  <xsl:if test="mods:genre">
+                    <dc:type>
+                      <xsl:value-of select="//mods:genre"/>
+                    </dc:type>
+                  </xsl:if>
+                  <dc:date>
+                    <xsl:value-of select="//mods:dateIssued"/>
+                  </dc:date>
+                  <dc:rights>
+                    <xsl:value-of select="//mods:accessCondition"/>
+                  </dc:rights>
+                  <dc:language>
+                    <xsl:value-of select="//mods:language"/>
+                  </dc:language>
+                  <xsl:for-each select="//mods:name">
+                    <xsl:if test="mods:roleTerm[@type='code']!='col'">
+                      <dc:contributor>
+                        <xsl:value-of select="mods:namePart"/>
+                      </dc:contributor>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <xsl:for-each select="//mods:identifier">
+                    <dc:identifier>
+                      <xsl:value-of select="."/>
+                    </dc:identifier>
+                  </xsl:for-each>
+                </oai_dc:dc>
+              </xsl:when>
+              <xsl:otherwise>
+                <h>
+                  <xsl:text>Invalid Format</xsl:text>
+                </h>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:template>
+        </xsl:stylesheet>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+    <foxml:datastreamVersion CREATED="2011-01-18T17:08:42.953Z" ID="XSL.2" LABEL="Enter a label here."
+      MIMETYPE="text/xml" SIZE="3541">
+      <foxml:xmlContent>
+        <xsl:stylesheet version="1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:mets="http://www.loc.gov/METS/"
+          xmlns:mods="http://www.loc.gov/mods/v3" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:param name="format"/>
+          <xsl:output media-type="text/xml" method="xml"/>
+          <xsl:template match="/">
+            <xsl:choose>
+              <xsl:when test="$format='oai_dc'">
+                <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
+                  xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+                  <dc:title>
+                    <xsl:value-of select="//mods:title"/>
+                    <xsl:for-each select="//mods:subtitle">
+                                       -<xsl:value-of select="."/>
+                    </xsl:for-each>
+                  </dc:title>
+                  <xsl:for-each select="//mods:name">
+                    <xsl:choose>
+                      <xsl:when test="contains(mods:role/mods:roleTerm/text(), 'creator')">
+                        <dc:creator>
+                          <xsl:value-of select="mods:namePart"/>
+                        </dc:creator>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <dc:contributor>
+                          <xsl:value-of select="concat(mods:namePart, ' (', mods:role/mods:roleTerm, ')')"/>
+                        </dc:contributor>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:for-each>
+                  <dc:description>
+                    <xsl:value-of select="//mods:abstract"/>
+                  </dc:description>
+                  <xsl:for-each select="//mods:topic">
+                    <dc:subject>
+                      <xsl:value-of select="."/>
+                    </dc:subject>
+                  </xsl:for-each>
+                  <dc:publisher>
+                    <xsl:value-of select="//mods:publisher"/>
+                  </dc:publisher>
+                  <xsl:if test="//mods:typeOfResource">
+                    <dc:type>
+                      <xsl:value-of select="//mods:typeOfResource"/>
+                    </dc:type>
+                  </xsl:if>
+                  <xsl:if test="mods:genre">
+                    <dc:type>
+                      <xsl:value-of select="//mods:genre"/>
+                    </dc:type>
+                  </xsl:if>
+                  <dc:date>
+                    <xsl:value-of select="//mods:dateIssued"/>
+                  </dc:date>
+                  <dc:rights>
+                    <xsl:value-of select="//mods:accessCondition"/>
+                  </dc:rights>
+                  <dc:language>
+                    <xsl:value-of select="//mods:language/mods:languageTerm[@authority='iso639-2b']/text()"/>
+                  </dc:language>
+                  <xsl:for-each select="//mods:name">
+                    <xsl:if test="mods:roleTerm[@type='code']!='col'">
+                      <dc:contributor>
+                        <xsl:value-of select="mods:namePart"/>
+                      </dc:contributor>
+                    </xsl:if>
+                  </xsl:for-each>
+                  <xsl:for-each select="//mods:identifier">
+                    <dc:identifier>
+                      <xsl:value-of select="."/>
+                    </dc:identifier>
+                  </xsl:for-each>
+                </oai_dc:dc>
+              </xsl:when>
+              <xsl:otherwise>
+                <h>
+                  <xsl:text>Invalid Format</xsl:text>
+                </h>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:template>
+        </xsl:stylesheet>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+</foxml:digitalObject>
