@@ -28,7 +28,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     }
 
     t.corporate_name(:path=>"name", :type=>"corporate") {
-     t.department_name(:path=>"namePart")
+     t.department_name(:path=>"namePart", :index_as=>[:facetable])
     }
 
     t.origin_info(:path=>"originInfo") {

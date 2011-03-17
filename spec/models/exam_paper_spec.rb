@@ -11,10 +11,10 @@ describe ExamPaper do
   
   describe ".to_solr" do
     it "should return the necessary facets" do
-      @examPaper.update_indexed_attributes({[{:organization=>0}, :namePart]=>"my org"}, :datastreams=>"descMetadata")
+      @examPaper.update_indexed_attributes({[{:corporate_name=>0}, :department_name]=>"my org"}, :datastreams=>"descMetadata")
       solr_doc = @examPaper.to_solr
-      solr_doc["organization_namePart_t"].should == ["my org" ]       
-      solr_doc["organization_namePart_facet"].should == ["my org"]        
+      solr_doc["corporate_name_department_name_t"].should == ["my org" ]       
+      solr_doc["corporate_name_department_name_facet"].should == ["my org"]        
       solr_doc["object_type_facet"].should == "Examination paper"
     end
   end

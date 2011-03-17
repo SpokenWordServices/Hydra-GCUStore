@@ -25,5 +25,4 @@ Feature: Show a document
     Given I am logged in as "archivist1" 
     And I am on the show document page for hull:3573
     Then I should see "Kuwait's tax reformation, its alternatives and impact on a developing accounting profession"
-    And I should see "Kuwait University"
     And I should not see a link to "the edit document page for hull:3573"
