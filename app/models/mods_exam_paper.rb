@@ -10,22 +10,31 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     t.title(:proxy=>[:title_info, :main_title]) 
    
     # Exam paper description is stored in the 'abstract' field 
-    t.abstract(:path=>"abstract")   
+    t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
       t.topic
     }
 
     t.genre
-      
+
     #t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic") -- Not sure we need this indexing...
     
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
       # this is a namepart
-      t.namePart(:type=>"corporate", :index_as=>[:facetable], :label=>"generic name")
-      t.role(:ref=>[:role])
+      t.department(:type=>"corporate", :index_as=>[:facetable], :label=>"generic name")
+      #t.role(:ref=>[:role])
     }
+
+    t.corporate_name(:path=>"name", :type=>"corporate") {
+     t.department_name(:path=>"namePart")
+    }
+
+    t.origin_info(:path=>"originInfo") {
+      t.publisher
+    }
+   
     t.language {
        t.language_term(:path=>"languageTerm", :attributes=>{:type=>"text"}, :index_as=>[:facetable])
        t.language_code(:path=>"languageTerm", :attributes=>{:type=>"code", :authority=>"iso639-2b"})
@@ -33,14 +42,15 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     
 
     # lookup :person, :first_name        
-    t.organization(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
-    t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
+    #t.department(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
+    #t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
-    t.related_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
+    t.related_item_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
+
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
 	t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }

@@ -1,11 +1,9 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"exam_paper")%>" method="post" data-resourceType="exam_paper" accept-charset="utf-8">
 
-  <h2><% get_values_from_datastream(@document_fedora, "descMetadata", [:genre]) %></h2>
-
+<!--
   <fieldset id="title_fields">
-    <legend>Title</legend>
-    <dl>
-	 	<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
+      <dl>
+	  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
       <dt>
         <%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
       </dt>
@@ -15,16 +13,16 @@
 	 <% end %>
     </dl>
   </fieldset>
+-->
 
- <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:abstract]).first.empty? %>
-  <fieldset id="abstract_fields">
-    <legend>Description</legend>
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:description]).first.empty? %>
+  <fieldset id="abstract_fields">    
     <dl>
-      <dt>
-        <%= fedora_field_label("descMetadata", [:abstract], "Description:") %>
+      <dt class="fieldTitles">
+        <%= fedora_field_label("descMetadata", [:description], "Description:") %>
       </dt>
       <dd id="description">
-        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:abstract]) %>
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:description]) %>
       </dd>
     </dl>
   </fieldset>
@@ -32,7 +30,6 @@
 
  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
   <fieldset id="topic_fields">
-    <legend>Subject</legend>
     <dl>
       <dt>
         <%= fedora_field_label("descMetadata", [:subject, :topic], "Subject:") %>
@@ -44,15 +41,40 @@
   </fieldset>
 <% end %>
 
-  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_module, :module_code]).first.empty? %>
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item_module, :module_code]).first.empty? %>
   <fieldset id="module_code_fields">
-    <legend>Module code</legend>
     <dl>
       <dt>
-        <%= fedora_field_label("descMetadata", [:related_module, :module_code], "Module code:") %>
+        <%= fedora_field_label("descMetadata", [:related_item_module, :module_code], "Module code:") %>
       </dt>
       <dd id="module_code">
-        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:related_module, :module_code]) %>
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:related_item_module, :module_code]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:corporate_name, :department_name]).first.empty? %>
+  <fieldset id="department_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:corporate_name, :department_name], "Department:") %>
+      </dt>
+      <dd id="department">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:corporate_name, :department_name]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:origin_info, :publisher]).first.empty? %>
+  <fieldset id="publisher_fields">
+     <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:origin_info, :publisher], "Publisher:") %>
+      </dt>
+      <dd id="publisher">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:origin_info, :publisher]) %>
       </dd>
     </dl>
   </fieldset>
@@ -60,7 +82,6 @@
 
   <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:language, :language_term]).first.empty? %>
   <fieldset id="language_fields">
-    <legend>Language</legend>
     <dl>
       <dt>
         <%= fedora_field_label("descMetadata", [:language, :language_term], "Language:") %>
@@ -74,7 +95,6 @@
 
  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:copyright]).first.empty? %>
   <fieldset id="copyright_fields">
-    <legend>Copyright</legend>
     <dl>
       <dt>
         <%= fedora_field_label("descMetadata", [:copyright], "Copyright:") %>

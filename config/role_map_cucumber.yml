@@ -1,5 +1,7 @@
 staff:
  - staff1
+student:
+ - student1
 archivist:
   - archivist1
 donor:
