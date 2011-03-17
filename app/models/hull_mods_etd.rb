@@ -9,8 +9,8 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       t.language(:index_as=>[:facetable],:path=>{:attribute=>"lang"})
     } 
     t.title(:proxy=>[:title_info, :main_title]) 
-    
     t.language{
+      t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
     t.abstract   
@@ -22,16 +22,7 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
     t.name_ {
       # this is a namepart
       t.namePart(:type=>:string, :label=>"generic name")
-      # affiliations are great
-      t.affiliation
-      t.institution(:path=>"affiliation", :index_as=>[:facetable], :label=>"organization")
-      t.displayForm
       t.role(:ref=>[:role])
-      t.description
-      t.date(:path=>"namePart", :attributes=>{:type=>"date"})
-      t.last_name(:path=>"namePart", :attributes=>{:type=>"family"})
-      t.first_name(:path=>"namePart", :attributes=>{:type=>"given"}, :label=>"first name")
-      t.terms_of_address(:path=>"namePart", :attributes=>{:type=>"termsOfAddress"})
     }
     # lookup :person, :first_name        
     t.person(:ref=>:name, :attributes=>{:type=>"personal"}, :index_as=>[:facetable])
@@ -41,26 +32,17 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
-    t.journal(:path=>'relatedItem', :attributes=>{:type=>"host"}) {
-      t.title_info(:index_as=>[:facetable],:ref=>[:title_info])
-      t.origin_info(:path=>"originInfo") {
-        t.publisher
-        t.date_issued(:path=>"dateIssued")
-      }
-      t.issn(:path=>"identifier", :attributes=>{:type=>"issn"})
-      t.issue(:path=>"part") {
-        t.volume(:path=>"detail", :attributes=>{:type=>"volume"}, :default_content_path=>"number")
-        t.level(:path=>"detail", :attributes=>{:type=>"number"}, :default_content_path=>"number")
-        t.extent
-        t.pages(:path=>"extent", :attributes=>{:unit=>"pages"}) {
-          t.start
-          t.end
-        }
-        t.start_page(:proxy=>[:pages, :start])
-        t.end_page(:proxy=>[:pages, :end])
-        t.publication_date(:path=>"date")
-      }
+    t.genre(:path=>'genre')
+    t.origin_info(:path=>'originInfo') {
+      t.date_issued(:path=>'dateIssued')
+      t.publisher
     }
+    t.physical_description(:path=>"physicalDescription") {
+      t.extent
+      t.mime_type(:path=>"internetMediaType")
+      t.digital_origin(:path=>"digitalOrigin")
+    }
+    t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]
@@ -76,47 +58,27 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
                xml.title
              }
              xml.name(:type=>"personal") {
-               xml.namePart(:type=>"given")
-               xml.namePart(:type=>"family")
-               xml.affiliation
+               xml.namePart
                xml.role {
                  xml.roleTerm(:authority=>"marcrelator", :type=>"text")
                }
              }
-             xml.typeOfResource
              xml.genre(:authority=>"marcgt")
              xml.language {
+               xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
              }
              xml.abstract
              xml.subject {
                xml.topic
              }
-             xml.relatedItem(:type=>"host") {
-               xml.titleInfo {
-                 xml.title
-               }
-               xml.identifier(:type=>"issn")
-               xml.originInfo {
-                 xml.publisher
-                 xml.dateIssued
-               }
-               xml.part {
-                 xml.detail(:type=>"volume") {
-                   xml.number
-                 }
-                 xml.detail(:type=>"number") {
-                   xml.number
-                 }
-                 xml.extent(:unit=>"pages") {
-                   xml.start
-                   xml.end
-                 }
-                 xml.date
-               }
+             xml.identifier(:type=>"fedora")
+             xml.originInfo {
+               xml.publisher
+               xml.dateIssued
              }
-             xml.location {
-               xml.url
+             xml.physicalDescription {
+               xml.extent
              }
         }
       end
@@ -127,9 +89,7 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
     def self.person_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"personal") {
-          xml.namePart(:type=>"family")
-          xml.namePart(:type=>"given")
-          xml.affiliation
+          xml.namePart
           xml.role {
             xml.roleTerm(:type=>"text")
           }
@@ -138,55 +98,15 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       return builder.doc.root
     end
    
-    def self.full_name_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.full_name(:type => "personal")
-      end
-      return builder.doc.root
-    end
-
-    # Generates a new Organization node
-    # Uses mods:name[@type="corporate"]
-    def self.organization_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.name(:type=>"corporate") {
-          xml.namePart
-          xml.role {
-            xml.roleTerm(:authority=>"marcrelator", :type=>"text")
-          }                          
-        }
-      end
-      return builder.doc.root
-    end
-    
-    # Generates a new Conference node
-    def self.conference_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.name(:type=>"conference") {
-          xml.namePart
-          xml.role {
-            xml.roleTerm(:authority=>"marcrelator", :type=>"text")
-          }                          
-        }
-      end
-      return builder.doc.root
-    end
-    
     # Inserts a new contributor (mods:name) into the mods document
     # creates contributors of type :person, :organization, or :conference
     def insert_contributor(type, opts={})
       case type.to_sym 
       when :person
-        node = Hydra::ModsArticle.person_template
+        node = HullModsEtd.person_template
         nodeset = self.find_by_terms(:person)
-      when :organization
-        node = Hydra::ModsArticle.organization_template
-        nodeset = self.find_by_terms(:organization)
-      when :conference
-        node = Hydra::ModsArticle.conference_template
-        nodeset = self.find_by_terms(:conference)
       else
-        ActiveFedora.logger.warn("#{type} is not a valid argument for Hydra::ModsArticle.insert_contributor")
+        ActiveFedora.logger.warn("#{type} is not a valid argument for HullModsEtd.insert_contributor")
         node = nil
         index = nil
       end
