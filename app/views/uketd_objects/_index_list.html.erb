@@ -2,32 +2,23 @@
 <div id="type_div" style="float:right;"><%= (document.get(:medium_t) || document_type(document)).gsub("Hull","") %></div>
 <div id="content_div" style="float:left;">
 	<dl id="index_list">
+  <dt>Title:</dt>
+  <dd>
+    <%= document.get(:title_t)  %>
+  </dd>
+ <% debugger %>
+  <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
   <dt>Author(s):</dt>
     <dd>
-      <%= author_list(document).join(" ") %>
+      <%= authors.join("; ") %>
     </dd>
-	<dt>Abstract:</dt>
+	<dt>Genre:</dt>
 	<dd>
-		<%= short_abstract(document) %>
+    <%= document.get(:genre_t) %>
 	</dd>
-  <dt>Files:</dt>
-	<dd>
-    <%-
-       file_count = get_file_asset_count(document) 
-       file_desc =  get_file_asset_description(document)
-       file_desc.concat('.') unless file_desc[-1] == '.'
-    -%>
-    <% if file_count > 0 %>
-       <%=  file_desc %> 
-       <%= file_count %> file<%= file_count > 1 ? "s" : "" %>. 
-       [<%= link_to("see all", catalog_path(document[:id], :files=>true)) %>]
-    <% else %>
-      No files.
-    <% end %>
-  </dd>
-  <dt>Admin:</dt>
+  <dt>Subject:</dt>
     <dd>
-      <%= admin_info(document) %>
+      <%#= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
     </dd>
 	</dl>
 </div>

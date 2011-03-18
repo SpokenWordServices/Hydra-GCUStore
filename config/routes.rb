@@ -13,4 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login "login", :controller => "webauth_sessions", :action => "new"
   map.logout "logout", :controller => "webauth_sessions", :action => "destroy"
   map.superuser 'superuser', :controller => 'user_sessions', :action => 'superuser'
+
+  map.datastream_content 'assets/:id/datastreams/:datastream', :controller=>:file_assets, :action=>:show, :conditions => {:method => :get}
+  
 end
