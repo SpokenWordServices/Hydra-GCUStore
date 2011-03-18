@@ -6,7 +6,6 @@
   <dd>
     <%= document.get(:title_t)  %>
   </dd>
- <% debugger %>
   <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
   <dt>Author(s):</dt>
     <dd>
@@ -18,7 +17,11 @@
 	</dd>
   <dt>Subject:</dt>
     <dd>
-      <%#= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
+      <%= document.get(:subject_t) %>
     </dd>
-	</dl>
+  <dt>Language:</dt>
+    <dd>
+      <%= document.get(:language_lang_text_t) %>
+    </dd>
+  </dl>
 </div>

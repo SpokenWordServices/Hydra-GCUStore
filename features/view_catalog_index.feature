@@ -8,6 +8,7 @@ Feature: Catalog Index
     Given I am on the catalog index page
     Then I should see "search"
 
+  @overwritten
   Scenario: Executing a search
     Given I am on the catalog index page
     And I fill in "q" with "hydrangea"
@@ -23,3 +24,18 @@ Feature: Catalog Index
     Then I should see "Author(s)"
     And I should see "Researcher(s)"
     And I should see "Sample file description. 1 file."
+
+  @local
+  Scenario: Executing a search
+    Given I am on the catalog index page
+    And I fill in "q" with "evolution"
+    And I press "search"
+    Then I should see "2 documents"
+    And I should see "Sort by"
+    And I should see "Show"
+    And I should not see "Display as"
+    And I should see "Title"
+    And I should see "Genre"
+    And I should see "Author(s)"
+    And I should see "Subject"
+    And I should see "Language"

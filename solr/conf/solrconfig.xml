@@ -397,7 +397,8 @@
         person_0_institution_t,person_1_institution_t,person_2_institution_t,person_3_institution_t,person_4_institution_t,person_5_institution_t,person_institution_role_t,
         person_7_institution_t,person_8_institution_t,person_9_institution_t,
         mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
-        mods_timespan_start_t, mods_timespan_end_t, description_t
+        mods_timespan_start_t, mods_timespan_end_t, description_t,
+        genre_t, person_0_namePart_t, person_1_namePart_t, language_lang_text_t
       </str>
       <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
@@ -437,6 +438,8 @@ journal_title_info_t, journal_title_info_main_title_t, journal_issue_publication
         person_7_institution_t,person_8_institution_t,person_9_institution_t,
         mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
         mods_timespan_start_t, mods_timespan_end_t, description_t
+
+        genre_t 
       </str>
       <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
@@ -463,7 +466,7 @@ journal_title_info_t, journal_title_info_main_title_t, journal_issue_publication
       <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
        <str name="pf">id^0.9  id_t^0.9 text^0.5</str>
      <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
+        id,text,title_t,genre_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet
      </str>
      <str name="mm">
         2&lt;-1 5&lt;-2 6&lt;90%
