@@ -33,7 +33,6 @@
   </fieldset>
 <% end %>
 
-
 	 	<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:genre]).first.empty? %>
       <dt>
         <%= fedora_field_label("descMetadata", [:genre], "Genre:") %>
@@ -43,9 +42,6 @@
       </dd>
 	<% end %>
 	
-
-
-
 	 	<% unless get_values_from_datastream(@document_fedora,"rightsMetadata", [:copyright]).first.empty? %>
       <dt>
         <%= fedora_field_label("rightsMetadata", [:copyright], "Rights Statement:") %>
@@ -124,5 +120,8 @@
       </dd>
 	<% end %>
 
+  <h1>Show Additional Resources</h1>
+
+  <%= render :partial=>"uketd_objects/show_resources" %>
 
 </form>
