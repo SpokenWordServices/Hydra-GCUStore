@@ -70,31 +70,45 @@ class FileAssetsController < ApplicationController
   
   
   def show
-    @file_asset = FileAsset.find(params[:id])
-    if (@file_asset.nil?)
-      logger.warn("No such file asset: " + params[:id])
-      flash[:notice]= "No such file asset."
-      redirect_to(:action => 'index', :q => nil , :f => nil)
-    else
-      # get array of parent (container) objects for this FileAsset
-      @id_array = @file_asset.containers(:response_format => :id_array)
-      @downloadable = false
-      # A FileAsset is downloadable iff the user has read or higher access to a parent
-      @id_array.each do |pid|
-        @response, @document = get_solr_response_for_doc_id(pid)
-        if reader?
-          @downloadable = true
-          break
-        end
+
+    if params[:datastream] 
+      af_base = ActiveFedora::Base.load_instance(params[:id])
+      the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
+      debugger
+      @object = the_model.load_instance(params[:id])
+      if @object && @object.datastreams_in_memory.keys.include?(params[:datastream])
+        render :xml => @object.datastreams_in_memory[params[:datastream]]
+      else
+        render :text => "Unable to load datastream"
       end
 
-      if @downloadable
-        if @file_asset.datastreams_in_memory.include?("DS1")
-          send_datastream @file_asset.datastreams_in_memory["DS1"]
-        end
-      else
-        flash[:notice]= "You do not have sufficient access privileges to download this document, which has been marked private."
+    else
+      @file_asset = FileAsset.find(params[:id])
+      if (@file_asset.nil?)
+        logger.warn("No such file asset: " + params[:id])
+        flash[:notice]= "No such file asset."
         redirect_to(:action => 'index', :q => nil , :f => nil)
+      else
+        # get array of parent (container) objects for this FileAsset
+        @id_array = @file_asset.containers(:response_format => :id_array)
+        @downloadable = false
+        # A FileAsset is downloadable iff the user has read or higher access to a parent
+        @id_array.each do |pid|
+          @response, @document = get_solr_response_for_doc_id(pid)
+          if reader?
+            @downloadable = true
+            break
+          end
+        end
+
+        if @downloadable
+          if @file_asset.datastreams_in_memory.include?("DS1")
+            send_datastream @file_asset.datastreams_in_memory["DS1"]
+          end
+        else
+          flash[:notice]= "You do not have sufficient access privileges to download this document, which has been marked private."
+          redirect_to(:action => 'index', :q => nil , :f => nil)
+        end
       end
     end
   end
