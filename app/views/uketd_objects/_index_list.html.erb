@@ -4,9 +4,9 @@
 	<dl id="index_list">
   <dt>Title:</dt>
   <dd>
-    <%= document.get(:title_info_main_title_t)  %>
+    <%= document.get(:title_t)  %>
   </dd>
-
+ <% debugger %>
   <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
   <dt>Author(s):</dt>
     <dd>
@@ -16,7 +16,7 @@
 	<dd>
     <%= document.get(:genre_t) %>
 	</dd>
-  <dt>Subjet:</dt>
+  <dt>Subject:</dt>
     <dd>
       <%#= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
     </dd>

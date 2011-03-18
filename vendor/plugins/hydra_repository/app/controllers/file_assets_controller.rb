@@ -74,7 +74,6 @@ class FileAssetsController < ApplicationController
     if params[:datastream] 
       af_base = ActiveFedora::Base.load_instance(params[:id])
       the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
-      debugger
       @object = the_model.load_instance(params[:id])
       if @object && @object.datastreams_in_memory.keys.include?(params[:datastream])
         render :xml => @object.datastreams_in_memory[params[:datastream]]
