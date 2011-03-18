@@ -11,7 +11,7 @@
       </dd>
     <% end %>
 
-    <%= display_combined_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject(s)") %> 
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject(s)") %> 
 
     <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights") %>
 	

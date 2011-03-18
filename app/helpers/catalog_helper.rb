@@ -26,28 +26,12 @@ module CatalogHelper
           #{fedora_field_label(datastream_name,fields,label_text)}:
         </dt>
         <dd #{dd_class}>
-          #{get_values_from_datastream(document,datastream_name, fields)}
+            #{get_values_from_datastream(document,datastream_name, fields).join("; ")}
         </dd>
       EOS
     end
     datastream_field
   end
-
-  def display_combined_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
-   dd_class = "class=\"#{dd_class}\"" if dd_class
-    datastream_field = ""
-	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
-      datastream_field = <<-EOS
-        <dt>
-          #{fedora_field_label(datastream_name,fields,label_text)}:
-        </dt>
-        <dd #{dd_class}>
-          #{get_values_from_datastream(document,datastream_name, fields).join("; ")}
-        </dd>
-      EOS
-    end
-  end
-
 
 end
 
