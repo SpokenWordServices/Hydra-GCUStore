@@ -38,14 +38,14 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
       t.date_issued(:path=>'dateIssued')
       t.publisher
     }
-    t.related_item_private_object(:path=>'relatedItem', :ID=>'privateObject') {
-      t.private_object_id(:path=>'identifier', :type=>'fedora')
+    t.related_item_private_object(:path=>'relatedItem', :attributes=>{:ID=>'privateObject'}) {
+      t.private_object_id(:path=>'identifier', :attributes=>{:type=>'fedora'})
     }
-    t.related_item_publish_ref(:path=>'relatedItem', :ID=>'publishRef') {
-      t.external_doi(:path=>'identifier', :type=>'doi')
-      t.citation(:path=>'note', :type=>'citation')
+    t.related_item_publish_ref(:path=>'relatedItem', :attributes=>{:ID=>'publishRef'}) {
+      t.doi(:path=>'identifier', :attributes=>{:type=>'doi'})
+      t.citation(:path=>'note', :attributes=>{:type=>'citation'})
     }
-    t.peer_reviewed(:path=>'note', :type=>'peerReviewed')
+    t.peer_reviewed(:path=>'note', :attributes=>{:type=>'peerReviewed'})
     t.physical_description(:path=>"physicalDescription") {
       t.extent
       t.mime_type(:path=>"internetMediaType")
