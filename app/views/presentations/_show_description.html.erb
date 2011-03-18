@@ -1,0 +1,121 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"presentation")%>" method="post" data-resourceType="presentation" accept-charset="utf-8">
+
+<!--
+  <fieldset id="title_fields">
+      <dl>
+	  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
+      </dt>
+      <dd class="title">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:title_info, :main_title]) %>
+      </dd>
+	 <% end %>
+    </dl>
+  </fieldset>
+-->
+
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:personal_name, :person_name]).first.empty? %>
+  <fieldset id="person_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:personal_name, :person_name], "Author:") %>
+      </dt>
+      <dd id="personal">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:personal_name, :person_name]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:description]).first.empty? %>
+  <fieldset id="abstract_fields">    
+    <dl>
+      <dt class="fieldTitles">
+        <%= fedora_field_label("descMetadata", [:description], "Description:") %>
+      </dt>
+      <dd id="description">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:description]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).first.empty? %>
+  <fieldset id="topic_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:subject, :topic], "Subject:") %>
+      </dt>
+      <dd id="topic_tag" class="topic_tag">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :topic]).join(', ') %>
+      </dd>
+    </dl>
+  </fieldset>
+<% end %>
+
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item_module, :module_code]).first.empty? %>
+  <fieldset id="module_code_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item_module, :module_code], "Module code:") %>
+      </dt>
+      <dd id="module_code">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:related_item_module, :module_code]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:origin_info, :publisher]).first.empty? %>
+  <fieldset id="publisher_fields">
+     <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:origin_info, :publisher], "Publisher:") %>
+      </dt>
+      <dd id="publisher">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:origin_info, :publisher]) %>
+     </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:language, :language_term]).first.empty? %>
+  <fieldset id="language_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:language, :language_term], "Language:") %>
+      </dt>
+      <dd id="language">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:language, :language_term]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+ <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:copyright]).first.empty? %>
+  <fieldset id="copyright_fields">
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:copyright], "Rights:") %>
+      </dt>
+      <dd id="copyright">
+        <%= get_values_from_datastream(@document_fedora,"descMetadata", [:copyright]) %>
+      </dd>
+    </dl>
+  </fieldset>
+ <% end %>
+
+<!--
+  <fieldset id="contributor_fields">
+    <legend>Contributors</legend>
+    <ol> 
+      <%#= render :partial=>"contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
+      <%#= render :partial=>"contributors/show_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:organization) %>
+      <%#= render :partial=>"contributors/show_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:conference) %>
+    </ol>    
+  </fieldset>
+-->
+
+
+</form>
