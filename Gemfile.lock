@@ -105,6 +105,7 @@ GEM
       rsolr
       solrizer (>= 1.0.0)
     sqlite3-ruby (1.2.5)
+    stomp (1.1.8)
     term-ansicolor (1.0.5)
     trollop (1.16.2)
     webrat (0.7.3)
@@ -158,6 +159,7 @@ DEPENDENCIES
   solrizer (>= 1.0.1)
   solrizer-fedora (>= 1.0.1)
   sqlite3-ruby (= 1.2.5)
+  stomp
   term-ansicolor
   trollop
   webrat
