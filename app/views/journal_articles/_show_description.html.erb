@@ -1,0 +1,42 @@
+
+  <dl>
+
+    <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
+    <% unless authors.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:person, :namePart], "Author:") %>
+      </dt>
+      <dd class="author">
+        <%= authors.join("; ") %>
+      </dd>
+    <% end %>
+
+    <%= display_combined_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject(s)") %> 
+
+    <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights") %>
+	
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:abstract], "Abstract") %>
+
+    <% contributors = get_persons_from_roles(@document,['thesis advisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>
+    <% unless contributors.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:person, :namePart], "Contributor(s)") %>
+      </dt>
+      <dd class="contibutor">
+        <%= contributors.join(", ") %>
+      </dd>
+    <% end %>
+
+	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date") %>
+	
+	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language") %>
+	
+	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher") %>
+	
+	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :external_doi],"DOI") %>
+
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :citation],"Citation") %>
+
+  </dl>
+    
+  <%= render :partial=>"journal_articles/show_resources" %>

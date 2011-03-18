@@ -6,7 +6,7 @@
     <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="44207 Principles of exercise and training (2009/2010) - Business School; "/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:41.089Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-17T10:39:03.974Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-18T10:19:25.889Z"/>
     <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
   </foxml:objectProperties>
   <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
@@ -46,6 +46,22 @@
             <audit:date>2011-03-17T10:39:03.974Z</audit:date>
             <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-02-23T10:50:41.141Z to 2011-02-23T10:50:41.141Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-02-23T10:50:41.141Z) and all associated audit records.</audit:justification>
           </audit:record>
+          <audit:record ID="AUDREC5">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>modifyDatastreamByReference</audit:action>
+            <audit:componentID>descMetadata</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-03-18T10:19:20.216Z</audit:date>
+            <audit:justification/>
+          </audit:record>
+          <audit:record ID="AUDREC6">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>purgeDatastream</audit:action>
+            <audit:componentID>descMetadata</audit:componentID>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-03-18T10:19:25.889Z</audit:date>
+            <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-03-17T10:38:57.891Z to 2011-03-17T10:38:57.891Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-17T10:38:57.891Z) and all associated audit records.</audit:justification>
+          </audit:record>
         </audit:auditTrail>
       </foxml:xmlContent>
     </foxml:datastreamVersion>
@@ -75,8 +91,8 @@
     </foxml:datastreamVersion>
   </foxml:datastream>
   <foxml:datastream CONTROL_GROUP="M" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-17T10:38:57.891Z" ID="descMetadata.1" LABEL="MODS metadata"
-      MIMETYPE="text/xml" SIZE="2044">
+    <foxml:datastreamVersion CREATED="2011-03-18T10:19:20.216Z" ID="descMetadata.2" LABEL="MODS metadata"
+      MIMETYPE="text/xml" SIZE="2040">
       <foxml:binaryContent> 
               PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
               d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
@@ -97,22 +113,21 @@
               dHJhY3Q+TGV2ZWwgNSBleGFtaW5hdGlvbiA6IDIwMDkvMjAxMENhc2Ugc3R1ZHkgYWNjb21wYW5pZXMg
               dGhlIHBhcGVyPC9hYnN0cmFjdD4KICA8c3ViamVjdCBhdXRob3JpdHk9IlVvSCI+CiAgICA8dG9waWM+
               QnVzaW5lc3M8L3RvcGljPgogIDwvc3ViamVjdD4KICA8aWRlbnRpZmllciB0eXBlPSJmZWRvcmEiPmh1
-              bGw6MzA1ODwvaWRlbnRpZmllcj4KICA8cmVsYXRlZEl0ZW0gdHlwZT0icHJpdmF0ZU9iamVjdCI+CiAg
-              ICA8aWRlbnRpZmllciB0eXBlPSJmZWRvcmEiPmh1bGwtcHJpdmF0ZToxNjg1PC9pZGVudGlmaWVyPgog
-              IDwvcmVsYXRlZEl0ZW0+CiAgPHJlbGF0ZWRJdGVtIHR5cGU9Im1vZHVsZSI+CiAgICA8aWRlbnRpZmll
-              ciB0eXBlPSJtb2R1bGVDb2RlIj40NDIwNzwvaWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJdGVtPgogIDxs
-              b2NhdGlvbj4KICAgIDx1cmwgYWNjZXNzPSJvYmplY3QgaW4gY29udGV4dCIgdXNhZ2U9InByaW1hcnkg
-              ZGlzcGxheSI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6MzA1ODwvdXJsPgogICAg
-              PHVybCBhY2Nlc3M9InJhdyBvYmplY3QiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxs
-              OjMwNTgvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvdXJsPgogIDwvbG9jYXRpb24+CiAgPGFjY2Vzc0Nv
-              bmRpdGlvbiB0eXBlPSJ1c2VBbmRSZXByb2R1Y3Rpb24iPsKpIDIwMTAgVGhlIFVuaXZlcnNpdHkgb2Yg
-              SHVsbDwvYWNjZXNzQ29uZGl0aW9uPgogIDxyZWNvcmRJbmZvPgogICAgPHJlY29yZENvbnRlbnRTb3Vy
-              Y2U+VGhlIFVuaXZlcnNpdHkgb2YgSHVsbDwvcmVjb3JkQ29udGVudFNvdXJjZT4KICAgIDxyZWNvcmRD
-              cmVhdGlvbkRhdGUgZW5jb2Rpbmc9InczY2R0ZiI+MjAxMC0xMC0xMjwvcmVjb3JkQ3JlYXRpb25EYXRl
-              PgogICAgPHJlY29yZENoYW5nZURhdGUgZW5jb2Rpbmc9InczY2R0ZiIvPgogICAgPGxhbmd1YWdlT2ZD
-              YXRhbG9naW5nPgogICAgICA8bGFuZ3VhZ2VUZXJtIGF1dGhvcml0eT0iaXNvNjM5LTJiIj5lbmc8L2xh
-              bmd1YWdlVGVybT4KICAgIDwvbGFuZ3VhZ2VPZkNhdGFsb2dpbmc+CiAgPC9yZWNvcmRJbmZvPgo8L21v
-              ZHM+Cg==
+              bGw6MzA1ODwvaWRlbnRpZmllcj4KICA8cmVsYXRlZEl0ZW0gSUQ9InByaXZhdGVPYmplY3QiPgogICAg
+              PGlkZW50aWZpZXIgdHlwZT0iZmVkb3JhIj5odWxsLXByaXZhdGU6MTY4NTwvaWRlbnRpZmllcj4KICA8
+              L3JlbGF0ZWRJdGVtPgogIDxyZWxhdGVkSXRlbSBJRD0ibW9kdWxlIj4KICAgIDxpZGVudGlmaWVyIHR5
+              cGU9Im1vZHVsZUNvZGUiPjQ0MjA3PC9pZGVudGlmaWVyPgogIDwvcmVsYXRlZEl0ZW0+CiAgPGxvY2F0
+              aW9uPgogICAgPHVybCBhY2Nlc3M9Im9iamVjdCBpbiBjb250ZXh0IiB1c2FnZT0icHJpbWFyeSBkaXNw
+              bGF5Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDozMDU4PC91cmw+CiAgICA8dXJs
+              IGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6MzA1
+              OC9nZW5lcmljQ29udGVudC9jb250ZW50PC91cmw+CiAgPC9sb2NhdGlvbj4KICA8YWNjZXNzQ29uZGl0
+              aW9uIHR5cGU9InVzZUFuZFJlcHJvZHVjdGlvbiI+wqkgMjAxMCBUaGUgVW5pdmVyc2l0eSBvZiBIdWxs
+              PC9hY2Nlc3NDb25kaXRpb24+CiAgPHJlY29yZEluZm8+CiAgICA8cmVjb3JkQ29udGVudFNvdXJjZT5U
+              aGUgVW5pdmVyc2l0eSBvZiBIdWxsPC9yZWNvcmRDb250ZW50U291cmNlPgogICAgPHJlY29yZENyZWF0
+              aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDEwLTEwLTEyPC9yZWNvcmRDcmVhdGlvbkRhdGU+CiAg
+              ICA8cmVjb3JkQ2hhbmdlRGF0ZSBlbmNvZGluZz0idzNjZHRmIi8+CiAgICA8bGFuZ3VhZ2VPZkNhdGFs
+              b2dpbmc+CiAgICAgIDxsYW5ndWFnZVRlcm0gYXV0aG9yaXR5PSJpc282MzktMmIiPmVuZzwvbGFuZ3Vh
+              Z2VUZXJtPgogICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4KICA8L3JlY29yZEluZm8+CjwvbW9kcz4K
 </foxml:binaryContent>
     </foxml:datastreamVersion>
   </foxml:datastream>

@@ -6,7 +6,7 @@
     <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Kuwait's tax reformation, its alternatives and impact on a developing accounting profession - Al-Rashed, Wael E. R.; "/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:52.446Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-02-23T10:50:52.446Z"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-16T18:21:10.375Z"/>
     <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
   </foxml:objectProperties>
   <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
@@ -21,6 +21,14 @@
             <audit:responsibility>fedoraAdmin</audit:responsibility>
             <audit:date>2011-02-23T10:50:52.446Z</audit:date>
             <audit:justification>Ingested from local file C:\ConvertedObjects\hull_3573.xml</audit:justification>
+          </audit:record>
+          <audit:record ID="AUDREC2">
+            <audit:process type="Fedora API-M"/>
+            <audit:action>ingest</audit:action>
+            <audit:componentID/>
+            <audit:responsibility>fedoraAdmin</audit:responsibility>
+            <audit:date>2011-03-16T18:21:10.375Z</audit:date>
+            <audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_3573.xml</audit:justification>
           </audit:record>
         </audit:auditTrail>
       </foxml:xmlContent>
@@ -64,7 +72,7 @@ Moreover, recommendations concerning the development of the accounting professio
   </foxml:datastream>
   <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.528Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="664">
+      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="638">
       <foxml:xmlContent>
         <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
@@ -93,7 +101,7 @@ Moreover, recommendations concerning the development of the accounting professio
   </foxml:datastream>
   <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
     <foxml:datastreamVersion CREATED="2011-02-23T10:50:52.529Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="623">
+      MIMETYPE="text/xml" SIZE="955">
       <foxml:xmlContent>
         <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>

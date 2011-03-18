@@ -47,7 +47,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
-    t.related_item_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
+    t.related_item_module(:path=>"relatedItem", :attributes=>{:ID=>"module"}) {
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
 
@@ -97,7 +97,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
                xml.topic
              }
              xml.identifier(:type=>"fedora")
-             xml.relatedItem(:type=>"module") {
+             xml.relatedItem(:ID=>"module") {
                xml.identifier(:type=>"moduleCode")
              }
              xml.location {
