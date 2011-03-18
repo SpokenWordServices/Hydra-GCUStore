@@ -1,156 +1,18 @@
 !http://github.com/projecthydra/hydrangea/raw/master/public/images/hydrangea_logo_h50_white_bg.png(Hydrangea)!
 
-h1. Hydrangea & the Hydra Framework
+h1. Hydrangea at Hull
 
 h2. Introduction and Installation Instructions
 
-Hydrangea is the reference implementation of the Hydra framework, which builds on "Blacklight":http://projectblacklight.org, "ActiveFedora":http://yourmediashelf.com/activefedora and "Ruby on Rails":http://rubyonrails.org
+Hydrangea at Hull is a Hydra project at the University of Hull.
+For general instructions on how to build and install Hydrangea, please see
+"Hydrangea project":http://github.com/projecthydra/hydrangea
 
-For a more thorough overview of the Hydra framework, see "HYDRA_OVERVIEW.textile":http://github.com/projecthydra/hydrangea/blob/master/HYDRA_OVERVIEW.textile
+h3. Hull-specific installation notes
 
-h3. Prerequisites
-
-Hydrangea requires Ruby version 1.8.7.  It will not run on Ruby 1.8.6.  If you need to upgrade Ruby, consider using "RVM":http://rvm.beginrescueend.com/ to do so, especially in your development environment.
-
-Other Requirements:
-* "git":http://git-scm.com/
-* "rubygems":http://rubygems.org/pages/download
-* "bundler":http://gembundler.com/ (gem install bundler)
-
-h3. Basic installation & Running RSpec tests
-
-This is based on Matt Zumwalt's "Hydra Stack: Getting Started":http://docs.google.com/View?id=ddrmhvjh_181gj9b7rcv notes from LibDevConX in March 2010.
-
-Clone the git repository from github and pull the copy of jetty
-
+To load the Hull-specific fixtures, use the following rake tasks:
 <pre>
-git clone git://github.com/projecthydra/hydrangea.git
-cd hydrangea
-git submodule init
-git submodule update
+rake hull:default_fixtures:load
+rake hull:default_fixtures:load_dependencies
 </pre>
-
-*Note:* _It's OK if 'git submodule init' returns 'No submodule mapping found in .gitmodules for path 'vendor/plugins/blacklight/data'_
-
-This will pull all of the code.  The 'git submodule update' command is pulling a copy of hydra-jetty into the jetty directory within hydrangea.
-
-You are now in your working copy of hydrangea.  Use bundler to install the gem dependencies.
-
-<pre>
-bundle install
-</pre>
-
-Run your database migrations (only need to do this once after cloning the git repository).
-<pre>
-rake db:migrate
-rake db:migrate:plugins
-</pre>
-
-Now run the bundled copy of Jetty, which has Fedora and Solr installed & configured to work with Hydra.  We have created rake tasks to make this easier.  For a full listing of rake tasks provided by Hydra, run 
-
-<pre>
-rake --describe hydra
-</pre>
-
-<pre>
-rake hydra:jetty:load
-</pre>
-
-Import the fixture objects that are used by the rspec and cucumber tests. Please note you must import them in both the development and test rails environments in order to be able to run the tests. 
-
-<pre>
-rake hydra:default_fixtures:load
-RAILS_ENV=test rake hydra:default_fixtures:load
-</pre>
-
-If you have already loaded these fixtures before, you should refresh them with 
-
-<pre>
-rake hydra:default_fixtures:refresh	
-RAILS_ENV=test rake hydra:default_fixtures:refresh
-</pre>
-
-Run the Rspec tests to make sure everything is working properly.
-<pre>
-rake spec
-</pre>
-
-If all of the RSpec tests are passing, try the Cucumber tests
-
-<pre>
-rake cucumber
-</pre>
-
-If you have all of the RSpec and Cucumber tests passing, then the application is installed correctly.
-
-Now run the rails lighttpd server
-
-<pre>
-./script/server
-</pre>
-
-If all goes well, you will be able to see an empty copy of hydrangea at http://localhost:3000
-
-h3. Create the sample user "archivist1"
-
-The fixture objects are set up to control permissions for a user named archivist1.  To create this user, click "login" then click "create one" and create a new user named archivist1 with whatever password you want.  Now when you log in as archivist1 you will be able to see more records and you will be able to edit some of them.
-
-h3. Stopping the server when you're done
-
-To stop the rails app, press ctl+c in the window where you ran script/server
-
-To stop jetty, use the rake task
-<pre>
-  rake hydra:jetty:stop
-</pre>
-
-h2. Custom Fedora Config
-
-If, for some reason, you would like to tweak the fedora instance that is bundled in the jetty, copy your custom fedora.fcfg file to {Rails.root}/fedora/conf/fedora.fcfg and issue the following command:
-
-<pre>
- rake hydra:jetty:load
-</pre>
-
-One use-case for this is to permit you to define your own default pid-namespace for the application.  You would do this by changing the following line from:
-
-<pre>
-  <param name="pidNamespace" value="changeme">
-</pre>
-
-to 
-
-<pre>
-  <param name="pidNamespace" value="my-namespace">
-</pre>
-
-
-
-h2. Acknowledgements
-
-h3. Design & Strategic Contributions
-
-The Hydra Framework would not exist without the extensive design effort undertaken by representatives of repository initiatives from Stanford University, University of Virginia and University of Hull.  Contributors to that effort include Tom Cramer, Lynn McRae, Martha Sites, Richard Green, and Chris Awre.  
-
-Thorny Staples from Fedora Commons & DuraSpace deserves special thanks for putting all of these people in the same room together.
-
-h3. Technical Contributions
-
-*Technical Lead:* Matt Zumwalt ("MediaShelf":http://yourmediashelf.com)
-*User Interface & User Experience Designer:* Jennifer Vine
-
-Developers:
-Eddie Shin, Jessie Keck, Christopher Jesuderai, McClain Looney, Luke Francl, Dan Weinand, Ken Earley, Paul Wenzel
-
-Testers:
-Charles Kerns, Bess Sadler, Richard Green, Tom Lauderman, Mark Matienzo
-
-h3. Additional thanks
-
-Project Blacklight and the Blacklight contributors
-Willy Mene, who created one of the "Hydra head" prototypes on which Hydrangea is based.
-Chris Fitzpatrick & Douglas Kim, who created the first version of Solrizer and then thoroughly exercised it.
-Naomi Dushay, whose knowledge of solr is impeccable.
-Stu Snydman, project manager for the SALT Hydra prototype.
-
 
