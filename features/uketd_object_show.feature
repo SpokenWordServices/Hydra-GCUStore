@@ -26,3 +26,8 @@ Feature: Show a document
     And I am on the show document page for hull:3573
     Then I should see "Kuwait's tax reformation, its alternatives and impact on a developing accounting profession"
     And I should not see a link to "the edit document page for hull:3573"
+
+  @wip
+  Scenario: View the contents for the descMetadata stream
+    Given I am on the show document page for hull:3112
+    Then I should see a link to "the descMetadata datastream content page for hull:3112"
