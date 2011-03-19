@@ -48,7 +48,7 @@ module ApplicationHelper
   # currently only used by the render_document_partial helper method (below)
   def document_partial_name(document)
     if !document[Blacklight.config[:show][:display_type]].nil?
-      return document[Blacklight.config[:show][:display_type]].first.gsub("info:fedora/afmodel:","").underscore.pluralize
+      return document[Blacklight.config[:show][:display_type]].first.split(":")[-1].underscore.pluralize
     else
       return nil
     end
