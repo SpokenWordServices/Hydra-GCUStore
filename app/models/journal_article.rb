@@ -19,7 +19,7 @@ class JournalArticle < ActiveFedora::Base
 
   def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
-    solr_doc << { "has_model_s" => "JournalArticle" }
+    solr_doc << { "has_model_s" => "info:fedora/hydra-cModel:journalArticle" }
     solr_doc
   end
 

@@ -3,10 +3,4 @@ class GenericContent < ActiveFedora::Base
 
   has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
 
-
-  def to_solr(solr_doc=Hash.new,opts={})
-    super(solr_doc,opts)
-    solr_doc << {"has_model_s" => "GenericContent"}
-    solr_doc
-  end
 end
