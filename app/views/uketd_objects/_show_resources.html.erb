@@ -1,16 +1,13 @@
-<div id="toggle_link_div">
-<%=
-  link_to_function("Show additional resources", nil, :id=>"additional_resource_link") do |page|
-    page["div#resources"].toggle
-    page["a#additional_resource_link"].text "Hide additional resources"
-  end
-%>
+<div id="show_hide_resources" >
+<span id="additional_resources_span">Show additional resources</span>
 </div>
-<div id="resources" style="height:550px;display:none;">
-	<dl>
-		<dt>MODS metadata</dt>
-		<dd><%= link_to "view", datastream_content_url(params[:id], "descMetadata"), :target=>"_blank" %></dd>
-		<dt>DC metadata</dt>
-		<dd><%= link_to "view", datastream_content_url(params[:id], "DC"), :target=>"_blank" %></dd>
-	</dl>
+<div id="resources">
+	<div id="resources-list">
+    <dl>
+      <dt>MODS metadata</dt>
+      <dd><%= link_to "view", datastream_content_url(params[:id], "descMetadata"), :target=>"_blank" %></dd>
+      <dt>DC metadata</dt>
+      <dd><%= link_to "view", datastream_content_url(params[:id], "DC"), :target=>"_blank" %></dd>
+    </dl>
+  </div>
 </div>

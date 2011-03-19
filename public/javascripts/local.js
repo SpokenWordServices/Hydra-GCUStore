@@ -1,3 +1,5 @@
+// The following was breaking the facets
+/*
 $(document).ready(function() {
  $('#facets ul').each(function(){
    var ul = $(this);
@@ -15,7 +17,10 @@ $(document).ready(function() {
   
    
 });
+
 });
+*/
+
 /* GBS Cover Script by Tim Spalding/LibraryThing */
 function addTheCover(booksInfo) 
   {
@@ -35,6 +40,17 @@ $(document).ready(function(){
         $(".slide_button").click(function(){
                 $("#slide_panel").slideToggle("slow");
                 $(this).toggleClass("minus_icon"); return false;
+        });
+        $("span#additional_resources_span").click(function(){
+          $("div#resources").toggle();
+          var text = $(this).text();
+          if (text == "Show additional resources") {
+            $(this).text("Hide additional resources");
+            $(this).css("background-image","url('/images/facet_open.png')");
+          } else {
+            $(this).text("Show additional resources");
+            $(this).css("background-image","url('/images/facet_closed.png')");
+          }
         });
 });
 

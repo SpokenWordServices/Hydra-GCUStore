@@ -290,3 +290,38 @@ dl dt {
   font-size: .9em;
   margin-top: 1.7em;
 }
+
+div#show_hide_resources {
+  float:left;
+  width:100%;
+  margin-top:1.7em;
+}
+
+span#additional_resources_span {
+  background-image:url('/images/facet_closed.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:15px;
+}
+
+div#resources {
+  margin-top:1.7em;
+  height:40px;
+  display:none;
+}
+
+div#resources-list {
+  float:left;
+  margin-top:1.7em;
+  margin-left:10em;
+  width:35em;
+  background-color:#EEEEEE;
+}
+
+div#resources-list dl dt {
+  width:10em;
+}
+
+div#resources-list dl dd {
+  width:20em;
+}
