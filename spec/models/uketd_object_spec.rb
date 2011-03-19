@@ -14,7 +14,7 @@ describe UketdObject do
       @etd.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
       solr_doc = @etd.to_solr
       solr_doc["object_type_facet"].should == "ETD"
-      solr_doc["has_model_s"].should == "UketdObject"
+      solr_doc["has_model_s"].should == "info:fedora/hydra-cModel:uketdObject"
     end
   end
 end

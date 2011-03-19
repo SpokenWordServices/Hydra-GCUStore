@@ -14,7 +14,7 @@ describe JournalArticle do
       @journalArticle.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
       solr_doc = @journalArticle.to_solr
       solr_doc["object_type_facet"].should == "Journal article"
-      solr_doc["has_model_s"].should == "JournalArticle"
+      solr_doc["has_model_s"].should == "info:fedora/hydra-cModel:journalArticle"
     end
   end
 end
