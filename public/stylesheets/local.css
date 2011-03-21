@@ -325,3 +325,78 @@ div#resources-list dl dt {
 div#resources-list dl dd {
   width:20em;
 }
+div#content_div {
+  float:left;
+  width:550px;
+}
+div#content_div dl dt {
+  width:100px;
+}
+
+div#content_div dl dd {
+  width:400px;
+}
+
+div#genre_image {
+  float:right;
+  width:100px;
+  height:150px;
+}
+
+div.text-genre {
+  background-image:url('/images/icons/text-x-generic-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+/*
+Collection: folder-th.png
+Dataset: x-office-spreadsheet-th.png
+Event: x-office-calendar-th.png
+Image: image-x-generic-th.png (in the event of thumbnail failure)
+Moving image: video-x-generic-th.png
+Software: binary-file-th.png or network-server-th.png (not sure I’m really keen on either, but…)
+Sound: volume-medium-th.png
+Text: text-x-generic-th.png – except presentation: x-office-presentation-th.png
+*/
+
+div.collection-genre {
+  background-image:url('/images/icons/folder-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.dataset-genre {
+  background-image:url('/images/icons/x-office-spreadsheet-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.event-genre {
+  background-image:url('/images/icons/x-office-calendar-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.image-genre {
+  background-image:url('/images/icons/image-x-generic-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.video-genre {
+  background-image:url('/images/icons/video-x-generic-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.software-genre {
+  background-image:url('/images/icons/binary-file-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.sound-genre {
+  background-image:url('/images/icons/volume-medium-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
