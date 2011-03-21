@@ -7,7 +7,7 @@ class Presentation < ActiveFedora::Base
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
 
-  has_metadata :name => "descMetadata", :type => Hydra::ModsPresentation
+  has_metadata :name => "descMetadata", :type => ModsPresentation
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
