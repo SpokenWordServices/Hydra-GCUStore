@@ -314,16 +314,19 @@ div#resources-list {
   float:left;
   margin-top:1.7em;
   margin-left:10em;
-  width:35em;
+  padding-bottom:1.7em;
+  width:53em;
   background-color:#EEEEEE;
 }
 
 div#resources-list dl dt {
-  width:10em;
+  width:25em;
+  text-align:center;
 }
 
 div#resources-list dl dd {
-  width:20em;
+  width:25em;
+  text-align: left;
 }
 div#content_div {
   float:left;
@@ -348,16 +351,6 @@ div.text-genre {
   background-position:left center;
   background-repeat:no-repeat;
 }
-/*
-Collection: folder-th.png
-Dataset: x-office-spreadsheet-th.png
-Event: x-office-calendar-th.png
-Image: image-x-generic-th.png (in the event of thumbnail failure)
-Moving image: video-x-generic-th.png
-Software: binary-file-th.png or network-server-th.png (not sure I’m really keen on either, but…)
-Sound: volume-medium-th.png
-Text: text-x-generic-th.png – except presentation: x-office-presentation-th.png
-*/
 
 div.collection-genre {
   background-image:url('/images/icons/folder-th.png');
