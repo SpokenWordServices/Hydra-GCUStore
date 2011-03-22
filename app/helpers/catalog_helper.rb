@@ -17,6 +17,20 @@ module CatalogHelper
     return persons
   end 
 
+  def get_organizations_from_roles(doc,roles,opts={})
+    i = 0
+    orgs = []
+    while i < 10
+      orgs_roles = []
+      orgs_roles = doc["organization_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["organization_#{i}_role_t"].nil?
+      if orgs_roles and (orgs_roles & roles).length > 0
+        orgs << {:name => doc["organization_#{i}_namePart_t"],:role => doc["organization_#{i}_role_t"]}
+      end
+      i += 1
+    end
+    return orgs
+  end 
+
 	def display_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
     dd_class = "class=\"#{dd_class}\"" if dd_class
     datastream_field = ""

@@ -11,20 +11,13 @@
 <% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
 <div class="document_viewer" id="cover_container">
-  
+
   <h1>Examination paper</h1>
 
-  <div id="accordion">
+  <%= render :partial => 'exam_papers/show_description' %>
 
-    <h2 class="section-title"><a href="#">Description</a></h2>
-    <%= render :partial => 'exam_papers/show_description' %>
-
-    <h2 class="section-title"><a href="#">Download Files</a></h2>
-    <div id="uploads" data-pid=<%= params[:id] %>></div>
-
-  </div>
+  <%= render :partial => 'exam_papers/show_resources' %>
 
 </div>
 
-<%= async_load_tag(asset_file_assets_path(params[:id]), 'uploads') %>
 

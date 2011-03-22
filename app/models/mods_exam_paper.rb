@@ -10,6 +10,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     t.title(:proxy=>[:title_info, :main_title]) 
    
     # Exam paper description is stored in the 'abstract' field 
+
     t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
@@ -21,23 +22,43 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     #t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic") -- Not sure we need this indexing...
     
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
+
+   # t.name_ {
+      # this is a namepart
+    #  t.department(:type=>"corporate", :index_as=>[:facetable], :label=>"generic name")
+      #t.role(:ref=>[:role])
+   # }
+
+    # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
       # this is a namepart
-      t.department(:type=>"corporate", :index_as=>[:facetable], :label=>"generic name")
-      #t.role(:ref=>[:role])
+      t.namePart(:type=>:string, :label=>"generic name")
+      t.role(:ref=>[:role])
     }
+    # lookup :person, :first_name 
 
-    t.corporate_name(:path=>"name", :type=>"corporate") {
-     t.department_name(:path=>"namePart", :index_as=>[:facetable])
+    #t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
+    # t.department_name(:path=>"namePart", :index_as=>[:facetable])
+   # }
+
+    # lookup :person, :first_name        
+    t.person(:ref=>:name, :attributes=>{:type=>"personal"}, :index_as=>[:facetable])
+    t.organization(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
+    t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
+    t.role {
+      t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
+      t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
+
     }
 
     t.origin_info(:path=>"originInfo") {
       t.publisher
     }
-   
+    
     t.language {
-       t.language_term(:path=>"languageTerm", :attributes=>{:type=>"text"}, :index_as=>[:facetable])
-       t.language_code(:path=>"languageTerm", :attributes=>{:type=>"code", :authority=>"iso639-2b"})
+      t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
+      t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
+
     }
     
 
@@ -47,6 +68,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
+
     t.related_item_module(:path=>"relatedItem", :attributes=>{:ID=>"module"}) {
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
@@ -55,7 +77,8 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
 	t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
 
-    t.copyright(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+
 
   end
   
@@ -98,6 +121,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
              }
              xml.identifier(:type=>"fedora")
              xml.relatedItem(:ID=>"module") {
+
                xml.identifier(:type=>"moduleCode")
              }
              xml.location {

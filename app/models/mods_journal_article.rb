@@ -51,7 +51,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
       t.mime_type(:path=>"internetMediaType")
       t.digital_origin(:path=>"digitalOrigin")
     }    
-    t.copyright(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
     
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
   end
