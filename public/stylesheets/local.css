@@ -116,6 +116,11 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
 /* needed to override inherited ul */
  
  /* INDEX & CATALOG DISPLAY */
+
+h1.site_title {
+ background:url(/images/hydra_logo_h50_transparent_bg.png) no-repeat scroll left top transparent;
+}
+
  
  table.index  {
  width: 100%;
@@ -151,7 +156,7 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
  border-color: #505050;
  }
   
-.indexContainer, .splashContainer, .homeContainer, .iconContainer
+.indexContainer, .splashContainer, .iconContainer
 {
 width: 100%;
 position: relative;
@@ -212,17 +217,19 @@ border: 1px solid #e2edfe;
 .homeCol1 {
 top: 0px;
 float: left;
-margin-left: 10px;
-width: 400px;
-text-align: center;
+margin-left: 0px;
+width: 430px;
+text-align: left;
+margin-left: -25px;
+margin-top: -21px;
 }
 
 .homeCol2 {
 top: 0px;
 margin-left: 420px;
 width: 200px; 
-padding: 5px;
-background-color: #ddd;
+padding: 10px;
+background-color: #D9E2E8;
 }
 
 .contentCol1, .contentCol2, .contentCol3, .contentCol4, .iconCol1, .iconCol2, .iconCol3
@@ -236,6 +243,54 @@ top: 0;
 .contentCol3, .contentCol4 { width: 20%; }
 
 .iconCol1, .iconCol2, .iconCol3 {width: 32%;}
+
+/* Overriding to remove the left border from catalog pages */
+.yui-t1 #yui-main .yui-b, .yui-t2 #yui-main .yui-b, .yui-t3 #yui-main .yui-b 
+{
+ border-left:0px;
+}
+
+/* Overriding to remove the bottom border from asset view */
+.document 
+{
+ border-bottom:0px;
+}
+
+#hd
+{
+margin:0px;
+background-color: #D9E2E8;
+border-bottom:0px;
+}
+
+#hd .yui-g .first {
+    padding-left: 90px;
+}
+
+#search {
+    border: 0px;
+    padding-top: 5px;
+}
+
+/* #appliedParams and #sortAndPerPage are displayed on results pages */
+#appliedParams
+{
+ -moz-border-radius:4px 4px 4px 4px;
+ border:1px solid #AAA;
+}
+
+#sortAndPerPage {
+ -moz-border-radius:0 0 4px 4px;
+}
+
+.homeContainer {
+	width: 100%;
+	position: relative;
+	margin: 10px auto;
+	line-height: 130%;
+	lear: both;
+	margin-left;0px;
+}
 
 
  /* Local facets */
@@ -291,10 +346,15 @@ dl dt {
   margin-top: 1.7em;
 }
 
+.dd_text {
+   width: 35em !important;
+}
+
 div#show_hide_resources {
   float:left;
   width:100%;
   margin-top:1.7em;
+  cursor:pointer;
 }
 
 span#additional_resources_span {
@@ -346,6 +406,44 @@ div#genre_image {
   height:150px;
 }
 
+
+div#downloads {
+  float:right;
+  margin-top:1.7em;
+  padding-top:0.5em;
+  padding-bottom:1.7em;
+  padding-left:0.5em;
+  width:15em;
+  background-color:#D9E2E8;
+}
+
+div#downloads-list {
+  padding-top:1em;
+}
+
+div#links {
+  float:right;
+  margin-top:1.7em;
+  padding-top:0.5em;
+  padding-bottom:1.7em;
+  padding-left:0.5em;
+  width:15em;
+}
+
+
+div#description {
+  float:left;
+  padding-bottom:1.7em;
+  width:50em;
+}
+
+div#download_image {
+  float:left;
+  width:16px;
+  height:16px;
+  margin-right:5px;
+}
+
 div.text-genre {
   background-image:url('/images/icons/text-x-generic-th.png');
   background-position:left center;
@@ -393,3 +491,9 @@ div.sound-genre {
   background-position:left center;
   background-repeat:no-repeat;
 }
+div.pdf-download {
+  background-image:url('/images/icons/download_icons/pdf.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
