@@ -23,12 +23,16 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
       # this is a namepart
-      t.person(:type=>"personal", :index_as=>[:facetable], :label=>"generic name")
+      t.namePart(:type=>:string, :label=>"generic name")
       t.role(:ref=>[:role])
     }
-
-    t.personal_name(:path=>"name", :type=>"personal") {
-     t.person_name(:path=>"namePart", :index_as=>[:facetable])
+    # lookup :person, :first_name        
+    t.person(:ref=>:name, :attributes=>{:type=>"personal"}, :index_as=>[:facetable])
+    t.organization(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
+    t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
+    t.role {
+      t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
+      t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
 
     t.origin_info(:path=>"originInfo") {
@@ -36,17 +40,15 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
     }
    
     t.language {
-       t.language_term(:path=>"languageTerm", :attributes=>{:type=>"text"}, :index_as=>[:facetable])
-       t.language_code(:path=>"languageTerm", :attributes=>{:type=>"code", :authority=>"iso639-2b"})
-    }
-    
+      t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
+      t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
 
-    # lookup :person, :first_name        
-    #t.department(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
-    #t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
+    }
+
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
+
     t.related_item_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
@@ -59,7 +61,7 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
 
   end
   
-    # accessor :title, :term=>[:mods, :title_info, :main_title]
+     # accessor :title, :term=>[:mods, :title_info, :main_title]
     
     # Generates an empty Mods Article (used when you call ModsArticle.new without passing in existing xml)
     def self.xml_template
@@ -68,62 +70,42 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
            "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
            "xmlns"=>"http://www.loc.gov/mods/v3",
            "xsi:schemaLocation"=>"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd") {
-             xml.titleInfo {
+             xml.titleInfo(:lang=>"") {
                xml.title
              }
-             xml.name(:type=>"corporate") {
+             xml.name(:type=>"personal") {
                xml.namePart
                xml.role {
-                 xml.roleTerm(:type=>"text")
+                 xml.roleTerm(:authority=>"marcrelator", :type=>"text")
                }
              }
-             xml.typeOfResource
-             xml.genre
-             xml.originInfo {
-               xml.publisher
-             }
-             xml.language {                
-               xml.lanugageTerm(:type=>"text")
+             xml.genre(:authority=>"marcgt")
+             xml.language {
+               xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
-            
-             }
-             xml.physicalDescription {
-               xml.extent
-               xml.internetMediaType
-               xml.digitalOrigin 
              }
              xml.abstract
-             xml.subject(:authority=>"UoH") {
+             xml.subject {
                xml.topic
              }
              xml.identifier(:type=>"fedora")
-             xml.relatedItem(:type=>"module") {
-               xml.identifier(:type=>"moduleCode")
+             xml.originInfo {
+               xml.publisher
+               xml.dateIssued
              }
-             xml.location {
-               xml.url(:usage=>"primary display", :access=>"object in context")
-               xml.url(:access=>"raw object")
-             }
-             xml.accessCondition(:type=>"useAndReproduction")
-             xml.recordInfo {
-               xml.recordContentSource
-               xml.recordCreationDate(:encoding=>"w3cdtf")
-               xml.recordChangeDate(:encoding=>"w3cdtf")
-               xml.languageOfCataloging {
-                 xml.languageTerm(:authority=>"iso639-2b")  
-               }
+             xml.physicalDescription {
+               xml.extent
              }
         }
       end
       return builder.doc
-    end    
+    end      
     
     # Generates a new Person node
     def self.person_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"personal") {
-          xml.namePart(:type=>"family")
-          xml.namePart(:type=>"given")
+          xml.namePart
           xml.role {
             xml.roleTerm(:type=>"text")
           }
@@ -132,55 +114,15 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
       return builder.doc.root
     end
    
-    def self.full_name_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.full_name(:type => "personal")
-      end
-      return builder.doc.root
-    end
-
-    # Generates a new Organization node
-    # Uses mods:name[@type="corporate"]
-    def self.organization_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.name(:type=>"corporate") {
-          xml.namePart
-          xml.role {
-            xml.roleTerm(:type=>"text")
-          }                          
-        }
-      end
-      return builder.doc.root
-    end
-    
-    # Generates a new Conference node
-    def self.conference_template
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.name(:type=>"conference") {
-          xml.namePart
-          xml.role {
-            xml.roleTerm(:authority=>"marcrelator", :type=>"text")
-          }                          
-        }
-      end
-      return builder.doc.root
-    end
-    
     # Inserts a new contributor (mods:name) into the mods document
     # creates contributors of type :person, :organization, or :conference
     def insert_contributor(type, opts={})
       case type.to_sym 
       when :person
-        node = Hydra::ModsArticle.person_template
+        node = ModsPresentation.person_template
         nodeset = self.find_by_terms(:person)
-      when :organization
-        node = Hydra::ModsArticle.organization_template
-        nodeset = self.find_by_terms(:organization)
-      when :conference
-        node = Hydra::ModsArticle.conference_template
-        nodeset = self.find_by_terms(:conference)
       else
-        ActiveFedora.logger.warn("#{type} is not a valid argument for Hydra::ModsArticle.insert_contributor")
+        ActiveFedora.logger.warn("#{type} is not a valid argument for ModsPresentation.insert_contributor")
         node = nil
         index = nil
       end

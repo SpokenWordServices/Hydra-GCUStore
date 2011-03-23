@@ -14,7 +14,7 @@ describe Presentation do
       @presentation.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
       solr_doc = @presentation.to_solr
       solr_doc["object_type_facet"].should == "Presentation"
-      solr_doc["has_model_s"].should == "Presentation"
+      solr_doc["has_model_s"].should == "info:fedora/hydra-cModel:Presentation"
     end
   end
 end

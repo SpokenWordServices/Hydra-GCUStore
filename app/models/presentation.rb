@@ -9,6 +9,8 @@ class Presentation < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => ModsPresentation
 
+  has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
+
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
@@ -22,7 +24,8 @@ class Presentation < ActiveFedora::Base
 
  def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
-    solr_doc << { "has_model_s" => "Presentation" }
+    solr_doc << { "has_model_s" => "info:fedora/hydra-cModel:Presentation" }
+
     solr_doc
   end
 
