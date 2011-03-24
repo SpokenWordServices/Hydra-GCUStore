@@ -1,35 +1,31 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"presentation")%>" method="post" data-resourceType="presentation" accept-charset="utf-8">
+<div id="description">
+	<dl>
+	  <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
+	    <% unless authors.empty? %>
+	      <dt>
+		<%= fedora_field_label("descMetadata", [:person, :namePart], "Author/Creator:") %>
+	      </dt>
+	      <dd class="dd_text">
+		<%= authors.join(", ") %>
+	      </dd>
+	    <% end %>
 
-<dl>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject(s)", "dd_text") %>
 
-  <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
-    <% unless authors.empty? %>
-      <dt>
-        <%= fedora_field_label("descMetadata", [:person, :namePart], "Author/Creator:") %>
-      </dt>
-      <dd class="author">
-        <%= authors.join(", ") %>
-      </dd>
-    <% end %>
+	 <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>
+	    <% unless orgs.empty? %>
+	      <dt>
+		<%= fedora_field_label("descMetadata", [:organization, :namePart], "Department:") %>
+	      </dt>
+	      <dd class="dd_text">
+		<%= orgs.join(", ") %>
+	      </dd>
+	 <% end %>
 
- <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject") %>
+	 <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 
- <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>
-    <% unless orgs.empty? %>
-      <dt>
-        <%= fedora_field_label("descMetadata", [:organization, :namePart], "Department:") %>
-      </dt>
-      <dd class="department">
-        <%= orgs.join(", ") %>
-      </dd>
- <% end %>
-
- <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language") %>
-
-
-</dl>
-
-</form>
+	</dl>
+</div>

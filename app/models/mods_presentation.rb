@@ -34,30 +34,28 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
-
     t.origin_info(:path=>"originInfo") {
       t.publisher
-    }
-   
+    }  
     t.language {
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
-
     }
-
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
-
     t.related_item_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
-
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
 	t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
-
     t.copyright(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.physical_description(:path=>"physicalDescription") {
+      t.extent
+      t.mime_type(:path=>"internetMediaType")
+      t.digital_origin(:path=>"digitalOrigin")
+    } 
 
   end
   
@@ -95,6 +93,8 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
              }
              xml.physicalDescription {
                xml.extent
+               xml.internetMediaType
+               xml.digitalOrigin 
              }
         }
       end
