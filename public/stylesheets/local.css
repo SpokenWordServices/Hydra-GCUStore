@@ -491,9 +491,15 @@ div.sound-genre {
   background-position:left center;
   background-repeat:no-repeat;
 }
+
+div.presentation-genre {
+  background-image:url('/images/icons/x-office-spreadsheet-th.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
 div.pdf-download {
   background-image:url('/images/icons/download_icons/pdf.gif');
   background-position:left center;
   background-repeat:no-repeat;
 }
-
