@@ -44,14 +44,15 @@ module CatalogHelper
 
      display_label = get_values_from_datastream(document, "contentMetadata",[:resource, :display_label])
      object_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_object_id])
-     ds_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_ds_id])
+     diss_type = get_values_from_datastream(document, "contentMetadata",[:resource, :dissType])  
      mime_type = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :mime_type])
      file_size = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :size])
+
 
      while i < resources_count
       resources << <<-EOS 
 	   <div><div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
-           <a href="/assets/#{object_id[i]}/genericContent/#{ds_id[i]}">#{display_label[i]}</a>
+           <a href="/assets/#{object_id[i]}/#{diss_type[i]}">#{display_label[i]}</a>
            <div id="file-size">(#{get_friendly_file_size(file_size[i])})</div>
       EOS
        i += 1
