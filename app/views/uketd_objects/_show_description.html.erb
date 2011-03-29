@@ -6,7 +6,7 @@
     <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
     <% unless authors.empty? %>
       <dt>
-        <%= fedora_field_label("descMetadata", [:person, :namePart], "Author/Creator:") %>
+        <%= fedora_field_label("descMetadata", [:person, :namePart], "Author:") %>
       </dt>
       <dd class="dd_text">
         <%= authors.join(", ") %>

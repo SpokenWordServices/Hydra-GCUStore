@@ -98,7 +98,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-02-23T11:43:22.576Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://local.fedora.server/fedora/objects/hull:756/methods/hydra-sDef:uketdObject/getDescMetadata"/>
+<foxml:contentLocation TYPE="URL" REF="http://local.fedora.server/fedora/objects/hull:756/methods/hull-sDef:uketdObject/getDescMetadata"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
@@ -108,7 +108,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
           <rdf:Description rdf:about="info:fedora/hull:756">
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:uketdObject"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
 </foxml:xmlContent>

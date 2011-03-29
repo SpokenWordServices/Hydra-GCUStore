@@ -25,7 +25,7 @@ class UketdObject < ActiveFedora::Base
 
   def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
-    solr_doc << { "has_model_s" => "info:fedora/hydra-cModel:uketdObject" }
+    solr_doc << { "has_model_s" => "info:fedora/hull-cModel:uketdObject" }
     solr_doc
   end
 

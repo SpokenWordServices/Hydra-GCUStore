@@ -138,7 +138,7 @@ The presentation describes the &apos;simple yet flexible&apos; approach of the H
 <foxml:xmlContent>
 <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:2106">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:presentation"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:presentation"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>

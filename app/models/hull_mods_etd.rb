@@ -395,7 +395,7 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
 
       def to_solr(solr_doc=Hash.new)
         super(solr_doc)
-        solr_doc.merge!("object_type_facet"=> "ETD")
+        solr_doc.merge!("object_type_facet"=> "Thesis or dissertation")
         solr_doc
       end
 

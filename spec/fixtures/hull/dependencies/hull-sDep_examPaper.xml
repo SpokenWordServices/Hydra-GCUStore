@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hydra-sDep:journalArticle" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+<foxml:digitalObject PID="hull-sDep:examPaper" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
   <foxml:objectProperties>
     <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="SDep for journal article"/>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="SDep for Exam paper"/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
     <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2009-09-21T15:45:30.233Z"/>
     <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-01-10T17:32:16.412Z"/>
@@ -30,10 +30,10 @@
       ID="RELS-EXT1.0" LABEL="RDF Statements about this object" MIMETYPE="application/rdf+xml" SIZE="626">
       <foxml:xmlContent>
         <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-          <rdf:Description rdf:about="info:fedora/hydra-sDep:journalArticle">
+          <rdf:Description rdf:about="info:fedora/hull-sDep:examPaper">
             <fedora-model:hasModel rdf:resource="info:fedora/fedora-system:ServiceDeployment-3.0"/>
-            <fedora-model:isDeploymentOf rdf:resource="info:fedora/hydra-sDef:journalArticle"/>
-            <fedora-model:isContractorOf rdf:resource="info:fedora/hydra-cModel:journalArticle"/>
+            <fedora-model:isDeploymentOf rdf:resource="info:fedora/hull-sDef:examPaper"/>
+            <fedora-model:isContractorOf rdf:resource="info:fedora/hull-cModel:examPaper"/>
           </rdf:Description>
         </rdf:RDF>
       </foxml:xmlContent>
@@ -49,7 +49,7 @@
             <fmm:DatastreamInputParm parmName="content" passBy="URL_REF" required="TRUE"/>
             <fmm:MethodReturnType wsdlMsgName="response" wsdlMsgTOMIME="N/A"/>
           </fmm:method>
-          <fmm:method operationName="getOriginal" wsdlMsgName="getOriginalRequest" wsdlMsgOutput="response">
+           <fmm:method operationName="getOriginal" wsdlMsgName="getOriginalRequest" wsdlMsgOutput="response">
             <fmm:DatastreamInputParm parmName="original" passBy="URL_REF" required="TRUE"/>
             <fmm:MethodReturnType wsdlMsgName="response" wsdlMsgTOMIME="N/A"/>
           </fmm:method>
@@ -107,7 +107,7 @@
               <wsdl:input message="this:getContentRequest"/>
               <wsdl:output message="this:response"/>
             </wsdl:operation>
-           <wsdl:operation name="getOriginal">
+             <wsdl:operation name="getOriginal">
               <wsdl:input message="this:getOriginalRequest"/>
               <wsdl:output message="this:response"/>
             </wsdl:operation>
@@ -149,8 +149,8 @@
         <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>SDep for Journal article</dc:title>
-          <dc:identifier>hydra-sDep:journalArticle</dc:identifier>
+          <dc:title>SDep for hull exampaper content</dc:title>
+          <dc:identifier>hull-sDep:examPaper</dc:identifier>
         </oai_dc:dc>
       </foxml:xmlContent>
     </foxml:datastreamVersion>
