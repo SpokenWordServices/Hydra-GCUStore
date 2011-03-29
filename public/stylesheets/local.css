@@ -6,8 +6,8 @@ RG  090818
 
 /* Over-ride body etc in application.css */
 
-body {background: url('../images/bg.png') repeat-x top left; font: 0.8em Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif; line-height: 1.4; color:#333; margin: 0px; padding: 15px;}
-select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;}
+body {background: url('../images/bg.png') repeat-x top left; font: 0.8em Lucida Sans,Arial,Georgia, Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif; line-height: 1.4; color:#333; margin: 0px; padding: 15px;}
+select,input,button,textarea {font: 1em Lucida Sans,Arial,Georgia, Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;}
 
 /* HEADER & FOOTER */
 
@@ -16,9 +16,10 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
 }
 
 #uni-nav-links {
-	padding-top: 0px;
-	height: 26px;
-	background: url(/images/top_nav_bg_h_new.gif) repeat-x;
+	padding-top: 4px;
+	height: 30px;
+	/* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
+	background-color: #A02027;
 }
 /* nav link image is 25px, 26px to give separation */
 /* nav link image is now 20px, 21px to give separation */
@@ -44,11 +45,10 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
 	display: inline;
 	list-style-type: none;
 	padding-right: 12px;
-	padding-left: 8px;
+	padding-left: 0px;
 	padding-top: 0px;
-	color: #ffa381;
 	font-size: 1em;
-	border-right: 1px solid #d05256;
+        font-weight: 600;
 }
 
 /* ie workaround */
@@ -58,13 +58,13 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
 
 #uni-nav-links a {
        /*color: #8fb9c5;*/
-	color: #E0E0C0;
+	color: #fff;
 	text-decoration: none;	
 }
 
 #uni-nav-links a:hover {
-	color: #FFFF3F;	
-	text-decoration: none;
+	color: #fff;	
+	text-decoration: underline;
 }
 
 #uni-nav-links li.no-border {
@@ -72,11 +72,12 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
 }
 
 #blacklight-user-links {
-    margin-right: 15px;
+        margin-right: 15px;
 	padding-top: 5px;
-	color: #d05256;
+	color: #a02027;
 	text-align: right;
 	font-size: 1em;
+	font-weight: 600;
 }
 
 #logo {
@@ -90,10 +91,14 @@ select,input,button,textarea {font: 1em Calibri, Verdana, "Lucida Grande", "Luci
  
  #hullFooter {
  	height: 50px;
-	background: #e0e0e0;
+	background: #D9E2E8;
 	padding-left: 10px;
  
  }
+
+#document h1 {
+    font-size: 1.3em;
+}
  
  .tableNoBorder {
  border-width: 0px;
@@ -264,7 +269,7 @@ border-bottom:0px;
 }
 
 #hd .yui-g .first {
-    padding-left: 90px;
+    padding-left: 25px;
 }
 
 #search {
@@ -275,12 +280,12 @@ border-bottom:0px;
 /* #appliedParams and #sortAndPerPage are displayed on results pages */
 #appliedParams
 {
- -moz-border-radius:4px 4px 4px 4px;
- border:1px solid #AAA;
+ 
+ border:0px solid #AAA;
 }
 
 #sortAndPerPage {
- -moz-border-radius:0 0 4px 4px;
+
 }
 
 .homeContainer {
@@ -292,15 +297,61 @@ border-bottom:0px;
 	margin-left;0px;
 }
 
+.pageEntriesInfo {
+    background-color: #D9E2E8;
+    border-width: 0px 0px 0;
+    padding: 0.66em;
+    border-radius: 0px 0px 0 0;
+}
+
+#appliedParams {
+    background-color: #D9E2E8;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-radius: 0 0 0px 0px;
+    border-right: 0px;
+    margin-bottom: 1.5em;
+    padding: 1em 0.66em 0 1em;
+}
+
+#appliedParams h3 {
+    padding: 2px 2px 2px 23px;
+}
+
+.appliedFilter {
+    padding: 2px 2px 2px 23px;
+    border-radius: 0 0 0 0;
+}
+
+#appliedParams div {
+    padding: 5px;
+}
+
+#sortAndPerPage {
+    background-color: #D9E2E8;
+    border-width: 0 0px 0px;
+    padding: 0.66em;
+}
+
+#documents {
+    background-color: #D9E2E8;
+}
+
+#previousNextDocument {
+    background-color: #D9E2E8;
+    border: 0 solid #AAAAAA;
+    border-radius: 0 0 0 0;
+}
+
 
  /* Local facets */
  
- #facets {font-size: 93%; padding: 1em 1em 1em 1em;
+ #facets {font-size: 93%; padding: 1em 0em 0em 0em;
  /* background-color: #d8e0ff; */
    }
   
- #facets ul {border-bottom: 1px dotted #ccc; padding: 0.5em 0.5em 1em; margin: 0;
- background-color: #e2edfe;
+ #facets ul {border-bottom: 0px dotted #ccc; padding: 0.4em 0.3em 0.3em; margin: 0;
+ background-color: #D9E2E8;
  }
   
 
@@ -317,6 +368,13 @@ border-bottom:0px;
   background-image:url('/images/facet_open.png');
 }
 
+#facets span.selected {
+    color: #A02027;
+}
+a:link, a:visited, a:active {
+    border-bottom: 0;
+}
+
 #slide_panel {
 	display: none;
 }
@@ -330,10 +388,11 @@ border-bottom:0px;
 dl dd {
   float: left;
   width: 35em;
-  margin-top: 1.5em;
+  margin-top: 0em;
   margin-right: 25px;
   position: relative;
   margin-left: 1em;
+  line-height: 2em;
 }
 
 dl dt {
@@ -342,8 +401,9 @@ dl dt {
   width: 10em;
   text-align: right;
   font-weight: bold;
-  font-size: .9em;
-  margin-top: 1.7em;
+  font-size: 1em;
+  margin-top: 0em;
+  line-height: 2em;
 }
 
 .dd_text {
@@ -372,15 +432,16 @@ div#resources {
 
 div#resources-list {
   float:left;
-  margin-top:1.7em;
-  margin-left:10em;
-  padding-bottom:1.7em;
-  width:53em;
-  background-color:#EEEEEE;
+  margin-top:1em;
+  margin-left:0em;
+  padding-top:1em;
+  padding-bottom:1em;
+  width:48em;
+  background-color:#D9E2E8;
 }
 
 div#resources-list dl dt {
-  width:25em;
+
   text-align:center;
 }
 
@@ -403,7 +464,7 @@ div#content_div dl dd {
 div#genre_image {
   float:right;
   width:100px;
-  height:150px;
+  height:100px;
 }
 
 
@@ -413,12 +474,20 @@ div#downloads {
   padding-top:0.5em;
   padding-bottom:1.7em;
   padding-left:0.5em;
-  width:15em;
+  width:190px;
   background-color:#D9E2E8;
 }
 
 div#downloads-list {
   padding-top:1em;
+}
+
+div#qr_code {
+  padding-left:32px;
+}
+
+div#file-size {
+  padding-left:22px;
 }
 
 div#links {
@@ -442,6 +511,10 @@ div#download_image {
   width:16px;
   height:16px;
   margin-right:5px;
+}
+
+div#file_size {
+  padding-left:5px;
 }
 
 div.text-genre {
@@ -492,7 +565,7 @@ div.sound-genre {
 }
 
 div.presentation-genre {
-  background-image:url('/images/icons/x-office-spreadsheet-th.png');
+  background-image:url('/images/icons/x-office-presentation-th.png');
   background-position:left center;
   background-repeat:no-repeat;
 }
