@@ -29,6 +29,8 @@
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :doi],"DOI", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :citation],"Citation", "dd_text") %>
+        <%= display_datastream_field(@document_fedora,"contentMetadata", [:resource, :display_label], "Label", "dd_text") %>
+
   </dl>
  </div>
 

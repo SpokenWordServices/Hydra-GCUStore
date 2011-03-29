@@ -11,13 +11,11 @@
 <% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
 <div class="document_viewer" id="cover_container">
-
   <h1>Examination paper</h1>
-
   <%= render :partial => 'exam_papers/show_description' %>
-
+  <%= render :partial => 'journal_articles/show_downloads' %>
+  <%= render :partial => 'journal_articles/show_links' %>
 </div>
-
   <%= render :partial => 'exam_papers/show_resources' %>
 
 

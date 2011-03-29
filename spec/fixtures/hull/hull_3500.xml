@@ -1,50 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hull:3500" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="The evolution of accounting in developing countries : the study of Jordan - Helles, Salem Abdalla Salem; "/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:50.034Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-16T18:21:10.075Z"/>
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
-  </foxml:objectProperties>
-  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.034Z"
-      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
-          <audit:record ID="AUDREC1">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-02-23T10:50:50.034Z</audit:date>
-            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_3500.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC2">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:21:10.075Z</audit:date>
-            <audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_3500.xml</audit:justification>
-          </audit:record>
-        </audit:auditTrail>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.081Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
-      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="3072">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>The evolution of accounting in developing countries : the study of Jordan</dc:title>
-          <dc:creator>Helles, Salem Abdalla Salem</dc:creator>
-          <dc:subject>Management</dc:subject>
-          <dc:description>The main purposes of this study are to ascertain whether Jordan's accounting systems (enterprise, government, social) provide the necessary information for its socio- economic development planning and to suggest means by which to improve accounting in the country.
+<foxml:digitalObject VERSION="1.1" PID="hull:3500"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="The evolution of accounting in developing countries : the study of Jordan - Helles, Salem Abdalla Salem; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:50.034Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-28T23:23:27.307Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-02-23T10:50:50.034Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-02-23T10:50:50.034Z</audit:date>
+<audit:justification>Ingested from local file C:\ConvertedObjects\hull_3500.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:21:10.075Z</audit:date>
+<audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_3500.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T16:55:00.489Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T16:55:00.489Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T23:23:27.307Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-02-23T10:50:50.081Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="3072">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>The evolution of accounting in developing countries : the study of Jordan</dc:title>
+  <dc:creator>Helles, Salem Abdalla Salem</dc:creator>
+  <dc:subject>Management</dc:subject>
+  <dc:description>The main purposes of this study are to ascertain whether Jordan&apos;s accounting systems (enterprise, government, social) provide the necessary information for its socio- economic development planning and to suggest means by which to improve accounting in the country.
 
 An attempt is made to describe the Jordanian environment and to determine the possible orientation of accounting in Jordan. It is shown that Jordan is a developing country, which was and still is subject to pressure from foreign powers both politically and economically. This pressure has created a bias towards the U.K.! USA accounting systems. Laws and regulations, accounting education and the accounting profession, are oriented towards the accounting of these two countries.
 
@@ -53,93 +75,74 @@ The study of accounting development in Jordan revealed that public accounting ha
 The empirical survey revealed the inadequacy and unsuitability of current reporting practices to the needs of the local users of financial reports. It also identified the following as major problems facing accounting profession in Jordan: (1) shortage of qualified accountants; (2) weakness and underdevelopment of the Jordanian accounting curricula; and (3) lack of sufficiently qualified teaching staff.
 
 Several recommendations are made concerning the development of the accounting profession and education so they can meet the challenge of economic development. These recommendations call for improvement in accounting practices, organisation of the profession, coordination of efforts with government, and increase in contacts with accountants in other countries.</dc:description>
-          <dc:publisher>The University of Hull</dc:publisher>
-          <dc:date>1992-11</dc:date>
-          <dc:type>Thesis &amp; dissertation</dc:type>
-          <dc:format>application/pdf</dc:format>
-          <dc:identifier>Ethos PID : 262296</dc:identifier>
-          <dc:identifier>http://edocs.hull.ac.uk/download.jsp?pid=hull:3500</dc:identifier>
-          <dc:identifier>hull:3500</dc:identifier>
-          <dc:language>eng</dc:language>
-          <dc:rights>© 1992 Salem Abdalla Salem Helles. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="E" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.082Z" ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
-      <foxml:contentLocation
-        REF="http://localhost:8983/fedora/objects/hull:3500/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.082Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="638">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <dc:publisher>The University of Hull</dc:publisher>
+  <dc:date>1992-11</dc:date>
+  <dc:type>Thesis &amp; dissertation</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:identifier>Ethos PID : 262296</dc:identifier>
+  <dc:identifier>http://edocs.hull.ac.uk/download.jsp?pid=hull:3500</dc:identifier>
+  <dc:identifier>hull:3500</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 1992 Salem Abdalla Salem Helles. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-02-23T10:50:50.082Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://local.fedora.server/fedora/objects/hull:3500/methods/hydra-sDef:uketdObject/getDescMetadata"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:50:50.082Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="638">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:3500">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.082Z" ID="contentMetadata.0" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="367">
-      <foxml:binaryContent> 
-              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJEb2N1
-              bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1bGw6MzUwMCIgZHNJRD0iY29u
-              dGVudCIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiPjxmaWxlIGlkPSJjb250ZW50IiBm
-              b3JtYXQ9InBkZiIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iMjI3MDUxNTIiPjxsb2Nh
-              dGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjM1MDBhL2dl
-              bmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPjwvZmlsZT48L3Jlc291cmNlPjwvY29udGVudE1l
-              dGFkYXRhPg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.083Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="962">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-02-23T10:50:50.083Z" MIMETYPE="text/xml" SIZE="962">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 1992 Salem Abdalla Salem Helles. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</human>
-            <machine/>
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="read">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="edit">
-            <human/>
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </use>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="UKETD_DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:50:50.084Z" ID="UKETD_DC.0" LABEL="UKETD_DC metadata"
-      MIMETYPE="text/xml" SIZE="3670">
-      <foxml:binaryContent> 
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="UKETD_DC" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="UKETD_DC.0" LABEL="UKETD_DC metadata" CREATED="2011-02-23T10:50:50.084Z" MIMETYPE="text/xml" SIZE="3670">
+<foxml:binaryContent> 
               PHVrZXRkX2RjOnVrZXRkZGMgeG1sbnM6dWtldGRfZGM9Imh0dHA6Ly9uYWNhLmNlbnRyYWwuY3JhbmZp
               ZWxkLmFjLnVrL2V0aG9zLW9haS8yLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1l
               bnRzLzEuMS8iIHhtbG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy8iIHhtbG5zOnVr
@@ -202,7 +205,21 @@ Several recommendations are made concerning the development of the accounting pr
               bnRpZmllciB4c2k6dHlwZT0iZGN0ZXJtczpVUkkiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0
               cy9odWxsOjM1MDBhL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2RjOmlkZW50aWZpZXI+PC91a2V0ZF9k
               Yzp1a2V0ZGRjPg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.1" LABEL="Content metadata" CREATED="2011-03-28T23:23:27.307Z" MIMETYPE="text/xml" SIZE="434">
+<foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0IiB4bWxucz0iaHR0cDovL2h5ZHJhLWNvbGxhYi5odWxs
+              LmFjLnVrL3NjaGVtYXMvY29udGVudE1ldGFkYXRhL3YxIj48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlk
+              PSJEb2N1bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1bGw6MzUwMGEiIGRz
+              SUQ9ImNvbnRlbnQiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVudC9jb250ZW50Ij48ZmlsZSBpZD0iY29u
+              dGVudCIgZm9ybWF0PSJwZGYiIG1pbWVUeXBlPSJhcHBsaWNhdGlvbi9wZGYiIHNpemU9IjIyNzA1MTUy
+              Ij48bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDoz
+              NTAwYS9nZW5lcmljQ29udGVudC9jb250ZW50PC9sb2NhdGlvbj48L2ZpbGU+PC9yZXNvdXJjZT48L2Nv
+              bnRlbnRNZXRhZGF0YT4=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>

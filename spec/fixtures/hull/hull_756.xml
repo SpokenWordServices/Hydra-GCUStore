@@ -1,173 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hull:756" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="An investigation of the factors which influence the degree of patient involvement in the physiotherapeutic consultation - Green, Angela Jane; "/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T11:43:22.517Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-16T18:21:46.123Z"/>
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
-  </foxml:objectProperties>
-  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.517Z"
-      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
-          <audit:record ID="AUDREC1">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-02-23T11:43:22.517Z</audit:date>
-            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_756.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC2">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>modifyDatastreamByReference</audit:action>
-            <audit:componentID>contentMetadata</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-02-23T11:56:05.950Z</audit:date>
-            <audit:justification>correct contentMD</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC3">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:21:46.123Z</audit:date>
-            <audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_756.xml</audit:justification>
-          </audit:record>
-        </audit:auditTrail>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.576Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
-      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="2114">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>An investigation of the factors which influence the degree of patient involvement in the physiotherapeutic consultation</dc:title>
-          <dc:creator>Green, Angela Jane</dc:creator>
-          <dc:subject>Medicine</dc:subject>
-          <dc:description>The term patient involvement is widely used within the physiotherapy vocabulary, yet it is poorly defined and understood.  Little is known about NHS physiotherapists’ attitudes, knowledge or skills regarding patient involvement. The aims of this thesis were therefore to: i) identify the attributes which define the concept of patient involvement in physiotherapy using a method of concept analysis; ii) investigate physiotherapists’ attitudes towards the involvement of patients by means of a national survey; iii) explore patients’ attitudes towards their involvement in the physiotherapy consultation using a local survey; iv) explore physiotherapists’ ability to recognise effective practice in patient involvement by means of a regional study using video vignettes of simulated consultations; v) ascertain to what extent physiotherapists involve patients in their physiotherapy care by means of an in-depth local observational study.</dc:description>
-          <dc:publisher>Postgraduate Medical Institute</dc:publisher>
-          <dc:date>2008-07-30</dc:date>
-          <dc:type>Thesis &amp; dissertation</dc:type>
-          <dc:format>application/pdf</dc:format>
-          <dc:identifier>http://hydra.hull.ac.uk/assets/hull:756a/content/content</dc:identifier>
-          <dc:identifier>http://hydra.hull.ac.uk/assets/hull:756a/content/content</dc:identifier>
-          <dc:identifier>hull:756</dc:identifier>
-          <dc:language>eng</dc:language>
-          <dc:rights>© 2008 Angela Jane Green. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="E" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.576Z" ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
-      <foxml:contentLocation
-        REF="http://localhost:8983/fedora/objects/hull:756/methods/hydra-sDef:uketdObject/getDescMetadata" TYPE="URL"/>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.576Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="637">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+<foxml:digitalObject VERSION="1.1" PID="hull:756"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="An investigation of the factors which influence the degree of patient involvement in the physiotherapeutic consultation - Green, Angela Jane; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T11:43:22.517Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-28T23:15:20.566Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-02-23T11:43:22.517Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-02-23T11:43:22.517Z</audit:date>
+<audit:justification>Ingested from local file C:\ConvertedObjects\hull_756.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-02-23T11:56:05.950Z</audit:date>
+<audit:justification>correct contentMD</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:21:46.123Z</audit:date>
+<audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_756.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T16:56:51.560Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T16:56:51.560Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>UKETD_DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T23:15:20.566Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>UKETD_DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T23:15:20.566Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-02-23T11:43:22.576Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="2114">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>An investigation of the factors which influence the degree of patient involvement in the physiotherapeutic consultation</dc:title>
+  <dc:creator>Green, Angela Jane</dc:creator>
+  <dc:subject>Medicine</dc:subject>
+  <dc:description>The term patient involvement is widely used within the physiotherapy vocabulary, yet it is poorly defined and understood.  Little is known about NHS physiotherapists’ attitudes, knowledge or skills regarding patient involvement. The aims of this thesis were therefore to: i) identify the attributes which define the concept of patient involvement in physiotherapy using a method of concept analysis; ii) investigate physiotherapists’ attitudes towards the involvement of patients by means of a national survey; iii) explore patients’ attitudes towards their involvement in the physiotherapy consultation using a local survey; iv) explore physiotherapists’ ability to recognise effective practice in patient involvement by means of a regional study using video vignettes of simulated consultations; v) ascertain to what extent physiotherapists involve patients in their physiotherapy care by means of an in-depth local observational study.</dc:description>
+  <dc:publisher>Postgraduate Medical Institute</dc:publisher>
+  <dc:date>2008-07-30</dc:date>
+  <dc:type>Thesis &amp; dissertation</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:identifier>http://hydra.hull.ac.uk/assets/hull:756a/content/content</dc:identifier>
+  <dc:identifier>http://hydra.hull.ac.uk/assets/hull:756a/content/content</dc:identifier>
+  <dc:identifier>hull:756</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 2008 Angela Jane Green. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-02-23T11:43:22.576Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://local.fedora.server/fedora/objects/hull:756/methods/hydra-sDef:uketdObject/getDescMetadata"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T11:43:22.576Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="637">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:756">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:uketdObject"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.577Z" ID="contentMetadata.0" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="357">
-      <foxml:binaryContent> 
-              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJEb2N1
-              bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1bGw6NzU2IiBkc0lEPSJjb250
-              ZW50IiBkaXNzVHlwZT0iZ2VuZXJpY0NvbnRlbnQvY29udGVudCI+PGZpbGUgaWQ9ImNvbnRlbnQiIGZv
-              cm1hdD0icGRmIiBtaW1lVHlwZT0iYXBwbGljYXRpb24vcGRmIiBzaXplPSIiPjxsb2NhdGlvbiB0eXBl
-              PSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjc1NmEvZ2VuZXJpY0NvbnRl
-              bnQvY29udGVudDwvbG9jYXRpb24+PC9maWxlPjwvcmVzb3VyY2U+PC9jb250ZW50TWV0YWRhdGE+
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-    <foxml:datastreamVersion CREATED="2011-02-23T11:56:05.950Z" ID="contentMetadata.1" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="1412">
-      <foxml:binaryContent> 
-              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij4KICA8cmVzb3VyY2UgZGlzcGxheUxhYmVsPSJUaGVz
-              aXMiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVudC9jb250ZW50IiBkc0lEPSJjb250ZW50IiBpZD0iRG9j
-              dW1lbnQiIG9iamVjdElEPSJodWxsOjc1NmEiIHNlcXVlbmNlPSIxIj4KICAgIDxmaWxlIGZvcm1hdD0i
-              cGRmIiBpZD0iY29udGVudCIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iMjA2MzEiPgog
-              ICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVs
-              bDo3NTZhL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPgogICAgPC9maWxlPgogIDwvcmVz
-              b3VyY2U+CiAgPHJlc291cmNlIGRpc3BsYXlMYWJlbD0iU2NlbmFyaW8gMSB2aWRlbyIgZGlzc1R5cGU9
-              ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiIGRzSUQ9ImNvbnRlbnQiIGlkPSJWaWRlbzEiIG9iamVjdElE
-              PSJodWxsOjc1NmIiIHNlcXVlbmNlPSIyIj4KICAgIDxmaWxlIGZvcm1hdD0id212IiBpZD0idmlkMSIg
-              bWltZVR5cGU9InZpZGVvL3gtbXMtd212IiBzaXplPSI3Nzk3OTQiPgogICAgICA8bG9jYXRpb24gdHlw
-              ZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDo3NTZiL2dlbmVyaWNDb250
-              ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPgogICAgPC9maWxlPgogIDwvcmVzb3VyY2U+CiAgPHJlc291cmNl
-              IGRpc3BsYXlMYWJlbD0iU2NlbmFyaW8gMiB2aWRlbyIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2Nv
-              bnRlbnQiIGRzSUQ9ImNvbnRlbnQiIGlkPSJWaWRlbzIiIG9iamVjdElEPSJodWxsOjc1NmMiIHNlcXVl
-              bmNlPSIzIj4KICAgIDxmaWxlIGZvcm1hdD0id212IiBpZD0idmlkMiIgbWltZVR5cGU9InZpZGVvL3gt
-              bXMtd212IiBzaXplPSI3Nzk3OTQiPgogICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlk
-              cmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDo3NTZjL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0
-              aW9uPgogICAgPC9maWxlPgogIDwvcmVzb3VyY2U+CiAgPHJlc291cmNlIGRpc3BsYXlMYWJlbD0iU2Nl
-              bmFyaW8gMyB2aWRlbyIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiIGRzSUQ9ImNvbnRl
-              bnQiIGlkPSJWaWRlbzMiIG9iamVjdElEPSJodWxsOjc1NmQiIHNlcXVlbmNlPSI0Ij4KICAgIDxmaWxl
-              IGZvcm1hdD0id212IiBpZD0idmlkMyIgbWltZVR5cGU9InZpZGVvL3gtbXMtd212IiBzaXplPSI3Nzk3
-              OTQiPgogICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3Nl
-              dHMvaHVsbDo3NTZkL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPgogICAgPC9maWxlPgog
-              IDwvcmVzb3VyY2U+CjwvY29udGVudE1ldGFkYXRhPgo=
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.577Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="953">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-03-28T16:56:51.560Z" MIMETYPE="text/xml" SIZE="1478">
+<foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0IiB4bWxucz0iaHR0cDovL2h5ZHJhLWNvbGxhYi5odWxs
+              LmFjLnVrL3NjaGVtYXMvY29udGVudE1ldGFkYXRhL3YxIj4NICA8cmVzb3VyY2UgZGlzcGxheUxhYmVs
+              PSJUaGVzaXMiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVudC9jb250ZW50IiBkc0lEPSJjb250ZW50IiBp
+              ZD0iRG9jdW1lbnQiIG9iamVjdElEPSJodWxsOjc1NmEiIHNlcXVlbmNlPSIxIj4NICAgIDxmaWxlIGZv
+              cm1hdD0icGRmIiBpZD0iY29udGVudCIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iMjA2
+              MzEiPg0gICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3Nl
+              dHMvaHVsbDo3NTZhL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPg0gICAgPC9maWxlPg0g
+              IDwvcmVzb3VyY2U+DSAgPHJlc291cmNlIGRpc3BsYXlMYWJlbD0iU2NlbmFyaW8gMSB2aWRlbyIgZGlz
+              c1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiIGRzSUQ9ImNvbnRlbnQiIGlkPSJWaWRlbzEiIG9i
+              amVjdElEPSJodWxsOjc1NmIiIHNlcXVlbmNlPSIyIj4NICAgIDxmaWxlIGZvcm1hdD0id212IiBpZD0i
+              dmlkMSIgbWltZVR5cGU9InZpZGVvL3gtbXMtd212IiBzaXplPSI3Nzk3OTQiPg0gICAgICA8bG9jYXRp
+              b24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDo3NTZiL2dlbmVy
+              aWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPg0gICAgPC9maWxlPg0gIDwvcmVzb3VyY2U+DSAgPHJl
+              c291cmNlIGRpc3BsYXlMYWJlbD0iU2NlbmFyaW8gMiB2aWRlbyIgZGlzc1R5cGU9ImdlbmVyaWNDb250
+              ZW50L2NvbnRlbnQiIGRzSUQ9ImNvbnRlbnQiIGlkPSJWaWRlbzIiIG9iamVjdElEPSJodWxsOjc1NmMi
+              IHNlcXVlbmNlPSIzIj4NICAgIDxmaWxlIGZvcm1hdD0id212IiBpZD0idmlkMiIgbWltZVR5cGU9InZp
+              ZGVvL3gtbXMtd212IiBzaXplPSI3Nzk3OTQiPg0gICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRw
+              Oi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDo3NTZjL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8
+              L2xvY2F0aW9uPg0gICAgPC9maWxlPg0gIDwvcmVzb3VyY2U+DSAgPHJlc291cmNlIGRpc3BsYXlMYWJl
+              bD0iU2NlbmFyaW8gMyB2aWRlbyIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiIGRzSUQ9
+              ImNvbnRlbnQiIGlkPSJWaWRlbzMiIG9iamVjdElEPSJodWxsOjc1NmQiIHNlcXVlbmNlPSI0Ij4NICAg
+              IDxmaWxlIGZvcm1hdD0id212IiBpZD0idmlkMyIgbWltZVR5cGU9InZpZGVvL3gtbXMtd212IiBzaXpl
+              PSI3Nzk3OTQiPg0gICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51
+              ay9hc3NldHMvaHVsbDo3NTZkL2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPg0gICAgPC9m
+              aWxlPg0gIDwvcmVzb3VyY2U+DTwvY29udGVudE1ldGFkYXRhPg0=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-02-23T11:43:22.577Z" MIMETYPE="text/xml" SIZE="953">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 2008 Angela Jane Green. All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder.</human>
-            <machine/>
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="read">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="edit">
-            <human/>
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </use>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="UKETD_DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T11:43:22.577Z" ID="UKETD_DC.0" LABEL="UKETD_DC metadata"
-      MIMETYPE="text/xml" SIZE="375">
-      <foxml:binaryContent> 
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="UKETD_DC" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="UKETD_DC.0" LABEL="UKETD_DC metadata" CREATED="2011-02-23T11:43:22.577Z" MIMETYPE="text/xml" SIZE="375">
+<foxml:binaryContent> 
               Z2h0cyByZXNlcnZlZC4gTm8gcGFydCBvZiB0aGlzIHB1YmxpY2F0aW9uIG1heSBiZSByZXByb2R1Y2Vk
               IHdpdGhvdXQgdGhlIHdyaXR0ZW4gcGVybWlzc2lvbiBvZiB0aGUgY29weXJpZ2h0IGhvbGRlci48L2Rj
               OnJpZ2h0cz48ZGN0ZXJtczppc1JlZmVyZW5jZWRCeSB4c2k6dHlwZT0iZGN0ZXJtczpVUkkiPmh0dHA6
@@ -175,7 +189,123 @@
               ZGM6aWRlbnRpZmllciB4c2k6dHlwZT0iZGN0ZXJtczpVUkkiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVr
               L2Fzc2V0cy9odWxsOjc1NmEvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvZGM6aWRlbnRpZmllcj48L3Vr
               ZXRkX2RjOnVrZXRkZGM+
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="UKETD_DC.1" LABEL="UKETD_DC metadata" CREATED="2011-03-28T23:15:20.566Z" MIMETYPE="text/xml" SIZE="6697">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pg08dWtl
+              dGRfZGM6dWtldGRkYyB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHht
+              bG5zOmRjdGVybXM9Imh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy8iIHhtbG5zOnVrZXRkX2RjPSJodHRw
+              Oi8vbmFjYS5jZW50cmFsLmNyYW5maWVsZC5hYy51ay9ldGhvcy1vYWkvMi4wLyIgeG1sbnM6dWtldGR0
+              ZXJtcz0iaHR0cDovL25hY2EuY2VudHJhbC5jcmFuZmllbGQuYWMudWsvZXRob3Mtb2FpL3Rlcm1zLyIg
+              eG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNj
+              aGVtYUxvY2F0aW9uPSJodHRwOi8vbmFjYS5jZW50cmFsLmNyYW5maWVsZC5hYy51ay9ldGhvcy1vYWkv
+              Mi4wLyBodHRwOi8vbmFjYS5jZW50cmFsLmNyYW5maWVsZC5hYy51ay9ldGhvcy1vYWkvMi4wL3VrZXRk
+              X2RjLnhzZCI+DTxkYzp0aXRsZT5BbiBpbnZlc3RpZ2F0aW9uIG9mIHRoZSBmYWN0b3JzIHdoaWNoIGlu
+              Zmx1ZW5jZSB0aGUgZGVncmVlIG9mIHBhdGllbnQgaW52b2x2ZW1lbnQgaW4gdGhlIHBoeXNpb3RoZXJh
+              cGV1dGljIGNvbnN1bHRhdGlvbjwvZGM6dGl0bGU+DTxkYzpjcmVhdG9yPkdyZWVuLCBBbmdlbGEgSmFu
+              ZTwvZGM6Y3JlYXRvcj4NPHVrZXRkdGVybXM6YWR2aXNvcj5LbGFiZXIgTW9mZmV0dCwgSmVubmlmZXIg
+              KHN1cGVydmlzb3IpPC91a2V0ZHRlcm1zOmFkdmlzb3I+DTx1a2V0ZHRlcm1zOmFkdmlzb3I+U2hhcnAs
+              IERvbmFsZCAoc3VwZXJ2aXNvcik8L3VrZXRkdGVybXM6YWR2aXNvcj4NPGRjdGVybXM6aXNzdWVkPjIw
+              MDgtMDQ8L2RjdGVybXM6aXNzdWVkPg08dWtldGR0ZXJtczpzcG9uc29yPkh1bGwgYW5kIEVhc3QgWW9y
+              a3NoaXJlIEhvc3BpdGFscyBOSFMgVHJ1c3Q8L3VrZXRkdGVybXM6c3BvbnNvcj4NPGRjOnN1YmplY3Q+
+              TWVkaWNpbmU8L2RjOnN1YmplY3Q+DTxkY3Rlcm1zOmFic3RyYWN0Pg1UaGUgdGVybSBwYXRpZW50IGlu
+              dm9sdmVtZW50IGlzIHdpZGVseSB1c2VkIHdpdGhpbiB0aGUgcGh5c2lvdGhlcmFweSB2b2NhYnVsYXJ5
+              LA15ZXQgaXQgaXMgcG9vcmx5IGRlZmluZWQgYW5kIHVuZGVyc3Rvb2QuIExpdHRsZSBpcyBrbm93biBh
+              Ym91dCBOSFMNcGh5c2lvdGhlcmFwaXN0c+KAmSBhdHRpdHVkZXMsIGtub3dsZWRnZSBvciBza2lsbHMg
+              cmVnYXJkaW5nIHBhdGllbnQgaW52b2x2ZW1lbnQuIFRoZQ1haW1zIG9mIHRoaXMgdGhlc2lzIHdlcmUg
+              dGhlcmVmb3JlIHRvOiBpKSBpZGVudGlmeSB0aGUgYXR0cmlidXRlcyB3aGljaCBkZWZpbmUgdGhlDWNv
+              bmNlcHQgb2YgcGF0aWVudCBpbnZvbHZlbWVudCBpbiBwaHlzaW90aGVyYXB5IHVzaW5nIGEgbWV0aG9k
+              IG9mIGNvbmNlcHQgYW5hbHlzaXM7DWlpKSBpbnZlc3RpZ2F0ZSBwaHlzaW90aGVyYXBpc3Rz4oCZIGF0
+              dGl0dWRlcyB0b3dhcmRzIHRoZSBpbnZvbHZlbWVudCBvZiBwYXRpZW50cyBieQ1tZWFucyBvZiBhIG5h
+              dGlvbmFsIHN1cnZleTsgaWlpKSBleHBsb3JlIHBhdGllbnRz4oCZIGF0dGl0dWRlcyB0b3dhcmRzIHRo
+              ZWlyIGludm9sdmVtZW50DWluIHRoZSBwaHlzaW90aGVyYXB5IGNvbnN1bHRhdGlvbiB1c2luZyBhIGxv
+              Y2FsIHN1cnZleTsgaXYpIGV4cGxvcmUgcGh5c2lvdGhlcmFwaXN0c+KAmQ1hYmlsaXR5IHRvIHJlY29n
+              bmlzZSBlZmZlY3RpdmUgcHJhY3RpY2UgaW4gcGF0aWVudCBpbnZvbHZlbWVudCBieSBtZWFucyBvZiBh
+              IHJlZ2lvbmFsDXN0dWR5IHVzaW5nIHZpZGVvIHZpZ25ldHRlcyBvZiBzaW11bGF0ZWQgY29uc3VsdGF0
+              aW9uczsgdikgYXNjZXJ0YWluIHRvIHdoYXQgZXh0ZW50DXBoeXNpb3RoZXJhcGlzdHMgaW52b2x2ZSBw
+              YXRpZW50cyBpbiB0aGVpciBwaHlzaW90aGVyYXB5IGNhcmUgYnkgbWVhbnMgb2YgYW4gaW4tZGVwdGgN
+              bG9jYWwgb2JzZXJ2YXRpb25hbCBzdHVkeS4NQSByZXZpZXcgb2YgcHVibGlzaGVkIGxpdGVyYXR1cmUg
+              d2FzIGNvbmR1Y3RlZC4gVGhpcyBmb2N1c3NlZCBvbiBwaHlzaW90aGVyYXB5DXJlc2VhcmNoZXJz4oCZ
+              LCBwYXRpZW50c+KAmSBhbmQgb3RoZXIgaGVhbHRoY2FyZSBwcm9mZXNzaW9uYWxz4oCZIHVzZSBvZiB0
+              aGUgdGVybSBwYXRpZW50DWludm9sdmVtZW50LiBGcm9tIHRoaXMgcmV2aWV3LCBzZXZlbiBhdHRyaWJ1
+              dGVzIHdlcmUgaWRlbnRpZmllZCB3aGljaCBkZWZpbmUgdGhlDWNvbmNlcHQgb2YgcGF0aWVudCBpbnZv
+              bHZlbWVudCBpbiBwaHlzaW90aGVyYXB5IGZvciB0aGUgcHVycG9zZSBvZiB0aGlzIHRoZXNpcy4NTm8g
+              cHVibGlzaGVkIGluc3RydW1lbnRzIGNvdWxkIGJlIGZvdW5kIHdoaWNoIGluY29ycG9yYXRlZCB0aGUg
+              YWJvdmUgYXR0cmlidXRlcw1hbmQgd2VyZSB2YWxpZGF0ZWQgZm9yIHVzZSBieSBwaHlzaW90aGVyYXBp
+              c3RzIGFuZCB0aGVpciBwYXRpZW50cy4gRm91ciBpbnN0cnVtZW50cw13ZXJlIGRldmVsb3BlZCBmb3Ig
+              dGhlIHB1cnBvc2Ugb2YgdGhpcyB0aGVzaXM6IFBoeXNpb3RoZXJhcGlzdHPigJkgQXR0aXR1ZGVzIHRv
+              d2FyZHMNUGF0aWVudCBJbnZvbHZlbWVudCAoUEFQSS1BKSBxdWVzdGlvbm5haXJlOyBhIG1hdGNoZWQg
+              cXVlc3Rpb25uYWlyZSB0byBpbnZlc3RpZ2F0ZQ1QYXRpZW50c+KAmSBBdHRpdHVkZXMgdG93YXJkcyBQ
+              YXRpZW50IEludm9sdmVtZW50IChQQVBJLUIpOyBWaWduZXR0ZSBFdmFsdWF0aW9uDVNoZWV0LCB0byBl
+              eHBsb3JlIHBoeXNpb3RoZXJhcGlzdHPigJkga25vd2xlZGdlIG9mIHBhdGllbnQgaW52b2x2ZW1lbnQ7
+              IFBhdGllbnQNSW52b2x2ZW1lbnQgaW4gcGh5c2lvdGhlcmFweSBFdmFsdWF0aW9uIChQSUUpIHRvb2ws
+              IGEgcmF0aW5nIHRvb2wgdG8gYXNzZXNzIHZpZGVvLQ1yZWNvcmRlZCBwaHlzaW90aGVyYXB5IGNvbnN1
+              bHRhdGlvbnMuDUEgbmF0aW9uYWwgc3VydmV5IG9mIDczNSBwaHlzaW90aGVyYXBpc3RzIGZvdW5kIHRo
+              YXQgNDglIG9mIHBoeXNpb3RoZXJhcGlzdHMgYWdyZWVkDXdpdGggYWxsIGFzcGVjdHMgb2YgcGF0aWVu
+              dCBpbnZvbHZlbWVudCwgYXMgbWVhc3VyZWQgYnkgdGhlIFBBUEktQS4gQWxtb3N0IDc1JSBvZg1waHlz
+              aW90aGVyYXBpc3RzIGFncmVlZCB3aXRoIGFsbCBpdGVtcyBvbiB0aGUg4oCcaW52b2x2ZW1lbnQgaW4g
+              dHJlYXRtZW50IHBsYW5uaW5n4oCdDXN1Yi1zY2FsZSwgd2hpbHN0IDc4JSBhZ3JlZWQgd2l0aCBhbGwg
+              aXRlbXMgb24gdGhlIOKAnGV4cGxvcmF0aW9uIG9mIHRoZSBwYXRpZW504oCZcw1wZXJzcGVjdGl2ZSBv
+              ZiB0aGVpciBwcm9ibGVt4oCdIHN1Yi1zY2FsZS4gU3RlcHdpc2UgbGluZWFyIHJlZ3Jlc3Npb24gbW9k
+              ZWxzDWV4cGxhaW5lZCBsZXNzIHRoYW4gMTIlIG9mIHZhcmlhbmNlIGluIHRoZSBQQVBJLUEgc2NvcmVz
+              LiBCZWluZyBvZiBmZW1hbGUgZ2VuZGVyDW9yIGhhdmluZyBhY2Nlc3NlZCB0aGUgc3VydmV5IHRocm91
+              Z2ggdGhlIGludGVyYWN0aXZlIENTUCB3ZWJzaXRlIHByZWRpY3RlZCBoaWdoZXINc2NvcmVzIGluIHRo
+              ZSBQQVBJLUEgYW5kIGl0cyBzdWItc2NhbGVzLg1TZXZlbnR5IHNpeCBwYXRpZW50cyByZXNwb25kZWQg
+              dG8gYSBsb2NhbCBzdXJ2ZXkgb2YgcGF0aWVudHPigJkgYXR0aXR1ZGVzIHRvd2FyZHMNaW52b2x2ZW1l
+              bnQuIEZvcnR5IGZvdXIgcGVyY2VudCBvZiB0aG9zZSBwYXRpZW50cyBhZ3JlZWQgd2l0aCBhbGwgUEFQ
+              SS1CIGl0ZW1zLiBUaGUNUEFQSS1CIGhhZCB0aHJlZSBzdWItc2NhbGVzOiA4NCUgb2YgcGF0aWVudHMg
+              YWdyZWVkIHdpdGggYWxsIGl0ZW1zIHJlZ2FyZGluZyB0aGUNaW1wb3J0YW5jZSBvZiBoYXZpbmcgYSDi
+              gJx0aGVyYXBldXRpYyByZWxhdGlvbnNoaXAgd2l0aCB0aGUgcGh5c2lvdGhlcmFwaXN04oCdOyA3NCUN
+              YmVsaWV2ZWQgdGhhdCB0aGV5IHNob3VsZCBiZSDigJxpbnZvbHZlZCBpbiB0cmVhdG1lbnQgcGxhbm5p
+              bmfigJ07IHdoaWxzdCA3NyUgYmVsaWV2ZWQNdGhhdCB0aGUgcGh5c2lvdGhlcmFwaXN0IHNob3VsZCDi
+              gJxleHBsb3JlIHRoZSBwYXRpZW504oCZcyBwZXJzcGVjdGl2ZSBvZiB0aGVpciBwcm9ibGVt4oCdLg1D
+              b2hhYml0YXRpb24gd2l0aCBhIHBhcnRuZXIvc3BvdXNlIHdhcyBwcmVkaWN0aXZlIG9mIGEgbG93ZXIg
+              UEFQSS1CIHNjb3JlLg1QaHlzaW90aGVyYXBpc3Rz4oCZIGFuZCBwYXRpZW50c+KAmSBiZWxpZWZzIGRp
+              ZmZlcmVkIHJlZ2FyZGluZyB3aGF0IHRoZXkgY29uc2lkZXJlZCB0byBiZQ10aGUgbW9zdCBpbXBvcnRh
+              bnQgYXNwZWN0cyBvZiBwYXRpZW50IGludm9sdmVtZW50Lg1QaHlzaW90aGVyYXBpc3RzIGZyb20gbmlu
+              ZSBOSFMgVHJ1c3RzIChuPTI1Nykgd2F0Y2hlZCB0aHJlZSB2aWRlbyB2aWduZXR0ZXMgb2YgYQ1zaW11
+              bGF0ZWQgcGh5c2lvdGhlcmFweSBjb25zdWx0YXRpb24sIGFuZCByYXRlZCBob3cgd2VsbCB0aGUgcGh5
+              c2lvdGhlcmFwaXN0DWludm9sdmVkIHRoZSBwYXRpZW50LiBSZXNwb25kZW50c+KAmSByYXRpbmdzIHdl
+              cmUgY29tcGFyZWQgd2l0aCB0aG9zZSBvZiBhbiBleHBlcnQNcGFuZWwuIFRoaXJ0eSBwaHlzaW90aGVy
+              YXBpc3RzICgxMiUpIGFjaGlldmVkIHRvdGFsIGFncmVlbWVudCB3aXRoIHRoZSBleHBlcnQgcGFuZWws
+              DXdoaWxzdCA1OCUgKG49MTQ3KSBvZiBwaHlzaW90aGVyYXBpc3Rz4oCZIGtub3dsZWRnZSB3YXMgY29u
+              c2lkZXJlZCB0byBiZSB3aXRoaW4NYWNjZXB0YWJsZSBsaW1pdHMuIFRoZSBvZGRzIG9mIGFjaGlldmlu
+              ZyBhbiBhY2NlcHRhYmxlIGtub3dsZWRnZSBzY29yZSB3ZXJlLCBvbg1hdmVyYWdlLCAyLjYgdGltZXMg
+              aGlnaGVyIGZvciBwaHlzaW90aGVyYXBpc3RzIGFnZWQgYmV0d2VlbiAyNiBhbmQgMzAgeWVhcnMuDVRv
+              IGludmVzdGlnYXRlIGhvdyB3ZWxsIHBoeXNpb3RoZXJhcGlzdHMgZW5jb3VyYWdlIHRoZWlyIHBhdGll
+              bnRz4oCZIGludm9sdmVtZW50DWR1cmluZyB0aGUgY2xpbmljYWwgY29uc3VsdGF0aW9uLCAyMCBwaHlz
+              aW90aGVyYXBpc3RzIHJlcHJlc2VudGluZyB0aHJlZSBjbGluaWNhbCBhcmVhcywNd2VyZSByZWNvcmRl
+              ZCBpbiBjb25zdWx0YXRpb24gd2l0aCA3NiBvdXQtcGF0aWVudHM7IGFwcHJveGltYXRlbHkgNCBjb25z
+              dWx0YXRpb25zDXBlciBwaHlzaW90aGVyYXBpc3QuIE5vIHBoeXNpb3RoZXJhcGlzdCBhY2hpZXZlZCBh
+              biBhY2NlcHRhYmxlIHNjb3JlIGluIGFsbCAzNiBQSUUNaXRlbXMuIFNpeCBwaHlzaW90aGVyYXBpc3Rz
+              ICgzMCUpIHdlcmUgY29uc2lkZXJlZCB0byBoYXZlIG1hZGUgYSByZWFzb25hYmxlDWF0dGVtcHQgdG8g
+              aW52b2x2ZSB0aGVpciBwYXRpZW50cywgb24gdGhlIGJhc2lzIHRoYXQgdGhleSB3ZXJlIG9ic2VydmVk
+              IHRvIGhhdmUNcGVyZm9ybWVkIGF0IGxlYXN0IGhhbGYgb2YgdGhlIFBJRSBpdGVtcyB0byBhbiBhY2Nl
+              cHRhYmxlIG9yIGdvb2Qgc3RhbmRhcmQuDUluIGNvbmNsdXNpb24sIHRoaXMgcmVzZWFyY2ggc3VnZ2Vz
+              dHMgdGhhdCBtb3N0IHBoeXNpb3RoZXJhcGlzdHMgaGF2ZSBhIHBvc2l0aXZlDWF0dGl0dWRlIHRvd2Fy
+              ZHMgcGF0aWVudCBpbnZvbHZlbWVudDsgZmV3ZXIgc2VlbSBhYmxlIHRvIHJlY29nbmlzZSBpdCBpbiBw
+              cmFjdGljZSBhbmQNYSBtdWNoIHNtYWxsZXIgcHJvcG9ydGlvbiBhcmUgYWJsZSB0byBpbXBsZW1lbnQg
+              aXQgdG8gYW4gYWNjZXB0YWJsZSBzdGFuZGFyZCBpbiB0aGVpcg1jbGluaWNhbCBwcmFjdGljZS4gUG9z
+              c2libGUgZXhwbGFuYXRpb25zIGZvciB0aGVzZSBmaW5kaW5ncyBhbmQgdGhlaXIgc3Vic2VxdWVudA1p
+              bXBhY3Qgb24gcHJhY3RpY2UgYXJlIGRpc2N1c3NlZCB0b2dldGhlciB3aXRoIHN1Z2dlc3Rpb25zIGZv
+              ciBmdXR1cmUgc3R1ZHkuDTwvZGN0ZXJtczphYnN0cmFjdD4NPGRjOmRhdGU+MjAwOC0xMC0wNjwvZGM6
+              ZGF0ZT4NPGRjOmZvcm1hdCB4c2k6dHlwZT0iZGN0ZXJtczpJTVQiPmFwcGxpY2F0aW9uL3BkZjwvZGM6
+              Zm9ybWF0Pg08ZGM6bGFuZ3VhZ2UgeHNpOnR5cGU9ImRjdGVybXM6SVNPNjM5LTIiPmVuPC9kYzpsYW5n
+              dWFnZT4NPGRjOnR5cGU+VGhlc2lzIG9yIGRpc3NlcnRhdGlvbjwvZGM6dHlwZT4NPHVrZXRkdGVybXM6
+              cXVhbGlmaWNhdGlvbmxldmVsPkRvY3RvcmFsPC91a2V0ZHRlcm1zOnF1YWxpZmljYXRpb25sZXZlbD4N
+              PHVrZXRkdGVybXM6cXVhbGlmaWNhdGlvbm5hbWU+UGhEPC91a2V0ZHRlcm1zOnF1YWxpZmljYXRpb25u
+              YW1lPg08dWtldGR0ZXJtczppbnN0aXR1dGlvbj5UaGUgVW5pdmVyc2l0eSBvZiBIdWxsPC91a2V0ZHRl
+              cm1zOmluc3RpdHV0aW9uPg08dWtldGR0ZXJtczpkZXBhcnRtZW50PlBvc3RncmFkdWF0ZSBNZWRpY2Fs
+              IEluc3RpdHV0ZTwvdWtldGR0ZXJtczpkZXBhcnRtZW50Pg08ZGM6cmlnaHRzPsKpIDIwMDggQW5nZWxh
+              IEphbmUgR3JlZW4uIEFsbCByaWdodHMgcmVzZXJ2ZWQuIE5vIHBhcnQgb2YgdGhpcyBwdWJsaWNhdGlv
+              biBtYXkgYmUgcmVwcm9kdWNlZCB3aXRob3V0IHRoZSB3cml0dGVuIHBlcm1pc3Npb24gb2YgdGhlIGNv
+              cHlyaWdodCBob2xkZXIuPC9kYzpyaWdodHM+DTxkY3Rlcm1zOmlzUmVmZXJlbmNlZEJ5IHhzaTp0eXBl
+              PSJkY3Rlcm1zOlVSSSI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6NzU2PC9kY3Rl
+              cm1zOmlzUmVmZXJlbmNlZEJ5Pg08ZGM6aWRlbnRpZmllciB4c2k6dHlwZT0iZGN0ZXJtczpVUkkiPmh0
+              dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjc1NmEvZ2VuZXJpY0NvbnRlbnQvY29udGVu
+              dDwvZGM6aWRlbnRpZmllcj4NPC91a2V0ZF9kYzp1a2V0ZGRjPg==
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>

@@ -1,27 +1,24 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"exam_paper")%>" method="post" data-resourceType="exam_paper" accept-charset="utf-8">
-
+<div id="description">
 <dl>
 
- <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_module, :module_code], "Module code") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_module, :module_code], "Module code", "dd_text") %>
 
  <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>
     <% unless orgs.empty? %>
       <dt>
         <%= fedora_field_label("descMetadata", [:organization, :namePart], "Department:") %>
       </dt>
-      <dd class="department">
+      <dd class="dd_text">
         <%= orgs.join(", ") %>
       </dd>
  <% end %>
 
- <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language") %>
+ <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights", "dd_text") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 
 
 </dl>
-
-
-</form>
+</div>

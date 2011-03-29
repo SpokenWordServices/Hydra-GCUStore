@@ -1,83 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hull:2107" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="The Hydra initiative : Underpinning repository interaction for research support - Awre, Christopher L.; "/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:56:51.322Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-18T10:15:23.251Z"/>
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
-  </foxml:objectProperties>
-  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.322Z"
-      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
-          <audit:record ID="AUDREC1">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-02-23T10:56:51.322Z</audit:date>
-            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_2107.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC2">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:21:05.282Z</audit:date>
-            <audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_2107.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC3">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>modifyDatastreamByReference</audit:action>
-            <audit:componentID>descMetadata</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-18T10:15:18.236Z</audit:date>
-            <audit:justification/>
-          </audit:record>
-          <audit:record ID="AUDREC4">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>purgeDatastream</audit:action>
-            <audit:componentID>descMetadata</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-18T10:15:23.251Z</audit:date>
-            <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-02-23T10:56:51.376Z to 2011-02-23T10:56:51.376Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-02-23T10:56:51.376Z) and all associated audit records.</audit:justification>
-          </audit:record>
-        </audit:auditTrail>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.376Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
-      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="1248">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>The Hydra initiative : Underpinning repository interaction for research support</dc:title>
-          <dc:creator>Awre, Christopher L.</dc:creator>
-          <dc:subject>Hydra</dc:subject>
-          <dc:description>A presentation given to the joint meeting of the Fedora UK and Ireland, and Fedora EU User Groups on 8th December 2009 in Oxford.&amp;nbsp; The presentation was part of the 'scholars workbench' strand.</dc:description>
-          <dc:publisher>The University of Hull</dc:publisher>
-          <dc:date>2009-12-14</dc:date>
-          <dc:type>Presentation</dc:type>
-          <dc:format>application/pdf</dc:format>
-          <dc:format>Filesize: 302KB</dc:format>
-          <dc:identifier>hull-private:671</dc:identifier>
-          <dc:identifier>hull:2107</dc:identifier>
-          <dc:language>eng</dc:language>
-          <dc:rights>© 2009 Chris Awre. Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</dc:rights>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-18T10:15:18.236Z" ID="descMetadata.1" LABEL="MODS metadata"
-      MIMETYPE="text/xml" SIZE="2278">
-      <foxml:binaryContent> 
+<foxml:digitalObject VERSION="1.1" PID="hull:2107"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="The Hydra initiative : Underpinning repository interaction for research support - Awre, Christopher L.; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:56:51.322Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-28T17:06:45.755Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-02-23T10:56:51.322Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-02-23T10:56:51.322Z</audit:date>
+<audit:justification>Ingested from local file C:\ConvertedObjects\hull_2107.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:21:05.282Z</audit:date>
+<audit:justification>Ingested from local file C:\Users\Simon\Desktop\spec\fixtures\hull\hull_2107.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-18T10:15:18.236Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>purgeDatastream</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-18T10:15:23.251Z</audit:date>
+<audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-02-23T10:56:51.376Z to 2011-02-23T10:56:51.376Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-02-23T10:56:51.376Z) and all associated audit records.</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T17:06:45.755Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T17:06:45.755Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-02-23T10:56:51.376Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1248">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>The Hydra initiative : Underpinning repository interaction for research support</dc:title>
+  <dc:creator>Awre, Christopher L.</dc:creator>
+  <dc:subject>Hydra</dc:subject>
+  <dc:description>A presentation given to the joint meeting of the Fedora UK and Ireland, and Fedora EU User Groups on 8th December 2009 in Oxford.&amp;nbsp; The presentation was part of the &apos;scholars workbench&apos; strand.</dc:description>
+  <dc:publisher>The University of Hull</dc:publisher>
+  <dc:date>2009-12-14</dc:date>
+  <dc:type>Presentation</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:format>Filesize: 302KB</dc:format>
+  <dc:identifier>hull-private:671</dc:identifier>
+  <dc:identifier>hull:2107</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 2009 Chris Awre. Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="MODS metadata" CREATED="2011-03-18T10:15:18.236Z" MIMETYPE="text/xml" SIZE="2278">
+<foxml:binaryContent> 
               PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
               d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
               Ly93d3cubG9jLmdvdi9tb2RzL3YzICAgICAgICAgICAgIGh0dHA6Ly93d3cubG9jLmdvdi9zdGFuZGFy
@@ -116,81 +129,77 @@
               PHJlY29yZENoYW5nZURhdGUgZW5jb2Rpbmc9InczY2R0ZiIvPgogICAgPGxhbmd1YWdlT2ZDYXRhbG9n
               aW5nPgogICAgICA8bGFuZ3VhZ2VUZXJtIGF1dGhvcml0eT0iaXNvNjM5LTJiIj5lbmc8L2xhbmd1YWdl
               VGVybT4KICAgIDwvbGFuZ3VhZ2VPZkNhdGFsb2dpbmc+CiAgPC9yZWNvcmRJbmZvPgo8L21vZHM+Cg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.377Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="525">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:56:51.377Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="525">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:2107">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:presentation"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:presentation"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.377Z" ID="contentMetadata.0" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="372">
-      <foxml:binaryContent> 
-              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0Ij48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJQcmVz
-              ZW50YXRpb24iIGRpc3BsYXlMYWJlbD0iUHJlc2VudGF0aW9uIiBvYmplY3RJRD0iaHVsbDoyMTA3IiBk
-              c0lEPSJjb250ZW50IiBkaXNzVHlwZT0iZ2VuZXJpY0NvbnRlbnQvY29udGVudCI+PGZpbGUgaWQ9ImNv
-              bnRlbnQiIGZvcm1hdD0icGRmIiBtaW1lVHlwZT0iYXBwbGljYXRpb24vcGRmIiBzaXplPSIzMDE3NTki
-              Pjxsb2NhdGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjIx
-              MDcvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvbG9jYXRpb24+PC9maWxlPjwvcmVzb3VyY2U+PC9jb250
-              ZW50TWV0YWRhdGE+
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.378Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="1073">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-03-28T17:06:45.755Z" MIMETYPE="text/xml" SIZE="438">
+<foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0IiB4bWxucz0iaHR0cDovL2h5ZHJhLWNvbGxhYi5odWxs
+              LmFjLnVrL3NjaGVtYXMvY29udGVudE1ldGFkYXRhL3YxIj48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlk
+              PSJQcmVzZW50YXRpb24iIGRpc3BsYXlMYWJlbD0iUHJlc2VudGF0aW9uIiBvYmplY3RJRD0iaHVsbDoy
+              MTA3IiBkc0lEPSJjb250ZW50IiBkaXNzVHlwZT0iZ2VuZXJpY0NvbnRlbnQvY29udGVudCI+PGZpbGUg
+              aWQ9ImNvbnRlbnQiIGZvcm1hdD0icGRmIiBtaW1lVHlwZT0iYXBwbGljYXRpb24vcGRmIiBzaXplPSIz
+              MDE3NTkiPjxsb2NhdGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9o
+              dWxsOjIxMDcvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvbG9jYXRpb24+PC9maWxlPjwvcmVzb3VyY2U+
+              PC9jb250ZW50TWV0YWRhdGE+
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-02-23T10:56:51.378Z" MIMETYPE="text/xml" SIZE="1073">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 2009 Chris Awre. Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</human>
-            <machine/>
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="read">
-            <human/>
+            <human></human>
             <machine>
               <group>public</group>
             </machine>
           </access>
           <access type="edit">
-            <human/>
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </use>
           <embargo>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </embargo>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="content" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-02-23T10:56:51.378Z" ID="content.0" LABEL="content"
-      MIMETYPE="application/pdf" SIZE="132923">
-      <foxml:contentDigest DIGEST="049bf8bd50d1c08f63b3e0c2b2f304f2" TYPE="MD5"/>
-      <foxml:binaryContent> 
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="content" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="content.0" LABEL="content" CREATED="2011-02-23T10:56:51.378Z" MIMETYPE="application/pdf" SIZE="132923">
+<foxml:contentDigest TYPE="MD5" DIGEST="049bf8bd50d1c08f63b3e0c2b2f304f2"/>
+<foxml:binaryContent> 
               JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFuZyhl
               bi1HQikgL1N0cnVjdFRyZWVSb290IDE1IDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+Pg0KZW5k
               b2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDIvS2lkc1sgMyAwIFIgNyAwIFJdID4+DQpl
@@ -2407,7 +2416,7 @@
               IFIvSW5mbyAxNCAwIFIvSURbPDg1ODgxRTcwMUIwNzQwNDZCRDYwMUQ5Q0I3Q0IxQzRFPjw4NTg4MUU3
               MDFCMDc0MDQ2QkQ2MDFEOUNCN0NCMUM0RT5dIC9QcmV2IDEzMTc0My9YUmVmU3RtIDEzMTQwNT4+DQpz
               dGFydHhyZWYNCjEzMjc0MQ0KJSVFT0Y=
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>

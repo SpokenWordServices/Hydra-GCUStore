@@ -485,7 +485,6 @@ div.software-genre {
   background-position:left center;
   background-repeat:no-repeat;
 }
-
 div.sound-genre {
   background-image:url('/images/icons/volume-medium-th.png');
   background-position:left center;
@@ -500,6 +499,47 @@ div.presentation-genre {
 
 div.pdf-download {
   background-image:url('/images/icons/download_icons/pdf.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+
+div.img-download {
+  background-image:url('/images/icons/download_icons/img.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.doc-download {
+  background-image:url('/images/icons/download_icons/msword.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.vid-download {
+  background-image:url('/images/icons/download_icons/vid.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.sound-download {
+  background-image:url('/images/icons/download_icons/sound.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.presentation-download {
+  background-image:url('/images/icons/download_icons/msppt.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.spreadsheet-download {
+  background-image:url('/images/icons/download_icons/msexcel.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.zip-download {
+  background-image:url('/images/icons/download_icons/zip.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.generic-download {
+  background-image:url('/images/icons/download_icons/generic.gif');
   background-position:left center;
   background-repeat:no-repeat;
 }

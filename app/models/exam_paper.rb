@@ -9,6 +9,8 @@ class ExamPaper < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => Hydra::ModsExamPaper
 
+  has_metadata :name => "contentMetadata", :type => ContentMetadata
+
   has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
 
   # A place to put extra metadata values

@@ -15,5 +15,6 @@ ActionController::Routing::Routes.draw do |map|
   map.superuser 'superuser', :controller => 'user_sessions', :action => 'superuser'
 
   map.datastream_content 'assets/:id/datastreams/:datastream', :controller=>:file_assets, :action=>:show, :conditions => {:method => :get}
-  
+  map.download_datastream_content 'assets/:asset_id/genericContent/:download_id', :controller=>:downloads, :action=>:index, :conditions => {:method => :get}
+  #map.download_datastream_content maps this #http://localhost:3000/assets/hull:3058/downloads?download_id=content to #http://localhost:3000/assets/hull:3058/genericContent/content
 end

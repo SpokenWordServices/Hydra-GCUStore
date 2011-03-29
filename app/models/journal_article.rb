@@ -9,6 +9,8 @@ class JournalArticle < ActiveFedora::Base
   
   has_metadata :name => "descMetadata", :type => Hydra::ModsJournalArticle
 
+  has_metadata :name => "contentMetadata", :type => ContentMetadata
+
   has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
 
   has_datastream :name=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :controlGroup=>'M'

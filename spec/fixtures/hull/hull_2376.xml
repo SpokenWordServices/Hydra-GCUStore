@@ -1,99 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hull:2376" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Valid knowledge: the economy and the academy - Williams, Peter; "/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-16T18:31:52.508Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-18T10:23:43.104Z"/>
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
-  </foxml:objectProperties>
-  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:31:52.508Z"
-      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
-          <audit:record ID="AUDREC1">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:31:52.508Z</audit:date>
-            <audit:justification>Ingested from local file C:\ConvertedObjects\hull_2376.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC2">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>addDatastream</audit:action>
-            <audit:componentID>content</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:32:36.539Z</audit:date>
-            <audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC3">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>modifyDatastreamByReference</audit:action>
-            <audit:componentID>content</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:33:03.878Z</audit:date>
-            <audit:justification/>
-          </audit:record>
-          <audit:record ID="AUDREC4">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>purgeDatastream</audit:action>
-            <audit:componentID>content</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-16T18:33:10.901Z</audit:date>
-            <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=content), versions ranging from 2011-03-16T18:32:36.539Z to 2011-03-16T18:32:36.539Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-16T18:32:36.539Z) and all associated audit records.</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC5">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>modifyDatastreamByReference</audit:action>
-            <audit:componentID>descMetadata</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-18T10:23:36.530Z</audit:date>
-            <audit:justification/>
-          </audit:record>
-          <audit:record ID="AUDREC6">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>purgeDatastream</audit:action>
-            <audit:componentID>descMetadata</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-18T10:23:43.104Z</audit:date>
-            <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-03-16T18:31:52.556Z to 2011-03-16T18:31:52.556Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-16T18:31:52.556Z) and all associated audit records.</audit:justification>
-          </audit:record>
-        </audit:auditTrail>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:31:52.554Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
-      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="2519">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>Valid knowledge: the economy and the academy</dc:title>
-          <dc:creator>Williams, Peter</dc:creator>
-          <dc:subject>Forms of knowledge</dc:subject>
-          <dc:description>The future of Western universities as public institutions is the subject of extensive continuing debate, underpinned by the issue of what constitutes valid knowledge. Where in the past only propositional knowledge codified by academics was considered valid, in the new economy enabled by information and communications technology, the procedural knowledge of expertise has become a key commodity, and the acquisition of this expertise is increasingly seen as a priority by intending university students. Universities have traditionally proved adaptable to changing circumstances, but there is little evidence to date of their success in accommodating to the scale and unprecedented pace of change of the Knowledge Economy or to the new vocationally-oriented demands of their course clients. And in addition to these external factors, internal ones are now at work. Recent developments in eLearning have enabled the infiltration of commercial providers who are cherry-picking the most lucrative subject areas. The prospect is of a fracturing higher education system, with the less adaptable universities consigned to a shrinking public-funded sector supporting less vocationally saleable courses, and the more enterprising universities developing commercial partnerships in eLearning and knowledge transfer. This paper analyses pressures upon universities, their attempts to adapt to changing circumstances, and the institutional transformations which may result. It is concluded that a diversity of partnerships will emerge for the capture and transfer of knowledge, combining expertise from the economy with the conceptual frameworks of the academy.</dc:description>
-          <dc:description>Peer-reviewed</dc:description>
-          <dc:publisher>Springer</dc:publisher>
-          <dc:date>2010-04-14</dc:date>
-          <dc:type>Journal article</dc:type>
-          <dc:format>application/pdf</dc:format>
-          <dc:identifier>hull-private:953</dc:identifier>
-          <dc:identifier>hull:2376</dc:identifier>
-          <dc:language>eng</dc:language>
-          <dc:rights>© 2010 The University of Hull</dc:rights>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-18T10:23:36.530Z" ID="descMetadata.1" LABEL="MODS metadata"
-      MIMETYPE="text/xml" SIZE="3950">
-      <foxml:binaryContent> 
+<foxml:digitalObject VERSION="1.1" PID="hull:2376"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Valid knowledge: the economy and the academy - Williams, Peter; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-16T18:31:52.508Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-28T17:05:23.678Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-03-16T18:31:52.508Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:31:52.508Z</audit:date>
+<audit:justification>Ingested from local file C:\ConvertedObjects\hull_2376.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>content</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:32:36.539Z</audit:date>
+<audit:justification>DatastreamsPane generated this logMessage.</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>content</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:33:03.878Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>purgeDatastream</audit:action>
+<audit:componentID>content</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-16T18:33:10.901Z</audit:date>
+<audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=content), versions ranging from 2011-03-16T18:32:36.539Z to 2011-03-16T18:32:36.539Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-16T18:32:36.539Z) and all associated audit records.</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-18T10:23:36.530Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>purgeDatastream</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-18T10:23:43.104Z</audit:date>
+<audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=descMetadata), versions ranging from 2011-03-16T18:31:52.556Z to 2011-03-16T18:31:52.556Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-16T18:31:52.556Z) and all associated audit records.</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T11:27:45.311Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T11:28:45.336Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T11:28:45.336Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T17:00:02.438Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-28T17:05:23.678Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-03-16T18:31:52.554Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="2519">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Valid knowledge: the economy and the academy</dc:title>
+  <dc:creator>Williams, Peter</dc:creator>
+  <dc:subject>Forms of knowledge</dc:subject>
+  <dc:description>The future of Western universities as public institutions is the subject of extensive continuing debate, underpinned by the issue of what constitutes valid knowledge. Where in the past only propositional knowledge codified by academics was considered valid, in the new economy enabled by information and communications technology, the procedural knowledge of expertise has become a key commodity, and the acquisition of this expertise is increasingly seen as a priority by intending university students. Universities have traditionally proved adaptable to changing circumstances, but there is little evidence to date of their success in accommodating to the scale and unprecedented pace of change of the Knowledge Economy or to the new vocationally-oriented demands of their course clients. And in addition to these external factors, internal ones are now at work. Recent developments in eLearning have enabled the infiltration of commercial providers who are cherry-picking the most lucrative subject areas. The prospect is of a fracturing higher education system, with the less adaptable universities consigned to a shrinking public-funded sector supporting less vocationally saleable courses, and the more enterprising universities developing commercial partnerships in eLearning and knowledge transfer. This paper analyses pressures upon universities, their attempts to adapt to changing circumstances, and the institutional transformations which may result. It is concluded that a diversity of partnerships will emerge for the capture and transfer of knowledge, combining expertise from the economy with the conceptual frameworks of the academy.</dc:description>
+  <dc:description>Peer-reviewed</dc:description>
+  <dc:publisher>Springer</dc:publisher>
+  <dc:date>2010-04-14</dc:date>
+  <dc:type>Journal article</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:identifier>hull-private:953</dc:identifier>
+  <dc:identifier>hull:2376</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 2010 The University of Hull</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="MODS metadata" CREATED="2011-03-18T10:23:36.530Z" MIMETYPE="text/xml" SIZE="3950">
+<foxml:binaryContent> 
               PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
               d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
               Ly93d3cubG9jLmdvdi9tb2RzL3YzIGh0dHA6Ly93d3cubG9jLmdvdi9zdGFuZGFyZHMvbW9kcy92My9t
@@ -160,52 +197,31 @@
               aGFuZ2VEYXRlIGVuY29kaW5nPSJ3M2NkdGYiLz4KICAgIDxsYW5ndWFnZU9mQ2F0YWxvZ2luZz4KICAg
               ICAgPGxhbmd1YWdlVGVybSBhdXRob3JpdHk9ImlzbzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+CiAg
               ICA8L2xhbmd1YWdlT2ZDYXRhbG9naW5nPgogIDwvcmVjb3JkSW5mbz4KPC9tb2RzPgo=
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:31:52.556Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="704">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-03-16T18:31:52.556Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="527">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:2376">
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:journalArticle"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:journalArticle"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:31:52.557Z" ID="contentMetadata.0" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="601">
-      <foxml:binaryContent> 
-              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxjb250ZW50TWV0YWRhdGEgdHlw
-              ZT0idGV4dCIgeG1sbnM6Zm94bWw9ImluZm86ZmVkb3JhL2ZlZG9yYS1zeXN0ZW06ZGVmL2ZveG1sIyIg
-              eG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpvYWlfZGM9Imh0
-              dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wL29haV9kYy8iPg0KICA8cmVzb3VyY2Ugc2Vx
-              dWVuY2U9IjEiIGlkPSJKb3VybmFsQXJ0aWNsZSIgZGlzcGxheUxhYmVsPSJKb3VybmFsIGFydGljbGUi
-              IG9iamVjdElEPSJodWxsOjIzNzYiIGRzSUQ9ImNvbnRlbnQiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVu
-              dC9jb250ZW50Ij4NCiAgICA8ZmlsZSBpZD0iY29udGVudCIgZm9ybWF0PSJwZGYiIG1pbWVUeXBlPSJh
-              cHBsaWNhdGlvbi9wZGYiIHNpemU9IjIzMzQ3MiI+DQogICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5o
-              dHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDoyMzc2L2dlbmVyaWNDb250ZW50L2NvbnRl
-              bnQ8L2xvY2F0aW9uPg0KICAgIDwvZmlsZT4NCiAgPC9yZXNvdXJjZT4NCjwvY29udGVudE1ldGFkYXRh
-              Pg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:31:52.557Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="1101">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-03-16T18:31:52.557Z" MIMETYPE="text/xml" SIZE="1101">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 2010 The University of Hull</human>
-            <machine/>
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human/>
+            <human></human>
             <machine>
               <group>student</group>
               <group>staff</group>
@@ -213,7 +229,7 @@
             </machine>
           </access>
           <access type="read">
-            <human/>
+            <human></human>
             <machine>
               <group>student</group>
               <group>staff</group>
@@ -221,27 +237,26 @@
             </machine>
           </access>
           <access type="edit">
-            <human/>
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </use>
           <embargo>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </embargo>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="content" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-16T18:33:03.878Z" ID="content.1" LABEL="content"
-      MIMETYPE="application/pdf" SIZE="96337">
-      <foxml:binaryContent> 
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="content" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="content.1" LABEL="content" CREATED="2011-03-16T18:33:03.878Z" MIMETYPE="application/pdf" SIZE="96337">
+<foxml:binaryContent> 
               JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFuZyhl
               bi1HQikgL1N0cnVjdFRyZWVSb290IDEwIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+Pg0KZW5k
               b2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDIvS2lkc1sgMyAwIFIgNyAwIFJdID4+DQpl
@@ -1848,7 +1863,22 @@
               PC9TaXplIDY3L1Jvb3QgMSAwIFIvSW5mbyA5IDAgUi9JRFs8NDQ2NTU1N0YwMEQ5M0E0QkJCODY3ODk2
               RTY5RjcwNDM+PDQ0NjU1NTdGMDBEOTNBNEJCQjg2Nzg5NkU2OUY3MDQzPl0gL1ByZXYgOTQ2NjMvWFJl
               ZlN0bSA5NDMwMT4+DQpzdGFydHhyZWYNCjk2MTU5DQolJUVPRg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.2" LABEL="Content metadata" CREATED="2011-03-28T17:05:23.678Z" MIMETYPE="text/xml" SIZE="514">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NDTxjb250ZW50TWV0YWRhdGEgdHlw
+              ZT0idGV4dCIgIHhtbG5zPSJodHRwOi8vaHlkcmEtY29sbGFiLmh1bGwuYWMudWsvc2NoZW1hcy9jb250
+              ZW50TWV0YWRhdGEvdjEiPg0NICA8cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlkPSJKb3VybmFsQXJ0aWNs
+              ZSIgZGlzcGxheUxhYmVsPSJKb3VybmFsIGFydGljbGUiIG9iamVjdElEPSJodWxsOjIzNzYiIGRzSUQ9
+              ImNvbnRlbnQiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVudC9jb250ZW50Ij4NDSAgICA8ZmlsZSBpZD0i
+              Y29udGVudCIgZm9ybWF0PSJwZGYiIG1pbWVUeXBlPSJhcHBsaWNhdGlvbi9wZGYiIHNpemU9IjIzMzQ3
+              MiI+DQ0gICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3Nl
+              dHMvaHVsbDoyMzc2L2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPg0NICAgIDwvZmlsZT4N
+              DSAgPC9yZXNvdXJjZT4NDTwvY29udGVudE1ldGFkYXRhPg==
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>
