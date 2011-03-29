@@ -49,6 +49,10 @@
             <fmm:DatastreamInputParm parmName="content" passBy="URL_REF" required="TRUE"/>
             <fmm:MethodReturnType wsdlMsgName="response" wsdlMsgTOMIME="N/A"/>
           </fmm:method>
+          <fmm:method operationName="getOriginal" wsdlMsgName="getOriginalRequest" wsdlMsgOutput="response">
+            <fmm:DatastreamInputParm parmName="original" passBy="URL_REF" required="TRUE"/>
+            <fmm:MethodReturnType wsdlMsgName="response" wsdlMsgTOMIME="N/A"/>
+          </fmm:method>
         </fmm:MethodMap>
       </foxml:xmlContent>
     </foxml:datastreamVersion>
@@ -60,6 +64,11 @@
       <foxml:xmlContent>
         <fbs:DSInputSpec label="N/A" xmlns:fbs="http://fedora.comm.nsdlib.org/service/bindspec">
           <fbs:DSInput DSMax="1" DSMin="1" DSOrdinality="false" wsdlMsgPartName="content">
+            <fbs:DSInputLabel>N/A</fbs:DSInputLabel>
+            <fbs:DSMIME>N/A</fbs:DSMIME>
+            <fbs:DSInputInstruction>N/A</fbs:DSInputInstruction>
+          </fbs:DSInput>
+          <fbs:DSInput DSMax="1" DSMin="0" DSOrdinality="false" wsdlMsgPartName="original">
             <fbs:DSInputLabel>N/A</fbs:DSInputLabel>
             <fbs:DSMIME>N/A</fbs:DSMIME>
             <fbs:DSInputInstruction>N/A</fbs:DSInputInstruction>
@@ -87,12 +96,19 @@
           <wsdl:message name="getContentRequest">
             <wsdl:part name="content" type="this:inputType"/>
           </wsdl:message>
+          <wsdl:message name="getOriginalRequest">
+            <wsdl:part name="original" type="this:inputType"/>
+          </wsdl:message>
           <wsdl:message name="response">
             <wsdl:part name="response" type="xsd:base64Binary"/>
           </wsdl:message>
           <wsdl:portType name="portType">
             <wsdl:operation name="getContent">
               <wsdl:input message="this:getContentRequest"/>
+              <wsdl:output message="this:response"/>
+            </wsdl:operation>
+           <wsdl:operation name="getOriginal">
+              <wsdl:input message="this:getOriginalRequest"/>
               <wsdl:output message="this:response"/>
             </wsdl:operation>
           </wsdl:portType>
@@ -105,6 +121,15 @@
             <http:binding verb="GET"/>
             <wsdl:operation name="getContent">
               <http:operation location="(content)"/>
+              <wsdl:input>
+                <http:urlReplacement/>
+              </wsdl:input>
+              <wsdl:output>
+                <mime:content type="N/A"/>
+              </wsdl:output>
+            </wsdl:operation>
+            <wsdl:operation name="getOriginal">
+              <http:operation location="(original)"/>
               <wsdl:input>
                 <http:urlReplacement/>
               </wsdl:input>

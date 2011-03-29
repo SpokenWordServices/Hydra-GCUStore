@@ -42,8 +42,9 @@
       FORMAT_URI="info:fedora/fedora-system:FedoraSDefMethodMap-1.0" ID="METHODMAP1.0" LABEL="Abstract Method Map"
       MIMETYPE="text/xml" SIZE="176">
       <foxml:xmlContent>
-        <fmm:MethodMap name="N/A" xmlns:fmm="http://fedora.comm.nsdlib.org/service/methodmap">
-          <fmm:method operationName="getContent"/>
+       <fmm:MethodMap name="Method map for meetingPaper SDEF" xmlns:fmm="http://fedora.comm.nsdlib.org/service/methodmap">
+          <fmm:method label="Get the content" operationName="getContent"/>
+          <fmm:method label="Get the original" operationName="getOriginal"/>
         </fmm:MethodMap>
       </foxml:xmlContent>
     </foxml:datastreamVersion>

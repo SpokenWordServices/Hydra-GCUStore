@@ -83,6 +83,9 @@
           <dsTypeModel ID="content">
             <form MIME="*/*"/>
           </dsTypeModel>
+          <dsTypeModel ID="original" optional="true">
+            <form MIME="*/*"/>
+          </dsTypeModel>
         </dsCompositeModel>
       </foxml:xmlContent>
     </foxml:datastreamVersion>
