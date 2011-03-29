@@ -1,0 +1,3 @@
+<% display_type = params[:display_type].nil? ? 'list' : params[:display_type] %>
+
+<%= render :partial => "meeting_papers/index_#{display_type}", :locals => {:document => document, :counter => counter } %>
