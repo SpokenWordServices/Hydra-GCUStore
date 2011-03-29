@@ -1,11 +1,6 @@
 <div id="downloads">
   <fieldset id="download_fields">
    <legend>Download</legend>
-   <div id="downloads-list">
-    <div><div id="download_image" class="pdf-download" ></div>
-    <%= link_to "Meeting Paper", asset_downloads_path(params[:id], :download_id=>"content") %>
-    </div>
-   </div>
+   <%= display_resources(@document_fedora) %> 
  </fieldset>
 </div>
-

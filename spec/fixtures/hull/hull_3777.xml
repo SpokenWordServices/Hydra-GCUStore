@@ -1,75 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject PID="hull:3777" VERSION="1.1" xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="2010-11-23 Council minutes (Part A) - Committee Section; "/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-25T10:25:21.434Z"/>
-    <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-25T10:28:58.154Z"/>
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
-  </foxml:objectProperties>
-  <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.434Z"
-      FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0" LABEL="Audit Trail for this object" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
-          <audit:record ID="AUDREC1">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>ingest</audit:action>
-            <audit:componentID/>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-25T10:25:21.434Z</audit:date>
-            <audit:justification>Ingested from local file C:\Users\Simon\Desktop\hull_3777.xml</audit:justification>
-          </audit:record>
-          <audit:record ID="AUDREC2">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>modifyDatastreamByReference</audit:action>
-            <audit:componentID>content</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-25T10:28:50.689Z</audit:date>
-            <audit:justification/>
-          </audit:record>
-          <audit:record ID="AUDREC3">
-            <audit:process type="Fedora API-M"/>
-            <audit:action>purgeDatastream</audit:action>
-            <audit:componentID>content</audit:componentID>
-            <audit:responsibility>fedoraAdmin</audit:responsibility>
-            <audit:date>2011-03-25T10:28:58.154Z</audit:date>
-            <audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=content), versions ranging from 2011-03-25T10:25:21.909Z to 2011-03-25T10:25:21.909Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-25T10:25:21.909Z) and all associated audit records.</audit:justification>
-          </audit:record>
-        </audit:auditTrail>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.907Z" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/"
-      ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" SIZE="940">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-          xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-          <dc:title>2010-11-23 Council minutes (Part A)</dc:title>
-          <dc:creator>Committee Section</dc:creator>
-          <dc:subject>Council</dc:subject>
-          <dc:description>The minutes (Part A) for the meeting of Council held on 23 November 2010</dc:description>
-          <dc:publisher>The University of Hull</dc:publisher>
-          <dc:date>2011-02-24</dc:date>
-          <dc:type>Meeting papers or minutes</dc:type>
-          <dc:format>application/pdf</dc:format>
-          <dc:format>Filesize: 428KB</dc:format>
-          <dc:identifier>hull-private:2367</dc:identifier>
-          <dc:identifier>hull:3777</dc:identifier>
-          <dc:language>eng</dc:language>
-          <dc:rights>© 2010 The University of Hull</dc:rights>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="descMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.908Z" ID="descMetadata.0" LABEL="MODS metadata"
-      MIMETYPE="text/xml" SIZE="2017">
-      <foxml:binaryContent> 
+<foxml:digitalObject VERSION="1.1" PID="hull:3777"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="2010-11-23 Council minutes (Part A) - Committee Section; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-25T10:25:21.434Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-29T11:09:25.703Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-03-25T10:25:21.434Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T10:25:21.434Z</audit:date>
+<audit:justification>Ingested from local file C:\Users\Simon\Desktop\hull_3777.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>content</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T10:28:50.689Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>purgeDatastream</audit:action>
+<audit:componentID>content</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-25T10:28:58.154Z</audit:date>
+<audit:justification>DatastreamPane generated this logMessage. . . . Purged datastream (ID=content), versions ranging from 2011-03-25T10:25:21.909Z to 2011-03-25T10:25:21.909Z.  This resulted in the permanent removal of 1 datastream version(s) (2011-03-25T10:25:21.909Z) and all associated audit records.</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-29T11:09:25.703Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-03-25T10:25:21.907Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="940">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>2010-11-23 Council minutes (Part A)</dc:title>
+  <dc:creator>Committee Section</dc:creator>
+  <dc:subject>Council</dc:subject>
+  <dc:description>The minutes (Part A) for the meeting of Council held on 23 November 2010</dc:description>
+  <dc:publisher>The University of Hull</dc:publisher>
+  <dc:date>2011-02-24</dc:date>
+  <dc:type>Meeting papers or minutes</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:format>Filesize: 428KB</dc:format>
+  <dc:identifier>hull-private:2367</dc:identifier>
+  <dc:identifier>hull:3777</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 2010 The University of Hull</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-03-25T10:25:21.908Z" MIMETYPE="text/xml" SIZE="2017">
+<foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtb2RzIHhzaTpzY2hlbWFMb2Nh
               dGlvbj0iaHR0cDovL3d3dy5sb2MuZ292L21vZHMvdjMgaHR0cDovL3d3dy5sb2MuZ292L3N0YW5kYXJk
               cy9tb2RzL3YzL21vZHMtMy0zLnhzZCIgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4
@@ -104,86 +109,80 @@
               PSJ3M2NkdGYiIC8+DQogICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPg0KICAgICAgPGxhbmd1YWdlVGVy
               bSBhdXRob3JpdHk9ImlzbzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+DQogICAgPC9sYW5ndWFnZU9m
               Q2F0YWxvZ2luZz4NCiAgPC9yZWNvcmRJbmZvPg0KPC9tb2RzPg==
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.908Z" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0"
-      ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" SIZE="524">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-03-25T10:25:21.908Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="524">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:3777">
-            <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:meetingPaper"/>
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"/>
+            <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:meetingPaper"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="contentMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.909Z" ID="contentMetadata.0" LABEL="Content metadata"
-      MIMETYPE="text/xml" SIZE="588">
-      <foxml:binaryContent> 
-              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxjb250ZW50TWV0YWRhdGEgdHlw
-              ZT0idGV4dCIgeG1sbnM6Zm94bWw9ImluZm86ZmVkb3JhL2ZlZG9yYS1zeXN0ZW06ZGVmL2ZveG1sIyIg
-              eG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpvYWlfZGM9Imh0
-              dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wL29haV9kYy8iPg0KICA8cmVzb3VyY2Ugc2Vx
-              dWVuY2U9IjEiIGlkPSJEb2N1bWVudCIgZGlzcGxheUxhYmVsPSJEb2N1bWVudCIgb2JqZWN0SUQ9Imh1
-              bGw6Mzc3NyIgZHNJRD0iY29udGVudCIgZGlzc1R5cGU9ImdlbmVyaWNDb250ZW50L2NvbnRlbnQiPg0K
-              ICAgIDxmaWxlIGlkPSJjb250ZW50IiBmb3JtYXQ9InBkZiIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3Bk
-              ZiIgc2l6ZT0iNDI3NTUyIj4NCiAgICAgIDxsb2NhdGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5o
-              dWxsLmFjLnVrL2Fzc2V0cy9odWxsOjM3NzcvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvbG9jYXRpb24+
-              DQogICAgPC9maWxlPg0KICA8L3Jlc291cmNlPg0KPC9jb250ZW50TWV0YWRhdGE+
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="X" ID="rightsMetadata" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:25:21.909Z" ID="rightsMetadata.0" LABEL="Rights metadata"
-      MIMETYPE="text/xml" SIZE="1027">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-03-29T11:09:25.703Z" MIMETYPE="text/xml" SIZE="500">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NDTxjb250ZW50TWV0YWRhdGEgdHlw
+              ZT0idGV4dCIgeG1sbnM9Imh0dHA6Ly9oeWRyYS1jb2xsYWIuaHVsbC5hYy51ay9zY2hlbWFzL2NvbnRl
+              bnRNZXRhZGF0YS92MSI+DQ0gIDxyZXNvdXJjZSBzZXF1ZW5jZT0iMSIgaWQ9IkRvY3VtZW50IiBkaXNw
+              bGF5TGFiZWw9IkRvY3VtZW50IiBvYmplY3RJRD0iaHVsbDozNzc3IiBkc0lEPSJjb250ZW50IiBkaXNz
+              VHlwZT0iZ2VuZXJpY0NvbnRlbnQvY29udGVudCI+DQ0gICAgPGZpbGUgaWQ9ImNvbnRlbnQiIGZvcm1h
+              dD0icGRmIiBtaW1lVHlwZT0iYXBwbGljYXRpb24vcGRmIiBzaXplPSI0Mjc1NTIiPg0NICAgICAgPGxv
+              Y2F0aW9uIHR5cGU9InVybCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6Mzc3Ny9n
+              ZW5lcmljQ29udGVudC9jb250ZW50PC9sb2NhdGlvbj4NDSAgICA8L2ZpbGU+DQ0gIDwvcmVzb3VyY2U+
+              DQ08L2NvbnRlbnRNZXRhZGF0YT4=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-03-25T10:25:21.909Z" MIMETYPE="text/xml" SIZE="1027">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human>© 2010 The University of Hull</human>
-            <machine/>
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human/>
+            <human></human>
             <machine>
               <group>staff</group>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="read">
-            <human/>
+            <human></human>
             <machine>
               <group>staff</group>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="edit">
-            <human/>
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </use>
           <embargo>
-            <human/>
-            <machine/>
+            <human></human>
+            <machine></machine>
           </embargo>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream CONTROL_GROUP="M" ID="content" STATE="A" VERSIONABLE="true">
-    <foxml:datastreamVersion CREATED="2011-03-25T10:28:50.689Z" ID="content.1" LABEL="content"
-      MIMETYPE="application/pdf" SIZE="19433">
-      <foxml:contentDigest DIGEST="3872f0b5eea7b282a00c2598a5ebe58f" TYPE="MD5"/>
-      <foxml:binaryContent> 
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="content" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="content.1" LABEL="content" CREATED="2011-03-25T10:28:50.689Z" MIMETYPE="application/pdf" SIZE="19433">
+<foxml:contentDigest TYPE="MD5" DIGEST="3872f0b5eea7b282a00c2598a5ebe58f"/>
+<foxml:binaryContent> 
               JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDMgMCBSL0ZpbHRlci9GbGF0ZURlY29k
               ZT4+CnN0cmVhbQp4nLVay4rsyBHd91fU2lBlZUr5KCgEt7u6Ft4NNMzCeGd7dgOejX/fqXzFiYiUWr4w
               XOhb6JGPiBMnTkRqupnLf9/+c5kuU/rl7u42X+JibvfLH/+6/PqXy+/lXvr3x29v719vzt/iJfjptly+
@@ -508,7 +507,7 @@
               b3QgMTIgMCBSCi9JbmZvIDEzIDAgUgovSUQgWyA8RTU1MzlDNzk5QjE5NDJBRjJFNEQ1MDM4NjEwMDBB
               MTY+CjxFNTUzOUM3OTlCMTk0MkFGMkU0RDUwMzg2MTAwMEExNj4gXQovRG9jQ2hlY2tzdW0gL0Y5M0E0
               QTYxQ0E3MzFFOEEyMUMwQkE1MkI0MTc5QUQzCj4+CnN0YXJ0eHJlZgoxODk0OQolJUVPRgo=
-</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>
