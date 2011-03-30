@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="XSL stylesheet for transforming metadata from UKETD_DC  to MODS"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2009-07-13T16:01:36.845Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-29T22:27:29.441Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-30T16:01:49.727Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2009-07-13T16:01:36.845Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -150,6 +150,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-03-29T22:27:29.441Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC18">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>XSL</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-30T15:57:36.153Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC19">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>XSL</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-03-30T16:01:49.727Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -165,7 +181,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="XSL" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-<foxml:datastreamVersion ID="XSL.0" LABEL="Enter a label here." CREATED="2011-03-29T22:27:29.441Z" MIMETYPE="text/xml" SIZE="6070">
+<foxml:datastreamVersion ID="XSL.2" LABEL="Enter a label here." CREATED="2011-03-30T16:01:49.727Z" MIMETYPE="text/xml" SIZE="6453">
 <foxml:xmlContent>
 <xsl:stylesheet xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:uketd_dc="http://naca.central.cranfield.ac.uk/ethos-oai/2.0/" xmlns:uketdterms="http://naca.central.cranfield.ac.uk/ethos-oai/terms/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="oai_dc dc uketdterms uketd_dc dcterms " version="1.0">
   <xsl:param name="pid"></xsl:param>
@@ -194,23 +210,32 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <xsl:for-each select="$uketdMetadata/uketdterms:advisor">
         <name type="personal">
           <namePart>
-            <xsl:value-of select="substring-before(text(), &apos;(&apos;)"></xsl:value-of>
+            <xsl:value-of select="substring-before(text(), &apos; (&apos;)"></xsl:value-of>
           </namePart>
           <role>
             <roleTerm type="text">Thesis advisor</roleTerm>
           </role>
         </name>
       </xsl:for-each>
-      <xsl:for-each select="$uketdMetadata/uketdterms:sponsor">
-        <name type="corporate">
-          <namePart>
-            <xsl:value-of select="substring-before(text(), &apos; (sponsor)&apos;)"></xsl:value-of>
-          </namePart>
-          <role>
-            <roleTerm type="text">Sponsor</roleTerm>
-          </role>
-        </name>
-      </xsl:for-each>
+      <xsl:if test="$uketdMetadata/uketdterms:sponsor">
+        <xsl:for-each select="$uketdMetadata/uketdterms:sponsor">
+          <name type="corporate">
+            <namePart>
+              <xsl:choose>
+                <xsl:when test="contains(text(), &apos;(sponsor)&apos;)">
+                  <xsl:value-of select="substring-before(text(), &apos; (sponsor)&apos;)"></xsl:value-of>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="text()"></xsl:value-of>
+                </xsl:otherwise>
+              </xsl:choose>
+            </namePart>
+            <role>
+              <roleTerm type="text">Sponsor</roleTerm>
+            </role>
+          </name>
+        </xsl:for-each>
+      </xsl:if>
       <typeOfResource>text</typeOfResource>
       <genre>Thesis or dissertation</genre>
       <xsl:if test="$uketdMetadata/uketdterms:grantnumber">
