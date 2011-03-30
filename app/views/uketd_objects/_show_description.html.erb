@@ -1,8 +1,5 @@
 <div id="description">
   <dl>
-
-    <%= display_datastream_field(@document_fedora,"descMetadata", [:title_info,:main_title],"Title","dd_text") %>
-   
     <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
     <% unless authors.empty? %>
       <dt>
@@ -13,12 +10,18 @@
       </dd>
     <% end %>
 
+   <% orgs = get_organizations_from_roles(@document, ['sponsor']).map {|organization| organization[:name]}  %>
+    <% unless orgs.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:organization, :namePart], "Sponsor(s):") %>
+      </dt>
+      <dd class="dd_text">
+        <%= orgs.join(", ") %>
+      </dd>
+   <% end %>
+
     <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject(s)","dd_text") %>
-  
-    <%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre","dd_text") %>
-	
-	 	<%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights","dd_text") %>
-	
+    <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights","dd_text") %>
     <%= display_datastream_field(@document_fedora,"descMetadata", [:abstract], "Abstract","dd_text") %>
 
     <% contributors = get_persons_from_roles(@document,['thesis advisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>
@@ -30,15 +33,13 @@
         <%= contributors.join(", ") %>
       </dd>
     <% end %>
-
-	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date","dd_text") %>
-	
-	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language","dd_text") %>
-	
-	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher","dd_text") %>
-	
+    
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:qualification_level],"Qualification level","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:qualification_name],"Qualification name","dd_text") %>
     <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description,:extent],"Extent","dd_text") %>
-	
-	 	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier],"Identifier","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:identifier],"Identifier","dd_text") %>
   </dl>
 </div>

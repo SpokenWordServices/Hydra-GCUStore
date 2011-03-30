@@ -34,6 +34,8 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
     t.genre(:path=>'genre')
+    t.qualification_level(:path=>"note", :attributes=>{:type=>"qualificationLevel"})
+    t.qualification_name(:path=>"note", :attributes=>{:type=>"qualificationName"})
     t.origin_info(:path=>'originInfo') {
       t.date_issued(:path=>'dateIssued')
       t.publisher
