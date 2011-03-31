@@ -38,3 +38,9 @@ Scenario: Student visits Show Page for Restricted Document
     Then I should see "Valid knowledge: the economy and the academy"
     And I should see "Williams, Peter"
     And I should see "Forms of knowledge; University futures; Learning technologies; Knowledge economy"
+  
+  Scenario: Show view should have search box at top
+    Given I am on the show document page for hull:1729
+    Then I should see "Search" within "div#search"
+    And I should see a "input" tag with a "id" attribute of "q"
+    And I should see a "select" tag with a "id" attribute of "search_field"

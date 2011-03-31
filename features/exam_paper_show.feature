@@ -28,3 +28,9 @@ Scenario: Student visits Show Page for Restricted Document
     And I am on the show document page for hull:1765
     Then I should see "4207 Principles of exercise and training (2008/2009)"
     And I should see "Level 5 examination: 2008/2009"
+  
+  Scenario: Show view should have search box at top
+    Given I am on the show document page for hull:1765
+    Then I should see "Search" within "div#search"
+    And I should see a "input" tag with a "id" attribute of "q"
+    And I should see a "select" tag with a "id" attribute of "search_field"
