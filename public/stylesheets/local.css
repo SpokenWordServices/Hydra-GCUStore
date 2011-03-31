@@ -6,7 +6,19 @@ RG  090818
 
 /* Over-ride body etc in application.css */
 
-body {background: url('../images/bg.png') repeat-x top left; font: 0.8em Lucida Sans,Arial,Georgia, Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif; line-height: 1.4; color:#333; margin: 0px; padding: 15px;}
+body {
+  background: #BCC4CA;
+  font: 0.8em Lucida Sans, Arial, Georgia;
+  line-height: 1.4;
+  color:#000;
+  margin: 0px;
+  padding: 15px;
+}
+
+#doc1, #doc2, #doc1, #doc4 {
+  width: 960px;
+}
+
 select,input,button,textarea {font: 1em Lucida Sans,Arial,Georgia, Calibri, Verdana, "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;}
 
 /* HEADER & FOOTER */
@@ -16,10 +28,10 @@ select,input,button,textarea {font: 1em Lucida Sans,Arial,Georgia, Calibri, Verd
 }
 
 #uni-nav-links {
-	padding-top: 4px;
-	height: 30px;
-	/* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
-	background-color: #A02027;
+  padding-top: 4px;
+  height: 30px;
+  /* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
+  background-color: #A02027;
 }
 /* nav link image is 25px, 26px to give separation */
 /* nav link image is now 20px, 21px to give separation */
@@ -334,7 +346,9 @@ border-bottom:0px;
 }
 
 #documents {
-    background-color: #D9E2E8;
+    background-color:#fff; !important
+    color: #000;
+    width: 650px;
 }
 
 #previousNextDocument {
@@ -342,7 +356,6 @@ border-bottom:0px;
     border: 0 solid #AAAAAA;
     border-radius: 0 0 0 0;
 }
-
 
  /* Local facets */
  
@@ -488,6 +501,7 @@ div#qr_code {
 
 div#file-size {
   padding-left:22px;
+
 }
 
 div#links {
