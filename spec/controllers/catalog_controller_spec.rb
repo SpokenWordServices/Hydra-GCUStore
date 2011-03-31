@@ -20,6 +20,7 @@ describe CatalogController do
   end
   
   it "should be restful" do
+    pending
     route_for(:controller=>'catalog', :action=>'index').should == '/'
     # route_for(:controller=>'catalog', :action=>'index').should == '/catalog'
     route_for(:controller=>'catalog', :action=>'show', :id=>"_PID_").should == '/catalog/_PID_'
@@ -29,7 +30,20 @@ describe CatalogController do
     params_from(:get, '/catalog/_PID_').should == {:controller=>'catalog', :id=>"_PID_", :action=>'show'}
     params_from(:get, '/catalog/_PID_/edit').should == {:controller=>'catalog', :id=>"_PID_", :action=>'edit'}
   end
-  
+
+  it "should be restful at hull" do
+    pending
+    route_for(:controller=>'catalog', :action=>'index').should == '/'
+    # route_for(:controller=>'catalog', :action=>'index').should == '/catalog'
+    route_for(:controller=>'catalog', :action=>'show', :id=>"_PID_").should == '/resources/_PID_'
+    route_for(:controller=>'catalog', :action=>'edit', :id=>"_PID_").should == '/resources/_PID_/edit'
+
+    params_from(:get, '/resources').should == {:controller=>'catalog', :action=>'index'}
+    params_from(:get, '/resources/_PID_').should == {:controller=>'catalog', :id=>"_PID_", :action=>'show'}
+    params_from(:get, '/resources/_PID_/edit').should == {:controller=>'catalog', :id=>"_PID_", :action=>'edit'}
+  end
+
+
   describe "index" do
     describe "access controls" do
       before(:all) do
