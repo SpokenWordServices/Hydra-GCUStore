@@ -35,6 +35,9 @@ class ModsMeetingPaper < ActiveFedora::NokogiriDatastream
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
+    t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
+      t.part(:path=>"namePart",:index_as=>[:facetable])
+    }
     t.origin_info(:path=>"originInfo") {
       t.publisher
     }  

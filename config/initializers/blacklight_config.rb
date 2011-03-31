@@ -78,7 +78,7 @@ Blacklight.configure(:shared) do |config|
     :field_names => (facet_fields = [
       "object_type_facet",
       "person_full_name_facet",
-      "mods_organization_facet",
+      "corporate_name_part_facet",
       "topic_tag_facet",
       "language_lang_code_facet",
       "mods_journal_title_info_facet",
@@ -88,10 +88,10 @@ Blacklight.configure(:shared) do |config|
       "ecosystem_facet"
       ]),
     :labels => {
-      "object_type_facet"=>"Type",
+      "object_type_facet"=>"Content type",
       "person_full_name_facet"=>"Person",
-      "mods_organization_facet"=>"Organization",
-      "topic_tag_facet"=>"Topic",
+      "corporate_name_part_facet"=>"Organisation",
+      "topic_tag_facet"=>"Subject",
       "language_lang_code_facet"=>"Language",
       "mods_journal_title_info_facet"=>"Journal",
       "gps_facet"=>"GPS Coordinates",
@@ -185,52 +185,52 @@ Blacklight.configure(:shared) do |config|
   # since we aren't specifying it otherwise. 
   
   config[:search_fields] << ['Descriptions', 'search']
-  config[:search_fields] << ['Descriptions and full text', 'fulltext']
+  #config[:search_fields] << ['Descriptions and full text', 'fulltext']
   
 
   # Now we see how to over-ride Solr request handler defaults, in this
   # case for a BL "search field", which is really a dismax aggregate
   # of Solr search fields. 
-  config[:search_fields] << {
-    :key => 'title',     
+  #config[:search_fields] << {
+  #  :key => 'title',     
     # solr_parameters hash are sent to Solr as ordinary url query params. 
-    :solr_parameters => {
-      :"spellcheck.dictionary" => "title"
-    },
+  #   :solr_parameters => {
+  #    :"spellcheck.dictionary" => "title"
+  #  },
     # :solr_local_parameters will be sent using Solr LocalParams
     # syntax, as eg {! qf=$title_qf }. This is neccesary to use
     # Solr parameter de-referencing like $title_qf.
     # See: http://wiki.apache.org/solr/LocalParams
-    :solr_local_parameters => {
-      :qf => "$title_qf",
-      :pf => "$title_pf"
-    }
-  }
-  config[:search_fields] << {
-    :key =>'author',     
-    :solr_parameters => {
-      :"spellcheck.dictionary" => "author" 
-    },
-    :solr_local_parameters => {
-      :qf => "$author_qf",
-      :pf => "$author_pf"
-    }
-  }
+  #  :solr_local_parameters => {
+  #    :qf => "$title_qf",
+  #    :pf => "$title_pf"
+  #  }
+  #}
+  #config[:search_fields] << {
+  #  :key =>'author',     
+  #  :solr_parameters => {
+  #    :"spellcheck.dictionary" => "author" 
+  #  },
+  #  :solr_local_parameters => {
+  #    :qf => "$author_qf",
+  #    :pf => "$author_pf"
+  #  }
+  #}
 
   # Specifying a :qt only to show it's possible, and so our internal automated
   # tests can test it. In this case it's the same as 
   # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
-  config[:search_fields] << {
-    :key => 'subject', 
-    :qt=> 'search',
-    :solr_parameters => {
-      :"spellcheck.dictionary" => "subject"
-    },
-    :solr_local_parameters => {
-      :qf => "$subject_qf",
-      :pf => "$subject_pf"
-    }
-  }
+  #config[:search_fields] << {
+  #  :key => 'subject', 
+  #  :qt=> 'search',
+  #  :solr_parameters => {
+  #    :"spellcheck.dictionary" => "subject"
+  #  },
+  #  :solr_local_parameters => {
+  #    :qf => "$subject_qf",
+  #    :pf => "$subject_pf"
+  #  }
+  #}
   
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and
