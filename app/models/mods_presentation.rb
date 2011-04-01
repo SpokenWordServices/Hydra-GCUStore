@@ -13,7 +13,7 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
     t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-      t.topic
+     t.topic(:index_as=>[:facetable])
     }
 
     t.genre
@@ -33,6 +33,9 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
+    }
+    t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
+      t.part(:path=>"namePart",:index_as=>[:facetable])
     }
     t.origin_info(:path=>"originInfo") {
       t.publisher

@@ -14,43 +14,32 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
     t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-      t.topic
+       t.topic(:index_as=>[:facetable])
     }
 
     t.genre
-
-    #t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic") -- Not sure we need this indexing...
-    
-    # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
-
-   # t.name_ {
-      # this is a namepart
-    #  t.department(:type=>"corporate", :index_as=>[:facetable], :label=>"generic name")
-      #t.role(:ref=>[:role])
-   # }
-
+ 
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
       # this is a namepart
       t.namePart(:type=>:string, :label=>"generic name")
       t.role(:ref=>[:role])
     }
-    # lookup :person, :first_name 
 
-    #t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
-    # t.department_name(:path=>"namePart", :index_as=>[:facetable])
-   # }
-
-    # lookup :person, :first_name        
+    # lookup :person, :first_name
     t.person(:ref=>:name, :attributes=>{:type=>"personal"}, :index_as=>[:facetable])
     t.organization(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
     t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
+
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
 
+    }    
+    t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
+      t.part(:path=>"namePart",:index_as=>[:facetable])
     }
-
+   
     t.origin_info(:path=>"originInfo") {
       t.publisher
     }

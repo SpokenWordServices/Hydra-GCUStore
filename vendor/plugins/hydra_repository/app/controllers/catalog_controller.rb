@@ -78,6 +78,20 @@ class CatalogController
   #   return [solr_response, document_list]
   #   
   # end
+
+  
+ 
+  # displays values and pagination links for a single facet field
+  def facet
+    # adding the following for facet_pagination with Lucene queries to avoide NPE
+    params[:qt] = "dismax"
+    @pagination = get_facet_pagination(params[:id], params)
+  end
+
+ 
+  
+  
+  
   protected
   
   # a solr query method
@@ -103,5 +117,4 @@ class CatalogController
       params[pname].blank? ? session[:search].delete(pname) : session[:search][pname] = params[pname]
     end
   end
-
 end

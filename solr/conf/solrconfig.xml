@@ -370,18 +370,16 @@
   </requestHandler>
 
 
-  <requestHandler name="search" class="solr.SearchHandler" >
+  <requestHandler name="search" class="solr.SearchHandler" default="false" >
     <lst name="defaults">
       <!-- Making defType lucene to exclude file assets -->
-        <str name="defType">lucene</str>
-        <str name="df">has_model_s</str>
-        <str name="q.op">AND</str>
-      <str name="facet">on</str>
-      <str name="facet.mincount">1</str>
-	    <str name="echoParams">explicit</str>
+      <str name="defType">lucene</str>
+      <str name="df">has_model_s</str>
+      <str name="q.op">AND</str>
+      <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
-      <str name="qf_dismax">id^0.8 id_t^0.8 title_t^0.3 mods_t^0.2</str>
-      <str name="pf_dismax">id^0.9  id_t^0.9 title_t^0.5 mods_t^0.2</str>
+      <str name="qf_dismax">id^0.8 id_t^0.8 title_t^0.3 mods_t^0.2 text^0.1</str>
+      <str name="pf_dismax">id^0.9  id_t^0.9 title_t^0.5 mods_t^0.2 text^0.1</str>
       <str name="fl">
         id,title_t,date_t,year_facet,month_facet,has_model_s,has_collection_member_s,system_create_dt,
         person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,
@@ -415,6 +413,13 @@
       <!-- instructs Solr to return the field itself if no query terms are found -->
       <str name="f.name.hl.alternateField">name</str>
       <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
+      <str name="facet">on</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">object_type_facet</str>  
+      <str name="facet.field">corporate_name_part_facet</str>
+      <str name="facet.field">subject_topic_facet</str>
+      <str name="facet.field">language_lang_code_facet</str>
     </lst>
   </requestHandler>
   
