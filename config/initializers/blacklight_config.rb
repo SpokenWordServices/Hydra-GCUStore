@@ -117,7 +117,10 @@ Blacklight.configure(:shared) do |config|
     # app code to actually have it echo'd back to see it.     
     :limits=> {
       nil=>10,
-      "subject_topic_facet"=>10
+      "object_type_facet"=>10,
+      "corporate_name_part_facet"=>10,
+      "subject_topic_facet"=>10,
+      "language_lang_code_facet"=>10
     }
   }
   

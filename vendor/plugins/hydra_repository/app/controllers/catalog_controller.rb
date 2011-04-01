@@ -85,7 +85,6 @@ class CatalogController
   def facet
     # adding the following for facet_pagination with Lucene queries to avoide NPE
     params[:qt] = "dismax"
-    debugger
     @pagination = get_facet_pagination(params[:id], params)
   end
 
