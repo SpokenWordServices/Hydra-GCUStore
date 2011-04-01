@@ -1,7 +1,7 @@
 <% @page_title = "#{document_show_html_title} - #{application_name}" %>
 	<%= render :partial => 'search_form' %>
 <div id="showHead">
-  <div id="showUtils">
+  <div id="shlowUtils">
   <div class="tools"><%= render :partial => 'show_tools' %></div>
     <span class="back_to_cat"><%= link_back_to_catalog :label=>'&laquo; Back to Results' %></span>
     <% if @previous_document || @next_document %>
@@ -19,14 +19,12 @@
 </div>
 <div id="document">
   <div id="doc_<%= @document[:id] %>">
-    <h1 class="document_heading"><%= h(document_heading) %><br/><%= h(vern_document_heading) %></h1>
     <div class="document">
       <%= hidden_field_tag "show_view", "true" %>
       <%= render_document_partial @document, params["action"] %>
     </div>
   </div>
 </div>
-
 
 <%= render :partial=>'solr_request' %>
 <% if @document.marc %>

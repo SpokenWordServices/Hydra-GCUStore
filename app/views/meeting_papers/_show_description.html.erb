@@ -1,5 +1,8 @@
 <div id="description">
 	<dl>
+
+	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
+
 	  <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
 	    <% unless authors.empty? %>
 	      <dt>

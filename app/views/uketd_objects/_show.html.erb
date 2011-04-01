@@ -11,7 +11,7 @@
 <% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
 <div class="document_viewer" id="cover_container">
-  <h1>Thesis or dissertation</h1>
+  <div class="content-type-header"><h1>Thesis or dissertation</h1></div>
   <%= render :partial => 'uketd_objects/show_description' %>
   <%= render :partial => 'uketd_objects/show_downloads' %>
   <%= render :partial => 'uketd_objects/show_links' %>

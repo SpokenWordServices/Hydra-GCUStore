@@ -71,7 +71,7 @@ module CatalogHelper
 	 	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
       datastream_field = <<-EOS
         <dt>
-          #{fedora_field_label(datastream_name,fields,label_text)}:
+          #{fedora_field_label(datastream_name,fields,label_text)}
         </dt>
         <dd #{dd_class}>
             #{get_values_from_datastream(document,datastream_name, fields).join("; ")}

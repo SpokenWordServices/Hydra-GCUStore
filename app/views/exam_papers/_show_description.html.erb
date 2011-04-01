@@ -1,6 +1,8 @@
 <div id="description">
 <dl>
 
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
+
  <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_module, :module_code], "Module code", "dd_text") %>

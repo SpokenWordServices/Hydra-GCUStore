@@ -34,6 +34,6 @@ Scenario: ContentAccessTeam visits Show Page for Restricted Document
   
   Scenario: Show view should have search box at top
     Given I am on the show document page for hull:3777
-    Then I should see "Search" within "div#search"
+    Then I should see "search"
     And I should see a "input" tag with a "id" attribute of "q"
-    And I should see a "select" tag with a "id" attribute of "search_field"
+

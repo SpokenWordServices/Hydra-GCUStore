@@ -1,20 +1,20 @@
-<div id="title_div" style="float:left;width:600px;"><h2><%= counter + 1 %>. <%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
+<div id="title_div" style="float:left;width:100%;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
 <div id="content_div">
 <dl id="index_list">
   <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
-  <dt>Author(s):</dt>
+  <dt>Author(s)</dt>
     <dd>
       <%= authors.join("; ") %>
     </dd>
-	<dt>Genre:</dt>
+	<dt>Resource type</dt>
 	<dd>
     <%= document.get(:genre_t) %>
 	</dd>
-  <dt>Subject:</dt>
+  <dt>Subject</dt>
     <dd>
      <%= document.get(:subject_topic_t, :sep=>';') %>
     </dd>
-  <dt>Language:</dt>
+  <dt>Language</dt>
     <dd>
       <%= document.get(:language_lang_text_t) %>
     </dd>

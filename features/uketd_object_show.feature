@@ -27,13 +27,15 @@ Feature: Show a document
     Then I should see "Kuwait's tax reformation, its alternatives and impact on a developing accounting profession"
     And I should not see a link to "the edit document page for hull:3573"
 
+  Scenario: Show view should have search box at top
+    Given I am on the show document page for hull:3573
+    Then I should see "search"
+    And I should see a "input" tag with a "id" attribute of "q"
+ 
+
   @wip
   Scenario: View the contents for the descMetadata stream
     Given I am on the show document page for hull:3112
     Then I should see a link to "the descMetadata datastream content page for hull:3112"
   
-  Scenario: Show view should have search box at top
-    Given I am on the show document page for hull:3108
-    Then I should see "Search" within "div#search"
-    And I should see a "input" tag with a "id" attribute of "q"
-    And I should see a "select" tag with a "id" attribute of "search_field"
+ 
