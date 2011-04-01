@@ -12,9 +12,9 @@ class ModsMeetingPaper < ActiveFedora::NokogiriDatastream
     # Meeting Paper description is stored in the 'abstract' field 
     t.description(:path=>"abstract")   
    
-    t.subject {
-      t.topic
-    }      
+    t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
+       t.topic(:index_as=>[:facetable])
+    }
     t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic")
 
     t.genre

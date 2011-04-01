@@ -77,27 +77,29 @@ Blacklight.configure(:shared) do |config|
   config[:facet] = {
     :field_names => (facet_fields = [
       "object_type_facet",
-      "person_full_name_facet",
+      #"person_full_name_facet",
       "corporate_name_part_facet",
-      "topic_tag_facet",
+      #"topic_tag_facet",
+      "subject_topic_facet",
       "language_lang_code_facet",
-      "mods_journal_title_info_facet",
-      "gps_facet",
-      "region_facet",
-      "site_facet",
-      "ecosystem_facet"
+      #"mods_journal_title_info_facet",
+      #"gps_facet",
+      #"region_facet",
+      #"site_facet",
+      #"ecosystem_facet"
       ]),
     :labels => {
-      "object_type_facet"=>"Content type",
-      "person_full_name_facet"=>"Person",
+      "object_type_facet"=>"Resource type",
+      #"person_full_name_facet"=>"Person",
       "corporate_name_part_facet"=>"Organisation",
-      "topic_tag_facet"=>"Subject",
+      "subject_topic_facet"=>"Subject",
+      #"topic_tag_facet"=>"Subject",
       "language_lang_code_facet"=>"Language",
-      "mods_journal_title_info_facet"=>"Journal",
-      "gps_facet"=>"GPS Coordinates",
-      "region_facet"=>"Region",
-      "site_facet"=>"Site",
-      "ecosystem_facet"=>"Ecosystem"
+      #"mods_journal_title_info_facet"=>"Journal",
+      #"gps_facet"=>"GPS Coordinates",
+      #"region_facet"=>"Region",
+      #"site_facet"=>"Site",
+      #"ecosystem_facet"=>"Ecosystem"
     },
     
     # Setting a limit will trigger Blacklight's 'more' facet values link.
@@ -113,7 +115,10 @@ Blacklight.configure(:shared) do |config|
     # on the solr side in the request handler itself. Request handler defaults
     # sniffing requires solr requests to be made with "echoParams=all", for
     # app code to actually have it echo'd back to see it.     
-    :limits=> {nil=>10}
+    :limits=> {
+      nil=>10,
+      "subject_topic_facet"=>10
+    }
   }
   
 
@@ -184,7 +189,7 @@ Blacklight.configure(:shared) do |config|
   # solr request handler? The one set in config[:default_solr_parameters][:qt],
   # since we aren't specifying it otherwise. 
   
-  config[:search_fields] << ['Descriptions', 'search']
+  config[:search_fields] << ['Search', 'search']
   #config[:search_fields] << ['Descriptions and full text', 'fulltext']
   
 

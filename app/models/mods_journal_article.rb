@@ -15,9 +15,9 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
     }
     t.abstract
        
-    t.subject {
-      t.topic
-    }      
+    t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
+       t.topic(:index_as=>[:facetable])
+    }
     t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic")
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {

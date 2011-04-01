@@ -13,7 +13,7 @@ class ModsPresentation < ActiveFedora::NokogiriDatastream
     t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-      t.topic
+     t.topic(:index_as=>[:facetable])
     }
 
     t.genre
