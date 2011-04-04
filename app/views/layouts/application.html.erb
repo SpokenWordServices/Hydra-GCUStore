@@ -6,7 +6,7 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title><%= h(@page_title || "University of Hull Repository") %></title>
+    <title><%= h(@page_title || "University of Hull Digital Repository") %></title>
     <link href="<%= url_for :controller=>'catalog',:action => 'opensearch', :format => 'xml', :only_path => false %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
     <%= javascript_include_tag 'jquery-1.4.2.min.js', 'blacklight', 'application', 'accordion', :plugin=>:blacklight %>
 	<!--<%= javascript_include_tag 'searchworks' %>-->
@@ -79,14 +79,15 @@
 <div id="hullFooter">  	
 <table class="tableNoBorder" width="100%"  border="0">
 <tr>
-<td align="left" valign="top" width="40%" >
-&copy;2010 <a href="http://www.hull.ac.uk" target="_blank">The University of Hull</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and the <a href="https://fedora-commons.org/confluence/display/hydra/" target="_blank">Hydra Project</a>
+<td align="left" valign="top" width="36%" >
+&copy; 2008 - 2011<br/>
+<a href="http://www.hull.ac.uk" target="_blank">The University of Hull</a><br>and the <a href="https://fedora-commons.org/confluence/display/hydra/" target="_blank">Hydra Project</a>
 </td>
 <td align="center" valign="top" width="20%" >
-Powered by <a href="http://projectblacklight.org/" target="_blank">Blacklight</a>
+<a href="http://projectblacklight.org/" target="_blank"><img src="/images/powered_by_hydra.png" /></a>
 </td>
 <td align="right" valign="top" width="40%" >
-vn: 0.100119
+Version 0.1
 </td>
 </tr>
 </table>

@@ -98,7 +98,7 @@ a:hover {
 	padding-left: 0px;
 	padding-top: 0px;
 	font-size: 1em;
-        font-weight: 600;
+    font-weight: bold;
 }
 
 /* ie workaround */
@@ -122,12 +122,12 @@ a:hover {
 }
 
 #blacklight-user-links {
-        margin-right: 15px;
+    margin-right: 15px;
 	padding-top: 5px;
 	color: #a02027;
 	text-align: right;
 	font-size: 1em;
-	font-weight: 600;
+	font-weight: bold;
 }
 
 #logo {
@@ -151,10 +151,12 @@ a:hover {
     font-size: 1.3em;
 }
  
- .tableNoBorder {
- border-width: 0px;
- border-color: #e0e0e0;
- border-collapse: collapse;
+.tableNoBorder {
+	border-collapse: collapse;
+    border-color: #E2E8D9;
+    border-width: 0;
+    color: #333333;
+    font-size: 78%;
  }
 
 #about {
@@ -343,9 +345,9 @@ top: 0;
     font-size:115%;
     padding-left:0.25em;
     padding-right:0.25em;
-    box-shadow: 5px 5px 4px #b1b1b1 inset;
+    box-shadow: 2px 2px 2px #b1b1b1 inset;
     -moz-box-shadow: 2px 2px 2px #b1b1b1 inset;
-    -webkit-box-shadow: 5px 5px 4px #b1b1b1 inset;
+    -webkit-box-shadow: 2px 2px 2px #b1b1b1 inset;
 }
 
 #search .submit {
@@ -452,6 +454,8 @@ border 0 none;
     background-color:#fff !important;
     color: #000 !important;
     width: 100%;
+    z-index: 100;
+	position: relative;
 }
 
 #title_div {
@@ -463,12 +467,12 @@ border 0 none;
 }
 
 #previousNextDocument {
-   background-color: #fff;
-   border: 1px dotted #898989;
-   border-radius: 0 0 0 0;
-	width: 875px
-	margin-bottom: 1.5em !important;
-	margin-bottom: 1.5em;
+	background-color: #fff;
+	border: 1px dotted #333333;
+    border-radius: 0 0 0 0;
+    margin-bottom: 0em;
+    margin-left: 697px;
+    margin-top: -24px;
 }
 
 .pagination {

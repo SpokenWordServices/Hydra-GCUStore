@@ -40,7 +40,7 @@ $(document).ready(function(){
         if ($("input#show_view").val()=="true") {
           $('.yui-t2 #yui-main .yui-b').css("margin-left","10px");
           $('.yui-t2 #yui-main .yui-b #cover_container dl dd').css("width","53em");
-          $('div#search.search').css("margin-left","150px");
+          $('div#search.search').css("margin-left","244px");
         }
         
         $(".slide_button").click(function(){
