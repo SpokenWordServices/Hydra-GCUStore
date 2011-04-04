@@ -1,5 +1,5 @@
 module CatalogHelper
-
+  include ActionView::Helpers::TextHelper
   require_dependency "vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb"
 
 
@@ -39,6 +39,8 @@ module CatalogHelper
    if resources_count > 0
      i = 0
      resources = <<-EOS
+        <fieldset id="download_fields">
+        <legend>#{pluralize(resources_count,"Download")[2..-1]}</legend>
         <div id="downloads-list">
      EOS
 
@@ -46,32 +48,37 @@ module CatalogHelper
      object_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_object_id])
      ds_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_ds_id])  
      mime_type = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :mime_type])
+     format = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :format])
      file_size = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :size])
 
 
      while i < resources_count
       resources << <<-EOS 
 	   <div><div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
-           <a href="/assets/#{object_id[i]}/#{ds_id[i]}">#{display_label[i]}</a>
-           <div id="file-size">(#{get_friendly_file_size(file_size[i])})</div>
+           <a href="/assets/#{object_id[i]}/#{ds_id[i]}">#{display_label[i]}</a> 
+           <div id="file-size">(#{get_friendly_file_size(file_size[i])}, #{format[i]})</div>
       EOS
        i += 1
      end
       resources << <<-EOS
         </div>
+       </fieldset>
       EOS
    end
       resources 
   end
 
-
   def display_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
+    label = ""
     dd_class = "class=\"#{dd_class}\"" if dd_class
     datastream_field = ""
 	 	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
+      if label_text.length > 0
+        label = pluralize(get_values_from_datastream(document,datastream_name, fields).count,label_text)[2..-1]
+      end
       datastream_field = <<-EOS
         <dt>
-          #{fedora_field_label(datastream_name,fields,label_text)}
+          #{fedora_field_label(datastream_name,fields,label)}
         </dt>
         <dd #{dd_class}>
             #{get_values_from_datastream(document,datastream_name, fields).join("; ")}
@@ -81,6 +88,15 @@ module CatalogHelper
     datastream_field
   end
 
+  def display_qr_code
+    qr_code=""
+    qr_code << <<-EOS
+      <div id="qr_code">
+       <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code"/>
+      </div>
+    EOS
+    qr_code
+  end
 
 
   def download_image_class_by_mime_type(mime_type)    

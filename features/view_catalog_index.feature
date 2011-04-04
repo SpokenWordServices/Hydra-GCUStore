@@ -21,8 +21,8 @@ Feature: Catalog Index
     And I should see "Status"
     When I select "list" from "display_type"
     And I press "display_results"
-    Then I should see "Author(s)"
-    And I should see "Researcher(s)"
+    Then I should see "Author"
+    And I should see "Researcher"
     And I should see "Sample file description. 1 file."
 
   @local
@@ -35,6 +35,6 @@ Feature: Catalog Index
     And I should see "Show"
     And I should not see "Display as"
     And I should see "Resource type"
-    And I should see "Author(s)"
+    And I should see "Author"
     And I should see "Subject"
     And I should see "Language"

@@ -10,7 +10,7 @@
  <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>
     <% unless orgs.empty? %>
       <dt>
-        <%= fedora_field_label("descMetadata", [:organization, :namePart], "Department:") %>
+        <%= fedora_field_label("descMetadata", [:organization, :namePart], "Department") %>
       </dt>
       <dd class="dd_text">
         <%= orgs.join(", ") %>

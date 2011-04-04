@@ -2,7 +2,7 @@
 <div id="content_div">
 <dl id="index_list">
   <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
-  <dt>Author(s)</dt>
+  <dt><%= pluralize(authors.count,"Author")[2..-1] %></dt>
     <dd>
       <%= authors.join("; ") %>
     </dd>

@@ -6,21 +6,21 @@
     <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
     <% unless authors.empty? %>
       <dt>
-        <%= fedora_field_label("descMetadata", [:person, :namePart], "Author:") %>
+        <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(authors.count,"Author")[2..-1]) %>
       </dt>
       <dd class="dd_text">
         <%= authors.join("; ") %>
       </dd>
     <% end %>
 
-    <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject(s)", "dd_text") %> 
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject", "dd_text") %> 
     <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights", "dd_text") %>	
     <%= display_datastream_field(@document_fedora,"descMetadata", [:abstract], "Abstract", "dd_text") %>
     
     <% contributors = get_persons_from_roles(@document,['thesis advisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>
      <% unless contributors.empty? %>
       <dt>
-        <%= fedora_field_label("descMetadata", [:person, :namePart], "Contributor(s)") %>
+        <%= fedora_field_label("descMetadata", [:person, :namePart],  pluralize(contributors.count,"Contributor")[2..-1]) %>
       </dt>
       <dd class="dd_text">
         <%= contributors.join(", ") %>

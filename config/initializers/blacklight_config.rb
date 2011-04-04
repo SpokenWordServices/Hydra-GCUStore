@@ -78,9 +78,10 @@ Blacklight.configure(:shared) do |config|
     :field_names => (facet_fields = [
       "object_type_facet",
       #"person_full_name_facet",
-      "corporate_name_part_facet",
+      #"corporate_name_part_facet",
       #"topic_tag_facet",
       "subject_topic_facet",
+      "personal_name_part_facet",
       "language_lang_code_facet",
       #"mods_journal_title_info_facet",
       #"gps_facet",
@@ -91,9 +92,10 @@ Blacklight.configure(:shared) do |config|
     :labels => {
       "object_type_facet"=>"Resource type",
       #"person_full_name_facet"=>"Person",
-      "corporate_name_part_facet"=>"Organisation",
+      #"corporate_name_part_facet"=>"Organisation",
       "subject_topic_facet"=>"Subject",
       #"topic_tag_facet"=>"Subject",
+      "personal_name_part_facet" => "Name",
       "language_lang_code_facet"=>"Language",
       #"mods_journal_title_info_facet"=>"Journal",
       #"gps_facet"=>"GPS Coordinates",
@@ -118,8 +120,8 @@ Blacklight.configure(:shared) do |config|
     :limits=> {
       nil=>10,
       "object_type_facet"=>10,
-      "corporate_name_part_facet"=>10,
       "subject_topic_facet"=>10,
+      "personal_name_part_facet"=>10,
       "language_lang_code_facet"=>10
     }
   }

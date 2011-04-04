@@ -37,7 +37,11 @@ class HullModsEtd < ActiveFedora::NokogiriDatastream
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
       t.code(:path=>"roleTerm",:attributes=>{:type=>"code"})
     }
+    #corporate_name/personal_name created to provide facets without an appended roleTerm
     t.corporate_name(:path=>"name", :attributes=>{:type=>"corporate"}) {
+      t.part(:path=>"namePart",:index_as=>[:facetable])
+    }
+    t.personal_name(:path=>"name", :attributes=>{:type=>"personal"}) {
       t.part(:path=>"namePart",:index_as=>[:facetable])
     }
     t.genre(:path=>'genre')
