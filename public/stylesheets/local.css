@@ -18,6 +18,10 @@ body {
   padding: 15px;
 }
 
+#bd {
+    padding: 0 1.5em 2em 2em;
+}
+
 h1, h2, h3 {
     margin: 0.5em 0;
 }
@@ -36,8 +40,9 @@ legend {
 
 #doc1, #doc2, #doc1, #doc4 {
 	width: 960px;
-	border-bottom: 1px solid #898989;
-	border-right: 1px solid #898989;
+	background: url("/images/shadowright.gif") repeat-y scroll right top #FFFFFF;
+    padding-right: 9px;
+	border-bottom: 0px;
 }
 
 h1.document_heading {
@@ -57,6 +62,18 @@ a:link, a:visited, a:active {
 
 a:hover {
    text-decoration:underline;
+}
+
+#border-right {
+	background-color: red;
+    float: left;
+    height: 100%;
+    margin-left: 960px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    position: relative;
+    width: 10px;
 }
 
 /* HEADER & FOOTER */
@@ -130,6 +147,16 @@ a:hover {
 	font-weight: bold;
 }
 
+#site-title {
+	float: left;
+	color: #fff;
+	font-family: Lucida Sans,arial;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-top: 26px;
+}
+
 #logo {
     margin-top: 0px;
     margin-left: 0px;
@@ -140,12 +167,12 @@ a:hover {
  }
  /*logo image is 51px, 55px to give margin */
  
- #hullFooter {
- 	height: 50px;
-	background: #D9E2E8;
-	padding-left: 10px;
- 
- }
+#hullFooter {
+    background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #D9E2E8;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+}
 
 #document h1 {
     font-size: 1.3em;
@@ -436,14 +463,14 @@ border 0 none;
 #appliedParams div {
     padding: 5px;
     margin-right: 0.3em;
-	background-color: #DDFFAA;
+	background-color: #C9D484;
     border: 1px dotted #339900;
 }
 
 #sortAndPerPage {
     background-color: #D9E2E8;
     border-width: 0 0px 0px;
-    padding: 0.66em 1em;
+    padding: 0.56em 1em;
 }
 
 .appliedFilter .btnRemove {
@@ -460,8 +487,8 @@ border 0 none;
 
 #title_div {
 	width: 660px !important;
-	font-family: Georgia, Times New Roman;
-	font-size: 1.5em !important;
+	font-family: Lucida Sans, Arial, Georgia;
+	font-size: 1.2em !important;
 	font-weight: normal !important;
 	text-decoration: normal !important;
 }
@@ -473,7 +500,18 @@ border 0 none;
     margin-bottom: 0em;
     margin-left: 697px;
     margin-top: -24px;
+	padding-left: 0;
 }
+
+.previous {
+	padding-left: 0.6em;
+}
+
+.counter {
+    margin-right: 1.5em;
+    padding-left: 1.4em;
+}
+
 
 .pagination {
 	padding: 0.66em 0.66em 0 0;
@@ -486,6 +524,12 @@ border 0 none;
 }
 
  /* Local facets */
+
+.yui-t2 .yui-b {
+    float: left;
+    margin-left: -10px;
+    width: 195px;
+}
  
 #facets {
     padding: 1em 0em 0em 0em;
@@ -559,7 +603,7 @@ a:link, a:visited, a:active {
 
 
 .content-type-header h1{
-	font-family: Georgia, Times New Roman;
+	font-family: Lucida Sans, Arial, Georgia;
 	font-weight: normal;
 	font-size: 1.5em !important;
 }
@@ -568,7 +612,7 @@ dl dd {
 	float: left;
 	width: 39em !important;
 	margin-top: 0em;
-	margin-right: 25px;
+	margin-right: 0px;
 	position: relative;
 	margin-left: 1em;
 	line-height: 1.4em;
@@ -588,14 +632,14 @@ dl dt {
 }
 
 .dd_title {
-	font-family: Georgia, Times New Roman;
+	font-family: Lucida Sans, Arial, Georgia;
 	font-weight: normal;
-	font-size: 2em;	
-	width: 25em !important;
+	font-size: 1.8em;	
+	width: 28em !important;
 }
 
 .dd_text {
-   width: 35em !important;
+   width: 41em !important;
 }
 
 label {
@@ -604,10 +648,13 @@ label {
 }
 
 div#show_hide_resources {
-  float:left;
-  width:100%;
-  margin-top:1.7em;
-  cursor:pointer;
+    cursor: pointer;
+    float: left;
+    margin-top: 1.7em;
+    padding: 0.5em;
+    width: 53em;
+	background-color: #FFFFFF;
+    border-top: 1px dotted #333333;
 }
 
 span#additional_resources_span {
@@ -618,19 +665,24 @@ span#additional_resources_span {
 }
 
 div#resources {
-  margin-top:1.7em;
+  margin-top:1em;
   height:40px;
   display:none;
 }
 
 div#resources-list {
-  float:left;
-  margin-top:1em;
-  margin-left:0em;
-  padding-top:1em;
-  padding-bottom:1em;
-  width:52em;
-  background-color:#D9E2E8;
+	float:left;
+	margin-top:0em;
+	margin-left:0em;
+	padding-top:0em;
+	padding-bottom:0em;
+	width:53em;
+	background-color: #FFFFFF;
+    border-bottom: 1px dotted #333333;
+}
+
+div#resources-list a:hover{
+	text-decoration: underline;
 }
 
 div#resources-list dl dt {
@@ -642,6 +694,7 @@ div#resources-list dl dd {
   width:25em;
   text-align: left;
 }
+
 div#content_div {
   float:left;
   width:640px;
@@ -676,7 +729,8 @@ div#downloads-list {
 }
 
 div#qr_code {
-  padding-left:32px;
+	padding-left:32px;
+	padding-top: 2em;
 }
 
 div#file-size {

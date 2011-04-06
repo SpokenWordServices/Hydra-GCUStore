@@ -7,11 +7,9 @@
     <% if @previous_document || @next_document %>
       <div id="previousNextDocument">
 	    <span class="previous"><%= link_to_previous_document(@previous_document) %></span>
-    <% end %>
-    <%- if session[:search][:counter].to_i > 0 -%>
-      #<%= session[:search][:counter].to_i %> of <%= format_num(session[:search][:total]) %>
-    <%- end -%>
-    <% if @previous_document || @next_document %>
+			<%- if session[:search][:counter].to_i > 0 -%>
+			  	<span class="counter"><%= session[:search][:counter].to_i %> of <%= format_num(session[:search][:total]) %></span>
+			<%- end -%>
 	    <span class="next"><%= link_to_next_document(@next_document)%></span>	
       </div>
     <% end %>
