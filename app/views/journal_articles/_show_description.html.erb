@@ -1,8 +1,6 @@
 <div id="description">
   <dl>
-
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
-
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
     <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
     <% unless authors.empty? %>
       <dt>
@@ -30,10 +28,11 @@
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :doi],"DOI", "dd_text") %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :citation],"Citation", "dd_text") %>
-        <%= display_datastream_field(@document_fedora,"contentMetadata", [:resource, :display_label], "Label", "dd_text") %>
-
-  </dl>
+    </dl>
  </div>
+
+<div id="journal" style="float:left; padding-bottom:1.7em; width:52em;">
+  <div class="section-title" style="padding-left:5em;">Published</div>
+    <%= render :partial=>"journal_articles/show_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:journal) %>
+</div>
 

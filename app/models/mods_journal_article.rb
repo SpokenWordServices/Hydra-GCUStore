@@ -2,7 +2,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
   include Hydra::CommonModsIndexMethods
 
   set_terminology do |t|
-    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
+    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-4.xsd")
 
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title")
@@ -24,6 +24,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
       # this is a namepart
       t.namePart(:type=>:string, :label=>"generic name")
       t.role(:ref=>[:role])
+      t.affiliation
     }
     # lookup :person, :first_name        
     t.person(:ref=>:name, :attributes=>{:type=>"personal"}, :index_as=>[:facetable])
@@ -39,6 +40,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
     }
     t.personal_name(:path=>"name", :attributes=>{:type=>"personal"}) {
       t.part(:path=>"namePart",:index_as=>[:facetable])
+      t.affiliation(:index_as=>[:facetable])
     }
     t.genre(:path=>'genre')
     t.origin_info(:path=>'originInfo') {
@@ -48,9 +50,29 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
     t.related_item_private_object(:path=>'relatedItem', :attributes=>{:ID=>'privateObject'}) {
       t.private_object_id(:path=>'identifier', :attributes=>{:type=>'fedora'})
     }
-    t.related_item_publish_ref(:path=>'relatedItem', :attributes=>{:ID=>'publishRef'}) {
-      t.doi(:path=>'identifier', :attributes=>{:type=>'doi'})
-      t.citation(:path=>'note', :attributes=>{:type=>'citation'})
+    #relatedItem type="otherVersion"
+    t.journal(:path=>'relatedItem', :attributes=>{:type=>'otherVersion'}) {
+       t.title_info(:path=>"titleInfo") {
+         t.main_title(:path=>"title", :label=>"title")
+       }
+       t.origin_info(:path=>"originInfo") {
+        t.publisher
+        t.date_issued(:path=>"dateIssued")
+       }
+       t.issn_print(:path=>'identifier', :attributes=>{:type=>'issn', :displayLabel=>'print'})
+       t.issn_electronic(:path=>'identifier', :attributes=>{:type=>'issn', :displayLabel=>'electronic'})
+       t.doi(:path=>'identifier', :attributes=>{:type=>'doi'})
+       t.part {
+         t.volume(:path=>'detail', :attributes=>{:type=>'volume'}, :default_content_path=>"number")
+         t.issue(:path=>'detail', :attributes=>{:type=>'issue'}, :default_content_path=>"number")
+         t.pages(:path=>'extent', :attributes=>{:unit=>'pages'}) {
+           t.start
+           t.end 
+         }
+         t.start_page(:proxy=>[:pages, :start])
+         t.end_page(:proxy=>[:pages, :end])
+         t.publication_date(:path=>"date")
+       }
     }
     t.peer_reviewed(:path=>'note', :attributes=>{:type=>'peerReviewed'})
     t.physical_description(:path=>"physicalDescription") {
@@ -91,9 +113,26 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
                xml.topic
              }
              xml.identifier(:type=>"fedora")
-             xml.relatedItem(:ID=>"publishRef", :displayLabel=>"Publish reference") {
+             xml.relatedItem(:type=>"otherVersion") {
+               xml.titleInfo {
+                 xml.title
+               }
+               xml.issn_print(:path=>"identifier", :type=>"issn", :displayLabel=>"print")
+               xml.issn_electronic(:path=>"identifier", :type=>"issn", :displayLabel=>"electronic")
                xml.doi(:path=>"identifier", :type=>"doi")
-               xml.citation(:path=>"note", :type=>"citation")
+               xml.part {
+                 xml.detail(:type=>"volume") {
+                   xml.number
+                 }
+                 xml.detail(:type=>"issue") {
+                   xml.number
+                 }
+                 xml.extent(:unit=>"pages") {
+                   xml.start
+                   xml.end
+                 }
+                 xml.date
+               }
              }
              xml.location {
                xml.url(:usage=>"primary display", :access=>"object in context")

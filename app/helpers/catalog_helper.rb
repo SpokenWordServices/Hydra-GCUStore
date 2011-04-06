@@ -92,10 +92,23 @@ module CatalogHelper
     qr_code=""
     qr_code << <<-EOS
       <div id="qr_code">
-       <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code"/>
+       <div class="link-title">QR code</div>
+       <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
     qr_code
+  end
+
+  def doi_reference_link(document)
+    doi_link=""
+    doi = get_values_from_datastream(document,"descMetadata", [:journal, :doi]).to_s
+    doi_handler_url =  "http://dx.doi.org/"
+    doi_link << <<-EOS
+      <div class="link">
+         <a href="#{doi_handler_url + doi}" alt="#{doi}" title="#{doi}" target="_blank">Link to Publication</a>
+      </div>
+    EOS
+    doi_link
   end
 
 
