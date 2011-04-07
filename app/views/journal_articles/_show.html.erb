@@ -15,6 +15,9 @@
   <h1>Journal article</h1></div>
   <%= render :partial => 'journal_articles/show_description' %>
   <%= render :partial => 'shared/show_downloads' %>
-  <%= render :partial => 'journal_articles/show_links' %>
+  <%= render :partial => 'shared/show_links' %>
+  <div id="journal" style="float:left; padding-bottom:1.7em; width:48em;">  
+     <%= render :partial=>"journal_articles/show_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:journal) %>
+  </div>
 </div>
   <%= render :partial => 'shared/show_resources' %>

@@ -24,15 +24,11 @@
         <%= contributors.join(", ") %>
       </dd>
     <% end %>
-
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
     </dl>
  </div>
 
-<div id="journal" style="float:left; padding-bottom:1.7em; width:52em;">
-  <div class="section-title" style="padding-left:5em;">Published</div>
-    <%= render :partial=>"journal_articles/show_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:journal) %>
-</div>
+
 

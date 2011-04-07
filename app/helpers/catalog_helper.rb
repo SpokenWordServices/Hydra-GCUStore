@@ -90,27 +90,14 @@ module CatalogHelper
 
   def display_qr_code
     qr_code=""
+    #Possibly insert, once we have changed the styles <div class="link-title">QR code</div>
     qr_code << <<-EOS
       <div id="qr_code">
-       <div class="link-title">QR code</div>
        <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
     qr_code
   end
-
-  def doi_reference_link(document)
-    doi_link=""
-    doi = get_values_from_datastream(document,"descMetadata", [:journal, :doi]).to_s
-    doi_handler_url =  "http://dx.doi.org/"
-    doi_link << <<-EOS
-      <div class="link">
-         <a href="#{doi_handler_url + doi}" alt="#{doi}" title="#{doi}" target="_blank">Link to Publication</a>
-      </div>
-    EOS
-    doi_link
-  end
-
 
   def download_image_class_by_mime_type(mime_type)    
     image_class = case mime_type

@@ -1,6 +1,7 @@
 <% journal = show_journal %>
 <% journal_counter = show_journal_counter %>
 <% base_id = "journal_#{journal_counter}" %>
+ <div class="section-title" style="padding-bottom:0.5em;font-weight:bold;padding-left:5em;">Published<hr> </div>
  <dl>
    <% unless get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :title_info, :main_title]).first.empty? %>
     <dt>
@@ -14,6 +15,17 @@
 
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter}, :issn_print], "ISSN (Print)", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter}, :issn_electronic], "ISSN (Electronic)", "dd_text") %>
+
+  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.empty? %>
+    <dt>
+      <%= fedora_field_label("descMetadata", [{:journal => journal_counter}, :doi], "DOI") %>
+   </dt>
+   <dd class="dd_text">
+      <%= get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.strip %>
+      <a href="http://dx.doi.org/<%=get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.strip %>">(Link to Publication)</a>
+   </dd>
+  <% end %>
+
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:origin_info, :publisher], "Publisher", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:part,:volume], "Volume", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:part,:issue], "Issue", "dd_text") %>
