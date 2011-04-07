@@ -1,3 +1,4 @@
+<div id="journal" style="float:left; padding-bottom:1.7em; width:52em;">  
 <% journal = show_journal %>
 <% journal_counter = show_journal_counter %>
 <% base_id = "journal_#{journal_counter}" %>
@@ -22,7 +23,7 @@
    </dt>
    <dd class="dd_text">
       <%= get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.strip %>
-      <a href="http://dx.doi.org/<%=get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.strip %>">(Link to Publication)</a>
+      <a href="http://dx.doi.org/<%=get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :doi]).first.strip %>" target="_blank">(Link to Publication)</a>
    </dd>
   <% end %>
 
@@ -42,6 +43,7 @@
     </dd>	
  <% end %>
 </dl>
+</div>
 
 
  

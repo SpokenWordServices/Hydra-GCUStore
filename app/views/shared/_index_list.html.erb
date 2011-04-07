@@ -1,6 +1,6 @@
 <div id="title_div" style="float:left;width:600px;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
 <div id="content_div">
-<dl id="index_list">
+	<dl id="index_list">
    <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
   <dt><%= pluralize(authors.count,"Author")[2..-1] %></dt>
     <dd>
@@ -10,9 +10,9 @@
 	<dd>
     <%= document.get(:genre_t) %>
 	</dd>
-  <dt>Subject</dt>
+   <dt><%= pluralize(document.get(:subject_topic_t, :sep=>';').count(';') + 1,"Subject")[2..-1] %></dt>
     <dd>
-    <%= document.get(:subject_topic_t, :sep=>';') %>
+      <%= document.get(:subject_topic_t, :sep=>'; ') %>
     </dd>
   <dt>Language</dt>
     <dd>

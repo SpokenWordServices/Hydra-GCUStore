@@ -10,9 +10,9 @@
 	<dd>
     <%= document.get(:genre_t) %>
 	</dd>
-  <dt>Subject</dt>
+   <dt><%= pluralize(document.get(:subject_topic_t, :sep=>';').count(';') + 1,"Subject")[2..-1] %></dt>
     <dd>
-       <%= document.get(:subject_topic_t, :sep=>';') %>
+       <%= document.get(:subject_topic_t, :sep=>'; ') %>
     </dd>
   <dt>Language</dt>
     <dd>

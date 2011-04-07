@@ -10,14 +10,12 @@
 <% javascript_includes << "/plugin_assets/fluid-infusion/infusion-1.2-src/lib/jquery/ui/js/jquery.ui.accordion.js" %>
 <% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
-<div class="document_viewer" id="cover_container">
-  
+<div class="document_viewer" id="cover_container">  
   <div class="content-type-header"><h1>Meeting Paper</h1></div>
-
   <%= render :partial => 'meeting_papers/show_description' %>
-  <%= render :partial => 'meeting_papers/show_downloads' %>
-  <%= render :partial => 'meeting_papers/show_links' %>
-
+  <%= render :partial => 'shared/show_downloads' %>
+  <%= render :partial => 'shared/show_links' %>
+  <%= render :partial => 'shared/show_resources' %>
 </div>
-<%= render :partial => 'meeting_papers/show_resources' %>
+
 
