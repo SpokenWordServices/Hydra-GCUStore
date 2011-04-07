@@ -1,8 +1,6 @@
 <div id="description">
   <dl>
-
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
-
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
     <% authors = get_persons_from_roles(@document, ['creator','author']).map {|person| person[:name]}  %>
     <% unless authors.empty? %>
       <dt>
@@ -26,14 +24,11 @@
         <%= contributors.join(", ") %>
       </dd>
     <% end %>
-
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :doi],"DOI", "dd_text") %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:related_item_publish_ref, :citation],"Citation", "dd_text") %>
-        <%= display_datastream_field(@document_fedora,"contentMetadata", [:resource, :display_label], "Label", "dd_text") %>
-
-  </dl>
+    </dl>
  </div>
+
+
 

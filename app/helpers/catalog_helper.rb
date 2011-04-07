@@ -90,14 +90,14 @@ module CatalogHelper
 
   def display_qr_code
     qr_code=""
+    #Possibly insert, once we have changed the styles <div class="link-title">QR code</div>
     qr_code << <<-EOS
       <div id="qr_code">
-       <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code"/>
+       <img src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
     qr_code
   end
-
 
   def download_image_class_by_mime_type(mime_type)    
     image_class = case mime_type
