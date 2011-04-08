@@ -13,6 +13,8 @@ class UketdObject < ActiveFedora::Base
 # TODO: define terminology for ETD
   has_metadata :name => "descMetadata", :type => HullModsEtd
 
+  has_metadata :name => "UKETD_DC", :type => ActiveFedora::NokogiriDatastream
+
   has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
 
   has_metadata :name => "contentMetadata", :type => ContentMetadata

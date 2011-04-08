@@ -173,7 +173,7 @@ div#links-right a {
     font-weight: bold;
     padding-left: 15px;
     padding-top: 26px;
-	padding-bottom: 8px;
+	padding-bottom: 7px;
 	background-color: #000;
 }
 
@@ -391,7 +391,8 @@ top: 0;
     width: 350px;
     height:25px;
     border-width: 1px 1px 1px 1px;
-    font-size:115%;
+    font-family:Arial, Georgia;
+    font-size:105%;
     padding-left:0.25em;
     padding-right:0.25em;
     box-shadow: 2px 2px 2px #b1b1b1 inset;
@@ -514,20 +515,21 @@ select#sort, select#per_page {
 
 #title_div {
 	width: 660px !important;
-	font-family: Lucida Sans, Arial, Georgia;
+	font-family: Georgia, Arial;
 	font-size: 1.2em !important;
 	font-weight: normal !important;
 	text-decoration: normal !important;
 }
 
 #previousNextDocument {
-	background-color: #fff;
-	border: 1px dotted #333333;
+    font-family: Arial, Georgia ;
+    background-color: #fff;
+    border: 1px dotted #333333;
     border-radius: 0 0 0 0;
     margin-bottom: 0em;
     margin-left: 697px;
     margin-top: -24px;
-	padding-left: 0;
+    padding-left: 0;
 }
 
 .previous {
@@ -632,7 +634,7 @@ a:link, a:visited, a:active {
 
 
 .content-type-header h1{
-	font-family: Lucida Sans, Arial, Georgia;
+	font-family: Georgia, Arial;
 	font-weight: normal;
 	font-size: 1.5em !important;
 }
@@ -661,7 +663,7 @@ dl dt {
 }
 
 .dd_title {
-	font-family: Lucida Sans, Arial, Georgia;
+	font-family: Georgia, Arial;
 	font-weight: normal;
 	font-size: 1.8em;	
 	width: 28em !important;
@@ -725,11 +727,6 @@ div#resources-list {
 
 div#resources-list a:hover{
 	text-decoration: underline;
-}
-
-div#resources-list dl dt {
-
-  text-align:center;
 }
 
 div#resources-list dl dd {
