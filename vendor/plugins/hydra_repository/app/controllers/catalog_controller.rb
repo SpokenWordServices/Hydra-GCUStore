@@ -82,15 +82,14 @@ class CatalogController
   
  
   # displays values and pagination links for a single facet field
+  # assumes that params[:id] is the name of the facet field
+  # @example
+  # /catalog/facet/object_type_facet
   def facet
-    # adding the following for facet_pagination with Lucene queries to avoide NPE
-    params[:qt] = "dismax"
-    @pagination = get_facet_pagination(params[:id], params)
+    @extra_controller_params ||= {}
+    @extra_controller_params.merge!(:q=>build_lucene_query(params[:q]))
+    @pagination = get_facet_pagination( params[:id], @extra_controller_params )
   end
-
- 
-  
-  
   
   protected
   
