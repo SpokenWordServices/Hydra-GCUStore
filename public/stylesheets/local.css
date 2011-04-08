@@ -38,6 +38,10 @@ legend {
 	font-weight: bold;
 }
 
+p, fieldset, table, pre {
+    margin-bottom: 0em;
+}
+
 #doc1, #doc2, #doc1, #doc4 {
 	width: 960px;
 	background: url("/images/shadowright.gif") repeat-y scroll right top #FFFFFF;
@@ -76,6 +80,12 @@ a:hover {
     width: 10px;
 }
 
+hr {
+    background-color: #D9E2E8;
+    border: medium none;
+    height: 1px;
+}
+
 /* HEADER & FOOTER */
 
 #top-nav {
@@ -83,10 +93,10 @@ a:hover {
 }
 
 #uni-nav-links {
-  padding-top: 4px;
-  height: 30px;
+  padding-top: 10px;
+  height: 35px;
   /* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
-  background-color: #A02027;
+  background-color: #A02720;
 }
 /* nav link image is 25px, 26px to give separation */
 /* nav link image is now 20px, 21px to give separation */
@@ -141,10 +151,18 @@ a:hover {
 #blacklight-user-links {
     margin-right: 15px;
 	padding-top: 5px;
-	color: #a02027;
+	color: #A02720;
 	text-align: right;
 	font-size: 1em;
 	font-weight: bold;
+}
+
+div#links-right {
+	color: #fff;
+}
+
+div#links-right a {
+	padding-left: 15px;
 }
 
 #site-title {
@@ -155,6 +173,8 @@ a:hover {
     font-weight: bold;
     padding-left: 15px;
     padding-top: 26px;
+	padding-bottom: 8px;
+	background-color: #000;
 }
 
 #logo {
@@ -168,10 +188,12 @@ a:hover {
  /*logo image is 51px, 55px to give margin */
  
 #hullFooter {
-    background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #D9E2E8;
+	background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #D9E2E8;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 4px;
+	padding-bottom: 6px;
+    width: 940px;
 }
 
 #document h1 {
@@ -312,7 +334,7 @@ margin-top: -21px;
 .homeCol2 {
 top: 0px;
 margin-left: 500px;
-width: 180px; 
+width: 170px; 
 padding: 15px;
 background-color: #D9E2E8;
 }
@@ -458,6 +480,7 @@ border 0 none;
     padding: 5px 2px 5px 23px;
     border-radius: 0 0 0 0;
 	border: 1px dotted #94b9f6;
+	-moz-border-radius: 0px 0px 0px 0px;
 }
 
 #appliedParams div {
@@ -475,6 +498,10 @@ border 0 none;
 
 .appliedFilter .btnRemove {
     width: 30px;
+}
+
+select#sort, select#per_page {
+	font-size: 1em;
 }
 
 #documents {
@@ -542,8 +569,10 @@ border 0 none;
     background-color: #fff;
  }  
 
-#facets h2 {
-    color: #000;
+#facets.facets h2 {
+	padding-bottom: 1em;
+	color: #000;
+	font-weight: bold;
 }
 
 /*
@@ -577,7 +606,7 @@ border 0 none;
 }
 
 #facets span.selected {
-    color: #A02027;
+    color: #A02720;
 }
 
 #facets li {
@@ -647,12 +676,21 @@ label {
     font-weight: normal;
 }
 
+.section-title {
+	color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+    padding-left: 3.65em;
+    width: 40.25em;
+}
+
 div#show_hide_resources {
     cursor: pointer;
     float: left;
-    margin-top: 1.7em;
-    padding: 0.5em;
-    width: 53em;
+    margin-top: 0em;
+	padding: 0.5em 0.5em 0.5em 0;
+    width: 52.5em;
 	background-color: #FFFFFF;
     border-top: 1px dotted #333333;
 }
@@ -664,8 +702,12 @@ span#additional_resources_span {
   padding-left:15px;
 }
 
+span#additional_resources_span a:hover {
+	text-decoration: underline;
+}
+
 div#resources {
-  margin-top:1em;
+  margin-top:0.5em;
   height:40px;
   display:none;
 }
@@ -763,6 +805,10 @@ div#download_image {
 
 div#file_size {
   padding-left:5px;
+}
+
+div#links fieldset legend {
+	padding-left: 0.7em;
 }
 
 div.text-genre {

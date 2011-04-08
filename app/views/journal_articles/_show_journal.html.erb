@@ -2,7 +2,7 @@
 <% journal = show_journal %>
 <% journal_counter = show_journal_counter %>
 <% base_id = "journal_#{journal_counter}" %>
- <div class="section-title" style="padding-bottom:0.5em;font-weight:bold;padding-left:5em;">Published<hr> </div>
+ <div class="section-title">Published<hr/> </div>
  <dl>
    <% unless get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter}, :title_info, :main_title]).first.empty? %>
     <dt>
