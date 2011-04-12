@@ -111,8 +111,8 @@ describe FileAsset do
    describe ".to_solr" do
     it "should load base fields correctly if active_fedora_model is FileAsset" do
       @file_asset.update_indexed_attributes({:title=>{0=>"testing"}})
-      solr_doc = @file_asset.to_solr(Solr::Document.new)
-      solr_doc["title_t"].should == "testing"
+      solr_doc = @file_asset.to_solr(Hash.new)
+      solr_doc["title_t"].should == ["testing"]
     end
 
     it "should not load base fields twice for FileAsset if active_fedora_model is a class that is child of FileAsset" do
