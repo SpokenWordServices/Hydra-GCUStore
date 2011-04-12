@@ -173,7 +173,7 @@ div#links-right a {
     font-weight: bold;
     padding-left: 15px;
     padding-top: 26px;
-	padding-bottom: 7px;
+	height: 34px;
 	background-color: #000;
 }
 
@@ -389,10 +389,10 @@ top: 0;
 
 #search #q {
     width: 350px;
-    height:25px;
+    height:24px;
     border-width: 1px 1px 1px 1px;
     font-family:Arial, Georgia;
-    font-size:105%;
+    font-size:17px;
     padding-left:0.25em;
     padding-right:0.25em;
     box-shadow: 2px 2px 2px #b1b1b1 inset;
@@ -406,10 +406,10 @@ top: 0;
     cursor:pointer;
     background: url("/images/button-bg.png") no-repeat scroll 0 0;
     height:30px;
-    border-width: 1px 1px 1px 1px;
-    padding-left:0.25em;
-    padding-right:0.25em;
-border 0 none;
+    border-width: 0px 1px 1px 1px;
+    padding-left:0.75em;
+    padding-right:0.75em;
+	vertical-align: top;
 }
 
 /* #appliedParams and #sortAndPerPage are displayed on results pages */
@@ -665,7 +665,7 @@ dl dt {
 .dd_title {
 	font-family: Georgia, Arial;
 	font-weight: normal;
-	font-size: 1.8em;	
+	font-size: 1.7em;	
 	width: 28em !important;
 }
 
