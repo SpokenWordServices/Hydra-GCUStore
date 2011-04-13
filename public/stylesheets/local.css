@@ -395,9 +395,9 @@ top: 0;
     font-size:17px;
     padding-left:0.25em;
     padding-right:0.25em;
-    box-shadow: 2px 2px 2px #b1b1b1 inset;
-    -moz-box-shadow: 2px 2px 2px #b1b1b1 inset;
-    -webkit-box-shadow: 2px 2px 2px #b1b1b1 inset;
+    box-shadow: 2px 2px 2px #d9e2e8 inset;
+    -moz-box-shadow: 2px 2px 2px #d9e2e8 inset;
+    -webkit-box-shadow: 2px 2px 2px #d9e2e8 inset;
 }
 
 #search .submit {
@@ -420,6 +420,23 @@ top: 0;
 
 #sortAndPerPage {
 
+}
+
+#searchIndicator {
+	background-color: #C9D484;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    box-shadow: 0 10px 10px #E2E8BA inset;
+	-moz-box-shadow: 0 10px 10px #E2E8BA inset;
+    -webkit-box-shadow: 0 10px 10px #E2E8BA inset;
+    float: left;
+    margin-left: -37px;
+    margin-top: -78px;
+    padding: 0.45em 0.3em 0.5em 0.45em;
+	border-top: 1px solid #EBEFD0;
+	border-right: 1px solid #B6C462;
+	border-bottom: 1px solid #B6C462;
+	border-left: 1px solid #EBEFD0;
 }
 
 .homeContainer {
