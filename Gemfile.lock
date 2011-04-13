@@ -52,6 +52,7 @@ GEM
     haml (3.0.25)
     httparty (0.7.4)
       crack (= 0.1.8)
+    hydra-testing (0.0.1)
     json (1.5.1)
     json_pure (1.5.1)
     linecache (0.43)
@@ -137,6 +138,7 @@ DEPENDENCIES
   gherkin
   haml
   httparty
+  hydra-testing
   json_pure (> 1.4.3)
   linecache
   marc

@@ -15,8 +15,12 @@ class JettyCleaner
             ActiveFedora::Base.load_instance( obj.pid ).delete
           end
         else
-          puts "deleting #{obj.pid}"
-          ActiveFedora::Base.load_instance( obj.pid ).delete
+          if !obj.pid.match(/^fedora-system:/)
+            puts "deleting #{obj.pid}"
+            ActiveFedora::Base.load_instance( obj.pid ).delete
+          else
+            puts "skipping #{obj.pid}"
+          end
         end
       else
         puts "#{obj.pid} is a #{obj.class}. Could not load and delete it."

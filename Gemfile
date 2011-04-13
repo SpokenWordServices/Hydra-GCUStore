@@ -53,4 +53,5 @@ group :development, :test do
   gem 'cucumber', '>=0.8.5'
   gem 'cucumber-rails'
   gem 'gherkin'
+  gem 'hydra-testing'
 end

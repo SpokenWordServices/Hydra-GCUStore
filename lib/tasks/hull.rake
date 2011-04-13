@@ -1,5 +1,6 @@
 # require File.expand_path(File.dirname(__FILE__) + '/hydra_jetty.rb')
 require "solrizer-fedora"
+require 'hydra-testing'
 require 'win32/process' if RUBY_PLATFORM =~ /mswin32|mingw|cygwin/
 
 
@@ -73,6 +74,33 @@ namespace :hull do
       Rake::Task["hull:default_fixtures:delete"].invoke
       Rake::Task["hull:default_fixtures:load"].invoke
     end
+  end
+
+  desc "Hudson/Jenkins CI build"
+  task :hudson do
+    project_name = 'hyhull'
+    hudson_home = ENV['HUDSON_HOME']
+    project_dir = hudson_home ? hudson_home + '/' + project_name : ENV['PWD']
+    Rake::Task["rake:db:test:clone_structure"].invoke
+    Rake::Task["rake:hydra:jetty:config_fedora"].invoke
+    Rake::Task["rake:hydra:jetty:config"].invoke
+    jetty_params = {
+      :jetty_home => "#{project_dir}/jetty",
+      :quiet => false,
+      :jetty_port => 8983,
+      :solr_home => "#{project_dir}/jetty/solr",
+      :fedora_home => "#{project_dir}/jetty/fedora/default",
+      :startup_wait => 30
+      }
+    error = Hydra::Testing::TestServer.wrap(jetty_params) do
+      Rake::Task["hydra:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["hull:default_fixtures:load_dependencies"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["hull:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["spec"].invoke
+      # cukes temporarily disabled -eddie
+      #Rake::Task["cucumber"].invoke
+    end
+    raise "test failures: #{error}" if error
   end
 
 end
