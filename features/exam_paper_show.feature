@@ -13,21 +13,21 @@ Scenario: Staff visits Show Page for Restricted Document
     Given I am logged in as "staff1" 
     And I am on the show document page for hull:1765
     Then I should see "4207 Principles of exercise and training (2008/2009)"
-    And I should see "Level 5 examination: 2008/2009"
+    And I should see "Level 5"
     And I should not see a link to "the edit document page for hull:1765" 
 
 Scenario: Student visits Show Page for Restricted Document
     Given I am logged in as "student1" 
     And I am on the show document page for hull:3272
     Then I should see "33002 Principles of human movement (May 2009)"
-    And I should see "Level 4 examination : May 2009"
+    And I should see "Level 4"
     And I should not see a link to "the edit document page for hull:1765" 
 
  Scenario: Superuser visits Document Show Page for Restricted Document
     Given I am a superuser
     And I am on the show document page for hull:1765
     Then I should see "4207 Principles of exercise and training (2008/2009)"
-    And I should see "Level 5 examination: 2008/2009"
+    And I should see "Level 5"
   
   Scenario: Show view should have search box at top
     Given I am on the show document page for hull:1765

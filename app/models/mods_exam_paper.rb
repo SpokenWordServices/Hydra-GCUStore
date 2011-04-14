@@ -2,21 +2,21 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
   include Hydra::CommonModsIndexMethods
 
   set_terminology do |t|
-    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
+    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-4.xsd")
 
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title") 
     } 
+    
     t.title(:proxy=>[:title_info, :main_title]) 
    
     # Exam paper description is stored in the 'abstract' field 
 
-    t.description(:path=>"abstract")   
+    t.exam_level(:path=>"abstract", :attributes=>{:displayLabel=>"Examination level"})   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-       t.topic(:index_as=>[:facetable])
+       t.topic
     }
-
     t.genre
  
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
@@ -42,14 +42,14 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
    
     t.origin_info(:path=>"originInfo") {
       t.publisher
+      t.exam_date(:path=>"dateIssued")
     }
     
     t.language {
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
-
     }
-    
+    t.note    
 
     # lookup :person, :first_name        
     #t.department(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
@@ -58,8 +58,10 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
 
-    t.related_item_module(:path=>"relatedItem", :attributes=>{:ID=>"module"}) {
-     t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
+    t.module(:path=>"relatedItem", :attributes=>{:ID=>"module"}) {
+     t.name(:path=>"identifier", :attributes=>{:type=>"moduleName"})
+     t.code(:path=>"identifier", :attributes=>{:type=>"moduleCode"})
+     t.combined_display(:path=>"abstract", :attributes=>{:displayLabel=>"Module display"}, :index_as=>[:facetable])
     }
 
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
@@ -93,6 +95,7 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
              xml.genre
              xml.originInfo {
                xml.publisher
+               xml.dateIssued
              }
              xml.language {                
                xml.lanugageTerm(:type=>"text")
@@ -104,14 +107,17 @@ class ModsExamPaper < ActiveFedora::NokogiriDatastream
                xml.internetMediaType
                xml.digitalOrigin 
              }
-             xml.abstract
+             xml.abstract(:displayLabel=>"Examination level")
              xml.subject(:authority=>"UoH") {
                xml.topic
              }
              xml.identifier(:type=>"fedora")
              xml.relatedItem(:ID=>"module") {
-
+               xml.titleInfo {
+                 xml.title
+               }
                xml.identifier(:type=>"moduleCode")
+	       xml.abstract(:displayLabel=>"Module display")
              }
              xml.location {
                xml.url(:usage=>"primary display", :access=>"object in context")
