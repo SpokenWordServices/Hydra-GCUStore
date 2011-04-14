@@ -19,7 +19,7 @@ body {
 }
 
 #bd {
-    padding: 0 1.5em 2em 2em;
+    padding: 0 1.5em 8em 2em;
 }
 
 h1, h2, h3 {
@@ -168,7 +168,6 @@ div#links-right a {
 #site-title {
 	float: left;
 	color: #fff;
-	font-family: Lucida Sans,arial;
     font-size: 1.8em;
     font-weight: bold;
     padding-left: 15px;
@@ -194,6 +193,8 @@ div#links-right a {
     padding-top: 4px;
 	padding-bottom: 6px;
     width: 940px;
+	float: left;
+	margin-top: -56px;
 }
 
 #document h1 {
@@ -430,13 +431,14 @@ top: 0;
 	-moz-box-shadow: 0 10px 10px #E2E8BA inset;
     -webkit-box-shadow: 0 10px 10px #E2E8BA inset;
     float: left;
-    margin-left: -37px;
+    margin-left: -44px;
     margin-top: -78px;
-    padding: 0.45em 0.3em 0.5em 0.45em;
+    padding: 7px 1px 5px 10px;
 	border-top: 1px solid #EBEFD0;
 	border-right: 1px solid #B6C462;
 	border-bottom: 1px solid #B6C462;
 	border-left: 1px solid #EBEFD0;
+	width: 70px;
 }
 
 .homeContainer {
@@ -472,9 +474,9 @@ top: 0;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     background: url("/images/button-bg.png") no-repeat scroll top left transparent;
-    border-color: #898989;
+    border-color: #fff #898989 #898989 #fff;
     border-style: solid;
-    border-width: 0 1px 1px 0;
+    border-width: 0 1px 1px 1px;
     color: #FFFFFF;
     display: block;
     margin-right: 3px;
@@ -491,21 +493,46 @@ top: 0;
 #appliedParams h3 {
     padding: 5px 2px 5px 23px;
     margin-right: 0.3em;
-	border: 1px dotted #bcb5a7;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #E0D9CA;
+	border-bottom: 1px solid #E0D9CA;
+	border-left: 1px solid #fff;
+	border-style: solid solid solid solid;
+    border-width: 1px 0 1px 1px;
+    box-shadow: 0 10px 10px #fffaed inset;
+	-moz-box-shadow: 0 10px 10px #fffaed inset;
+    -webkit-box-shadow: 0 10px 10px #fffaed inset;
+	background-color: #FFF7E5;
 }
 
 .appliedFilter {
     padding: 5px 2px 5px 23px;
     border-radius: 0 0 0 0;
-	border: 1px dotted #94b9f6;
-	-moz-border-radius: 0px 0px 0px 0px;
+	border-top: 1px solid #fafcff;
+	border-right: 1px solid #bcd0f2;
+	border-bottom: 1px solid #bcd0f2;
+	border-left: 1px solid #fafcff;
+	border-style: solid solid solid solid;
+    border-width: 1px 1px 1px 1px;
+    box-shadow: 0 10px 10px #ebf3ff inset;
+	-moz-box-shadow: 0 10px 10px #ebf3ff inset;
+    -webkit-box-shadow: 0 10px 10px #ebf3ff inset;
+	background-color: #E2EDFE;
 }
 
 #appliedParams div {
     padding: 5px;
     margin-right: 0.3em;
 	background-color: #C9D484;
-    border: 1px dotted #339900;
+	border-top: 1px solid #EBEFD0;
+	border-right: 1px solid #B6C462;
+	border-bottom: 1px solid #B6C462;
+	border-left: 1px solid #EBEFD0;
+	border-style: solid solid solid solid;
+    border-width: 1px 1px 1px 1px;
+    box-shadow: 0 10px 10px #E2E8BA inset;
+	-moz-box-shadow: 0 10px 10px #E2E8BA inset;
+    -webkit-box-shadow: 0 10px 10px #E2E8BA inset;
 }
 
 #sortAndPerPage {
@@ -539,7 +566,6 @@ select#sort, select#per_page {
 }
 
 #previousNextDocument {
-    font-family: Arial, Georgia ;
     background-color: #fff;
     border: 1px dotted #333333;
     border-radius: 0 0 0 0;
@@ -554,8 +580,8 @@ select#sort, select#per_page {
 }
 
 .counter {
-    margin-right: 1.5em;
-    padding-left: 1.4em;
+    margin-right: 0em;
+    padding-left: 0.75em;
 }
 
 
@@ -661,7 +687,6 @@ dl dd {
 	width: 39em !important;
 	margin-top: 0em;
 	margin-right: 0px;
-	position: relative;
 	margin-left: 1em;
 	line-height: 1.4em;
 	padding-bottom: 0.5em;
@@ -941,4 +966,9 @@ div.generic-download {
     font-family: Georgia;
     margin-bottom: 2em;
     padding: 2em;
+}
+
+/* Added temporarily to hide debug output from layout */
+.solrQuery {
+	display: none;
 }
