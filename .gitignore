@@ -24,7 +24,6 @@ db/schema.rb
 
 .project
 .buildpath
-.rvmrc
 
 /.bundle
 /.yardoc
