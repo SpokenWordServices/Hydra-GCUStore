@@ -99,9 +99,9 @@ namespace :hull do
       :fedora_home => "#{project_dir}/jetty/fedora/default",
       :startup_wait => 30
       }
-      #Rake::Task["db:drop"].invoke
-      #Rake::Task["db:migrate"].invoke
-      #Rake::Task["db:migrate:plugins"].invoke
+      Rake::Task["db:drop"].invoke
+      Rake::Task["db:migrate"].invoke
+      Rake::Task["db:migrate:plugins"].invoke
     error = Jettywrapper.wrap(jetty_params) do
       # FIXME jettycleaner should be defined elsewhere
       Rake::Task["hull:jettycleaner"].invoke(["RAILS_ENV"], ["test"])
