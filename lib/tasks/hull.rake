@@ -1,6 +1,7 @@
 # require File.expand_path(File.dirname(__FILE__) + '/hydra_jetty.rb')
 require "solrizer-fedora"
-require 'hydra-testing'
+require 'jettywrapper'
+require 'jetty_cleaner'
 require 'win32/process' if RUBY_PLATFORM =~ /mswin32|mingw|cygwin/
 
 
@@ -14,13 +15,13 @@ namespace :hull do
       fixture_files.each_with_index do |fixture,index|
         ENV["pid"] = nil
         ENV["fixture"] = fixture
-        Rake::Task["hydra:import_fixture"].invoke if index == 0
-        Rake::Task["hydra:import_fixture"].execute if index > 0
+        Rake::Task["hydra:import_fixture"].reenable
+        Rake::Task["hydra:import_fixture"].invoke
       end
       fixture_files.each_with_index do |fixture,index|
         ENV["PID"] = pid_from_path(fixture) #fixture.split("/")[-1].gsub(".xml","").gsub("_",":")
-        Rake::Task["solrizer:fedora:solrize"].invoke if index == 0
-        Rake::Task["solrizer:fedora:solrize"].execute if index > 0
+        Rake::Task["solrizer:fedora:solrize"].reenable
+        Rake::Task["solrizer:fedora:solrize"].invoke
       end
     end
 
@@ -53,8 +54,8 @@ namespace :hull do
       dependencies.each_with_index do |dependency,index|
         ENV['pid'] = pid_from_path(dependency)
         puts "removing #{dependency}"
-        Rake::Task["hydra:delete"].invoke if index == 0
-        Rake::Task["hydra:delete"].execute if index > 0
+        Rake::Task["hydra:delete"].reenable
+        Rake::Task["hydra:delete"].invoke
       end
     end
 
@@ -64,8 +65,8 @@ namespace :hull do
         ENV["pid"] = pid_from_path(fixture)
         puts "deleting #{fixture}"
         puts "#{ENV["pid"]}"
-        Rake::Task["hydra:delete"].invoke if index == 0
-        Rake::Task["hydra:delete"].execute if index > 0
+        Rake::Task["hydra:delete"].reenable
+        Rake::Task["hydra:delete"].invoke
       end
     end
 
@@ -74,6 +75,12 @@ namespace :hull do
       Rake::Task["hull:default_fixtures:delete"].invoke
       Rake::Task["hull:default_fixtures:load"].invoke
     end
+  end
+
+  desc "JettyCleaner"
+  task :jettycleaner do
+    ActiveFedora.init unless Thread.current[:repo]
+    JettyCleaner.clean()
   end
 
   desc "Hudson/Jenkins CI build"
@@ -92,7 +99,12 @@ namespace :hull do
       :fedora_home => "#{project_dir}/jetty/fedora/default",
       :startup_wait => 30
       }
-    error = Hydra::Testing::TestServer.wrap(jetty_params) do
+      #Rake::Task["db:drop"].invoke
+      #Rake::Task["db:migrate"].invoke
+      #Rake::Task["db:migrate:plugins"].invoke
+    error = Jettywrapper.wrap(jetty_params) do
+      # FIXME jettycleaner should be defined elsewhere
+      Rake::Task["hull:jettycleaner"].invoke(["RAILS_ENV"], ["test"])
       Rake::Task["hydra:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
       Rake::Task["hull:default_fixtures:load_dependencies"].invoke(["RAILS_ENV"], ["test"])
       Rake::Task["hull:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])

@@ -107,8 +107,8 @@ namespace :hydra do
     task :load do
       FIXTURES.each_with_index do |fixture,index|
         ENV["pid"] = fixture
-        Rake::Task["hydra:import_fixture"].invoke if index == 0
-        Rake::Task["hydra:import_fixture"].execute if index > 0
+        Rake::Task["hydra:import_fixture"].reenable
+        Rake::Task["hydra:import_fixture"].invoke
       end
     end
 
@@ -117,8 +117,8 @@ namespace :hydra do
       FIXTURES.each_with_index do |fixture,index|
         ENV["pid"] = fixture
         # puts "#{ENV["pid"]}"
-        Rake::Task["hydra:delete"].invoke if index == 0
-        Rake::Task["hydra:delete"].execute if index > 0
+        Rake::Task["hydra:delete"].reenable
+        Rake::Task["hydra:delete"].invoke
       end
     end
 
@@ -127,11 +127,11 @@ namespace :hydra do
       FIXTURES.each_with_index do |fixture,index|
         ENV["pid"] = fixture
         if index == 0
-          Rake::Task["hydra:delete"].invoke if index == 0
-          Rake::Task["hydra:import_fixture"].invoke if index == 0
+          Rake::Task["hydra:delete"].reenable
+          Rake::Task["hydra:import_fixture"].reenable
         else 
-          Rake::Task["hydra:delete"].execute if index > 0
-          Rake::Task["hydra:import_fixture"].execute if index > 0
+          Rake::Task["hydra:delete"].invoke
+          Rake::Task["hydra:import_fixture"].invoke
         end
       end
     end
