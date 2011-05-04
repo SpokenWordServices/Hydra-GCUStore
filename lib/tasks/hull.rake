@@ -85,38 +85,34 @@ namespace :hull do
 
   desc "Hudson/Jenkins CI build"
   task :hudson do
-    if (ENV['RAILS_ENV'] == "test")
-      project_name = 'hyhull'
-      workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
-      project_dir = workspace_dir ? workspace_dir : ENV['PWD']
-      Rake::Task["rake:db:test:clone_structure"].invoke
-      Rake::Task["rake:hydra:jetty:config_fedora"].invoke
-      Rake::Task["rake:hydra:jetty:config"].invoke
-      jetty_params = {
-        :jetty_home => "#{project_dir}/jetty",
-        :quiet => false,
-        :jetty_port => 8983,
-        :solr_home => "#{project_dir}/jetty/solr",
-        :fedora_home => "#{project_dir}/jetty/fedora/default",
-        :startup_wait => 30
-      }
-      #Rake::Task["db:drop"].invoke
-      Rake::Task["db:migrate"].invoke
-      Rake::Task["db:migrate:plugins"].invoke
-      error = Jettywrapper.wrap(jetty_params) do
-        # FIXME jettycleaner should be defined elsewhere
-        Rake::Task["hull:jettycleaner"].invoke(["RAILS_ENV"], ["test"])
-        Rake::Task["hydra:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
-        Rake::Task["hull:default_fixtures:load_dependencies"].invoke(["RAILS_ENV"], ["test"])
-        Rake::Task["hull:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
-        Rake::Task["spec"].invoke
-        # cukes temporarily disabled -eddie
-        #Rake::Task["cucumber"].invoke
-      end
-      raise "test failures: #{error}" if error
-    else
-      system("rake hull:hudson RAILS_ENV=test")
+    project_name = 'hyhull'
+    workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
+    project_dir = workspace_dir ? workspace_dir : ENV['PWD']
+    Rake::Task["rake:db:test:clone_structure"].invoke(["RAILS_ENV"], ["test"])
+    Rake::Task["rake:hydra:jetty:config_fedora"].invoke(["RAILS_ENV"], ["test"])
+    Rake::Task["rake:hydra:jetty:config"].invoke(["RAILS_ENV"], ["test"])
+    jetty_params = {
+      :jetty_home => "#{project_dir}/jetty",
+      :quiet => false,
+      :jetty_port => 8983,
+      :solr_home => "#{project_dir}/jetty/solr",
+      :fedora_home => "#{project_dir}/jetty/fedora/default",
+      :startup_wait => 30
+    }
+    #Rake::Task["db:drop"].invoke
+    Rake::Task["db:migrate"].invoke(["RAILS_ENV"], ["test"])
+    Rake::Task["db:migrate:plugins"].invoke(["RAILS_ENV"], ["test"])
+    error = Jettywrapper.wrap(jetty_params) do
+      # FIXME jettycleaner should be defined elsewhere
+      Rake::Task["hull:jettycleaner"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["hydra:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["hull:default_fixtures:load_dependencies"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["hull:default_fixtures:load"].invoke(["RAILS_ENV"], ["test"])
+      Rake::Task["spec"].invoke
+      # cukes temporarily disabled -eddie
+      #Rake::Task["cucumber"].invoke
     end
+    raise "test failures: #{error}" if error
   end
 
 end
