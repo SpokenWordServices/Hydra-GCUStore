@@ -972,3 +972,61 @@ div.generic-download {
 .solrQuery {
 	display: none;
 }
+
+form#document_metadata span.editable-text, .text {
+  display: none;
+}
+
+form#document_metadata legend {
+  margin-top: .5em;
+}
+
+form#document_metadata ol {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+form#document_metadata ol li {
+  list-style: none;
+}
+
+form#document_metadata dd ol li a {
+  float: right;
+  margin-right: 16em;
+}
+
+form#document_metadata dd a {
+  float: right;
+  margin-right: 10em;
+}
+
+form#document_metadata dl dt {
+  width: 53em !important;
+  text-align: left;
+  font-size: .6em;
+}
+
+form#document_metadata dl dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+float:left;
+}
+
+form#document_metadata dl dd input.editable-edit {
+  width: 50em;
+  font-size: .8em;
+}
+
+form#document_metadata dl dd ol input.editable-edit {
+  width: 40em;
+  font-size: .8em;
+}
+
+form#document dl.half_width {
+ width: 20em !important;
+}
+
+
+
