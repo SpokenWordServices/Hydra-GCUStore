@@ -126,13 +126,12 @@ namespace :hydra do
     task :refresh do
       FIXTURES.each_with_index do |fixture,index|
         ENV["pid"] = fixture
-        if index == 0
+        if index > 0
           Rake::Task["hydra:delete"].reenable
           Rake::Task["hydra:import_fixture"].reenable
-        else 
-          Rake::Task["hydra:delete"].invoke
-          Rake::Task["hydra:import_fixture"].invoke
         end
+        Rake::Task["hydra:delete"].invoke
+        Rake::Task["hydra:import_fixture"].invoke
       end
     end
   end
