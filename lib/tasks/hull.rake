@@ -88,7 +88,7 @@ namespace :hull do
     if (ENV['RAILS_ENV'] == "test")
       workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
       project_dir = workspace_dir ? workspace_dir : ENV['PWD']
-      Rake::Task["db:test:clone_structure"].invoke
+      #Rake::Task["db:test:clone_structure"].invoke
       Rake::Task["hydra:jetty:config_fedora"].invoke
       Rake::Task["hydra:jetty:config"].invoke
       jetty_params = {
