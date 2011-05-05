@@ -1,7 +1,7 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"journal_article")%>" method="post" data-resourceType="journal_article" accept-charset="utf-8" >
   <input type="hidden" name="content_type" value="journal_article" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <fieldset>
+  <fieldset class="edit-standard">
   <legend>Author</legend>
   <dl>
     <dt>
@@ -12,7 +12,7 @@
     </dd>
   </dl>
   </fieldset>
-  <fieldset>
+  <fieldset class="edit-standard">
   <legend>Journal article</legend>
   <dl>
     <dt>
@@ -31,13 +31,13 @@
       <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
     </dt>
     <dd>
-      <%#= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
+      <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
     </dt>
     <dd>
-      <%#= fedora_checkbox(@document_fedora,"descMetadata",[:rights]) %>  © 2011 The University of Hull
+      <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:origin,:publisher],"Publisher") %>
@@ -49,25 +49,25 @@
       <%= fedora_field_label("descMetadata",[:note,:peer_reviewed],"Note") %>
     </dt>
     <dd>
-      <%#= fedora_checkbox(@document_fedora,"descMetadata", [:peer_reviewed],:multiple=>false) %>  Peer reviewed
+      <%= fedora_checkbox(@document_fedora,"descMetadata", [:peer_reviewed],:multiple=>false) %>  Peer reviewed
     </dd>
   </dl>
   </fieldset>
-  <fieldset>
+  <fieldset class="edit-half">
   <legend>Published</legend>
-  <dl>
-    <dt>
-      <%= fedora_field_label("descMetadata",[:journal,:title_info,:main_title],"Published in") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:title_info,:main_title], :multiple=>false) %>
-    </dd>
-    <dt>
-      <%= fedora_field_label("descMetadata",[:journal,:origin_info,:date_issued],"Date") %>
-    </dt>
-    <dd>
-      <%#= fedora_date_select(@document_fedora,"descMetadata", [:journal,:origin_info,:date_issued]) %>
-    </dd>
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:journal,:title_info,:main_title],"Published in") %>
+      </dt>
+      <dd>
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:title_info,:main_title], :multiple=>false) %>
+      </dd>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:journal,:origin_info,:date_issued],"Date") %>
+      </dt>
+      <dd>
+        <%= fedora_select(@document_fedora,"descMetadata", [:journal,:origin_info,:date_issued], :choices=>(11.times.map {|i| (Time.now.year.to_i - (i-1)).to_s }) ) %>
+      </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:journal,:issn_print],"ISSN (Print)") %>
     </dt>
@@ -85,6 +85,8 @@
     </dt>
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:doi], :multiple=>false) %>
+      <% publication_link = "http://dx.doi.org/#{get_values_from_datastream(@document_fedora,"descMetadata",[:journal,:doi]).first.strip}" %>
+      <a href="<%= publication_link %>" target="_blank"><%= publication_link %></a>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:journal,:part,:volume],"Volume") %>
@@ -107,8 +109,27 @@
     </dd>
   </dl>
   </fieldset>
-  <input type="hidden"  name="_method" value="put"/>
   
   <%= submit_tag "Save" %>
   <%= submit_tag "Submit" %>
+</form>
+
+
+<form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"journal_article")%>" method="post" data-resourceType="journal_article" accept-charset="utf-8" >
+  <input type="hidden" name="content_type" value="journal_article" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <fieldset class="edit-standard">
+  <legend>Assets</legend>
+  <dl>
+    <dt>
+      <%= fedora_field_label("contentMetadata",[:resource,:display_label],"Label") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"contentMetadata",[:resource,:display_label],:multiple => true) %>
+    </dd>
+  </dl>
+  </fieldset>
+  <input type="hidden"  name="_method" value="put"/>
+  
+  <%= submit_tag "Save" %>
 </form>

@@ -682,7 +682,7 @@ a:link, a:visited, a:active {
 	font-size: 1.5em !important;
 }
 
-dl dd {
+div#description dl dd {
 	float: left;
 	width: 39em !important;
 	margin-top: 0em;
@@ -692,7 +692,7 @@ dl dd {
 	padding-bottom: 0.5em;
 }
 
-dl dt {
+div#description dl dt {
     clear: left;
     float: left;
     width: 10em;
@@ -973,60 +973,116 @@ div.generic-download {
 	display: none;
 }
 
-form#document_metadata span.editable-text, .text {
+/* hide inline edit spans, etc. */
+span.editable-text, .text {
+  display: none;
+}
+input.textile-edit, .text {
+  display: none;
+}
+
+fieldset.edit-standard dd a.field {
   display: none;
 }
 
 form#document_metadata legend {
   margin-top: .5em;
+  margin-bottom: .8em !important;
 }
 
-form#document_metadata ol {
+fieldset ol {
   list-style-type: none;
   margin-left: 0px;
   margin-top: 0px;
 }
 
-form#document_metadata ol li {
+fieldset  ol li {
   list-style: none;
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 
-form#document_metadata dd ol li a {
+fieldset.edit-standard dd ol li a {
   float: right;
   margin-right: 16em;
 }
 
-form#document_metadata dd a {
-  float: right;
-  margin-right: 10em;
-}
-
-form#document_metadata dl dt {
+div#contributors dl dt {
   width: 53em !important;
   text-align: left;
   font-size: .6em;
 }
-
-form#document_metadata dl dd {
+fieldset.edit-standard dl dt {
+  width: 53em !important;
+  text-align: left;
+  font-size: .6em;
+}
+div#contributors  dd {
  width: 53em !important;
  font-size: 1.2em;
  margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
 float:left;
 }
 
-form#document_metadata dl dd input.editable-edit {
+fieldset.edit-standard dl dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
+float:left;
+}
+div#contributors dl dd span input {
   width: 50em;
   font-size: .8em;
 }
 
-form#document_metadata dl dd ol input.editable-edit {
+fieldset.edit-standard dl dd input[type=text] {
+  width: 50em;
+  font-size: .8em;
+}
+
+fieldset.edit-standard dl dd ol input {
   width: 40em;
   font-size: .8em;
 }
 
-form#document dl.half_width {
- width: 20em !important;
+fieldset.edit-half dl dt {
+  width: 25em !important;
+  text-align: left;
+  font-size: .6em;
 }
 
+fieldset.edit-half dl dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
+float:left;
+}
 
+fieldset.edit-half dl dd input {
+  width: 25em;
+  font-size: .8em;
+}
 
+fieldset.edit-half dl dd ul input {
+  width: 20em;
+  font-size: .8em;
+}
+
+form#content_metadata {
+  margin-top: 1em;
+}
+fieldset textarea {
+  width: 50em;
+  height: 20em;
+  resize: none;
+}
+
+span#peer_reviewed {
+  font-size: .8em;
+}

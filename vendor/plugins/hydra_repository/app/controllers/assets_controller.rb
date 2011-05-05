@@ -76,8 +76,10 @@ class AssetsController < ApplicationController
       if params.has_key?(:field_id)
         response = last_result_value
       end
-    
       respond_to do |want| 
+        want.html {
+          redirect_to :controller=>"catalog", :action=>"edit"
+        }
         want.js {
           render :json=> response
         }
