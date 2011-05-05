@@ -1,7 +1,6 @@
 # require File.expand_path(File.dirname(__FILE__) + '/hydra_jetty.rb')
 require "solrizer-fedora"
 require 'jettywrapper'
-require 'jetty_cleaner'
 require 'win32/process' if RUBY_PLATFORM =~ /mswin32|mingw|cygwin/
 
 
@@ -77,12 +76,6 @@ namespace :hull do
     end
   end
 
-  desc "JettyCleaner"
-  task :jettycleaner do
-    ActiveFedora.init unless Thread.current[:repo]
-    JettyCleaner.clean()
-  end
-
   desc "Hudson/Jenkins CI build"
   task :hudson do
     if (ENV['RAILS_ENV'] == "test")
@@ -103,13 +96,10 @@ namespace :hull do
       Rake::Task["db:migrate"].invoke
       Rake::Task["db:migrate:plugins"].invoke
       error = Jettywrapper.wrap(jetty_params) do
-        # FIXME jettycleaner should be defined elsewhere
-        Rake::Task["hull:jettycleaner"].invoke
         Rake::Task["hydra:default_fixtures:load"].invoke
         Rake::Task["hull:default_fixtures:load_dependencies"].invoke
         Rake::Task["hull:default_fixtures:load"].invoke
         Rake::Task["spec"].invoke
-        # cukes temporarily disabled -eddie
         Rake::Task["cucumber"].invoke
       end
       raise "test failures: #{error}" if error
