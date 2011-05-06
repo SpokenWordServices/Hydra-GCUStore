@@ -167,7 +167,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
         xml.name(:type=>"personal") {
           xml.namePart
           xml.role {
-            xml.roleTerm(:type=>"text")
+            xml.roleTerm("Creator",:type=>"text")
           }
         }
       end
@@ -179,10 +179,10 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
     def insert_contributor(type, opts={})
       case type.to_sym 
       when :person
-        node = HullModsEtd.person_template
+        node = ModsJournalArticle.person_template
         nodeset = self.find_by_terms(:person)
       else
-        ActiveFedora.logger.warn("#{type} is not a valid argument for HullModsEtd.insert_contributor")
+        ActiveFedora.logger.warn("#{type} is not a valid argument for ModsJournalArticle.insert_contributor")
         node = nil
         index = nil
       end
