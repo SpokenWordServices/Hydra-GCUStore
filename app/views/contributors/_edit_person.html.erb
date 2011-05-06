@@ -1,0 +1,23 @@
+<% person = edit_person %>
+<% person_counter = edit_person_counter %>
+<% person_name = "#{get_values_from_datastream(@document_fedora,'descMetadata', [{:name=>person_counter}, :namePart])}" %>
+<% base_id = "person_#{person_counter}" %>
+  <input type="hidden" id="contributor_type" name="contributor_type" value="person"/>
+  <dl class="person contributor" id="<%= base_id %>">
+          <% if (person_counter ==  0 ) %>
+            <dt>
+            <%= fedora_field_label("descMetadata", [{:name=>person_counter}, :namePart], "Name") %>
+            </dt>
+            <dd class="multi_inline person">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_counter}, :namePart], :multiple=>false) %>
+            <%= link_to "+", new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type) %>
+          <% else %>
+            <dd class="multi_inline person">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_counter}, :namePart], :multiple=>false) %>
+          <% end %>
+          <% if ( (person_counter > 0) && (params[:action] == "edit" || params[:action] == "create") && !person_name.strip.empty? ) %>
+            <%= field_selectors_for("descMetadata", [{:person=>person_counter}]) %>
+            <%= link_to "-", asset_contributor_path(@document_fedora.pid, "person", person_counter), :method=>:delete, :class => "destructive destroy_contributor", :title=>"Delete #{person_name}" %>
+          <% end %>
+    </dd>
+  </dl>

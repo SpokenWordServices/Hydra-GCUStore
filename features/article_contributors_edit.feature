@@ -3,7 +3,8 @@ Feature: Edit Article Contributors
   As a person with edit permissions
   In order to manage the contributor entries (names) in a MODS document
   I want to see and edit the contributors associated with an article
-
+  
+  @overwritten @todo
   Scenario: Viewing contributors in edit mode
     Given I am logged in as "archivist1" 
     And I am on the edit document page for hydrangea:fixture_mods_article1 
@@ -32,6 +33,7 @@ Feature: Edit Article Contributors
     And I should see "Host" within "select[rel=conference_0_role_text]"    
     And I should see a delete contributor button for "the 1st conference entry in hydrangea:fixture_mods_article1"
     
+  @overwritten @todo
   Scenario: Viewing contributors in browse mode
     Given I am logged in as "archivist1" 
     And I am on the show document page for hydrangea:fixture_mods_article1 
