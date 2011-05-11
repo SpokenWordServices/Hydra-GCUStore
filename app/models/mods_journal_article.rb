@@ -18,6 +18,7 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
        t.topic(:index_as=>[:facetable])
     }
+    t.subject_topic(:proxy=>[:subject,:topic])
     t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic")
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
@@ -174,6 +175,31 @@ class ModsJournalArticle < ActiveFedora::NokogiriDatastream
       return builder.doc.root
     end
    
+    def self.subject_topic_template
+      builder = Nokogiri::XML::Builder.new {|xml| xml.topic }
+      return builder.doc.root
+    end
+
+    def insert_subject_topic(opts={})
+      node = ModsJournalArticle.subject_topic_template
+      nodeset = self.find_by_terms(:subject,:topic)
+
+      unless nodeset.nil?
+        nodeset.after(node)
+        index=nodeset.length
+        self.dirty = true
+      end
+      
+      return node, index
+
+    end
+
+    def remove_subject_topic(index)
+      #we are assuming only one subject, multiple topics
+      self.find_by_terms( :subject,:topic)[index.to_i].remove
+      self.dirty = true
+    end
+ 
     # Inserts a new contributor (mods:name) into the mods document
     # creates contributors of type :person, :organization, or :conference
     def insert_contributor(type, opts={})
