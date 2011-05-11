@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
   def new
     @document_fedora = load_document_from_id(params[:asset_id])
     @next_subject_index = @document_fedora
+    @content_type = params[:content_type]
     respond_to do |format|
       format.html { render :file=>"subjects/new.html" , :layout=>true}
       format.inline { render :partial=>"subjects/new.html", :layout=>false }
@@ -51,5 +52,11 @@ class SubjectsController < ApplicationController
     af_model.find(asset_id)
   end
  
-
+  def extract_value(hash)
+    begin
+      return hash.invert.keys.first.invert.keys.first
+    rescue
+      return nil
+    end
+  end
 end

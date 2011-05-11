@@ -13,7 +13,6 @@ module HullModelMethods
   # call remove_subject_topic on the descMetadata datastream
   def remove_subject_topic(index)
     ds = self.datastreams_in_memory["descMetadata"]
-    debugger
     result = ds.remove_subject_topic(index)
     return result
   end

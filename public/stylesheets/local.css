@@ -985,6 +985,10 @@ fieldset.edit-standard dd a.field {
   display: none;
 }
 
+fieldset.edit-half dd a.field {
+  display: none;
+}
+
 form#document_metadata legend {
   margin-top: .5em;
   margin-bottom: .8em !important;
@@ -1050,13 +1054,13 @@ fieldset.edit-standard dl dd ol input {
 }
 
 fieldset.edit-half dl dt {
-  width: 25em !important;
+  width: 20em !important;
   text-align: left;
   font-size: .6em;
 }
 
 fieldset.edit-half dl dd {
- width: 53em !important;
+ width: 20em !important;
  font-size: 1.2em;
  margin-left: 0px;
  margin-top: .5em;
@@ -1065,7 +1069,7 @@ float:left;
 }
 
 fieldset.edit-half dl dd input {
-  width: 25em;
+  width: 20em;
   font-size: .8em;
 }
 
@@ -1085,4 +1089,61 @@ fieldset textarea {
 
 span#peer_reviewed {
   font-size: .8em;
+}
+
+span#journal_origin_info_date_issued-container input.editable-edit.edit {
+  width: 4em !important;
+}
+
+div.info-multiple {
+  width: 80em;
+  display:block;
+  margin-top: 1em;
+}
+
+div.info-multiple div.left {
+  width:25em;
+  float:left;
+}
+
+div.info-multiple div.right {
+  width:55em;
+  float:left;
+}
+
+div.volume_issue {
+  width: 5em;
+  float:left;
+}
+
+div.volume_issue dt,dd {
+  width: 5em !important;
+}
+
+div.volume_issue  input {
+  width: 3em !important;
+}
+
+div.journal_pages {
+  width:15em;
+  float:left;
+}
+
+
+
+div.journal_pages dt,dd {
+  width: 10em !important;
+}
+
+div.journal_pages input {
+  width: 5em !important;
+}
+
+div#contributors dd a {
+  display: none;
+}
+
+div#subjects dd a.field {
+  display: inline !important;
+  margin-right: 10em;
 }
