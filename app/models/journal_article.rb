@@ -3,7 +3,8 @@ require "hydra"
 class JournalArticle < ActiveFedora::Base
   
   include Hydra::ModelMethods
-  
+  include HullModelMethods
+
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
   

@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     :collection => {:map => :get, :opensearch=>:get, :citation=>:get, :email=>:get, :sms=>:get, :endnote=>:get, :send_email_record=>:post}
   )
 
-  
+  map.resources :subjects
 
   # Load Blacklight's routes and add edit_catalog named route
   Blacklight::Routes.build map
