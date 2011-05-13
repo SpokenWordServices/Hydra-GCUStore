@@ -1147,3 +1147,7 @@ div#subjects dd a.field {
   display: inline !important;
   margin-right: 10em;
 }
+
+form.flc-uploader.fl-uploader.fl-progEnhance-enhanced {
+  display:none;
+}
