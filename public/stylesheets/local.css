@@ -684,7 +684,7 @@ a:link, a:visited, a:active {
 
 div#description dl dd {
 	float: left;
-	width: 39em !important;
+	/* width: 39em !important; */
 	margin-top: 0em;
 	margin-right: 0px;
 	margin-left: 1em;
@@ -765,27 +765,45 @@ div#resources-list {
 	width:53em;
 	background-color: #FFFFFF;
     border-bottom: 1px dotted #333333;
+    line-height: 1.8em;
+    padding-bottom: 0.5em;
 }
 
-div#resources-list a:hover{
+div#resources-list a:hover {
 	text-decoration: underline;
 }
 
-div#resources-list dl dd {
-  width:25em;
-  text-align: left;
+div#resources-list dt {
+    color: #898989;
+    float: left;
+    margin-right: 1em;
+    text-align: right;
+    width: 12em;
+}
+
+div#resources-list dd {
+    width:25em !important;
+    text-align: left;
 }
 
 div#content_div {
-  float:left;
-  width:640px;
-}
-div#content_div dl dt {
-  width:100px;
+    float:left;
+    width:640px;
+    line-height: 1.4em;
+    padding-bottom: 0.5em;
 }
 
-div#content_div dl dd {
-  width:400px;
+#index_list dt {
+	color: #898989;
+    float: left;
+    margin-right: 1em;
+    text-align: right;
+    width: 8em;
+}
+
+#index_list dd {
+	width:46em !important;
+    text-align: left;
 }
 
 div#genre_image {
