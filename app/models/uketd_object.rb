@@ -3,7 +3,8 @@ require "hydra"
 class UketdObject < ActiveFedora::Base
   
   include Hydra::ModelMethods
-  
+  include HullModelMethods
+
   has_relationship "parts", :is_part_of, :inbound => true
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
@@ -31,4 +32,11 @@ class UketdObject < ActiveFedora::Base
     solr_doc
   end
 
+  def file_objects_append(obj)
+    super(obj)
+    # add handler for updating contentMetadata datastreams
+    
+  end
+
+  
 end
