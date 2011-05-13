@@ -17,4 +17,9 @@ module HullModelMethods
     return result
   end
 
+  # call insert_resource on the contentMetadata datastream
+  def insert_resource(opts={})
+    ds = self.datastreams_in_memory["contentMetadata"]
+    node, index = ds.insert_resource(opts)
+  end
 end
