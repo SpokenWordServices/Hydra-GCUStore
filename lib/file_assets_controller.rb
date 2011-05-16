@@ -1,6 +1,7 @@
-require 'vendor/plugins/hydra_repository/app/controllers/file_assets_controller.rb'
 
-class FileAssetsController
+class FileAssetsController < ApplicationController
+
+  require_dependency 'vendor/plugins/hydra_repository/app/controllers/file_assets_controller.rb'
   
   after_filter :update_content_metadata, :only => [:create,:destroy]
 
@@ -26,7 +27,11 @@ class FileAssetsController
     
     logger.debug "Created #{@file_asset.pid}."
     respond_to do |format|
-      format.html { redirect_to( edit_catalog_path(@container.pid) ) }
+      if @container
+        format.html { redirect_to( edit_catalog_path(@container.pid) ) }
+      else
+        format.html { render :nothing => true }
+      end
       format.inline { render :nothing => true }
     end
   end
