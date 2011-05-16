@@ -40,12 +40,19 @@ class FileAssetsController < ApplicationController
 
   def update_content_metadata
     logger.debug "updating container #{@container} with data for #{@file_asset}"
-    afmodel = retrieve_af_model(params["content_type"])
-    if afmodel
-      container = afmodel.load_instance(@container.pid)
-      container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["content_type"]))
-#      container.save
+
+    #prefer the container_content_type param passed as local to the fluid_infusion/uploader partial
+    afmodel = retrieve_af_model(params["container_content_type"])
+    unless afmodel
+      af_base = ActiveFedora::Base.load_instance(params[:id])
+      afmodel = ActiveFedora::ContentModel.known_models_for( af_base ).first
     end
+    if afmodel.nil?
+      container = af_base
+    else
+      container = afmodel.load_instance(@container.pid)
+    end
+    container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
   end
 
   def get_default_display_label_for_content_type(content_type)
