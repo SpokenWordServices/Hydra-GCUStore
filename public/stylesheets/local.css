@@ -793,6 +793,24 @@ div#content_div {
     padding-bottom: 0.5em;
 }
 
+div#journal {
+	width:53em;
+    line-height: 1.4em;
+}
+
+div#journal dt {
+	color: #898989;
+    float: left;
+    margin-right: 1em;
+    text-align: right;
+    width: 10em;
+}
+
+div#journal dd {
+	width:51em !important;
+    text-align: left;
+}
+
 #index_list dt {
 	color: #898989;
     float: left;
