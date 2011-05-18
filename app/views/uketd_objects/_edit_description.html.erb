@@ -1,5 +1,6 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"uketd_object")%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
   <% @content_type = "uketd_object" %>
+  <% choices = ObjectMods.language_relator_terms %>
   <input type="hidden" name="content_type" value="uketd_object" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
   <fieldset class="edit-standard">
@@ -39,11 +40,16 @@
       <dd> 
       <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
     </dd>
+	<dt>
+	  <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
+	</dt>
+	<dd>
+	  <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
+	</dd>
   </dl>
   </fieldset>
 
   <fieldset class="edit-half">
-  <!--Language which populates both term fields -->
   <dl>
 	<div class="info-multiple">
 	  <div class="left">

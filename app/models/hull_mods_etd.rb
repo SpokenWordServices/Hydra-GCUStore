@@ -8,13 +8,15 @@ class HullModsEtd < ObjectMods
       t.language(:index_as=>[:facetable],:path=>{:attribute=>"lang"})
     } 
     t.title(:proxy=>[:title_info, :main_title]) 
-    t.language{
+
+    t.language(:path=>"language"){
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
+
     t.abstract
        
-    #t.subject {
+    #t.subject {l
     #  t.topic
     #}
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {

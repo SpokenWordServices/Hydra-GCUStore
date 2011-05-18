@@ -154,6 +154,14 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "hst" => "Host"
       }
     end
+
+	def self.language_relator_terms
+      {
+        "eng" => "English",
+		"fre" => "French",
+        "esp" => "Spanish"
+      }
+    end
     
     def self.dc_relator_terms
        {"acp" => "Art copyist",
