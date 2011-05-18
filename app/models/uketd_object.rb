@@ -26,11 +26,11 @@ class UketdObject < ActiveFedora::Base
     m.field 'depositor', :string
   end
 
-  def to_solr(solr_doc=Hash.new, opts={})
-    super(solr_doc,opts)
-    solr_doc << { "has_model_s" => "info:fedora/hull-cModel:uketdObject" }
-    solr_doc
-  end
+#  def to_solr(solr_doc=Hash.new, opts={})
+#    super(solr_doc,opts)
+#    solr_doc << { "has_model_s" => "info:fedora/hull-cModel:uketdObject" }
+#    solr_doc
+#  end
 
   def file_objects_append(obj)
     super(obj)
