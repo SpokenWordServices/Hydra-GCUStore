@@ -4,6 +4,7 @@ describe FileAssetsController do
 
   before do
     session[:user]='bob'
+    @controller.stubs(:update_content_metadata)
   end
 
   ## Plugin Tests
@@ -212,6 +213,7 @@ describe FileAssetsController do
     
     describe "create" do
       it "should set is_part_of relationship on the new File Asset pointing back at the container" do
+        @controller.stubs(:next_asset_pid).returns(nil)
         test_file = fixture("empty_file.txt")
         filename = "My File Name"
         post :create, {:Filedata=>test_file, :Filename=>filename, :container_id=>@test_container.pid}
@@ -219,6 +221,7 @@ describe FileAssetsController do
         retrieved_fa = FileAsset.load_instance(@test_fa.pid).relationships[:self][:is_part_of].should == ["info:fedora/#{@test_container.pid}"]
       end
       it "should retain previously existing relationships in container object" do
+        @controller.stubs(:next_asset_pid).returns(nil)
         test_file = fixture("empty_file.txt")
         filename = "My File Name"
         post :create, {:Filedata=>test_file, :Filename=>filename, :container_id=>@test_container.pid}
