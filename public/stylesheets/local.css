@@ -595,6 +595,10 @@ select#sort, select#per_page {
     border: 1px solid #FFFFFF;
 }
 
+.page_links {
+	float:left;
+}
+
  /* Local facets */
 
 .yui-t2 .yui-b {
