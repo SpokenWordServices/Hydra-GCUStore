@@ -99,7 +99,7 @@ namespace :hull do
         Rake::Task["hydra:default_fixtures:load"].invoke
         Rake::Task["hull:default_fixtures:load_dependencies"].invoke
         Rake::Task["hull:default_fixtures:load"].invoke
-        Rake::Task["spec"].invoke
+        Rake::Task["spec_without_db"].invoke
         Rake::Task["cucumber"].invoke
       end
       raise "test failures: #{error}" if error
