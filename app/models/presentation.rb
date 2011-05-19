@@ -3,6 +3,7 @@ require 'hydra'
 class Presentation < ActiveFedora::Base
 
   include Hydra::ModelMethods
+  include HullModelMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
@@ -20,16 +21,4 @@ class Presentation < ActiveFedora::Base
     m.field 'collection', :string
     m.field 'depositor', :string
   end
- 
-
-  def initialize( attrs={} )
-    super
-  end
-
- def to_solr(solr_doc=Hash.new, opts={})
-    super(solr_doc,opts)
-    solr_doc << { "has_model_s" => "info:fedora/hull-cModel:presentation" }
-    solr_doc
-  end
-
 end
