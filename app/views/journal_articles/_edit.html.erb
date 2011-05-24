@@ -29,6 +29,12 @@
   </script>
 <% end %>
 <div class="document_viewer" id="cover_container">
+  <div class="deleteDocument">
+    <%= delete_asset_link(params[:id], "article") %>
+  </div>
+  <div class="content-type-header">
+    <h1>Edit a journal article</h1>
+  </div>
   <div class="multipleEdit">
     <div id="loading" style="display:none;">
       <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
@@ -40,7 +46,6 @@
       </div>
     <% end %>
 
-    <h2>Edit a journal article</h2>
     <%= render :partial => 'journal_articles/edit_description' %>
   
     <%#
@@ -62,6 +67,6 @@
 <% sidebar_items << capture do %>
   <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
   <%#= render :partial=>'facets' %>
-  <%= delete_asset_link(params[:id], "article") %>
+
 <% end %>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

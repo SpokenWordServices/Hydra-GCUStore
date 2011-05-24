@@ -367,7 +367,7 @@ top: 0;
 /* Overriding to remove the bottom border from asset view */
 .document 
 {
- border-bottom:0px;
+  border-bottom:0px;
 }
 
 #hd
@@ -1013,6 +1013,59 @@ div.generic-download {
 	display: none;
 }
 
+/* Edit screen layout */
+
+form#document_metadata {
+	padding-bottom: 4em;
+}
+
+.multipleEdit {
+	padding-left:2em;
+}
+
+.yui-t2 .yui-b p {
+	padding-top: 0em;
+}
+
+.deleteDocument {
+	margin-left: 705px;
+	margin-top: 5px;
+}
+
+fieldset.edit-standard legend, fieldset.edit-half legend {
+	font-family: Lucida Sans, Arial, Georgia;
+	font-size: 150%;
+	font-weight: normal;
+}
+
+#contributors dl dt label {
+	font-size: 165%;
+}
+
+.edit-standard dl dt label {
+	font-size: 165%;
+}
+
+.info-multiple div.left dt label {
+	font-size: 165%;
+}
+
+.info-multiple div.right dt label {
+	font-size: 165%;
+}
+
+.form-control input {
+    background: url("/images/button-bg.png") no-repeat scroll 0 0 transparent;
+    border-width: 0 1px 1px;
+    cursor: pointer;
+    height: 30px;
+    margin: 0 0;
+    padding: 0 0.75em;
+    vertical-align: top;
+	float: left;
+	margin-right: 10px;
+}
+
 /* hide inline edit spans, etc. */
 span.editable-text, .text {
   display: none;
@@ -1056,11 +1109,13 @@ div#contributors dl dt {
   text-align: left;
   font-size: .6em;
 }
+
 fieldset.edit-standard dl dt {
   width: 53em !important;
   text-align: left;
   font-size: .6em;
 }
+
 div#contributors  dd {
  width: 53em !important;
  font-size: 1.2em;
@@ -1078,6 +1133,7 @@ fieldset.edit-standard dl dd {
  margin-bottom: .9em;
 float:left;
 }
+
 div#contributors dl dd span input {
   width: 50em;
   font-size: .8em;
@@ -1097,19 +1153,20 @@ fieldset.edit-half dl dt {
   width: 20em !important;
   text-align: left;
   font-size: .6em;
+  padding-bottom: 0.6em;
 }
 
 fieldset.edit-half dl dd {
- width: 20em !important;
- font-size: 1.2em;
- margin-left: 0px;
- margin-top: .5em;
- margin-bottom: .9em;
-float:left;
+  width: 20em !important;
+  font-size: 1.2em;
+  margin-left: 0px;
+  /* margin-top: .5em; */
+  margin-bottom: .9em;
+  float:left;
 }
 
 fieldset.edit-half dl dd input {
-  width: 20em;
+  width: 25em;
   font-size: .8em;
 }
 
@@ -1138,7 +1195,7 @@ span#journal_origin_info_date_issued-container input.editable-edit.edit {
 div.info-multiple {
   width: 80em;
   display:block;
-  margin-top: 1em;
+  /* margin-top: 1em; */
 }
 
 div.info-multiple div.left {
@@ -1168,8 +1225,6 @@ div.journal_pages {
   width:15em;
   float:left;
 }
-
-
 
 div.journal_pages dt,dd {
   width: 10em !important;
