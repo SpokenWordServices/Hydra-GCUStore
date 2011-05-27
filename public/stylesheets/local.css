@@ -1246,3 +1246,7 @@ div#subjects dd a.field {
 form.flc-uploader.fl-uploader.fl-progEnhance-enhanced {
   display:none;
 }
+
+.dd-edit-language {
+  font-size: .9em !important;
+}

@@ -29,7 +29,7 @@
         <%= contributors.join(", ") %>
       </dd>
     <% end %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date", "dd_text") %>
+	<%= display_datastream_field(@document_fedora,"descMetadata", [:journal,:part, :publication_date], "Date", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
     </dl>

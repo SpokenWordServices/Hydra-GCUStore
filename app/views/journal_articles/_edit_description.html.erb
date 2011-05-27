@@ -25,16 +25,16 @@
     <%= render :partial => 'subjects/index' %>
   </div>
     <dt>
-      <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
-    </dt>
-    <dd>
-      <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
-    </dd>
-    <dt>
       <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
     </dt>
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
+    </dt>
+    <dd>
+      <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:origin,:publisher],"Publisher") %>
@@ -48,6 +48,7 @@
     <dd>
       <%= fedora_checkbox(@document_fedora,"descMetadata", [:peer_reviewed],:multiple=>false) %> <span id="peer_reviewed">Peer reviewed</span>
     </dd>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd-edit-language") %>
   </dl>
   </fieldset>
   <fieldset class="edit-half">
@@ -64,10 +65,10 @@
         </div>
         <div class="right">
           <dt>
-            <%= fedora_field_label("descMetadata",[:journal,:origin_info,:date_issued],"Date") %>
+            <%= fedora_field_label("descMetadata",[:journal,:part,:publication_date],"Date") %>
           </dt>
           <dd>
-            <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:origin_info,:date_issued], :multiple=>false, :html_options=>{:maxlength => 4} ) %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:part,:publication_date], :multiple=>false, :html_options=>{:maxlength => 4} ) %>
           </dd>
         </div>
       </div>
@@ -110,7 +111,7 @@
         <div class="left">
           <div class="volume_issue">
             <dt>
-              <%= fedora_field_label("descMetadata",[:journal,:part,:volume],"Volume") %>
+              <%= fedora_field_label("descMetadata",[:relatedItem,:part,:volume],"Volume") %>
             </dt>
             <dd>
               <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:part,:volume], :multiple=>false, :html_options => {:maxlength=>6}) %>
