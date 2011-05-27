@@ -12,9 +12,8 @@ class DownloadsController < ApplicationController
     def index
       fedora_object = ActiveFedora::Base.load_instance(params[:asset_id])
       if params[:download_id]
-         
         @datastream = fedora_object.datastreams[params[:download_id]]
-        send_data @datastream.content, :filename=>filename_from_datastream_name_and_mime_type(params[:download_id], @datastream.attributes["mimeType"]), :type=>@datastream.attributes["mimeType"]
+        send_data @datastream.content, :filename=>filename_from_datastream_name_and_mime_type(fedora_object.pid, params[:download_id], @datastream.attributes["mimeType"]), :type=>@datastream.attributes["mimeType"]
         #send_data( Fedora::Repository.instance.fetch_custom(params[:document_id], "datastreams/#{datastream_id}/content") )
       else
         @datastreams = downloadables( fedora_object )
@@ -23,10 +22,10 @@ class DownloadsController < ApplicationController
     
     private
 
-    def filename_from_datastream_name_and_mime_type(datastream_name, mime_type)
+    def filename_from_datastream_name_and_mime_type(pid, datastream_name, mime_type)
       # if mime type exists, grab the first extension listed for the first returned mime type
       extension = MIME::Types[mime_type].length > 0 ? ".#{MIME::Types[mime_type].first.extensions.first}" : ""
-      "#{datastream_name}#{extension}"
+      "#{datastream_name}-#{pid.gsub(/:/,'_')}#{extension}"
     end
     
 end

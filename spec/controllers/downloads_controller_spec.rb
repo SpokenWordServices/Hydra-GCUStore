@@ -21,24 +21,23 @@ describe DownloadsController do
     it "should return the content of the given datastream for the object identified by the asset_id" do
       mock_ds = mock("pdf datastream", :content=>"pdf content")
       mock_ds.expects(:attributes).times(2).returns({"mimeType"=>"application/pdf"})
-      result_object = mock("result_object")
+      result_object = mock("result_object",:pid => "foo:pid")
       result_object.stubs(:datastreams).returns({"content"=>mock_ds})
       ActiveFedora::Base.expects(:load_instance).returns(result_object)
      
-      controller.expects(:filename_from_datastream_name_and_mime_type).with("content","application/pdf").returns("content.pdf")
-      controller.expects(:send_data).with("pdf content",:filename=>"content.pdf", :type=>"application/pdf")
-      get :index, :asset_id=>"_PID_", :download_id=>"content"
+      controller.expects(:send_data).with("pdf content",:filename=>"content-foo_pid.pdf", :type=>"application/pdf")
+      get :index, :asset_id=>"foo:pid", :download_id=>"content"
     end
 
   end
 
   describe "filename_from_datastream_name_and_mime_type" do
     it "should should return appropriate filenames" do
-      controller.send(:filename_from_datastream_name_and_mime_type,"foo","application/pdf").should == "foo.pdf"
-      controller.send(:filename_from_datastream_name_and_mime_type,"foo","video/x-ms-wmv").should == "foo.wmv"
-      controller.send(:filename_from_datastream_name_and_mime_type,"foo","text/plain").should == "foo.txt"
-      controller.send(:filename_from_datastream_name_and_mime_type,"foo","text/xml").should == "foo.xml"
-      controller.send(:filename_from_datastream_name_and_mime_type,"foo","image/tiff").should == "foo.tiff"
+      controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","application/pdf").should == "bar-foo_pid.pdf"
+      controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","video/x-ms-wmv").should == "bar-foo_pid.wmv"
+      controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","text/plain").should == "bar-foo_pid.txt"
+      controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","text/xml").should == "bar-foo_pid.xml"
+      controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","image/tiff").should == "bar-foo_pid.tiff"
     end
   end
 
