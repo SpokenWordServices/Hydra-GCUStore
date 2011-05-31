@@ -12,14 +12,14 @@
             </dt>
             <dd class="multi_inline subject">
             <%= fedora_text_field(@document_fedora,"descMetadata", [{:subject=>subject_counter}, :topic], :multiple=>true) %>
-            <%= link_to("+", new_subject_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+            <%= link_to(image_tag("/images/add.png",:border=>0), new_subject_path(:asset_id=>params[:id], :content_type => @content_type)) %>
           <% else %>
             <dd class="multi_inline subject">
             <%= fedora_text_field(@document_fedora,"descMetadata", [{:subject=>subject_counter}, :topic], :multiple=>true) %>
           <% end %>
           <% if ( (subject_counter > 0) && (params[:action] == "edit" || params[:action] == "create") && !subject_values.strip.empty? ) %>
             <%= field_selectors_for("descMetadata", [{:subject=>subject_counter}]) %>
-            <%= link_to( "-", asset_path(@document_fedora.pid, "subject", subject_counter), :method=>:delete, :class => "destructive destroy_subject", :title=>"Delete #{subject_value}") %>
+            <%= link_to( image_tag("/images/remove.png",:border=>0), asset_path(@document_fedora.pid, "subject", subject_counter), :method=>:delete, :class => "destructive destroy_subject", :title=>"Delete #{subject_value}") %>
           <% end %>
       <% else %>
           <dt>

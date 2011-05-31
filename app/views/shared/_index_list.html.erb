@@ -12,7 +12,7 @@
 	</dd>
    <dt><%= pluralize(document.get(:subject_topic_t, :sep=>';').count(';') + 1,"Subject")[2..-1] %></dt>
     <dd>
-      <%= document.get(:subject_topic_t, :sep=>'; ') %>
+      <%= document.get(:subject_topic_t, :sep=>'||').split("||").uniq.join("; ") %>
     </dd>
   <dt>Language</dt>
     <dd>

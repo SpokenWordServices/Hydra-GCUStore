@@ -24,7 +24,7 @@ module HydraFedoraMetadataHelper
       base_id = generate_base_id(field_name, current_value, field_values, opts)
       name = "asset[#{datastream_name}][#{field_name}][#{z}]"
       body << "<#{container_tag_type.to_s} class=\"editable-container field\" id=\"#{base_id}-container\">"
-        delete_link= field_key_specific_delete_link(field_name,z,resource.pid,"-", current_value)
+        delete_link= field_key_specific_delete_link(field_name,z,resource.pid,image_tag("/images/remove.png",:border=>0), current_value)
         body << "<span class=\"editable-text text\" id=\"#{base_id}-text\">#{h(current_value)}</span>"
         html_options.merge!({:class=>"editable-edit edit", 'data-datastream-name' => datastream_name, :rel => field_name,:id=>base_id})
         inputtag = text_field_tag name, h(current_value), html_options
