@@ -2,23 +2,56 @@
 
 	<div class="homeCol1">
 		<h1>Welcome to the Hull Hydra site!</h1>
-                <p>
-                This site is under active development and should not be used yet as a reliable repository.  Hull's current repository, eDocs, is available to University users through the <a href="https://port.hull.ac.uk" target="_blank">university portal </a> or to the public through <a href="https://edocs.hull.ac.uk" target="_blank">https://edocs.hull.ac.uk</a>.
-                <p>
-		You have no search selected.  Create a search by adding a search term in the box above and/or by using the filters at the left of the screen.
-						<p>
-						<h2>Popular searches:</h2>
-						<div class="iconContainer">	
-								<div class="iconCol1"><a href="http://hydra.hull.ac.uk/?f[genre_facet][]=Photograph"><img src="/images/uni.jpg"><br>Images</a></div>
-								<div class="iconCol2"><a href="http://hydra.hull.ac.uk/?f[genre_facet][]=Thesis+or+Dissertation"><img src="/images/etd.jpg"><br>ETD collection</a></div>
-								<div class="iconCol3"><a href="http://hydra.hull.ac.uk/?f[subject_facet][]=Hydra"><img src="/images/hydra.jpg"><br>Hydra materials</a></div>
+		<p>This site is under active development and should not be used yet as a reliable repository.  Hull's current repository, eDocs, is available to University users through the <a href="https://port.hull.ac.uk" target="_blank">university portal </a> or to the public through <a href="https://edocs.hull.ac.uk" target="_blank">https://edocs.hull.ac.uk</a>.</p><br/>
+		<p>You have no search selected.  Create a search by adding a search term in the box above and/or by using the filters at the left of the screen.</p><br/>
+
 		
-						</div>
-	</div>
+
+	<% if current_user %>
+
+		<% user_groups = RoleMapper.roles(current_user.login) %>
+	
+		<% if user_groups.include? 'contentAccessTeam' %>
+
+			<div class="iconContainer">
+				<h2>Popular searches</h2>
+
+				<div class="iconCol1"><a href="http://hydra.hull.ac.uk/?f[genre_facet][]=Photograph"><img src="/images/uni.jpg"></a><p>Images</p></div>
+				<div class="iconCol2"><a href="http://hydra.hull.ac.uk/?f[genre_facet][]=Thesis+or+Dissertation"><img src="/images/etd.jpg"></a><p>ETD Collection</p></div>
+				<div class="iconCol3"><a href="http://hydra.hull.ac.uk/?f[subject_facet][]=Hydra"><img src="/images/hydra.jpg"></a><p>Hydra Materials</p></div>
+			</div>
+
+		<% elsif user_groups.include? 'staff' %>
+			<h2>Popular searches</h2>
+			<div class="iconContainer">
+				
+				<div class="iconCol1"><a href="http://localhost:3000/?f[object_type_facet][]=Meeting+paper"><img src="/images/uni.jpg"></a><p>Meeting papers</p></div>
+				<div class="iconCol2"><a href="http://localhost:3000/?f[object_type_facet][]=Presentation"><img src="/images/etd.jpg"></a><p>Presentations</p></div>
+			</div>
+
+		<% elsif user_groups.include? 'student' %>
+
+			<div class="iconContainer">
+				<h2>Popular searches</h2>
+				<div class="iconCol1"><a href="http://localhost:3000/?f[object_type_facet][]=Examination+paper"><img src="/images/uni.jpg"></a><p>Exam Papers</p></div>
+				<div class="iconCol2"><a href="http://localhost:3000/?f[object_type_facet][]=Thesis+or+dissertation"><img src="/images/etd.jpg"></a><p>Thesis or Dissertations</p></div>
+			</div>
+
+		<% end %>
+	
+	<% else %>
+
+		<!-- Public searches/content here -->
+
+	<% end %>
+
+	
+
+</div>
 
 	<div class="homeCol2">
 		<h3>About Hydra</h3>
-			The Hydra project is developing a new repository for digital materials at the University of Hull.  This will eventually replace the eDocs system that has been in use for some time. The new repository can hold and manage any type of digital material, and is being developed in response to the growth in the amount of digital material that is generated through the research, education and administrative activities within the University. The repository is particularly well suited for materials that can be shared (openly or on a restricted basis) and/or where the material needs to be preserved for the medium to long-term. Materials currently being managed through the eDocs repository include images, project reports, undergraduate dissertations, teaching materials, datasets, collections of past exam papers and doctoral theses.
+			<p>The Hydra project is developing a new repository for digital materials at the University of Hull.  This will eventually replace the eDocs system that has been in use for some time. The new repository can hold and manage any type of digital material, and is being developed in response to the growth in the amount of digital material that is generated through the research, education and administrative activities within the University. The repository is particularly well suited for materials that can be shared (openly or on a restricted basis) and/or where the material needs to be preserved for the medium to long-term. Materials currently being managed through the eDocs repository include images, project reports, undergraduate dissertations, teaching materials, datasets, collections of past exam papers and doctoral theses.</p>
 			<p>The repository is being developed by Library &amp; Learning Innovation and ICTD at the University working in close co-operation with other members of  the academic community.</p>
 	</div>
 
