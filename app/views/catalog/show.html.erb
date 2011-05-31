@@ -4,6 +4,11 @@
   <div id="shlowUtils">
   <div class="tools"><%= render :partial => 'show_tools' %></div>
     <span class="back_to_cat"><%= link_back_to_catalog :label=>'&laquo; Back to Results' %></span>
+    <% if editor? %>
+      <span class="edit-browse">
+        <%= edit_and_browse_links %>
+      </span>
+    <% end %>
     <% if @previous_document || @next_document %>
       <div id="previousNextDocument">
 	    <span class="previous"><%= link_to_previous_document(@previous_document) %></span>
