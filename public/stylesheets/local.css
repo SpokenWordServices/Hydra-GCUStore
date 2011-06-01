@@ -1028,8 +1028,15 @@ form#document_metadata {
 }
 
 .deleteDocument {
-	margin-left: 705px;
+	margin-left: 715px;
+	margin-top: 15px;
+}
+
+.set-controls {
 	margin-top: 5px;
+	line-height: 1.8em;
+	float: right;
+	margin-right: 75px;
 }
 
 fieldset.edit-standard legend, fieldset.edit-half legend {
@@ -1250,12 +1257,15 @@ form.flc-uploader.fl-uploader.fl-progEnhance-enhanced {
 .dd-edit-language {
   font-size: .9em !important;
 }
+
 span.toggle.edit {
+  margin-left: 2em;	
+}
+	
+a.toggle.edit {	
   margin-left: 2em;
 }
-a.toggle.edit {
-  margin-left: 2em;
-}
+
 span.edit-browse {
-  margin-left: 290px;
+  margin-left: 20px;
 }
