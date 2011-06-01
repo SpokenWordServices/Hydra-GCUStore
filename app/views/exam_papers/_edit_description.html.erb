@@ -1,0 +1,91 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"exam_paper")%>" method="post" data-resourceType="exam_paper" accept-charset="utf-8" >
+  <% @content_type = "exam_paper" %>
+  <% choices = ObjectMods.language_relator_terms %>
+  <input type="hidden" name="content_type" value="exam_paper" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+<!--
+  <fieldset class="edit-standard">
+  <legend>Author</legend>
+  <div id="contributors">
+    <%= render :partial => 'contributors/index' %>
+  </div>
+  </fieldset>
+-->
+
+  <fieldset class="edit-standard">
+  <legend>Module(s)</legend>
+  <dl>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:module,:code],"Code") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:module, :code], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:module,:name],"Name") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:module, :name], :multiple=>false) %>
+    </dd>
+  <div id="subjects">
+    <%= render :partial => 'subjects/index' %>
+  </div>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:exam_level],"Examination level") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:exam_level], :multiple=>false) %>
+    </dd>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:origin,:exam_date],"Examination date") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:exam_date], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
+    </dd>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:note],"Additional notes") %>
+    </dt>
+    <dd>
+      <%= fedora_text_area(@document_fedora,"descMetadata",[:note], :multiple=>false) %>
+    </dd>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:organization, :namePart], "Department") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:organization, :namePart], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:origin,:publisher],"Publisher") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:publisher], :multiple=>false) %>
+    </dd>
+    <dt>
+	  <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
+	</dt>
+	<dd>
+	  <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
+	</dd>
+  </dl>
+  </fieldset>
+
+  <input type="hidden"  name="_method" value="put"/>
+  
+   <div>
+    <div class="form-control">
+      <%= submit_tag "Save" %>
+    </div>
+    <div class="form-control">  
+      <%= submit_tag "Submit" %>
+    </div>
+  </div>
+</form>
+
+</form>
