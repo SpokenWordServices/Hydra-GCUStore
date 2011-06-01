@@ -16,28 +16,48 @@
 
 			<div class="iconContainer">
 				<h2>Popular searches</h2>
-
-				<div class="iconCol1"><a href="/?f[object_type_facet][]=Examination+paper&results_view=true"><img src="/images/uni.jpg"></a><p>Examination papers</p></div>
-				<div class="iconCol2"><a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true"><img src="/images/etd.jpg"></a><p>ETD collections</p></div>
-				<div class="iconCol3"><a href="/?f[object_type_facet][]=Journal+article&results_view=true"><img src="/images/hydra.jpg"></a><p>Journal articles</p></div>
+				<br/>
+				<div class="iconCol1">
+					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
+				</div>
+				<div class="iconCol2">
+					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">ETD collections<br/><br/><img src="/images/theses.jpg"></a>
+				</div>
+				<div class="iconCol3">
+					<a href="/?f[object_type_facet][]=Journal+article&results_view=true">Student handbook<br/><br/><img src="/images/handbook.jpg"></a>
+				</div>
 			</div>
 
 		<% elsif user_groups.include? 'staff' %>
-			<h2>Popular searches</h2>
+
 			<div class="iconContainer">
-				
-				<div class="iconCol1"><a href="http://localhost:3000/?f[object_type_facet][]=Meeting+paper"><img src="/images/uni.jpg"></a><p>Meeting papers</p></div>
-				<div class="iconCol2"><a href="http://localhost:3000/?f[object_type_facet][]=Presentation"><img src="/images/etd.jpg"></a><p>Presentations</p></div>
-				<div class="iconCol3"></div>
+				<h2>Popular searches</h2>
+				<br/>
+				<div class="iconCol1">
+					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
+				</div>
+				<div class="iconCol2">
+					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">ETD collections<br/><br/><img src="/images/theses.jpg"></a>
+				</div>
+				<div class="iconCol3">
+					<a href="/?f[object_type_facet][]=Journal+article&results_view=true">Student handbook<br/><br/><img src="/images/handbook.jpg"></a>
+				</div>
 			</div>
 
 		<% elsif user_groups.include? 'student' %>
 
 			<div class="iconContainer">
 				<h2>Popular searches</h2>
-				<div class="iconCol1"><a href="http://localhost:3000/?f[object_type_facet][]=Examination+paper"><img src="/images/uni.jpg"></a><p>Exam Papers</p></div>
-				<div class="iconCol2"><a href="http://localhost:3000/?f[object_type_facet][]=Thesis+or+dissertation"><img src="/images/etd.jpg"></a><p>Thesis or Dissertations</p></div>
-				<div class="iconCol3"></div>
+				<br/>
+				<div class="iconCol1">
+					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
+				</div>
+				<div class="iconCol2">
+					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">ETD collections<br/><br/><img src="/images/theses.jpg"></a>
+				</div>
+				<div class="iconCol3">
+					<a href="/?f[object_type_facet][]=Journal+article&results_view=true">Student handbook<br/><br/><img src="/images/handbook.jpg"></a>
+				</div>
 			</div>
 
 		<% end %>

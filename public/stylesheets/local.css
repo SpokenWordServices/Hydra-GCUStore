@@ -352,6 +352,8 @@ top: 0;
 
 .iconCol1, .iconCol2, .iconCol3 {width: 32%;}
 
+html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.homeCol1 div.iconContainer div.iconCol1 a span#icon-title
+
 /* Overriding to remove the left border from catalog pages */
 
 .yui-t1 #yui-main .yui-b, .yui-t2 #yui-main .yui-b, .yui-t3 #yui-main .yui-b 
