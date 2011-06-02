@@ -28,20 +28,20 @@
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:module, :name], :multiple=>false) %>
     </dd>
-  <div id="subjects">
-    <%= render :partial => 'subjects/index' %>
-  </div>
-	<dt>
-      <%= fedora_field_label("descMetadata",[:exam_level],"Examination level") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:exam_level], :multiple=>false) %>
-    </dd>
 	<dt>
       <%= fedora_field_label("descMetadata",[:origin,:exam_date],"Examination date") %>
     </dt>
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:exam_date], :multiple=>false) %>
+    </dd>
+	<div id="subjects">
+	  <%= render :partial => 'subjects/index' %>
+	</div>
+	<dt>
+      <%= fedora_field_label("descMetadata",[:exam_level],"Examination level") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:exam_level], :multiple=>false) %>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
