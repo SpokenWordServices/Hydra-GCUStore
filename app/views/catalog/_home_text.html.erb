@@ -31,7 +31,7 @@
 		<% elsif user_groups.include? 'staff' %>
 
 			<div class="iconContainer">
-				<h2>Popular searches</h2>
+				<h2>Popular staff searches</h2>
 				<br/>
 				<div class="iconCol1">
 					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
@@ -47,7 +47,7 @@
 		<% elsif user_groups.include? 'student' %>
 
 			<div class="iconContainer">
-				<h2>Popular searches</h2>
+				<h2>Popular student searches</h2>
 				<br/>
 				<div class="iconCol1">
 					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
@@ -63,9 +63,21 @@
 		<% end %>
 	
 	<% else %>
-
 		<!-- Public searches/content here -->
 
+		<div class="iconContainer">
+				<h2>Popular searches</h2>
+				<br/>
+				<div class="iconCol1">
+					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">ETD collections<br/><br/><img src="/images/theses.jpg"></a>
+				</div>
+				<div class="iconCol2">
+					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">University policies<br/><br/><img src="/images/policy.jpg"></a>
+				</div>
+				<div class="iconCol3">
+					<a href="/?f[object_type_facet][]=Journal+article&results_view=true">Domesday dataset<br/><br/><img src="/images/domesday.jpg"></a>
+				</div>
+			</div>
 	<% end %>
 
 	
