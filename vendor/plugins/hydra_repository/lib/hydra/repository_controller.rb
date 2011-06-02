@@ -19,14 +19,38 @@ module Hydra::RepositoryController
   
   include MediaShelf::ActiveFedoraHelper
       
+      
+  
+  
   def self.included(c)
     if c.respond_to?(:helper_method)
       c.helper_method :solr_name
+      c.helper_method :format_pid
     end
   end
   
+  
+  #
+  # This method converts pid strings into xhtml safe IDs, since xhmlt expects namespaces to be defined. 
+  # I.E. hydrus:123 = hydrus_123
+  def format_pid(pid)
+    h(pid.gsub(":", "_"))
+  end
+  
+  
+  
   def solr_name(field_name, field_type = :text)
     ::ActiveFedora::SolrService.solr_name(field_name, field_type)
+  end
+  
+  # Uses submitted params Hash to figure out what Model to load
+  # params should contain :content_type and :id
+  def load_document_from_params
+    af_model = retrieve_af_model(params[:content_type])
+    unless af_model 
+      af_model = HydrangeaArticle
+    end
+    return af_model.find(params[:id])
   end
   
   # Returns a list of datastreams for download.
