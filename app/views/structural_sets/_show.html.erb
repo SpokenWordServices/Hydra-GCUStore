@@ -1,0 +1,18 @@
+<% if params[:files] %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#accordion").accordion({active: 1});
+    });
+  </script>
+<% end %>
+
+
+<% javascript_includes << "/plugin_assets/fluid-infusion/infusion-1.2-src/lib/jquery/ui/js/jquery.ui.accordion.js" %>
+<% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
+
+<div class="document_viewer" id="cover_container">  
+  <div class="content-type-header">
+  <h1>Structural set</h1></div>
+  <%= render :partial => 'structural_sets/show_description' %>
+</div>
+
