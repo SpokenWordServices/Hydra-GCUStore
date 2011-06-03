@@ -820,14 +820,16 @@ div#journal dd {
 #index_list dt {
 	color: #898989;
     float: left;
-    margin-right: 1em;
+    /* margin-right: 1em; */
     text-align: right;
     width: 8em;
 }
 
 #index_list dd {
-	width:46em !important;
+	float: right;
+    margin-left: 0 !important;
     text-align: left;
+    width: 41em !important;
 }
 
 div#genre_image {
