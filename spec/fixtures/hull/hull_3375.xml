@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<foxml:digitalObject VERSION="1.1" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd" PID="hull:3375" xmlns:foxml="info:fedora/fedora-system:def/foxml#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <foxml:objectProperties>
+    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active" />
+    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="PhD - " />
+    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin" />
+    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject" />
+  </foxml:objectProperties>
+  <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+    <foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/">
+      <foxml:xmlContent>
+        <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>PhD</dc:title>
+          <dc:date></dc:date>
+          <dc:type>structuralSet</dc:type>
+          <dc:identifier>hull:3375</dc:identifier>
+          <dc:language></dc:language>
+        </oai_dc:dc>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+    <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
+      <foxml:binaryContent>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtb2RzIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL3d3dy5sb2MuZ292L21vZHMvdjMgaHR0cDovL3d3dy5sb2MuZ292L3N0YW5kYXJkcy9tb2RzL3YzL21vZHMtMy00LnhzZCIgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj4NCiAgPHRpdGxlSW5mbz4NCiAgICA8dGl0bGU+UGhEPC90aXRsZT4NCiAgPC90aXRsZUluZm8+DQogIDx0eXBlT2ZSZXNvdXJjZSBjb2xsZWN0aW9uPSJ5ZXMiPnRleHQ8L3R5cGVPZlJlc291cmNlPg0KICA8Z2VucmU+c3RydWN0dXJhbFNldDwvZ2VucmU+DQogIDxvcmlnaW5JbmZvPg0KICAgIDxwdWJsaXNoZXI+VGhlIFVuaXZlcnNpdHkgb2YgSHVsbDwvcHVibGlzaGVyPg0KICA8L29yaWdpbkluZm8+DQogIDxzdWJqZWN0IGF1dGhvcml0eT0iVW9IIiAvPg0KICA8aWRlbnRpZmllciB0eXBlPSJmZWRvcmEiPmh1bGw6MzM3NTwvaWRlbnRpZmllcj4NCiAgPGxvY2F0aW9uPg0KICAgIDx1cmwgYWNjZXNzPSJyYXcgb2JqZWN0Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9yZXNvdXJjZXMvaHVsbDozMzc1PC91cmw+DQogIDwvbG9jYXRpb24+DQogIDxyZWNvcmRJbmZvPg0KICAgIDxyZWNvcmRDb250ZW50U291cmNlPlRoZSBVbml2ZXJzaXR5IG9mIEh1bGw8L3JlY29yZENvbnRlbnRTb3VyY2U+DQogICAgPHJlY29yZENyZWF0aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIiAvPg0KICAgIDxyZWNvcmRDaGFuZ2VEYXRlIGVuY29kaW5nPSJ3M2NkdGYiIC8+DQogICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPg0KICAgICAgPGxhbmd1YWdlVGVybSBhdXRob3JpdHk9ImlzbzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+DQogICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4NCiAgPC9yZWNvcmRJbmZvPg0KPC9tb2RzPg==</foxml:binaryContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+    <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0">
+      <foxml:xmlContent>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:fedora-model="info:fedora/fedora-system:def/model#">
+          <rdf:Description rdf:about="info:fedora/hull:3375">
+            <rel:isMemberOf rdf:resource="info:fedora/hull:3374" />
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:structuralSet" />
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata" />
+          </rdf:Description>
+        </rdf:RDF>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+  <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+    <foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" MIMETYPE="text/xml">
+      <foxml:xmlContent>
+        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+          <copyright>
+            <human></human>
+            <machine />
+          </copyright>
+          <access type="discover">
+            <human />
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="read">
+            <human />
+            <machine>
+              <group>public</group>
+            </machine>
+          </access>
+          <access type="edit">
+            <human />
+            <machine>
+              <group>contentAccessTeam</group>
+            </machine>
+          </access>
+          <use>
+            <human />
+            <machine />
+          </use>
+          <embargo>
+            <human />
+            <machine />
+          </embargo>
+        </rightsMetadata>
+      </foxml:xmlContent>
+    </foxml:datastreamVersion>
+  </foxml:datastream>
+</foxml:digitalObject>
