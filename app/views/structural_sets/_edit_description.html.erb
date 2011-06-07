@@ -1,6 +1,6 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"structural_set")%>" method="post" data-resourceType="journal_article" accept-charset="utf-8" >
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"structural_set")%>" method="post" data-resourceType="structural_set" accept-charset="utf-8" >
   <% @content_type = "structural_set" %>
-  <input type="hidden" name="content_type" value="journal_article" />
+  <input type="hidden" name="content_type" value="structural_set" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
   <fieldset class="edit-standard">
   <legend>Structural set</legend>
