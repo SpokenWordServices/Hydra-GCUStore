@@ -34,6 +34,12 @@
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:exam_date], :multiple=>false) %>
     </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:title],"Examination paper (Examination title; if different from module name)") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:title], :multiple=>false) %>
+    </dd>
 	<div id="subjects">
 	  <%= render :partial => 'subjects/index' %>
 	</div>
