@@ -9,3 +9,7 @@
 # NOTE: For your development environment, also specify the module in lib/user_attributes_loader.rb
 User.send(:include, Hydra::GenericUserAttributes)
 
+HULL_QUEUES = {
+  "info:fedora/hull:3976" => :proto,
+  "info:fedora/hull:732" => :publish
+}
