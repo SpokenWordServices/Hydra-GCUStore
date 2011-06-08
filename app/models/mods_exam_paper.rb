@@ -17,6 +17,7 @@ class ModsExamPaper < ObjectMods
        t.topic
     }
     t.genre
+	t.type_of_resource(:path=>"typeOfResource")
  
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
@@ -63,11 +64,23 @@ class ModsExamPaper < ObjectMods
      t.combined_display(:path=>"abstract", :attributes=>{:displayLabel=>"Module display"}, :index_as=>[:facetable])
     }
 
+	t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
+
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
-	t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
+	  t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
 
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+
+	t.physical_description(:path=>"physicalDescription") {
+	  t.internet_media_type(:path=>"internetMediaType")
+	  t.digital_origin(:path=>"digitalOrigin")
+	}
+
+	t.location {
+		t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+		t.raw_object (:path=>"url", :attributes=>{:access=>"raw object"})
+	}
 
 
   end
@@ -90,7 +103,7 @@ class ModsExamPaper < ObjectMods
                  xml.roleTerm(:type=>"text")
                }
              }
-             xml.typeOfResource
+			 xml.typeOfResource
              xml.genre
              xml.originInfo {
                xml.publisher
@@ -116,7 +129,7 @@ class ModsExamPaper < ObjectMods
                  xml.title
                }
                xml.identifier(:type=>"moduleCode")
-	       xml.abstract(:displayLabel=>"Module display")
+	           xml.abstract(:displayLabel=>"Module display")
              }
              xml.location {
                xml.url(:usage=>"primary display", :access=>"object in context")
