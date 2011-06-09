@@ -42,7 +42,7 @@
 	</div>
   </div>
   <div class="content-type-header">
-    <h1>Create\Edit an examination paper</h1>
+    <h1>Edit an examination paper</h1>
   </div>
   <div class="multipleEdit">
     <div id="loading" style="display:none;">
@@ -55,8 +55,10 @@
       </div>
     <% end %>
 
-    <%= render :partial => 'exam_papers/edit_description' %>
-  
+	<!-- logic to be added to determine which edit partial to render -->
+    <%= render :partial => 'exam_papers/edit_description_qa' %>
+    
+	<!-- logic to be added to determine whether to render upload control -->
     <h2>Upload Content</h2>
     <div class="uploads">
       <div id='uploader'>

@@ -3,12 +3,27 @@ require File.expand_path(File.dirname(__FILE__)+'/../spec_helper')
 class TestClassOne < ActiveFedora::Base
   include HullModelMethods
 
-
   def owner_id
     "fooAdmin"
   end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:3976"
+  end
+
 end
 
+class TestClassTwo < UketdObject
+  def owner_id
+    "fooAdmin"
+  end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:3976"
+  end
+end
 
 describe HullModelMethods do
   before(:each) do
@@ -56,5 +71,17 @@ describe HullModelMethods do
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"
     end
   end
-
+  
+  describe "queue_membership" do
+    it "should list all the queues of which the object asserts is_member_of" do
+      @testclassone.queue_membership.should == [:proto]
+    end
+    it "should move the object from one queue to the next if ojbect's state is valid" do
+      testclasstwo = TestClassTwo.new
+      testclasstwo.expects(:valid_for_publish_queue?).returns(true)
+      testclasstwo.queue_membership.should == [:proto]
+      testclasstwo.change_queue_membership(:publish)
+      testclasstwo.queue_membership.should == [:publish]
+    end
+  end
 end

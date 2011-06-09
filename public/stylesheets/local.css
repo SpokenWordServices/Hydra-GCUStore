@@ -721,6 +721,10 @@ div#description dl dt {
    width: 41em !important;
 }
 
+dd.display {
+	font-size: 1em !important;
+}
+
 label {
     color: #898989;
     font-weight: normal;
