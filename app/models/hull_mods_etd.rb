@@ -47,6 +47,7 @@ class HullModsEtd < ObjectMods
       t.part(:path=>"namePart",:index_as=>[:facetable])
     }
     t.genre(:path=>'genre')
+	t.type_of_resource(:path=>"typeOfResource")
     t.qualification_level(:path=>"note", :attributes=>{:type=>"qualificationLevel"})
     t.qualification_name(:path=>"note", :attributes=>{:type=>"qualificationName"})
     t.origin_info(:path=>'originInfo') {
@@ -59,7 +60,18 @@ class HullModsEtd < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
-    t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
+
+	t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
+
+	t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
+	  t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
+    }
+
+	t.location {
+	  t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+	  t.raw_object (:path=>"url", :attributes=>{:access=>"raw object"})
+    }
+	
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]
@@ -81,6 +93,7 @@ class HullModsEtd < ObjectMods
                }
              }
              xml.genre(:authority=>"marcgt")
+			 xml.typeOfResource
              xml.language {
                xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
@@ -90,6 +103,7 @@ class HullModsEtd < ObjectMods
                xml.topic
              }
              xml.identifier(:type=>"fedora")
+			 xml.abstract(:displayLabel=>"Module display")
              xml.originInfo {
                xml.publisher
                xml.dateIssued

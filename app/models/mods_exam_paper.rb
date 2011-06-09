@@ -73,7 +73,7 @@ class ModsExamPaper < ObjectMods
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
 
 	t.physical_description(:path=>"physicalDescription") {
-	  t.internet_media_type(:path=>"internetMediaType")
+	  t.mime_type(:path=>"internetMediaType")
 	  t.digital_origin(:path=>"digitalOrigin")
 	}
 
@@ -116,7 +116,7 @@ class ModsExamPaper < ObjectMods
              }
              xml.physicalDescription {
                xml.extent
-               xml.internetMediaType
+               xml.mediaType
                xml.digitalOrigin 
              }
              xml.abstract(:displayLabel=>"Examination level")

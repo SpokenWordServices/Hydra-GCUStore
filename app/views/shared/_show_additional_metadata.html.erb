@@ -3,7 +3,7 @@
       <dl>
 	    <%= display_datastream_field(@document_fedora,"descMetadata", [:type_of_resource], "typeOfResource", "display") %>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "genre", "display") %>
-		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :internet_media_type], "internetMediaType", "display") %>
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :mime_type], "internetMediaType", "display") %>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :digital_origin], "digitalOrigin", "display") %>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "identifier", "display") %>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:location, :primary_display], "Splash URL", "display") %>

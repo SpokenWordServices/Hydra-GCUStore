@@ -32,8 +32,17 @@
   <div class="deleteDocument">
     <%= delete_asset_link(params[:id], "article") %>
   </div>
+  <div class="set-controls">
+    <!-- holder for create/move set controls -->
+	<div class="create">
+		<a href="">Create a new set</a>
+	</div>
+	<div class="move">
+		<a href="">Move to a new set</a>
+	</div>
+  </div>
   <div class="content-type-header">
-    <h1>Edit an ETD</h1>
+    <h1>Edit a thesis or dissertation</h1>
   </div>
   <div class="multipleEdit">
     <div id="loading" style="display:none;">
@@ -46,7 +55,7 @@
       </div>
     <% end %>
 
-    <%= render :partial => 'uketd_objects/edit_description' %>
+    <%= render :partial => 'uketd_objects/edit_description_qa' %>
     <h2>Upload Content</h2>
     <div class="uploads">
       <div id='uploader'>
