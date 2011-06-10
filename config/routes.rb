@@ -32,7 +32,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login "login", :controller => "webauth_sessions", :action => "new"
   map.logout "logout", :controller => "webauth_sessions", :action => "destroy"
   map.superuser 'superuser', :controller => 'user_sessions', :action => 'superuser'
-
+  
+  map.change_queue 'work_flow/:content_type/:id/:workflow_step', :controller =>:work_flow, :action=>:update, :conditions=>{:method=>:put}
+  
   map.datastream_content 'assets/:id/datastreams/:datastream', :controller=>:file_assets, :action=>:show, :conditions => {:method => :get}
   map.download_datastream_content 'assets/:asset_id/:download_id', :controller=>:downloads, :action=>:index, :conditions => {:method => :get}
   #map.download_datastream_content maps this #http://localhost:3000/assets/hull:3058/content to #http://localhost:3000/assets/hull:3058/downloads?download_id=content

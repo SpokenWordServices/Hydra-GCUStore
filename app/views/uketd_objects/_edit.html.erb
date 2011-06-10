@@ -40,13 +40,19 @@
       <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
       </img>
     </div>
+<!--
     <% if flash[:notice] %>
       <div class="notice">
         <%= flash[:notice] %>
       </div>
+    <% elsif flash[:error] %>
+      <div class="error">
+        <%= flash[:error] %>
+      </div>
     <% end %>
-
+-->
     <%= render :partial => 'uketd_objects/edit_description' %>
+
     <h2>Upload Content</h2>
     <div class="uploads">
       <div id='uploader'>
@@ -54,7 +60,6 @@
         <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => 'application/pdf' }, :container_content_type=>"uketd_object" } %>
       </div>
 	  </div>
-
  
   </div>
 </div>
