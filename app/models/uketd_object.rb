@@ -27,23 +27,22 @@ class UketdObject < ActiveFedora::Base
     m.field 'depositor', :string
   end
 
+  has_workflow_validation :qa do
+    errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
+    validates_presence_of "descMetadata",[:title]
+    validates_presence_of("descMetadata",[:name,:namePart])
+    validates_presence_of("descMetadata",[:subject_topic])
+    validates_presence_of("descMetadata",[:language,:lang_code])
+    validates_presence_of("descMetadata",[:origin_info,:publisher])
+    validates_presence_of("descMetadata",[:qualification_level])
+    validates_presence_of("descMetadata",[:qualification_name])
+    is_valid?
+  end
+
+
   def file_objects_append(obj)
     super(obj)
     # add handler for updating contentMetadata datastreams    
   end
 
-  def valid_for_publish_queue?
-    validate do
-      validates_presence_of("descMetadata",[:title])
-      validates_presence_of("descMetadata",[:name,:namePart])
-      validates_presence_of("descMetadata",[:subject_topic])
-      validates_presence_of("descMetadata",[:language,:lang_code])
-      validates_presence_of("descMetadata",[:origin_info,:publisher])
-      validates_presence_of("descMetadata",[:qualification_level])
-      validates_presence_of("descMetadata",[:qualification_name])
-      validates_presence_of("descMetadata",[:physical_description,:extent])
-
-      validates_format_of("descMetadata",[:origin_info,:date_issued],:message=>"is not valid",:with=>/^\d\d\d\d$/)
-    end
-  end
 end

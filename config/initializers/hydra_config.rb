@@ -11,5 +11,5 @@ User.send(:include, Hydra::GenericUserAttributes)
 
 HULL_QUEUES = {
   "info:fedora/hull:3976" => :proto,
-  "info:fedora/hull:732" => :publish
+  "info:fedora/hull:732" => :qa
 }
