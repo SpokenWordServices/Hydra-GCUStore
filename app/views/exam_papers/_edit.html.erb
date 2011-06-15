@@ -55,8 +55,7 @@
       </div>
     <% end %>
 
-	<!-- logic to be added to determine which edit partial to render -->
-    <%= render :partial => 'exam_papers/edit_description_qa' %>
+		<%= display_edit_form(@document_fedora, "exam_paper") %>
     
 	<!-- logic to be added to determine whether to render upload control -->
     <h2>Upload Content</h2>

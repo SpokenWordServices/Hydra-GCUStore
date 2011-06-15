@@ -10,6 +10,9 @@
 User.send(:include, Hydra::GenericUserAttributes)
 
 HULL_QUEUES = {
-  "info:fedora/hull:3976" => :proto,
-  "info:fedora/hull:732" => :qa
+  "info:fedora/hull:protoQueue" => :proto,
+  "info:fedora/hull:QAQueue" => :qa
+}
+GROUP_PERMISSIONS = {
+	"create_resources" => ["contentAccessTeam"]
 }

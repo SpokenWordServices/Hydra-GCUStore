@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # overwriting blacklight /catalog routes with /resources
   map.root :controller => 'catalog', :action => 'index'
+  map.new_resource 'resources/create', :controller=>:catalog, :action=>:create
   map.resources(:catalog,
     :as => 'resources',
     :only => [:index, :show, :update],
@@ -22,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   # Load Blacklight's routes and add edit_catalog named route
   Blacklight::Routes.build map
   map.edit_catalog 'resources/:id/edit', :controller=>:catalog, :action=>:edit
-  
+    
   #map.root :controller => 'collections', :action=>'index'
   # map.resources :assets do |assets|
   #   assets.resources :downloads, :only=>[:index]
