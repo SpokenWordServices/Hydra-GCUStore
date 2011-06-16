@@ -82,7 +82,7 @@ module CatalogHelper
 
 	def create_resource_link
 		if has_create_permissions
-			  link_to "Create Resource", :action => "create"
+			  link_to "Create Resource", :controller => "work_flow", :action => "new"
 		end
 	end
 

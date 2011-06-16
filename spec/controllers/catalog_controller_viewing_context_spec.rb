@@ -64,26 +64,5 @@ describe CatalogController do
       get :edit, :id=>"hydrangea:fixture_mods_article1"
       response.should_not redirect_to(:action => 'show')
     end
-  end
-
-	describe "create" do
-		it "should enforce create permissions, redirecting to show index and resetting session context if user does not have create permissions" do
-			mock_user = mock("User")
-      mock_user.stubs(:login).returns("student1")
-      mock_user.stubs(:is_being_superuser?).returns(false)
-      controller.stubs(:current_user).returns(mock_user)
-
-			get :create
-			response.should redirect_to(:action => 'index')
-		end
-  	it "should render normally if user has create permissions" do
-      mock_user = stub("User", :login=>"contentAccessTeam1")
-      controller.stubs(:current_user).returns(mock_user)
-    
-		  get :create
-      response.should_not redirect_to(:action => 'index')
-    end
-		
-	end
-  
+  end  
 end

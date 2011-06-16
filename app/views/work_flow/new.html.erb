@@ -1,13 +1,22 @@
 <div class="create_resource_container">
 <h1>Create Resource</h1>
+	<div class="create_resource_description">
+		To create a new resource, select a content type from the list below.
+	</div>
 	<div class="create_resource">
   	<ul id="resource_list">
       <li>Text</li>
 				<ul>
 					<li><%= link_to "Electronic Thesis or Disseration", :action => "new", :controller => "assets", :content_type => "uketd_object" %></li>
 					<li><%= link_to "Examination Paper", :action => "new", :controller => "assets", :content_type => "exam_paper" %></li>
+					<li>Meeting Paper</li>
+					<li>Presentation</li>
 				</ul>
 			<li>Images</li>
+				<ul>
+					<li>Photograph</li>
+					<li>Diagram</li>
+				</ul>
 		</ul>
   </div>
 </div>

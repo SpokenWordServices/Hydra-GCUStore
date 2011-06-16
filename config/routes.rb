@@ -3,7 +3,6 @@ ActionController::Routing::Routes.draw do |map|
 
   # overwriting blacklight /catalog routes with /resources
   map.root :controller => 'catalog', :action => 'index'
-  map.new_resource 'resources/create', :controller=>:catalog, :action=>:create
   map.resources(:catalog,
     :as => 'resources',
     :only => [:index, :show, :update],
@@ -19,6 +18,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.subject_topic 'subjects/:content_type/:asset_id/:index', :controller=>:contributors, :action=>:show, :conditions => { :method => :get }
   map.connect 'subjects/:content_type/:asset_id/:index', :controller=>:subjects, :action=>:destroy, :conditions => { :method => :delete }
+
+	#Workflow_new maps to the new resource page
+  map.workflow_new 'work_flow/new', :controller=>:work_flow, :action=>:new
 
   # Load Blacklight's routes and add edit_catalog named route
   Blacklight::Routes.build map

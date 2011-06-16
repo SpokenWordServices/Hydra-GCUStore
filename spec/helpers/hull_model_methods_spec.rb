@@ -9,7 +9,7 @@ class TestClassOne < ActiveFedora::Base
 
   def initialize
     super
-    self.add_relationship :is_member_of, "info:fedora/hull:3976"
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
   end
 
 end
@@ -21,7 +21,7 @@ class TestClassTwo < UketdObject
 
   def initialize
     super
-    self.add_relationship :is_member_of, "info:fedora/hull:3976"
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
   end
 end
 

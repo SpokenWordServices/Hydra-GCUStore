@@ -4,8 +4,10 @@ class WorkFlowController < ApplicationController
   include Hydra::AssetsControllerHelper
   include WhiteListHelper
   include ReleaseProcessHelper
+	include HullAccessControlEnforcement
     
   before_filter :require_solr, :require_fedora
+  before_filter :enforce_permissions, :only=>[:new] 
 
   def update
     debugger
@@ -19,5 +21,8 @@ class WorkFlowController < ApplicationController
     redirect_to :action=>:edit, :controller=>:catalog
   end
 
-
+	protected
+		def enforce_permissions
+			enforce_create_permissions
+		end
 end
