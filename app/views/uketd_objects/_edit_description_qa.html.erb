@@ -33,7 +33,13 @@
     </dt>
     <dd>
       <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
-    </dd> 
+    </dd>
+
+	<div id="grants">
+	  <%= render :partial => 'grants/edit' %>
+	</div>
+
+  
 	<dt>
       <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
     </dt>

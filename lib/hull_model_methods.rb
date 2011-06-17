@@ -1,5 +1,22 @@
 module HullModelMethods 
 
+  # call insert_grant on the descMetadata datastream
+  def insert_grant(opts={})
+    ds = self.datastreams_in_memory["descMetadata"]
+    node, index = ds.insert_grant(opts)
+    if opts[:value]
+      node.inner_text = opts[:value]
+    end
+    return node, index
+  end
+  
+  # call remove_grant on the descMetadata datastream
+  def remove_grant(index)
+    ds = self.datastreams_in_memory["descMetadata"]
+    result = ds.remove_grant(index)
+    return result
+  end
+
   # call insert_subjec_topic on the descMetadata datastream
   def insert_subject_topic(opts={})
     ds = self.datastreams_in_memory["descMetadata"]

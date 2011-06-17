@@ -71,6 +71,8 @@ class HullModsEtd < ObjectMods
 	  t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  t.raw_object (:path=>"url", :attributes=>{:access=>"raw object"})
     }
+
+	t.grant(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
 	
   end
   
@@ -111,6 +113,7 @@ class HullModsEtd < ObjectMods
              xml.physicalDescription {
                xml.extent
              }
+			 xml.grant
         }
       end
       return builder.doc
