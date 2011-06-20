@@ -9,7 +9,9 @@
     <%= render :partial => 'contributors/index' %>
   </div>
   </fieldset>
+
   <fieldset class="edit-standard">
+
   <legend>Thesis or dissertation</legend>
   <!-- To do Advisors/Sponsors -->
   <dl>
@@ -20,9 +22,9 @@
       <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
     </dd>
     <div id="subjects">
-	  <%= render :partial => 'subjects/index' %>
-	</div>
-	<dt>
+	    <%= render :partial => 'subjects/index' %>
+	  </div>
+	  <dt>
       <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
     </dt>
     <dd>
@@ -34,13 +36,10 @@
     <dd>
       <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
     </dd>
-
-	<div id="grants">
-	  <%= render :partial => 'grants/edit' %>
-	</div>
-
-  
-	<dt>
+    <div id="grant">
+	    <%= render :partial => 'grants/index' %>
+	  </div>
+	  <dt>
       <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
     </dt>
       <dd> 

@@ -50,9 +50,33 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
     end
 
-	def self.subject_topic_template
+	  def self.subject_topic_template
       builder = Nokogiri::XML::Builder.new {|xml| xml.topic }
       return builder.doc.root
+    end
+
+    def self.grant_template
+      builder = Nokogiri::XML::Builder.new {|xml| xml.identifier(:type=>"grantNumber") }
+      return builder.doc.root
+    end
+
+    def insert_grant(opts={})
+      node = ModsJournalArticle.grant_template
+      nodeset = self.find_by_terms(:grant)
+
+      unless nodeset.nil?
+        nodeset.after(node)
+        index=nodeset.length
+        self.dirty = true
+      end
+      
+      return node, index
+
+    end
+
+    def remove_grant(index)
+      self.find_by_terms(:grant)[index.to_i].remove
+      self.dirty = true
     end
 
     def insert_subject_topic(opts={})

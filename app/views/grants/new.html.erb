@@ -1,8 +1,15 @@
-<%# See code comments on ContributorsController.new to understand what this view does %>
-  <%- new_grant_index = @document_fedora.datastreams["descMetadata"].find_by_terms(:grant).length %>
-  <form id="add_grant" action="<%= grants_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
+<form id="add_grant" action="<%= grants_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
 
+<%= hidden_field_tag 'asset_id', params["asset_id"] %>
 
-	  <%= render :partial=>"grants/edit", :locals=>{:edit =>{}, :edit_counter => 0, :grant_counter => new_grant_index } %>
-      <%= submit_tag "Add Grant", {:id => "addGrant"} %> 
-  </form>
+<dl>
+	 <dt>
+		<%= fedora_field_label("descMetadata", [:grant], "Add a new grant") %>
+   </dt>
+   <dd>
+ 	    <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>false) %>
+	 <dd>
+
+   <%= submit_tag "Add Grant", {:id => "addGrant"} %> 
+</dl>
+</form>

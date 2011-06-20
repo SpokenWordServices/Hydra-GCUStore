@@ -68,12 +68,12 @@ class HullModsEtd < ObjectMods
     }
 
 	t.location {
-	  t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
-	  t.raw_object (:path=>"url", :attributes=>{:access=>"raw object"})
+	  t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+	  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
     }
 
 	t.grant(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
-	
+
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]
@@ -113,7 +113,7 @@ class HullModsEtd < ObjectMods
              xml.physicalDescription {
                xml.extent
              }
-			 xml.grant
+			 xml.identifier(:type=>"grantNumber")
         }
       end
       return builder.doc

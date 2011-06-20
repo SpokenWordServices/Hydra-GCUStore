@@ -1,0 +1,41 @@
+<!-- Need to add logic 
+<dl class="grant-new">
+	<dt>
+		<%= fedora_field_label("descMetadata", [:grant], "Grant number (multiple new)") %>
+	</dt> 
+	<dd class="multi_inline grant">
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>true) %>
+	</dd>
+	<dd class="multi_inline grant">
+		<%= link_to(image_tag("/images/add.png",:border=>0), new_grant_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+	</dd>
+-->
+
+<% grant = edit %>
+<% grant_counter = edit_counter %>
+
+
+<% if (edit_counter ==  0 ) %>
+            <dt>
+            <%= fedora_field_label("descMetadata", [:grant], "GRANT") %>
+            </dt>
+            <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>true) %>
+            <%= link_to(image_tag("/images/add.png",:border=>0), new_grant_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+          <% else %>
+            <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>true) %>
+          <% end %>
+
+
+
+		<dt>
+            <%= fedora_field_label("descMetadata", [:grant], "Add a new grant") %>
+          </dt>
+          <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>false) %>
+	 <dd>
+
+</dl>
+
+

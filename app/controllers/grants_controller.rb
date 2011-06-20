@@ -9,19 +9,22 @@ class GrantsController < ApplicationController
   # If format is .inline, this renders without layout so you can embed it in a page
 
   def new
+
     @document_fedora = load_document_from_id(params[:asset_id])
     @next_grant_index = @document_fedora
     @content_type = params[:content_type]
+    
     respond_to do |format|
       format.html { render :file=>"grants/new.html", :layout=>true}
       format.inline { render :partial=>"grants/new.html", :layout=>false }
-	end
+	  end
   end
 
   def create
-    @document_fedora = load_document_from_id(params[:asset_id])
 
-	inserted_node, new_node_index = @document_fedora.insert_grant()
+    @document_fedora = load_document_from_id(params[:asset_id])
+	
+    inserted_node, new_node_index = @document_fedora.insert_grant()
 
     value = extract_value(params[:asset][:descMetadata])
     inserted_node.inner_html = value if value
@@ -48,6 +51,7 @@ class GrantsController < ApplicationController
   private
   
    def load_document_from_id(asset_id)
+
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     af_model.find(asset_id)
   end
