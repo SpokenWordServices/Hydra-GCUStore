@@ -57,6 +57,9 @@ module HullModelMethods
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
       end
       self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+      
+      self.owner_id="fedoraAdmin" if new_queue == :qa
+
       return true
     else
       logger.warn "Could not change queue membership due to validation errors."

@@ -98,7 +98,7 @@
     <input type="hidden"  name="_method" value="put"/>
     <input type="hidden" name="workflow_step" value="qa" />
     <div class="form-control">  
-      <%= submit_tag "Submit to QA" %>
+      <%= submit_tag "Submit to QA", :confirm => "Are you sure you want to move this to the QA Queue?" %>
     </div>
   </form>
 </div>

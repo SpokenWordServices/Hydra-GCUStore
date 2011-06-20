@@ -74,6 +74,7 @@ describe HullModelMethods do
     it "should move the object from one queue to the next if ojbect's state is valid" do
       testclasstwo = TestClassTwo.new
       testclasstwo.expects(:ready_for_qa?).returns(true)
+      testclasstwo.expects(:owner_id=).with("fedoraAdmin")
       testclasstwo.queue_membership.should == [:proto]
       testclasstwo.change_queue_membership(:qa)
       testclasstwo.queue_membership.should == [:qa]
