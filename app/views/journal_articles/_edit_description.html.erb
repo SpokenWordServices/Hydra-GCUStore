@@ -1,7 +1,7 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"journal_article")%>" method="post" data-resourceType="journal_article" accept-charset="utf-8" >
   <% @content_type = "journal_article" %>
   <input type="hidden" name="content_type" value="journal_article" />
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <!-- <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" /> -->
   <fieldset class="edit-standard">
   <legend>Author</legend>
   <div id="contributors">

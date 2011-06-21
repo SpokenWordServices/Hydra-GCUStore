@@ -64,6 +64,5 @@ describe CatalogController do
       get :edit, :id=>"hydrangea:fixture_mods_article1"
       response.should_not redirect_to(:action => 'show')
     end
-  end
-  
+  end  
 end

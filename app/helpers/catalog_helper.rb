@@ -1,5 +1,6 @@
 module CatalogHelper
   include ActionView::Helpers::TextHelper
+	include HullAccessControlEnforcement
   require_dependency "vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb"
 
   def get_persons_from_roles(doc,roles,opts={})
@@ -66,6 +67,24 @@ module CatalogHelper
    end
       resources 
   end
+  
+	def display_edit_form(document_fedora, content_type)
+		#Pluralize the content type to get the correct part for path...
+		pluralized_content_type = pluralize(2, content_type)[2..-1]
+		
+		#When object is in proto queue, you always get the standard edit form...
+		if document_fedora.queue_membership.include?(:proto)
+			render :partial => pluralized_content_type + '/edit_description'
+		else
+			render :partial => pluralized_content_type + '/edit_description_qa'
+		end		
+	end
+
+	def create_resource_link
+		if has_create_permissions
+			  link_to "Create Resource", :controller => "work_flow", :action => "new"
+		end
+	end
 
   def display_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
     label = ""

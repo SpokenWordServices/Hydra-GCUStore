@@ -1,5 +1,6 @@
 <div id="links-right">
-	<% if current_user %>
+	<% if current_user %> 
+		<%= create_resource_link %>
 	  <%= link_to "Log Out", logout_path %> <%= (current_user) %>
 		<% if current_user.last_search_url %>
 		  <%= link_to('View your last search', catalog_index_path(current_user.last_search_url)) %><% end %>

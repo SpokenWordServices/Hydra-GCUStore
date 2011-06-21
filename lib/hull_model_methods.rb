@@ -1,4 +1,10 @@
 module HullModelMethods 
+  
+
+  def initialize(opts={})
+    super(opts)
+    change_queue_membership :proto if queue_membership.empty? && new_object?
+  end
 
   # call insert_grant on the descMetadata datastream
   def insert_grant(opts={})
@@ -54,4 +60,30 @@ module HullModelMethods
     solr_doc << { "fedora_owner_id_display" => self.owner_id }
     solr_doc
   end
+
+  def queue_membership
+    self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+  end
+
+  def change_queue_membership(new_queue)
+    validation_method = "ready_for_#{new_queue.to_s}?".to_sym
+    is_valid = self.respond_to?(validation_method) ? self.send(validation_method) : true
+    
+    if is_valid
+      if queues =  self.queue_membership
+        self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
+      end
+      self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+      
+      self.owner_id="fedoraAdmin" if new_queue == :qa
+
+      return true
+    else
+      logger.warn "Could not change queue membership due to validation errors."
+      return false
+    end
+  end
+
+  
 end
+

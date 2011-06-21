@@ -9,3 +9,10 @@
 # NOTE: For your development environment, also specify the module in lib/user_attributes_loader.rb
 User.send(:include, Hydra::GenericUserAttributes)
 
+HULL_QUEUES = {
+  "info:fedora/hull:protoQueue" => :proto,
+  "info:fedora/hull:QAQueue" => :qa
+}
+GROUP_PERMISSIONS = {
+	"create_resources" => ["contentAccessTeam"]
+}

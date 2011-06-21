@@ -3,21 +3,31 @@ require File.expand_path(File.dirname(__FILE__)+'/../spec_helper')
 class TestClassOne < ActiveFedora::Base
   include HullModelMethods
 
-
   def owner_id
     "fooAdmin"
   end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+  end
+
 end
 
+class TestClassTwo < UketdObject
+  def owner_id
+    "fooAdmin"
+  end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+  end
+end
 
 describe HullModelMethods do
   before(:each) do
     @testclassone = TestClassOne.new
-#mock_desc_ds.stubs(:remove_subject_topic)
-    
-#    mock_content_ds = mock("Datastream")
-#    mock_content_ds.stubs(:insert_resource).returns(mock_node,0)
-#    @testclassone.stubs(:datastreams_in_memory).returns({"descMetadata"=>mock_desc_ds, "contentMetadata"=>mock_content_ds})
   end
 
   it "should provide insert/remove methods for subject_topic" do
@@ -56,5 +66,18 @@ describe HullModelMethods do
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"
     end
   end
-
+  
+  describe "queue_membership" do
+    it "should list all the queues of which the object asserts is_member_of" do
+      @testclassone.queue_membership.should == [:proto]
+    end
+    it "should move the object from one queue to the next if ojbect's state is valid" do
+      testclasstwo = TestClassTwo.new
+      testclasstwo.expects(:ready_for_qa?).returns(true)
+      testclasstwo.expects(:owner_id=).with("fedoraAdmin")
+      testclasstwo.queue_membership.should == [:proto]
+      testclasstwo.change_queue_membership(:qa)
+      testclasstwo.queue_membership.should == [:qa]
+    end
+  end
 end
