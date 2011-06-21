@@ -1258,6 +1258,17 @@ div#subjects dd a.field {
   margin-right: 10em;
 }
 
+div#grants dd a.field {
+  display: inline !important;
+  margin-right: 10em;
+}
+
+dd.multi_inline {
+  margin-left: 0;
+  /* padding-bottom: 15px; 
+  padding-top: 5px;*/
+}
+
 form.flc-uploader.fl-uploader.fl-progEnhance-enhanced { 
   display:none;
 }
@@ -1277,3 +1288,13 @@ a.toggle.edit {
 span.edit-browse {
   margin-left: 20px;
 }
+
+a.destructive {
+  display: block !important; 
+}
+
+.destructive field {
+  margin-right: 0px;
+}
+
+html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div#document div#doc_hull:3108 div.document div#cover_container.document_viewer div.multipleEdit form#document_metadata fieldset.edit-standard dl div#grant dd.multi_inline ol li#grant_1-container.editable-container a.destructive

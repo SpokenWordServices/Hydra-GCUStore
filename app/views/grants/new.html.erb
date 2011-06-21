@@ -6,10 +6,11 @@
 	 <dt>
 		<%= fedora_field_label("descMetadata", [:grant], "Add a new grant") %>
    </dt>
-   <dd>
+   <dd class="multi_inline grant">
  	    <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>false) %>
 	 <dd>
-
-   <%= submit_tag "Add Grant", {:id => "addGrant"} %> 
 </dl>
+
+<div class="form-control"><%= submit_tag "Add Grant", {:id => "addGrant"} %></div>
+
 </form>

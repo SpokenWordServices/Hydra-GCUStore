@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :grants
 
   map.subject_topic 'subjects/:content_type/:asset_id/:index', :controller=>:contributors, :action=>:show, :conditions => { :method => :get }
+  map.grant 'grants/:content_type/:asset_id/:index', :controller=>:grants, :action=>:show, :conditions => { :method => :get }
   map.connect 'subjects/:content_type/:asset_id/:index', :controller=>:subjects, :action=>:destroy, :conditions => { :method => :delete }
   map.connect 'grants/:content_type/:asset_id/:index', :controller=>:grants, :action=>:destroy, :conditions => { :method => :delete }
 

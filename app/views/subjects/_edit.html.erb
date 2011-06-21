@@ -1,0 +1,32 @@
+<% subject = edit %>
+<% subject_counter = edit_counter %>
+<% topic_counter = topic_counter %>
+<% subject_values = "#{get_values_from_datastream(@document_fedora,'descMetadata', [{:subject=>subject_counter}, :topic])}" %>
+<% base_id = "subject_#{subject_counter}" %>
+<%= hidden_field_tag 'asset_id', params["asset_id"] %>
+  <dl class="subject"  id="<%= base_id %>">
+     <% unless topic_counter %>
+          <% if (subject_counter ==  0 ) %>
+            <dt>
+            <%= fedora_field_label("descMetadata", [{:subject=>subject_counter}, :topic], "Subject") %>
+            </dt>
+            <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:subject=>subject_counter}, :topic], :multiple=>true) %>
+            <%= link_to(image_tag("/images/add.png",:border=>0), new_subject_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+          <% else %>
+            <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:subject=>subject_counter}, :topic], :multiple=>true) %>
+          <% end %>
+          <% if ( (subject_counter > 0) && (params[:action] == "edit" || params[:action] == "create") && !subject_values.strip.empty? ) %>
+            <%= field_selectors_for("descMetadata", [{:subject=>subject_counter}]) %>
+            <%= link_to( image_tag("/images/remove.png",:border=>0), asset_path(@document_fedora.pid, "subject", subject_counter), :method=>:delete, :class => "destructive destroy_subject", :title=>"Delete #{subject_value}") %>
+          <% end %>
+      <% else %>
+          <dt>
+            <%= fedora_field_label("descMetadata", [{:subject=>subject_counter}, {topic_counter=>:topic}], "Subject") %>
+          </dt>
+          <dd class="multi_inline subject">
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:subject=>subject_counter}, {topic_counter =>:topic}], :multiple=>false) %>
+      <% end %>
+    </dd>
+  </dl>

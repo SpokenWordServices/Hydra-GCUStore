@@ -11,42 +11,45 @@
   </fieldset>
   <fieldset class="edit-standard">
   <legend>Thesis or dissertation</legend>
-  <!-- To do Advisors/Sponsors -->
-  <dl>
-    <dt>
-     <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
-    </dd>
-    <div id="subjects">
-	  <%= render :partial => 'subjects/index' %>
-	</div>
-     <dt>
-      <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
-    </dt>
-    <dd>
-      <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
-    </dd>
-    <dt>
-      <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
-    </dd>   
-	<dt>
-      <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
-    </dt>
+    <!-- To do Advisors/Sponsors -->
+    <dl>
+      <dt>
+       <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+      </dt>
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
+      </dd>
+      <div id="subjects">
+	    <%= render :partial => 'subjects/index' %>
+	    </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
+      </dt>
+      <dd>
+        <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
+      </dd>
+      <div id="grants">
+	      <%= render :partial => 'grants/index' %>
+	    </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
+      </dt>
+      <dd>
+        <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
+      </dd>   
+	    <dt>
+        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
+      </dt>
       <dd> 
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
-    </dd>
-	<dt>
-	  <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
-	</dt>
-	<dd>
-	  <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
-	</dd>
-  </dl>
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
+      </dd>
+	    <dt>
+	      <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
+	    </dt>
+	    <dd>
+	      <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
+	    </dd>
+    </dl>
   </fieldset>
 
   <fieldset class="edit-half">
@@ -58,10 +61,10 @@
     	</dt>
 	    <dd style="width: 20em;">
 	      <%= fedora_text_field(@document_fedora,"descMetadata", [:qualification_level]) %>
-        </dd>
+      </dd>
 	  </div>
 	  <div class="right">
-		<dt >
+		<dt>
           <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
         </dt>
         <dd style="width: 20em;"> 
@@ -70,6 +73,7 @@
 	  </div>
 	</div
   </dl>
+
   </fieldset>
 
   <fieldset class="edit-standard">

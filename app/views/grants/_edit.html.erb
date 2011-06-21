@@ -5,8 +5,7 @@
 </dt>
 <dd class="multi_inline grant"> 
   <%= fedora_text_field(@document_fedora,"descMetadata", [:grant], :multiple=>true) %>
-</dd>	
-<dd>
   <%= link_to(image_tag("/images/add.png",:border=>0), new_grant_path(:asset_id=>params[:id], :content_type => @content_type)) %>
-</dd>
+</dd>	
+
 
