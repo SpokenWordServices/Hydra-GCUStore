@@ -87,11 +87,14 @@ module HydraFedoraMetadataHelper
   def field_key_specific_delete_link(field_key, index, asset_id, text, current_value)
     if field_key.match /^subject_\d+_topic$/
         delete_link = link_to text, subject_topic_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
+    elsif field_key.match /^grant/
+      delete_link = link_to text, grant_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
     else
-        delete_link = link_to text, grant_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
-        #delete_link = "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\" src=\"/images/remove.png?1306923496\">Delete</a>"
+      delete_link = "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\" src=\"/images/remove.png\">Delete</a>"
     end
+
     return delete_link
+
   end
   
 end
