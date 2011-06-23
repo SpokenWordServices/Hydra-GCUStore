@@ -10,7 +10,6 @@ class WorkFlowController < ApplicationController
   before_filter :enforce_permissions, :only=>[:new] 
 
   def update
-    debugger
     document = load_document_from_params
     if document.change_queue_membership params[:workflow_step].to_sym
       document.save
