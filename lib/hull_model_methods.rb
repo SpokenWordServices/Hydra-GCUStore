@@ -6,24 +6,24 @@ module HullModelMethods
     change_queue_membership :proto if queue_membership.empty? && new_object?
   end
 
-  # call insert_grant on the descMetadata datastream
-  def insert_grant(opts={})
+  # call insert_grant number on the descMetadata datastream
+  def insert_grant_number(opts={})
     ds = self.datastreams_in_memory["descMetadata"]
-    node, index = ds.insert_grant(opts)
+    node, index = ds.insert_grant_number(opts)
     if opts[:value]
       node.inner_text = opts[:value]
     end
     return node, index
   end
   
-  # call remove_grant on the descMetadata datastream
-  def remove_grant(index)
+  # call remove_grant number on the descMetadata datastream
+  def remove_grant_number(index)
     ds = self.datastreams_in_memory["descMetadata"]
-    result = ds.remove_grant(index)
+    result = ds.remove_grant_number(index)
     return result
   end
 
-  # call insert_subjec_topic on the descMetadata datastream
+  # call insert_subject_topic on the descMetadata datastream
   def insert_subject_topic(opts={})
     ds = self.datastreams_in_memory["descMetadata"]
     node, index = ds.insert_subject_topic(opts)

@@ -9,7 +9,7 @@ Feature: QA edit a document
     Given I am logged in as "contentAccessTeam1" 
     And I am on the edit document page for hull:3112
     And I should see an inline edit containing "Accounting regulation in Egypt in relation to western influence"
-	Then I should see "Additional metadata"
+	  Then I should see "Additional metadata"
 
   Scenario: Viewing browse/edit buttons
     Given I am logged in as "archivist1" 

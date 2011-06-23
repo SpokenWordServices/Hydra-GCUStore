@@ -29,7 +29,7 @@
         <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
       </dd>
       <div id="grants">
-	      <%= render :partial => 'grants/index' %>
+	      <%= render :partial => 'grant_numbers/index' %>
 	    </div>
       <dt>
         <%= fedora_field_label("descMetadata",[:rights],"Rights") %>

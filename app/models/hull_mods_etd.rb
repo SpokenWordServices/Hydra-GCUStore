@@ -72,7 +72,7 @@ class HullModsEtd < ObjectMods
 	  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
     }
 
-	t.grant(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
+	t.grant_number(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
 
   end
   
