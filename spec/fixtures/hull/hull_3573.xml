@@ -123,7 +123,7 @@ Moreover, recommendations concerning the development of the accounting professio
 <foxml:xmlContent>
 <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:3573">
-			<rel:isMemberOf rdf:resource="info:fedora/hull:3375" />
+			<rel:isMemberOf rdf:resource="info:fedora/hull:QAQueue" />
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:uketdObject"></fedora-model:hasModel>
@@ -169,13 +169,13 @@ Moreover, recommendations concerning the development of the accounting professio
           <access type="discover">
             <human></human>
             <machine>
-              <group>public</group>
+              <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="read">
             <human></human>
             <machine>
-              <group>public</group>
+              <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="edit">

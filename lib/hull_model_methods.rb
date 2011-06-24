@@ -55,10 +55,13 @@ module HullModelMethods
   # overwriting to_solr to profide proper has_model_s and solrization of fedora_owner_id
   def to_solr(solr_doc=Hash.new,opts={})
     super(solr_doc,opts)
-    solr_doc << { "has_model_s" => cmodel }
+	  solr_doc << { "has_model_s" => cmodel }
     solr_doc << { "fedora_owner_id_s" => self.owner_id }
     solr_doc << { "fedora_owner_id_display" => self.owner_id }
-    solr_doc
+		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
+			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
+		end
+		solr_doc
   end
 
   def queue_membership
@@ -66,7 +69,7 @@ module HullModelMethods
   end
 
   def change_queue_membership(new_queue)
-    validation_method = "ready_for_#{new_queue.to_s}?".to_sym
+	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
     is_valid = self.respond_to?(validation_method) ? self.send(validation_method) : true
     
     if is_valid
@@ -84,6 +87,24 @@ module HullModelMethods
     end
   end
 
-  
+ 	# Call to remove file obects
+  def destroy_child_assets
+    destroyable_child_assets.each.inject([]) do |destroyed,fo| 
+        destroyed << fo.pid 
+        fo.delete
+        destroyed
+    end
+
+  end
+
+  def destroyable_child_assets
+    return [] unless self.file_objects
+    self.file_objects.each.inject([]) do |file_assets, fo| 
+      if fo.relationships[:self].has_key?(:is_part_of) && fo.relationships[:self][:is_part_of].length == 1 &&  fo.relationships[:self][:is_part_of][0].match(/#{self.pid}$/)
+        file_assets << fo
+      end
+      file_assets
+    end
+  end
 end
 
