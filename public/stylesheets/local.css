@@ -1297,4 +1297,40 @@ a.destructive {
   margin-right: 0px;
 }
 
+div.contributors dl dt {
+  width: 53em !important;
+  text-align: left;
+  font-size: .6em;
+}
+
+div.contributors  dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
+float:left;
+}
+
+div.contributors dl dd span input {
+  width: 50em;
+  font-size: .8em;
+}
+
+div.contributors dd a {
+  display: none;
+}
+
+.contributors dl dt label {
+	font-size: 165%;
+}
+
+div.add_contributor_link a {
+  margin-left: -14em;
+}
+
+div.add_contributor_link.creator.uketd_object a {
+  display:none;
+}
+
 html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div#document div#doc_hull:3108 div.document div#cover_container.document_viewer div.multipleEdit form#document_metadata fieldset.edit-standard dl div#grant dd.multi_inline ol li#grant_1-container.editable-container a.destructive

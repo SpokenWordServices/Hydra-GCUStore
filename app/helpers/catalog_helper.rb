@@ -10,7 +10,7 @@ module CatalogHelper
       persons_roles = [] # reset the array
       persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["person_#{i}_role_t"].nil?
       if persons_roles and (persons_roles & roles).length > 0
-        persons << {:name => doc["person_#{i}_namePart_t"],:role => doc["person_#{i}_role_t"], :affiliation => doc["person_#{i}_affiliation_t"] }
+        persons << {:name => doc["person_#{i}_namePart_t"],:role => doc["person_#{i}_role_t"], :affiliation => doc["person_#{i}_affiliation_t"], :person_index=>"#{i}" }
       end
       i += 1
     end
@@ -24,7 +24,7 @@ module CatalogHelper
       orgs_roles = []
       orgs_roles = doc["organization_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["organization_#{i}_role_t"].nil?
       if orgs_roles and (orgs_roles & roles).length > 0
-        orgs << {:name => doc["organization_#{i}_namePart_t"],:role => doc["organization_#{i}_role_t"]}
+        orgs << {:name => doc["organization_#{i}_namePart_t"],:role => doc["organization_#{i}_role_t"], :org_index => "#{i}"}
       end
       i += 1
     end

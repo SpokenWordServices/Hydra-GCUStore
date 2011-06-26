@@ -1,15 +1,19 @@
-@edit @articles
+@edit @articles @local
 Feature: QA edit a document
   In order to [goal]
   [stakeholder]
   wants [behaviour]
  
-  @wip
   Scenario: Visit Document Edit QA Page
     Given I am logged in as "contentAccessTeam1" 
-    And I am on the edit document page for hull:3112
-    And I should see an inline edit containing "Accounting regulation in Egypt in relation to western influence"
-	  Then I should see "Additional metadata"
+    And I am on the edit document page for hull:756
+    Then I should see an inline edit containing "An investigation of the factors which influence the degree"
+    And I should see a "div" tag with a "class" attribute of "add_contributor_link creator author uketd_object"
+    And I should see a "div" tag with a "class" attribute of "add_contributor_link thesis_advisor uketd_object"
+    And I should see a "input" tag with a "id" attribute of "name_1_namePart"
+    And I should see a "input" tag with a "id" attribute of "name_2_namePart"
+    And I should see a "input" tag with a "id" attribute of "organization_0_namePart"
+	
 
   Scenario: Viewing browse/edit buttons
     Given I am logged in as "archivist1" 

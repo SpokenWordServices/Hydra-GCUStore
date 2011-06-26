@@ -6,7 +6,7 @@
   <fieldset class="edit-standard">
   <legend>Author</legend>
   <div id="contributors">
-    <%= render :partial => 'contributors/index' %>
+    <%= render :partial => 'contributors/index', :locals=> {:roles=>['creator','author'], :contributor_type=>:person} %>
   </div>
   </fieldset>
 
@@ -36,6 +36,18 @@
     <dd>
       <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
     </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:name,:namePart],"Advisor(s)") %>
+    </dt>
+    <div class="contributors">
+      <%= render :partial => 'contributors/index', :locals=> {:roles=>['thesis advisor'], :contributor_type=>:person} %>
+    </div>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:name,:namePart], "Sponsor(s)") %>
+    </dt>
+    <div class="contributors">
+      <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
+    </div>
     <div id="grants">
 	    <%= render :partial => 'grant_numbers/index' %>
 	  </div>

@@ -6,7 +6,7 @@
   <fieldset class="edit-standard">
   <legend>Author</legend>
   <div id="contributors">
-    <%= render :partial => 'contributors/index' %>
+    <%= render :partial => 'contributors/index', :locals => {:roles=>['creator','author'], :contributor_type=>:person} %>
   </div>
   </fieldset>
   <fieldset class="edit-standard">
