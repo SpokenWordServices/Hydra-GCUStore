@@ -4,6 +4,7 @@ class ExamPaper < ActiveFedora::Base
 
   include Hydra::ModelMethods
   include HullModelMethods
+  include HullValidationMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
@@ -20,6 +21,24 @@ class ExamPaper < ActiveFedora::Base
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
     m.field 'depositor', :string
+  end
+  
+  has_validation :valid_for_submit? do 
+    validates_presence_of "descMetadata",[:module,:code]
+    validates_presence_of("descMetadata",[:module,:name])
+    validates_presence_of("descMetadata",[:origin_info,:exam_date])
+    validates_format_of("descMetadata",[:origin_info,:exam_date], :with=> /(January|February|March|April|May|June|July|August|September|October|November|December) \d{4}/)
+    is_valid?
+  end
+
+  has_workflow_validation :qa do
+    errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
+    validates_presence_of "descMetadata",[:module,:code]
+    validates_presence_of("descMetadata",[:module,:name])
+    validates_presence_of("descMetadata",[:origin_info,:exam_date])
+    validates_format_of("descMetadata",[:origin_info,:exam_date], :with=> /(January|February|March|April|May|June|July|August|September|October|November|December) \d{4}/)
+    validates_presence_of("descMetadata",[:title])
+    is_valid?
   end
 
 end
