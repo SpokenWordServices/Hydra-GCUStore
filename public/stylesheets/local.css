@@ -1297,6 +1297,7 @@ a.destructive {
   margin-right: 0px;
 }
 
+<<<<<<< HEAD
 div.contributors dl dt {
   width: 53em !important;
   text-align: left;
@@ -1332,5 +1333,19 @@ div.add_contributor_link a {
 div.add_contributor_link.creator.uketd_object a {
   display:none;
 }
-
-html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div#document div#doc_hull:3108 div.document div#cover_container.document_viewer div.multipleEdit form#document_metadata fieldset.edit-standard dl div#grant dd.multi_inline ol li#grant_1-container.editable-container a.destructive
+.submitLink {
+	background-color: transparent !important;
+	background: none !important;
+	height: 1.4em !important;
+	width: 101px !important;
+	float: none !important;	
+	font-size:1.0em;
+	border: none;
+	padding-left:1px;
+	text-decoration: none !important;
+	cursor: pointer;
+}
+input.submitLink:hover {
+	text-decoration: underline !important;
+	cursor: pointer;
+}
