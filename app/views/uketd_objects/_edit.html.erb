@@ -28,24 +28,17 @@
     });
 	</script>
 <% end %>
-<script type="text/javascript">
-	/* Added confirmation box for the Resource link - SWL */
-  function confirmDelete() {
-		var delete_str = confirm('Are you sure you want to delete this resource and its content?');
-		if (delete_str == true) {
-			document.forms['delete'].submit();
-		}
-	}
-</script>
-
 <div class="document_viewer" id="cover_container">
 	<div class="deleteDocument">
-    <a href="#delete_dialog" class="delete" onclick="confirmDelete();">Delete this resource</a>
-			<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="uketd_object" accept-charset="utf-8">
-				<input type="hidden" name="_method" value="delete"/>
-  			<input type="hidden" name="content_type" value="uketd_object" />
-			</form>
+		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="uketd_object" />
+    <input type="hidden"  name="_method" value="delete"/>
+    <div>  
+      <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
+    </div>
+  	</form>
 	</div>
+
 <!--
 	This didn't work... 
  <div class="deleteDocument">
