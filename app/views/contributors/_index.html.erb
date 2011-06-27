@@ -1,14 +1,14 @@
-<% if roles && contributor_type==:person %>
+<% if defined?(roles) && contributor_type==:person %>
   <%= render :partial=>"contributors/edit_person_by_role", :collection=>get_persons_from_roles(@document, roles) %>
   <div class="add_contributor_link <%= roles.map{|r| r.downcase.gsub(' ','_') }.join(' ') %> <%= @content_type%>">
     <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type)) %>
   </div>
 <% end %>
 
-<% if roles && contributor_type==:organization %>
+<% if defined?(roles) && contributor_type==:organization %>
   <%= render :partial=>"contributors/edit_organization_by_role", :collection=>get_organizations_from_roles(@document,roles) %>
 <% end %>
-<% if !roles %>
+<% if !defined?(roles) %>
 <%= render :partial=>"contributors/edit_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:person) %>
 <%#= link_to "Add a Person", new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person") %>
 
