@@ -5,10 +5,10 @@ Feature: Show a document
   wants [behaviour]
   
   Scenario: Public visit Publicly Viewable Document
-    Given I am on the show document page for hull:3108
-    Then I should see "The evolution and status of accounting in Libya"
+    Given I am on the show document page for hull:3500
+    Then I should see "The evolution of accounting in developing countries : the study of Jordan"
     And I should see "Management"
-    And I should not see a link to "the edit document page for hull:3108"
+    And I should not see a link to "the edit document page for hull:3500"
  
   @wip
   Scenario: Public visit Document Show Page for a private document  
@@ -23,13 +23,13 @@ Feature: Show a document
   
   Scenario: Archivist visits Show Page for Restricted Document
     Given I am logged in as "archivist1" 
-    And I am on the show document page for hull:3573
-    Then I should see "Kuwait's tax reformation, its alternatives and impact on a developing accounting profession"
-    And I should not see a link to "the edit document page for hull:3573"
+    And I am on the show document page for hull:3500
+    Then I should see "The evolution of accounting in developing countries : the study of Jordan"
+    And I should not see a link to "the edit document page for hull:3500"
 
   Scenario: Show view should have search box at top
-    Given I am on the show document page for hull:3573
-    Then I should see "search"
+    Given I am on the show document page for hull:3500
+    Then I should see "Search"
     And I should see a "input" tag with a "id" attribute of "q"
  
 
