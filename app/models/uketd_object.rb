@@ -17,7 +17,7 @@ class UketdObject < ActiveFedora::Base
 
   has_metadata :name => "UKETD_DC", :type => ActiveFedora::NokogiriDatastream
 
-  has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
+  has_metadata :name => "DC", :type => ObjectDc
 
   has_metadata :name => "contentMetadata", :type => ContentMetadata
 

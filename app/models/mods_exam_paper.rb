@@ -103,8 +103,8 @@ class ModsExamPaper < ObjectMods
                  xml.roleTerm(:type=>"text")
                }
              }
-			 xml.typeOfResource
-             xml.genre
+			 			 xml.typeOfResource "text"
+             xml.genre "Examination paper"
              xml.originInfo {
                xml.publisher
                xml.dateIssued
@@ -117,11 +117,11 @@ class ModsExamPaper < ObjectMods
              xml.physicalDescription {
                xml.extent
                xml.mediaType
-               xml.digitalOrigin 
+               xml.digitalOrigin "born digital"
              }
              xml.abstract(:displayLabel=>"Examination level")
              xml.subject(:authority=>"UoH") {
-               xml.topic
+               xml.topic "Subject topic goes here"
              }
              xml.identifier(:type=>"fedora")
              xml.relatedItem(:ID=>"module") {
@@ -137,11 +137,11 @@ class ModsExamPaper < ObjectMods
              }
              xml.accessCondition(:type=>"useAndReproduction")
              xml.recordInfo {
-               xml.recordContentSource
-               xml.recordCreationDate(:encoding=>"w3cdtf")
+               xml.recordContentSource "The University of Hull"
+               xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
                xml.recordChangeDate(:encoding=>"w3cdtf")
                xml.languageOfCataloging {
-                 xml.languageTerm(:authority=>"iso639-2b")  
+                 xml.languageTerm("eng", :authority=>"iso639-2b")  
                }
              }
         }
