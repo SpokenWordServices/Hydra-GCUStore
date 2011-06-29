@@ -13,7 +13,6 @@ class ObjectDc < ActiveFedora::NokogiriDatastream
   end
  	# Generates an empty DC datastream
   def self.xml_template
-				debugger
 	      builder = Nokogiri::XML::Builder.new do |xml|
         xml.dc("xmlns:oai_dc"=>"http://www.openarchives.org/OAI/2.0/oai_dc/",
 								"xmlns:dc"=>"http://purl.org/dc/elements/1.1/",
