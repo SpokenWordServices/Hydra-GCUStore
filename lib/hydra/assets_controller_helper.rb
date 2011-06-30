@@ -121,7 +121,7 @@ module Hydra::AssetsControllerHelper
 
         @module_code = document.get_values_from_datastream("descMetadata", [:module, :code], {}).to_s
         @module_name = document.get_values_from_datastream("descMetadata", [:module, :name], {}).to_s
-        @module_date = document.get_values_from_datastream("descMetadata", [:origin_info, :exam_date], {}).to_s
+        @module_date = document.get_values_from_datastream("descMetadata", [:origin_info, :date_issued], {}).to_s
         @exam_title = (@module_code + " " + @module_name + " " + "(" + @module_date + ")")
         @display_title = (@module_code + " " + @module_name)
            
@@ -133,6 +133,17 @@ module Hydra::AssetsControllerHelper
     result = document
   end
   
+	def apply_base_metadata(asset)
+		if asset.respond_to?(:apply_base_metadata)
+      asset.apply_base_metadata
+    end
+  end
+
+	def apply_additional_metadata(asset)
+		if asset.respond_to?(:apply_additional_metadata)
+      asset.apply_additional_metadata
+    end
+	end
   
   # moved destringify into OM gem. 
   # ie.  OM.destringify( params )quit

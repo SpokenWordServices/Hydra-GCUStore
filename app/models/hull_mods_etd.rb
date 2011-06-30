@@ -85,35 +85,49 @@ class HullModsEtd < ObjectMods
            "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
            "xmlns"=>"http://www.loc.gov/mods/v3",
            "xsi:schemaLocation"=>"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd") {
-             xml.titleInfo(:lang=>"") {
-               xml.title
+             xml.titleInfo {
+               xml.title "Title goes here"
              }
              xml.name(:type=>"personal") {
                xml.namePart
                xml.role {
-                 xml.roleTerm(:authority=>"marcrelator", :type=>"text")
+                 xml.roleTerm(:type=>"text")
                }
              }
-             xml.genre(:authority=>"marcgt")
-			 xml.typeOfResource
+					 	 xml.typeOfResource "text"
+             xml.genre "Thesis or dissertation"
+						 xml.originInfo {
+               xml.publisher
+               xml.dateIssued
+             }
              xml.language {
                xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
              }
+ 						 xml.physicalDescription {
+               xml.extent
+               xml.mediaType
+               xml.digitalOrigin "born digital"
+             }
              xml.abstract
-             xml.subject {
-               xml.topic
+             xml.subject(:authority=>"UoH") {
+               xml.topic "Subject topic goes here"
              }
              xml.identifier(:type=>"fedora")
-			 xml.abstract(:displayLabel=>"Module display")
-             xml.originInfo {
-               xml.publisher
-               xml.dateIssued
+						 xml.location {
+               xml.url(:usage=>"primary display", :access=>"object in context")
+               xml.url(:access=>"raw object")
              }
-             xml.physicalDescription {
-               xml.extent
+			 			 xml.identifier(:type=>"grantNumber")
+						 xml.accessCondition(:type=>"useAndReproduction")
+             xml.recordInfo {
+               xml.recordContentSource "The University of Hull"
+               xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
+               xml.recordChangeDate(:encoding=>"w3cdtf")
+               xml.languageOfCataloging {
+                 xml.languageTerm("eng", :authority=>"iso639-2b")  
+               }
              }
-			 xml.identifier(:type=>"grantNumber")
         }
       end
       return builder.doc

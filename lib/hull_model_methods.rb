@@ -106,5 +106,39 @@ module HullModelMethods
       file_assets
     end
   end
-end
 
+  #
+  # Adds hull base metadata to the asset
+  #
+  def apply_base_metadata
+		dc_ds = self.datastreams_in_memory["DC"]
+		desc_ds = self.datastreams_in_memory["descMetadata"]
+    #rights_ds = self.datastreams_in_memory["rightsMetadata"]
+  	
+		#Add the dc required elements
+		dc_ds.update_indexed_attributes([:identifier]=> self.pid) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
+	
+		#Add the descMetadata required elements
+		desc_ds.update_indexed_attributes([:identifier]=> self.pid) unless desc_ds.nil?
+		desc_ds.update_indexed_attributes([:location, :primary_display]=> "http://hydra.hull.ac.uk/resources/" + self.pid) unless desc_ds.nil?
+	  return true
+  end
+
+
+	#
+  # Adds hull base metadata to the asset
+  #
+  def apply_additional_metadata
+		#Here's where we call specific additional metadata changes...
+		if self.respond_to?(:apply_content_specific_additional_metadata)
+      self.apply_content_specific_additional_metadata
+    end	
+		dc_ds = self.datastreams_in_memory["DC"]
+		dc_ds.update_indexed_attributes([:title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?
+	  return true
+  end
+
+
+end

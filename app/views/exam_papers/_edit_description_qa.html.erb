@@ -29,10 +29,10 @@
       <%= fedora_text_field(@document_fedora,"descMetadata", [:module, :name], :multiple=>false) %>
     </dd>
 	<dt>
-      <%= fedora_field_label("descMetadata",[:origin,:exam_date],"Examination date (month year)") %>
+      <%= fedora_field_label("descMetadata",[:origin,:date_issued],"Examination date (month year)") %>
     </dt>
     <dd>
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:exam_date], :multiple=>false) %>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:date_issued], :multiple=>false) %>
     </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:title],"Examination paper (Examination title; if different from module name)") %>

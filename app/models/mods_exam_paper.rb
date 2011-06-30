@@ -42,7 +42,7 @@ class ModsExamPaper < ObjectMods
    
     t.origin_info(:path=>"originInfo") {
       t.publisher
-      t.exam_date(:path=>"dateIssued")
+      t.date_issued(:path=>"dateIssued")
     }
     
     t.language {
