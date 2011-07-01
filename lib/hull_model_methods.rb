@@ -140,5 +140,13 @@ module HullModelMethods
 	  return true
   end
 
+  def valid_for_save?(params)
+    if self.respond_to?(:validate_parameters)
+      @pending_attributes = params
+      self.validate_parameters
+    end
+    return self.errors.empty?
+  end
+
 
 end

@@ -1,10 +1,13 @@
 require 'mediashelf/active_fedora_helper'
 
 class AssetsController < ApplicationController
+require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_controller'
 		include HullAccessControlEnforcement
     include Hydra::AssetsControllerHelper
 
-		before_filter :enforce_permissions, :only =>:new
+  before_filter :enforce_permissions, :only =>:new
+  before_filter :load_document, :only => :update
+  before_filter :validate_parameters, :only =>[:create,:update]
 
  	def new
       af_model = retrieve_af_model(params[:content_type])
@@ -27,9 +30,7 @@ class AssetsController < ApplicationController
     # @example Sets the 1st and 2nd "medium" values on the descMetadata datastream in the _PID_ document, overwriting any existing values.
     #   put :update, :id=>"_PID_", "asset"=>{"descMetadata"=>{"medium"=>{"0"=>"Paper Document", "1"=>"Image"}}
     def update
-      @document = load_document_from_params
       
-      logger.debug("attributes submitted: #{@sanitized_params.inspect}")
          
       @response = update_document(@document, @sanitized_params)
 			apply_additional_metadata(@document)       
@@ -59,4 +60,19 @@ class AssetsController < ApplicationController
 			def enforce_permissions
 				enforce_create_permissions
 			end
+
+      def load_document
+        @document = load_document_from_params
+      end
+
+      def validate_parameters
+        logger.debug("attributes submitted: #{@sanitized_params.inspect}")
+        if @document.respond_to?(:valid_for_save?)
+          if !@document.valid_for_save?(@sanitized_params)
+            flash[:error] = "Encountered the following errors: #{@document.errors.join("; ")}"
+            redirect_to :controller => "catalog", :action=>"edit"
+          end
+        end
+        true
+      end
 end

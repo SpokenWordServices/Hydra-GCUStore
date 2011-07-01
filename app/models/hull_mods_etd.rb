@@ -89,9 +89,9 @@ class HullModsEtd < ObjectMods
                xml.title "Title goes here"
              }
              xml.name(:type=>"personal") {
-               xml.namePart
+               xml.namePart("Author goes here")
                xml.role {
-                 xml.roleTerm(:type=>"text")
+                 xml.roleTerm("creator",:type=>"text")
                }
              }
 					 	 xml.typeOfResource "text"
