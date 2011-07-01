@@ -27,6 +27,12 @@ class ContributorsController < ApplicationController
     
     ct = params[:contributor_type]
     inserted_node, new_node_index = @document_fedora.insert_contributor(ct)
+    name  = extract_name_value(params[:asset][:descMetadata]) if params[:asset] && params[:asset].fetch(:descMetadata,nil)
+    role = extract_role_value(params[:asset][:descMetadata]) if params[:asset] && params[:asset].fetch(:descMetadata,nil)
+
+    inserted_node.at_css("namePart").inner_html = name if name
+    inserted_node.at_css("roleTerm").inner_html = role if role
+
     @document_fedora.save
     partial_name = "contributors/edit_#{ct}.html"
     respond_to do |format|
@@ -52,5 +58,19 @@ class ContributorsController < ApplicationController
   def load_document_from_id(asset_id)
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     af_model.find(asset_id)
+  end
+  def extract_name_value(hash)
+    begin
+      return hash.invert.keys.first.invert.keys.first
+    rescue
+      nil
+    end
+  end
+  def extract_role_value(hash)
+    begin
+      return hash.invert.keys.last.invert.keys.first
+    rescue
+      return nil
+    end
   end
 end

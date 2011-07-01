@@ -5,9 +5,10 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     def self.person_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"personal") {
-          xml.namePart(:type=>"family")
-          xml.namePart(:type=>"given")
-          xml.affiliation
+          xml.namePart()
+          #xml.namePart(:type=>"family")
+          #xml.namePart(:type=>"given")
+          #xml.affiliation
           xml.role {
             xml.roleTerm(:type=>"text")
           }
@@ -104,7 +105,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     def insert_contributor(type, opts={})
       case type.to_sym 
       when :person
-        node = Hydra::ModsArticle.person_template
+        node = ObjectMods.person_template
         nodeset = self.find_by_terms(:person)
       when :organization
         node = Hydra::ModsArticle.organization_template

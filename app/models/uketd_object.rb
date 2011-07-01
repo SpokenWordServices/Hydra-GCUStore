@@ -44,5 +44,11 @@ class UketdObject < ActiveFedora::Base
     super(obj)
     # add handler for updating contentMetadata datastreams    
   end
+    
+  def self.person_relator_terms
+    {"aut" => "Author",
+     "adv" => "Thesis advisor"
+     }
+  end
 
 end
