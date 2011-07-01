@@ -179,11 +179,44 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       }
     end
 
-	def self.language_relator_terms
+	  def self.language_relator_terms
       {
         "eng" => "English",
-		"fre" => "French",
-        "esp" => "Spanish"
+		    "fre" => "French",
+        "ger" => "German",
+        "ita" => "Italian",
+        "esp" => "Spanish",
+        "por" => "Portuguese",
+        "nob" => "Norwegian",
+        "dan" => "Danish",
+        "swe" => "Swedish",
+        "dan" => "Dutch"      
+      }
+    end
+
+    def self.qualification_name_relator_terms
+      {
+        "PhD" => "PhD",
+        "ClinPsyD" => "ClinPsyD",
+        "EdD" => "EdD",
+        "MD" => "MD",
+        "PsyD" => "PsyD",
+        "MA" => "MA",
+        "MEd" => "MEd",
+        "MSc" => "MSc",
+        "BA" => "BA",
+        "BSc" => "BSc",
+        "MPhil" => "MPhil",
+        "MTheol" => "MTheol",
+        "MRes" => "MRes"
+      }
+    end
+
+    def self.qualification_level_relator_terms
+      {
+        "Doctoral" => "Doctoral",
+        "Masters" => "Masters",
+        "Undergraduate" => "Undergraduate"
       }
     end
     
