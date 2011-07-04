@@ -6,10 +6,10 @@ class ObjectDc < ActiveFedora::NokogiriDatastream
            						"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
            						"xsi:schemaLocation"=>"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd",
 											:schema=>"http://www.openarchives.org/OAI/2.0/oai_dc.xsd")
-    t.title
-    t.genre(:path=>"type", :xmlns=>"http://purl.org/dc/elements/1.1/")
-		t.identifier
-		t.dateIssued(:path=>"date")
+    t.dc_title(:path=>"title") 
+    t.dc_genre(:path=>"type", :xmlns=>"http://purl.org/dc/elements/1.1/")
+		t.dc_identifier(:path=>"identifier")
+		t.dc_dateIssued(:path=>"date")
   end
  	# Generates an empty DC datastream
   def self.xml_template

@@ -8,7 +8,8 @@ class ModsStructuralSet < ObjectMods
     t.title(:proxy=>[:title_info, :main_title])
     t.genre(:path=>'genre')
     t.origin_info(:path=>'originInfo') {
-    	t.publisher
+			t.publisher
+   		 t.date_issued(:path=>"dateIssued")
     }
     t.language{
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
@@ -17,6 +18,11 @@ class ModsStructuralSet < ObjectMods
     t.description(:path=>"abstract")
   
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
+
+		t.location {
+			t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+		}
+
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]
@@ -31,22 +37,23 @@ class ModsStructuralSet < ObjectMods
              xml.titleInfo {
                xml.title
              }
-			 xml.typeOfResource (:collection=>"yes")
-	         xml.genre
+			 			 xml.typeOfResource ("text", :collection=>"yes") 
+	         	 xml.genre "Structural set"
              xml.abstract
              xml.originInfo {
-               xml.publisher
+							 xml.publisher "The University of Hull"
+             	 xml.dateIssued (Time.now.strftime("%Y-%m-%d"))
              }
              xml.identifier(:type=>"fedora")
              xml.location {
                xml.url(:access=>"raw object")
              } 
              xml.recordInfo {
-               xml.recordContentSource
-               xml.recordCreationDate(:encoding=>"w3cdtf")
+               xml.recordContentSource "The University of Hull"
+               xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
                xml.recordChangeDate(:encoding=>"w3cdtf")
                xml.languageOfCataloging {
-                 xml.languageTerm(:authority=>"iso639-2b")  
+                 xml.languageTerm("eng", :authority=>"iso639-2b")  
                }
              }
         }
