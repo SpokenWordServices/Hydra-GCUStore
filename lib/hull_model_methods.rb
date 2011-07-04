@@ -42,8 +42,9 @@ module HullModelMethods
 
   # call insert_resource on the contentMetadata datastream
   def insert_resource(opts={})
-    ds = self.datastreams_in_memory["contentMetadata"]
+    ds = self.datastreams["contentMetadata"]
     node, index = ds.insert_resource(opts)
+    return node, index
   end
   
   # helper method to derive cmodel declaration from ruby model

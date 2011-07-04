@@ -75,11 +75,11 @@
 -->
 		<%= display_edit_form(@document_fedora, "uketd_object") %>
   
-    <h2>Upload Content</h2>
+    <h2 id="uploader_header">Upload Content</h2>
     <div class="uploads">
       <div id='uploader'>
         <%# the following passes an :accept hash to the uploader file_field_tag which limits the type of file that can be uploaded %>
-        <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => 'application/pdf' }, :container_content_type=>"uketd_object" } %>
+        <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => ['application/pdf','image/jpeg','image/tiff','image/gif','application/vnd.ms-excel','application/zip','text/csv','audio/x-ms-wmv'] }, :container_content_type=>"uketd_object" } %>
       </div>
 	  </div>
  

@@ -52,8 +52,9 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     def self.resource_template(opts={})
       options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>""}
       options.merge!(opts)
+      options.merge!({:id=>"Asset #{options[:display_label]}"})
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.resource(:sequence=>options[:sequence],:id=>options[:id],:displayLabel=>options[:displayLabel],:objectID=>options[:object_id],:dsID=>"content",:dissType=>"genericContent/content") {
+        xml.resource(:sequence=>options[:sequence],:id=>options[:id],:displayLabel=>options[:display_label],:objectID=>options[:object_id],:dsID=>"content",:dissType=>"genericContent/content") {
           xml.file(:id=>"", :format=>"pdf", :mimeType=>"application/pdf", :size=>"") {
             xml.location(opts[:url], :type=>"url")
           }
