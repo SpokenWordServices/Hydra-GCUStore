@@ -1,0 +1,16 @@
+<form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>@content_type)%>" method="post" data-resourceType="<%= @content_type%>" accept-charset="utf-8" >
+  <input type="hidden" name="content_type" value="<%= @content_type%>" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <fieldset class="edit-half">
+  <legend>Assets</legend>
+  <dl>
+    <%= render :partial=>"shared/edit_resource", :collection => @document_fedora.datastreams_in_memory["contentMetadata"].find_by_terms(:resource) %>
+  </dl>
+  </fieldset>
+  <input type="hidden"  name="_method" value="put"/>
+   <div>
+    <div class="form-control">
+      <%= submit_tag "Save" %>
+    </div>
+  </div>
+</form>
