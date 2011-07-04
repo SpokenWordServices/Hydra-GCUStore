@@ -1,3 +1,4 @@
+<% contributor_type ||= nil %>
 <% if defined?(roles) && contributor_type==:person && roles.include?("author") && !get_persons_from_roles(@document, roles).empty? %>
   <%= render :partial=>"contributors/edit_person_by_role", :collection=>get_persons_from_roles(@document, roles) %>
   <div class="add_contributor_link <%= roles.map{|r| r.downcase.gsub(' ','_') }.join(' ') %> <%= @content_type%>">
