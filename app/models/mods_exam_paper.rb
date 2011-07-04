@@ -14,7 +14,7 @@ class ModsExamPaper < ObjectMods
     t.exam_level(:path=>"abstract", :attributes=>{:displayLabel=>"Examination level"})   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-       t.topic
+       t.topic(:index_as=>[:facetable])
     }
     t.genre
 	t.type_of_resource(:path=>"typeOfResource")
