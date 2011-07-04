@@ -30,11 +30,6 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     def self.xml_template
       builder = Nokogiri::XML::Builder.new do |xml|
       xml.contentMetadata(:type=>"text",:version=>"1.0", "xmlns"=>"http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1") {
-        xml.resource(:sequence=>"1", :id=>"", :displayLabel=>"", :objectID=>"", :dsID=>"content", :dissType=>"genericContent/content") {
-          xml.file(:id=>"", :format=>"pdf", :mimeType=>"application/pdf", :size=>"") {
-            xml.location(:type=>"url")
-          }
-        }
       }
       end
       return builder.doc
