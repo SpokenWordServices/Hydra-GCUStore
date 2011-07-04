@@ -5,9 +5,10 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     def self.person_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"personal") {
-          xml.namePart(:type=>"family")
-          xml.namePart(:type=>"given")
-          xml.affiliation
+          xml.namePart()
+          #xml.namePart(:type=>"family")
+          #xml.namePart(:type=>"given")
+          #xml.affiliation
           xml.role {
             xml.roleTerm(:type=>"text")
           }
@@ -50,9 +51,33 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
     end
 
-	def self.subject_topic_template
+	  def self.subject_topic_template
       builder = Nokogiri::XML::Builder.new {|xml| xml.topic }
       return builder.doc.root
+    end
+
+    def self.grant_number_template
+      builder = Nokogiri::XML::Builder.new {|xml| xml.identifier(:type=>"grantNumber") }
+      return builder.doc.root
+    end
+
+    def insert_grant_number(opts={})
+      node = ModsJournalArticle.grant_number_template
+      nodeset = self.find_by_terms(:grant_number)
+
+      unless nodeset.nil?
+        nodeset.after(node)
+        index=nodeset.length
+        self.dirty = true
+      end
+      
+      return node, index
+
+    end
+
+    def remove_grant_number(index)
+      self.find_by_terms(:grant_number)[index.to_i].remove
+      self.dirty = true
     end
 
     def insert_subject_topic(opts={})
@@ -80,7 +105,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     def insert_contributor(type, opts={})
       case type.to_sym 
       when :person
-        node = Hydra::ModsArticle.person_template
+        node = ObjectMods.person_template
         nodeset = self.find_by_terms(:person)
       when :organization
         node = Hydra::ModsArticle.organization_template
@@ -155,11 +180,44 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       }
     end
 
-	def self.language_relator_terms
+	  def self.language_relator_terms
       {
         "eng" => "English",
-		"fre" => "French",
-        "esp" => "Spanish"
+		    "fre" => "French",
+        "ger" => "German",
+        "ita" => "Italian",
+        "esp" => "Spanish",
+        "por" => "Portuguese",
+        "nob" => "Norwegian",
+        "dan" => "Danish",
+        "swe" => "Swedish",
+        "dan" => "Dutch"      
+      }
+    end
+
+    def self.qualification_name_relator_terms
+      {
+        "PhD" => "PhD",
+        "ClinPsyD" => "ClinPsyD",
+        "EdD" => "EdD",
+        "MD" => "MD",
+        "PsyD" => "PsyD",
+        "MA" => "MA",
+        "MEd" => "MEd",
+        "MSc" => "MSc",
+        "BA" => "BA",
+        "BSc" => "BSc",
+        "MPhil" => "MPhil",
+        "MTheol" => "MTheol",
+        "MRes" => "MRes"
+      }
+    end
+
+    def self.qualification_level_relator_terms
+      {
+        "Doctoral" => "Doctoral",
+        "Masters" => "Masters",
+        "Undergraduate" => "Undergraduate"
       }
     end
     

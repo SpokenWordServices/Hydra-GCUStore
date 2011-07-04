@@ -1181,7 +1181,7 @@ fieldset.edit-half dl dd {
 }
 
 fieldset.edit-half dl dd input {
-  width: 25em;
+  width: 24em;
   font-size: .8em;
 }
 
@@ -1258,6 +1258,17 @@ div#subjects dd a.field {
   margin-right: 10em;
 }
 
+div#grants dd a.field {
+  display: inline !important;
+  margin-right: 10em;
+}
+
+dd.multi_inline {
+  margin-left: 0;
+  /* padding-bottom: 15px; 
+  padding-top: 5px;*/
+}
+
 form.flc-uploader.fl-uploader.fl-progEnhance-enhanced { 
   display:none;
 }
@@ -1276,4 +1287,71 @@ a.toggle.edit {
 
 span.edit-browse {
   margin-left: 20px;
+}
+
+a.destructive {
+  display: block !important; 
+}
+
+.destructive field {
+  margin-right: 0px;
+}
+
+div.contributors dl dt {
+  width: 53em !important;
+  text-align: left;
+  font-size: .6em;
+}
+
+div.contributors  dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
+float:left;
+}
+
+div.contributors dl dd span input {
+  width: 50em;
+  font-size: .8em;
+}
+
+div.contributors dd a {
+  display: none;
+}
+
+.contributors dl dt label {
+	font-size: 165%;
+}
+
+.person.contributor dt label {
+  display:none;
+}
+div.add_contributor_link a {
+  margin-left: -14em;
+}
+
+div.add_contributor_link.creator.uketd_object a {
+  display:none;
+}
+.submitLink {
+	background-color: transparent !important;
+	background: none !important;
+	height: 1.4em !important;
+	width: 101px !important;
+	float: none !important;	
+	font-size:1.0em;
+	border: none;
+	padding-left:1px;
+	text-decoration: none !important;
+	cursor: pointer;
+}
+input.submitLink:hover {
+	text-decoration: underline !important;
+	cursor: pointer;
+}
+
+#uploader_header {
+  margin-top:2.4em;
 }

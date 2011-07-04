@@ -1,52 +1,69 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"uketd_object")%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
   <% @content_type = "uketd_object" %>
   <% choices = ObjectMods.language_relator_terms %>
+  <% qualification_level_choices = ObjectMods.qualification_level_relator_terms %>
+  <% qualification_name_choices = ObjectMods.qualification_name_relator_terms %>
   <input type="hidden" name="content_type" value="uketd_object" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
   <fieldset class="edit-standard">
   <legend>Author</legend>
   <div id="contributors">
-    <%= render :partial => 'contributors/index' %>
+    <%= render :partial => 'contributors/index', :locals=> {:roles=>['creator','author'], :contributor_type=>:person} %>
   </div>
   </fieldset>
   <fieldset class="edit-standard">
   <legend>Thesis or dissertation</legend>
-  <!-- To do Advisors/Sponsors -->
-  <dl>
-    <dt>
-     <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
-    </dd>
-    <div id="subjects">
-	  <%= render :partial => 'subjects/index' %>
-	</div>
-     <dt>
-      <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
-    </dt>
-    <dd>
-      <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
-    </dd>
-    <dt>
-      <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
-    </dt>
-    <dd>
-      <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
-    </dd>   
-	<dt>
-      <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
-    </dt>
+    <!-- To do Advisors/Sponsors -->
+    <dl>
+      <dt>
+       <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+      </dt>
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
+      </dd>
+      <div id="subjects">
+	      <%= render :partial => 'subjects/index' %>
+	    </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:abstract],"Abstract") %>
+      </dt>
+      <dd>
+        <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
+      </dd>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:name,:namePart],"Advisor(s)") %>
+      </dt>
+      <div class="contributors">
+        <%= render :partial => 'contributors/index', :locals=> {:roles=>['thesis advisor'], :contributor_type=>:person} %>
+      </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:name,:namePart], "Sponsor(s)") %>
+      </dt>
+      <div class="contributors">
+        <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
+      </div>
+      <div id="grants">
+	      <%= render :partial => 'grant_numbers/index' %>
+	    </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
+      </dt>
+      <dd>
+        <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
+      </dd>   
+	    <dt>
+        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
+      </dt>
       <dd> 
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
-    </dd>
-	<dt>
-	  <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
-	</dt>
-	<dd>
-	  <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
-	</dd>
-  </dl>
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
+      </dd>
+	    <dt>
+	      <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
+	    </dt>
+	    <dd>
+	      <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
+	    </dd>
+    </dl>
   </fieldset>
 
   <fieldset class="edit-half">
@@ -57,19 +74,21 @@
       	  <%= fedora_field_label("descMetadata",[:qualification_level],"Qualification level") %>
     	</dt>
 	    <dd style="width: 20em;">
-	      <%= fedora_text_field(@document_fedora,"descMetadata", [:qualification_level]) %>
-        </dd>
+	      <%= fedora_select(@document_fedora,"descMetadata", [:qualification_level], :choices=>qualification_level_choices.values.sort) %>
+      </dd>
 	  </div>
 	  <div class="right">
-		<dt >
+		<dt>
           <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
         </dt>
         <dd style="width: 20em;"> 
-          <%= fedora_text_field(@document_fedora,"descMetadata", [:qualification_name]) %>
+   
+          <%= fedora_select(@document_fedora,"descMetadata", [:qualification_name], :choices=>qualification_name_choices.values.sort) %>
         </dd>
 	  </div>
-	</div
+	</div>
   </dl>
+
   </fieldset>
 
   <fieldset class="edit-standard">
@@ -88,8 +107,22 @@
     <div class="form-control">
       <%= submit_tag "Save" %>
     </div>
-    <div class="form-control">  
-      <%= submit_tag "Submit" %>
-    </div>
   </div>
 </form>
+
+<% if @document_fedora.queue_membership == [:proto] %>
+<div style="width:100%;height:2.2em;">
+  <form id="document_queue" action="<%= change_queue_path(:content_type=>"uketd_object", :workflow_step=>"qa", :id => @document_fedora.pid )%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="uketd_object" />
+    <input type="hidden"  name="_method" value="put"/>
+    <input type="hidden" name="workflow_step" value="qa" />
+    <div class="form-control">  
+      <%= submit_tag "Submit to QA", :confirm => "Are you sure you want to move this to the QA Queue?" %>
+    </div>
+  </form>
+</div>
+<% end %>
+
+<div id="file_assets" style="display:block;width:100%;">
+<%= render :partial=> "shared/resources" %>
+</div>

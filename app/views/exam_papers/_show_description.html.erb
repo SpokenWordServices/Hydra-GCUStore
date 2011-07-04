@@ -5,7 +5,7 @@
  <%= display_datastream_field(@document_fedora,"descMetadata", [:module, :combined_display], "Module", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:note], "Additional note", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:exam_level], "Examination level", "dd_text") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :exam_date], "Examination date", "dd_text") %>
+ <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Examination date", "dd_text") %>
 
  <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>
     <% unless orgs.empty? %>

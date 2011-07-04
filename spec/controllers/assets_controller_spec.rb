@@ -32,6 +32,10 @@ describe AssetsController do
           }
         }
       }
+
+      # updated for hull
+      mock_document.expects(:respond_to?).with(:valid_for_save?).returns(false)
+      mock_document.expects(:respond_to?).with(:apply_additional_metadata).returns(false)
       
       mock_document.expects(:update_datastream_attributes).with("descMetadata"=>{"subject"=>{"0"=>"subject1", "1"=>"subject2", "2"=>"subject3"}}).returns({"subject"=>{"2"=>"My Topic"}})
       mock_document.expects(:save)
@@ -46,6 +50,9 @@ describe AssetsController do
       HydrangeaDataset.expects(:find).with("_PID_").returns(mock_document)
       
       update_method_args = [ "descMetadata" => { [{:person=>0}, :role] => {"0"=>"role1","1"=>"role2","2"=>"role3"} } ]
+      # updated for hull
+      mock_document.expects(:respond_to?).with(:valid_for_save?).returns(false)
+      mock_document.expects(:respond_to?).with(:apply_additional_metadata).returns(false)
       mock_document.expects(:update_datastream_attributes).with( *update_method_args ).returns({"person_0_role"=>{"0"=>"role1","1"=>"role2","2"=>"role3"}})
       mock_document.expects(:save)
       

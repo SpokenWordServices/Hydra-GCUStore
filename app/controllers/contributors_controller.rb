@@ -1,7 +1,7 @@
 require 'mediashelf/active_fedora_helper'
 
 class ContributorsController < ApplicationController
-  
+  include ContributorsHelper
   include MediaShelf::ActiveFedoraHelper
   before_filter :require_solr, :require_fedora
   
@@ -27,6 +27,13 @@ class ContributorsController < ApplicationController
     
     ct = params[:contributor_type]
     inserted_node, new_node_index = @document_fedora.insert_contributor(ct)
+
+    name  = extract_name_value(params[:asset][:descMetadata]) if params[:asset] && params[:asset].fetch(:descMetadata,nil)
+    role = extract_role_value(params[:asset][:descMetadata]) if params[:asset] && params[:asset].fetch(:descMetadata,nil)
+
+    inserted_node.at_css("namePart").inner_html = name if name
+    inserted_node.at_css("roleTerm").inner_html = role if role
+
     @document_fedora.save
     partial_name = "contributors/edit_#{ct}.html"
     respond_to do |format|
@@ -53,4 +60,5 @@ class ContributorsController < ApplicationController
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     af_model.find(asset_id)
   end
+
 end

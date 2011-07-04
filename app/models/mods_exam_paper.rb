@@ -14,7 +14,7 @@ class ModsExamPaper < ObjectMods
     t.exam_level(:path=>"abstract", :attributes=>{:displayLabel=>"Examination level"})   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
-       t.topic
+       t.topic(:index_as=>[:facetable])
     }
     t.genre
 	t.type_of_resource(:path=>"typeOfResource")
@@ -42,7 +42,7 @@ class ModsExamPaper < ObjectMods
    
     t.origin_info(:path=>"originInfo") {
       t.publisher
-      t.exam_date(:path=>"dateIssued")
+      t.date_issued(:path=>"dateIssued")
     }
     
     t.language {
@@ -73,7 +73,7 @@ class ModsExamPaper < ObjectMods
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
 
 	t.physical_description(:path=>"physicalDescription") {
-	  t.internet_media_type(:path=>"internetMediaType")
+	  t.mime_type(:path=>"internetMediaType")
 	  t.digital_origin(:path=>"digitalOrigin")
 	}
 
@@ -103,8 +103,8 @@ class ModsExamPaper < ObjectMods
                  xml.roleTerm(:type=>"text")
                }
              }
-			 xml.typeOfResource
-             xml.genre
+			 			 xml.typeOfResource "text"
+             xml.genre "Examination paper"
              xml.originInfo {
                xml.publisher
                xml.dateIssued
@@ -116,12 +116,12 @@ class ModsExamPaper < ObjectMods
              }
              xml.physicalDescription {
                xml.extent
-               xml.internetMediaType
-               xml.digitalOrigin 
+               xml.mediaType
+               xml.digitalOrigin "born digital"
              }
              xml.abstract(:displayLabel=>"Examination level")
              xml.subject(:authority=>"UoH") {
-               xml.topic
+               xml.topic "Subject topic goes here"
              }
              xml.identifier(:type=>"fedora")
              xml.relatedItem(:ID=>"module") {
@@ -137,11 +137,11 @@ class ModsExamPaper < ObjectMods
              }
              xml.accessCondition(:type=>"useAndReproduction")
              xml.recordInfo {
-               xml.recordContentSource
-               xml.recordCreationDate(:encoding=>"w3cdtf")
+               xml.recordContentSource "The University of Hull"
+               xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
                xml.recordChangeDate(:encoding=>"w3cdtf")
                xml.languageOfCataloging {
-                 xml.languageTerm(:authority=>"iso639-2b")  
+                 xml.languageTerm("eng", :authority=>"iso639-2b")  
                }
              }
         }

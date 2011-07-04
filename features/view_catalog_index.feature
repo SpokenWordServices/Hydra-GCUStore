@@ -28,7 +28,7 @@ Feature: Catalog Index
   @local
   Scenario: Executing a search
     Given I am on the catalog index page
-    And I fill in "q" with "evolution"
+    And I fill in "q" with "accounting"
     And I press "search"
     Then I should see "2 documents"
     And I should see "Sort by"

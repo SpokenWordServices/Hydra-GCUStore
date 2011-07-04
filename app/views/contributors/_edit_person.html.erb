@@ -1,5 +1,10 @@
 <% person = edit_person %>
 <% person_counter = edit_person_counter %>
+<% if @document_fedora.class.respond_to?(:person_relator_terms) %>
+  <% choices = @document_fedora.class.person_relator_terms %>
+<% else %>
+  <% choices = ObjectMods.person_relator_terms %>
+<% end %>
 <% person_name = "#{get_values_from_datastream(@document_fedora,'descMetadata', [{:name=>person_counter}, :namePart])}" %>
 <% base_id = "person_#{person_counter}" %>
   <input type="hidden" id="contributor_type" name="contributor_type" value="person"/>
@@ -16,8 +21,14 @@
             <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_counter}, :namePart], :multiple=>false) %>
           <% end %>
           <% if ( (person_counter > 0) && (params[:action] == "edit" || params[:action] == "create") && !person_name.strip.empty? ) %>
-            <%= field_selectors_for("descMetadata", [{:person=>person_counter}]) %>
+            <%= field_selectors_for("descMetadata", [{:name=>person_counter}]) %>
             <%= link_to( "-", asset_contributor_path(@document_fedora.pid, "person", person_counter), :method=>:delete, :class => "destructive destroy_contributor", :title=>"Delete #{person_name}")  %>
           <% end %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata", [{:name=> person_counter}, :role, :text], "Person's Role:") %>
+    </dt>
+    <dd>
+      <%= fedora_select(@document_fedora,"descMetadata", [{:name=> person_counter}, :role, :text], :choices=>choices.values.sort) %>
     </dd>
   </dl>

@@ -1,0 +1,11 @@
+<%= hidden_field_tag 'asset_id', params["asset_id"] %>
+
+<dt>
+  <%= fedora_field_label("descMetadata",[:grant_number],"Grant number") %>
+</dt>
+<dd class="multi_inline grant"> 
+  <%= fedora_text_field(@document_fedora,"descMetadata", [:grant_number], :multiple=>true) %>
+  <%= link_to(image_tag("/images/add.png",:border=>0), new_grant_number_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+</dd>	
+
+

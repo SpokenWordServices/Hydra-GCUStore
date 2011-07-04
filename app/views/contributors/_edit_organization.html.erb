@@ -8,6 +8,7 @@
   <% choices = ObjectMods.organization_relator_terms %>
 <% end %>
   <dl class="organization contributor" id="<%= base_id %>">
+    <input type="hidden" id="contributor_type" name="contributor_type" value="organization"/>
     <dt>
       <%= fedora_field_label("descMetadata", [{:organization => organization_counter}, :namePart], "Organization") %>
 	</dt>
