@@ -106,7 +106,8 @@ describe FileAssetsController do
       mock_fa = mock("FileAsset", :save)
       FileAsset.expects(:new).returns(mock_fa)
       mime_type = "application/octet-stream"
-      mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename, :mimeType=>mime_type)
+      #updated expectation for hull
+      mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename, :mimeType=>mime_type, :dsid=>"content")
       mock_fa.expects(:label=).with(filename)
       mock_fa.stubs(:pid).returns("foo:pid")
       xhr :post, :create, :Filedata=>mock_file, :Filename=>filename
@@ -118,7 +119,8 @@ describe FileAssetsController do
       mock_fa.stubs(:pid).returns("foo:pid")
       FileAsset.expects(:new).returns(mock_fa)
       mime_type = "application/octet-stream"
-      mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename, :mimeType=>mime_type)
+      # updated expecation for hull - passing in dsid
+      mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename, :mimeType=>mime_type,:dsid=>"content")
 #mock_fa.expects(:add_file_datastream).with(mock_file, :label=>filename)
       mock_fa.expects(:label=).with(filename)
       

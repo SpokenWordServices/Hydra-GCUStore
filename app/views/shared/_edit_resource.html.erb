@@ -1,0 +1,6 @@
+<% resource = edit_resource %>
+<% resource_counter = edit_resource_counter %>
+<li>
+  <%= fedora_text_field(@document_fedora,"contentMetadata",[{:resource=>resource_counter},:sequence],:multiple=>false, :html_options=>{:class => "resource-sequence"}) %>: 
+  <%= fedora_text_field(@document_fedora,"contentMetadata",[{:resource=>resource_counter},:display_label],:multiple => false) %>
+</li>

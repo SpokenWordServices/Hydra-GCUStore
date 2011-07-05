@@ -26,68 +26,47 @@
     $(document).ready(function() {
       $(document).catalogEdit();
     });
-	</script>
+  </script>
 <% end %>
 <div class="document_viewer" id="cover_container">
 	<div class="deleteDocument">
-		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
-    <input type="hidden" name="content_type" value="uketd_object" />
+		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="structural_set" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="structural_set" />
     <input type="hidden"  name="_method" value="delete"/>
     <div>  
       <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
     </div>
   	</form>
 	</div>
-
-<!--
-	This didn't work... 
- <div class="deleteDocument">
-    <%= delete_asset_link(params[:id], "article") %>
-  </div>
--->
   <div class="set-controls">
     <!-- holder for create/move set controls -->
-	<div class="create">
-		<a href="">Create a new set</a>
-	</div>
 	<div class="move">
 		<a href="">Move to a new set</a>
 	</div>
   </div>
   <div class="content-type-header">
-    <h1>Edit a thesis or dissertation</h1>
+    <h1>Edit a structural set</h1>
   </div>
   <div class="multipleEdit">
     <div id="loading" style="display:none;">
       <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
       </img>
     </div>
-<!--
     <% if flash[:notice] %>
       <div class="notice">
         <%= flash[:notice] %>
       </div>
-    <% elsif flash[:error] %>
-      <div class="error">
-        <%= flash[:error] %>
-      </div>
     <% end %>
--->
-		<%= display_edit_form(@document_fedora, "uketd_object") %>
-  
-    <h2 id="uploader_header">Upload Content</h2>
-    <div class="uploads">
-      <div id='uploader'>
-        <%# the following passes an :accept hash to the uploader file_field_tag which limits the type of file that can be uploaded %>
-        <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => ['application/pdf','image/jpeg','image/tiff','image/gif','application/vnd.ms-excel','application/zip','text/csv','audio/x-ms-wmv'] }, :container_content_type=>"uketd_object" } %>
-      </div>
-	  </div>
- 
+
+    <%= render :partial => 'structural_sets/edit_description' %>
+   <div class="permissionsEdit">
+		<h1>Permissions edit</h1>   
+    	<%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]} %>
+   </div>
   </div>
 </div>
 <% sidebar_items << capture do %>
   <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
-  <%#= render :partial=>'facets' %>  
-
+  <%#= render :partial=>'facets' %>
 <% end %>
-<%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>
+

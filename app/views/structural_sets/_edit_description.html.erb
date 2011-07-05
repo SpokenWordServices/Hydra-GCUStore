@@ -1,0 +1,37 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"structural_set")%>" method="post" data-resourceType="structural_set" accept-charset="utf-8" >
+  <% @content_type = "structural_set" %>
+  <input type="hidden" name="content_type" value="structural_set" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <fieldset class="edit-standard">
+  <legend>Structural set</legend>
+  <dl>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false) %>
+    </dd> 
+	<dt>   
+      <%= fedora_field_label("descMetadata",[:description],"Description") %>
+    </dt>
+    <dd>
+      <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
+    </dd>
+	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd-edit-publisher") %>
+	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "Identifier", "dd-edit-identifier") %>
+
+  </dl>
+  </fieldset>
+  <input type="hidden"  name="_method" value="put"/>
+   <div>
+    <div class="form-control">
+      <%= submit_tag "Save" %>
+    </div>
+   <!--
+      <div class="form-control">  
+      <%= submit_tag "Submit" %>
+   </div>
+   -->    
+	</div>
+</form>
+

@@ -130,29 +130,7 @@
     </div>
   </div>
 </form>
+<div id="file_assets">
+<%= render :partial => "shared/resources" %>
+</div>
 
-<form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"uketd_object")%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
-  <input type="hidden" name="content_type" value="uketd_object" />
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <fieldset class="edit-half">
-  <legend>Assets</legend>
-  <dl>
-    <div class="info-multiple">
-      <div class="left">
-        <dt>
-          <%= fedora_field_label("contentMetadata",[:resource,:display_label],"Label") %>
-        </dt>
-        <dd>
-          <%= fedora_text_field(@document_fedora,"contentMetadata",[:resource,:display_label],:multiple => true) %>
-        </dd>
-      </div>
-    </div>
-  </dl>
-  </fieldset>
-  <input type="hidden"  name="_method" value="put"/>
-   <div>
-    <div class="form-control">
-      <%= submit_tag "Save" %>
-    </div>
-  </div>
-</form>

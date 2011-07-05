@@ -37,6 +37,7 @@ module CatalogHelper
    resources = ""
 
    if resources_count > 0
+    
      i = 0
      resources = <<-EOS
         <fieldset id="download_fields">
@@ -50,15 +51,21 @@ module CatalogHelper
      mime_type = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :mime_type])
      format = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :format])
      file_size = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :size])
+    
+     sequence = get_values_from_datastream(document, "contentMetadata",[:resource,:sequence])
 
+     sequence_hash = {}
+     sequence.each_with_index{|v,i| sequence_hash[v.to_i] = i }
 
-     while i < resources_count
+     sequence_hash.keys.sort.each do |seq| 
+        i = sequence_hash[seq]
+#     while i < resources_count
       resources << <<-EOS 
 	       <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
            <a href="/assets/#{object_id[i]}/#{ds_id[i]}">#{display_label[i]}</a> 
            <div id="file-size">(#{get_friendly_file_size(file_size[i])}, #{format[i]})</div>
       EOS
-       i += 1
+#       i += 1
      end
       resources << <<-EOS
         </div>

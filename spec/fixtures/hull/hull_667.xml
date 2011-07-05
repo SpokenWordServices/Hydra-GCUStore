@@ -1,78 +1,116 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<foxml:digitalObject VERSION="1.1" xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd" PID="hull:667" xmlns:foxml="info:fedora/fedora-system:def/foxml#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <foxml:objectProperties>
-    <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active" />
-    <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="      Electronic Theses and Dissertations (ETD) - " />
-    <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin" />
-    <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject" />
-  </foxml:objectProperties>
-  <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-    <foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/">
-      <foxml:xmlContent>
-        <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
-          <dc:title>Electronic Theses and Dissertations (ETD)</dc:title>
-          <dc:date></dc:date>
-          <dc:type>structuralSet</dc:type>
-          <dc:identifier>hull:667</dc:identifier>
-          <dc:language></dc:language>
-        </oai_dc:dc>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-    <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" MIMETYPE="text/xml">
-      <foxml:binaryContent>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtb2RzIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL3d3dy5sb2MuZ292L21vZHMvdjMgaHR0cDovL3d3dy5sb2MuZ292L3N0YW5kYXJkcy9tb2RzL3YzL21vZHMtMy00LnhzZCIgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj4NCiAgPHRpdGxlSW5mbz4NCiAgICA8dGl0bGU+RWxlY3Ryb25pYyBUaGVzZXMgYW5kIERpc3NlcnRhdGlvbnMgKEVURCk8L3RpdGxlPg0KICA8L3RpdGxlSW5mbz4NCiAgPHR5cGVPZlJlc291cmNlIGNvbGxlY3Rpb249InllcyI+dGV4dDwvdHlwZU9mUmVzb3VyY2U+DQogIDxnZW5yZT5zdHJ1Y3R1cmFsU2V0PC9nZW5yZT4NCiAgPG9yaWdpbkluZm8+DQogICAgPHB1Ymxpc2hlcj5UaGUgVW5pdmVyc2l0eSBvZiBIdWxsPC9wdWJsaXNoZXI+DQogIDwvb3JpZ2luSW5mbz4NCiAgPHN1YmplY3QgYXV0aG9yaXR5PSJVb0giIC8+DQogIDxpZGVudGlmaWVyIHR5cGU9ImZlZG9yYSI+aHVsbDo2Njc8L2lkZW50aWZpZXI+DQogIDxsb2NhdGlvbj4NCiAgICA8dXJsIGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvcmVzb3VyY2VzL2h1bGw6NjY3PC91cmw+DQogIDwvbG9jYXRpb24+DQogIDxyZWNvcmRJbmZvPg0KICAgIDxyZWNvcmRDb250ZW50U291cmNlPlRoZSBVbml2ZXJzaXR5IG9mIEh1bGw8L3JlY29yZENvbnRlbnRTb3VyY2U+DQogICAgPHJlY29yZENyZWF0aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIiAvPg0KICAgIDxyZWNvcmRDaGFuZ2VEYXRlIGVuY29kaW5nPSJ3M2NkdGYiIC8+DQogICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPg0KICAgICAgPGxhbmd1YWdlVGVybSBhdXRob3JpdHk9ImlzbzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+DQogICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4NCiAgPC9yZWNvcmRJbmZvPg0KPC9tb2RzPg==</foxml:binaryContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-    <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0">
-      <foxml:xmlContent>
-        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:fedora-model="info:fedora/fedora-system:def/model#">
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="hull:667"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="      Electronic Theses and Dissertations (ETD) - "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-04T15:16:22.710Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-04T15:23:15.505Z"/>
+<foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-04T15:16:22.710Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-04T15:23:15.505Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="DC Metadata" CREATED="2011-07-04T15:16:22.723Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="459">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Electronic Theses and Dissertations (ETD)</dc:title>
+  <dc:date></dc:date>
+  <dc:type>Structural set</dc:type>
+  <dc:identifier>hull:667</dc:identifier>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-07-04T15:23:15.505Z" MIMETYPE="text/xml" SIZE="982">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NDTxtb2RzIHhzaTpzY2hlbWFMb2Nh
+              dGlvbj0iaHR0cDovL3d3dy5sb2MuZ292L21vZHMvdjMgaHR0cDovL3d3dy5sb2MuZ292L3N0YW5kYXJk
+              cy9tb2RzL3YzL21vZHMtMy00LnhzZCIgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4
+              bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIj4NDSAgPHRp
+              dGxlSW5mbz4NDSAgICA8dGl0bGU+RWxlY3Ryb25pYyBUaGVzZXMgYW5kIERpc3NlcnRhdGlvbnMgKEVU
+              RCk8L3RpdGxlPg0NICA8L3RpdGxlSW5mbz4NDSAgPHR5cGVPZlJlc291cmNlIGNvbGxlY3Rpb249Inll
+              cyI+dGV4dDwvdHlwZU9mUmVzb3VyY2U+DQ0gIDxnZW5yZT5TdHJ1Y3R1cmFsIHNldDwvZ2VucmU+DQ0g
+              IDxvcmlnaW5JbmZvPg0NICAgIDxwdWJsaXNoZXI+VGhlIFVuaXZlcnNpdHkgb2YgSHVsbDwvcHVibGlz
+              aGVyPg0NICA8L29yaWdpbkluZm8+DQ0gIDxpZGVudGlmaWVyIHR5cGU9ImZlZG9yYSI+aHVsbDo2Njc8
+              L2lkZW50aWZpZXI+DQ0gIDxsb2NhdGlvbj4NDSAgICA8dXJsIGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0
+              cDovL2h5ZHJhLmh1bGwuYWMudWsvcmVzb3VyY2VzL2h1bGw6NjY3PC91cmw+DQ0gIDwvbG9jYXRpb24+
+              DQ0gIDxyZWNvcmRJbmZvPg0NICAgIDxyZWNvcmRDb250ZW50U291cmNlPlRoZSBVbml2ZXJzaXR5IG9m
+              IEh1bGw8L3JlY29yZENvbnRlbnRTb3VyY2U+DQ0gICAgPHJlY29yZENyZWF0aW9uRGF0ZSBlbmNvZGlu
+              Zz0idzNjZHRmIiAvPg0NICAgIDxyZWNvcmRDaGFuZ2VEYXRlIGVuY29kaW5nPSJ3M2NkdGYiIC8+DQ0g
+              ICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPg0NICAgICAgPGxhbmd1YWdlVGVybSBhdXRob3JpdHk9Imlz
+              bzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+DQ0gICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4NDSAg
+              PC9yZWNvcmRJbmZvPg0NPC9tb2RzPg==
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-07-04T15:16:22.723Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="602">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:fedora-model="info:fedora/fedora-system:def/model#">
           <rdf:Description rdf:about="info:fedora/hull:667">
-			<rel:isMemberOf rdf:resource="info:fedora/hull:rootSet" />
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:structuralSet" />
-            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata" />
+			<rel:isMemberOf rdf:resource="info:fedora/hull:rootSet"></rel:isMemberOf>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:structuralSet"></fedora-model:hasModel>
+            <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
-  <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-    <foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" MIMETYPE="text/xml">
-      <foxml:xmlContent>
-        <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="Rights metadata" CREATED="2011-07-04T15:16:22.723Z" MIMETYPE="text/xml" SIZE="927">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
           <copyright>
             <human></human>
-            <machine />
+            <machine></machine>
           </copyright>
           <access type="discover">
-            <human />
+            <human></human>
             <machine>
-              <group>public</group>
+              <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="read">
-            <human />
+            <human></human>
             <machine>
-              <group>public</group>
+              <group>contentAccessTeam</group>
             </machine>
           </access>
           <access type="edit">
-            <human />
+            <human></human>
             <machine>
               <group>contentAccessTeam</group>
             </machine>
           </access>
           <use>
-            <human />
-            <machine />
+            <human></human>
+            <machine></machine>
           </use>
           <embargo>
-            <human />
-            <machine />
+            <human></human>
+            <machine></machine>
           </embargo>
         </rightsMetadata>
-      </foxml:xmlContent>
-    </foxml:datastreamVersion>
-  </foxml:datastream>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
 </foxml:digitalObject>

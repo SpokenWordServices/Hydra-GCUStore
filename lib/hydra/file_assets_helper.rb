@@ -28,7 +28,7 @@ module Hydra::FileAssetsHelper
     # and have a has_model_s assertion = "info:fedora/afmodel:FileAsset
     # and an is_part_of_s assertion pointing back to the container
     field_hash = {"is_part_of_s" => "info:fedora/#{container_id}"}
-    options = {:field_list => ["id"]}
+    options = {:field_list => ["id"],:rows=>30}
 
     # query solr for existing child assets
     # NOTE: querying twice at the moment because existing children are ActiveFedora::Base
@@ -58,8 +58,8 @@ module Hydra::FileAssetsHelper
   # @return [FileAsset] the File Asset  
   # @note This is overwriting the default which assumes params[:Filename]
   def add_posted_blob_to_asset(asset=@file_asset)
-    file_name = params[:Filename] ? params[:Filename] : "filename.pdf"
-    asset.add_file_datastream(params[:Filedata], :label=>file_name, :mimeType=>mime_type(file_name))
+    file_name = params[:Filename] ? params[:Filename] : params[:Filedata].original_filename
+    asset.add_file_datastream(params[:Filedata],:dsid=>"content", :label=>file_name, :mimeType=>mime_type(file_name))
   end
 
 end

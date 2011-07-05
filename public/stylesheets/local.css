@@ -1297,7 +1297,6 @@ a.destructive {
   margin-right: 0px;
 }
 
-<<<<<<< HEAD
 div.contributors dl dt {
   width: 53em !important;
   text-align: left;
@@ -1351,4 +1350,8 @@ div.add_contributor_link.creator.uketd_object a {
 input.submitLink:hover {
 	text-decoration: underline !important;
 	cursor: pointer;
+}
+
+#uploader_header {
+  margin-top:2.4em;
 }

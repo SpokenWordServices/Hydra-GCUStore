@@ -40,7 +40,6 @@ class FileAssetsController < ApplicationController
 
   def update_content_metadata
     logger.debug "updating container #{@container} with data for #{@file_asset}"
-
     #prefer the container_content_type param passed as local to the fluid_infusion/uploader partial
     afmodel = retrieve_af_model(params["container_content_type"])
     unless afmodel
@@ -52,18 +51,26 @@ class FileAssetsController < ApplicationController
     else
       container = afmodel.load_instance(@container.pid)
     end
-    container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
+    node, index = container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
+    container.datastreams["contentMetadata"].save
+    container.save
   end
 
+# Returns:
   def get_default_display_label_for_content_type(content_type)
-    case content_type
-    when "uketd_object"
-      return "Thesis"
-    when "journal_article"
-      return "Article"
-    else
-      return "Asset"
+    display_label = params[:Filedata].original_filename
+    if !display_label
+      display_label =
+        case content_type
+        when "uketd_object"
+          return "Thesis"
+        when "journal_article"
+          return "Article"
+        else
+          return "Asset"
+        end
     end
+    display_label
   end
 
 end

@@ -42,8 +42,9 @@ module HullModelMethods
 
   # call insert_resource on the contentMetadata datastream
   def insert_resource(opts={})
-    ds = self.datastreams_in_memory["contentMetadata"]
+    ds = self.datastreams["contentMetadata"]
     node, index = ds.insert_resource(opts)
+    return node, index
   end
   
   # helper method to derive cmodel declaration from ruby model
@@ -116,8 +117,8 @@ module HullModelMethods
     #rights_ds = self.datastreams_in_memory["rightsMetadata"]
   	
 		#Add the dc required elements
-		dc_ds.update_indexed_attributes([:identifier]=> self.pid) unless dc_ds.nil?
-		dc_ds.update_indexed_attributes([:genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:dc_identifier]=> self.pid) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:dc_genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
 	
 		#Add the descMetadata required elements
 		desc_ds.update_indexed_attributes([:identifier]=> self.pid) unless desc_ds.nil?
@@ -135,9 +136,17 @@ module HullModelMethods
       self.apply_content_specific_additional_metadata
     end	
 		dc_ds = self.datastreams_in_memory["DC"]
-		dc_ds.update_indexed_attributes([:title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
-		dc_ds.update_indexed_attributes([:dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
+		dc_ds.update_indexed_attributes([:dc_dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?
 	  return true
+  end
+
+  def valid_for_save?(params)
+    if self.respond_to?(:validate_parameters)
+      @pending_attributes = params
+      self.validate_parameters
+    end
+    return self.errors.empty?
   end
 
 

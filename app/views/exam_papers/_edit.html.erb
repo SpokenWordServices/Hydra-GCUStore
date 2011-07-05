@@ -29,9 +29,15 @@
   </script>
 <% end %>
 <div class="document_viewer" id="cover_container">
-  <div class="deleteDocument">
-    <%= delete_asset_link(params[:id], "article") %>
-  </div>
+	<div class="deleteDocument">
+		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="exam_paper" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="exam_paper" />
+    <input type="hidden"  name="_method" value="delete"/>
+    <div>  
+      <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
+    </div>
+  	</form>
+	</div>
   <div class="set-controls">
     <!-- holder for create/move set controls -->
 	<div class="create">
