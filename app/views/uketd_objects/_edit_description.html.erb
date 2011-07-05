@@ -43,26 +43,29 @@
         <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
       </div>
       <div id="grants">
-	      <%= render :partial => 'grant_numbers/index' %>
-	    </div>
       <dt>
-        <%= fedora_field_label("descMetadata",[:rights],"Rights") %>
+        <%= fedora_field_label("descMetadata",[:name,:namePart], "Sponsor(s)") %>
       </dt>
-      <dd>
-        <%= fedora_text_field(@document_fedora,"descMetadata",[:rights], :multiple=>false) %>
-      </dd>   
+      <div class="contributors">
+        <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
+      </div>
+      <div id="grants">
+	      <%= render :partial => 'grant_numbers/index' %>
+	    </div>  
 	    <dt>
         <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
       </dt>
       <dd> 
         <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
       </dd>
+      <!--
 	    <dt>
 	      <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
 	    </dt>
 	    <dd>
 	      <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
 	    </dd>
+	    -->
     </dl>
   </fieldset>
 

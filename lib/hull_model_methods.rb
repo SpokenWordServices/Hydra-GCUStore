@@ -127,7 +127,7 @@ module HullModelMethods
 
 
 	#
-  # Adds hull base metadata to the asset
+  # Adds hull additional metadata to the asset
   #
   def apply_additional_metadata
 		#Here's where we call specific additional metadata changes...

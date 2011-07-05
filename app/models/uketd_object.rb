@@ -39,7 +39,20 @@ class UketdObject < ActiveFedora::Base
     is_valid?
   end
 
+  def apply_content_specific_additional_metadata
 
+    if self.queue_membership.include? :proto
+      desc_ds = self.datastreams_in_memory["descMetadata"]
+      module_date = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s
+      rights = "© " + module_date[-4,4] + " The Author. " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
+      
+      # ETDs can only be submitted in English
+      desc_ds.update_indexed_attributes([:language, :lang_code] => "eng", [:language, :lang_text] => "English") unless desc_ds.nil?
+      
+      # Need to create publisher from department and institution ie "Computer Science, The University of Hull"      
+    end
+  end
+  
   def file_objects_append(obj)
     super(obj)
     # add handler for updating contentMetadata datastreams    

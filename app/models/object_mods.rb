@@ -179,22 +179,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "hst" => "Host"
       }
     end
-
-	  def self.language_relator_terms
-      {
-        "eng" => "English",
-		    "fre" => "French",
-        "ger" => "German",
-        "ita" => "Italian",
-        "esp" => "Spanish",
-        "por" => "Portuguese",
-        "nob" => "Norwegian",
-        "dan" => "Danish",
-        "swe" => "Swedish",
-        "dan" => "Dutch"      
-      }
-    end
-
+    
     def self.qualification_name_relator_terms
       {
         "PhD" => "PhD",
@@ -218,6 +203,21 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "Doctoral" => "Doctoral",
         "Masters" => "Masters",
         "Undergraduate" => "Undergraduate"
+      }
+    end
+
+	  def self.language_relator_terms
+      {
+        "eng" => "English",
+		    "fre" => "French",
+        "ger" => "German",
+        "ita" => "Italian",
+        "esp" => "Spanish",
+        "por" => "Portuguese",
+        "nob" => "Norwegian",
+        "dan" => "Danish",
+        "swe" => "Swedish",
+        "dan" => "Dutch"      
       }
     end
     

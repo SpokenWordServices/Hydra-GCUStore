@@ -114,21 +114,6 @@ module Hydra::AssetsControllerHelper
     # result = document.update_indexed_attributes(params[:params], params[:opts])
     
     document.update_datastream_attributes(params)
-
-    # Very quick and dirty temporary fix! Creates exam title/display title and updates  
-    if document.type.to_s == 'ExamPaper'
-      if document.queue_membership.to_s == 'proto'
-
-        @module_code = document.get_values_from_datastream("descMetadata", [:module, :code], {}).to_s
-        @module_name = document.get_values_from_datastream("descMetadata", [:module, :name], {}).to_s
-        @module_date = document.get_values_from_datastream("descMetadata", [:origin_info, :date_issued], {}).to_s
-        @exam_title = (@module_code + " " + @module_name + " " + "(" + @module_date + ")")
-        @display_title = (@module_code + " " + @module_name)
-           
-        document.update_datastream_attributes({"descMetadata"=>{[:title] => {"0" => @exam_title} , [:module, :combined_display] => {"0" =>@display_title} }})
-        
-      end 
-    end
     
     result = document
   end
