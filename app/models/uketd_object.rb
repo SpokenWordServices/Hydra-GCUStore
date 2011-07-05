@@ -52,8 +52,15 @@ class UketdObject < ActiveFedora::Base
     if self.queue_membership.include? :proto
       desc_ds = self.datastreams_in_memory["descMetadata"]
       module_date = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s
-      rights = "© " + module_date[-4,4] + " The Author. " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
       
+      if module_date.empty?
+        module_date = ""
+      else
+        module_date = module_date[-4,4]
+      end   
+      
+      rights = "© " + module_date + " The Author. " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
+      desc_ds.update_indexed_attributes([:rights] => rights) unless desc_ds.nil?
       # ETDs can only be submitted in English
       desc_ds.update_indexed_attributes([:language, :lang_code] => "eng", [:language, :lang_text] => "English") unless desc_ds.nil?
       
