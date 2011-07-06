@@ -8,11 +8,11 @@
   <dl class="person contributor <%= person_role %>" id="<%= base_id %>">
           <% if (person_counter ==  0 ) %>
             <dd class="multi_inline person">
-            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_index}, :namePart], :multiple=>false) %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:person=>person_index}, :namePart], :multiple=>false) %>
             <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type)) %>
           <% else %>
             <dd class="multi_inline person">
-            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_index}, :namePart], :multiple=>false) %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:person=>person_index}, :namePart], :multiple=>false) %>
           <% end %>
           <% if ( (person_index.to_i > 0) && (params[:action] == "edit" || params[:action] == "create") && !person_name.strip.empty? ) %>
             <%= field_selectors_for("descMetadata", [{:person=>person_index}]) %>

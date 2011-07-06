@@ -1,5 +1,6 @@
 <% person = edit_person %>
 <% person_counter = edit_person_counter %>
+<% person_role = params[:role_type] %>
 <% if @document_fedora.class.respond_to?(:person_relator_terms) %>
   <% choices = @document_fedora.class.person_relator_terms %>
 <% else %>
@@ -11,24 +12,28 @@
   <dl class="person contributor" id="<%= base_id %>">
           <% if (person_counter ==  0 ) %>
             <dt>
-            <%= fedora_field_label("descMetadata", [{:name=>person_counter}, :namePart], "Name") %>
+            <%= fedora_field_label("descMetadata", [{:person=>person_counter}, :namePart], "Name") %>
             </dt>
             <dd class="multi_inline person">
-            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_counter}, :namePart], :multiple=>false) %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:person=>person_counter}, :namePart], :multiple=>false) %>
             <%= link_to("+", new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type)) %>
           <% else %>
             <dd class="multi_inline person">
-            <%= fedora_text_field(@document_fedora,"descMetadata", [{:name=>person_counter}, :namePart], :multiple=>false) %>
+            <%= fedora_text_field(@document_fedora,"descMetadata", [{:person=>person_counter}, :namePart], :multiple=>false) %>
           <% end %>
           <% if ( (person_counter > 0) && (params[:action] == "edit" || params[:action] == "create") && !person_name.strip.empty? ) %>
-            <%= field_selectors_for("descMetadata", [{:name=>person_counter}]) %>
+            <%= field_selectors_for("descMetadata", [{:person=>person_counter}]) %>
             <%= link_to( "-", asset_contributor_path(@document_fedora.pid, "person", person_counter), :method=>:delete, :class => "destructive destroy_contributor", :title=>"Delete #{person_name}")  %>
           <% end %>
     </dd>
-    <dt>
-      <%= fedora_field_label("descMetadata", [{:name=> person_counter}, :role, :text], "Person's Role:") %>
-    </dt>
-    <dd>
-      <%= fedora_select(@document_fedora,"descMetadata", [{:name=> person_counter}, :role, :text], :choices=>choices.values.sort) %>
-    </dd>
+    <% if person_role %>
+      <%= fedora_hidden_field(@document_fedora, "descMetadata", [{:person=> person_counter},:role,:text], :multiple=>false, :forced_values=>["#{person_role}"]) %>
+    <% else %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [{:person=> person_counter}, :role, :text], "Person's Role:") %>
+      </dt>
+      <dd>
+        <%= fedora_select(@document_fedora,"descMetadata", [{:person=> person_counter}, :role, :text], :choices=>choices.values.sort) %>
+      </dd>
+    <% end %>
   </dl>

@@ -1,18 +1,19 @@
 <% contributor_type ||= nil %>
+<% role_type ||= (defined?(roles) && !roles.empty?) ? roles.first : nil %>
 <% if defined?(roles) && contributor_type==:person && roles.include?("author") && !get_persons_from_roles(@document, roles).empty? %>
   <%= render :partial=>"contributors/edit_person_by_role", :collection=>get_persons_from_roles(@document, roles) %>
   <div class="add_contributor_link <%= roles.map{|r| r.downcase.gsub(' ','_') }.join(' ') %> <%= @content_type%>">
-    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type)) %>
+    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type, :role_type=>role_type)) %>
   </div>
 <% elsif defined?(roles) && contributor_type==:person && !get_persons_from_roles(@document,roles).empty? %>
   <%= render :partial=>"contributors/edit_person_by_role", :collection=>get_persons_from_roles(@document, roles) %>
   <div class="add_contributor_link <%= roles.map{|r| r.downcase.gsub(' ','_') }.join(' ') %> <%= @content_type%>">
-    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type)) %>
+    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person", :content_type => @content_type, :role_type=>role_type)) %>
   </div>
 <% elsif defined?(roles) && contributor_type==:organization && !get_organizations_from_roles(@document, roles).empty? %>
   <%= render :partial=>"contributors/edit_organization_by_role", :collection=>get_organizations_from_roles(@document,roles) %>
   <div class="add_contributor_link <%= roles.map{|r| r.downcase.gsub(' ','_') }.join(' ') %> <%= @content_type%>">
-    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"organization", :content_type => @content_type)) %>
+    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"organization", :content_type => @content_type, :role_type=>role_type)) %>
   </div>
 <% else %>
   <% if contributor_type == :person %>
@@ -30,7 +31,7 @@
     <%= render :partial=>"contributors/edit_organization", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:organization) %>
   <% end %>
   <% if defined?(roles) %>
-    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>contributor_type.to_s, :role=>roles.first, :content_type => @content_type)) %>
+    <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>contributor_type.to_s, :role_type=>role_type, :content_type => @content_type)) %>
   <% else %>
     <%= link_to(image_tag('/images/add.png'), new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>contributor_type.to_s, :content_type => @content_type)) %>
   <% end %>

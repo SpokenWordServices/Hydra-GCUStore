@@ -1,5 +1,6 @@
 <% organization = edit_organization %>
 <% organization_counter = edit_organization_counter %>
+<% organization_role = params[:role_type] %>
 <% organization_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:organization=>organization_counter}, :namePart]).first %>
 <% base_id = "organization_#{organization_counter}" %>
 <% if @document_fedora.class.respond_to?(:organization_relator_terms) %>
@@ -16,14 +17,18 @@
   	  <%= fedora_text_field(@document_fedora,"descMetadata", [{:organization => organization_counter}, :namePart], :multiple=>false) %>
 
       <% if (params[:action] == "edit" && !organization_name.empty?) %>
-        <%= field_selectors_for("descMetadata", [{:person=>organization_counter}]) %>
+        <%= field_selectors_for("descMetadata", [{:organization=>organization_counter}]) %>
         <a class="destructive destroy_contributor" href="<%= asset_contributor_path(@document_fedora.pid, "organization", organization_counter) %>" title="Delete '<%= organization_name %>"> Delete</a>
       <% end %>
     </dd>
-    <dt>
-      <%= fedora_field_label("descMetadata", [{:organization => organization_counter}, :role, :text], "Organization's Role:") %>
-    </dt>
-    <dd>
-      <%= fedora_select(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text], :choices=>choices.values.sort) %>
-    </dd>
+    <% if organization_role %>
+      <%= fedora_hidden_field(@document_fedora, "descMetadata", [{:person=> organization_counter},:role,:text], :multiple=>false, :forced_values=>["#{organization_role}"]) %>
+    <% else %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [{:organization => organization_counter}, :role, :text], "Organization's Role:") %>
+      </dt>
+      <dd>
+        <%= fedora_select(@document_fedora,"descMetadata", [{:organization => organization_counter}, :role, :text], :choices=>choices.values.sort) %>
+      </dd>
+    <% end %>
   </dl>

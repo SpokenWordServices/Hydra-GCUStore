@@ -11,8 +11,8 @@ Feature: QA edit a document
     And I should see a "div" tag with a "class" attribute of "add_contributor_link creator author uketd_object"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link thesis_advisor uketd_object"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link sponsor uketd_object"
-    And I should see a "input" tag with a "id" attribute of "name_1_namePart"
-    And I should see a "input" tag with a "id" attribute of "name_2_namePart"
+    And I should see a "input" tag with a "id" attribute of "person_1_namePart"
+    And I should see a "input" tag with a "id" attribute of "person_2_namePart"
     And I should see a "input" tag with a "id" attribute of "organization_0_namePart"
 	
 
