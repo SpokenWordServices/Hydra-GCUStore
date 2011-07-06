@@ -733,6 +733,22 @@ journal_title_info_t, journal_title_info_main_title_t, journal_issue_publication
   <!-- CSV update handler, loaded on demand -->
   <requestHandler name="/update/csv" class="solr.CSVRequestHandler" startup="lazy" />
 
+  <!-- Solr Cell: http://wiki.apache.org/solr/ExtractingRequestHandler -->
+  <requestHandler name="/update/extract" class="org.apache.solr.handler.extraction.ExtractingRequestHandler" startup="lazy">
+    <lst name="defaults">
+      <!-- All the main content goes into "text"... if you need to return
+           the extracted text or do highlighting, use a stored field. -->
+      <str name="fmap.content">content</str>
+      <str name="lowernames">true</str>
+      <str name="uprefix">ignored_</str>
+
+      <!-- capture link hrefs but ignore div attributes -->
+      <str name="captureAttr">true</str>
+      <str name="fmap.a">links</str>
+      <str name="fmap.div">ignored_</str>
+    </lst>
+  </requestHandler>
+
 
   <!-- 
    Admin Handlers - This will register all the standard admin RequestHandlers.  Adding 
