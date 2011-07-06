@@ -1355,3 +1355,7 @@ input.submitLink:hover {
 #uploader_header {
   margin-top:2.4em;
 }
+/* For object description display, abstract/descriptions can contain paragraph breaks, this targets such <p></p> to display the paragraphs properly */
+.dd_text p {
+  margin-bottom:1em;
+}
