@@ -114,6 +114,7 @@ class ModsExamPaper < ObjectMods
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
             
              }
+						 xml.note
              xml.physicalDescription {
                xml.extent
                xml.mediaType

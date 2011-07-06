@@ -3,7 +3,7 @@
 
  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:module, :combined_display], "Module", "dd_text") %>
- <%= display_datastream_field(@document_fedora,"descMetadata", [:note], "Additional note", "dd_text") %>
+ <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:note], "Additional note", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:exam_level], "Examination level", "dd_text") %>
  <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Examination date", "dd_text") %>
 
