@@ -13,7 +13,7 @@
 	      </dd>
 	    <% end %>
 
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
+	 <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
 
 	 <% orgs = get_organizations_from_roles(@document, ['creator','author']).map {|organization| organization[:name]}  %>

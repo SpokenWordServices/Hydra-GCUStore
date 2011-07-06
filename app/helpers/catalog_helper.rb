@@ -113,6 +113,28 @@ module CatalogHelper
     datastream_field
   end
 
+	# This does exactly the same as display_datastream_field but uses simple format to display text area content
+  # more appropriately
+	def display_datastream_text_area_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
+    label = ""
+    dd_class = "class=\"#{dd_class}\"" if dd_class
+    datastream_text_area_field = ""
+	 	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
+      if label_text.length > 0
+        label = pluralize(get_values_from_datastream(document,datastream_name, fields).count,label_text)[2..-1]
+      end
+      datastream_text_area_field = <<-EOS
+        <dt>
+          #{fedora_field_label(datastream_name,fields,label)}
+        </dt>
+        <dd #{dd_class}>
+            #{simple_format(get_values_from_datastream(document,datastream_name, fields).join("; "))}
+        </dd>
+      EOS
+    end
+    datastream_text_area_field
+	end
+
   def display_qr_code
     qr_code=""
     #Possibly insert, once we have changed the styles <div class="link-title">QR code</div>
