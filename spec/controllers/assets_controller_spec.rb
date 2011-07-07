@@ -19,6 +19,13 @@ describe AssetsController do
   end
   
   describe "update" do
+    
+    it "should load the appropriate filters" do
+      expected_filters = [:sanitize_update_params, :activate_authlogic, :default_html_head, :verify_authenticity_token, :store_bounce, :search_session, :history_session, :require_solr, :require_fedora, :check_embargo_date_format, :enforce_permissions, :load_document, :validate_parameters, :discard_flash_if_xhr]
+      filters = AssetsController.filter_chain.map{|f| f.method }
+      filters.should == expected_filters
+    end
+    
     it "should update the object with the attributes provided" do
       mock_document = mock("document")
       mock_document.stubs(:update_from_computing_id).returns(nil)

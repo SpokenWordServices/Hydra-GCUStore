@@ -24,14 +24,6 @@ class ExamPaper < ActiveFedora::Base
   end
 
     
-  has_validation :valid_for_submit? do 
-    validates_presence_of "descMetadata",[:module,:code]
-    validates_presence_of("descMetadata",[:module,:name])
-    validates_presence_of("descMetadata",[:origin_info,:date_issued])
-    validates_format_of("descMetadata",[:origin_info,:date_issued], :with=> /(January|February|March|April|May|June|July|August|September|October|November|December) \d{4}/)
-    is_valid?
-  end
-
   has_workflow_validation :qa do
     errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
     validates_presence_of "descMetadata",[:module,:code]
@@ -42,6 +34,16 @@ class ExamPaper < ActiveFedora::Base
     is_valid?
   end
   
+  has_validation :validate_parameters do
+    if @pending_attributes.fetch("descMetadata",nil)
+      errors << "descMetadata error: missing module code" if @pending_attributes["descMetadata"][[:module,:code]]["0"].empty?
+      errors << "descMetadata error: missing module name" if @pending_attributes["descMetadata"][[:module,:name]]["0"].empty?
+      errors << "descMetadata error: missing examination date" if @pending_attributes["descMetadata"][[:origin_info,:date_issued]]["0"].empty?
+      errors << "descMetadata error: missing department" if @pending_attributes["descMetadata"][[:organization,:namePart]]["0"].empty?
+    end
+    is_valid?
+  end
+
   def apply_content_specific_additional_metadata
 
     if self.queue_membership.include? :proto

@@ -6,6 +6,8 @@ module HullModelMethods
     change_queue_membership :proto if queue_membership.empty? && new_object?
   end
 
+  attr_accessor :pending_attributes
+
   # call insert_grant number on the descMetadata datastream
   def insert_grant_number(opts={})
     ds = self.datastreams_in_memory["descMetadata"]
