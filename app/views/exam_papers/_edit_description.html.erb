@@ -65,10 +65,14 @@
   
    <div>
     <div class="form-control">
-      <%= submit_tag "Save" %>
+      <%= submit_tag "Save metadata" %>
     </div>
   </div>
 </form>
+
+<%= render :partial=> "shared/resources" %>
+
+<hr class="separator"/>
 
 <% if @document_fedora.queue_membership == [:proto] %>
 <div style="width:100%;height:2.2em;">

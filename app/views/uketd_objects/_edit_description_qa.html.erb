@@ -79,7 +79,7 @@
             <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_code], :multiple=>false) %>
           </dd>
 	    </div>
-	  </div
+	  </div>
     </dl>
   </fieldset>
 
@@ -113,7 +113,7 @@
           <%= fedora_text_field(@document_fedora,"descMetadata", [:qualification_name], :multiple=>false) %>
         </dd>
 	  </div>
-	</div
+	</div>
   </dl>
   </fieldset>
 
@@ -123,14 +123,9 @@
   
   <div>
     <div class="form-control">
-      <%= submit_tag "Save" %>
-    </div>
-    <div class="form-control">  
-      <%= submit_tag "Submit" %>
+      <%= submit_tag "Save metadata" %> <%= submit_tag "Submit" %>
     </div>
   </div>
 </form>
-<div id="file_assets">
-<%= render :partial => "shared/resources" %>
-</div>
 
+<%= render :partial => "shared/resources" %>

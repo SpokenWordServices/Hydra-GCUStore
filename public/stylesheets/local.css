@@ -86,6 +86,12 @@ hr {
     height: 1px;
 }
 
+.separator {
+  border-top: 1px dotted #333333;
+  margin: 2em 0 1.75em 0;
+  width: 53em;
+}
+
 /* HEADER & FOOTER */
 
 #top-nav {
@@ -1024,7 +1030,7 @@ div.generic-download {
 /* Edit screen layout */
 
 form#document_metadata {
-	padding-bottom: 4em;
+	padding-bottom: 0em;
 }
 
 .multipleEdit {
@@ -1070,14 +1076,14 @@ fieldset.edit-standard legend, fieldset.edit-half legend {
 }
 
 .form-control input {
-    background: url("/images/button-bg.png") no-repeat scroll 0 0 transparent;
-    border-width: 0 1px 1px;
-    cursor: pointer;
-    height: 30px;
-    margin: 0 0;
-    padding: 0 0.75em;
-    vertical-align: top;
-	float: left;
+  background: url("/images/button-bg.png") no-repeat scroll 0 0 transparent;
+  border-width: 0 1px 1px;
+  cursor: pointer;
+  height: 30px;
+  margin: 0 0;
+  padding: 0 0.75em;
+  vertical-align: top;
+	/*float: left;*/
 	margin-right: 10px;
 }
 
@@ -1099,7 +1105,7 @@ fieldset.edit-half dd a.field {
 
 form#document_metadata legend {
   margin-top: .5em;
-  margin-bottom: .8em !important;
+ /* margin-bottom: .8em !important;*/
 }
 
 fieldset ol {
@@ -1273,6 +1279,11 @@ form.flc-uploader.fl-uploader.fl-progEnhance-enhanced {
   display:none;
 }
 
+form.fl-uploader p {
+  color: #898989;
+  padding-bottom: 0.5em;
+}
+
 .dd-edit-language {
   font-size: .9em !important;
 }
@@ -1354,6 +1365,20 @@ input.submitLink:hover {
 
 #uploader_header {
   margin-top:2.4em;
+}
+
+#file_assets {
+  margin-bottom: 2em;
+}
+
+fieldset.edit-half dl li {
+  padding-bottom: 0.6em;
+  padding-top: 0.4em;
+}
+
+fieldset.edit-half dl li span input {
+  font-size: 1em;
+  padding: 0.1em;
 }
 /* For object description display, abstract/descriptions can contain paragraph breaks, this targets such <p></p> to display the paragraphs properly */
 .dd_text p {
