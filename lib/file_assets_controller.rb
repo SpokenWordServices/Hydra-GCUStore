@@ -36,6 +36,25 @@ class FileAssetsController < ApplicationController
     end
   end
 
+  # Common destroy method for all AssetsControllers 
+  def destroy
+    # The correct implementation, with garbage collection:
+    # if params.has_key?(:container_id)
+    #   container = ActiveFedora::Base.load_instance(params[:container_id]) 
+    #   container.file_objects_remove(params[:id])
+    #   FileAsset.garbage_collect(params[:id])
+    # else
+    
+    # The dirty implementation (leaves relationship in container object, deletes regardless of whether the file object has other containers)
+    ActiveFedora::Base.load_instance(params[:id]).delete 
+    respond_to do |format|
+      if params[:container_id]
+        format.html { redirect_to( edit_catalog_path(params[:container_id]) ) }
+      else
+        format.html { render :text => "Deleted #{params[:id]} from #{params[:container_id]}." }
+      end
+    end
+  end
   private
 
   def update_content_metadata
@@ -43,17 +62,23 @@ class FileAssetsController < ApplicationController
     #prefer the container_content_type param passed as local to the fluid_infusion/uploader partial
     afmodel = retrieve_af_model(params["container_content_type"])
     unless afmodel
-      af_base = ActiveFedora::Base.load_instance(params[:id])
+      af_base = ActiveFedora::Base.load_instance(params[:container_id])
       afmodel = ActiveFedora::ContentModel.known_models_for( af_base ).first
     end
     if afmodel.nil?
       container = af_base
     else
-      container = afmodel.load_instance(@container.pid)
+      container = afmodel.load_instance(params[:container_id])
     end
-    node, index = container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
-    container.datastreams["contentMetadata"].save
-    container.save
+    if params[:action] == "create"
+      node, index = container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
+      container.datastreams["contentMetadata"].save
+      container.save
+    elsif params[:action]=="destroy"
+      # add logic to get the appropriate index
+      container.remove_resource(params[:index])
+      container.save
+    end
   end
 
 # Returns:

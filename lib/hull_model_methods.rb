@@ -49,6 +49,13 @@ module HullModelMethods
     return node, index
   end
   
+  # call remove_resource on the contentMetadata datastream
+  def remove_resource(index)
+    ds = self.datastreams_in_memory["contentMetadata"]
+    result = ds.remove_resource(index)
+    return result
+  end
+  
   # helper method to derive cmodel declaration from ruby model
   def cmodel
     model = self.class.to_s

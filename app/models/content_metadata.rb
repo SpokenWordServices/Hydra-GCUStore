@@ -91,4 +91,9 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
       return node, index
     end
 
+    def remove_resource(index)
+      self.find_by_terms(:resource)[index.to_i].remove
+      self.dirty = true
+    end
+
 end
