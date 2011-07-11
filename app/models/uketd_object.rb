@@ -42,7 +42,7 @@ class UketdObject < ActiveFedora::Base
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
       errors << "descMetadata->title error: missing title" if @pending_attributes["descMetadata"][[:title_info,:main_title]]["0"].empty?
-      errors << "descMetadata->author error: missing author" if @pending_attributes["descMetadata"][[{:name=>0},:namePart]]["0"].empty?
+      errors << "descMetadata->author error: missing author" if @pending_attributes["descMetadata"][[{:person=>0},:namePart]]["0"].empty?
     end
     is_valid?
   end
