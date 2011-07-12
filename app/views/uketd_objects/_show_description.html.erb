@@ -13,7 +13,7 @@
       </dd>
     <% end %>
     <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject","dd_text") %>
-    <%= display_datastream_field(@document_fedora,"rightsMetadata", [:copyright], "Rights","dd_text") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "Rights","dd_text") %>
     <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:abstract], "Abstract","dd_text") %>
 
     <% contributors = get_persons_from_roles(@document,['thesis advisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>

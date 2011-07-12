@@ -55,9 +55,9 @@ class ModsMeetingPaper < ObjectMods
      t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
     }
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
-	t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
+		t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
-    t.copyright(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
     t.physical_description(:path=>"physicalDescription") {
       t.extent
       t.mime_type(:path=>"internetMediaType")
