@@ -62,40 +62,40 @@
   </fieldset>
 
   <fieldset class="edit-half">
-  <dl>
-	<div class="info-multiple">
-	  <div class="left">
-	    <dt>
-      	  <%= fedora_field_label("descMetadata",[:qualification_level],"Qualification level") %>
-    	</dt>
-	    <dd style="width: 20em;">
-	      <%= fedora_select(@document_fedora,"descMetadata", [:qualification_level], :choices=>qualification_level_choices.values.sort) %>
-      </dd>
-	  </div>
-	  <div class="right">
-		<dt>
-          <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
-        </dt>
-        <dd style="width: 20em;"> 
-   
-          <%= fedora_select(@document_fedora,"descMetadata", [:qualification_name], :choices=>qualification_name_choices.values.sort) %>
+    <dl>
+	  <div class="info-multiple">
+	    <div class="left">
+	      <dt>
+        	  <%= fedora_field_label("descMetadata",[:qualification_level],"Qualification level") %>
+      	</dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_select(@document_fedora,"descMetadata", [:qualification_level], :choices=>qualification_level_choices.values.sort) %>
         </dd>
+	    </div>
+	    <div class="right">
+		  <dt>
+            <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
+          </dt>
+          <dd style="width: 20em;"> 
+     
+            <%= fedora_select(@document_fedora,"descMetadata", [:qualification_name], :choices=>qualification_name_choices.values.sort) %>
+          </dd>
+	    </div>
 	  </div>
-	</div>
-  </dl>
-
+    </dl>
   </fieldset>
 
   <fieldset class="edit-standard">
-  <dl>
-     <dt>
-      <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher (Department, Institution)") %>
-    </dt>
-      <dd> 
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
-    </dd>	
-  </dl>
+    <dl>
+       <dt>
+        <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher (Department, Institution)") %>
+      </dt>
+        <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
+      </dd>	
+    </dl>
   </fieldset>
+  
   <input type="hidden"  name="_method" value="put"/>
   
   <div>

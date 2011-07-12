@@ -14,12 +14,22 @@
   <form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>@content_type)%>" method="post" data-resourceType="<%= @content_type%>" accept-charset="utf-8" >
     <input type="hidden" name="content_type" value="<%= @content_type%>" />
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
     <fieldset class="edit-half">
-    <legend></legend>
-    <dl>
-      <%= render :partial=>"shared/edit_resource", :collection => @document_fedora.datastreams_in_memory["contentMetadata"].find_by_terms(:resource) %>
-    </dl>
+      <dl>
+      <div class="info-multiple">
+        <div class="left">
+          <dt><label>Sequence</label></dt>
+        </div>
+        <div class="right">
+	        <dt><%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %></dt>
+        </div>
+      </div>
+      </dl>
     </fieldset>
+    
+    <%= render :partial=>"shared/edit_resource", :collection => @document_fedora.datastreams_in_memory["contentMetadata"].find_by_terms(:resource) %>
+
     <input type="hidden"  name="_method" value="put"/>
      <div>
       <div class="form-control">
