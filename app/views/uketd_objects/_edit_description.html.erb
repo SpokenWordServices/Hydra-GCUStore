@@ -53,65 +53,61 @@
 	      <%= render :partial => 'grant_numbers/index' %>
 	    </div>  
 	    <dt>
-        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued") %>
+        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued (Month Year)") %>
       </dt>
       <dd> 
         <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>
       </dd>
-      <!--
-	    <dt>
-	      <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
-	    </dt>
-	    <dd>
-	      <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
-	    </dd>
-	    -->
     </dl>
   </fieldset>
 
   <fieldset class="edit-half">
-  <dl>
-	<div class="info-multiple">
-	  <div class="left">
-	    <dt>
-      	  <%= fedora_field_label("descMetadata",[:qualification_level],"Qualification level") %>
-    	</dt>
-	    <dd style="width: 20em;">
-	      <%= fedora_select(@document_fedora,"descMetadata", [:qualification_level], :choices=>qualification_level_choices.values.sort) %>
-      </dd>
-	  </div>
-	  <div class="right">
-		<dt>
-          <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
-        </dt>
-        <dd style="width: 20em;"> 
-   
-          <%= fedora_select(@document_fedora,"descMetadata", [:qualification_name], :choices=>qualification_name_choices.values.sort) %>
+    <dl>
+	  <div class="info-multiple">
+	    <div class="left">
+	      <dt>
+        	  <%= fedora_field_label("descMetadata",[:qualification_level],"Qualification level") %>
+      	</dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_select(@document_fedora,"descMetadata", [:qualification_level], :choices=>qualification_level_choices.values.sort) %>
         </dd>
+	    </div>
+	    <div class="right">
+		  <dt>
+            <%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %>
+          </dt>
+          <dd style="width: 20em;"> 
+     
+            <%= fedora_select(@document_fedora,"descMetadata", [:qualification_name], :choices=>qualification_name_choices.values.sort) %>
+          </dd>
+	    </div>
 	  </div>
-	</div>
-  </dl>
-
+    </dl>
   </fieldset>
 
   <fieldset class="edit-standard">
-  <dl>
-     <dt>
-      <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher") %>
-    </dt>
-      <dd> 
-      <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
-    </dd>	
-  </dl>
+    <dl>
+       <dt>
+        <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher (Department, Institution)") %>
+      </dt>
+        <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
+      </dd>	
+    </dl>
   </fieldset>
+  
   <input type="hidden"  name="_method" value="put"/>
   
   <div>
     <div class="form-control">
-      <%= submit_tag "Save" %>
+      <%= submit_tag "Save metadata" %>
     </div>
   </div>
 </form>
+
+<%= render :partial=> "shared/resources" %>
+
+<hr class="separator"/>
 
 <% if @document_fedora.queue_membership == [:proto] %>
 <div style="width:100%;height:2.2em;">
@@ -124,8 +120,7 @@
     </div>
   </form>
 </div>
+
 <% end %>
 
-<div id="file_assets" style="display:block;width:100%;">
-<%= render :partial=> "shared/resources" %>
-</div>
+

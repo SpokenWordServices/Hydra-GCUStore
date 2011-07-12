@@ -55,25 +55,10 @@
       <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
       </img>
     </div>
-    <!--
-    <% if flash[:notice] %>
-      <div class="notice">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
--->
+
 		<%= display_edit_form(@document_fedora, "exam_paper") %>
     
-	<!-- logic to be added to determine whether to render upload control -->
-    <h2>Upload Content</h2>
-    <div class="uploads">
-      <div id='uploader'>
-        <%# the following passes an :accept hash to the uploader file_field_tag which limits the type of file that can be uploaded %>
-        <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => 'application/pdf' }, :container_content_type=>"exam_paper" } %>
-      </div>
 	  </div>
-
-  </div>
 </div>
 <% sidebar_items << capture do %>
   <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
