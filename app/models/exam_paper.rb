@@ -53,7 +53,7 @@ class ExamPaper < ActiveFedora::Base
       module_date = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s
       exam_title = (module_code + " " + module_name + " " + "(" + module_date + ")")
       display_title = (module_code + " " + module_name)
-      rights = "© " + module_date[-4,4] + " " + self.get_values_from_datastream("descMetadata", [:organization], {}).to_s.gsub(/\n/,'').strip + ". " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
+      rights = "© " + module_date[-4,4] + " " + self.get_values_from_datastream("descMetadata", [:origin_info, :publisher], {}).to_s.gsub(/\n/,'').strip + ". " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
       
       desc_ds.update_indexed_attributes([:title] => exam_title) unless desc_ds.nil?
       desc_ds.update_indexed_attributes([:module, :combined_display] => display_title) unless desc_ds.nil?

@@ -106,7 +106,7 @@ class ModsExamPaper < ObjectMods
 			 			 xml.typeOfResource "text"
              xml.genre "Examination paper"
              xml.originInfo {
-               xml.publisher
+               xml.publisher "The University of Hull"
                xml.dateIssued
              }
              xml.language {                
