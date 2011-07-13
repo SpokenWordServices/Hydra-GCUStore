@@ -57,7 +57,9 @@ class ExamPaper < ActiveFedora::Base
       
       desc_ds.update_indexed_attributes([:title] => exam_title) unless desc_ds.nil?
       desc_ds.update_indexed_attributes([:module, :combined_display] => display_title) unless desc_ds.nil?
-      desc_ds.update_indexed_attributes([:language, :lang_code] => self.get_values_from_datastream("descMetadata", [:language, :lang_code], {}).to_s) unless desc_ds.nil?
+       #Examination papers can only be submitted in English
+      desc_ds.update_indexed_attributes([:language, :lang_code] => "eng", [:language, :lang_text] => "English") unless desc_ds.nil?
+      
       desc_ds.update_indexed_attributes([:rights] => rights) unless desc_ds.nil?
       
     end

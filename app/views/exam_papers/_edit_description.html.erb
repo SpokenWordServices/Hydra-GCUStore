@@ -52,13 +52,7 @@
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info,:publisher], :multiple=>false) %>
     </dd>
-    <dt>
-	  <%= fedora_field_label("descMetadata",[:language, :lang_text, :lang_code], "Language") %>
-	</dt>
-	<dd>
-	  <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], :choices=>choices.values.sort) %>
-	</dd>
-  </dl>
+   </dl>
   </fieldset>
 
   <input type="hidden"  name="_method" value="put"/>

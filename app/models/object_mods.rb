@@ -215,9 +215,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "esp" => "Spanish",
         "por" => "Portuguese",
         "nob" => "Norwegian",
-        "dan" => "Danish",
-        "swe" => "Swedish",
-        "dan" => "Dutch"      
+        "swe" => "Swedish"    
       }
     end
     
