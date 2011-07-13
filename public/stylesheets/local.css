@@ -731,6 +731,10 @@ dd.display {
 	font-size: 1em !important;
 }
 
+dl dt dd { 
+  clear: both !important; 
+}
+
 label {
     color: #898989;
     font-weight: normal;
@@ -840,6 +844,10 @@ div#journal dd {
     margin-left: 0 !important;
     text-align: left;
     width: 41em !important;
+}
+
+dl dt {
+  clear: both !important;
 }
 
 div#genre_image {
