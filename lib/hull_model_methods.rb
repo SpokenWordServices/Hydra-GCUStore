@@ -135,15 +135,21 @@ module HullModelMethods
 	  return true
   end
 
-
 	#
   # Adds hull additional metadata to the asset
   #
-  def apply_additional_metadata
+  def apply_additional_metadata(depositor_id)
 		#Here's where we call specific additional metadata changes...
 		if self.respond_to?(:apply_content_specific_additional_metadata)
       self.apply_content_specific_additional_metadata
     end	
+
+		#We are setting the ownerId within apply_addtional_metadata due to a Fedora bug (FCREPO-963 - which means we can't set it on ingest).
+		#It only sets the ownerId with the depositor id if its in the proto queue
+ 		if self.queue_membership.include? :proto
+			self.owner_id = depositor_id
+		end
+			
 		dc_ds = self.datastreams_in_memory["DC"]
 		dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
 		dc_ds.update_indexed_attributes([:dc_dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?

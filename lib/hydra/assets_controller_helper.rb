@@ -125,8 +125,8 @@ module Hydra::AssetsControllerHelper
   end
 
 	def apply_additional_metadata(asset)
-		if asset.respond_to?(:apply_additional_metadata)
-      asset.apply_additional_metadata
+		if asset.respond_to?(:apply_additional_metadata) && current_user.respond_to?(:login)
+      asset.apply_additional_metadata(current_user.login)
     end
 	end
   
