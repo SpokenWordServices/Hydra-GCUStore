@@ -110,7 +110,7 @@ class ModsExamPaper < ObjectMods
                xml.dateIssued
              }
              xml.language {                
-               xml.lanugageTerm(:type=>"text")
+               xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
             
              }
