@@ -29,7 +29,7 @@ describe ExamPaper do
   describe "validate_parameters" do
 
     it "should validate the following fields: module code, module name, examination date and department" do
-      @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"may 1999"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
+      @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-05"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
               [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
               [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
       @examPaper.validate_parameters(@pending_attributes).should be_true
@@ -41,7 +41,7 @@ describe ExamPaper do
 #              [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
 #              [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
       it "should fail if missing module code" do
-        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"may 1999"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
+        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-05"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
               [:module, :code]=>{"0"=>""}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
               [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
 
@@ -49,7 +49,7 @@ describe ExamPaper do
         @examPaper.errors.length.should == 1
       end
       it "should fail if missing module name" do
-        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"may 1999"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
+        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-05"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
               [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>""}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
               [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
         @examPaper.validate_parameters(@pending_attributes).should be_false
@@ -60,10 +60,24 @@ describe ExamPaper do
               [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
               [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
         @examPaper.validate_parameters(@pending_attributes).should be_false
+        @examPaper.errors.length.should == 3
+      end
+ 			it "should fail if exam date is wrong format" do
+        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-05-01"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
+              [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
+              [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
+        @examPaper.validate_parameters(@pending_attributes).should be_false
+        @examPaper.errors.length.should == 1
+      end
+			it "should fail if exam date is invalid" do
+        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-14"}, [:organization, :namePart]=>{"0"=>"Department of Sport Science"}, 
+              [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
+              [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
+        @examPaper.validate_parameters(@pending_attributes).should be_false
         @examPaper.errors.length.should == 1
       end
       it "should fail if missing department" do
-        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"may 1999"}, [:organization, :namePart]=>{"0"=>""}, 
+        @examPaper.pending_attributes = {"descMetadata"=>{[:origin_info, :date_issued]=>{"0"=>"1999-05"}, [:organization, :namePart]=>{"0"=>""}, 
               [:module, :code]=>{"0"=>"code"}, [:module, :name]=>{"0"=>"module"}, [:note]=>{"0"=>""}, [:language, :lang_text]=>{"0"=>"Dutch"}, 
               [:origin_info, :publisher]=>{"0"=>""}, [:exam_level]=>{"0"=>""}, [{:subject=>0}, :topic]=>{"0"=>"Subject topic goes here"}}}
         @examPaper.validate_parameters(@pending_attributes).should be_false

@@ -37,7 +37,7 @@ class UketdObject < ActiveFedora::Base
     validates_presence_of("descMetadata",[:qualification_level])
     validates_presence_of("descMetadata",[:qualification_name])
     validates_format_of("descMetadata",[:origin_info,:date_issued], :with=> /^(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})/) #Checks date format for ETDS we are flexible
-		flexible_date_validation("descMetadata",[:origin_info,:date_issued]) #Checks that the actual date is valid
+		validates_datastream_date("descMetadata",[:origin_info,:date_issued]) #Checks that the actual date is valid
     is_valid?
   end
 
@@ -45,6 +45,7 @@ class UketdObject < ActiveFedora::Base
     if @pending_attributes.fetch("descMetadata",nil)
       errors << "descMetadata->title error: missing title" if @pending_attributes["descMetadata"][[:title_info,:main_title]]["0"].empty?
       errors << "descMetadata->author error: missing author" if @pending_attributes["descMetadata"][[{:person=>0},:namePart]]["0"].empty?
+			validates_date(@pending_attributes["descMetadata"][[:origin_info,:date_issued]]["0"]) if !@pending_attributes["descMetadata"][[:origin_info,:date_issued]]["0"].empty? #Only validate if its specified
     end
     is_valid?
   end
@@ -58,7 +59,7 @@ class UketdObject < ActiveFedora::Base
       if module_date.empty?
         module_date = ""
       else
-        module_date = module_date[-4,4]
+        module_date = Date.parse(to_long_date(module_date)).strftime("%Y")
       end   
       
       rights = "© " + module_date + " The Author. " + "All rights reserved. No part of this publication may be reproduced without the written permission of the copyright holder."
