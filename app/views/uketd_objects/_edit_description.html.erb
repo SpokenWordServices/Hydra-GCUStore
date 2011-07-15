@@ -53,7 +53,7 @@
 	      <%= render :partial => 'grant_numbers/index' %>
 	    </div>  
 	    <dt>
-        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued (Month Year)") %>
+        <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued (YYYY-MM-DD or YYYY-MM or YYYY)") %>
       </dt>
       <dd> 
         <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], :multiple=>false) %>

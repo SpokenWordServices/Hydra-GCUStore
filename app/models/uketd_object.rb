@@ -36,6 +36,8 @@ class UketdObject < ActiveFedora::Base
     validates_presence_of("descMetadata",[:origin_info,:publisher])
     validates_presence_of("descMetadata",[:qualification_level])
     validates_presence_of("descMetadata",[:qualification_name])
+    validates_format_of("descMetadata",[:origin_info,:date_issued], :with=> /^(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})/) #Checks date format for ETDS we are flexible
+		flexible_date_validation("descMetadata",[:origin_info,:date_issued]) #Checks that the actual date is valid
     is_valid?
   end
 
