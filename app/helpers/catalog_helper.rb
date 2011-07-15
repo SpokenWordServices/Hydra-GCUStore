@@ -113,6 +113,28 @@ module CatalogHelper
     datastream_field
   end
 
+	# This does exactly the same as display_datastream_field but uses display_friendly_date to display date content
+  # more appropriately	
+	def display_datastream_date_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
+    label = ""
+    dd_class = "class=\"#{dd_class}\"" if dd_class
+    datastream_field = ""
+	 	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
+      if label_text.length > 0
+        label = pluralize(get_values_from_datastream(document,datastream_name, fields).count,label_text)[2..-1]
+      end
+      datastream_field = <<-EOS
+        <dt>
+          #{fedora_field_label(datastream_name,fields,label)}
+        </dt>
+        <dd #{dd_class}>
+            #{display_friendly_date(get_values_from_datastream(document,datastream_name, fields)[0])}
+        </dd>
+      EOS
+    end
+    datastream_field
+  end
+
 	# This does exactly the same as display_datastream_field but uses simple format to display text area content
   # more appropriately
 	def display_datastream_text_area_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
@@ -169,6 +191,15 @@ module CatalogHelper
     end
  end
 
+ def display_friendly_date(date)
+		display_date = date
+		if date.match(/^\d{4}-\d{2}$/)
+			display_date = Date.parse(to_long_date(date)).strftime("%B") + " " + Date.parse(to_long_date(date)).strftime("%Y")
+		elsif date.match(/^\d{4}-\d{2}-\d{2}$/)
+			full_date = Date.parse(date).day() + " " + Date.parse(date).strftime("%B") + " " + Date.parse(to_long_date(date)).strftime("%Y")
+		end
+		return display_date
+ end
 
  def get_friendly_file_size(size_in_bytes_str)
   text = "Size n/a"   
@@ -183,7 +214,20 @@ module CatalogHelper
     end
   end
   text  
- end  
+ end
+
+	#Quick utility method used to get long version of a date (YYYY-MM-DD) from short form (YYYY-MM) - Defaults 01 for unknowns - Exists in hull_model_methods too
+	def to_long_date(flexible_date)
+		full_date = ""
+		if flexible_date.match(/^\d{4}$/)
+			full_date = flexible_date + "-01-01"
+		elsif flexible_date.match(/^\d{4}-\d{2}$/)
+			full_date = flexible_date +  "-01"
+		elsif flexible_date.match(/^\d{4}-\d{2}-\d{2}$/)
+			full_date = flexible_date
+		end
+		return full_date
+	end  
 
 end
 
