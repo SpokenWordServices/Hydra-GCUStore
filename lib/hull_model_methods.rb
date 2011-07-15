@@ -164,5 +164,30 @@ module HullModelMethods
     return self.errors.empty?
   end
 
+	#This method will validate that dates in the following formats are valid:-
+	# YYYY-MM-DD
+  # YYYY-MM
+  # YYYY
+  # For example 2008-12-01 is valid
+  #							2008-30-60 is invalid 
+	def flexible_date_validation(*attr_names)
+		datastream_name, fields = attr_names
+		values = self.datastreams[datastream_name].get_values(fields)
+ 		if !values.empty? && !values.first.empty?
+    	values.each_with_index do |val,index|
+				begin
+			    if val.match(/^\d{4}$/)
+						Date.parse(val + "-01-01")
+					elsif val.match(/^\d{4}-\d{2}$/)
+						Date.parse(val + "-01")
+					elsif val.match(/^\d{4}-\d{2}-\d{2}$/)
+						Date.parse(val)
+					end
+				rescue
+					errors << "descMetadata->Date error: Invalid date"
+				end
+			end
+		end	
+	end
 
 end
