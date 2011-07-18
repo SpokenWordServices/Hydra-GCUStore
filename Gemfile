@@ -39,6 +39,7 @@ gem 'will_paginate'
 gem 'xml-simple'
 gem 'yard'
 
+gem 'rubytree'
 
 source 'http://gemcutter.org'
 

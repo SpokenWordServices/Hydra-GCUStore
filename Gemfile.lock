@@ -89,6 +89,7 @@ GEM
       ruby-debug-base (~> 0.10.4.0)
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
+    rubytree (0.8.1)
     solr-ruby (0.0.8)
     solrizer (1.0.4)
       daemons
@@ -157,6 +158,7 @@ DEPENDENCIES
   rspec-rails (< 2.0.0)
   ruby-debug
   ruby-debug-base
+  rubytree
   solr-ruby
   solrizer (>= 1.0.1)
   solrizer-fedora (>= 1.0.1)
