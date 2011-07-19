@@ -7,7 +7,7 @@
 		<%= fedora_field_label("descMetadata", [:grant_number], "Add a new grant") %>
    </dt>
    <dd class="multi_inline grant">
- 	    <%= fedora_text_field(@document_fedora,"descMetadata", [:grant_number], :multiple=>false) %>
+ 	    <%= fedora_text_field(@document_fedora,"descMetadata", [{:grant_number=>@next_grant_number_index}], :multiple=>false) %>
 	 <dd>
 </dl>
 

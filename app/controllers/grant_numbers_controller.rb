@@ -1,7 +1,7 @@
 require 'mediashelf/active_fedora_helper'
-
-class GrantNumbersController < ApplicationController
   
+class GrantNumbersController < ApplicationController
+
   include MediaShelf::ActiveFedoraHelper
   before_filter :require_solr, :require_fedora
   
@@ -9,9 +9,10 @@ class GrantNumbersController < ApplicationController
   # If format is .inline, this renders without layout so you can embed it in a page
 
   def new
-
     @document_fedora = load_document_from_id(params[:asset_id])
-    @next_grant_number_index = @document_fedora
+    
+    @next_grant_number_index = @document_fedora.datastreams["descMetadata"].find_by_terms(:grant_number).length
+
     @content_type = params[:content_type]
     
     respond_to do |format|
@@ -21,14 +22,17 @@ class GrantNumbersController < ApplicationController
   end
 
   def create
-
     @document_fedora = load_document_from_id(params[:asset_id])
-	
-    inserted_node, new_node_index = @document_fedora.insert_grant_number()
-#
-#    value = extract_value(params[:asset][:descMetadata])
-#    inserted_node.inner_html = value if value
 
+    grant_numbers = @document_fedora.datastreams["descMetadata"].find_by_terms(:grant_number)
+    value = extract_value(params[:asset][:descMetadata])
+    if grant_numbers.length > 1 || (grant_numbers.length == 1 && !grant_numbers.first.inner_html.empty? )
+      inserted_node, new_node_index = @document_fedora.insert_grant_number()
+      inserted_node.inner_html = value if value
+    else
+      @document_fedora.datastreams["descMetadata"].update_indexed_attributes({[{:grant_number =>"0"}]=>value})
+    end
+      
     @document_fedora.save
 
     respond_to do |format|
@@ -52,7 +56,6 @@ class GrantNumbersController < ApplicationController
   private
   
    def load_document_from_id(asset_id)
-
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     af_model.find(asset_id)
   end
@@ -64,4 +67,5 @@ class GrantNumbersController < ApplicationController
       return nil
     end
   end
+
 end
