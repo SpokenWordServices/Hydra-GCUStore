@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="44207 Principles of exercise and training (2008/2009) - Business School; "/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:34.459Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-04-14T15:45:18.744Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-19T15:42:52.254Z"/>
 <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
@@ -125,6 +125,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
 <audit:date>2011-04-14T15:45:18.744Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC15">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-19T15:40:55.607Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC16">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-19T15:42:52.254Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -1831,7 +1847,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="MODS metadata" CREATED="2011-04-14T15:45:18.744Z" MIMETYPE="text/xml" SIZE="2262">
+<foxml:datastreamVersion ID="descMetadata.3" LABEL="MODS metadata" CREATED="2011-07-19T15:42:52.254Z" MIMETYPE="text/xml" SIZE="2228">
 <foxml:binaryContent> 
               PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
               d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
@@ -1849,28 +1865,28 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               ZVRlcm0+DSAgPC9sYW5ndWFnZT4NICA8cGh5c2ljYWxEZXNjcmlwdGlvbj4NICAgIDxleHRlbnQ+Rmls
               ZXNpemU6IDUwS0I8L2V4dGVudD4NICAgIDxpbnRlcm5ldE1lZGlhVHlwZT5hcHBsaWNhdGlvbi9wZGY8
               L2ludGVybmV0TWVkaWFUeXBlPg0gICAgPGRpZ2l0YWxPcmlnaW4+Ym9ybiBkaWdpdGFsPC9kaWdpdGFs
-              T3JpZ2luPg0gIDwvcGh5c2ljYWxEZXNjcmlwdGlvbj4NICA8YWJzdHJhY3QgZGlzcGxheUxhYmVsPSJF
-              eGFtaW5hdGlvbiBsZXZlbCI+TGV2ZWwgNTwvYWJzdHJhY3Q+DSAgPHN1YmplY3QgYXV0aG9yaXR5PSJV
-              b0giPg0gICAgPHRvcGljPlByaW5jaXBsZXMgb2YgZXhlcmNpc2UgYW5kIHRyYWluaW5nPC90b3BpYz4N
-              ICA8L3N1YmplY3Q+DSAgPGlkZW50aWZpZXIgdHlwZT0iZmVkb3JhIj5odWxsOjE3NjU8L2lkZW50aWZp
-              ZXI+DSAgPHJlbGF0ZWRJdGVtIElEPSJwcml2YXRlT2JqZWN0Ij4NICAgIDxpZGVudGlmaWVyIHR5cGU9
-              ImZlZG9yYSI+aHVsbC1wcml2YXRlOjExMzwvaWRlbnRpZmllcj4NICA8L3JlbGF0ZWRJdGVtPg0gIDxy
-              ZWxhdGVkSXRlbSBJRD0ibW9kdWxlIj4NICAgIDxpZGVudGlmaWVyIHR5cGU9Im1vZHVsZU5hbWUiPlBy
-              aW5jaXBsZXMgb2YgZXhlcmNpc2UgYW5kIHRyYWluaW5nPC9pZGVudGlmaWVyPiANICAgIDxpZGVudGlm
-              aWVyIHR5cGU9Im1vZHVsZUNvZGUiPjQ0MjA3PC9pZGVudGlmaWVyPg0gICAgPGFic3RyYWN0IGRpc3Bs
-              YXlMYWJlbD0iTW9kdWxlIGRpc3BsYXkiPjQ0MjA3IFByaW5jaXBsZXMgb2YgRXhlcmNpc2UgYW5kIENv
-              YWNoaW5nPC9hYnN0cmFjdD4NICA8L3JlbGF0ZWRJdGVtPg0gIDxsb2NhdGlvbj4NICAgIDx1cmwgYWNj
-              ZXNzPSJvYmplY3QgaW4gY29udGV4dCIgdXNhZ2U9InByaW1hcnkgZGlzcGxheSI+aHR0cDovL2h5ZHJh
-              Lmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6MTc2NTwvdXJsPg0gICAgPHVybCBhY2Nlc3M9InJhdyBvYmpl
-              Y3QiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9odWxsOjE3NjUvZ2VuZXJpY0NvbnRlbnQv
-              Y29udGVudDwvdXJsPg0gIDwvbG9jYXRpb24+DSAgPGFjY2Vzc0NvbmRpdGlvbiB0eXBlPSJ1c2VBbmRS
-              ZXByb2R1Y3Rpb24iPsKpIDIwMDkgVGhlIFVuaXZlcnNpdHkgb2YgSHVsbDwvYWNjZXNzQ29uZGl0aW9u
-              Pg0gIDxyZWNvcmRJbmZvPg0gICAgPHJlY29yZENvbnRlbnRTb3VyY2U+VGhlIFVuaXZlcnNpdHkgb2Yg
-              SHVsbDwvcmVjb3JkQ29udGVudFNvdXJjZT4NICAgIDxyZWNvcmRDcmVhdGlvbkRhdGUgZW5jb2Rpbmc9
-              InczY2R0ZiI+MjAwOS0wOC0wNzwvcmVjb3JkQ3JlYXRpb25EYXRlPg0gICAgPHJlY29yZENoYW5nZURh
-              dGUgZW5jb2Rpbmc9InczY2R0ZiIvPg0gICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPg0gICAgICA8bGFu
-              Z3VhZ2VUZXJtIGF1dGhvcml0eT0iaXNvNjM5LTJiIj5lbmc8L2xhbmd1YWdlVGVybT4NICAgIDwvbGFu
-              Z3VhZ2VPZkNhdGFsb2dpbmc+DSAgPC9yZWNvcmRJbmZvPg08L21vZHM+
+              T3JpZ2luPg0gIDwvcGh5c2ljYWxEZXNjcmlwdGlvbj4NICA8bm90ZSB0eXBlPSJleGFtaW5hdGlvbkxl
+              dmVsIj5MZXZlbCA1PC9ub3RlPg0gIDxzdWJqZWN0IGF1dGhvcml0eT0iVW9IIj4NICAgIDx0b3BpYz5Q
+              cmluY2lwbGVzIG9mIGV4ZXJjaXNlIGFuZCB0cmFpbmluZzwvdG9waWM+DSAgPC9zdWJqZWN0Pg0gIDxp
+              ZGVudGlmaWVyIHR5cGU9ImZlZG9yYSI+aHVsbDoxNzY1PC9pZGVudGlmaWVyPg0gIDxyZWxhdGVkSXRl
+              bSBJRD0icHJpdmF0ZU9iamVjdCI+DSAgICA8aWRlbnRpZmllciB0eXBlPSJmZWRvcmEiPmh1bGwtcHJp
+              dmF0ZToxMTM8L2lkZW50aWZpZXI+DSAgPC9yZWxhdGVkSXRlbT4NICA8cmVsYXRlZEl0ZW0gSUQ9Im1v
+              ZHVsZSI+DSAgICA8aWRlbnRpZmllciB0eXBlPSJtb2R1bGVOYW1lIj5QcmluY2lwbGVzIG9mIGV4ZXJj
+              aXNlIGFuZCB0cmFpbmluZzwvaWRlbnRpZmllcj4gDSAgICA8aWRlbnRpZmllciB0eXBlPSJtb2R1bGVD
+              b2RlIj40NDIwNzwvaWRlbnRpZmllcj4NICAgIDxub3RlIHR5cGU9Im1vZHVsZURpc3BsYXkiPjQ0MjA3
+              IFByaW5jaXBsZXMgb2YgRXhlcmNpc2UgYW5kIENvYWNoaW5nPC9ub3RlPg0gIDwvcmVsYXRlZEl0ZW0+
+              DSAgPGxvY2F0aW9uPg0gICAgPHVybCBhY2Nlc3M9Im9iamVjdCBpbiBjb250ZXh0IiB1c2FnZT0icHJp
+              bWFyeSBkaXNwbGF5Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDoxNzY1PC91cmw+
+              DSAgICA8dXJsIGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRz
+              L2h1bGw6MTc2NS9nZW5lcmljQ29udGVudC9jb250ZW50PC91cmw+DSAgPC9sb2NhdGlvbj4NICA8YWNj
+              ZXNzQ29uZGl0aW9uIHR5cGU9InVzZUFuZFJlcHJvZHVjdGlvbiI+wqkgMjAwOSBUaGUgVW5pdmVyc2l0
+              eSBvZiBIdWxsPC9hY2Nlc3NDb25kaXRpb24+DSAgPHJlY29yZEluZm8+DSAgICA8cmVjb3JkQ29udGVu
+              dFNvdXJjZT5UaGUgVW5pdmVyc2l0eSBvZiBIdWxsPC9yZWNvcmRDb250ZW50U291cmNlPg0gICAgPHJl
+              Y29yZENyZWF0aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDA5LTA4LTA3PC9yZWNvcmRDcmVhdGlv
+              bkRhdGU+DSAgICA8cmVjb3JkQ2hhbmdlRGF0ZSBlbmNvZGluZz0idzNjZHRmIi8+DSAgICA8bGFuZ3Vh
+              Z2VPZkNhdGFsb2dpbmc+DSAgICAgIDxsYW5ndWFnZVRlcm0gYXV0aG9yaXR5PSJpc282MzktMmIiPmVu
+              ZzwvbGFuZ3VhZ2VUZXJtPg0gICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4NICA8L3JlY29yZEluZm8+
+              DTwvbW9kcz4=
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>

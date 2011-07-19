@@ -11,13 +11,13 @@ class ModsExamPaper < ObjectMods
    
     # Exam paper description is stored in the 'abstract' field 
 
-    t.exam_level(:path=>"abstract", :attributes=>{:displayLabel=>"Examination level"})   
+    t.exam_level(:path=>"note", :attributes=>{:type=>"examinationLevel"})   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
        t.topic(:index_as=>[:facetable])
     }
     t.genre
-	t.type_of_resource(:path=>"typeOfResource")
+	  t.type_of_resource(:path=>"typeOfResource")
  
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
     t.name_ {
@@ -49,7 +49,7 @@ class ModsExamPaper < ObjectMods
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
-    t.note    
+    t.additional_notes(:path=>"note", :attributes=>{:type=>"additionalNotes"})    
 
     # lookup :person, :first_name        
     #t.department(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
@@ -61,7 +61,7 @@ class ModsExamPaper < ObjectMods
     t.module(:path=>"relatedItem", :attributes=>{:ID=>"module"}) {
      t.name(:path=>"identifier", :attributes=>{:type=>"moduleName"})
      t.code(:path=>"identifier", :attributes=>{:type=>"moduleCode"})
-     t.combined_display(:path=>"abstract", :attributes=>{:displayLabel=>"Module display"}, :index_as=>[:facetable])
+     t.combined_display(:path=>"note", :attributes=>{:type=>"moduleDisplay"}, :index_as=>[:facetable])
     }
 
 	t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
@@ -114,13 +114,13 @@ class ModsExamPaper < ObjectMods
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
             
              }
-						 xml.note
-             xml.physicalDescription {
+						 xml.note(:type=>"examinationLevel")
+						 xml.note(:type=>"additionalNotes")
+	           xml.physicalDescription {
                xml.extent
                xml.mediaType
                xml.digitalOrigin "born digital"
              }
-             xml.abstract(:displayLabel=>"Examination level")
              xml.subject(:authority=>"UoH") {
                xml.topic "Subject topic goes here"
              }
@@ -130,7 +130,7 @@ class ModsExamPaper < ObjectMods
                  xml.title
                }
                xml.identifier(:type=>"moduleCode")
-	           xml.abstract(:displayLabel=>"Module display")
+	           xml.note(:type=>"moduleDisplay")
              }
              xml.location {
                xml.url(:usage=>"primary display", :access=>"object in context")

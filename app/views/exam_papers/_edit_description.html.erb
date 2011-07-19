@@ -35,10 +35,10 @@
       <%= fedora_text_field(@document_fedora,"descMetadata", [:exam_level], :multiple=>false) %>
     </dd>
 	<dt>
-      <%= fedora_field_label("descMetadata",[:note],"Additional notes") %>
+      <%= fedora_field_label("descMetadata",[:additional_notes],"Additional notes") %>
     </dt>
     <dd>
-      <%= fedora_text_area(@document_fedora,"descMetadata",[:note], :multiple=>false) %>
+      <%= fedora_text_area(@document_fedora,"descMetadata",[:additional_notes], :multiple=>false) %>
     </dd>
 	<dt>
       <%= fedora_field_label("descMetadata",[:organization, :namePart], "Department") %>
