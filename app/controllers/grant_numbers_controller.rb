@@ -21,7 +21,7 @@ class GrantNumbersController < ApplicationController
   end
 
   def create
-debugger
+
     @document_fedora = load_document_from_id(params[:asset_id])
 	
     inserted_node, new_node_index = @document_fedora.insert_grant_number()
