@@ -16,7 +16,7 @@
     <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "Rights","dd_text") %>
     <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:abstract], "Abstract","dd_text") %>
 
-    <% contributors = get_persons_from_roles(@document,['thesis advisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>
+    <% contributors = get_persons_from_roles(@document,['Supervisor']).map {|person| "#{person[:name]} (#{person[:role]})"} %>
     <% unless contributors.empty? %>
       <dt>
         <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(contributors.count,"Contributor")[2..-1]) %>

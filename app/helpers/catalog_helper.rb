@@ -9,7 +9,7 @@ module CatalogHelper
     while i < 10
       persons_roles = [] # reset the array
       persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["person_#{i}_role_t"].nil?
-      if persons_roles and (persons_roles & roles).length > 0
+      if persons_roles and (persons_roles & roles.map{|x|x.downcase}).length > 0  #lower_cased roles for examples such as Supervisor
         persons << {:name => doc["person_#{i}_namePart_t"],:role => doc["person_#{i}_role_t"], :affiliation => doc["person_#{i}_affiliation_t"], :person_index=>"#{i}" }
       end
       i += 1
