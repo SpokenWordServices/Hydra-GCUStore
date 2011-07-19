@@ -30,8 +30,7 @@ Feature: Catalog Index
     Given I am on the catalog index page
     And I fill in "q" with "accounting"
     And I press "search"
-    Then I should see "2 documents"
-    And I should see "Sort by"
+    Then I should see "Sort by"
     And I should see "Show"
     And I should not see "Display as"
     And I should see "Resource type"

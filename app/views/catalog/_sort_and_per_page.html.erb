@@ -11,6 +11,7 @@
 	<% end %>
 
 		<% form_tag catalog_index_path, :method=>:get, :class=>'sort', :id => "sort_form" do %>
+
 			<%= label :sort, "Sort by" %>
 			<%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort])), :onchange => 'this.form.submit()') %>
 			      
