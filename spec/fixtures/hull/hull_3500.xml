@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="The evolution of accounting in developing countries : the study of Jordan - Helles, Salem Abdalla Salem; "/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:50:50.034Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-05-17T09:04:04.984Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-19T13:43:22.505Z"/>
 <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
@@ -87,6 +87,30 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-05-17T09:04:04.984Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-19T13:43:08.660Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-19T13:43:08.660Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-19T13:43:22.505Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -121,12 +145,12 @@ Several recommendations are made concerning the development of the accounting pr
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:50:50.082Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="637">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:50:50.082Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="795">
 <foxml:xmlContent>
 <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:3500">
-						<rel:isMemberOf rdf:resource="info:fedora/hull:3375" />
-						<rel:isGovernedBy rdf:resource="info:fedora/hull:3375" />
+						<rel:isMemberOf rdf:resource="info:fedora/hull:3375"></rel:isMemberOf>
+						<rel:isGovernedBy rdf:resource="info:fedora/hull:3375"></rel:isGovernedBy>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:uketdObject"></fedora-model:hasModel>
@@ -183,7 +207,7 @@ Several recommendations are made concerning the development of the accounting pr
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS Metadata" CREATED="2011-05-17T09:02:50.336Z" MIMETYPE="text/xml" SIZE="4784">
 <foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4gCjxtb2RzIHhtbG5zOnhzaT0iaHR0
@@ -266,6 +290,90 @@ Several recommendations are made concerning the development of the accounting pr
               InczY2R0ZiIvPiAKICAgICAgPGxhbmd1YWdlT2ZDYXRhbG9naW5nPiAKICAgICAgICAgPGxhbmd1YWdl
               VGVybSBhdXRob3JpdHk9ImlzbzYzOS0yYiI+ZW5nPC9sYW5ndWFnZVRlcm0+IAogICAgICA8L2xhbmd1
               YWdlT2ZDYXRhbG9naW5nPiAKICAgPC9yZWNvcmRJbmZvPiAKPC9tb2RzPgo=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="MODS Metadata" CREATED="2011-07-19T13:43:22.505Z" MIMETYPE="text/xml" SIZE="4780">
+<foxml:binaryContent> 
+              PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4gDTxtb2RzIHhtbG5zOnhzaT0iaHR0
+              cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiDSAgICAgIHhtbG5zPSJodHRwOi8v
+              d3d3LmxvYy5nb3YvbW9kcy92MyINICAgICAgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lmxv
+              Yy5nb3YvbW9kcy92MyBodHRwOi8vd3d3LmxvYy5nb3Yvc3RhbmRhcmRzL21vZHMvdjMvbW9kcy0zLTMu
+              eHNkIj4gDSAgIDx0aXRsZUluZm8+IA0gICAgICA8dGl0bGU+VGhlIGV2b2x1dGlvbiBvZiBhY2NvdW50
+              aW5nIGluIGRldmVsb3BpbmcgY291bnRyaWVzIDogdGhlIHN0dWR5IG9mIEpvcmRhbjwvdGl0bGU+IA0g
+              ICA8L3RpdGxlSW5mbz4gDSAgIDxuYW1lIHR5cGU9InBlcnNvbmFsIj4gDSAgICAgIDxuYW1lUGFydD5I
+              ZWxsZXMsIFNhbGVtIEFiZGFsbGEgU2FsZW08L25hbWVQYXJ0PiANICAgICAgPHJvbGU+IA0gICAgICAg
+              ICA8cm9sZVRlcm0gdHlwZT0idGV4dCI+Y3JlYXRvcjwvcm9sZVRlcm0+IA0gICAgICA8L3JvbGU+IA0g
+              ICA8L25hbWU+IA0gICA8bmFtZSB0eXBlPSJwZXJzb25hbCI+IA0gICAgICA8bmFtZVBhcnQ+QnJpc3Rv
+              biwgUi4gSi48L25hbWVQYXJ0PiANICAgICAgPHJvbGU+IA0gICAgICAgICA8cm9sZVRlcm0gdHlwZT0i
+              dGV4dCI+U3VwZXJ2aXNvcjwvcm9sZVRlcm0+IA0gICAgICA8L3JvbGU+IA0gICA8L25hbWU+IA0gICA8
+              bmFtZSB0eXBlPSJjb3Jwb3JhdGUiPiANICAgICAgPG5hbWVQYXJ0PlVuaXZlcnNpdHkgb2YgUWF0YXI8
+              L25hbWVQYXJ0PiANICAgICAgPHJvbGU+IA0gICAgICAgICA8cm9sZVRlcm0gdHlwZT0idGV4dCI+U3Bv
+              bnNvcjwvcm9sZVRlcm0+IA0gICAgICA8L3JvbGU+IA0gICA8L25hbWU+IA0gICA8bmFtZSB0eXBlPSJj
+              b3Jwb3JhdGUiPiANICAgICAgPG5hbWVQYXJ0PklzbGFtaWMgVW5pdmVyc2l0eSBvZiBHYXphPC9uYW1l
+              UGFydD4gDSAgICAgIDxyb2xlPiANICAgICAgICAgPHJvbGVUZXJtIHR5cGU9InRleHQiPlNwb25zb3I8
+              L3JvbGVUZXJtPiANICAgICAgPC9yb2xlPiANICAgPC9uYW1lPiANICAgPHR5cGVPZlJlc291cmNlPnRl
+              eHQ8L3R5cGVPZlJlc291cmNlPiANICAgPGdlbnJlPlRoZXNpcyBvciBkaXNzZXJ0YXRpb248L2dlbnJl
+              PiANICAgPGlkZW50aWZpZXIgdHlwZT0iZ3JhbnROdW1iZXIiLz4gDSAgIDxvcmlnaW5JbmZvPiANICAg
+              ICAgPHB1Ymxpc2hlcj5EZXBhcnRtZW50IG9mIEFjY291bnRpbmcsIFRoZSBVbml2ZXJzaXR5IG9mIEh1
+              bGw8L3B1Ymxpc2hlcj4gDSAgICAgIDxkYXRlSXNzdWVkIGVuY29kaW5nPSJ3M2NkdGYiIGtleURhdGU9
+              InllcyI+MTk5Mi0xMTwvZGF0ZUlzc3VlZD4gDSAgIDwvb3JpZ2luSW5mbz4gDSAgIDxsYW5ndWFnZT4g
+              DSAgICAgIDxsYW5ndWFnZVRlcm0gdHlwZT0idGV4dCI+RW5nbGlzaDwvbGFuZ3VhZ2VUZXJtPiANICAg
+              ICAgPGxhbmd1YWdlVGVybSBhdXRob3JpdHk9ImlzbzYzOS0yYiIgdHlwZT0iY29kZSI+ZW5nPC9sYW5n
+              dWFnZVRlcm0+IA0gICA8L2xhbmd1YWdlPiANICAgPHBoeXNpY2FsRGVzY3JpcHRpb24+IA0gICAgICA8
+              ZXh0ZW50Lz4gDSAgICAgIDxpbnRlcm5ldE1lZGlhVHlwZT5hcHBsaWNhdGlvbi9wZGY8L2ludGVybmV0
+              TWVkaWFUeXBlPiANICAgICAgPGRpZ2l0YWxPcmlnaW4+Ym9ybiBkaWdpdGFsPC9kaWdpdGFsT3JpZ2lu
+              PiANICAgPC9waHlzaWNhbERlc2NyaXB0aW9uPiANICAgPGFic3RyYWN0PlRoZSBtYWluIHB1cnBvc2Vz
+              IG9mIHRoaXMgc3R1ZHkgYXJlIHRvIGFzY2VydGFpbiB3aGV0aGVyIEpvcmRhbidzIGFjY291bnRpbmcg
+              c3lzdGVtcyAoZW50ZXJwcmlzZSwgZ292ZXJubWVudCwgc29jaWFsKSBwcm92aWRlIHRoZSBuZWNlc3Nh
+              cnkgaW5mb3JtYXRpb24gZm9yIGl0cyBzb2Npby0gZWNvbm9taWMgZGV2ZWxvcG1lbnQgcGxhbm5pbmcg
+              YW5kIHRvIHN1Z2dlc3QgbWVhbnMgYnkgd2hpY2ggdG8gaW1wcm92ZSBhY2NvdW50aW5nIGluIHRoZSBj
+              b3VudHJ5Lg0gDUFuIGF0dGVtcHQgaXMgbWFkZSB0byBkZXNjcmliZSB0aGUgSm9yZGFuaWFuIGVudmly
+              b25tZW50IGFuZCB0byBkZXRlcm1pbmUgdGhlIHBvc3NpYmxlIG9yaWVudGF0aW9uIG9mIGFjY291bnRp
+              bmcgaW4gSm9yZGFuLiBJdCBpcyBzaG93biB0aGF0IEpvcmRhbiBpcyBhIGRldmVsb3BpbmcgY291bnRy
+              eSwgd2hpY2ggd2FzIGFuZCBzdGlsbCBpcyBzdWJqZWN0IHRvIHByZXNzdXJlIGZyb20gZm9yZWlnbiBw
+              b3dlcnMgYm90aCBwb2xpdGljYWxseSBhbmQgZWNvbm9taWNhbGx5LiBUaGlzIHByZXNzdXJlIGhhcyBj
+              cmVhdGVkIGEgYmlhcyB0b3dhcmRzIHRoZSBVLksuISBVU0EgYWNjb3VudGluZyBzeXN0ZW1zLiBMYXdz
+              IGFuZCByZWd1bGF0aW9ucywgYWNjb3VudGluZyBlZHVjYXRpb24gYW5kIHRoZSBhY2NvdW50aW5nIHBy
+              b2Zlc3Npb24sIGFyZSBvcmllbnRlZCB0b3dhcmRzIHRoZSBhY2NvdW50aW5nIG9mIHRoZXNlIHR3byBj
+              b3VudHJpZXMuDSANVGhlIHN0dWR5IG9mIGFjY291bnRpbmcgZGV2ZWxvcG1lbnQgaW4gSm9yZGFuIHJl
+              dmVhbGVkIHRoYXQgcHVibGljIGFjY291bnRpbmcgaGFzIG5vdCByZWFjaGVkIHRoZSBzdGFnZSB3aGVy
+              ZSBpdCBjYW4gYmUgcmVjb2duaXNlZCBhcyBhIGRldmVsb3BlZCBwcm9mZXNzaW9uLiBUaGUgZW1waXJp
+              Y2FsIHN0dWR5IHJldmVhbGVkIHRoYXQgdGhlIG1vc3QgaW1wb3J0YW50IGl0ZW1zIG5lZWRlZCB0byBp
+              bXByb3ZlIG5hdGlvbmFsIGFjY291bnRpbmcgcHJhY3RpY2VzIGFyZSBhcyBmb2xsb3dzOiAoMSkgYW4g
+              YWN0aXZlIGFjY291bnRpbmcgb3JnYW5pc2F0aW9uOyAoMikgYWNjb3VudGluZyBwcmluY2lwbGVzIHN1
+              aXRhYmxlIHRvIHRoZSBKb3JkYW5pYW4gZW52aXJvbm1lbnQ7ICgzKSBvZmZpY2lhbCBhdWRpdGluZyBw
+              cm9ub3VuY2VtZW50czsgYW5kICg0KSBhIGNvZGUgb2YgcHJvZmVzc2lvbmFsIGNvbmR1Y3QuDSANVGhl
+              IGVtcGlyaWNhbCBzdXJ2ZXkgcmV2ZWFsZWQgdGhlIGluYWRlcXVhY3kgYW5kIHVuc3VpdGFiaWxpdHkg
+              b2YgY3VycmVudCByZXBvcnRpbmcgcHJhY3RpY2VzIHRvIHRoZSBuZWVkcyBvZiB0aGUgbG9jYWwgdXNl
+              cnMgb2YgZmluYW5jaWFsIHJlcG9ydHMuIEl0IGFsc28gaWRlbnRpZmllZCB0aGUgZm9sbG93aW5nIGFz
+              IG1ham9yIHByb2JsZW1zIGZhY2luZyBhY2NvdW50aW5nIHByb2Zlc3Npb24gaW4gSm9yZGFuOiAoMSkg
+              c2hvcnRhZ2Ugb2YgcXVhbGlmaWVkIGFjY291bnRhbnRzOyAoMikgd2Vha25lc3MgYW5kIHVuZGVyZGV2
+              ZWxvcG1lbnQgb2YgdGhlIEpvcmRhbmlhbiBhY2NvdW50aW5nIGN1cnJpY3VsYTsgYW5kICgzKSBsYWNr
+              IG9mIHN1ZmZpY2llbnRseSBxdWFsaWZpZWQgdGVhY2hpbmcgc3RhZmYuDSANU2V2ZXJhbCByZWNvbW1l
+              bmRhdGlvbnMgYXJlIG1hZGUgY29uY2VybmluZyB0aGUgZGV2ZWxvcG1lbnQgb2YgdGhlIGFjY291bnRp
+              bmcgcHJvZmVzc2lvbiBhbmQgZWR1Y2F0aW9uIHNvIHRoZXkgY2FuIG1lZXQgdGhlIGNoYWxsZW5nZSBv
+              ZiBlY29ub21pYyBkZXZlbG9wbWVudC4gVGhlc2UgcmVjb21tZW5kYXRpb25zIGNhbGwgZm9yIGltcHJv
+              dmVtZW50IGluIGFjY291bnRpbmcgcHJhY3RpY2VzLCBvcmdhbmlzYXRpb24gb2YgdGhlIHByb2Zlc3Np
+              b24sIGNvb3JkaW5hdGlvbiBvZiBlZmZvcnRzIHdpdGggZ292ZXJubWVudCwgYW5kIGluY3JlYXNlIGlu
+              IGNvbnRhY3RzIHdpdGggYWNjb3VudGFudHMgaW4gb3RoZXIgY291bnRyaWVzLjwvYWJzdHJhY3Q+IA0g
+              ICA8bm90ZSB0eXBlPSJxdWFsaWZpY2F0aW9uTGV2ZWwiPkRvY3RvcmFsPC9ub3RlPiANICAgPG5vdGUg
+              dHlwZT0icXVhbGlmaWNhdGlvbk5hbWUiPlBoRDwvbm90ZT4gDSAgIDxzdWJqZWN0IGF1dGhvcml0eT0i
+              VW9IIj4gDSAgICAgIDx0b3BpYz5NYW5hZ2VtZW50PC90b3BpYz4gDSAgIDwvc3ViamVjdD4gDSAgIDxp
+              ZGVudGlmaWVyIHR5cGU9ImZlZG9yYSI+aHVsbDozNTAwPC9pZGVudGlmaWVyPiANICAgPGxvY2F0aW9u
+              PiANICAgICAgPHVybCBhY2Nlc3M9Im9iamVjdCBpbiBjb250ZXh0IiB1c2FnZT0icHJpbWFyeSBkaXNw
+              bGF5Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9hc3NldHMvaHVsbDozNTAwPC91cmw+IA0gICAgICA8
+              dXJsIGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6
+              MzUwMGEvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvdXJsPiANICAgPC9sb2NhdGlvbj4gDSAgIDxhY2Nl
+              c3NDb25kaXRpb24gdHlwZT0idXNlQW5kUmVwcm9kdWN0aW9uIj7CqSAxOTkyIFNhbGVtIEFiZGFsbGEg
+              U2FsZW0gSGVsbGVzLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBObyBwYXJ0IG9mIHRoaXMgcHVibGljYXRp
+              b24gbWF5IGJlIHJlcHJvZHVjZWQgd2l0aG91dCB0aGUgd3JpdHRlbiBwZXJtaXNzaW9uIG9mIHRoZSBj
+              b3B5cmlnaHQgaG9sZGVyLjwvYWNjZXNzQ29uZGl0aW9uPiANICAgPHJlY29yZEluZm8+IA0gICAgICA8
+              cmVjb3JkQ29udGVudFNvdXJjZT5UaGUgVW5pdmVyc2l0eSBvZiBIdWxsPC9yZWNvcmRDb250ZW50U291
+              cmNlPiANICAgICAgPHJlY29yZENyZWF0aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDExLTAxLTEw
+              PC9yZWNvcmRDcmVhdGlvbkRhdGU+IA0gICAgICA8cmVjb3JkQ2hhbmdlRGF0ZSBlbmNvZGluZz0idzNj
+              ZHRmIi8+IA0gICAgICA8bGFuZ3VhZ2VPZkNhdGFsb2dpbmc+IA0gICAgICAgICA8bGFuZ3VhZ2VUZXJt
+              IGF1dGhvcml0eT0iaXNvNjM5LTJiIj5lbmc8L2xhbmd1YWdlVGVybT4gDSAgICAgIDwvbGFuZ3VhZ2VP
+              ZkNhdGFsb2dpbmc+IA0gICA8L3JlY29yZEluZm8+IA08L21vZHM+DQ==
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>

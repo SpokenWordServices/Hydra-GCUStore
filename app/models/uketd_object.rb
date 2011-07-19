@@ -13,7 +13,7 @@ class UketdObject < ActiveFedora::Base
   
   # Uses the Hydra MODS Article profile for tracking most of the descriptive metadata
   # TODO: define terminology for ETD
-  has_metadata :name => "descMetadata", :type => HullModsEtd
+  has_metadata :name => "descMetadata", :type => ModsUketd
 
   has_metadata :name => "UKETD_DC", :type => ActiveFedora::NokogiriDatastream
 
@@ -78,7 +78,7 @@ class UketdObject < ActiveFedora::Base
     
   def self.person_relator_terms
     {"aut" => "Author",
-     "adv" => "Thesis advisor"
+     "adv" => "Supervisor"
      }
   end
 

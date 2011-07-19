@@ -9,7 +9,7 @@ Feature: QA edit a document
     And I am on the edit document page for hull:756
     Then I should see an inline edit containing "An investigation of the factors which influence the degree"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link creator author uketd_object"
-    And I should see a "div" tag with a "class" attribute of "add_contributor_link thesis_advisor uketd_object"
+    And I should see a "div" tag with a "class" attribute of "add_contributor_link supervisor uketd_object"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link sponsor uketd_object"
     And I should see a "input" tag with a "id" attribute of "person_1_namePart"
     And I should see a "input" tag with a "id" attribute of "person_2_namePart"

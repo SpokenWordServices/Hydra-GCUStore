@@ -37,10 +37,10 @@
       <%= fedora_text_area(@document_fedora,"descMetadata", [:abstract], :multiple=>false) %>
     </dd>
     <dt>
-      <%= fedora_field_label("descMetadata",[:name,:namePart],"Advisor(s)") %>
+      <%= fedora_field_label("descMetadata",[:name,:namePart],"Supervisor(s)") %>
     </dt>
     <div class="contributors">
-      <%= render :partial => 'contributors/index', :locals=> {:roles=>['thesis advisor'], :contributor_type=>:person} %>
+      <%= render :partial => 'contributors/index', :locals=> {:roles=>['Supervisor'], :contributor_type=>:person} %>
     </div>
     <dt>
       <%= fedora_field_label("descMetadata",[:name,:namePart], "Sponsor(s)") %>
