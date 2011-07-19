@@ -100,7 +100,7 @@ class ModsExamPaper < ObjectMods
              xml.name(:type=>"corporate") {
                xml.namePart
                xml.role {
-                 xml.roleTerm(:type=>"text")
+                 xml.roleTerm("creator", :type=>"text")
                }
              }
 			 			 xml.typeOfResource "text"
