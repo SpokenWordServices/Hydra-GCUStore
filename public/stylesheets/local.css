@@ -191,6 +191,14 @@ div#links-right a {
     padding-bottom:60px;
  }
  /*logo image is 51px, 55px to give margin */
+
+.hydra-logo-large {
+    background: url("/images/hydra_logo_h100_transparent_bg.png") no-repeat scroll center top #FFFFFF;
+    height: 100px;
+    margin-left: 0;
+    margin-top: 1em;
+    padding-bottom: 60px;
+ }
  
 #hullFooter {
 	background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #D9E2E8;
