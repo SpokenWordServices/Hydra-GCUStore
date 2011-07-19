@@ -8,7 +8,7 @@ GEM
     actionpack (2.3.11)
       activesupport (= 2.3.11)
       rack (~> 1.1.0)
-    active-fedora (2.2.3)
+    active-fedora (2.3.3)
       activeresource
       equivalent-xml
       facets
@@ -44,7 +44,7 @@ GEM
     daemons (1.1.4)
     database_cleaner (0.6.7)
     diff-lcs (1.1.2)
-    equivalent-xml (0.2.6)
+    equivalent-xml (0.2.7)
       nokogiri (>= 1.4.3)
     facets (2.8.4)
     gherkin (2.3.7)
@@ -123,7 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.7)
-  active-fedora (>= 2.0.0)
+  active-fedora (>= 2.3.3)
   authlogic (>= 0.1.0)
   block_helpers
   builder
