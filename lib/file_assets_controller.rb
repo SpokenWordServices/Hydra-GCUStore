@@ -3,7 +3,7 @@ class FileAssetsController < ApplicationController
 
   require_dependency 'vendor/plugins/hydra_repository/app/controllers/file_assets_controller.rb'
   
-  after_filter :update_content_metadata, :only => [:create,:destroy]
+  after_filter :update_metadata, :only => [:create,:destroy]
 
   # NOTE: overwriting this method to handle redirection back to edit view of container
   def create
@@ -57,7 +57,7 @@ class FileAssetsController < ApplicationController
   end
   private
 
-  def update_content_metadata
+  def update_metadata
     logger.debug "updating container #{@container} with data for #{@file_asset}"
     #prefer the container_content_type param passed as local to the fluid_infusion/uploader partial
     afmodel = retrieve_af_model(params["container_content_type"])
@@ -71,16 +71,34 @@ class FileAssetsController < ApplicationController
       container = afmodel.load_instance(params[:container_id])
     end
     if params[:action] == "create"
-      node, index = container.insert_resource(:object_id => @file_asset.pid, :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
-      container.datastreams["contentMetadata"].save
-      container.save
+      update_content_metadata(container)
+      update_desc_metadata(container)
     elsif params[:action]=="destroy"
-      # add logic to get the appropriate index
-      container.remove_resource(params[:index])
+      delete_content_metadata(container)
       container.save
     end
   end
 
+  def update_content_metadata(container)
+    size_attr = @file_asset.datastreams["content"].size
+    node, index = container.insert_resource(:object_id => @file_asset.pid,:file_size=>size_attr, :url => datastream_content_url(:id=>@file_asset.pid,:datastream=>"content"), :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
+    container.datastreams["contentMetadata"].save
+  end
+
+  def delete_content_metadata(container)
+    container.remove_resource(params[:index])
+  end
+
+  def update_desc_metadata(container)
+    update_hash = {
+      [:physical_description,:extent]=>@file_asset.datastreams["content"].size,
+      [:physical_description,:mime_type]=>@file_asset.datastreams["content"].mime_type,
+      [:location,:raw_object]=>datastream_content_path(:id=>@file_asset.pid,:datastream=>"content")
+    }
+    container.datastreams["descMetadata"].update_values(update_hash)
+    container.datastreams["descMetadata"].save
+  end
+  
 # Returns:
   def get_default_display_label_for_content_type(content_type)
     display_label = params[:Filedata].original_filename

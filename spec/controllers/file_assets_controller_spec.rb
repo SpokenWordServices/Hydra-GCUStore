@@ -4,7 +4,7 @@ describe FileAssetsController do
 
   before do
     session[:user]='bob'
-    @controller.stubs(:update_content_metadata)
+    @controller.stubs(:update_metadata)
   end
 
   ## Plugin Tests
