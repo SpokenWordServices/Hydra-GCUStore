@@ -7,7 +7,7 @@
   <% values = get_values_from_datastream(@document_fedora,"descMetadata", [:grant_number],:multiple=>true) %>
   <%= fedora_text_field(@document_fedora,"descMetadata", [:grant_number], :multiple=>true) unless values.length == 1 && values[0].empty? %>
   <%#= fedora_text_field(@document_fedora,"descMetadata", [:grant_number], :multiple=>true) %>
-  <%= link_to(image_tag("/images/add.png",:border=>0), new_grant_number_path(:asset_id=>params[:id], :content_type => @content_type)) %>
+  <%= link_to(image_tag("/images/add.png",:border=>0,:alt=>"Add Grant"), new_grant_number_path(:asset_id=>params[:id], :content_type => @content_type)) %>
 </dd>	
 
 
