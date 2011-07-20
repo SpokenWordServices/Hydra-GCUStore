@@ -114,10 +114,10 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:50:44.824Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="637">
 <foxml:xmlContent>
-<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:hydra="http://projecthydra.org/ns/relations#">
           <rdf:Description rdf:about="info:fedora/hull:3112">
 						<rel:isMemberOf rdf:resource="info:fedora/hull:3375" />
-						<rel:isGovernedBy rdf:resource="info:fedora/hull:3375"/>
+						<hydra:isGovernedBy rdf:resource="info:fedora/hull:3375"/>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:uketdObject"></fedora-model:hasModel>

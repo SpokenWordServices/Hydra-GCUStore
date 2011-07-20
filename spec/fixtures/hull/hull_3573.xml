@@ -145,10 +145,10 @@ Moreover, recommendations concerning the development of the accounting professio
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:50:52.528Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="801">
 <foxml:xmlContent>
-<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:hydra="http://projecthydra.org/ns/relations#">
           <rdf:Description rdf:about="info:fedora/hull:3573">
 						<rel:isMemberOf rdf:resource="info:fedora/hull:QAQueue"></rel:isMemberOf>
-						<rel:isGovernedBy rdf:resource="info:fedora/hull:QAQueue"></rel:isGovernedBy>
+						<hydra:isGovernedBy rdf:resource="info:fedora/hull:QAQueue"></hydra:isGovernedBy>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:genericParent"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
             <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:uketdObject"></fedora-model:hasModel>
