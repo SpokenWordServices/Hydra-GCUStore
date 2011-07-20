@@ -69,7 +69,7 @@ class Tree::TreeNode
     if is_root?
       pad = ''
     else
-      pad = (' ' * (level - 1) * 2) + '  '
+      pad = ('-' * (level - 1) * 2) + '--'
     end
 
     options <<  ["#{pad}#{name}", "#{content}"]
