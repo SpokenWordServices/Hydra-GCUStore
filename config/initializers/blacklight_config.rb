@@ -250,11 +250,11 @@ Blacklight.configure(:shared) do |config|
   # except in the relevancy case).
   # label is key, solr field is value
   config[:sort_fields] ||= []
-  #config[:sort_fields] << ['relevance', 'score desc, year_facet desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['date -', 'mods_origin_info_date_issued_t desc']
-  config[:sort_fields] << ['date +', 'mods_origin_info_date_issued_t asc']
-  #config[:sort_fields] << ['title', 'mods_title_t asc']
-  #config[:sort_fields] << ['document type', 'medium_t asc, year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['relevance', 'score desc, year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['title', 'title_facet asc']
+  config[:sort_fields] << ['document type', 'medium_t asc, year_facet desc, month_facet asc, title_facet asc']
   #config[:sort_fields] << ['location', 'series_facet asc, box_facet asc, folder_facet asc, year_facet desc, month_facet asc, title_facet asc']
   
   # If there are more than this many search results, no spelling ("did you 
