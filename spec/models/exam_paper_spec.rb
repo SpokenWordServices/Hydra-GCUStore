@@ -18,6 +18,12 @@ describe ExamPaper do
     end
   end
 
+  describe "datastreams labelling" do
+    it "should properly label datastreams if label option passed" do
+      @examPaper.datastreams["descMetadata"].label.should == "MODS Metadata"
+    end
+  end
+
   describe "validation" do
     it "should have validation methods" do
       @examPaper.respond_to?(:valid_for_save?).should be_true

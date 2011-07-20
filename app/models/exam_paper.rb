@@ -9,7 +9,7 @@ class ExamPaper < ActiveFedora::Base
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
 
-  has_metadata :name => "descMetadata", :type => Hydra::ModsExamPaper
+  has_metadata :name => "descMetadata", :type => Hydra::ModsExamPaper, :label=>"MODS Metadata"
 
   has_metadata :name => "contentMetadata", :type => ContentMetadata
 
