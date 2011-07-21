@@ -77,6 +77,10 @@ module HullModelMethods
   def queue_membership
     self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,"") }
   end
+  
+  def is_governed_by_queue_membership
+    self.relationships[:self].fetch(:is_governed_by,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+  end
 
   def change_queue_membership(new_queue)
 	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
@@ -85,8 +89,10 @@ module HullModelMethods
     if is_valid
       if queues =  self.queue_membership
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
+				self.remove_relationship :is_governed_by, HULL_QUEUES.invert[queues.first]
       end
       self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+			self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
       
       self.owner_id="fedoraAdmin" if new_queue == :qa
 

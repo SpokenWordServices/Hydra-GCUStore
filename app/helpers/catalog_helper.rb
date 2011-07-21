@@ -196,7 +196,7 @@ module CatalogHelper
 		if date.match(/^\d{4}-\d{2}$/)
 			display_date = Date.parse(to_long_date(date)).strftime("%B") + " " + Date.parse(to_long_date(date)).strftime("%Y")
 		elsif date.match(/^\d{4}-\d{2}-\d{2}$/)
-			full_date = Date.parse(date).day() + " " + Date.parse(date).strftime("%B") + " " + Date.parse(to_long_date(date)).strftime("%Y")
+			display_date = Date.parse(date).day().to_s + " " + Date.parse(date).strftime("%B") + " " + Date.parse(date).strftime("%Y")
 		end
 		return display_date
  end

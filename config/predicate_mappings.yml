@@ -45,3 +45,6 @@
     :has_model: hasModel
   http://www.openarchives.org/OAI/2.0/: 
     :oai_item_id: itemID
+  http://projecthydra.org/ns/relations#:
+    :is_governed_by: isGovernedBy
+
