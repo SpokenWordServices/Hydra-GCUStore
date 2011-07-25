@@ -7,6 +7,7 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
 
   before_filter :enforce_permissions, :only =>:new
   before_filter :load_document, :only => :update
+  before_filter :update_set_membership, :only => :update
   before_filter :validate_parameters, :only =>[:create,:update]
 
  	def new
@@ -75,4 +76,11 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
         end
         true
       end
+		
+			def update_set_membership
+					if params["Structural Set"]
+						structural_set_pid = params["Structural Set"].to_s.slice(params["Structural Set"].to_s.to_s.index('/')  + 1..params["Structural Set"].to_s.length) #remove info:fedora/ namespace from pid
+						apply_set_membership(@document, structural_set_pid)
+					end			
+			end
 end

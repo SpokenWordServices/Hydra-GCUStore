@@ -11,15 +11,20 @@
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false) %>
     </dd> 
-	<dt>   
+		<dt>   
       <%= fedora_field_label("descMetadata",[:description],"Description") %>
     </dt>
     <dd>
       <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
     </dd>
+		<dt>
+      <%= fedora_field_label("RELS-EXT",[:is_member_of], "Structural Set") %>
+    </dt>
+    <dd>
+      <%= select "Structural Set","",  StructuralSet.tree.options_for_nested_select, :class=>"structural-set-select"  %>
+    </dd>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd-edit-publisher") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "Identifier", "dd-edit-identifier") %>
-
   </dl>
   </fieldset>
   <input type="hidden"  name="_method" value="put"/>

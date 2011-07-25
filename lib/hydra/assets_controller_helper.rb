@@ -129,6 +129,14 @@ module Hydra::AssetsControllerHelper
       asset.apply_additional_metadata(current_user.login)
     end
 	end
+
+	def apply_set_membership(asset, structural_set)
+		if asset.respond_to?(:apply_set_membership) && asset.respond_to? (:apply_governed_by)
+			asset.apply_set_membership(structural_set)
+			asset.apply_governed_by(structural_set)
+			#Perhaps do other things here like inherit defaultObjectRights if content object...
+		end
+	end
   
   # moved destringify into OM gem. 
   # ie.  OM.destringify( params )quit

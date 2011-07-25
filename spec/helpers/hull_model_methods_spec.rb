@@ -76,7 +76,6 @@ describe HullModelMethods do
       testclasstwo.expects(:ready_for_qa?).returns(true)
       testclasstwo.expects(:owner_id=).with("fedoraAdmin")
       testclasstwo.queue_membership.should == [:proto]
-			testclasstwo.is_governed_by_queue_membership.should == [:proto]
       testclasstwo.change_queue_membership(:qa)
       testclasstwo.queue_membership.should == [:qa]
 			testclasstwo.is_governed_by_queue_membership.should == [:qa]

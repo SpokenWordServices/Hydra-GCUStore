@@ -3,7 +3,7 @@ module HullModelMethods
 
   def initialize(opts={})
     super(opts)
-    change_queue_membership :proto if queue_membership.empty? && new_object?
+	  change_queue_membership :proto if queue_membership.empty? && new_object? #&& !self.class.to_s == "StructuralSet"
   end
 
   attr_accessor :pending_attributes
@@ -77,10 +77,18 @@ module HullModelMethods
   def queue_membership
     self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,"") }
   end
-  
-  def is_governed_by_queue_membership
-    self.relationships[:self].fetch(:is_governed_by,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+
+	def is_governed_by_queue_membership
+  	self.relationships[:self].fetch(:is_governed_by,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+	end
+
+  def is_governed_by
+    self.relationships[:self].fetch(:is_governed_by,[])
   end
+
+	def set_membership
+		self.relationships[:self].fetch(:is_member_of,[])
+	end
 
   def change_queue_membership(new_queue)
 	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
@@ -161,6 +169,18 @@ module HullModelMethods
 		dc_ds.update_indexed_attributes([:dc_dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?
 	  return true
   end
+
+	def apply_set_membership(set)
+		#We delete previous set memberships and move to new set
+		set_membership.each { |s| self.remove_relationship :is_member_of, s }
+		self.add_relationship :is_member_of, set
+	end
+
+	def apply_governed_by(set)
+		#We delete previous is_governed_by relationships and add the new one
+		is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
+		self.add_relationship :is_governed_by, set
+	end
 
   def valid_for_save?(params)
     if self.respond_to?(:validate_parameters)
