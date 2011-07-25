@@ -1,5 +1,14 @@
 module HullModelMethods 
   
+  module ClassMethods
+    def pid_namespace
+      "hull-cModel"
+    end
+  end
+
+  def self.included(klass)
+    klass.extend(ClassMethods)
+  end
 
   def initialize(opts={})
     super(opts)
@@ -226,5 +235,5 @@ module HullModelMethods
 		end
 		return full_date
 	end
-
+  
 end

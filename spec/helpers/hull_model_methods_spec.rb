@@ -81,4 +81,9 @@ describe HullModelMethods do
 			testclasstwo.is_governed_by_queue_membership.should == [:qa]
     end    
   end
+
+  it "should provide .pid_namespace method for appropriate c-model declaration" do
+    TestClassOne.should respond_to(:pid_namespace)
+    TestClassOne.pid_namespace.should == "hull-cModel"
+  end
 end
