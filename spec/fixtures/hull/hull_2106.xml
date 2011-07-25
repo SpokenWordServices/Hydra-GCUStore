@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Content models in the Hydra Project - Green, Richard A.; "/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-02-23T10:56:37.825Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-28T17:05:42.738Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-25T12:54:47.548Z"/>
 <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
@@ -63,6 +63,46 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-03-28T17:05:42.738Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-22T13:59:35.312Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-22T14:02:13.992Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-22T14:04:17.359Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-22T14:06:10.648Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-25T12:54:47.548Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -86,6 +126,16 @@ The presentation describes the &apos;simple yet flexible&apos; approach of the H
   <dc:identifier>hull:2106</dc:identifier>
   <dc:language>eng</dc:language>
   <dc:rights>© 2009 Richard Green. Creative Commons Licence: Attribution-Noncommercial-Share Alike 2.0 UK: England and Wales. See: http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.1" LABEL="DC Metadata" CREATED="2011-07-22T13:59:35.312Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="463">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Content models in the Hydra Project</dc:title>
+  <dc:date>2009-12-14</dc:date>
+  <dc:type>Presentation</dc:type>
+  <dc:identifier>hull:2106</dc:identifier>
 </oai_dc:dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -132,9 +182,49 @@ The presentation describes the &apos;simple yet flexible&apos; approach of the H
               PgogICAgPC9sYW5ndWFnZU9mQ2F0YWxvZ2luZz4KICA8L3JlY29yZEluZm8+CjwvbW9kcz4K
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="MODS metadata" CREATED="2011-07-22T14:06:10.648Z" MIMETYPE="text/xml" SIZE="2129">
+<foxml:binaryContent> 
+              PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
+              d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
+              Ly93d3cubG9jLmdvdi9tb2RzL3YzICAgICAgICAgICAgIGh0dHA6Ly93d3cubG9jLmdvdi9zdGFuZGFy
+              ZHMvbW9kcy92My9tb2RzLTMtMy54c2QiPg0gIDx0aXRsZUluZm8+DSAgICA8dGl0bGU+Q29udGVudCBt
+              b2RlbHMgaW4gdGhlIEh5ZHJhIFByb2plY3Q8L3RpdGxlPg0gIDwvdGl0bGVJbmZvPg0gIDxuYW1lIHR5
+              cGU9InBlcnNvbmFsIj4NICAgIDxuYW1lUGFydD5HcmVlbiwgUmljaGFyZCBBLjwvbmFtZVBhcnQ+DSAg
+              ICA8cm9sZT4NICAgICAgPHJvbGVUZXJtIHR5cGU9InRleHQiPmNyZWF0b3I8L3JvbGVUZXJtPg0gICAg
+              PC9yb2xlPg0gIDwvbmFtZT4NICA8dHlwZU9mUmVzb3VyY2U+dGV4dDwvdHlwZU9mUmVzb3VyY2U+DSAg
+              PGdlbnJlPlByZXNlbnRhdGlvbjwvZ2VucmU+DSAgPG9yaWdpbkluZm8+DSAgICA8cHVibGlzaGVyPlRo
+              ZSBVbml2ZXJzaXR5IG9mIEh1bGw8L3B1Ymxpc2hlcj4NICA8L29yaWdpbkluZm8+DSAgPGxhbmd1YWdl
+              Pg0gICAgPGxhbmd1YWdlVGVybSB0eXBlPSJ0ZXh0Ij5FbmdsaXNoPC9sYW5ndWFnZVRlcm0+DSAgICA8
+              bGFuZ3VhZ2VUZXJtIGF1dGhvcml0eT0iaXNvNjM5LTJiIiB0eXBlPSJjb2RlIj5lbmc8L2xhbmd1YWdl
+              VGVybT4NICA8L2xhbmd1YWdlPg0gIDxwaHlzaWNhbERlc2NyaXB0aW9uPg0gICAgPGV4dGVudD5GaWxl
+              c2l6ZTogNjQyS0I8L2V4dGVudD4NICAgIDxpbnRlcm5ldE1lZGlhVHlwZT5hcHBsaWNhdGlvbi9wZGY8
+              L2ludGVybmV0TWVkaWFUeXBlPg0gICAgPGRpZ2l0YWxPcmlnaW4+Ym9ybiBkaWdpdGFsPC9kaWdpdGFs
+              T3JpZ2luPg0gIDwvcGh5c2ljYWxEZXNjcmlwdGlvbj4NICA8YWJzdHJhY3Q+QSBwcmVzZW50YXRpb24g
+              Z2l2ZW4gYXQgdGhlIGpvaW50IG1lZXRpbmcgb2YgdGhlIEZlZG9yYSBVSyBhbmQgSXJlbGFuZCwgYW5k
+              IHRoZSBGZWRvcmEgRVUgVXNlciBHcm91cHMgb24gOHRoIERlY2VtYmVyIDIwMDkgaW4gT3hmb3JkLg0N
+              VGhlIHByZXNlbnRhdGlvbiBkZXNjcmliZXMgdGhlICdzaW1wbGUgeWV0IGZsZXhpYmxlJyBhcHByb2Fj
+              aCBvZiB0aGUgSHlkcmEgcGFydG5lcnMuPC9hYnN0cmFjdD4NICA8c3ViamVjdCBhdXRob3JpdHk9IlVv
+              SCI+DSAgICA8dG9waWM+SHlkcmE8L3RvcGljPg0gIDwvc3ViamVjdD4NICA8aWRlbnRpZmllciB0eXBl
+              PSJmZWRvcmEiPmh1bGw6MjEwNjwvaWRlbnRpZmllcj4NICA8cmVsYXRlZEl0ZW0gSUQ9InByaXZhdGVP
+              YmplY3QiPg0gICAgPGlkZW50aWZpZXIgdHlwZT0iZmVkb3JhIj5odWxsLXByaXZhdGU6NjcyPC9pZGVu
+              dGlmaWVyPg0gIDwvcmVsYXRlZEl0ZW0+DSAgPGxvY2F0aW9uPg0gICAgPHVybCBhY2Nlc3M9Im9iamVj
+              dCBpbiBjb250ZXh0IiB1c2FnZT0icHJpbWFyeSBkaXNwbGF5Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51
+              ay9yZXNvdXJjZXMvaHVsbDoyMTA2PC91cmw+DSAgICA8dXJsIGFjY2Vzcz0icmF3IG9iamVjdCI+aHR0
+              cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6MjEwNi9nZW5lcmljQ29udGVudC9jb250ZW50
+              PC91cmw+DSAgPC9sb2NhdGlvbj4NICA8YWNjZXNzQ29uZGl0aW9uIHR5cGU9InVzZUFuZFJlcHJvZHVj
+              dGlvbiI+wqkgMjAwOSBSaWNoYXJkIEdyZWVuLiBDcmVhdGl2ZSBDb21tb25zIExpY2VuY2U6IEF0dHJp
+              YnV0aW9uLU5vbmNvbW1lcmNpYWwtU2hhcmUgQWxpa2UgMi4wIFVLOiBFbmdsYW5kIGFuZCBXYWxlcy4g
+              U2VlOiBodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS1uYy1zYS8yLjAvdWsvPC9h
+              Y2Nlc3NDb25kaXRpb24+DSAgPHJlY29yZEluZm8+DSAgICA8cmVjb3JkQ29udGVudFNvdXJjZT5UaGUg
+              VW5pdmVyc2l0eSBvZiBIdWxsPC9yZWNvcmRDb250ZW50U291cmNlPg0gICAgPHJlY29yZENyZWF0aW9u
+              RGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDA5LTEyLTE0PC9yZWNvcmRDcmVhdGlvbkRhdGU+DSAgICA8
+              cmVjb3JkQ2hhbmdlRGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDExLTA3LTIyPC9yZWNvcmRDaGFuZ2VE
+              YXRlPg0gIDwvcmVjb3JkSW5mbz4NPC9tb2RzPg0=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:56:37.881Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="525">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-02-23T10:56:37.881Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="524">
 <foxml:xmlContent>
 <rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
           <rdf:Description rdf:about="info:fedora/hull:2106">
@@ -144,19 +234,17 @@ The presentation describes the &apos;simple yet flexible&apos; approach of the H
         </rdf:RDF>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-03-28T17:05:42.738Z" MIMETYPE="text/xml" SIZE="438">
-<foxml:binaryContent> 
-              PGNvbnRlbnRNZXRhZGF0YSB0eXBlPSJ0ZXh0IiB4bWxucz0iaHR0cDovL2h5ZHJhLWNvbGxhYi5odWxs
-              LmFjLnVrL3NjaGVtYXMvY29udGVudE1ldGFkYXRhL3YxIj48cmVzb3VyY2Ugc2VxdWVuY2U9IjEiIGlk
-              PSJQcmVzZW50YXRpb24iIGRpc3BsYXlMYWJlbD0iUHJlc2VudGF0aW9uIiBvYmplY3RJRD0iaHVsbDoy
-              MTA2IiBkc0lEPSJjb250ZW50IiBkaXNzVHlwZT0iZ2VuZXJpY0NvbnRlbnQvY29udGVudCI+PGZpbGUg
-              aWQ9ImNvbnRlbnQiIGZvcm1hdD0icGRmIiBtaW1lVHlwZT0iYXBwbGljYXRpb24vcGRmIiBzaXplPSI2
-              NDIxMDgiPjxsb2NhdGlvbiB0eXBlPSJ1cmwiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fzc2V0cy9o
-              dWxsOjIxMDYvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvbG9jYXRpb24+PC9maWxlPjwvcmVzb3VyY2U+
-              PC9jb250ZW50TWV0YWRhdGE+
-</foxml:binaryContent> 
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-07-22T14:02:13.992Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="694">
+<foxml:xmlContent>
+<rdf:RDF xmlns:fedora-model="info:fedora/fedora-system:def/model#" xmlns:hydra="http://projecthydra.org/ns/relations#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <rdf:Description rdf:about="info:fedora/hull:2106">
+    <rel:isMemberOf rdf:resource="info:fedora/hull:1724"></rel:isMemberOf>
+    <hydra:isGovernedBy rdf:resource="info:fedora/hull:1724"></hydra:isGovernedBy>
+    <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:presentation"></fedora-model:hasModel>
+    <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
@@ -2417,6 +2505,21 @@ The presentation describes the &apos;simple yet flexible&apos; approach of the H
               IFIvSW5mbyAxNCAwIFIvSURbPDg1ODgxRTcwMUIwNzQwNDZCRDYwMUQ5Q0I3Q0IxQzRFPjw4NTg4MUU3
               MDFCMDc0MDQ2QkQ2MDFEOUNCN0NCMUM0RT5dIC9QcmV2IDEzMTc0My9YUmVmU3RtIDEzMTQwNT4+DQpz
               dGFydHhyZWYNCjEzMjc0MQ0KJSVFT0Y=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.2" LABEL="Content metadata" CREATED="2011-07-25T12:54:47.548Z" MIMETYPE="text/xml" SIZE="512">
+<foxml:binaryContent> 
+              DTxjb250ZW50TWV0YWRhdGEgeG1sbnM9Imh0dHA6Ly9oeWRyYS1jb2xsYWIuaHVsbC5hYy51ay9zY2hl
+              bWFzL2NvbnRlbnRNZXRhZGF0YS92MSI+DSAgPHJlc291cmNlIGRpc3BsYXlMYWJlbD0iUHJlc2VudGF0
+              aW9uIiBjb250YWlucz0iY29udGVudCIgc2VydmljZURlZj0iaHVsbC1zRGVmOnByZXNlbnRhdGlvbiIg
+              ZHNJZD0iY29udGVudCIgc2VydmljZU1ldGhvZD0iZ2V0Q29udGVudCIgaWQ9InByZXNlbnRhdGlvbi5w
+              ZGYiIG9iamVjdElEPSJodWxsOjIxMDYiIHNlcXVlbmNlPSIxIj4NICAgIDxmaWxlIGZvcm1hdD0icGRm
+              IiBpZD0icHJlc2VudGF0aW9uLnBkZiIgbWltZVR5cGU9ImFwcGxpY2F0aW9uL3BkZiIgc2l6ZT0iNjQy
+              MTA4Ij4NICAgICAgPGxvY2F0aW9uIHR5cGU9InVybCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNz
+              ZXRzL2h1bGw6MjEwNi9nZW5lcmljQ29udGVudC9jb250ZW50PC9sb2NhdGlvbj4NICAgIDwvZmlsZT4N
+              ICA8L3Jlc291cmNlPg08L2NvbnRlbnRNZXRhZGF0YT4=
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>

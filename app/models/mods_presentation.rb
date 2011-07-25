@@ -14,7 +14,12 @@ class ModsPresentation < ObjectMods
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
      t.topic(:index_as=>[:facetable])
     }
-
+		t.location_subject (:path=>"subject") {
+			t.cartographics {
+				t.coordinates
+			}
+		}
+    t.type_of_resource(:path=>"typeOfResource")
     t.genre
 
     #t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic") -- Not sure we need this indexing...
@@ -50,13 +55,21 @@ class ModsPresentation < ObjectMods
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
-    t.related_item_module(:path=>"relatedItem", :attributes=>{:type=>"module"}) {
-     t.module_code(:path=>"identifier", :attributes=>{:type=>"moduleCode"}, :index_as=>[:facetable])
-    }
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
-		t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
+			t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
+    t.related_web_materials(:path=>"relatedItem", :attributes=>{:type=>"relatedMaterials"})	{
+			t.location {
+	  		t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+	  	}
+		}
+		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
+    t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+		t.location {
+	  	t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+	  	t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
+ 		}
     t.physical_description(:path=>"physicalDescription") {
       t.extent
       t.mime_type(:path=>"internetMediaType")

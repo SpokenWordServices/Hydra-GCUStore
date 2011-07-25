@@ -47,7 +47,7 @@ class ModsUketd < ObjectMods
       t.part(:path=>"namePart",:index_as=>[:facetable])
     }
     t.genre(:path=>'genre')
-	t.type_of_resource(:path=>"typeOfResource")
+		t.type_of_resource(:path=>"typeOfResource")
     t.qualification_level(:path=>"note", :attributes=>{:type=>"qualificationLevel"})
     t.qualification_name(:path=>"note", :attributes=>{:type=>"qualificationName"})
     t.origin_info(:path=>'originInfo') {
@@ -70,8 +70,7 @@ class ModsUketd < ObjectMods
 	t.location {
 	  t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
-    }
-
+  }
 	t.grant_number(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
 
   end
