@@ -6,6 +6,14 @@ class UketdObject < ActiveFedora::Base
   include HullModelMethods
   include HullValidationMethods
 
+  def initialize(attrs={})
+    super(attrs)
+    if new_object?
+      self.add_relationship(:has_model,"info:fedora/hydra-cModel:genericParent")
+      self.add_relationship(:has_model,"info:fedora/hydra-cModel:commonMetadata")
+    end
+  end
+
   has_relationship "parts", :is_part_of, :inbound => true
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright

@@ -17,4 +17,10 @@ describe UketdObject do
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:uketdObject"
     end
   end
+
+  describe ".initialize" do
+    it "should create the appropriate cModel declarations" do
+      @etd.relationships[:self][:has_model].should == ["info:fedora/hydra-cModel:genericParent", "info:fedora/hydra-cModel:commonMetadata"]
+    end
+  end
 end
