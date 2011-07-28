@@ -1,6 +1,16 @@
-class GenericContent < ActiveFedora::Base
-  require_dependency 'vendor/plugins/hydra_repository/app/models/generic_content.rb'
+require 'hydra'
 
-  has_metadata :name => "DC", :type => ActiveFedora::NokogiriDatastream
+class GenericContent < ActiveFedora::Base
+ 
+  include Hydra::ModelMethods
+  include HullModelMethods
+  include HullValidationMethods
+	
+ 	#Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
+  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
+ 
+  has_metadata :name => "descMetadata", :type => ModsGenericContent
+  
+	has_metadata :name => "contentMetadata", :type => ContentMetadata
 
 end

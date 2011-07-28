@@ -16,11 +16,15 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :subjects
   map.resources :grant_numbers
+	map.resources :multi_field
 
   map.subject_topic 'subjects/:content_type/:asset_id/:index', :controller=>:contributors, :action=>:show, :conditions => { :method => :get }
   map.grant_number 'grant_numbers/:content_type/:asset_id/:index', :controller=>:grant_numbers, :action=>:show, :conditions => { :method => :get }
   map.connect 'subjects/:content_type/:asset_id/:index', :controller=>:subjects, :action=>:destroy, :conditions => { :method => :delete }
   map.connect 'grant_numbers/:content_type/:asset_id/:index', :controller=>:grant_numbers, :action=>:destroy, :conditions => { :method => :delete }
+
+	map.multi_field 'multi_field/:content_type/:asset_id/:index', :controller=>:multi_field, :action=>:show, :conditions => { :method => :get }
+	map.connect 'multi_field/:content_type/:asset_id/:index', :controller=>:multi_field, :action=>:destroy, :conditions => { :method => :delete }
 
 	#Workflow_new maps to the new resource page
   map.workflow_new 'work_flow/new', :controller=>:work_flow, :action=>:new

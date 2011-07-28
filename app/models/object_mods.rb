@@ -80,6 +80,29 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       self.dirty = true
     end
 
+		def self.rights_template
+  		builder = Nokogiri::XML::Builder.new {|xml| xml.accessCondition(:type=>"useAndReproduction") }
+      return builder.doc.root
+		end
+
+		def insert_rights(opts={})
+			node = ObjectMods.rights_template
+			nodeset = self.find_by_terms(:rights)
+
+			unless nodeset.nil?
+				nodeset.after(node)
+				index=nodeset.length
+				self.dirty = true
+			end
+
+			return node, index
+		end
+
+		def remove_rights(index)
+			self.find_by_terms(:rights)[index.to_i].remove
+			self.dirty = true
+		end
+
     def insert_subject_topic(opts={})
       node = ModsJournalArticle.subject_topic_template
       nodeset = self.find_by_terms(:subject,:topic)

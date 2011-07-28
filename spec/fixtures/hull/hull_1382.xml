@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HIH fixture object for Policy or procedure"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-22T12:38:55.286Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-25T12:52:59.181Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-28T18:52:18.917Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-22T12:38:55.286Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -94,6 +94,14 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-07-25T12:52:59.181Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-07-28T18:52:18.917Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -109,11 +117,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Record for this object" CREATED="2011-07-22T12:40:23.143Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="466">
 <foxml:xmlContent>
-<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>Archives and manuscripts policy</dc:title>
-  <dc:identifier>hull:1382</dc:identifier>
-  <dc:type>Policy or procedure</dc:type>
   <dc:date>2008-11-26</dc:date>
+  <dc:type>Policy or procedure</dc:type>
+  <dc:identifier>hull:1382</dc:identifier>
 </oai_dc:dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -2945,13 +2953,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-07-22T12:52:21.865Z" MIMETYPE="text/xml" SIZE="1757">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-07-28T18:52:18.917Z" MIMETYPE="text/xml" SIZE="1710">
 <foxml:xmlContent>
 <mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
   <titleInfo>
-    <title>
-            Archives and manuscripts policy
-        </title>
+    <title>Archives and manuscripts policy</title>
   </titleInfo>
   <name type="corporate">
     <namePart>The University of Hull</namePart>
@@ -2972,58 +2978,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <extent>161KB</extent>
     <internetMediaType>application/pdf</internetMediaType>
   </physicalDescription>
-  <abstract>
-        University archives and manuscripts policy: last updated 17 July 2006.
-    </abstract>
-  <subject authority="UoH">
-    <topic>University policies, regulations and procedures</topic>
-  </subject>
-  <identifier type="fedora">hull:1382</identifier>
-  <location>
-    <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/assets/hull:1382</url>
-    <url access="raw object">http://hydra.hull.ac.uk/assets/hull:1382/genericContent/content</url>
-  </location>
-  <accessCondition type="useAndReproduction">
-        (c) 2006 The University of Hull
-    </accessCondition>
-  <recordInfo>
-    <recordContentSource>The University of Hull</recordContentSource>
-    <recordCreationDate encoding="w3cdtf">2008-11-26</recordCreationDate>
-    <recordChangeDate encoding="w3cdtf">2011-07-22</recordChangeDate>
-  </recordInfo>
-</mods>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="MODS metadata" CREATED="2011-07-22T13:55:38.523Z" MIMETYPE="text/xml" SIZE="1760">
-<foxml:xmlContent>
-<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
-  <titleInfo>
-    <title>
-            Archives and manuscripts policy
-        </title>
-  </titleInfo>
-  <name type="corporate">
-    <namePart>The University of Hull</namePart>
-    <role>
-      <roleTerm type="text">creator</roleTerm>
-    </role>
-  </name>
-  <typeOfResource>text</typeOfResource>
-  <genre>Policy or procedure</genre>
-  <originInfo>
-    <publisher>The University of Hull</publisher>
-  </originInfo>
-  <language>
-    <languageTerm type="text">English</languageTerm>
-    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
-  </language>
-  <physicalDescription>
-    <extent>161KB</extent>
-    <internetMediaType>application/pdf</internetMediaType>
-  </physicalDescription>
-  <abstract>
-        University archives and manuscripts policy: last updated 17 July 2006.
-    </abstract>
+  <abstract>University archives and manuscripts policy: last updated 17 July 2006.</abstract>
   <subject authority="UoH">
     <topic>University policies, regulations and procedures</topic>
   </subject>
@@ -3032,9 +2987,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/resources/hull:1382</url>
     <url access="raw object">http://hydra.hull.ac.uk/assets/hull:1382/genericContent/content</url>
   </location>
-  <accessCondition type="useAndReproduction">
-        (c) 2006 The University of Hull
-    </accessCondition>
+  <accessCondition type="useAndReproduction">(c) 2006 The University of Hull</accessCondition>
   <recordInfo>
     <recordContentSource>The University of Hull</recordContentSource>
     <recordCreationDate encoding="w3cdtf">2008-11-26</recordCreationDate>
@@ -3045,18 +2998,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-07-22T12:54:10.574Z" MIMETYPE="text/xml" SIZE="453">
-<foxml:xmlContent>
-<contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1" type="text">
-  <resource displayLabel="Document" dissType="genericContent" dsID="content" id="policy.pdf" objectID="hull:1382" sequence="1">
-    <file format="pdf" id="policy.pdf" mimeType="application/pdf" size="165545">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:1382/genericContent/content</location>
-    </file>
-  </resource>
-</contentMetadata>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="contentMetadata.1" LABEL="Content metadata" CREATED="2011-07-25T12:52:59.181Z" MIMETYPE="text/xml" SIZE="491">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-07-25T12:52:59.181Z" MIMETYPE="text/xml" SIZE="491">
 <foxml:xmlContent>
 <contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1">
   <resource contains="content" displayLabel="Document" dsId="content" id="policy.pdf" objectID="hull:1382" sequence="1" serviceDef="hull-sDef:policy" serviceMethod="getContent">

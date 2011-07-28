@@ -51,6 +51,23 @@ module HullModelMethods
     return result
   end
 
+	# call insert_rights on the descMetadata datastream
+	def insert_rights(opts={})
+	 	ds = self.datastreams_in_memory["descMetadata"]
+    node, index = ds.insert_rights(opts)
+    if opts[:value]
+      node.inner_text = opts[:value]
+    end
+    return node, index
+	end
+
+	# call remove_rights on the descMetadata datastream
+	def remove_rights(index)
+		ds = self.datastreams_in_memory["descMetadata"]
+    result = ds.remove_rights(index)
+    return result
+	end
+
   # call insert_resource on the contentMetadata datastream
   def insert_resource(opts={})
     ds = self.datastreams["contentMetadata"]
