@@ -22,7 +22,6 @@ class ModsUketd < ObjectMods
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
       t.topic(:index_as=>[:facetable])
     }
-    t.subject_topic(:proxy=>[:subject,:topic])
     t.topic_tag(:index_as=>[:facetable],:path=>"subject", :default_content_path=>"topic") 
 
     # This is a mods:name.  The underscore is purely to avoid namespace conflicts.
