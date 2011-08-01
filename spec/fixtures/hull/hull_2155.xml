@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HiH dataset fixture object"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-21T09:24:40.926Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-25T12:49:30.579Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-08-01T13:57:36.463Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-21T09:24:40.926Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -158,6 +158,38 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-07-25T12:49:30.579Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC19">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-01T13:54:10.728Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC20">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-01T13:54:10.728Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC21">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-01T13:56:21.180Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC22">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-01T13:57:36.463Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -278,7 +310,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-07-21T10:10:09.210Z" MIMETYPE="text/xml" SIZE="3213">
 <foxml:xmlContent>
 <mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
@@ -425,6 +457,76 @@ See: http://creativecommons.org/licenses/by/2.0/uk/
 work; and to make derivative works, under the following conditions: Attribution. You must give the original author credit. 
 See: http://creativecommons.org/licenses/by/2.0/uk/
     </accessCondition>
+  <recordInfo>
+    <recordContentSource>The University of Hull</recordContentSource>
+    <recordCreationDate encoding="w3cdtf">2010-01-05</recordCreationDate>
+    <recordChangeDate encoding="w3cdtf">2011-07-21</recordChangeDate>
+  </recordInfo>
+</mods>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.4" LABEL="MODS metadata" CREATED="2011-08-01T13:57:36.463Z" MIMETYPE="text/xml" SIZE="3115">
+<foxml:xmlContent>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>HMAP Dataset 04: World Whaling</title>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Smith, T. D.</namePart>
+    <role>
+      <roleTerm type="text">creator</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>text</typeOfResource>
+  <genre>Dataset</genre>
+  <originInfo>
+    <publisher>Barnard, Michaela G.</publisher>
+    <publisher>Nicholls, J. H.</publisher>
+  </originInfo>
+  <language>
+    <languageTerm type="text">English</languageTerm>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <physicalDescription>
+    <extent>66014 records</extent>
+    <internetMediaType>application/zip</internetMediaType>
+    <internetMediaType>application/ms-word</internetMediaType>
+    <internetMediaType>application/pdf</internetMediaType>
+    <internetMediaType>text/plain</internetMediaType>
+    <digitalOrigin>born digital</digitalOrigin>
+  </physicalDescription>
+  <abstract>Whale catches and effort, worldwide, 1700-2000
+
+Reference/Citation:
+(a) The dataset: please cite as follows:
+	T.D. Smith ed. &apos;World Whaling Database: Individual Whale Catches, North Atlantic&apos; in M.G Barnard and J.H Nicholls (comp.) HMAP Data Pages (www.hull.ac.uk/hmap)
+(b) Supporting documentation: please cite as follows:
+	T.D. Smith, &apos;HMAP Dataset 4: World Whaling, Supporting Documentation&apos;, in M.G Barnard and J.H Nicholls (comp.) HMAP Data Pages (www.hull.ac.uk/hmap)
+    </abstract>
+  <subject authority="UoH">
+    <topic>Whaling statistics</topic>
+    <topic>History of marine animal populations</topic>
+    <topic>Whaling technology</topic>
+    <topic>Whale oil</topic>
+    <topic>Whaling logbooks</topic>
+    <temporal>1700 - 2000</temporal>
+  </subject>
+  <identifier type="fedora">hull:2155</identifier>
+  <relatedItem>
+    <location>
+      <url access="object in context" displayLabel="HMAP  website" usage="primary display">http://www.hull.ac.uk/hmap</url>
+    </location>
+  </relatedItem>
+  <relatedItem ID="privateObject">
+    <identifier type="fedora">hull-private:756</identifier>
+  </relatedItem>
+  <location>
+    <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/resources/hull:2155</url>
+    <url access="raw object">http://hydra.hull.ac.uk/assets/hull:2155/genericContent/content</url>
+  </location>
+  <accessCondition type="useAndReproduction">Creative Commons Attribution 2.0 UK: England and Wales. You are free: to copy, distribute, display, and perform the 
+work; and to make derivative works, under the following conditions: Attribution. You must give the original author credit. 
+See: http://creativecommons.org/licenses/by/2.0/uk/</accessCondition>
   <recordInfo>
     <recordContentSource>The University of Hull</recordContentSource>
     <recordCreationDate encoding="w3cdtf">2010-01-05</recordCreationDate>

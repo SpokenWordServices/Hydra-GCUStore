@@ -13,4 +13,6 @@ class GenericContent < ActiveFedora::Base
   
 	has_metadata :name => "contentMetadata", :type => ContentMetadata
 
+  has_metadata :name => "DC", :type => ObjectDc
+
 end

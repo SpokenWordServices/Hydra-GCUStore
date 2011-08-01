@@ -46,7 +46,8 @@ class ModsGenericContent < ObjectMods
     }
     t.origin_info(:path=>"originInfo") {
       t.publisher
-    }  
+ 			t.date_issued(:path=>"dateIssued")
+    } 
     t.language {
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
