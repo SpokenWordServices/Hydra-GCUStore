@@ -76,6 +76,8 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     rcov (0.9.9)
+    rest-client (1.6.3)
+      mime-types (>= 1.16)
     rsolr (0.12.1)
       builder (>= 2.1.2)
     rsolr-ext (0.12.1)
@@ -152,6 +154,7 @@ DEPENDENCIES
   rails (= 2.3.11)
   rake
   rcov
+  rest-client
   rsolr (= 0.12.1)
   rsolr-ext (= 0.12.1)
   rspec (< 2.0.0)

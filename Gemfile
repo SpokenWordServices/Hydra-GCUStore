@@ -40,6 +40,7 @@ gem 'xml-simple'
 gem 'yard'
 
 gem 'rubytree'
+gem 'rest-client'
 
 source 'http://gemcutter.org'
 
