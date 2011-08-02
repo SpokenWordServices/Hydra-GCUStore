@@ -59,13 +59,11 @@ module CatalogHelper
 
      sequence_hash.keys.sort.each do |seq| 
         i = sequence_hash[seq]
-#     while i < resources_count
       resources << <<-EOS 
 	       <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
            <a href="/assets/#{object_id[i]}/#{ds_id[i]}">#{display_label[i]}</a> 
            <div id="file-size">(#{get_friendly_file_size(file_size[i])}, #{format[i]})</div>
       EOS
-#       i += 1
      end
       resources << <<-EOS
         </div>

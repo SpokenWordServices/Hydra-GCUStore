@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HIH fixture object for Handbook"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-22T13:01:41.157Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-28T18:56:11.894Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-08-02T08:57:51.067Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-22T13:01:41.157Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -100,6 +100,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
 <audit:date>2011-07-28T18:56:11.894Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-02T08:57:51.067Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-02T08:57:51.067Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -2944,22 +2960,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-07-22T13:49:56.746Z" MIMETYPE="text/xml" SIZE="457">
-<foxml:xmlContent>
-<contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1" type="text">
-  <resource displayLabel="Document" dissType="genericContent" dsID="content" id="handbook.pdf" objectID="hull:3689" sequence="1">
-    <file format="pdf" id="handbook.pdf" mimeType="application/pdf" size="165545">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:3689/genericContent/content</location>
-    </file>
-  </resource>
-</contentMetadata>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="contentMetadata.1" LABEL="Content metadata" CREATED="2011-07-25T12:53:53.000Z" MIMETYPE="text/xml" SIZE="497">
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-08-02T08:57:51.067Z" MIMETYPE="text/xml" SIZE="497">
 <foxml:xmlContent>
 <contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1">
-  <resource contains="content" displayLabel="Document" dsId="content" id="handbook.pdf" objectID="hull:3689" sequence="1" serviceDef="hull-sDef:handbook" serviceMethod="getContent">
+  <resource contains="content" displayLabel="Document" dsID="content" id="handbook.pdf" objectID="hull:3689" sequence="1" serviceDef="hull-sDef:handbook" serviceMethod="getContent">
     <file format="pdf" id="handbook.pdf" mimeType="application/pdf" size="165545">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:3689/genericContent/content</location>
     </file>

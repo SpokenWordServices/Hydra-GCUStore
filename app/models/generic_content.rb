@@ -15,4 +15,6 @@ class GenericContent < ActiveFedora::Base
 
   has_metadata :name => "DC", :type => ObjectDc
 
+  has_datastream :name=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :controlGroup=>'M'
+
 end

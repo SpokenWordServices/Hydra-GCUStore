@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HiH dataset fixture object"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-21T09:24:40.926Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-08-01T13:57:36.463Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-08-02T11:03:02.781Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-21T09:24:40.926Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -188,6 +188,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
 <audit:date>2011-08-01T13:57:36.463Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC23">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-02T11:03:02.781Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC24">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-02T11:03:02.781Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -536,72 +552,36 @@ See: http://creativecommons.org/licenses/by/2.0/uk/</accessCondition>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-07-21T10:50:14.158Z" MIMETYPE="text/xml" SIZE="2475">
-<foxml:xmlContent>
-<contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1" type="text">
-  <resource displayLabel="Database - ASCII format" dissType="genericContent/content" dsID="content" id="Asset dummyZipDatabase.zip" objectID="hull:2155" sequence="1">
-    <file format="zip" id="Asset dummyZipDatabase.zip" mimeType="application/zip" size="96337">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/genericContent/content</location>
-    </file>
-  </resource>
-  <resource displayLabel="Database - Access 2000 format (.mdb)" dissType="compoundContent" dsID="content02" id="Asset  dummyZipDatabase.zip2" objectID="hull:2155" sequence="2">
-    <file format="zip" id="Asset dummyZipDatabase.zip2" mimeType="application/zip" size="96337">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content02</location>
-    </file>
-  </resource>
-  <resource displayLabel="Database - csv format" dissType="compoundContent/content" dsID="content03" id="Asset  dummyZipDatabase.zip3" objectID="hull:2155" sequence="3">
-    <file format="zip" id="Asset dummyZipDatabase.zip3" mimeType="application/zip" size="96337">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content03</location>
-    </file>
-  </resource>
-  <resource displayLabel="Documentation - PDF format" dissType="compoundContent" dsID="content04" id="Asset dummyDocument.pdf" objectID="hull:2155" sequence="4">
-    <file format="pdf" id="Asset dummyDocument.pdf" mimeType="application/pdf" size="132923">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content04</location>
-    </file>
-  </resource>
-  <resource displayLabel="Documentation - Text format" dissType="compoundContent" dsID="content05" id="Asset dummyDocument.txt" objectID="hull:2155" sequence="5">
-    <file format="txt" id="Asset dummyDocument.txt" mimeType="text/plain" size="40">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content05</location>
-    </file>
-  </resource>
-  <resource displayLabel="Documentation - Word format (.doc)" dissType="compoundContent" dsID="content06" id="Asset  dummyDocument.doc" objectID="hull:2155" sequence="6">
-    <file format="doc" id="Asset dummyDocument.doc" mimeType="application/ms-word" size="26112">
-      <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content06</location>
-    </file>
-  </resource>
-</contentMetadata>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="contentMetadata.1" LABEL="Content metadata" CREATED="2011-07-25T12:49:30.579Z" MIMETYPE="text/xml" SIZE="2803">
+<foxml:datastream ID="contentMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="contentMetadata.0" LABEL="Content metadata" CREATED="2011-08-02T11:03:02.781Z" MIMETYPE="text/xml" SIZE="2803">
 <foxml:xmlContent>
 <contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1">
-  <resource contains="content" displayLabel="Database - ASCII format" dsId="content" id="Asset dummyZipDatabase.zip" objectID="hull:2155" sequence="1" serviceDef="hull-sDef:dataset" serviceMethod="getContent">
+  <resource contains="content" displayLabel="Database - ASCII format" dsID="content" id="Asset dummyZipDatabase.zip" objectID="hull:2155" sequence="1" serviceDef="hull-sDef:dataset" serviceMethod="getContent">
     <file format="zip" id="Asset dummyZipDatabase.zip" mimeType="application/zip" size="96337">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/genericContent/content</location>
     </file>
   </resource>
-  <resource contains="content" displayLabel="Database - Access 2000 format (.mdb)" dsId="content02" id="Asset  dummyZipDatabase.zip2" objectID="hull:2155" sequence="2" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent02">
+  <resource contains="content" displayLabel="Database - Access 2000 format (.mdb)" dsID="content02" id="Asset  dummyZipDatabase.zip2" objectID="hull:2155" sequence="2" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent02">
     <file format="zip" id="Asset dummyZipDatabase.zip2" mimeType="application/zip" size="96337">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content02</location>
     </file>
   </resource>
-  <resource contains="content" displayLabel="Database - csv format" dsId="content03" id="Asset  dummyZipDatabase.zip3" objectID="hull:2155" sequence="3" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent03">
+  <resource contains="content" displayLabel="Database - csv format" dsID="content03" id="Asset  dummyZipDatabase.zip3" objectID="hull:2155" sequence="3" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent03">
     <file format="zip" id="Asset dummyZipDatabase.zip3" mimeType="application/zip" size="96337">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content03</location>
     </file>
   </resource>
-  <resource contains="content" displayLabel="Documentation - PDF format" dsId="content04" id="Asset dummyDocument.pdf" objectID="hull:2155" sequence="4" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent04">
+  <resource contains="content" displayLabel="Documentation - PDF format" dsID="content04" id="Asset dummyDocument.pdf" objectID="hull:2155" sequence="4" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent04">
     <file format="pdf" id="Asset dummyDocument.pdf" mimeType="application/pdf" size="132923">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content04</location>
     </file>
   </resource>
-  <resource contains="content" displayLabel="Documentation - Text format" dsId="content05" id="Asset dummyDocument.txt" objectID="hull:2155" sequence="5" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent05">
+  <resource contains="content" displayLabel="Documentation - Text format" dsID="content05" id="Asset dummyDocument.txt" objectID="hull:2155" sequence="5" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent05">
     <file format="txt" id="Asset dummyDocument.txt" mimeType="text/plain" size="40">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content05</location>
     </file>
   </resource>
-  <resource contains="content" displayLabel="Documentation - Word format (.doc)" dsId="content06" id="Asset  dummyDocument.doc" objectID="hull:2155" sequence="6" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent06">
+  <resource contains="content" displayLabel="Documentation - Word format (.doc)" dsID="content06" id="Asset  dummyDocument.doc" objectID="hull:2155" sequence="6" serviceDef="hydra-sDef:compoundContent" serviceMethod="getContent06">
     <file format="doc" id="Asset dummyDocument.doc" mimeType="application/ms-word" size="26112">
       <location type="url">http://hydra.hull.ac.uk/assets/hull:2155/compoundContent/content06</location>
     </file>
