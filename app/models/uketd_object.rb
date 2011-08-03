@@ -93,38 +93,4 @@ class UketdObject < ActiveFedora::Base
      }
   end
 
-  def to_solr(solr_doc=Hash.new, opts={})
-    super(solr_doc,opts)
-	  solr_doc << { "has_model_s" => cmodel }
-    solr_doc << { "fedora_owner_id_s" => self.owner_id }
-    solr_doc << { "fedora_owner_id_display" => self.owner_id }
-		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
-			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
-		end
-    solr_doc << {"content" => get_extracted_content }
-		solr_doc
-  end
-
-  def get_extracted_content
-    content = parts.each.inject([]) do |contents, child|
-      if child.datastreams.keys.include?("content") and child.datastreams["content"].mime_type == 'application/pdf'
-        io = Tempfile.new("#{child.pid.gsub(':','_')}_content")
-        io.write child.datastreams["content"].content
-        io.rewind
-        contents << extract_content(io)
-        io.unlink
-      end
-      contents
-    end
-    content.join(" ")
-  end
-
-  def extract_content(filename)
-    url = "localhost:8983/solr/development/update/extract?defaultField=content&extractOnly=true"
-    response = RestClient.post url, :upload => filename
-    ng_xml = Nokogiri::XML.parse(response.body)
-    ele = ng_xml.at_css("str")
-    ele.inner_html
-  end
-
 end

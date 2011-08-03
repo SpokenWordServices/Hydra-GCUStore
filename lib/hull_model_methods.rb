@@ -88,17 +88,17 @@ module HullModelMethods
     "info:fedora/hull-cModel:#{model[0,1].downcase + model[1..-1]}"
   end
 
-  # overwriting to_solr to profide proper has_model_s and solrization of fedora_owner_id
-  def to_solr(solr_doc=Hash.new,opts={})
-    super(solr_doc,opts)
-	  solr_doc << { "has_model_s" => cmodel }
-    solr_doc << { "fedora_owner_id_s" => self.owner_id }
-    solr_doc << { "fedora_owner_id_display" => self.owner_id }
-		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
-			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
-		end
-		solr_doc
-  end
+#  # overwriting to_solr to profide proper has_model_s and solrization of fedora_owner_id
+#  def to_solr(solr_doc=Hash.new,opts={})
+#    super(solr_doc,opts)
+#	  solr_doc << { "has_model_s" => cmodel }
+#    solr_doc << { "fedora_owner_id_s" => self.owner_id }
+#    solr_doc << { "fedora_owner_id_display" => self.owner_id }
+#		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
+#			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
+#		end
+#		solr_doc
+#  end
 
   def queue_membership
     self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,"") }
@@ -253,4 +253,59 @@ module HullModelMethods
 		return full_date
 	end
   
+  def to_solr(solr_doc=Hash.new, opts={})
+    super(solr_doc,opts)
+	  solr_doc << { "has_model_s" => cmodel }
+    solr_doc << { "fedora_owner_id_s" => self.owner_id }
+    solr_doc << { "fedora_owner_id_display" => self.owner_id }
+		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
+			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
+		end
+    solr_doc << {"text" => get_extracted_content }
+		solr_doc
+  end
+
+  def get_extracted_content
+    retrieve_child_asset_pdf_content + retrieve_internal_datastream_pdf_content
+  end
+
+  # Extract content from all child assets with a content datastream with a mime type of application/pdf
+  def retrieve_child_asset_pdf_content
+    content = parts.each.inject("") do |extracted_content, child|
+      if child.datastreams.keys.include?("content") and child.datastreams["content"].mime_type == 'application/pdf'
+        extracted_content << datastream_content(child.pid,child.datastreams["content"])
+        extracted_content << " "
+      end
+      extracted_content
+    end
+  end
+
+  # Extract content from all internal datastreams where mime type is application/pdf
+  def retrieve_internal_datastream_pdf_content
+    content = datastreams.values.each.inject("") do |extracted_content, datastream|
+      if datastream.mime_type == 'application/pdf'
+        extracted_content << datastream_content(pid,datastream)
+        extracted_content << " "
+      end
+      extracted_content
+    end
+  end
+
+  def datastream_content(pid,datastream)
+    io = Tempfile.new("#{pid.gsub(':','_')}_#{datastream.dsid}")
+    io.write datastream.content
+    io.rewind
+    datastream_content = extract_content(io)
+    io.unlink
+    datastream_content
+  end
+
+  def extract_content(filename)
+    url = "#{ActiveFedora.solr_config[:url]}/update/extract?defaultField=content&extractOnly=true"
+    response = RestClient.post url, :upload => filename
+    ng_xml = Nokogiri::XML.parse(response.body)
+    ele = ng_xml.at_css("str")
+    ele.inner_html
+  end
+
 end

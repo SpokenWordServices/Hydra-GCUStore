@@ -86,4 +86,46 @@ describe HullModelMethods do
     TestClassOne.should respond_to(:pid_namespace)
     TestClassOne.pid_namespace.should == "hull-cModel"
   end
+  
+  context "full text" do
+    context "atomistic" do
+      it "should index child objects' binary files as full text in the content field" do
+        etd = UketdObject.load_instance "hull:3108"
+        solr_doc = etd.to_solr
+        solr_doc.keys.include?("text").should be_true
+        solr_doc.fetch("text","").include?("mnesarchum efficiantur").should be_true
+      end
+      it ".get_extracted_content should get all child assests" do
+        etd = UketdObject.load_instance "hull:3108"
+        contents = etd.get_extracted_content
+        contents.should be_kind_of(String)
+        contents.include?('mnesarchum efficiantur').should be_true
+      end
+      it "should solrizer appropriately" do
+        s = Solrizer::Fedora::Solrizer.new
+        s.solrize "hull:3108"
+        response = ActiveFedora::Base.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
+        ids = response.hits.map{|hit| hit.values.first }
+        ids.include?("hull:3108").should be_true
+        ids.length.should > 0
+      end
+    end
+    context "compound" do
+      it "should index objects file datastreams as full text in the content field" do
+        ep = ExamPaper.load_instance "hull:1765"
+        solr_doc = ep.to_solr
+        solr_doc.keys.include?("text").should be_true
+        solr_doc.fetch("text","").include?("mnesarchum efficiantur").should be_true
+      end
+      it "should solizer appropriately" do
+        s = Solrizer::Fedora::Solrizer.new
+        s.solrize "hull:1765"
+        response = ActiveFedora::Base.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
+        ids = response.hits.map{|hit| hit.values.first }
+        ids.include?("hull:1765").should be_true
+        ids.length.should > 0
+      end
+    end
+  end
+
 end
