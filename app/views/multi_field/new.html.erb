@@ -1,12 +1,12 @@
-<form id="add_multi_field" action="<%= multi_field_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
-<% debugger %>
+<form id="add_multi_field" action="/multi_field?content_type=<%= params[:content_type]%>" method="post" accept-charset="utf-8">
+
 <%= hidden_field_tag 'asset_id', params["asset_id"] %>
 <%= hidden_field_tag 'fields', @fields %>
 <%= hidden_field_tag 'datastream_name', @datastream_name %>
 
 <dl>
 	 <dt>
-		<%= fedora_field_label("descMetadata", [{@fields.to_s.to_sym=>@next_field_index}], "Add a new field") %>
+		<%= fedora_field_label("descMetadata", [{@fields.to_s.to_sym=>@next_field_index}], "Add new " + @field_label ) %>
    </dt>
    <dd>
  	    <%= fedora_text_field(@document_fedora,@datastream_name, [{@fields.to_s.to_sym=>@next_field_index}], :multiple=>false) %>

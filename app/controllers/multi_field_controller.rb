@@ -9,14 +9,13 @@ class MultiFieldController < ApplicationController
   # If format is .inline, this renders without layout so you can embed it in a page
 
   def new
-		debugger
-    @document_fedora = load_document_from_id(params[:asset_id])
+		@document_fedora = load_document_from_id(params[:asset_id])
 		@datastream_name = params[:datastream_name]
 		@fields = params[:fields]
-		
-    #@next_field_index = @document_fedora.datastreams[@datastream_name].find_by_terms(@fields.to_s.to_sym).length
- 		@next_field_index = @document_fedora.datastreams[@datastream_name].find_by_terms(:rights).length
-    @content_type = params[:content_type]
+		@field_label = params[:field_label]
+
+    @next_field_index = @document_fedora.datastreams[@datastream_name].find_by_terms(@fields.to_s.to_sym).length
+ 		@content_type = params[:content_type]
     
     respond_to do |format|
       format.html { render :file=>"multi_field/new.html", :layout=>true}
@@ -30,12 +29,13 @@ class MultiFieldController < ApplicationController
 		fields = params[:fields]
 
     multi_fields = @document_fedora.datastreams[datastream_name].find_by_terms(fields.to_s.to_sym)
-    value = extract_value(params[:asset][:descMetadata])
+    value = extract_value(params[:asset][datastream_name.to_sym])
     if multi_fields.length > 1 || (multi_fields.length == 1 && !multi_fields.first.inner_html.empty? )
-      inserted_node, new_node_index = @document_fedora.insert_rights()
+      #inserted_node, new_node_index = eval '@document_fedora.insert_' + fields.to_s
+			inserted_node, new_node_index = @document_fedora.insert_multi_field(datastream_name, fields)
       inserted_node.inner_html = value if value
     else
-      @document_fedora.datastreams[datastream_name].update_indexed_attributes({[{fields=>"0"}]=>value})
+      @document_fedora.datastreams[datastream_name].update_indexed_attributes({[{fields.to_s.to_sym=>"0"}]=>value})
     end
       
     @document_fedora.save
@@ -50,8 +50,10 @@ class MultiFieldController < ApplicationController
   def destroy
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
 		fields = params[:fields]
+		datastream_name = params[:datastream_name]
     @document_fedora = af_model.find(params[:asset_id])
-    @document_fedora.remove_rights_number(params[:index])
+    #eval '@document_fedora.remove_' + fields.to_s + '(params[:index])'
+    @document_fedora.remove_multi_field(datastream_name, fields, params[:index])
     result = @document_fedora.save
     respond_to do |format|
       format.html { redirect_to( url_for(:controller=>"catalog", :action=>"edit", :id=>params[:asset_id] ) ) }
@@ -60,8 +62,8 @@ class MultiFieldController < ApplicationController
   end
 
   private
-  
-   def load_document_from_id(asset_id)
+
+  def load_document_from_id(asset_id)
     af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
     af_model.find(asset_id)
   end

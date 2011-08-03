@@ -85,21 +85,24 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
 		end
 
-		def insert_rights(opts={})
-			node = ObjectMods.rights_template
-			nodeset = self.find_by_terms(:rights)
+		def self.see_also_template
+  		builder = Nokogiri::XML::Builder.new {|xml| xml.note(:type=>"seeAlso") }
+      return builder.doc.root
+		end
 
+    def insert_multi_field(fields, opts={})
+			node = eval 'ObjectMods.' + fields.to_s + '_template'
+			nodeset = self.find_by_terms(fields.to_s.to_sym)
 			unless nodeset.nil?
 				nodeset.after(node)
 				index=nodeset.length
 				self.dirty = true
 			end
-
 			return node, index
 		end
 
-		def remove_rights(index)
-			self.find_by_terms(:rights)[index.to_i].remove
+		def remove_multi_field(index, fields)
+			self.find_by_terms(fields.to_s.to_sym)[index.to_i].remove
 			self.dirty = true
 		end
 

@@ -5,7 +5,7 @@
 <dd class="multi_inline grant">
   <% values = get_values_from_datastream(@document_fedora,datastream_name, fields ,:multiple=>true) %>
   <%= fedora_text_field(@document_fedora,"descMetadata",fields, :multiple=>true) unless values.length == 1 && values[0].empty? %>
-  <%= link_to(image_tag("/images/add.png",:border=>0,:alt=>"Add Grant"), new_multi_field_path(:asset_id=>params[:id], :content_type => params[:content_type], :fields=>fields, :datastream_name=>datastream_name)) %>
+  <%= link_to(image_tag("/images/add.png",:border=>0,:alt=>"Add Grant"), new_multi_field_path(:asset_id=>params[:id], :content_type => @content_type, :fields=>fields, :datastream_name=>datastream_name, :field_label=>field_label)) %>
 </dd>	
 
 

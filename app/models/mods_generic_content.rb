@@ -8,7 +8,7 @@ class ModsGenericContent < ObjectMods
     } 
     t.title(:proxy=>[:title_info, :main_title]) 
    
-    # Presentation description is stored in the 'abstract' field 
+    # Description is stored in the 'abstract' field 
     t.description(:path=>"abstract")   
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {

@@ -50,21 +50,21 @@ module HullModelMethods
     result = ds.remove_subject_topic(index)
     return result
   end
-
-	# call insert_rights on the descMetadata datastream
-	def insert_rights(opts={})
-	 	ds = self.datastreams_in_memory["descMetadata"]
-    node, index = ds.insert_rights(opts)
+	
+	# call insert_multi_field on datastream
+	def insert_multi_field(datastream_name, fields, opts={})
+	 	ds = self.datastreams_in_memory[datastream_name]
+    node, index = ds.insert_multi_field(fields, opts)
     if opts[:value]
       node.inner_text = opts[:value]
     end
     return node, index
 	end
 
-	# call remove_rights on the descMetadata datastream
-	def remove_rights(index)
-		ds = self.datastreams_in_memory["descMetadata"]
-    result = ds.remove_rights(index)
+	# call remove_multi_field datastream
+	def remove_multi_field(datastream_name, fields, index)
+		ds = self.datastreams_in_memory[datastream_name]
+    result = ds.remove_multi_field(index, fields)
     return result
 	end
 
