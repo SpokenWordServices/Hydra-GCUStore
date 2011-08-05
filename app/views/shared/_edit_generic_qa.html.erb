@@ -26,7 +26,7 @@
  			<%= fedora_text_field(@document_fedora,"descMetadata",[:location_subject, :cartographics, :coordinates], :multiple=>false) %>
 		</dd>
 		<div id="rights">
-	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>[:rights], :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":rights", :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
 	 	</div>
     <dt>
       <%= fedora_field_label("descMetadata",[:description],"Description") %>
@@ -40,12 +40,9 @@
   	<dl>
 			<div class="info-multiple">
 	  		<div class="left">
-					<dt>
-      		    <%= fedora_field_label("descMetadata",[:related_web_materials, :location, :primary_display], "Related materials (web)") %>
-    	  	</dt>
-	      	<dd style="width: 20em;">
-	      	  <%= fedora_text_field(@document_fedora,"descMetadata", [:related_web_materials, :location, :primary_display], :multiple=>false) %>
-        	</dd>
+					<div id="related-web-materials">
+	    			<%= render :partial => 'multi_field/index', :locals=> {:fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata", :field_label=>"Related materials (web)"} %>
+	 				</div>					
 			</div>
 	  	<div class="right">		
   			<dt>
@@ -61,15 +58,8 @@
   <fieldset class="edit-standard">
    <dl>
 		<div id="see-also">
-	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>[:see_also], :datastream_name=>"descMetadata", :field_label=>"See also"} %>
-	 	</div>
-
-		<dt>
-      <%= fedora_field_label("descMetadata",[:see_also], "See also (non-web)") %>
-    </dt>
-    <dd>
-         <%= fedora_text_field(@document_fedora,"descMetadata", [:see_also], :multiple=>false) %>
-    </dd>
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":see_also", :datastream_name=>"descMetadata", :field_label=>"See also (non-web)"} %>
+	 	</div>	
 		<dt>
        <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher") %>
     </dt>

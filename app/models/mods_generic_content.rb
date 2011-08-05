@@ -58,7 +58,7 @@ class ModsGenericContent < ObjectMods
     t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
 			t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
-    t.related_web_materials(:path=>"relatedItem", :attributes=>{:type=>"relatedMaterials"})	{
+    t.web_related_item(:path=>"relatedItem")	{
 			t.location {
 	  		t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	}

@@ -90,9 +90,15 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
 		end
 
+		def self.web_related_item_location_primary_display_template
+			builder = Nokogiri::XML::Builder.new {|xml| xml.url(:access=>"object in context", :usage=>"primary display") }
+      return builder.doc.root
+		end
+
     def insert_multi_field(fields, opts={})
-			node = eval 'ObjectMods.' + fields.to_s + '_template'
-			nodeset = self.find_by_terms(fields.to_s.to_sym)
+			method_name = fields.gsub(":", "").gsub(",", "_").gsub(" ", "")
+			node = eval 'ObjectMods.' + method_name + '_template'
+			nodeset = eval 'self.find_by_terms(' + fields + ')'
 			unless nodeset.nil?
 				nodeset.after(node)
 				index=nodeset.length
@@ -102,7 +108,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
 		end
 
 		def remove_multi_field(index, fields)
-			self.find_by_terms(fields.to_s.to_sym)[index.to_i].remove
+			eval 'self.find_by_terms(' + fields + ')[index.to_i].remove'
 			self.dirty = true
 		end
 

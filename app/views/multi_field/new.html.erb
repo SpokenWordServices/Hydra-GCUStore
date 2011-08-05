@@ -3,13 +3,22 @@
 <%= hidden_field_tag 'asset_id', params["asset_id"] %>
 <%= hidden_field_tag 'fields', @fields %>
 <%= hidden_field_tag 'datastream_name', @datastream_name %>
-
+<% field_array = eval "[" + @fields + "]" %>
+<% new_field = "" %>
+<% field_array.each_with_index do |field,i|  %>
+  <% if i == field_array.length - 1 %>
+    <% new_field = new_field + "{" + ":" + field.to_s + "=>" + @next_field_index.to_s + "}" %>
+  <% else %>
+     <% new_field = new_field + "{" + ":" + field.to_s + "=>0}," %>
+  <% end %> 
+<% end %>
 <dl>
 	 <dt>
-		<%= fedora_field_label("descMetadata", [{@fields.to_s.to_sym=>@next_field_index}], "Add new " + @field_label ) %>
+      <%= eval 'fedora_field_label("descMetadata", [' + new_field + '], "Add new " + @field_label )' %>
+ 		</dt>
    </dt>
    <dd>
- 	    <%= fedora_text_field(@document_fedora,@datastream_name, [{@fields.to_s.to_sym=>@next_field_index}], :multiple=>false) %>
+  		<%= eval 'fedora_text_field(@document_fedora,@datastream_name, [' + new_field + '], :multiple=>false)' %>
 	 <dd>
 </dl>
 

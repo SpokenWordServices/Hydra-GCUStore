@@ -14,7 +14,7 @@ class MultiFieldController < ApplicationController
 		@fields = params[:fields]
 		@field_label = params[:field_label]
 
-    @next_field_index = @document_fedora.datastreams[@datastream_name].find_by_terms(@fields.to_s.to_sym).length
+    @next_field_index = eval '@document_fedora.datastreams[@datastream_name].find_by_terms(' + @fields + ').length'
  		@content_type = params[:content_type]
     
     respond_to do |format|
@@ -23,36 +23,65 @@ class MultiFieldController < ApplicationController
 	  end
   end
 
+#  def create
+#    @document_fedora = load_document_from_id(params[:asset_id])
+#		datastream_name = params[:datastream_name]
+#		fields = params[:fields]
+
+#		multi_fields =  eval '@document_fedora.datastreams[datastream_name].find_by_terms(' + fields + ')'
+#    value = extract_value(params[:asset][datastream_name.to_sym])
+   
+#		inserted_node, new_node_index = @document_fedora.insert_multi_field(datastream_name, fields)
+#    inserted_node.inner_html = value if value
+   
+#    @document_fedora.save
+
+#    respond_to do |format|
+#      format.html { redirect_to( url_for(:controller=>"catalog", :action=>"edit", :id=>params[:asset_id] ) ) }
+#      format.inline { render :partial=>partial_name, :locals=>{"edit_#{ct}".to_sym =>inserted_node, "edit_#{ct}_counter".to_sym =>new_node_index}, :layout=>false }
+#    end
+    
+#  end
+
+
   def create
     @document_fedora = load_document_from_id(params[:asset_id])
 		datastream_name = params[:datastream_name]
 		fields = params[:fields]
 
-    multi_fields = @document_fedora.datastreams[datastream_name].find_by_terms(fields.to_s.to_sym)
+		multi_fields =  eval '@document_fedora.datastreams[datastream_name].find_by_terms(' + fields + ')'
     value = extract_value(params[:asset][datastream_name.to_sym])
     if multi_fields.length > 1 || (multi_fields.length == 1 && !multi_fields.first.inner_html.empty? )
-      #inserted_node, new_node_index = eval '@document_fedora.insert_' + fields.to_s
 			inserted_node, new_node_index = @document_fedora.insert_multi_field(datastream_name, fields)
       inserted_node.inner_html = value if value
     else
-      @document_fedora.datastreams[datastream_name].update_indexed_attributes({[{fields.to_s.to_sym=>"0"}]=>value})
+			field_array = eval "[" + fields + "]"
+ 			new_field = "" 
+ 			field_array.each_with_index do |field,i|  
+   		if i == field_array.length - 1 
+     		new_field = new_field + "{" + ":" + field.to_s + "=>" + multi_fields.length.to_s + "}" 
+   		else 
+      	new_field = new_field + "{" + ":" + field.to_s + "=>0}," 
+   		end
+ 		end
+			#This is failing for multiple terms at the moment ie :something, :something_under, :something_below_under
+			eval '@document_fedora.datastreams[datastream_name].update_indexed_attributes({[' + new_field + ']=>value})'  
     end
       
     @document_fedora.save
 
     respond_to do |format|
-      format.html { redirect_to( url_for(:controller=>"catalog", :action=>"edit", :id=>params[:asset_id] ) ) }
-      format.inline { render :partial=>partial_name, :locals=>{"edit_#{ct}".to_sym =>inserted_node, "edit_#{ct}_counter".to_sym =>new_node_index}, :layout=>false }
-    end
+    format.html { redirect_to( url_for(:controller=>"catalog", :action=>"edit", :id=>params[:asset_id] ) ) }
+     format.inline { render :partial=>partial_name, :locals=>{"edit_#{ct}".to_sym =>inserted_node, "edit_#{ct}_counter".to_sym =>new_node_index}, :layout=>false }
+   end
     
   end
 
   def destroy
-    af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
+	  af_model = retrieve_af_model(params[:content_type], :default=>HydrangeaArticle)
 		fields = params[:fields]
 		datastream_name = params[:datastream_name]
     @document_fedora = af_model.find(params[:asset_id])
-    #eval '@document_fedora.remove_' + fields.to_s + '(params[:index])'
     @document_fedora.remove_multi_field(datastream_name, fields, params[:index])
     result = @document_fedora.save
     respond_to do |format|
