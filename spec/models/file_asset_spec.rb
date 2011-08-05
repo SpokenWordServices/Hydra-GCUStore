@@ -39,4 +39,19 @@ describe FileAsset do
     it "should call super.add_file"
     it "should set the FileAsset's title and label to the file datastream's filename if they are currently empty"
   end
+
+  describe ".to_solr" do
+    it "should solrize a parent object if it exists" do
+      mock_parent = mock("parent")
+      mock_parent.stubs(:pid).returns("_PID_")
+      mock_content_ds = mock("content_ds")
+      mock_content_ds.expects(:mime_type).returns("application/pdf")
+      @file_asset.stubs(:datastreams).returns({"content"=>mock_content_ds})
+      @file_asset.expects(:part_of).at_least_once.returns([mock_parent])
+      mock_solrizer = mock("solrizer")
+      mock_solrizer.expects(:solrize).with(mock_parent)
+      Solrizer::Fedora::Solrizer.expects(:new).returns( mock_solrizer )
+      @file_asset.to_solr
+    end
+  end
 end
