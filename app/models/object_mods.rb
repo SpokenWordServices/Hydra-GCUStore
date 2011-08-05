@@ -95,6 +95,11 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
 		end
 
+		def self.physical_description_extent
+			builder = Nokogiri::XML::Builder.new {|xml| xml.extent }
+      return builder.doc.root
+		end
+
     def insert_multi_field(fields, opts={})
 			method_name = fields.gsub(":", "").gsub(",", "_").gsub(" ", "")
 			node = eval 'ObjectMods.' + method_name + '_template'

@@ -55,10 +55,10 @@ class ModsGenericContent < ObjectMods
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
     }
-    t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
+    t.related_private_object(:path=>"relatedItem", :attributes=>{:ID=>"privateObject"}) {
 			t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
     }
-    t.web_related_item(:path=>"relatedItem")	{
+    t.web_related_item(:path=>"relatedItem", :attributes=>{:ID=>"relatedMaterials"})	{
 			t.location {
 	  		t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	}

@@ -111,8 +111,10 @@ module HydraFedoraMetadataHelper
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":rights", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
 		elsif field_key.match /^see_also/
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":see_also", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
-	elsif field_key.match /^related_web_materials_location_primary_display$/
+	elsif field_key.match /^web_related_item_location_primary_display$/
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
+	elsif field_key.match /^physical_description_extent$/
+     delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":physical_description, :extent", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
 	  else
 	     delete_link = "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\" src=\"/images/remove.png\">Delete</a>"
     end

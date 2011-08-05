@@ -44,7 +44,10 @@
 	    			<%= render :partial => 'multi_field/index', :locals=> {:fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata", :field_label=>"Related materials (web)"} %>
 	 				</div>					
 			</div>
-	  	<div class="right">		
+	  	<div class="right">
+				<div id="extent">
+	    			<%= render :partial => 'multi_field/index', :locals=>{:fields=>":physical_description, :extent", :datastream_name=>"descMetadata", :field_label=>"Extent"} %>
+ 				</div>					
   			<dt>
       	    <%= fedora_field_label("descMetadata",[:physical_description, :extent], "Extent") %>
     	  </dt>

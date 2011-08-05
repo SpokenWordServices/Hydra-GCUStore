@@ -5,7 +5,7 @@ class MultiFieldController < ApplicationController
   include MediaShelf::ActiveFedoraHelper
   before_filter :require_solr, :require_fedora
   
-  # Display form for adding a new Grant Number
+  # Display form for adding a new field
   # If format is .inline, this renders without layout so you can embed it in a page
 
   def new
@@ -23,27 +23,6 @@ class MultiFieldController < ApplicationController
 	  end
   end
 
-#  def create
-#    @document_fedora = load_document_from_id(params[:asset_id])
-#		datastream_name = params[:datastream_name]
-#		fields = params[:fields]
-
-#		multi_fields =  eval '@document_fedora.datastreams[datastream_name].find_by_terms(' + fields + ')'
-#    value = extract_value(params[:asset][datastream_name.to_sym])
-   
-#		inserted_node, new_node_index = @document_fedora.insert_multi_field(datastream_name, fields)
-#    inserted_node.inner_html = value if value
-   
-#    @document_fedora.save
-
-#    respond_to do |format|
-#      format.html { redirect_to( url_for(:controller=>"catalog", :action=>"edit", :id=>params[:asset_id] ) ) }
-#      format.inline { render :partial=>partial_name, :locals=>{"edit_#{ct}".to_sym =>inserted_node, "edit_#{ct}_counter".to_sym =>new_node_index}, :layout=>false }
-#    end
-    
-#  end
-
-
   def create
     @document_fedora = load_document_from_id(params[:asset_id])
 		datastream_name = params[:datastream_name]
@@ -55,17 +34,7 @@ class MultiFieldController < ApplicationController
 			inserted_node, new_node_index = @document_fedora.insert_multi_field(datastream_name, fields)
       inserted_node.inner_html = value if value
     else
-			field_array = eval "[" + fields + "]"
- 			new_field = "" 
- 			field_array.each_with_index do |field,i|  
-   		if i == field_array.length - 1 
-     		new_field = new_field + "{" + ":" + field.to_s + "=>" + multi_fields.length.to_s + "}" 
-   		else 
-      	new_field = new_field + "{" + ":" + field.to_s + "=>0}," 
-   		end
- 		end
-			#This is failing for multiple terms at the moment ie :something, :something_under, :something_below_under
-			eval '@document_fedora.datastreams[datastream_name].update_indexed_attributes({[' + new_field + ']=>value})'  
+			eval '@document_fedora.datastreams[datastream_name].update_indexed_attributes({[' + fields + ']=>value})'  
     end
       
     @document_fedora.save
