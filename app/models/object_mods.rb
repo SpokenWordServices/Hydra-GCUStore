@@ -95,7 +95,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       return builder.doc.root
 		end
 
-		def self.physical_description_extent
+		def self.physical_description_extent_template
 			builder = Nokogiri::XML::Builder.new {|xml| xml.extent }
       return builder.doc.root
 		end

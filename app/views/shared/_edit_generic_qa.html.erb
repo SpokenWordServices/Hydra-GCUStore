@@ -25,7 +25,7 @@
 		<dd>
  			<%= fedora_text_field(@document_fedora,"descMetadata",[:location_subject, :cartographics, :coordinates], :multiple=>false) %>
 		</dd>
-		<div id="rights">
+		<div class="multi-field" id="rights">
 	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":rights", :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
 	 	</div>
     <dt>
@@ -40,27 +40,21 @@
   	<dl>
 			<div class="info-multiple">
 	  		<div class="left">
-					<div id="related-web-materials">
+					<div class="multi-field" id="related-web-materials">
 	    			<%= render :partial => 'multi_field/index', :locals=> {:fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata", :field_label=>"Related materials (web)"} %>
 	 				</div>					
 			</div>
 	  	<div class="right">
-				<div id="extent">
+				<div class="multi-field"  id="extent">
 	    			<%= render :partial => 'multi_field/index', :locals=>{:fields=>":physical_description, :extent", :datastream_name=>"descMetadata", :field_label=>"Extent"} %>
  				</div>					
-  			<dt>
-      	    <%= fedora_field_label("descMetadata",[:physical_description, :extent], "Extent") %>
-    	  </dt>
-	      <dd style="width: 20em;">
-	        <%= fedora_text_field(@document_fedora,"descMetadata", [:physical_description, :extent], :multiple=>false) %>
-        </dd>
-	  </div>
+  		</div>
 	</div>
   </dl>
   </fieldset>
   <fieldset class="edit-standard">
    <dl>
-		<div id="see-also">
+		<div class="multi-field" id="see-also">
 	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":see_also", :datastream_name=>"descMetadata", :field_label=>"See also (non-web)"} %>
 	 	</div>	
 		<dt>

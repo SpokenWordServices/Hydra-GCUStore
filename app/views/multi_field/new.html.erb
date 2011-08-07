@@ -7,7 +7,11 @@
 <% new_field = "" %>
 <% field_array.each_with_index do |field,i|  %>
   <% if i == field_array.length - 1 %>
-    <% new_field = new_field + "{" + ":" + field.to_s + "=>" + @next_field_index.to_s + "}" %>
+		<% if field_array.length == 1 %>
+			<% new_field = new_field + "{" + ":" + field.to_s + "=>" + @next_field_index.to_s + "}" %>
+		<% else %>
+  		<% new_field = new_field + "{" + @next_field_index.to_s + "=>:" + field.to_s + "}" %>
+		<% end %>
   <% else %>
      <% new_field = new_field + "{" + ":" + field.to_s + "=>0}," %>
   <% end %> 

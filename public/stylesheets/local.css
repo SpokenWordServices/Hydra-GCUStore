@@ -1285,6 +1285,11 @@ div#grants dd a.field {
   margin-right: 10em;
 }
 
+div.multi-field dd a.field {
+  display: inline !important;
+  margin-right: 10em;
+}
+
 dd.multi_inline {
   margin-left: 0;
   /* padding-bottom: 15px; 
