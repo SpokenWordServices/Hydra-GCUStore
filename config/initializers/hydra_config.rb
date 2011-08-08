@@ -16,3 +16,27 @@ HULL_QUEUES = {
 GROUP_PERMISSIONS = {
 	"create_resources" => ["contentAccessTeam"]
 }
+
+
+# The following code represents hull-specific overrides to ActiveFedora.  In some cases,
+# the overrides can be propogated up to ActiveFedora itself
+module ActiveFedora
+  class ContentModel
+    def self.pid_from_ruby_class(klass,attrs={})
+      class_name = klass.name.gsub(/(::)/, '_')
+      sanitized_class_name = class_name[0,1].downcase + class_name[1..-1]
+      unless klass.respond_to? :pid_suffix
+        pid_suffix = attrs.has_key?(:pid_suffix) ? attrs[:pid_suffix] : CMODEL_PID_SUFFIX
+      else
+        pid_suffix = klass.pid_suffix
+      end
+      unless klass.respond_to? :pid_namespace
+        namespace = attrs.has_key?(:namespace) ? attrs[:namespace] : CMODEL_NAMESPACE   
+      else
+        namespace = klass.pid_namespace
+      end
+      return "#{namespace}:#{sanitized_class_name}#{pid_suffix}" 
+  
+    end
+  end
+end
