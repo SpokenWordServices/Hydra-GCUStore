@@ -24,13 +24,13 @@ class UketdObject < ActiveFedora::Base
   
   # Uses the Hydra MODS Article profile for tracking most of the descriptive metadata
   # TODO: define terminology for ETD
-  has_metadata :name => "descMetadata", :type => ModsUketd
+  has_metadata :name => "descMetadata", :label=>"Mods Metadata", :control_group=>"M", :type => ModsUketd
 
-  has_metadata :name => "UKETD_DC", :type => ActiveFedora::NokogiriDatastream
+  has_metadata :name => "UKETD_DC", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
 
   has_metadata :name => "DC", :type => ObjectDc
 
-  has_metadata :name => "contentMetadata", :type => ContentMetadata
+  has_metadata :name => "contentMetadata", :control_group => "M", :type => ContentMetadata
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
