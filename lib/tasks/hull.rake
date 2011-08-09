@@ -84,6 +84,7 @@ namespace :hull do
       #Rake::Task["db:test:clone_structure"].invoke
       Rake::Task["hydra:jetty:config_fedora"].invoke
       Rake::Task["hydra:jetty:config"].invoke
+      Rake::Task["hydra:jetty:config_full_text"].invoke
       jetty_params = {
         :jetty_home => "#{project_dir}/jetty",
         :quiet => false,
