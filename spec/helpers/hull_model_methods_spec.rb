@@ -88,6 +88,19 @@ describe HullModelMethods do
   end
   
   context "full text" do
+
+    it "should return an empty string if an error is returned from the extractor" do
+      file = File.open("spec/fixtures/bad_content.pdf","r")
+      etd = UketdObject.new
+      etd.extract_content(file).should be_empty
+    end
+
+    it "should return a string containing the contents of the pdf" do
+      file = File.open("spec/fixtures/good_content.pdf","r")
+      etd = UketdObject.new
+      etd.extract_content(file).should_not be_empty
+    end
+
     context "atomistic" do
       it "should index child objects' binary files as full text in the content field" do
         etd = UketdObject.load_instance "hull:3108"

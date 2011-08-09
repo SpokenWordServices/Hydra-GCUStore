@@ -302,7 +302,11 @@ module HullModelMethods
 
   def extract_content(filename)
     url = "#{ActiveFedora.solr_config[:url]}/update/extract?defaultField=content&extractOnly=true"
-    response = RestClient.post url, :upload => filename
+    begin
+      response = RestClient.post url, :upload => filename
+    rescue
+      return ""
+    end
     ng_xml = Nokogiri::XML.parse(response.body)
     ele = ng_xml.at_css("str")
     ele.inner_html
