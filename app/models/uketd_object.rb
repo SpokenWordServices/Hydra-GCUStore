@@ -42,7 +42,7 @@ class UketdObject < ActiveFedora::Base
     errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
     validates_presence_of "descMetadata",[:title]
     validates_presence_of("descMetadata",[:name,:namePart])
-    validates_presence_of("descMetadata",[:subject_topic])
+    validates_presence_of("descMetadata",[:subject,:topic])
     validates_presence_of("descMetadata",[:language,:lang_code])
     validates_presence_of("descMetadata",[:origin_info,:publisher])
     validates_presence_of("descMetadata",[:qualification_level])
