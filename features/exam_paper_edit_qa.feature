@@ -4,7 +4,7 @@ Feature: QA edit a document
   [stakeholder]
   wants [behaviour]
  
-  @wip
+  @pending
   Scenario: Visit Document Edit QA Page
     Given I am logged in as "contentAccessTeam1" 
     And I am on the edit document page for hull:1765

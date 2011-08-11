@@ -18,7 +18,7 @@ Feature: Edit Permissions
     And the "Public" field should contain "none"
     And the "Researcher" field should contain "none"
  
-  @wip   
+  @pending   
   Scenario: Viewing individual permissions with your own permissions hidden
     Given I am logged in as "researcher1" 
     Given I am on the edit document page for hydrangea:fixture_mods_article1 

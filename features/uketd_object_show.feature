@@ -10,7 +10,7 @@ Feature: Show a document
     And I should see "Management"
     And I should not see a link to "the edit document page for hull:3500"
  
-  @wip
+  @pending
   Scenario: Public visit Document Show Page for a private document  
     Given I am on the show document page for hull:3573
     Then I should be on the search page
@@ -33,7 +33,7 @@ Feature: Show a document
     And I should see a "input" tag with a "id" attribute of "q"
  
 
-  @wip
+  @pending
   Scenario: View the contents for the descMetadata stream
     Given I am on the show document page for hull:3112
     Then I should see a link to "the descMetadata datastream content page for hull:3112"
