@@ -100,6 +100,31 @@ module HydraFedoraMetadataHelper
     
   end
 
+  # Expects :choices option.  Option tags for the select are generated from the :choices option using Rails "options_for_select":http://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select helper
+  # If no :choices option is provided, returns a regular fedora_text_field
+  def fedora_select(resource, datastream_name, field_key, opts={})
+    if opts[:choices].nil?
+      result = fedora_text_field(resource, datastream_name, field_key, opts)
+    else
+      choices = opts[:choices]
+      field_name = field_name_for(field_key)
+      field_values = get_values_from_datastream(resource, datastream_name, field_key, opts)
+      
+      body = ""
+      z = 0
+      base_id = generate_base_id(field_name, field_values.first, field_values, opts.merge({:multiple=>false}))
+      name = "asset[#{datastream_name}][#{field_name}][#{z}]"
+
+      body << "<select name=\"#{name}\" id=\"#{field_name}\" class=\"metadata-dd select-edit\" rel=\"#{field_name}\">"
+        body << options_for_select(choices, field_values)
+      body << "</select>"
+      
+      result = field_selectors_for(datastream_name, field_key)
+      result << body
+    end
+    return result
+  end
+  
 
   private
   def field_key_specific_delete_link(field_key, index, asset_id, text, current_value)
