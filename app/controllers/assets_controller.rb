@@ -78,9 +78,17 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
       end
 		
 			def update_set_membership
-					if params["Structural Set"]
-						structural_set_pid = params["Structural Set"].to_s.slice(params["Structural Set"].to_s.to_s.index('/')  + 1..params["Structural Set"].to_s.length) #remove info:fedora/ namespace from pid
-						apply_set_membership(@document, structural_set_pid)
-					end			
+          sets = []
+          sets << strip_namespace(params["Structural Set"]) if params["Structural Set"]
+          sets << strip_namespace(params["Display Set"]) if params["Display Set"]
+					apply_set_membership(@document, sets) unless sets.empty?
 			end
+
+
+      private
+
+      def strip_namespace(pid)
+        str = pid.to_s
+        str.slice(str.index('/')  + 1..str.length) #remove info:fedora/ namespace from pid
+      end
 end

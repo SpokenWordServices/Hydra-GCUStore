@@ -196,10 +196,10 @@ module HullModelMethods
 	  return true
   end
 
-	def apply_set_membership(set)
+	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
 		set_membership.each { |s| self.remove_relationship :is_member_of, s }
-		self.add_relationship :is_member_of, set
+    sets.each { |s| self.add_relationship :is_member_of, s }
 	end
 
 	def apply_governed_by(set)

@@ -17,6 +17,26 @@ describe AssetsController do
   it "should use DocumentController" do
     controller.should be_an_instance_of(AssetsController)
   end
+
+  describe "#update_set_membership" do
+    it "Should update the relationships" do
+      @document = ExamPaper.new
+      controller = AssetsController.new
+      controller.instance_variable_set :@document, @document
+      controller.params = {'Structural Set' => "info:fedora/hull:7" }
+      controller.send :update_set_membership
+      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:7"]
+
+      controller.params = {'Structural Set' => "info:fedora/hull:7", 'Display Set' => 'info:fedora/hull:9' }
+      controller.send :update_set_membership
+      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:7", "info:fedora/hull:9"]
+
+      controller.params = {'Display Set' => 'info:fedora/hull:9' }
+      controller.send :update_set_membership
+      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
+    end
+
+  end
   
   describe "update" do
     
