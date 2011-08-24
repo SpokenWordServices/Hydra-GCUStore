@@ -29,11 +29,12 @@ describe AssetsController do
 
       controller.params = {'Structural Set' => "info:fedora/hull:7", 'Display Set' => 'info:fedora/hull:9' }
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:7", "info:fedora/hull:9"]
+      @document.relationships[:self][:is_member_of].should include("info:fedora/hull:7", "info:fedora/hull:9")
 
       controller.params = {'Display Set' => 'info:fedora/hull:9' }
       controller.send :update_set_membership
       @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
+
     end
 
   end
@@ -68,6 +69,42 @@ describe AssetsController do
       mock_document.expects(:save)
       controller.stubs(:display_release_status_notice)
       put :update, {:id=>"_PID_"}.merge(simple_request_params)
+    end
+
+    describe "a ukedt object" do
+      before do
+        @obj = UketdObject.new
+        @obj.save
+      end
+      it "should add the object to structural and display sets" do
+        simple_request_params = {
+          "asset"=>{
+            "descMetadata"=>{
+              :title_info_main_title=>{"0"=>"Main Title"},
+              :person_0_namePart =>{"0"=>"Author's name"},
+              :origin_info_date_issued =>{"0" => ''}
+            }
+          },
+          "field_selectors"=>{
+            "descMetadata"=>{
+              "title_info_main_title"=>[":title_info", ":main_title"],
+              "person_0_namePart"=>[{":person"=>0}, ":namePart"],
+              "origin_info_date_issued"=>[":origin_info", ":date_issued"]
+            }
+          }, 
+          "content_type"=>"uketd_object",
+          "Structural Set" => ["info:fedora/hull:3375"],
+          "Display Set" => ["info:fedora/hull:700"]
+        }
+
+        put :update, {:id=>@obj.pid}.merge(simple_request_params)
+        @updated = UketdObject.find(@obj.pid)
+        @updated.relationships[:self][:is_member_of].should include("info:fedora/hull:3375", "info:fedora/hull:700")
+        @updated.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3375"]
+      end
+      after do
+        @obj.delete
+      end
     end
     
     it "should support updating OM::XML datastreams" do

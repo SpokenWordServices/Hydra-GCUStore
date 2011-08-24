@@ -78,10 +78,14 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
       end
 		
 			def update_set_membership
-          sets = []
-          sets << strip_namespace(params["Structural Set"]) if params["Structural Set"]
-          sets << strip_namespace(params["Display Set"]) if params["Display Set"]
-					apply_set_membership(@document, sets) unless sets.empty?
+          structural = strip_namespace(params["Structural Set"]) if params["Structural Set"]
+          display = strip_namespace(params["Display Set"]) if params["Display Set"]
+          if (structural || display)  && @document.respond_to?(:apply_set_membership)
+            @document.apply_set_membership([display, structural].compact)
+          end
+          if params["Structural Set"]  && @document.respond_to?(:apply_governed_by)
+            @document.apply_governed_by(structural)
+          end
 			end
 
 

@@ -14,7 +14,7 @@ class ModsGenericContent < ObjectMods
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
      t.topic(:index_as=>[:facetable])
     }
-		t.location_subject (:path=>"subject") {
+		t.location_subject(:path=>"subject") {
 			t.cartographics {
 				t.coordinates
 			}

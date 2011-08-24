@@ -130,18 +130,18 @@ module HullValidationMethods
       format_errors.empty?
     end
 
-    def validates_queue_membership(*attr_names)
-      configuration = {:message=>"is not a member of"}
-      configuration.update(attr_names.extract_options!)
-      queue_name= attr_names
-      if queue_membership.include?(queue_name)
-        self.errors << "#{self.pid} is not a member of #{queue_name}"
-      end
-    end
+    # def validates_queue_membership(*attr_names)
+    #   configuration = {:message=>"is not a member of"}
+    #   configuration.update(attr_names.extract_options!)
+    #   queue_name= attr_names
+    #   if queue_membership.include?(queue_name)
+    #     self.errors << "#{self.pid} is not a member of #{queue_name}"
+    #   end
+    # end
 
-    def validates_queue_membership_exclusive(*attr_name)
-      
-    end
+    # def validates_queue_membership_exclusive(*attr_name)
+    #   
+    # end
 
     def construct_message(datastream_name,fields,message)
       "#{datastream_name}[#{fields.join("_")}] #{message}"

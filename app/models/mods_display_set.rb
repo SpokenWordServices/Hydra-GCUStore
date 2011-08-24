@@ -20,7 +20,7 @@ class ModsDisplaySet < ObjectMods
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
 
 		t.location {
-			t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+			t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 		}
 
   end
@@ -37,12 +37,12 @@ class ModsDisplaySet < ObjectMods
              xml.titleInfo {
                xml.title
              }
-			 			 xml.typeOfResource ("text", :collection=>"yes") 
+			 			 xml.typeOfResource("text", :collection=>"yes") 
 	         	 xml.genre "Display set"
              xml.abstract
              xml.originInfo {
 							 xml.publisher "The University of Hull"
-             	 xml.dateIssued (Time.now.strftime("%Y-%m-%d"))
+             	 xml.dateIssued(Time.now.strftime("%Y-%m-%d"))
              }
              xml.identifier(:type=>"fedora")
              xml.location {

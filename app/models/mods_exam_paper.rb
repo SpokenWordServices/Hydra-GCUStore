@@ -78,8 +78,8 @@ class ModsExamPaper < ObjectMods
 	}
 
 	t.location {
-		t.primary_display (:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
-		t.raw_object (:path=>"url", :attributes=>{:access=>"raw object"})
+		t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+		t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
 	}
 
 
