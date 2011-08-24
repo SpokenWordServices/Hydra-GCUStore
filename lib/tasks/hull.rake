@@ -9,7 +9,7 @@ namespace :hull do
   namespace :default_fixtures do
 
     desc "Load default hull fixtures via hydra"
-    task :load do
+    task :load => :load_dependencies do
 
       fixture_files.each_with_index do |fixture,index|
         ENV["pid"] = nil
@@ -98,7 +98,6 @@ namespace :hull do
       Rake::Task["db:migrate:plugins"].invoke
       error = Jettywrapper.wrap(jetty_params) do
         Rake::Task["hydra:default_fixtures:load"].invoke
-        Rake::Task["hull:default_fixtures:load_dependencies"].invoke
         Rake::Task["hull:default_fixtures:load"].invoke
         Rake::Task["spec_without_db"].invoke
         Rake::Task["cucumber"].invoke
