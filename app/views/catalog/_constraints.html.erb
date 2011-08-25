@@ -30,9 +30,9 @@
 						<span class="appliedFilter">
 							<span class="first">
 								<span>
-									<%- if facet == 'is_member_of_s'  %>
-									  <span class="filterName">Display set</span>
-                    <span class="filterValue"><%= DisplaySet.find(v.split('/')[1]).title %></span>
+									<%- if ['is_member_of_s', 'top_level_collection_id_s'].include? facet  %>
+									  <span class="filterName">Collection</span>
+                    <span class="filterValue"><%= catalog_name(v) %></span>
                   <% else %>
 									  <span class="filterName"><%= h facet_field_labels[facet] %></span>
                     <span class="filterValue"><%= v %></span>

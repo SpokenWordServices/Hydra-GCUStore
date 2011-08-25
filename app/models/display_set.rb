@@ -24,24 +24,25 @@ class DisplaySet < ActiveFedora::Base
   end
 
   def self.tree
-    hits = display_sets
-    sets = build_array_of_parents_and_children(hits)
+    sets = build_array_of_parents_and_children
     root_node = build_children(Tree::TreeNode.new("Root set", "info:fedora/hull:rootDisplaySet"), sets)
   end
 
+  def self.parent_graph
+    set = DisplaySet.display_sets
+    pids = set.map{|s| "info:fedora/"+s["id"]}
+    Hash[*(set.map {|s| ["info:fedora/#{s['id']}", {:parent=>parent_pid(s, pids), :pid=>s["id"], :title=>s["title_t"]}]}).flatten]
+  end
+
+
   private
 
-  def self.display_sets
-    fields = "has_model_s:info\\:fedora/hull-cModel\\:displaySet"
-    options = {:field_list=>["id", "id_t", "title_t", "is_member_of_s"], :rows=>10000, :sort=>[{"system_create_dt"=>:ascending}]}
-    ActiveFedora::SolrService.instance.conn.query(fields,options).hits
+  def self.parent_pid(node, pids)
+    node["is_member_of_s"] ? (node["is_member_of_s"] & pids).first : nil
   end
 
-  def self.display_set_pids
-    display_sets.map {|hit| "info:fedora/#{hit["id_t"]}" }
-  end
-  
-  def self.build_array_of_parents_and_children hits
+  def self.build_array_of_parents_and_children
+    hits = display_sets
     pids = hits.map {|hit| "info:fedora/#{hit["id_t"]}" }
     sets = hits.each.inject({}) do |hash,hit|
       if  hit["id_t"].first  != "hull:rootDisplaySet"
@@ -54,6 +55,17 @@ class DisplaySet < ActiveFedora::Base
       hash
     end
   end
+
+  def self.display_sets
+    fields = "has_model_s:info\\:fedora/hull-cModel\\:displaySet"
+    options = {:field_list=>["id", "id_t", "title_t", "is_member_of_s"], :rows=>10000, :sort=>[{"system_create_dt"=>:ascending}]}
+    ActiveFedora::SolrService.instance.conn.query(fields,options).hits
+  end
+
+  def self.display_set_pids
+    display_sets.map {|hit| "info:fedora/#{hit["id_t"]}" }
+  end
+  
 
   def self.build_children node, nodes
     if nodes.fetch(node.content,nil)

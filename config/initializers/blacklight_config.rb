@@ -84,6 +84,7 @@ Blacklight.configure(:shared) do |config|
       "personal_name_part_facet",
       "language_lang_code_facet",
 			"is_member_of_queue_facet",
+      "top_level_collection_id_s", 
       #"mods_journal_title_info_facet",
       #"gps_facet",
       #"region_facet",
@@ -99,6 +100,7 @@ Blacklight.configure(:shared) do |config|
       "personal_name_part_facet" => "Name",
       "language_lang_code_facet"=>"Language",
 			"is_member_of_queue_facet"=>"Queue",
+      "top_level_collection_id_s" => "Collection"
       #"mods_journal_title_info_facet"=>"Journal",
       #"gps_facet"=>"GPS Coordinates",
       #"region_facet"=>"Region",

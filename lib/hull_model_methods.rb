@@ -197,7 +197,19 @@ module HullModelMethods
   end
 
   def display_set
+    return unless relationships[:self][:is_member_of]
     (relationships[:self][:is_member_of] & DisplaySet.display_set_pids).first
+  end
+
+  def top_level_collection
+    return unless relationships[:self][:is_member_of]
+    graph = DisplaySet.parent_graph
+    ptr = (relationships[:self][:is_member_of] & graph.keys).first
+    while graph[ptr][:parent] != 'info:fedora/hull:rootDisplaySet' do
+      ptr = graph[ptr][:parent]
+    end
+    
+    return graph[ptr]
   end
 
 	def apply_set_membership(sets)
@@ -265,6 +277,10 @@ module HullModelMethods
 		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
 			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
 		end
+    if display_set
+      collection = top_level_collection
+      solr_doc << {"top_level_collection_id_s" => 'info:fedora/' + collection[:pid]}
+    end
     solr_doc << {"text" => get_extracted_content }
 		solr_doc
   end
