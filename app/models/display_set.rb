@@ -32,6 +32,10 @@ class DisplaySet < ActiveFedora::Base
     options = {:field_list=>["id", "id_t", "title_t", "is_member_of_s"], :rows=>10000, :sort=>[{"system_create_dt"=>:ascending}]}
     ActiveFedora::SolrService.instance.conn.query(fields,options).hits
   end
+
+  def self.display_set_pids
+    display_sets.map {|hit| "info:fedora/#{hit["id_t"]}" }
+  end
   
   def self.build_array_of_parents_and_children hits
     pids = hits.map {|hit| "info:fedora/#{hit["id_t"]}" }
@@ -62,18 +66,19 @@ class DisplaySet < ActiveFedora::Base
 end
 
 class Tree::TreeNode
-  def options_for_nested_select(options=[],level=0)
+  def options_for_nested_select(args ={},level=0)
+    args[:options] ||= []
     if is_root?
       pad = ''
     else
       pad = ('-' * (level - 1) * 2) + '--'
     end
 
-    options <<  ["#{pad}#{name}", "#{content}"]
+    args[:options] <<  ["#{pad}#{name}", "#{content}"] unless content == args[:exclude]
 
-    children { |child| child.options_for_nested_select(options,level + 1)}
+    children { |child| child.options_for_nested_select(args,level + 1)}
 
-    options
+    args[:options]
   end
 
   def unordered_list(options=[],level=0)

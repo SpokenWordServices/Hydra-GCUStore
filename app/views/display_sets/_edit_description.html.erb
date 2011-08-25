@@ -18,10 +18,10 @@
       <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
     </dd>
 		<dt>
-      <%= fedora_field_label("RELS-EXT",[:is_member_of], "Parent Set") %>
+      <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
     </dt>
     <dd>
-      <%= select "Parent Set","",  DisplaySet.tree.options_for_nested_select, :class=>"display-set-select"  %>
+      <%= select "Display Set","",  DisplaySet.tree.options_for_nested_select(:exclude=>"info:fedora/#{@document_fedora.pid}"), :selected=>@document_fedora.display_set, :class=>"display-set-select"  %>
     </dd>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd-edit-publisher") %>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "Identifier", "dd-edit-identifier") %>

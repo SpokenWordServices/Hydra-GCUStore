@@ -16,14 +16,13 @@ describe DisplaySet do
     before do
       @node = DisplaySet.new
       @node.datastreams['descMetadata'].update_indexed_attributes({[:title] => 'Blue sky'})
-      @node.save
       @node.add_relationship(:is_member_of, 'hull:700')
       @node.save
     end
     it "should be in the tree" do
       root_node = DisplaySet.tree
       root_node.children.first.children.should_not be_empty
-      root_node.children.first.children.first.content.split('/')[1].should == @node.pid
+      root_node.children.first.children.map{|c| c.content.split('/')[1]}.should include @node.pid
     end
     after do
       @node.delete
@@ -36,6 +35,22 @@ describe DisplaySet do
       options = DisplaySet.tree.options_for_nested_select
       options.each {|v| puts "#{v[0]} = #{v[1]}" }
     end
+  end
+
+  describe "an instance" do
+    before do
+      @node = DisplaySet.new
+      @node.datastreams['descMetadata'].update_indexed_attributes({[:title] => 'Blue sky'})
+      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.save
+    end
+    it "should have a display_set property" do
+      @node.display_set.should == 'info:fedora/hull:700'
+    end
+    after do
+      @node.delete
+    end
+    
   end
 
 end

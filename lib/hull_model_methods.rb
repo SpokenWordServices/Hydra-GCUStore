@@ -196,6 +196,10 @@ module HullModelMethods
 	  return true
   end
 
+  def display_set
+    (relationships[:self][:is_member_of] & DisplaySet.display_set_pids).first
+  end
+
 	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
     set_membership.dup.each { |s| self.remove_relationship :is_member_of, s }
