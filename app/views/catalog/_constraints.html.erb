@@ -30,8 +30,13 @@
 						<span class="appliedFilter">
 							<span class="first">
 								<span>
-									<span class="filterName"><%= h facet_field_labels[facet] %></span>
-									<span class="filterValue"><%= v %></span>
+									<%- if facet == 'is_member_of_s'  %>
+									  <span class="filterName">Display set</span>
+                    <span class="filterValue"><%= DisplaySet.find(v.split('/')[1]).title %></span>
+                  <% else %>
+									  <span class="filterName"><%= h facet_field_labels[facet] %></span>
+                    <span class="filterValue"><%= v %></span>
+                  <% end %>
 								</span>
 							</span>
 							<%= link_to(

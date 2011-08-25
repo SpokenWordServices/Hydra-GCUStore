@@ -47,6 +47,9 @@ describe DisplaySet do
     it "should have a display_set property" do
       @node.display_set.should == 'info:fedora/hull:700'
     end
+    it "should have a title" do
+      @node.title.should == 'Blue sky'
+    end
     after do
       @node.delete
     end

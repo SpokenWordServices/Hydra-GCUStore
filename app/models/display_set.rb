@@ -19,6 +19,10 @@ class DisplaySet < ActiveFedora::Base
     m.field 'depositor', :string
   end
 
+  def title
+    datastreams["descMetadata"].term_values(:title).first
+  end
+
   def self.tree
     hits = display_sets
     sets = build_array_of_parents_and_children(hits)
