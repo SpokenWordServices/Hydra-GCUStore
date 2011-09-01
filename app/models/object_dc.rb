@@ -9,7 +9,7 @@ class ObjectDc < ActiveFedora::NokogiriDatastream
     t.dc_title(:path=>"title") 
     t.dc_genre(:path=>"type", :xmlns=>"http://purl.org/dc/elements/1.1/")
 		t.dc_identifier(:path=>"identifier")
-		t.dc_dateIssued(:path=>"date")
+		t.dc_dateIssued(:path=>"date")#, :xmlns=>"http://purl.org/dc/elements/1.1/")
   end
  	# Generates an empty DC datastream
   def self.xml_template

@@ -191,8 +191,11 @@ module HullModelMethods
 		end
 			
 		dc_ds = self.datastreams_in_memory["DC"]
-		dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
-		dc_ds.update_indexed_attributes([:dc_dateIssued]=> self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s) unless dc_ds.nil?
+    unless dc_ds.nil?
+      dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
+      date_issued = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {})
+      dc_ds.update_indexed_attributes([:dc_dateIssued]=> date_issued.to_s) if date_issued.present?
+    end
 	  return true
   end
 

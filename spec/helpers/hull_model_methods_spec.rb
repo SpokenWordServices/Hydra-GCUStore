@@ -30,9 +30,30 @@ describe HullModelMethods do
     @testclassone = TestClassOne.new
   end
 
+
   it "should provide insert/remove methods for subject_topic" do
     @testclassone.respond_to?(:insert_subject_topic).should be_true
     @testclassone.respond_to?(:remove_subject_topic).should be_true
+  end
+
+  describe "#apply_additional_metadata" do
+    before do
+      @mock_desc_ds = mock("descMetadataDS")
+      @mock_desc_ds.expects(:get_values).with([:title], {}).returns('My title')
+      @mock_dc_ds = mock("DCDatastream")
+      @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_title]=>'My title')
+      @testclassone.stubs(:datastreams_in_memory).returns({"descMetadata"=>@mock_desc_ds, "DC"=>@mock_dc_ds})
+    end
+    it "should copy the date from the descMetadata to the dc datastream if it is present" do
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns('2011-10')
+      @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_dateIssued]=>'2011-10')
+      @testclassone.apply_additional_metadata(123).should == true
+    end
+    it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns([])
+      @testclassone.apply_additional_metadata(123).should == true
+    end
+
   end
 
   describe "#insert_subject_topic" do
