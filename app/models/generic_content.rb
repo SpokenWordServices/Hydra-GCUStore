@@ -17,4 +17,17 @@ class GenericContent < ActiveFedora::Base
 
   has_datastream :name=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :controlGroup=>'M'
 
+  has_validation :validate_parameters do
+    if @pending_attributes.fetch("descMetadata",nil)
+			date_valid = @pending_attributes["descMetadata"][[:date_valid]]["0"] 
+      if date_valid.present?
+        begin
+          Iso8601.parse(date_valid) 
+        rescue ArgumentError
+    			errors << "descMetadata error: invalid date"
+        end
+      end
+		end		
+    is_valid?
+  end
 end
