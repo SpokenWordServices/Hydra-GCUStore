@@ -195,3 +195,7 @@ ul#appliedFiltersList,
 #appliedParams a#startOverLink:hover{background-color:none;}
 #appliedParams a#startOverLink span{display:none;}
 .queryName, .filterName {padding-right:14px; background:url(/plugin_assets/blacklight/images/separator.gif) no-repeat right center;}
+
+#date_valid-container input#date_valid{
+  width: 12em
+}
