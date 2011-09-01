@@ -47,6 +47,7 @@ class ModsPresentation < ObjectMods
     }
     t.origin_info(:path=>"originInfo") {
       t.publisher
+      t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
     }  
     t.language {
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
@@ -63,6 +64,7 @@ class ModsPresentation < ObjectMods
 	  		t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	}
 		}
+    t.web_related_item(:ref=>[:related_web_materials])
 		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
     t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
@@ -75,6 +77,7 @@ class ModsPresentation < ObjectMods
       t.mime_type(:path=>"internetMediaType")
       t.digital_origin(:path=>"digitalOrigin")
     } 
+    t.date_valid(:proxy=>[:origin_info, :date_valid])
 
   end
   

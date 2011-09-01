@@ -17,4 +17,22 @@ describe JournalArticle do
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:journalArticle"
     end
   end
+
+  describe "apply_additional_metadata" do
+    before do
+      @desc_ds = @journalArticle.datastreams_in_memory["descMetadata"]
+      @desc_ds.update_indexed_attributes({[:title] => ["My title"]})
+    end
+    it "should copy the date from the descMetadata to the dc datastream if it is present" do
+      @desc_ds.update_indexed_attributes({[:origin_info, :date_issued] => ['2011-10']})
+      @journalArticle.apply_additional_metadata(123).should == true
+      @journalArticle.datastreams_in_memory["DC"].dc_dateIssued.should == ['2011-10']
+      @journalArticle.datastreams_in_memory["DC"].dc_title.should == ["My title"]
+    end
+    it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
+      @journalArticle.apply_additional_metadata(123).should == true
+      @journalArticle.datastreams_in_memory["DC"].dc_dateIssued.should == [""]
+      @journalArticle.datastreams_in_memory["DC"].dc_title.should == ["My title"]
+    end
+  end
 end
