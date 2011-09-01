@@ -30,5 +30,6 @@
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre", "dd_text") %>
+   <%= display_datastream_field @document_fedora, "descMetadata", [:date_valid], "Valid date", "dd_text" %>
 	</dl>
 </div>

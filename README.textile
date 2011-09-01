@@ -8,11 +8,16 @@ Hydrangea at Hull is a Hydra project at the University of Hull.
 For general instructions on how to build and install Hydrangea, please see
 "Hydrangea project":http://github.com/projecthydra/hydrangea
 
-h3. Hull-specific installation notes
+h2. Testing
+
+<pre>
+  rake hull:hudson
+</pre>
+
+h2. Hull-specific installation notes
 
 To load the Hull-specific fixtures, use the following rake tasks:
 <pre>
 rake hull:default_fixtures:load
-rake hull:default_fixtures:load_dependencies
 </pre>
 

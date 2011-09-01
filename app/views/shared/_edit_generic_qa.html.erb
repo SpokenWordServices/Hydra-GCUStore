@@ -11,7 +11,7 @@
 	    <%= render :partial => 'contributors/index', :locals=> {:roles=>['creator','author'], :contributor_type=>:person} %>
 	  </div>
     <dt>
-     <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+      <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
     </dt>
     <dd>
       <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
@@ -28,6 +28,12 @@
 		<div class="multi-field" id="rights">
 	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":rights", :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
 	 	</div>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:date_valid],"Valid Date (YYYY) or (YYYY/YYYY)") %>
+    </dt>
+    <dd style="width: 20em;">
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:date_valid], :multiple=>false) %>
+    </dd>
     <dt>
       <%= fedora_field_label("descMetadata",[:description],"Description") %>
     </dt>

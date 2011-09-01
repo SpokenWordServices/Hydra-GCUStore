@@ -47,6 +47,7 @@ GEM
     equivalent-xml (0.2.7)
       nokogiri (>= 1.4.3)
     facets (2.8.4)
+    fastercsv (1.5.4)
     gherkin (2.3.7)
       json (>= 1.4.6)
     haml (3.1.1)
@@ -57,12 +58,13 @@ GEM
     json_pure (1.5.1)
     linecache (0.43)
     marc (0.4.2)
-    mediashelf-loggable (0.4.2)
+    mediashelf-loggable (0.4.7)
     mime-types (1.16)
     mocha (0.9.12)
-    multipart-post (1.1.2)
+    multipart-post (1.1.3)
     nokogiri (1.4.4)
-    om (1.2.5)
+    om (1.4.0)
+      mediashelf-loggable
       nokogiri (>= 1.4.2)
     rack (1.1.2)
     rack-test (0.6.0)
@@ -93,20 +95,18 @@ GEM
       linecache (>= 0.3)
     rubytree (0.8.1)
     solr-ruby (0.0.8)
-    solrizer (1.0.4)
+    solrizer (1.1.0)
       daemons
       mediashelf-loggable
-      mediashelf-loggable
       nokogiri
-      nokogiri
-      nokogiri
-      om
       om (>= 1.0.0)
       stomp
       xml-simple
-    solrizer-fedora (1.0.3)
-      active-fedora (>= 2.0.0)
+    solrizer-fedora (1.1.1)
+      active-fedora (>= 2.3.0)
+      fastercsv
       rsolr
+      solr-ruby (>= 0.0.6)
       solrizer (>= 1.0.0)
     sqlite3-ruby (1.2.5)
     stomp (1.1.9)
@@ -125,7 +125,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.7)
-  active-fedora (>= 2.3.3)
+  active-fedora (= 2.3.3)
   authlogic (>= 0.1.0)
   block_helpers
   builder
@@ -164,7 +164,7 @@ DEPENDENCIES
   rubytree
   solr-ruby
   solrizer (>= 1.0.1)
-  solrizer-fedora (>= 1.0.1)
+  solrizer-fedora (>= 1.1.1)
   sqlite3-ruby (= 1.2.5)
   stomp
   term-ansicolor

@@ -35,6 +35,24 @@ describe GenericContent do
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:genericContent"
     end
   end
+
+  describe "with a display_set" do
+    before do
+      @node = GenericContent.new
+    end
+    it "should have a display_set property" do
+      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.display_set.should == 'info:fedora/hull:700'
+    end
+    it "should have a top_level_collection property" do
+      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.top_level_collection.should == {:title=>["Postgraduate Medical Institute"], :pid=>"hull:700", :parent=>"info:fedora/hull:rootDisplaySet"}
+    end
+    it "should index the top level collection" do
+       @node.add_relationship(:is_member_of, 'info:fedora/hull:rootDisplaySet')
+       @node.top_level_collection.should be_nil
+    end
+  end
   
 end
 

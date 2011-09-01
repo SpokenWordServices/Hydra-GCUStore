@@ -2,22 +2,35 @@
 <div id="content_div">
 	<dl id="index_list">
    <% authors = get_persons_from_roles(document, ['creator','author']).map {|person| person[:name]}  %>
-  <dt><%= pluralize(authors.count,"Author")[2..-1] %></dt>
-    <dd>
-      <%= authors.join("; ") %>
-    </dd>
-	<dt>Resource type</dt>
-	<dd>
-    <%= document.get(:genre_t) %>
-	</dd>
-   <dt><%= pluralize(document.get(:subject_topic_t, :sep=>';').count(';') + 1,"Subject")[2..-1] %></dt>
-    <dd>
-      <%= document.get(:subject_topic_t, :sep=>'||').split("||").uniq.join("; ") %>
-    </dd>
-  <dt>Language</dt>
-    <dd>
-      <%= document.get(:language_lang_text_t) %>
-    </dd>
+  
+   <% if authors.present? %>
+     <dt><%= pluralize(authors.count,"Author")[2..-1] %></dt>
+        <dd>
+          <%= authors.join("; ") %>
+        </dd>
+   <% end %>
+   <dt>Resource type</dt>
+   <dd>
+     <%= document.get(:genre_t) %>
+   </dd>
+   <% if document.get(:subject_topic_t)  %>
+     <dt><%= pluralize(document.get(:subject_topic_t, :sep=>';').count(';') + 1,"Subject")[2..-1] %></dt>
+       <dd>
+         <%= document.get(:subject_topic_t, :sep=>'||').split("||").uniq.join("; ") %>
+       </dd>
+    <%end%>
+   <% if document.get(:language_lang_text_t)  %>
+     <dt>Language</dt>
+       <dd>
+         <%= document.get(:language_lang_text_t) %>
+       </dd>
+   <% end %>
+   <% if document.get(:date_valid_t)  %>
+     <dt>Valid date</dt>
+       <dd>
+         <%= document.get(:date_valid_t) %>
+       </dd>
+   <% end %>
   </dl>
 </div>
 

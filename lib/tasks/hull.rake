@@ -97,7 +97,7 @@ namespace :hull do
       Rake::Task["db:migrate"].invoke
       Rake::Task["db:migrate:plugins"].invoke
       error = Jettywrapper.wrap(jetty_params) do
-        Rake::Task["hydra:default_fixtures:load"].invoke
+        #Rake::Task["hydra:default_fixtures:load"].invoke
         Rake::Task["hull:default_fixtures:load"].invoke
         Rake::Task["spec_without_db"].invoke
         Rake::Task["cucumber"].invoke

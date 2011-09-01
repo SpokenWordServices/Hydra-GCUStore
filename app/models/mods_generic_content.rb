@@ -47,6 +47,7 @@ class ModsGenericContent < ObjectMods
     t.origin_info(:path=>"originInfo") {
       t.publisher
  			t.date_issued(:path=>"dateIssued")
+      t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
     } 
     t.language {
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
@@ -75,6 +76,7 @@ class ModsGenericContent < ObjectMods
       t.mime_type(:path=>"internetMediaType")
       t.digital_origin(:path=>"digitalOrigin")
     } 
+    t.date_valid(:proxy=>[:origin_info, :date_valid])
 
   end
   

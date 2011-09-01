@@ -205,6 +205,7 @@ module HullModelMethods
     return unless relationships[:self][:is_member_of]
     graph = DisplaySet.parent_graph
     ptr = (relationships[:self][:is_member_of] & graph.keys).first
+    return if ptr == 'info:fedora/hull:rootDisplaySet'
     while graph[ptr][:parent] != 'info:fedora/hull:rootDisplaySet' do
       ptr = graph[ptr][:parent]
     end
@@ -279,7 +280,7 @@ module HullModelMethods
 		end
     if display_set
       collection = top_level_collection
-      solr_doc << {"top_level_collection_id_s" => 'info:fedora/' + collection[:pid]}
+      solr_doc << {"top_level_collection_id_s" => 'info:fedora/' + collection[:pid]} if collection
     end
     solr_doc << {"text" => get_extracted_content }
 		solr_doc

@@ -397,7 +397,7 @@
         mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
         mods_timespan_start_t, mods_timespan_end_t, description_t,
         genre_t, person_0_namePart_t, person_1_namePart_t, person_2_namePart_t, person_3_namePart_t, person_4_namePart_t, person_5_namePart_t, person_6_namePart_t, person_7_namePart_t,
-        person_8_namePart_t, person_9_namePart_t, language_lang_text_t,
+        person_8_namePart_t, person_9_namePart_t, language_lang_text_t, date_valid_t,
         organization_0_role_t,organization_1_role_t,organization_2_role_t,organization_3_role_t,organization_4_role_t,organization_5_role_t,organization_6_role_t,
         organization_0_namePart_t,organization_1_namePart_t,organization_2_namePart_t,organization_3_namePart_t,organization_4_namePart_t,organization_5_namePart_t,organization_6_namePart_t,
 

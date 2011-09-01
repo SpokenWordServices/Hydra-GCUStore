@@ -5,6 +5,7 @@ nohup.out
 *.log
 *~
 *.swp
+*.swo
 
 vendor/plugins/haml/init.rb
 vendor/plugins/blacklight/.git
