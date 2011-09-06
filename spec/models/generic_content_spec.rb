@@ -41,7 +41,7 @@ describe GenericContent do
       @node = GenericContent.new
     end
     it "should have a structural_set property" do
-      @node.apply_set_membership('hull:669')
+      @node.apply_set_membership(['info:fedora/hull:669'])
       @node.structural_set.should == 'info:fedora/hull:669'
     end
     it "should have a display_set property" do

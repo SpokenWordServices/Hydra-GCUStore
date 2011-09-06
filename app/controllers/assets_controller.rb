@@ -1,9 +1,9 @@
 require 'mediashelf/active_fedora_helper'
 
 class AssetsController < ApplicationController
-require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_controller'
-		include HullAccessControlEnforcement
-    include Hydra::AssetsControllerHelper
+  require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_controller'
+	include HullAccessControlEnforcement
+  include Hydra::AssetsControllerHelper
 
   before_filter :enforce_permissions, :only =>:new
   before_filter :load_document, :only => :update
@@ -78,12 +78,14 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
       end
 		
 			def update_set_membership
-          structural = strip_namespace(params["Structural Set"]) if params["Structural Set"]
-          display = strip_namespace(params["Display Set"]) if params["Display Set"]
-          if (structural || display)  && @document.respond_to?(:apply_set_membership)
+          structural = params["Structural Set"].to_s
+          structural = structural.present? ? strip_namespace(structural) : nil
+          display = params["Display Set"].to_s
+          display = display.present? ? strip_namespace(display) : nil
+          if @document.respond_to?(:apply_set_membership)
             @document.apply_set_membership([display, structural].compact)
           end
-          if params["Structural Set"]  && @document.respond_to?(:apply_governed_by)
+          if structural && @document.respond_to?(:apply_governed_by)
             @document.apply_governed_by(structural)
           end
 			end
@@ -92,7 +94,6 @@ require_dependency 'vendor/plugins/hydra_repository/app/controllers/assets_contr
       private
 
       def strip_namespace(pid)
-        str = pid.to_s
-        str.slice(str.index('/')  + 1..str.length) #remove info:fedora/ namespace from pid
+        pid.slice(pid.index('/')  + 1..pid.length) #remove info:fedora/ namespace from pid
       end
 end
