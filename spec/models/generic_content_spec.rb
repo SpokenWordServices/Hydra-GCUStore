@@ -36,9 +36,13 @@ describe GenericContent do
     end
   end
 
-  describe "with a display_set" do
+  describe "set membership" do
     before do
       @node = GenericContent.new
+    end
+    it "should have a structural_set property" do
+      @node.apply_set_membership('hull:669')
+      @node.structural_set.should == 'info:fedora/hull:669'
     end
     it "should have a display_set property" do
       @node.add_relationship(:is_member_of, 'hull:700')

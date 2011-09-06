@@ -32,8 +32,11 @@ class StructuralSet < ActiveFedora::Base
   def self.retrieve_structural_sets
     fields = {:has_model_s=>"info\:fedora/hull-cModel\:structuralSet"}
     options = {:rows=>10000, :field_list=> ["id","id_t","title_t","is_member_of_s"]}
-
     ActiveFedora::Base.find_by_fields_by_solr(fields, options).hits
+  end
+
+  def self.structural_set_pids
+    retrieve_structural_sets.map {|hit| "info:fedora/#{hit["id_t"]}" }
   end
   
   def self.build_array_of_parents_and_children hits

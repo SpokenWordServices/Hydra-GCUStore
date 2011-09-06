@@ -203,6 +203,10 @@ module HullModelMethods
 	  return true
   end
 
+  def structural_set
+    return unless relationships[:self][:is_member_of]
+    (relationships[:self][:is_member_of] & StructuralSet.structural_set_pids).first
+  end
   def display_set
     return unless relationships[:self][:is_member_of]
     (relationships[:self][:is_member_of] & DisplaySet.display_set_pids).first
