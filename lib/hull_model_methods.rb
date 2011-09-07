@@ -291,8 +291,11 @@ module HullModelMethods
 		end
     if descMetadata.origin_info && descMetadata.origin_info.date_issued 
       begin
-        date = Date.parse descMetadata.origin_info.date_issued.first
-        solr_doc << {"year_facet" => date.year, "month_facet" => date.month} 
+        val = descMetadata.origin_info.date_issued.first
+        if val
+          date = Date.parse val
+          solr_doc << {"year_facet" => date.year, "month_facet" => date.month} 
+        end
       rescue ArgumentError => e
         #nop
       end
@@ -344,7 +347,12 @@ module HullModelMethods
     url = "#{ActiveFedora.solr_config[:url]}/update/extract?defaultField=content&extractOnly=true"
     begin
       response = RestClient.post url, :upload => filename
-    rescue
+    rescue RestClient::InternalServerError => e
+      xml = Nokogiri.parse e.http_body
+      logger.error "Unable to extract content:\nRequest: #{url}\nResponse: #{xml.css("pre").text}"
+      return ""
+    rescue Exception => e
+      logger.error "Unable to extract:\n#{e.inspect}"
       return ""
     end
     ng_xml = Nokogiri::XML.parse(response.body)

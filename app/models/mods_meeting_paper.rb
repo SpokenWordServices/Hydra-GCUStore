@@ -4,7 +4,7 @@ class ModsMeetingPaper < ObjectMods
     t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
 
     t.title_info(:path=>"titleInfo") {
-      t.main_title(:path=>"title", :label=>"title") 
+      t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable]) 
     } 
     t.title(:proxy=>[:title_info, :main_title]) 
    
@@ -42,6 +42,7 @@ class ModsMeetingPaper < ObjectMods
       t.part(:path=>"namePart",:index_as=>[:facetable])
     }
     t.origin_info(:path=>"originInfo") {
+      t.date_issued(:path=>'dateIssued')
       t.publisher
     }  
     t.language {
