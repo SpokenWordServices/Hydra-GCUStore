@@ -289,6 +289,14 @@ module HullModelMethods
 		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
 			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
 		end
+    if descMetadata.origin_info && descMetadata.origin_info.date_issued 
+      begin
+        date = Date.parse descMetadata.origin_info.date_issued.first
+        solr_doc << {"year_facet" => date.year, "month_facet" => date.month} 
+      rescue ArgumentError => e
+        #nop
+      end
+    end
     if display_set
       collection = top_level_collection
       solr_doc << {"top_level_collection_id_s" => 'info:fedora/' + collection[:pid]} if collection

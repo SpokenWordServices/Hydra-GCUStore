@@ -12,9 +12,21 @@ describe Presentation do
   describe ".to_solr" do
     it "should return the necessary facets" do
       @presentation.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
+      @presentation.descMetadata.title_info.main_title = "FOOBAR"
       solr_doc = @presentation.to_solr
       solr_doc["object_type_facet"].should == "Presentation"
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:presentation"
+
+      ### For sorting
+      solr_doc["title_facet"].should == ["FOOBAR"]
+      solr_doc["year_facet"].should be_nil
+      solr_doc["month_facet"].should be_nil
+
+      #### when a date is set
+      @presentation.descMetadata.origin_info.date_issued = '2000-11-20'
+      solr_doc = @presentation.to_solr
+      solr_doc["year_facet"].should == 2000
+      solr_doc["month_facet"].should == 11
     end
   end
   describe "apply_additional_metadata" do

@@ -81,6 +81,7 @@ describe HullModelMethods do
   end
   describe "to_solr" do
     it "should apply has_model_s and fedora_owner_id correctly" do
+      @testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>nil))
       solr_doc = @testclassone.to_solr
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:testClassOne"
       solr_doc["fedora_owner_id_s"].should == "fooAdmin"

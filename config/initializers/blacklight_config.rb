@@ -145,12 +145,10 @@ Blacklight.configure(:shared) do |config|
      :field_names => [
        "date_t",
        "title_t",
-       "medium_t",
        "location_t"],
      :labels => {
        "date_t"=>"Date",
        "title_t"=>"Title",
-       "medium_t"=>"Content Type",
        "location_t"=>"Location"
      }
    }
@@ -162,7 +160,6 @@ Blacklight.configure(:shared) do |config|
        "text",
        "title_facet",
        "date_t",
-       "medium_t",
        "location_t",
        "rights_t",
        "access_t"
@@ -171,7 +168,6 @@ Blacklight.configure(:shared) do |config|
        "text" => "Text:",
        "title_facet" => "Title:",
        "date_t" => "Date:",
-       "medium_t" => "Document Type:",
        "location_t" => "Location:",
        "rights_t"  => "Copyright:",
        "access_t" => "Access:"
@@ -256,7 +252,7 @@ Blacklight.configure(:shared) do |config|
   config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['title', 'title_facet asc']
-  config[:sort_fields] << ['document type', 'medium_t asc, year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['document type', 'object_type_facet asc, year_facet desc, month_facet asc, title_facet asc']
   #config[:sort_fields] << ['location', 'series_facet asc, box_facet asc, folder_facet asc, year_facet desc, month_facet asc, title_facet asc']
   
   # If there are more than this many search results, no spelling ("did you 
