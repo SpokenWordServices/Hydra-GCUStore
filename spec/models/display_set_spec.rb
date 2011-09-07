@@ -6,7 +6,7 @@ describe DisplaySet do
     it "should have a root node" do
       root_node = DisplaySet.tree
       root_node.should be_kind_of(Tree::TreeNode)
-      root_node.children.size.should == 1 
+      root_node.children.size.should >= 1 
       root_node.children.first.content.should == "info:fedora/hull:700"
       root_node.print_tree
     end
@@ -46,6 +46,7 @@ describe DisplaySet do
     end
     it "should have a display_set property" do
       @node.display_set.should == 'info:fedora/hull:700'
+      @node.structural_set.should be_nil
     end
     it "should have a top_level_collection property" do
       @node.top_level_collection.should == {:title=>["Postgraduate Medical Institute"], :pid=>"hull:700", :parent=>"info:fedora/hull:rootDisplaySet"}

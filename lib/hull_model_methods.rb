@@ -12,7 +12,7 @@ module HullModelMethods
 
   def initialize(opts={})
     super(opts)
-	  change_queue_membership :proto if queue_membership.empty? && new_object? #&& !self.class.to_s == "StructuralSet"
+	  change_queue_membership :proto if queue_membership.empty? && new_object? && !self.kind_of?(DisplaySet)
   end
 
   attr_accessor :pending_attributes
