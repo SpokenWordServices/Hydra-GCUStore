@@ -4,6 +4,7 @@ module HullModelMethods
     def pid_namespace
       "hull-cModel"
     end
+     
   end
 
   def self.included(klass)
@@ -12,7 +13,11 @@ module HullModelMethods
 
   def initialize(opts={})
     super(opts)
-	  change_queue_membership :proto if queue_membership.empty? && new_object? && !self.kind_of?(DisplaySet)
+    after_create() if new_object?
+  end
+
+  def after_create
+	  change_queue_membership :proto if queue_membership.empty? && !self.kind_of?(DisplaySet)
   end
 
   attr_accessor :pending_attributes
@@ -226,15 +231,31 @@ module HullModelMethods
 
 	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
-    set_membership.dup.each { |s| self.remove_relationship :is_member_of, s }
+    old_sets = set_membership.dup
+    old_sets.each { |s| self.remove_relationship :is_member_of, s }
     sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of, s }
 	end
 
 	def apply_governed_by(set)
+    set = StructuralSet.find(set) if set.kind_of? String
 		#We delete previous is_governed_by relationships and add the new one
-		is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
-    self.add_relationship :is_governed_by, set 
+    old_governed_by = is_governed_by
+    unless old_governed_by.include? "info:fedora/#{set.pid}"
+      old_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
+      self.add_relationship :is_governed_by, set 
+      copy_rights_metadata(set)
+    end
 	end
+
+  def copy_rights_metadata(apo)
+    rights = Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content)
+    rights.pid = self.pid
+    defaultRights = rights.dup
+    rights.dsid = "rightsMetadata"
+    defaultRights.dsid = "defaultObjectRights"
+    datastreams_in_memory["rightsMetadata"] = rights #(rights, :dsid=>"rightsMetadata")
+    datastreams_in_memory["defaultObjectRights"] = defaultRights #(defaultRights, :dsid=>"defaultObjectRights")
+  end
 
   def valid_for_save?(params)
     if self.respond_to?(:validate_parameters)

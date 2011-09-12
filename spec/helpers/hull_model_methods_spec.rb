@@ -3,6 +3,9 @@ require File.expand_path(File.dirname(__FILE__)+'/../spec_helper')
 class TestClassOne < ActiveFedora::Base
   include HullModelMethods
 
+  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
+  #has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
+
   def owner_id
     "fooAdmin"
   end
@@ -28,6 +31,38 @@ end
 describe HullModelMethods do
   before(:each) do
     @testclassone = TestClassOne.new
+  end
+
+  describe "#apply_governed_by" do
+    before do
+      @structural_set1 = StructuralSet.new
+      @structural_set1.defaultObjectRights.update_indexed_attributes([:edit_access]=> 'baz')
+      @structural_set1.save
+      @structural_set2 = StructuralSet.new
+      @structural_set2.defaultObjectRights.update_indexed_attributes([:edit_access]=> 'foo')
+      @structural_set2.save
+    end
+    it "should update when it changes and copy the apo" do
+      @testclassone.apply_governed_by(@structural_set1)
+      ## customize rightsMetadata
+      @testclassone.rightsMetadata.update_indexed_attributes([:edit_access]=> 'bar')
+      @testclassone.apply_governed_by(@structural_set2)
+      ## check that rightsMetadata is  overwritten by the defaultObjectRights
+      @testclassone.rightsMetadata.edit_access.should == ['foo']
+      
+    end
+    it "should not copy the apo if the structural set didn't change" do
+      @testclassone.apply_governed_by(@structural_set2)
+      ## customize rightsMetadata
+      @testclassone.rightsMetadata.update_indexed_attributes([:edit_access]=> 'bar')
+      @testclassone.apply_governed_by(@structural_set2)
+      ## check that rightsMetadata is still custom
+      @testclassone.rightsMetadata.edit_access.should == ['bar']
+    end
+    after do
+      @structural_set1.delete
+      @structural_set2.delete
+    end
   end
 
 

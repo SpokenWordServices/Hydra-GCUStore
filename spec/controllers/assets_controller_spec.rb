@@ -24,6 +24,11 @@ describe AssetsController do
       controller = AssetsController.new
       controller.instance_variable_set :@document, @document
       controller.params = {'Structural Set' => "info:fedora/hull:7" }
+      ss = stub("structural set")
+      ss.expects(:pid).returns('hull:7').at_least_once
+      ss.expects(:defaultObjectRights).returns(stub("data stream", :content=>nil))
+      
+      StructuralSet.expects(:find).with('hull:7').returns(ss).twice
       controller.send :update_set_membership
       @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:7"]
 

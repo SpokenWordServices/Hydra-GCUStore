@@ -8,6 +8,7 @@ class StructuralSet < ActiveFedora::Base
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
+  has_metadata :name => "defaultObjectRights", :type => Hydra::RightsMetadata 
 
   has_metadata :name => "descMetadata", :type => ModsStructuralSet
 
@@ -26,6 +27,14 @@ class StructuralSet < ActiveFedora::Base
 
     root_node = build_children(Tree::TreeNode.new("Root set", "info:fedora/hull:rootSet"), sets)
   end
+
+  def after_create
+    apo = ActiveFedora::Base.find("hull-apo:structuralSet")
+    raise "Unable to find hull-apo:structuralSet" unless apo
+    add_relationship :is_governed_by, apo
+    copy_rights_metadata(apo)
+  end
+
 
   private
 
