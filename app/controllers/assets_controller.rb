@@ -85,8 +85,15 @@ class AssetsController < ApplicationController
           if @document.respond_to?(:apply_set_membership)
             @document.apply_set_membership([display, structural].compact)
           end
-          if structural && @document.respond_to?(:apply_governed_by)
-            @document.apply_governed_by(structural)
+          # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
+          # otherwise, the structural set the governing apo
+          if @document.respond_to?(:apply_governed_by)
+            if @document.kind_of? StructuralSet
+              @document.apply_governed_by('hull-apo:structuralSet')
+              @document.copy_default_object_rights(structural) if structural
+            elsif structural
+              @document.apply_governed_by(structural)
+            end
           end
 			end
 

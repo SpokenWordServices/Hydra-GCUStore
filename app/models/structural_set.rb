@@ -35,6 +35,14 @@ class StructuralSet < ActiveFedora::Base
     copy_rights_metadata(apo)
   end
 
+  def copy_default_object_rights(parent_pid)
+    parent = StructuralSet.find(parent_pid)
+    defaultRights = Hydra::RightsMetadata.from_xml(parent.defaultObjectRights.content)
+    defaultRights.pid = self.pid
+    defaultRights.dsid = "defaultObjectRights"
+    datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
+  end
+
 
   private
 

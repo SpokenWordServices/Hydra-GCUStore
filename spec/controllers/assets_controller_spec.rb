@@ -19,33 +19,82 @@ describe AssetsController do
   end
 
   describe "#update_set_membership" do
-    it "Should update the relationships" do
-      @document = ExamPaper.new
+    before do
+      @ss = StructuralSet.find('hull:3374')
+      @ss.defaultObjectRights.edit_access.machine.group= 'researcher'
+      @ss.defaultObjectRights.save
+    end
+    describe "with a non-structural set" do
+
+      it "Should update the relationships for a non-Structural Set" do
+        @document = ExamPaper.new
+        controller = AssetsController.new
+        controller.instance_variable_set :@document, @document
+        controller.params = {'Structural Set' => "info:fedora/hull:3374" }
+        
+        controller.send :update_set_membership
+        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:3374"]
+        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+        @document.rightsMetadata.edit_access.machine.group.should == ['researcher']
+
+        controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
+        controller.send :update_set_membership
+        @document.relationships[:self][:is_member_of].should include("info:fedora/hull:3374", "info:fedora/hull:9")
+        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+
+        controller.params = {'Display Set' => ['info:fedora/hull:9'] }
+        controller.send :update_set_membership
+        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
+        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+
+        ### Deleting
+        controller.params = {'Display Set' => [''] }
+        controller.send :update_set_membership
+        @document.relationships[:self][:is_member_of].should be_nil
+        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+
+      end
+    end
+    it "Should update the relationships for a Structural Set" do
+      @document = StructuralSet.new
       controller = AssetsController.new
       controller.instance_variable_set :@document, @document
-      controller.params = {'Structural Set' => "info:fedora/hull:7" }
-      ss = stub("structural set")
-      ss.expects(:pid).returns('hull:7').at_least_once
-      ss.expects(:defaultObjectRights).returns(stub("data stream", :content=>nil))
+      controller.params = {'Structural Set' => "info:fedora/hull:3374" }
       
-      StructuralSet.expects(:find).with('hull:7').returns(ss).twice
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:7"]
+      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:3374"]
+      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      ## rightsMetadata should be a clone of hull-apo:structuralSet
+      @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
+      ## defaultObjectRights should be a clone of hull:3374
+      @document.defaultObjectRights.edit_access.machine.group.should == ['researcher']
 
-      controller.params = {'Structural Set' => "info:fedora/hull:7", 'Display Set' => 'info:fedora/hull:9' }
+      controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should include("info:fedora/hull:7", "info:fedora/hull:9")
+      @document.relationships[:self][:is_member_of].should include("info:fedora/hull:3374", "info:fedora/hull:9")
+      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
       controller.params = {'Display Set' => ['info:fedora/hull:9'] }
       controller.send :update_set_membership
       @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
+      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
       ### Deleting
       controller.params = {'Display Set' => [''] }
       controller.send :update_set_membership
       @document.relationships[:self][:is_member_of].should be_nil
+      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
     end
+
+    after do
+      @ss.defaultObjectRights.edit_access.machine.group= 'contentAccessTeam'
+      @ss.defaultObjectRights.save
+    end
+
 
   end
   
@@ -60,6 +109,7 @@ describe AssetsController do
     it "should update the object with the attributes provided" do
       mock_document = mock("document")
       mock_document.stubs(:update_from_computing_id).returns(nil)
+      mock_document.stubs(:respond_to?).with(:apply_governed_by).returns(true)
       controller.expects(:check_embargo_date_format).returns(nil)
 
       HydrangeaArticle.expects(:find).with("_PID_").returns(mock_document)
@@ -129,6 +179,7 @@ describe AssetsController do
       mock_document.expects(:respond_to?).with(:valid_for_save?).returns(false)
       mock_document.expects(:respond_to?).with(:apply_set_membership).returns(false)
       mock_document.expects(:respond_to?).with(:apply_additional_metadata).returns(false)
+      mock_document.expects(:respond_to?).with(:apply_governed_by).returns(true)
       mock_document.expects(:update_datastream_attributes).with( *update_method_args ).returns({"person_0_role"=>{"0"=>"role1","1"=>"role2","2"=>"role3"}})
       mock_document.expects(:save)
       
