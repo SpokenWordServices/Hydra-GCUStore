@@ -23,8 +23,6 @@ describe StructuralSet do
 
   describe "a saved instance" do
     before do
-      # @apo = mock("APO", :defaultObjectMetadata=>Hydra::RightsMetadata.new)
-      # ActiveFedora::Base.expects(:find).with('hull-apo:structuralSet').returns(@apo)
       @instance = StructuralSet.new
       @instance.save
       @instance = StructuralSet.find(@instance.pid)
@@ -67,6 +65,31 @@ describe StructuralSet do
     end
     it "should be governedBy " do
       @instance.is_governed_by.should == ["info:fedora/hull-apo:structuralSet"]
+    end
+
+    after do
+      @instance.delete
+    end
+
+  end
+
+  describe "inheritance" do
+    before do
+      @instance = StructuralSet.new
+      @instance.save
+      @instance = StructuralSet.find(@instance.pid)
+      @parent = StructuralSet.new
+      @parent.defaultObjectRights.update_indexed_attributes([:edit_access]=> 'baz')
+      @parent.save
+    end
+    it "should inherit the rightsMetadata and defaultObjectRights from the parents defaultObjectRights when the parent structuralSet is updated" do
+      @instance.apply_governed_by(@parent)
+      @instance.rightsMetadata.edit_access.should == ['baz']
+      @instance.defaultObjectRights.edit_access.should == ['baz']
+    end
+    after do
+      @instance.delete
+      @parent.delete
     end
   end
 

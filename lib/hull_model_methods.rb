@@ -253,8 +253,8 @@ module HullModelMethods
     defaultRights = rights.dup
     rights.dsid = "rightsMetadata"
     defaultRights.dsid = "defaultObjectRights"
-    datastreams_in_memory["rightsMetadata"] = rights #(rights, :dsid=>"rightsMetadata")
-    datastreams_in_memory["defaultObjectRights"] = defaultRights #(defaultRights, :dsid=>"defaultObjectRights")
+    datastreams_in_memory["rightsMetadata"] = rights 
+    datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
   end
 
   def valid_for_save?(params)
