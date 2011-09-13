@@ -217,17 +217,17 @@ module HullModelMethods
     (relationships[:self][:is_member_of] & DisplaySet.display_set_pids).first
   end
 
-  def top_level_collection
-    return unless relationships[:self][:is_member_of]
-    graph = DisplaySet.parent_graph
-    ptr = (relationships[:self][:is_member_of] & graph.keys).first
-    return if ptr == 'info:fedora/hull:rootDisplaySet'
-    while graph[ptr][:parent] != 'info:fedora/hull:rootDisplaySet' do
-      ptr = graph[ptr][:parent]
-    end
-    
-    return graph[ptr]
-  end
+  # def top_level_collection
+  #   return unless relationships[:self][:is_member_of]
+  #   graph = DisplaySet.parent_graph
+  #   ptr = (relationships[:self][:is_member_of] & graph.keys).first
+  #   return if ptr == 'info:fedora/hull:rootDisplaySet'
+  #   while graph[ptr][:parent] != 'info:fedora/hull:rootDisplaySet' do
+  #     ptr = graph[ptr][:parent]
+  #   end
+  #   
+  #   return graph[ptr]
+  # end
 
 	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
@@ -322,8 +322,8 @@ module HullModelMethods
       end
     end
     if display_set
-      collection = top_level_collection
-      solr_doc << {"top_level_collection_id_s" => 'info:fedora/' + collection[:pid]} if collection
+      collection = display_set
+      solr_doc << {"top_level_collection_id_s" => collection} if collection
     end
     solr_doc << {"text" => get_extracted_content }
 		solr_doc

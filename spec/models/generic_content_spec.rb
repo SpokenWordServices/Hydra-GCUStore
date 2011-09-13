@@ -17,15 +17,6 @@ describe GenericContent do
     @generic_content.should respond_to(:apply_depositor_metadata)
   end
   
-  it "should have accessors for its default datastreams of content and original" do
-   # @generic_content.should respond_to(:has_content?)
-   # @generic_content.should respond_to(:content)
-   # @generic_content.should respond_to(:content=)
-   # @generic_content.should respond_to(:has_original?)
-   # @generic_content.should respond_to(:original)
-   # @generic_content.should respond_to(:original=)
-  end
-
   describe ".to_solr" do
     it "should return the necessary facets" do
       @generic_content.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
@@ -48,13 +39,9 @@ describe GenericContent do
       @node.add_relationship(:is_member_of, 'hull:700')
       @node.display_set.should == 'info:fedora/hull:700'
     end
-    it "should have a top_level_collection property" do
-      @node.add_relationship(:is_member_of, 'hull:700')
-      @node.top_level_collection.should == {:title=>["Postgraduate Medical Institute"], :pid=>"hull:700", :parent=>"info:fedora/hull:rootDisplaySet"}
-    end
     it "should index the top level collection" do
        @node.add_relationship(:is_member_of, 'info:fedora/hull:rootDisplaySet')
-       @node.top_level_collection.should be_nil
+       @node.to_solr['top_level_collection_id_s'].should == 'info:fedora/hull:rootDisplaySet'
     end
   end
 

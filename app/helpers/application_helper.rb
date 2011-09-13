@@ -58,7 +58,7 @@ module ApplicationHelper
     junk, pid = val.split('/')
     pid.sub!(':', '\:')
     result = Blacklight.solr.find(:q=>"id:#{pid}", :qt=>'standard')
-    if result.docs 
+    if result.docs.present?
       if result.docs.first['title_t'] 
         result.docs.first['title_t'].first 
       else
@@ -66,7 +66,18 @@ module ApplicationHelper
         result.docs.first['id']
       end
     else 
-      'Not Found'
+      'Not Found ' + pid
+    end
+  end
+
+  def render_facet_limit(solr_field)
+    if solr_field == 'top_level_collection_id_s'
+      display_facet = @response.facets.detect {|f| f.name == solr_field}
+      results = Blacklight.solr.find(:q=>'top_level_collection_id_s:info\:fedora/hull\:rootDisplaySet')
+      top_level_collections = results.docs.map{|x| x['id_t'] }.flatten.map{|it| "info:fedora/#{it}"}
+      render( :partial => "catalog/collection_facet", :locals => {:display_facet=>display_facet, :solr_field =>solr_field, :top_level_collections=>top_level_collections})
+    else
+      render( :partial => "catalog/facet_limit", :locals => {:solr_field =>solr_field })
     end
   end
 

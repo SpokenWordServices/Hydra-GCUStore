@@ -48,9 +48,6 @@ describe DisplaySet do
       @node.display_set.should == 'info:fedora/hull:700'
       @node.structural_set.should be_nil
     end
-    it "should have a top_level_collection property" do
-      @node.top_level_collection.should == {:title=>["Postgraduate Medical Institute"], :pid=>"hull:700", :parent=>"info:fedora/hull:rootDisplaySet"}
-    end
     it "should have a title" do
       @node.title.should == 'Blue sky'
     end

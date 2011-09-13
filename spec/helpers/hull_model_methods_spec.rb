@@ -122,6 +122,13 @@ describe HullModelMethods do
       solr_doc["fedora_owner_id_s"].should == "fooAdmin"
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"
     end
+
+    describe "top level collection correctly" do
+      it "should have a top_level_collection and display_set if its parent is at the top level" do
+      end
+      it "should not have a top_level_collection but should have a display_set if its parent is not at the top level" do
+      end
+    end
   end
   
   describe "queue_membership" do
