@@ -128,7 +128,7 @@ module HullModelMethods
     if is_valid
       if queues =  self.queue_membership
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
-				self.remove_relationship :is_governed_by, HULL_QUEUES.invert[queues.first]
+        is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
       end
       self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
 			self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]

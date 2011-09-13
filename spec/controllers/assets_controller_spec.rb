@@ -48,10 +48,10 @@ describe AssetsController do
         @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
 
         ### Deleting
-        controller.params = {'Display Set' => [''] }
+        controller.params = {'Display Set' => [''], 'Structural Set' => [""] }
         controller.send :update_set_membership
         @document.relationships[:self][:is_member_of].should be_nil
-        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:protoQueue"]
 
       end
     end

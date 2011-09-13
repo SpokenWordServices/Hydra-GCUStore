@@ -78,8 +78,14 @@ class AssetsController < ApplicationController
       end
 		
 			def update_set_membership
-          structural = params["Structural Set"].to_s
-          structural = structural.present? ? strip_namespace(structural) : nil
+          structural = params["Structural Set"]
+          structural = structural.first if structural.kind_of? Array
+          if structural && structural.empty?
+            @document.change_queue_membership :proto
+            structural = nil
+          elsif structural
+            structural = strip_namespace(structural)
+          end
           display = params["Display Set"].to_s
           display = display.present? ? strip_namespace(display) : nil
           if @document.respond_to?(:apply_set_membership)
