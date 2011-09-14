@@ -365,6 +365,7 @@ module HullModelMethods
   end
 
   def extract_content(filename)
+    logger.error "Extracting content from #{filename.path}"
     url = "#{ActiveFedora.solr_config[:url]}/update/extract?defaultField=content&extractOnly=true"
     begin
       response = RestClient.post url, :upload => filename
