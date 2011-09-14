@@ -378,6 +378,10 @@ module HullModelMethods
     end
     ng_xml = Nokogiri::XML.parse(response.body)
     ele = ng_xml.at_css("str")
+    unless ele
+      logger.error "Unable to get the 'str' node from response: #{response.body}"
+      return ""
+    end
     ele.inner_html
   end
 
