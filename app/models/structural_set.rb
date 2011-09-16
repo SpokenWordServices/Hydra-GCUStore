@@ -8,7 +8,7 @@ class StructuralSet < ActiveFedora::Base
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
-  has_metadata :name => "defaultObjectRights", :type => Hydra::RightsMetadata 
+  has_metadata :name => "defaultObjectRights", :type => NonindexingRightsMetadata 
 
   has_metadata :name => "descMetadata", :type => ModsStructuralSet
 
