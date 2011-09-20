@@ -95,7 +95,7 @@ GEM
       linecache (>= 0.3)
     rubytree (0.8.1)
     solr-ruby (0.0.8)
-    solrizer (1.1.1)
+    solrizer (1.1.2)
       daemons
       mediashelf-loggable
       nokogiri
@@ -163,7 +163,7 @@ DEPENDENCIES
   ruby-debug-base
   rubytree
   solr-ruby
-  solrizer (>= 1.1.1)
+  solrizer (>= 1.1.2)
   solrizer-fedora (>= 1.1.1)
   sqlite3-ruby (= 1.2.5)
   stomp
