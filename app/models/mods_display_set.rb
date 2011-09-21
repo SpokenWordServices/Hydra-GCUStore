@@ -16,7 +16,11 @@ class ModsDisplaySet < ObjectMods
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
     t.description(:path=>"abstract")
-  
+    t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
+     t.topic(:index_as=>[:facetable])
+		 t.geographic
+		 t.temporal
+    }  
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
 
 		t.location {
@@ -40,6 +44,11 @@ class ModsDisplaySet < ObjectMods
 			 			 xml.typeOfResource("text", :collection=>"yes") 
 	         	 xml.genre "Display set"
              xml.abstract
+						 xml.subject (:authority=>"UoH") {
+               xml.topic
+ 							 xml.geographic
+							 xml.temporal
+             }
              xml.originInfo {
 							 xml.publisher "The University of Hull"
              	 xml.dateIssued(Time.now.strftime("%Y-%m-%d"))

@@ -17,6 +17,15 @@
     <dd>
       <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
     </dd>
+		<div id="subjects">
+	    <%= render :partial => 'subjects/index' %>
+	  </div> 
+	  <div class="multi-field" id="temporal">
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":subject, :temporal", :datastream_name=>"descMetadata", :field_label=>"Temporal"} %>
+	 	</div>
+    <div class="multi-field" id="temporal">
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":subject, :geographic", :datastream_name=>"descMetadata", :field_label=>"Geographic"} %>
+	 	</div>
 		<dt>
       <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
     </dt>
