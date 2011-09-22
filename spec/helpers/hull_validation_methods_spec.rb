@@ -4,7 +4,6 @@ class TestValidationClassOne
   include HullValidationMethods
 
   has_workflow_validation :qa do
-    puts "whoo hoo"
     is_valid?
   end
 

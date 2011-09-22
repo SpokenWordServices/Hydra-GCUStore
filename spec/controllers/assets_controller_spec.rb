@@ -33,24 +33,24 @@ describe AssetsController do
         controller.params = {'Structural Set' => "info:fedora/hull:3374" }
         
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:3374"]
+        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue","info:fedora/hull:3374"]
         @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
         @document.rightsMetadata.edit_access.machine.group.should == ['researcher']
 
         controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should include("info:fedora/hull:3374", "info:fedora/hull:9")
+        @document.relationships[:self][:is_member_of].should include("info:fedora/hull:protoQueue","info:fedora/hull:3374", "info:fedora/hull:9")
         @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
 
         controller.params = {'Display Set' => ['info:fedora/hull:9'] }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
+        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue","info:fedora/hull:9"]
         @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
 
         ### Deleting
         controller.params = {'Display Set' => [''], 'Structural Set' => [""] }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should be_nil
+        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue"]
         @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:protoQueue"]
 
       end

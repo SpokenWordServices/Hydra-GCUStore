@@ -106,7 +106,7 @@ module HullModelMethods
 #  end
 
   def queue_membership
-    self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+    self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,nil) }.compact
   end
 
 	def is_governed_by_queue_membership
@@ -210,7 +210,7 @@ module HullModelMethods
 
   def structural_set
     return unless relationships[:self][:is_member_of]
-    (relationships[:self][:is_member_of] & StructuralSet.structural_set_pids).first
+    (relationships[:self][:is_member_of] & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
   end
   def display_set
     return unless relationships[:self][:is_member_of]
@@ -232,7 +232,7 @@ module HullModelMethods
 	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
     old_sets = set_membership.dup
-    old_sets.each { |s| self.remove_relationship :is_member_of, s }
+    old_sets.each { |s| self.remove_relationship(:is_member_of, s) unless HULL_QUEUES.has_key?(s) }
     sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of, s }
 	end
 
