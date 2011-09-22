@@ -65,6 +65,24 @@ describe HullModelMethods do
     end
   end
 
+  describe "#apply_set_membership" do
+    before do
+      @structural_set1 = StructuralSet.new
+      @structural_set1.save
+      @testclassone.queue_membership.should == [:proto]
+      #@testclassone.change_queue_membership(:proto)
+    end
+
+    it "should not add the structural set but not overwrite the protoQueue" do
+      @testclassone.apply_set_membership([@structural_set1])
+      @testclassone.queue_membership.should == [:proto]
+    end
+
+    after do
+    end
+
+  end
+
 
   it "should provide insert/remove methods for subject_topic" do
     @testclassone.respond_to?(:insert_subject_topic).should be_true
