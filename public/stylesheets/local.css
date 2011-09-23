@@ -1405,3 +1405,8 @@ fieldset.edit-half dl li span input {
 .dd_text p {
   margin-bottom:1em;
 }
+#border {
+  border-width: 0.1em;
+  border-style: solid;
+  border-color: #000
+}

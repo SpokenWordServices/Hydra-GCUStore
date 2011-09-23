@@ -1,0 +1,8 @@
+<div id="login">
+  
+  <%= render :partial=>'login_form' %>
+
+  <% if RAILS_ENV != 'production' %>
+  	<p>Don't have an account? <%= link_to 'Create one', new_user_path %></p>
+  <% end %>
+</div>
