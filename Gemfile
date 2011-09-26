@@ -35,7 +35,7 @@ gem 'sqlite3-ruby', '1.2.5'
 gem 'term-ansicolor'
 gem 'trollop'
 gem 'webrat'
-gem 'will_paginate'
+gem 'will_paginate', '<3.0.0'
 gem 'xml-simple'
 gem 'yard'
 
