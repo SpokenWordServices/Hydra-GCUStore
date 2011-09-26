@@ -1,8 +1,0 @@
-SOLRIZER: loading field name mappings from /opt/development/hyhull/config/solr_mappings.yml
-resetting mappings for Solrizer::FieldMapper::Default
-copying over fedora.fcfg
-This application has Blacklight version 2.7.0 installed
-jetty_home: /opt/development/hyhull/jetty
-solr_home: /opt/development/hyhull/jetty/solr
-fedora_home: /opt/development/hyhull/jetty/fedora/default
-jetty_command: java -Djetty.port=8983 -Dsolr.solr.home=/opt/development/hyhull/jetty/solr -Dfedora.home=/opt/development/hyhull/jetty/fedora/default -jar start.jar
