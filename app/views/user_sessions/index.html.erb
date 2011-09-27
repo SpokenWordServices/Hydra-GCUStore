@@ -1,0 +1,11 @@
+<div id="login">
+  
+  <%= render :partial=>'login_form' %>
+
+  <% if RAILS_ENV != 'production' %>
+  	<p>Don't have an account? <%= link_to 'Create one', new_user_path %></p>
+  <% else %>
+		 <p>If you are a University of Hull student or member of staff, you should use this Hydra repository through the University portal at <a href="https://portal.hull.ac.uk"/>https://portal.hull.ac.uk</a> where you will be able to log in and have access to 'University only' content.</p><br/>
+<p>This login is intended for administrative use only and does not work with standard University credentials.</p>
+   <% end %>
+ </div>

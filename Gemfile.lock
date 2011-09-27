@@ -170,6 +170,6 @@ DEPENDENCIES
   term-ansicolor
   trollop
   webrat
-  will_paginate
+  will_paginate (< 3.0.0)
   xml-simple
   yard

@@ -1,7 +1,13 @@
 staff:
+ - memberOfStaff
+ - committeeSection
+ - engineering
 student:
-archivist:
-donor:
-researcher:
-patron:
+ - undergraduate
+committeeSection:
+ - committeeSection
+engineering:
+ - engineering
 contentAccessTeam:
+ - contentAccessTeam
+

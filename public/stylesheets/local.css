@@ -376,7 +376,7 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
 }
 
 #yui-main {
-    position: relative;
+		position: static;
     width: 930px;
 }
 
@@ -616,6 +616,10 @@ select#sort, select#per_page {
 }
 
  /* Local facets */
+
+.yui-b {
+ position:static;
+}
 
 .yui-t2 .yui-b {
     float: left;
@@ -1404,4 +1408,9 @@ fieldset.edit-half dl li span input {
 /* For object description display, abstract/descriptions can contain paragraph breaks, this targets such <p></p> to display the paragraphs properly */
 .dd_text p {
   margin-bottom:1em;
+}
+#border {
+  border-width: 0.1em;
+  border-style: solid;
+  border-color: #000
 }

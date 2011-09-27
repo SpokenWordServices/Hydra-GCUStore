@@ -8,7 +8,7 @@ module ApplicationHelper
 
   # Change the name of your application here
   def application_name
-    'Hydrangea'
+    "University of Hull Digital Repository"
   end
 
 #   COPIED from vendor/plugins/blacklight/app/helpers/application_helper.rb
