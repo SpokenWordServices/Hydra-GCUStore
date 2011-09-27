@@ -1,5 +1,15 @@
 <% display_type = params[:display_type].nil? ? 'list' : params[:display_type] %>
 
 <%= render :partial => "shared/index_#{display_type}", :locals => {:document => document, :counter => counter } %>
-<div id="genre_image" class="text-genre" ></div>
-
+<% genre = document["genre_t"].to_s %>
+<% if genre == "Dataset" %>
+	<div id="genre_image" class="dataset-genre" ></div>
+<% elsif genre == "Presentation" %>
+	<div id="genre_image" class="presentation-genre"></div>
+<% elsif genre == "Photograph" %>
+	<div id="genre_image" class="image-genre"></div>
+<% elsif genre == "Event" %>
+	<div id="genre_image" class="event-genre"></div>
+<% else %>
+	<div id="genre_image" class="text-genre"></div>
+<% end %>
