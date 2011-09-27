@@ -617,7 +617,7 @@ select#sort, select#per_page {
 
  /* Local facets */
 
-yui-b {
+.yui-b {
  position:static;
 }
 
