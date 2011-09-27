@@ -142,7 +142,7 @@ Pulled from vendor/plugins/dor_objects/app/views/dor_object/_edit.html.erb
     #  enforce_search_permissions
     #end
     (@response, @document_list) = get_search_results( @extra_controller_params.merge!(:q=>build_lucene_query(params[:q])) )
-    logger.debug("LUCENE QUERY: #{build_lucene_query(params[:q])}")
+    logger.debug("LUCENE QUERY: #{@extra_controller_params.merge!(:q=>build_lucene_query(params[:q]))}")
     logger.debug("FOUND: #{@document_list.length}")
     logger.debug("RESPONSE: #{@response.inspect}")
     logger.debug("DOCUMENT: #{@document_list.inspect}")
