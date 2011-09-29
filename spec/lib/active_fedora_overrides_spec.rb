@@ -49,10 +49,8 @@ describe ActiveFedora::ContentModel do
     it "should construct hull pids correctly" do
       ActiveFedora::ContentModel.pid_from_ruby_class(UketdObject).should eql('hull-cModel:uketdObject')
       ActiveFedora::ContentModel.pid_from_ruby_class(ExamPaper).should eql('hull-cModel:examPaper')
-      ActiveFedora::ContentModel.pid_from_ruby_class(MeetingPaper).should eql('hull-cModel:meetingPaper')
       ActiveFedora::ContentModel.pid_from_ruby_class(GenericContent).should eql('hull-cModel:genericContent')
       ActiveFedora::ContentModel.pid_from_ruby_class(StructuralSet).should eql('hull-cModel:structuralSet')
-      ActiveFedora::ContentModel.pid_from_ruby_class(Presentation).should eql('hull-cModel:presentation')
       ActiveFedora::ContentModel.pid_from_ruby_class(JournalArticle).should eql('hull-cModel:journalArticle')
     end
   end
@@ -61,10 +59,8 @@ describe ActiveFedora::ContentModel do
     it "should correctly return the ruby class of a given uri" do
       ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:uketdObject").should eql(UketdObject)
       ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:examPaper").should eql(ExamPaper)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:meetingPaper").should eql(MeetingPaper)
       ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:genericContent").should eql(GenericContent)
       ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:structuralSet").should eql(StructuralSet)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:presentation").should eql(Presentation)
       ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:journalArticle").should eql(JournalArticle)
     end
   end

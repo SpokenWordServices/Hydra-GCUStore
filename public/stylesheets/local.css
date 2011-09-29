@@ -884,8 +884,11 @@ div#downloads-list {
 }
 
 div#qr_code {
-	padding-left:32px;
+	padding-left:22px;
 	padding-top: 2em;
+}
+#qr-image {
+	border:5px solid #D9E2E8;
 }
 
 div#file-size {

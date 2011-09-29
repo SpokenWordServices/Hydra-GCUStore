@@ -11,8 +11,7 @@
 <% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
 
 <div class="document_viewer" id="cover_container">
-  
-  <div class="content-type-header"><h1></h1></div>
+  <div class="content-type-header"><h1><%= @document["genre_t"] %></h1></div>
   <%= render :partial => 'generic_contents/show_description' %>
   <%= render :partial => 'shared/show_downloads' %>
   <%= render :partial => 'shared/show_links' %>
