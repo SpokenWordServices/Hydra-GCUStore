@@ -227,5 +227,30 @@ module CatalogHelper
 		return full_date
 	end  
 
+  def breadcrumb_trail_for_set(pid)
+		#Objects ids are stored as "info:fedora/hull:3374" in tree so we need to append this
+		content = "info:fedora/" + pid
+		breadcrumb = ""
+		structural_set_tree = StructuralSet.tree    
+		current_node = ""		
+		structural_set_tree.each do |node|
+	    if node.content == content
+        current_node = node
+        break
+      end
+		end
+		if current_node != ""			
+			parentage_sets = current_node.parentage.reverse
+			parentage_sets.each do |set| 
+				pid = set.content.slice(set.content.index('/')  + 1..set.content.length)
+				name = set.name
+				breadcrumb << link_to (name, "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/#{pid}&results_view=true") if parentage_sets.first == set
+				breadcrumb << link_to (name , :controller => 'catalog', :action => 'show', :id => pid) if parentage_sets.first != set
+				breadcrumb << " > " if parentage_sets.last != set
+			end
+		end
+		breadcrumb
+  end
+
 end
 
