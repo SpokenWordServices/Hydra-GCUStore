@@ -20,20 +20,20 @@ class UketdObject < ActiveFedora::Base
   has_relationship "parts", :is_part_of, :inbound => true
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
+  has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => Hydra::RightsMetadata 
   
   # Uses the Hydra MODS Article profile for tracking most of the descriptive metadata
   # TODO: define terminology for ETD
-  has_metadata :name => "descMetadata", :label=>"Mods Metadata", :control_group=>"M", :type => ModsUketd
+  has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsUketd
 
-  has_metadata :name => "UKETD_DC", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
+  has_metadata :name => "UKETD_DC", :label=>"UKETD_DC metadata", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
 
-  has_metadata :name => "DC", :type => ObjectDc
+  has_metadata :name => "DC", :type => ObjectDc, :label=>"DC admin metadata"
 
-  has_metadata :name => "contentMetadata", :control_group => "M", :type => ContentMetadata
+  has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group => "M", :type => ContentMetadata
 
   # A place to put extra metadata values
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
+  has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
     m.field 'depositor', :string
   end

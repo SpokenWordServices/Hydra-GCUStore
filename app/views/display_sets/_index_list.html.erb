@@ -14,7 +14,7 @@
   <% if document.get(:description_t)  %>
      <dt>Description</dt>
        <dd>
-				 <%= document.get(:description_t)[0..document.get(:description_t)[0..150].rindex(' ')] + " ..." %>
+         <%= if document.get(:description_t).length < 150 then document.get(:description_t) else document.get(:description_t)[0..document.get(:description_t)[0..150].rindex(' ')] + " ..." end %>
        </dd>
 	 <% end %>
    <% if document.get(:language_lang_text_t)  %>

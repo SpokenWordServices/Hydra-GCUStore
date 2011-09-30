@@ -7,14 +7,14 @@ class DisplaySet < ActiveFedora::Base
   include HullModelMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
+  has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => Hydra::RightsMetadata 
 
-  has_metadata :name => "descMetadata", :type => ModsDisplaySet
+  has_metadata :name => "descMetadata", :label=>"MODS metadata", :type => ModsDisplaySet
 
-  has_metadata :name => "DC", :type => ObjectDc
+  has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
   # A place to put extra metadata values
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
+  has_metadata :name => "properties", :label=>" Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
     m.field 'depositor', :string
   end

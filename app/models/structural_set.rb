@@ -7,15 +7,15 @@ class StructuralSet < ActiveFedora::Base
   include HullModelMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
-  has_metadata :name => "defaultObjectRights", :type => NonindexingRightsMetadata 
+  has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => Hydra::RightsMetadata 
+  has_metadata :name => "defaultObjectRights", :label=>"Default object rights", :type => NonindexingRightsMetadata 
 
-  has_metadata :name => "descMetadata", :type => ModsStructuralSet
+  has_metadata :name => "descMetadata", :label=>"MODS metadata", :type => ModsStructuralSet
 
-  has_metadata :name => "DC", :type => ObjectDc
+  has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
   # A place to put extra metadata values
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
+  has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
     m.field 'depositor', :string
   end
@@ -40,7 +40,7 @@ class StructuralSet < ActiveFedora::Base
     defaultRights = Hydra::RightsMetadata.from_xml(parent.defaultObjectRights.content)
     defaultRights.pid = self.pid
     defaultRights.dsid = "defaultObjectRights"
-    datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
+	  datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
   end
 
 

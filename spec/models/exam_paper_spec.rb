@@ -32,7 +32,7 @@ describe ExamPaper do
 
   describe "datastreams labelling" do
     it "should properly label datastreams if label option passed" do
-      @examPaper.datastreams["descMetadata"].label.should == "MODS Metadata"
+      @examPaper.datastreams["descMetadata"].label.should == "MODS metadata"
     end
   end
 
