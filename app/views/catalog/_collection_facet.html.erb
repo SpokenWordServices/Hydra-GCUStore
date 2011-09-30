@@ -3,8 +3,9 @@
   <li>
 		<%= link_to "Collections", "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/hull:rootDisplaySet&results_view=true" %>
   </li>
-<ul>
+</ul>
 <!--  Removed to add 'quick and dirty' fix HYHULL-417
+<ul>
 <% if display_facet && (display_facet.items.map{ |i| i.value } & top_level_collections).length > 0 %>
   <h3><%= facet_field_labels[solr_field] -%></h3>
   <ul>
