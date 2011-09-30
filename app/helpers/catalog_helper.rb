@@ -200,15 +200,15 @@ module CatalogHelper
  end
 
  def get_friendly_file_size(size_in_bytes_str)
-  text = "Size n/a"   
+  text = "Size n/a"
   if size_in_bytes_str.length > 0
-    size_in_bytes = Integer(size_in_bytes_str)
+    size_in_bytes = Float(size_in_bytes_str)
     if size_in_bytes > 1048575
       friendly_file_size = size_in_bytes / 1024 / 1024
-      text = friendly_file_size.to_s + "MB"
+      text = friendly_file_size.round(1).to_s + "MB"
     else
      friendly_file_size = size_in_bytes / 1024
-     text = friendly_file_size.to_s + "KB"
+     text = friendly_file_size.round(1).to_s + "KB"
     end
   end
   text  
