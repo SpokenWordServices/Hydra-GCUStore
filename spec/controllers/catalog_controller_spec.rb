@@ -1,6 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'mocha'
-require "authlogic/test_case" 
 
 # See cucumber tests (ie. /features/edit_document.feature) for more tests, including ones that test the edit method & view
 # You can run the cucumber tests with 

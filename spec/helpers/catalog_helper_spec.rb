@@ -2,7 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CatalogHelper do
   include CatalogHelper
-  include MetadataHelper
 
   describe "Display datatastream field content" do
     it "should generate valid html for one returned value" do
