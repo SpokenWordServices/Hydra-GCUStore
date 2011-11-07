@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 # require File.expand_path(File.dirname(__FILE__) + '/../../lib/hydra/hydra_testing_server.rb')
 
 describe Hydra::TestingServer do

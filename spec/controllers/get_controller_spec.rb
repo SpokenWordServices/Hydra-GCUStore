@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 require 'mocha'
 
 # See cucumber tests (ie. /features/edit_document.feature) for more tests, including ones that test the edit method & view

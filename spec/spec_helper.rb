@@ -49,24 +49,25 @@ RSpec.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
   
-  def fixture(file)
-    File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
+  
+end
+
+def fixture(file)
+  File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
+end
+
+def match_html(html)
+  # Match two strings, but don't care about whitespace
+  simple_matcher("should match #{html}"){|given| given.strip.gsub(/\s+/,' ').gsub('> <','><') == html.strip.gsub(/\s+/,' ').gsub('> <','><') }
+end
+
+def connect_bl_solr
+  # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )
+  if defined?(@index_full_text) && @index_full_text
+    url = Blacklight.solr_config['fulltext']['url']
+  else
+    url = Blacklight.solr_config[:url]
   end
-  
-  def match_html(html)
-    # Match two strings, but don't care about whitespace
-    simple_matcher("should match #{html}"){|given| given.strip.gsub(/\s+/,' ').gsub('> <','><') == html.strip.gsub(/\s+/,' ').gsub('> <','><') }
-  end
-  
-  def connect_bl_solr
-    # @connection = Solr::Connection.new( SHELVER_SOLR_URL, :autocommit => :on )
-    if defined?(@index_full_text) && @index_full_text
-      url = Blacklight.solr_config['fulltext']['url']
-    else
-      url = Blacklight.solr_config[:url]
-    end
-  
-    @bl_solr = Solr::Connection.new(url, :autocommit => :on )
-  end
-  
+
+  @bl_solr = Solr::Connection.new(url, :autocommit => :on )
 end

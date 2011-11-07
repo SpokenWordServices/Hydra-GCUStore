@@ -1,0 +1,13 @@
+development:
+  fedora:
+    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora
+test: &TEST  
+  fedora:
+    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora-test
+production:
+  fedora:
+    url: http://fedoraAdmin:fedoraAdmin@your.production.server:8080/fedora
+cucumber:
+  <<: *TEST
+cucumber:
+  <<: *TEST

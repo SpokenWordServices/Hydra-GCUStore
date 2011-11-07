@@ -9,19 +9,19 @@ namespace :hull do
   namespace :default_fixtures do
 
     desc "Load default hull fixtures via hydra"
-    task :load => :load_dependencies do
+    task :load => [:load_dependencies, :ingest] do
 
-      fixture_files.each_with_index do |fixture,index|
-        ENV["pid"] = nil
-        ENV["fixture"] = fixture
-        Rake::Task["hydra:import_fixture"].reenable
-        Rake::Task["hydra:import_fixture"].invoke
-      end
-      fixture_files.each_with_index do |fixture,index|
-        ENV["PID"] = pid_from_path(fixture) #fixture.split("/")[-1].gsub(".xml","").gsub("_",":")
-        Rake::Task["solrizer:fedora:solrize"].reenable
-        Rake::Task["solrizer:fedora:solrize"].invoke
-      end
+      # fixture_files.each_with_index do |fixture,index|
+      #   ENV["pid"] = nil
+      #   ENV["fixture"] = fixture
+      #   Rake::Task["hydra:import_fixture"].reenable
+      #   Rake::Task["hydra:import_fixture"].invoke
+      # end
+      # fixture_files.each_with_index do |fixture,index|
+      #   ENV["PID"] = pid_from_path(fixture) #fixture.split("/")[-1].gsub(".xml","").gsub("_",":")
+      #   Rake::Task["solrizer:fedora:solrize"].reenable
+      #   Rake::Task["solrizer:fedora:solrize"].invoke
+      # end
     end
 
     desc "Load the default fixtures via fedora's ingest"
@@ -29,10 +29,14 @@ namespace :hull do
         puts "opening files"
         fixture_files.each_with_index do |fixture,index|
           pid = pid_from_path(fixture)
-          fixture_file = File.open(fixture,"r")
-          puts "Ingesting #{fixture} via REST API..."
-          r = Fedora::Repository.instance.ingest(fixture_file,pid)
-          puts " Ingested #{r.body}"
+          body = ''
+          begin
+            ActiveFedora::FixtureLoader.import_to_fedora(fixture)
+            ActiveFedora::FixtureLoader.index(pid)
+          rescue
+            #typically an "object exists" error
+          end
+          puts " Ingested #{pid}"
         end
     end
 
@@ -41,10 +45,14 @@ namespace :hull do
         puts "loading dependencies"
         dependencies.each do |dependency|
           pid = pid_from_path(dependency)
-          dependency_file = File.open(dependency,"r")
           puts "Loading #{dependency}..."
-          r = Fedora::Repository.instance.ingest(dependency_file,pid)
-          puts "Loaded #{r.body}"
+          begin
+            ActiveFedora::FixtureLoader.import_to_fedora(dependency)
+            ActiveFedora::FixtureLoader.index(pid)
+          rescue
+            #typically an "object exists" error
+          end
+          puts "Loaded #{pid}"
         end
     end
 

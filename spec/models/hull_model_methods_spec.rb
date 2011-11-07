@@ -1,36 +1,33 @@
-require File.expand_path(File.dirname(__FILE__)+'/../spec_helper')
+require 'spec_helper'
 
-class TestClassOne < ActiveFedora::Base
-  include HullModelMethods
+# class TestClassOne < ActiveFedora::Base
+#   include HullModelMethods
+# 
+#   def owner_id
+#     "fooAdmin"
+#   end
+# 
+#   def initialize
+#     super
+#     self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+#   end
+# 
+# end
 
-  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  #has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
-
-  def owner_id
-    "fooAdmin"
-  end
-
-  def initialize
-    super
-    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
-  end
-
-end
-
-class TestClassTwo < UketdObject
-  def owner_id
-    "fooAdmin"
-  end
-
-  def initialize
-    super
-    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
-  end
-end
+# class TestClassTwo < UketdObject
+#   def owner_id
+#     "fooAdmin"
+#   end
+# 
+#   def initialize
+#     super
+#     self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+#   end
+# end
 
 describe HullModelMethods do
   before(:each) do
-    @testclassone = TestClassOne.new
+    @testclassone = UketdObject.new
   end
 
   describe "#apply_governed_by" do

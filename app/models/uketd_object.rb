@@ -9,7 +9,7 @@ class UketdObject < ActiveFedora::Base
   include HullModelMethods
   include HullValidationMethods
 
-  def initialize(attrs={})
+  def initialize(attrs=nil)
     super(attrs)
     if new_object?
       self.add_relationship(:has_model,"info:fedora/hydra-cModel:genericParent")

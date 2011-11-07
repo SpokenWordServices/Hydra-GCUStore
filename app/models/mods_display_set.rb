@@ -44,7 +44,7 @@ class ModsDisplaySet < ObjectMods
 			 			 xml.typeOfResource("text", :collection=>"yes") 
 	         	 xml.genre "Display set"
              xml.abstract
-						 xml.subject (:authority=>"UoH") {
+						 xml.subject(:authority=>"UoH") {
                xml.topic
  							 xml.geographic
 							 xml.temporal

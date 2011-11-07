@@ -1,4 +1,6 @@
 module HullModelMethods 
+  extend ActiveSupport::Concern
+
   
   module ClassMethods
     def pid_namespace
@@ -7,12 +9,12 @@ module HullModelMethods
      
   end
 
-  def self.included(klass)
-    klass.extend(ClassMethods)
-  end
+  # def self.included(klass)
+  #   klass.extend(ClassMethods)
+  # end
 
-  def initialize(opts={})
-    super(opts)
+  def initialize(attrs=nil)
+    super(attrs)
     after_create() if new_object?
   end
 
@@ -106,19 +108,19 @@ module HullModelMethods
 #  end
 
   def queue_membership
-    self.relationships[:self].fetch(:is_member_of,[]).map{|val| HULL_QUEUES.fetch(val,nil) }.compact
+    self.ids_for_outbound(:is_member_of).map{|val| HULL_QUEUES.fetch(val,nil) }.compact
   end
 
 	def is_governed_by_queue_membership
-  	self.relationships[:self].fetch(:is_governed_by,[]).map{|val| HULL_QUEUES.fetch(val,"") }
+  	self.ids_for_outbound(:is_governed_by).map{|val| HULL_QUEUES.fetch(val,"") }
 	end
 
   def is_governed_by
-    self.relationships[:self].fetch(:is_governed_by,[])
+    self.ids_for_outbound(:is_governed_by)
   end
 
 	def set_membership
-		self.relationships[:self].fetch(:is_member_of,[])
+		self.ids_for_outbound(:is_member_of)
 	end
 
   def change_queue_membership(new_queue)
@@ -126,7 +128,8 @@ module HullModelMethods
     is_valid = self.respond_to?(validation_method) ? self.send(validation_method) : true
     
     if is_valid
-      if queues =  self.queue_membership
+      queues =  self.queue_membership
+      unless queues.empty?
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
         is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
       end
@@ -139,26 +142,6 @@ module HullModelMethods
     else
       logger.warn "Could not change queue membership due to validation errors."
       return false
-    end
-  end
-
- 	# Call to remove file obects
-  def destroy_child_assets
-    destroyable_child_assets.each.inject([]) do |destroyed,fo| 
-        destroyed << fo.pid 
-        fo.delete
-        destroyed
-    end
-
-  end
-
-  def destroyable_child_assets
-    return [] unless self.file_objects
-    self.file_objects.each.inject([]) do |file_assets, fo| 
-      if fo.relationships[:self].has_key?(:is_part_of) && fo.relationships[:self][:is_part_of].length == 1 &&  fo.relationships[:self][:is_part_of][0].match(/#{self.pid}$/)
-        file_assets << fo
-      end
-      file_assets
     end
   end
 
