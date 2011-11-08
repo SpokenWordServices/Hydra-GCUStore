@@ -90,9 +90,7 @@ namespace :hull do
       workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
       project_dir = workspace_dir ? workspace_dir : ENV['PWD']
       #Rake::Task["db:test:clone_structure"].invoke
-      Rake::Task["hydra:jetty:config_fedora"].invoke
-      Rake::Task["hydra:jetty:config"].invoke
-      Rake::Task["hydra:jetty:config_full_text"].invoke
+      Rake::Task["'hydra:jetty:config:all'"].invoke
       jetty_params = {
         :jetty_home => "#{project_dir}/jetty",
         :quiet => false,

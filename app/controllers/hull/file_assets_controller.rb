@@ -1,9 +1,4 @@
-
-class FileAssetsController < ApplicationController
-
-  #require_dependency 'vendor/plugins/hydra_repository/app/controllers/file_assets_controller.rb'
-  
-  after_filter :update_metadata, :only => [:create,:destroy]
+class Hull::FileAssetsController < FileAssetsController
 
   # NOTE: overwriting this method to handle redirection back to edit view of container
   def create

@@ -1,8 +1,4 @@
 require 'spec_helper'
-require "active_fedora"
-require "nokogiri"
-require 'tree'
-require 'pp'
 
 describe StructuralSet do
   it "should return a tree" do
@@ -28,7 +24,7 @@ describe StructuralSet do
       @instance = StructuralSet.find(@instance.pid)
     end
     it "should have defaultObjectRights datastream" do
-      @instance.defaultObjectRights.content.should == '
+      @instance.defaultObjectRights.content.should be_equivalent_to '
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
   <copyright>
     <human></human>

@@ -1,33 +1,33 @@
 require 'spec_helper'
 
-# class TestClassOne < ActiveFedora::Base
-#   include HullModelMethods
-# 
-#   def owner_id
-#     "fooAdmin"
-#   end
-# 
-#   def initialize
-#     super
-#     self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
-#   end
-# 
-# end
+class TestClassOne < ActiveFedora::Base
+  include HullModelMethods
 
-# class TestClassTwo < UketdObject
-#   def owner_id
-#     "fooAdmin"
-#   end
-# 
-#   def initialize
-#     super
-#     self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
-#   end
-# end
+  def owner_id
+    "fooAdmin"
+  end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+  end
+
+end
+
+class TestClassTwo < UketdObject
+  def owner_id
+    "fooAdmin"
+  end
+
+  def initialize
+    super
+    self.add_relationship :is_member_of, "info:fedora/hull:protoQueue"
+  end
+end
 
 describe HullModelMethods do
   before(:each) do
-    @testclassone = UketdObject.new
+    @testclassone = TestClassOne.new
   end
 
   describe "#apply_governed_by" do
@@ -67,7 +67,6 @@ describe HullModelMethods do
       @structural_set1 = StructuralSet.new
       @structural_set1.save
       @testclassone.queue_membership.should == [:proto]
-      #@testclassone.change_queue_membership(:proto)
     end
 
     it "should not add the structural set but not overwrite the protoQueue" do
@@ -92,7 +91,7 @@ describe HullModelMethods do
       @mock_desc_ds.expects(:get_values).with([:title], {}).returns('My title')
       @mock_dc_ds = mock("DCDatastream")
       @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_title]=>'My title')
-      @testclassone.stubs(:datastreams_in_memory).returns({"descMetadata"=>@mock_desc_ds, "DC"=>@mock_dc_ds})
+      @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds, "DC"=>@mock_dc_ds})
     end
     it "should copy the date from the descMetadata to the dc datastream if it is present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns('2011-10')
@@ -123,9 +122,6 @@ describe HullModelMethods do
 
   describe "cmodel" do
     it "should properly return the appropriate c-Model declaration" do
-      helper.stubs(:class).returns(JournalArticle)
-      helper.cmodel.should == "info:fedora/hull-cModel:journalArticle"
-      
       @testclassone.cmodel.should == "info:fedora/hull-cModel:testClassOne"
     end
   end
@@ -150,7 +146,7 @@ describe HullModelMethods do
     it "should list all the queues of which the object asserts is_member_of" do
       @testclassone.queue_membership.should == [:proto]
     end
-    it "should move the object from one queue to the next if ojbect's state is valid" do
+    it "should move the object from one queue to the next if object's state is valid" do
       testclasstwo = TestClassTwo.new
       testclasstwo.expects(:ready_for_qa?).returns(true)
       testclasstwo.expects(:owner_id=).with("fedoraAdmin")

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileAssetsController do
+describe Hull::FileAssetsController do
 
   before do
     session[:user]='bob'
@@ -12,21 +12,13 @@ describe FileAssetsController do
     controller.should be_an_instance_of(FileAssetsController)
   end
   it "should be restful" do
-    route_for(:controller=>'file_assets', :action=>'index').should == '/file_assets'
-    route_for(:controller=>'file_assets', :action=>'show', :id=>"3").should == '/file_assets/3'
-    route_for(:controller=>'file_assets', :action=>'destroy', :id=>"3").should  == { :method => 'delete', :path => '/file_assets/3' }
-    route_for(:controller=>'file_assets', :action=>'update', :id=>"3").should == { :method => 'put', :path => '/file_assets/3' }
-    route_for(:controller=>'file_assets', :action=>'edit', :id=>"3").should == '/file_assets/3/edit'
-    route_for(:controller=>'file_assets', :action=>'new').should == '/file_assets/new'
-    route_for(:controller=>'file_assets', :action=>'create').should == { :method => 'post', :path => '/file_assets' }
-    
-    params_from(:get, '/file_assets').should == {:controller=>'file_assets', :action=>'index'}
-    params_from(:get, '/file_assets/3').should == {:controller=>'file_assets', :action=>'show', :id=>'3'}
-    params_from(:delete, '/file_assets/3').should == {:controller=>'file_assets', :action=>'destroy', :id=>'3'}
-    params_from(:put, '/file_assets/3').should == {:controller=>'file_assets', :action=>'update', :id=>'3'}
-    params_from(:get, '/file_assets/3/edit').should == {:controller=>'file_assets', :action=>'edit', :id=>'3'}
-    params_from(:get, '/file_assets/new').should == {:controller=>'file_assets', :action=>'new'}
-    params_from(:post, '/file_assets').should == {:controller=>'file_assets', :action=>'create'}
+    {:get => '/file_assets'}.should route_to(:controller=>'file_assets', :action=>'index')
+    {:get => '/file_assets/3'}.should route_to(:controller=>'file_assets', :action=>'show', :id=>"3")
+    {:delete => '/file_assets/3'}.should route_to(:controller=>'file_assets', :action=>'destroy', :id=>"3")
+    {:put => '/file_assets/3'}.should route_to(:controller=>'file_assets', :action=>'update', :id=>"3")
+    {:get => '/file_assets/3/edit'}.should route_to(:controller=>'file_assets', :action=>'edit', :id=>"3")
+    {:get => '/file_assets/new'}.should route_to(:controller=>'file_assets', :action=>'new')
+    {:post => '/file_assets'}.should route_to(:controller=>'file_assets', :action=>'create')
   end
   
   describe "index" do
@@ -36,8 +28,10 @@ describe FileAssetsController do
       # Solr::Connection.any_instance.expects(:query).with('conforms_to_field:info\:fedora/afmodel\:FileAsset', {}).returns("solr result")
       Solr::Connection.any_instance.expects(:query).with('active_fedora_model_s:FileAsset', {}).returns("solr result")
 
+
       ActiveFedora::Base.expects(:new).never
       xhr :get, :index
+      response.should be_success
       assigns[:solr_result].should == "solr result"
     end
     it "should find all file assets belonging to a given container object if container_id or container_id is provided" do
@@ -184,11 +178,10 @@ describe FileAssetsController do
   
   describe "integration tests - " do
     before(:all) do
-      Fedora::Repository.register(ActiveFedora.fedora_config[:url])
       ActiveFedora::SolrService.register(ActiveFedora.solr_config[:url])
       @test_container = ActiveFedora::Base.new
-      @test_container.add_relationship(:is_member_of, "foo:1")
-      @test_container.add_relationship(:has_collection_member, "foo:2")
+      @test_container.add_relationship(:is_member_of, "info:fedora/foo:1")
+      @test_container.add_relationship(:has_collection_member, "info:fedora/foo:2")
       @test_container.save
       
       @test_fa = FileAsset.new
@@ -205,7 +198,6 @@ describe FileAssetsController do
       it "should retrieve the container object and its file assets" do
         #xhr :get, :index, :container_id=>@test_container.pid
         get :index, {:container_id=>@test_container.pid}
-        params[:container_id].should_not be_nil
         assigns(:solr_result).should_not be_nil
         #puts assigns(:solr_result).inspect
         assigns(:container).file_objects(:response_format=>:id_array).should include(@test_fa.pid)

@@ -1,10 +1,17 @@
 Hull::Application.routes.draw do
   Blacklight.add_routes(self)
+  #HydraHead.add_routes(self)
 
   root :to => "catalog#index"
 
   devise_for :users
 
+  
+  match 'assets/:id/datastreams/:datastream' =>'file_assets#show', :as=>'datastream_content' 
+  match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content'
+  
+  resources :file_assets, :module=>'hull'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

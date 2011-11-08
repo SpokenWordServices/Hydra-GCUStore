@@ -6,7 +6,7 @@ describe UketdObject do
   
   context "original spec" do
     before(:each) do
-      Fedora::Repository.stubs(:instance).returns(stub_everything())
+      #Fedora::Repository.stubs(:instance).returns(stub_everything())
       @etd = UketdObject.new
     end
     
@@ -21,7 +21,7 @@ describe UketdObject do
 
     describe ".initialize" do
       it "should create the appropriate cModel declarations" do
-        @etd.relationships[:self][:has_model].should == ["info:fedora/hydra-cModel:genericParent", "info:fedora/hydra-cModel:commonMetadata"]
+        @etd.ids_for_outbound(:has_model).should == ["hydra-cModel:genericParent", "hydra-cModel:commonMetadata"]
       end
     end
   end

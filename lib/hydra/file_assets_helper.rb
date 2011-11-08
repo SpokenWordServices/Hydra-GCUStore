@@ -1,4 +1,3 @@
-
 module Hydra::FileAssetsHelper
   #require_dependency 'vendor/plugins/hydra_repository/lib/hydra/file_assets_helper.rb'
   

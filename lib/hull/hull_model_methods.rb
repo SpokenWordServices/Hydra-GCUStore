@@ -108,19 +108,19 @@ module HullModelMethods
 #  end
 
   def queue_membership
-    self.ids_for_outbound(:is_member_of).map{|val| HULL_QUEUES.fetch(val,nil) }.compact
+    self.set_membership.map{|val| HULL_QUEUES.fetch(val,nil) }.compact
   end
 
 	def is_governed_by_queue_membership
-  	self.ids_for_outbound(:is_governed_by).map{|val| HULL_QUEUES.fetch(val,"") }
+  	self.is_governed_by.map{|val| HULL_QUEUES.fetch(val,"") }
 	end
 
   def is_governed_by
-    self.ids_for_outbound(:is_governed_by)
+    self.ids_for_outbound(:is_governed_by).map{|val| "info:fedora/#{val}"}
   end
 
 	def set_membership
-		self.ids_for_outbound(:is_member_of)
+		self.ids_for_outbound(:is_member_of).map{|val| "info:fedora/#{val}"}
 	end
 
   def change_queue_membership(new_queue)
@@ -178,7 +178,7 @@ module HullModelMethods
 			self.owner_id = depositor_id
 		end
 			
-		dc_ds = self.datastreams_in_memory["DC"]
+		dc_ds = self.dc
     unless dc_ds.nil?
       dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
       begin
@@ -192,12 +192,14 @@ module HullModelMethods
   end
 
   def structural_set
-    return unless relationships[:self][:is_member_of]
-    (relationships[:self][:is_member_of] & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
+    ids = ids_for_outbound(:is_member_of)
+    return unless ids.present?
+    (ids & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
   end
   def display_set
-    return unless relationships[:self][:is_member_of]
-    (relationships[:self][:is_member_of] & DisplaySet.display_set_pids).first
+    ids = ids_for_outbound(:is_member_of)
+    return unless ids.present?
+    (ids & DisplaySet.display_set_pids).first
   end
 
   # def top_level_collection
@@ -231,13 +233,12 @@ module HullModelMethods
 	end
 
   def copy_rights_metadata(apo)
-    rights = Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content)
-    rights.pid = self.pid
-    defaultRights = rights.dup
-    rights.dsid = "rightsMetadata"
-    defaultRights.dsid = "defaultObjectRights"
-    datastreams_in_memory["rightsMetadata"] = rights 
-    datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
+    rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
+    Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content, rights)
+    defaultRights = NonindexingRightsMetadata.new(self.inner_object, 'defaultObjectRights')
+    defaultRights.ng_xml = rights.ng_xml.dup
+    datastreams["rightsMetadata"] = rights 
+    datastreams["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
   end
 
   def valid_for_save?(params)
@@ -287,18 +288,18 @@ module HullModelMethods
   
   def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
-	  solr_doc << { "has_model_s" => cmodel }
-    solr_doc << { "fedora_owner_id_s" => self.owner_id }
-    solr_doc << { "fedora_owner_id_display" => self.owner_id }
+	  solr_doc["has_model_s"] = cmodel
+    solr_doc["fedora_owner_id_s"] = self.owner_id
+    solr_doc["fedora_owner_id_display"] = self.owner_id
 		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
-			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
+			solr_doc["is_member_of_queue_facet"] = queue_membership.to_s 
 		end
     if descMetadata.origin_info && descMetadata.origin_info.date_issued 
       begin
         val = descMetadata.origin_info.date_issued.first
         if val
           date = Date.parse val
-          solr_doc << {"year_facet" => date.year, "month_facet" => date.month} 
+          solr_doc.merge!({"year_facet" => date.year, "month_facet" => date.month})
         end
       rescue ArgumentError => e
         #nop
@@ -306,9 +307,9 @@ module HullModelMethods
     end
     if display_set
       collection = display_set
-      solr_doc << {"top_level_collection_id_s" => collection} if collection
+      solr_doc["top_level_collection_id_s"] = collection if collection
     end
-    solr_doc << {"text" => get_extracted_content }
+    solr_doc["text"] = get_extracted_content
 		solr_doc
   end
 
@@ -330,7 +331,7 @@ module HullModelMethods
   # Extract content from all internal datastreams where mime type is application/pdf
   def retrieve_internal_datastream_pdf_content
     content = datastreams.values.each.inject("") do |extracted_content, datastream|
-      if datastream.mime_type == 'application/pdf'
+      if datastream.mimeType == 'application/pdf'
         extracted_content << datastream_content(pid,datastream)
         extracted_content << " "
       end
