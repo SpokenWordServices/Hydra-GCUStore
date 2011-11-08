@@ -62,3 +62,7 @@ if Hydra.respond_to?(:configure)
     }
   end
 end
+
+
+### Extend the Hydra defaults with our Hull methods
+FileAsset.send(:include, FileAssetExtra)

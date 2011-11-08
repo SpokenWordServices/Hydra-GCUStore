@@ -1,5 +1,5 @@
-class FileAsset < ActiveFedora::Base
-  #require_dependency 'vendor/plugins/hydra_repository/app/models/file_asset.rb'
+
+module FileAssetExtra
 
   # Overriding the to_solr method for hull's file asset objects in order to ensure that
   # the parent object gets solrized when a pdf is present
@@ -30,3 +30,4 @@ class FileAsset < ActiveFedora::Base
   end
 
 end
+

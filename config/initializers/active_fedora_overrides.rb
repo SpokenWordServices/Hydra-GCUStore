@@ -16,6 +16,25 @@ module ActiveFedora
       ds_specs[args[:name]]= {:type => args[:type], :label =>  args.fetch(:label,""), :control_group => args.fetch(:control_group,"X"), :disseminator => args.fetch(:disseminator,""), :url => args.fetch(:url,""),:block => block}
     end
 
+    def self.datastream_class_for_name(dsid)
+      ds_specs[dsid] ? ds_specs[dsid][:type] : ActiveFedora::Datastream
+    end
+
+    def load_datastreams_from_fedora
+      inner_object.datastreams.each do |dsid, datastream|
+        ds_spec = self.class.ds_specs[dsid]
+        datastreams[dsid] = datastream
+        if (ds_spec)
+          klass = ds_spec[:type]
+          datastreams[dsid].model = self if klass == RelsExtDatastream
+
+          if ds_spec[:block].class == Proc
+            ds_spec[:block].call(datastreams[dsid])
+          end
+        end
+      end
+    end
+
     private
     
 
@@ -91,7 +110,7 @@ module ActiveFedora
 
         if models_array.empty?
           fall_back_to_base = true
-          unless obj.datastreams_in_memory["descMetadata"].nil? || obj.datastreams_in_memory["rightsMetadata"].nil? || obj.datastreams_in_memory["contentMetadata"].nil?
+          unless obj.datastreams["descMetadata"].nil? || obj.datastreams["rightsMetadata"].nil? || obj.datastreams["contentMetadata"].nil?
             if class_exists?("GenericContent")
               m = Kernel.const_get("GenericContent")
               if m

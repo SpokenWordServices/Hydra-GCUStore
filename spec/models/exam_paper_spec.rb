@@ -5,7 +5,6 @@ require "nokogiri"
 describe ExamPaper do
   
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
     @examPaper = ExamPaper.new
   end
   
@@ -32,7 +31,7 @@ describe ExamPaper do
 
   describe "datastreams labelling" do
     it "should properly label datastreams if label option passed" do
-      @examPaper.datastreams["descMetadata"].label.should == "MODS metadata"
+      @examPaper.datastreams["descMetadata"].dsLabel.should == "MODS metadata"
     end
   end
 
