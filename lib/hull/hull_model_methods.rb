@@ -192,12 +192,12 @@ module HullModelMethods
   end
 
   def structural_set
-    ids = ids_for_outbound(:is_member_of)
+    ids = set_membership
     return unless ids.present?
     (ids & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
   end
   def display_set
-    ids = ids_for_outbound(:is_member_of)
+    ids = set_membership
     return unless ids.present?
     (ids & DisplaySet.display_set_pids).first
   end

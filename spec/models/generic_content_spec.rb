@@ -4,7 +4,7 @@ require "active_fedora"
 describe GenericContent do
   
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
+#    Fedora::Repository.stubs(:instance).returns(stub_everything())
     @generic_content = GenericContent.new
   end
   
@@ -36,7 +36,7 @@ describe GenericContent do
       @node.structural_set.should == 'info:fedora/hull:669'
     end
     it "should have a display_set property" do
-      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.add_relationship(:is_member_of, 'info:fedora/hull:700')
       @node.display_set.should == 'info:fedora/hull:700'
     end
     it "should index the top level collection" do
