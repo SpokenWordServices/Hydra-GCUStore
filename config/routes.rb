@@ -13,6 +13,23 @@ Hull::Application.routes.draw do
   match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'
   match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:put
 
+  # resources :catalog, :only=>[:index, :show, :update], :as=>'resources' do
+  # end
+  # map.resources(:catalog,
+  #   :as => 'resources',
+  #   :only => [:index, :show, :update],
+  #   # /catalog/:id/image <- for ajax cover requests
+  #   # /catalog/:id/status
+  #   # /catalog/:id/availability
+  #   :member=>{:image=>:get, :status=>:get, :availability=>:get, :librarian_view=>:get},
+  #   # /catalog/map
+  #   :collection => {:map => :get, :opensearch=>:get, :citation=>:get, :email=>:get, :sms=>:get, :endnote=>:get, :send_email_record=>:post}
+  # )
+
+  # map.resources :subjects
+  # map.resources :grant_numbers
+	# map.resources :multi_field
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

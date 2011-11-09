@@ -12,6 +12,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 RSpec.configure do |config|
   config.mock_with :mocha
   config.color_enabled = true
+  config.include Devise::TestHelpers, :type => :controller
 end
 
 def fixture(file)
