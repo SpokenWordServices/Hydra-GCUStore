@@ -1,6 +1,6 @@
 Hull::Application.routes.draw do
   Blacklight.add_routes(self)
-  #HydraHead.add_routes(self)
+  HydraHead.add_routes(self)
 
   root :to => "catalog#index"
 
@@ -9,9 +9,11 @@ Hull::Application.routes.draw do
   
   match 'assets/:id/datastreams/:datastream' =>'file_assets#show', :as=>'datastream_content' 
   match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content'
+
+  match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'
+  match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:put
+
   
-  resources :file_assets, :module=>'hull'
- 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

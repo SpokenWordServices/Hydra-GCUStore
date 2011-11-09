@@ -66,3 +66,4 @@ end
 
 ### Extend the Hydra defaults with our Hull methods
 FileAsset.send(:include, FileAssetExtra)
+FileAssetsController.send(:include, FileAssetsControllerExtra)

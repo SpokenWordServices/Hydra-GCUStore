@@ -3,9 +3,7 @@ require 'spec_helper'
 describe WorkFlowController do
 
   it "should be restful" do
-    route_for(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa").should == { :method => 'put', :path => '/work_flow/article/3/qa' }
-
-    params_from(:put, '/work_flow/article/3/qa').should == {:controller=>'work_flow', :action=>'update', :id=>'3',:workflow_step=>"qa",:content_type=>"article"}
+    { :put => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
   end
  
 

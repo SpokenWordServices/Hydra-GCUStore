@@ -1,18 +1,15 @@
 require 'spec_helper'
-require "active_fedora"
-require "nokogiri"
-require "equivalent-xml"
-
 describe ContentMetadata do
   
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @content_metadata_ds = ContentMetadata.new
+    repository = stub('repo', :datastream_dissemination=>'', :datastream=>'', :add_datastream=>'')
+    @inner_obj = stub('inner obj', :repository => repository, :pid=>'__PID__' )
+    @content_metadata_ds = ContentMetadata.new(@inner_obj, nil)
   end
 
   describe ".new" do
     it "should initialize a new content metadata template if no xml is provided" do
-      content_metadata_ds = ContentMetadata.new
+      content_metadata_ds = ContentMetadata.new(@inner_obj, nil)
       content_metadata_ds.ng_xml.to_xml.should == ContentMetadata.xml_template.to_xml
     end
   end

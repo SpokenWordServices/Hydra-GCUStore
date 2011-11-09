@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Hull::FileAssetsController do
+#This file is testing FileAssetsController inside hydra, after FileAssetsControllerExtra has been mixed in by the hydra initializer.
+describe FileAssetsController do
 
   before do
     session[:user]='bob'

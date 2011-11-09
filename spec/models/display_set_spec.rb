@@ -16,7 +16,7 @@ describe DisplaySet do
     before do
       @node = DisplaySet.new
       @node.datastreams['descMetadata'].update_indexed_attributes({[:title] => 'Blue sky'})
-      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.add_relationship(:is_member_of, 'info:fedora/hull:700')
       @node.save
     end
     it "should be in the tree" do
@@ -41,7 +41,7 @@ describe DisplaySet do
     before do
       @node = DisplaySet.new
       @node.datastreams['descMetadata'].update_indexed_attributes({[:title] => 'Blue sky'})
-      @node.add_relationship(:is_member_of, 'hull:700')
+      @node.add_relationship(:is_member_of, 'info:fedora/hull:700')
       @node.save
     end
     it "should have a display_set property" do

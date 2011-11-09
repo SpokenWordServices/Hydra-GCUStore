@@ -1,4 +1,4 @@
-class Hull::FileAssetsController < FileAssetsController
+module FileAssetsControllerExtra
 
   # NOTE: overwriting this method to handle redirection back to edit view of container
   def create
