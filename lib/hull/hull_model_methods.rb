@@ -116,11 +116,11 @@ module HullModelMethods
 	end
 
   def is_governed_by
-    self.ids_for_outbound(:is_governed_by).map{|val| "info:fedora/#{val}"}
+    self.relationships(:is_governed_by)
   end
 
 	def set_membership
-		self.ids_for_outbound(:is_member_of).map{|val| "info:fedora/#{val}"}
+		self.relationships(:is_member_of)
 	end
 
   def change_queue_membership(new_queue)

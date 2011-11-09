@@ -33,25 +33,25 @@ describe AssetsController do
         controller.params = {'Structural Set' => "info:fedora/hull:3374" }
         
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue","info:fedora/hull:3374"]
-        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+        @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue","info:fedora/hull:3374"]
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
         @document.rightsMetadata.edit_access.machine.group.should == ['researcher']
 
         controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should include("info:fedora/hull:protoQueue","info:fedora/hull:3374", "info:fedora/hull:9")
-        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+        @document.relationships(:is_member_of).should include("info:fedora/hull:protoQueue","info:fedora/hull:3374", "info:fedora/hull:9")
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
 
         controller.params = {'Display Set' => ['info:fedora/hull:9'] }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue","info:fedora/hull:9"]
-        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:3374"]
+        @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue","info:fedora/hull:9"]
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
 
         ### Deleting
         controller.params = {'Display Set' => [''], 'Structural Set' => [""] }
         controller.send :update_set_membership
-        @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:protoQueue"]
-        @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull:protoQueue"]
+        @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue"]
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
 
       end
     end
@@ -62,8 +62,8 @@ describe AssetsController do
       controller.params = {'Structural Set' => "info:fedora/hull:3374" }
       
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:3374"]
-      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.relationships(:is_member_of).should == ["info:fedora/hull:3374"]
+      @document.relationships(:is_governed_by).should == ["info:fedora/hull-apo:structuralSet"]
       ## rightsMetadata should be a clone of hull-apo:structuralSet
       @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
       ## defaultObjectRights should be a clone of hull:3374
@@ -71,21 +71,21 @@ describe AssetsController do
 
       controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should include("info:fedora/hull:3374", "info:fedora/hull:9")
-      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.relationships(:is_member_of).should include("info:fedora/hull:3374", "info:fedora/hull:9")
+      @document.relationships(:is_governed_by).should == ["info:fedora/hull-apo:structuralSet"]
       @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
       controller.params = {'Display Set' => ['info:fedora/hull:9'] }
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should == ["info:fedora/hull:9"]
-      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.relationships(:is_member_of).should == ["info:fedora/hull:9"]
+      @document.relationships(:is_governed_by).should == ["info:fedora/hull-apo:structuralSet"]
       @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
       ### Deleting
       controller.params = {'Display Set' => [''] }
       controller.send :update_set_membership
-      @document.relationships[:self][:is_member_of].should be_nil
-      @document.relationships[:self][:is_governed_by].should == ["info:fedora/hull-apo:structuralSet"]
+      @document.relationships(:is_member_of).should be_nil
+      @document.relationships(:is_governed_by).should == ["info:fedora/hull-apo:structuralSet"]
       @document.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
 
     end
@@ -224,8 +224,8 @@ describe AssetsController do
       mock_obj = mock("asset", :delete)
       mock_obj.expects(:destroy_child_assets).returns([])
       ActiveFedora::Base.expects(:load_instance_from_solr).with("__PID__").returns(mock_obj)
-      ActiveFedora::ContentModel.expects(:known_models_for).with(mock_obj).returns([HydrangeaArticle])
-      HydrangeaArticle.expects(:load_instance_from_solr).with("__PID__").returns(mock_obj)
+      ActiveFedora::ContentModel.expects(:known_models_for).with(mock_obj).returns([ObjectDc])
+      ObjectDc.expects(:load_instance_from_solr).with("__PID__").returns(mock_obj)
       delete(:destroy, :id => "__PID__")
     end
   end
