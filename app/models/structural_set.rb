@@ -39,7 +39,7 @@ class StructuralSet < ActiveFedora::Base
     parent = StructuralSet.find(parent_pid)
     defaultRights = Hydra::RightsMetadata.new(self.inner_object, 'defaultObjectRights')
     Hydra::RightsMetadata.from_xml(parent.defaultObjectRights.content, defaultRights)
-	  datastreams_in_memory["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
+	  datastreams["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
   end
 
 

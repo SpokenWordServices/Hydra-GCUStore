@@ -6,6 +6,8 @@ Mime::Type.register "application/marcxml+xml", :marcxml,
       ["application/x-marc+xml", "application/x-marcxml+xml", 
        "application/marc+xml"]
 
+Mime::Type.register_alias "text/html", :textile
+Mime::Type.register_alias "text/html", :inline
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf

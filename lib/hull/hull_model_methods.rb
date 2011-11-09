@@ -222,7 +222,7 @@ module HullModelMethods
 	end
 
 	def apply_governed_by(set)
-    set = StructuralSet.find(set) if set.kind_of? String
+    set = StructuralSet.find(set.gsub("info:fedora/", "")) if set.kind_of? String
 		#We delete previous is_governed_by relationships and add the new one
     old_governed_by = is_governed_by
     unless old_governed_by.include? "info:fedora/#{set.pid}"

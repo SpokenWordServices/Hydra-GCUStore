@@ -1,0 +1,16 @@
+<form id="add_grant_number" action="<%= grant_numbers_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
+
+<%= hidden_field_tag 'asset_id', params["asset_id"] %>
+
+<dl>
+	 <dt>
+		<%= fedora_field_label("descMetadata", [{:grant_number=>@next_grant_number_index}], "Add a new grant") %>
+   </dt>
+   <dd class="multi_inline grant">
+ 	    <%= fedora_text_field(@document_fedora,"descMetadata", [{:grant_number=>@next_grant_number_index}], :multiple=>false) %>
+	 <dd>
+</dl>
+
+<div class="form-control"><%= submit_tag "Add Grant", {:id => "addGrantNumber"} %></div>
+
+</form>

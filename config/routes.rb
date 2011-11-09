@@ -13,6 +13,13 @@ Hull::Application.routes.draw do
   match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'
   match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:put
 
+  resources :multi_field
+	match 'multi_field/:content_type/:asset_id/:index' =>'multi_field#destroy', :via => :delete
+
+
+  resources :catalog, :path=>'resources', :as=>'resources'
+  resources :grant_numbers
+
   # resources :catalog, :only=>[:index, :show, :update], :as=>'resources' do
   # end
   # map.resources(:catalog,
@@ -27,8 +34,6 @@ Hull::Application.routes.draw do
   # )
 
   # map.resources :subjects
-  # map.resources :grant_numbers
-	# map.resources :multi_field
 
   
   # The priority is based upon order of creation:

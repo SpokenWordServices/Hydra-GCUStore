@@ -62,13 +62,12 @@ describe MultiFieldController do
 
   describe "destroy" do
     it "should delete the grant_number corresponding to index" do
-      pending # TODO: fix route
       mock_document = mock("GenericContent")
-      mock_document.expects(:remove_multi_field).with("3")
+      mock_document.expects(:remove_multi_field).with('ds_name', 'some', "3")
       mock_document.expects(:save)
       @controller.expects(:load_document_from_id).with("_PID_").returns(mock_document)
       
-      delete :destroy, :asset_id=>"_PID_", :content_type => "generic_content", :index=>"3"
+      delete :destroy, :asset_id=>"_PID_", :content_type => "generic_content", :index=>"3", :datastream_name=>'ds_name', :fields=>'some'
     end
   end
   

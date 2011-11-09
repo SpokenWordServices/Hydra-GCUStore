@@ -9,7 +9,7 @@ module ActiveFedora
     end
 
     def self.default_model(obj)
-      unless obj.descMetadata.nil? || obj.rightsMetadata.nil? || obj.contentMetadata.nil?
+      unless obj.datastreams['descMetadata'].nil? || obj.datastreams['rightsMetadata'].nil? || obj.datastreams['contentMetadata'].nil?
         if class_exists?("GenericContent")
           m = Kernel.const_get("GenericContent")
           if m

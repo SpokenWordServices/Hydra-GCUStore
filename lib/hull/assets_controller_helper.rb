@@ -1,9 +1,50 @@
 require "om"
-module Hydra::AssetsControllerHelper
+module Hull::AssetsControllerHelper
 
-  include MediaShelf::ActiveFedoraHelper
+  def self.included(base)
+    base.before_filter :enforce_permissions, :only =>:new
+    base.before_filter :update_set_membership, :only => :update
+    base.before_filter :validate_parameters, :only =>[:create,:update]
+  end
+
+  def update_set_membership
+    structural = params["Structural Set"]
+    structural = structural.first if structural.kind_of? Array
+    if structural && structural.empty?
+      @document.change_queue_membership :proto
+      structural = nil
+    end
+    display = params["Display Set"].to_s
+    display = nil if display.empty?
+    if @document.respond_to?(:apply_set_membership)
+      @document.apply_set_membership([display, structural].compact)
+    end
+    # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
+    # otherwise, the structural set the governing apo
+    if @document.respond_to?(:apply_governed_by)
+      if @document.kind_of? StructuralSet
+        @document.apply_governed_by('hull-apo:structuralSet')
+        @document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
+      elsif structural
+        @document.apply_governed_by(structural)
+      end
+    end
+  end
+
+  def validate_parameters
+    logger.debug("attributes submitted: #{@sanitized_params.inspect}")
+    if @document.respond_to?(:valid_for_save?)
+      if !@document.valid_for_save?(@sanitized_params)
+        flash[:error] = "Encountered the following errors: #{@document.errors.join("; ")}"
+        redirect_to :controller => "catalog", :action=>"edit"
+      end
+    end
+    true
+  end
   
+  ### Hull version calls apply_base_metadata
   def apply_depositor_metadata(asset)
+    apply_base_metadata(asset)
     if asset.respond_to?(:apply_depositor_metadata) && current_user.respond_to?(:login)
       asset.apply_depositor_metadata(current_user.login)
     end
@@ -108,14 +149,16 @@ module Hydra::AssetsControllerHelper
   # Updates the document based on the provided parameters
   # @param [ActiveFedora::Base] document
   # @param [Hash] params should be the type expected by ActiveFedora::Base.update_datastream_attributes
+
+  ## Hull version calls apply_additional_metadata
+
   def update_document(document, params)
     # this will only work if there is only one datastream being updated.
     # once ActiveFedora::MetadataDatastream supports .update_datastream_attributes, use that method instead (will also be able to pass through params["asset"] as-is without usin prep_updater_method_args!)
     # result = document.update_indexed_attributes(params[:params], params[:opts])
     
-    document.update_datastream_attributes(params)
-    
-    result = document
+    result = document.update_datastream_attributes(params)
+    apply_additional_metadata(document)       
   end
   
 	def apply_base_metadata(asset)
