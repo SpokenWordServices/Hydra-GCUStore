@@ -1,10 +1,8 @@
 require 'mediashelf/active_fedora_helper'
 class DownloadsController < ApplicationController
-    include MediaShelf::ActiveFedoraHelper
     include Hydra::RepositoryController
     helper :downloads
     
-    before_filter :require_fedora
     
     # Note: Actual downloads are handled by the index method insead of the show method
     # in order to avoid ActionController being clever with the filenames/extensions/formats.

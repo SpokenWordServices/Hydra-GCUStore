@@ -12,15 +12,13 @@ describe DownloadsController do
   end
   
   it "should be restful" do
-    route_for(:controller=>'downloads', :action=>'index', :asset_id=>"_PID_", :download_id=>"content").should == '/assets/_PID_/content'
-
-    params_from(:get, '/assets/_PID_/content').should == {:controller=>'downloads', :asset_id=>"_PID_", :action=>"index",:download_id=>"content"}
+    {:get=> '/assets/_PID_/content'}.should route_to(:controller=>'downloads', :action=>'index', :asset_id=>"_PID_", :download_id=>"content")
   end
  
   describe "index" do
     it "should return the content of the given datastream for the object identified by the asset_id" do
       mock_ds = mock("pdf datastream", :content=>"pdf content")
-      mock_ds.expects(:attributes).times(2).returns({"mimeType"=>"application/pdf"})
+      mock_ds.expects(:mimeType).returns("application/pdf").twice
       result_object = mock("result_object",:pid => "foo:pid")
       result_object.stubs(:datastreams).returns({"content"=>mock_ds})
       ActiveFedora::Base.expects(:load_instance).returns(result_object)

@@ -6,13 +6,13 @@ describe CatalogHelper do
   describe "Display datatastream field content" do
     it "should generate valid html for one returned value" do
       generated_html = helper.display_datastream_field(@resource, "simple_ds",["first_name"],"FIRST","first_name")
-      generated_html.should have_tag 'dt', "FIRST"
-      generated_html.should have_tag 'dd.first_name', "Bob"
+      generated_html.should have_selector 'dt', :text=> "FIRST"
+      generated_html.should have_selector 'dd.first_name', :text=> "Bob"
     end
     it "should generate valid html for multiple returned values" do
       generated_html = helper.display_datastream_field(@resource, "simple_ds",["role"],"Role","role")
-      generated_html.should have_tag 'dt', "Roles"
-      generated_html.should have_tag 'dd.role', "creator; depositor"
+      generated_html.should have_selector 'dt', :text=> "Roles"
+      generated_html.should have_selector 'dd.role', :text=> "creator; depositor"
     end
     it "should generate an empty string for no returned values" do
       generated_html = helper.display_datastream_field(@resource, "simple_ds",["status"],"Status","enrollment_status")
