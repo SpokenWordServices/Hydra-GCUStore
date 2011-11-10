@@ -4,6 +4,18 @@ autoload :HullAccessControlEnforcement, 'hull/hull_access_control_enforcement'
 autoload :HullModelMethods, 'hull/hull_model_methods'
 autoload :HullValidationMethods, 'hull/hull_validation_methods'
 autoload :CatalogHelperExtra, 'hull/catalog_helper_extra'
+	  	
+### These files are in lib, but aren't being loaded yet. Do we need them?  Justin - 2011-11-10
+#lib/hull/block_mapper.rb
+#lib/hull/ead_mapper.rb
+#lib/hull/field_maps.rb
+#lib/hull/hydra_fedora_metadata_helper.rb
+#lib/hull/jetty_cleaner.rb
+#lib/hull/marc_mapper.rb
+#lib/hull/marc_record_ext.rb
+#lib/hull/prev_next_links.rb
+#lib/hull/stomp_listener.rb
+#lib/hull/user_attributes_loader.rb
    
 module Hull
    extend ActiveSupport::Autoload
