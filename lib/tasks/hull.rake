@@ -105,7 +105,7 @@ namespace :hull do
       Rake::Task["db:migrate"].invoke
       #Rake::Task["db:migrate:plugins"].invoke
       error = Jettywrapper.wrap(jetty_params) do
-        puts "Refreshing fixtures in development fedora/solr (for disseminators to work)"
+        puts "Refreshing fixtures in development fedora/solr (need these for the disseminators to work)"
         puts %x[rake hull:default_fixtures:load RAILS_ENV=development]
         puts "Refreshing fixtures in test fedora/solr"
         Rake::Task["hull:default_fixtures:load"].invoke
