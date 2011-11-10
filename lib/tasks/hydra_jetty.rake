@@ -20,6 +20,7 @@ namespace :hydra do
     desc "Copies the default SOLR config files and starts up the fedora instance."
     task :load_with_full_text => ['hydra:jetty:config:all', :start]
 
+    desc "Set up all configs & libraries to run hull"
     namespace :config do
       task :all => ['hydra:jetty:config', 'hydra:jetty:config_fedora', 'hydra:jetty:config_full_text']
     end
