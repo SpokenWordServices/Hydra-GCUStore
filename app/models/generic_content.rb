@@ -22,7 +22,7 @@ class GenericContent < ActiveFedora::Base
 			date_valid = @pending_attributes["descMetadata"][[:date_valid]]["0"] 
       if date_valid.present?
         begin
-          Iso8601.parse(date_valid) 
+          Hull::Iso8601.parse(date_valid) 
         rescue ArgumentError
     			errors << "descMetadata error: invalid date"
         end
