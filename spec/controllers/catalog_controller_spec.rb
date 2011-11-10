@@ -20,14 +20,14 @@ describe CatalogController do
   describe "show" do
     describe "access controls" do
       it "should deny access to documents if role does not have permissions" do
-        user = User.new(:login=>"Mr. Notallowed")
+        user = User.new(:email=>"Mr. Notallowed")
         sign_in user
         get :show, :id=>"hull:3374"
         response.should redirect_to("http://test.host/")
         flash[:notice].should == "You do not have sufficient access privileges to read this document, which has been marked private."
       end
       it "should allow access to documents if role has permissions" do
-        user = User.new(:login=> "contentAccessTeam1")
+        user = User.new(:email=> "contentAccessTeam1@example.com")
         sign_in user
         get :show, :id=>"hull:3374"
         response.should be_success

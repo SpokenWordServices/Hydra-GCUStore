@@ -1,0 +1,91 @@
+<%-# default partial to display solr document fields in catalog show view -%>
+
+
+<%-#  This bit of code runs through all the items first to  find objectType, cModel(s) and pid -%>
+
+<%- objectType, pid, cModel = "false" -%>
+<%- document_show_fields.each do |solr_fname| -%>
+    <%- if document[solr_fname] -%>
+		 <%-# 'Type of resource' not available here so fudge with 'Genre' -%>
+         <%- objectType = document[solr_fname].to_s if document_show_field_labels[solr_fname] == 'Genre:' -%>
+		 <%- pid = document[solr_fname].to_s if document_show_field_labels[solr_fname] == 'Identifier:' -%>
+		 <%- cModel = document[solr_fname].to_s if document_show_field_labels[solr_fname] == 'content_model_t:' -%>
+    <%- end -%>
+<%- end -%>
+
+
+
+
+<div>
+	<%- document_show_fields.each do |solr_fname| -%>
+		<%- if document[solr_fname] -%>
+			<%-#  remove a couple of special cases before processing -%>			
+			<%- if document_show_field_labels[solr_fname] == 'content_model_t:' || document_show_field_labels[solr_fname] == 'Object content:' -%>
+				<%-# do nothing - don't echo field -%>
+			<%- elsif document_show_field_labels[solr_fname] == 'Object children:' -%>
+				<%-# deal with content block -%>
+				<div class = "contentContainer">
+					<strong><div class="contentCol1">Resource</div><div class="contentCol2">Type</div><div class="contentCol3">Function</div><div class="contentCol4">Approx size</div></strong>
+					<br/>
+				</div>			
+				<%-  children = document[solr_fname].to_s.split(';') -%>
+				<%- if children.length > 0 -%>
+					<%- children.each do |child| -%>
+						<div class = "contentContainer">
+							<%- items = child.split(',') -%>
+							<div class="contentCol1"><%= items[0] %></div><div class="contentCol2"><%= items[1] %></div><div class="contentCol3"><a href="<%= items[2] %>">Download</a></div>
+							<%- if items[3].to_i > 0 -%>
+								<%- size = items[3].to_f/1048576 -%>
+								<div class="contentCol4"><%= "%.1f" % size %> MB</div>
+							<%- else -%>
+								<div class="contentCol4">Not supplied</div>
+							<%- end -%>
+						</div>
+					<%- end -%>
+				<%- end -%>				
+			<%- else -%>
+				<div class = "splashContainer">
+					<div class="splashCol1"><%= document_show_field_labels[solr_fname] %></div>
+					<div class="splashCol2">
+						<%- if document_show_field_labels[solr_fname] == 'Abstract/Description:' && cModel =~ /(I|i)mage/  %><img class="thumbnailImg" src="https://hydra.hull.ac.uk/fedora/get/<%= pid %>/hydra-sDef:genericImage/getThumbnail" align="left" hspace="3" vspace="3"><% end %>
+						<%- if document_show_field_labels[solr_fname] == 'Abstract/Description:' -%><%= document[solr_fname].to_s.gsub(/\n/, "\<br\>") %>
+						<%- elsif document_show_field_labels[solr_fname] == 'Rights statement:' %><%= document[solr_fname].to_s.gsub("(c)", "&copy;") %>
+						<%- else -%>
+							<%= document[solr_fname].respond_to?(:join) ? document[solr_fname].join('; ') : document[solr_fname] %>
+						<%- end -%>						
+					</div>
+				</div>
+			<%- end -%>
+        <%- end -%>
+  <%- end -%>
+</div>
+
+
+<div id="slide_link"><a href="#" class="slide_button"><h3><b>Show additional resources</b></h3></a></div>
+
+
+<div id="slide_panel">
+	<div class="contentContainer">
+		<strong><div class="contentCol1">Additional resource information</div></strong>
+	<br/>
+		<div class="contentCol1">MODS metadata</div><div class="contentCol2">text/xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/descMetadata/content" target="_blank">View</a></div>
+		<div class="contentCol1">DC metadata</div><div class="contentCol2">text/xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/DC/content" target="_blank">View</a></div>
+
+
+		<%- if cModel =~ /(uketd|UKETD)(O|o)bject/ -%>
+			<div class="contentCol1">UKETD_DC metadata</div><div class="contentCol2">text/xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/UKETD_DC/content" target="_blank">View</a></div>
+		<%- end -%>
+
+		<%- if cModel =~ /(I|i)mage/ -%>
+			<div class="contentCol1">Technical (JHOVE) metadata</div><div class="contentCol2">text/xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/technicalMetadata/content" target="_blank">View</a></div>
+		<%- end -%>
+
+		<div class="contentCol1">RELS-EXT datastream</div><div class="contentCol2">application/rdf+xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/RELS-EXT/content" target="_blank">View</a></div>
+		<div class="contentCol1">Content datastream</div><div class="contentCol2">text/xml</div><div class="contentCol3"><a href="https://hydra.hull.ac.uk/fedora/objects/<%= pid %>/datastreams/contentMetadata/content" target="_blank">View</a></div>
+	</div>
+</div>
+
+
+					
+
+
