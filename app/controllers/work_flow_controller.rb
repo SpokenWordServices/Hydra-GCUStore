@@ -6,8 +6,12 @@ class WorkFlowController < ApplicationController
   include ReleaseProcessHelper
 	include HullAccessControlEnforcement
     
-  before_filter :require_solr, :require_fedora
+  before_filter :require_solr
   before_filter :enforce_permissions, :only=>[:new] 
+
+  def new
+    render :text=>"HEY!"
+  end
 
   def update
     document = load_document_from_params

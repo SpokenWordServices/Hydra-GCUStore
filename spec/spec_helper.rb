@@ -2,7 +2,6 @@
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
-#require 'spec/autorun'
 require 'rspec/rails'
 
 # Requires supporting files with custom matchers and macros, etc,
@@ -33,4 +32,11 @@ def connect_bl_solr
   end
 
   @bl_solr = Solr::Connection.new(url, :autocommit => :on )
+end
+
+module FactoryGirl
+  def self.find_or_create(handle, by=:email)
+    tmpl = FactoryGirl.build(handle)
+    tmpl.class.send("find_by_#{by}".to_sym, tmpl.send(by)) || FactoryGirl.create(handle)
+  end
 end

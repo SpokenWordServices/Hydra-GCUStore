@@ -3,6 +3,7 @@ require 'spec_helper'
 describe WorkFlowController do
 
   it "should be restful" do
+    { :get => '/work_flow/new' }.should route_to(:controller=>'work_flow', :action=>'new')
     { :put => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
   end
  
@@ -22,17 +23,13 @@ describe WorkFlowController do
 
 	describe "new" do
 		it "should enforce create permissions, redirecting to show index and resetting session context if user does not have create permissions" do
-			mock_user = mock("User")
-      mock_user.stubs(:login).returns("student1")
-      mock_user.stubs(:is_being_superuser?).returns(false)
-      controller.stubs(:current_user).returns(mock_user)
+      sign_in FactoryGirl.find_or_create(:student1) 
 
 			get :new
 			response.should redirect_to(:controller => 'catalog' ,:action => 'index')
 		end
   	it "should render normally if user has create permissions" do
-      mock_user = stub("User", :login=>"contentAccessTeam1")
-      controller.stubs(:current_user).returns(mock_user)
+      sign_in FactoryGirl.find_or_create(:cat) 
     
 		  get :new
       response.should_not redirect_to(:controller => 'catalog', :action => 'index')

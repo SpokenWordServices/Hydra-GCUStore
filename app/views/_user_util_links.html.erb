@@ -1,0 +1,16 @@
+<div id="links-right">
+	<% if current_user %> 
+		<%= create_resource_link %>
+	  <%= link_to "Log Out", logout_path %> <%= (current_user) %>
+		<% if current_user.last_search_url %>
+		  <%= link_to('View your last search', catalog_index_path(current_user.last_search_url)) %><% end %>
+		<% else %>
+		<% if RAILS_ENV != 'production' %>
+  		<%= link_to 'Login', login_path %>
+  	<% else %>
+		  <%= link_to '-', login_path %>
+		<% end %>
+	<% end %>
+	 
+	<%= link_to "Search History", search_history_index_path %>
+</div>
