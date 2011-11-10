@@ -90,7 +90,7 @@ namespace :hull do
       workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
       project_dir = workspace_dir ? workspace_dir : ENV['PWD']
       #Rake::Task["db:test:clone_structure"].invoke
-      Rake::Task["'hydra:jetty:config:all'"].invoke
+      Rake::Task["hydra:jetty:config:all"].invoke
       jetty_params = {
         :jetty_home => "#{project_dir}/jetty",
         :quiet => false,
@@ -99,13 +99,18 @@ namespace :hull do
         :fedora_home => "#{project_dir}/jetty/fedora/default",
         :startup_wait => 30
       }
+      jetty_params = Jettywrapper.load_config.merge(jetty_params)
+
       #Rake::Task["db:drop"].invoke
       Rake::Task["db:migrate"].invoke
       #Rake::Task["db:migrate:plugins"].invoke
       error = Jettywrapper.wrap(jetty_params) do
-        #Rake::Task["hydra:default_fixtures:load"].invoke
+        puts "Refreshing fixtures in development fedora/solr (for disseminators to work)"
+        puts %x[rake hull:default_fixtures:load RAILS_ENV=development]
+        puts "Refreshing fixtures in test fedora/solr"
         Rake::Task["hull:default_fixtures:load"].invoke
-        Rake::Task["spec_without_db"].invoke
+        # Rake::Task["spec_without_db"].invoke
+        Rake::Task["spec"].invoke
         Rake::Task["cucumber"].invoke
       end
       raise "test failures: #{error}" if error
