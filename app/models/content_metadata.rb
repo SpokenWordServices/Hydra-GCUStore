@@ -44,12 +44,13 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     # @option opts [String] :file_id the id for the file [default "content"]
     # @option opts [String] :file_size the size of the file
     # @option opts [String] :url the location url of the file
+    # @option opts [String] :service_def the service definition
     def self.resource_template(opts={})
       options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>""}
       options.merge!(opts)
       options.merge!({:id=>"Asset #{options[:display_label]}"})
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.resource(:sequence=>options[:sequence],:id=>options[:id],:displayLabel=>options[:display_label],:objectID=>options[:object_id],:dsID=>"content",:dissType=>"genericContent/content") {
+        xml.resource(:sequence=>options[:sequence],:id=>'text',:type=>options[:display_label],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>"content",:serviceMethod=>"getContent") {
           xml.file(:id=>options[:id], :format=>"pdf", :mimeType=>"application/pdf", :size=>options[:file_size]) {
             xml.location(options[:url], :type=>"url")
           }

@@ -18,7 +18,13 @@ describe ContentMetadata do
     it "should generate a new resource node" do
       node = ContentMetadata.resource_template
       node.should be_kind_of(Nokogiri::XML::Element)
-      node.to_xml.should be_equivalent_to("<resource dissType=\"genericContent/content\" displayLabel=\"\" objectID=\"\" sequence=\"\" dsID=\"content\" id=\"Asset \">\n  <file format=\"pdf\" size=\"\" id=\"Asset \" mimeType=\"application/pdf\">\n    <location type=\"url\"></location>\n  </file>\n</resource>")
+"hull-sDef:handbook"
+      node.to_xml.should be_equivalent_to('<resource sequence="" id="text" type="" contains="content" displayLabel="" objectID="" serviceDef="" dsID="content" serviceMethod="getContent" ><file format="pdf" size="" id="Asset " mimeType="application/pdf">    <location type="url"></location>  </file></resource>')
+      node = ContentMetadata.resource_template(:sequence=>'1', :display_label=>'Journal article', :object_id=>'hull-res:nnnn', :service_def=>'hull-sDef:journalArticle')
+      node.should be_kind_of(Nokogiri::XML::Element)
+"hull-sDef:handbook"
+      node.to_xml.should be_equivalent_to('<resource sequence="1" id="text" type="Journal article" contains="content" displayLabel="Journal article" objectID="hull-res:nnnn" serviceDef="hull-sDef:journalArticle" dsID="content" serviceMethod="getContent" ><file format="pdf" size="" id="Asset Journal article" mimeType="application/pdf">    <location type="url"></location>  </file></resource>')
+
     end
   end
   describe "insert_resource" do
