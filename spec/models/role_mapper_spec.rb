@@ -7,15 +7,15 @@ describe RoleMapper do
    RoleMapper.role_names.sort.should == %w(archivist contentAccessTeam donor patron researcher staff student) 
  end
  it "should quer[iy]able for roles for a given user" do
-   RoleMapper.roles('leland_himself').sort.should == ['archivist', 'donor', 'patron']
-   RoleMapper.roles('archivist2').should == ['archivist']
+   RoleMapper.roles('leland_himself@example.com').sort.should == ['archivist', 'donor', 'patron']
+   RoleMapper.roles('archivist2@example.com').should == ['archivist']
  end
 
  it "should return an empty array if there are no roles" do
-   RoleMapper.roles('Marduk, the sun god').empty?.should == true
+   RoleMapper.roles('Marduk,_the sun_god@example.com').empty?.should == true
  end
  it "should know who is what" do
-   RoleMapper.whois('archivist').sort.should == %w(archivist1 archivist2 leland_himself)
+   RoleMapper.whois('archivist').sort.should == %w(archivist1@example.com archivist2@example.com leland_himself@example.com)
    RoleMapper.whois('stimutax salesman').empty?.should == true
  end
 
