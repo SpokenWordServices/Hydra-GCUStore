@@ -1,6 +1,6 @@
-module CatalogHelper
-  include ActionView::Helpers::TextHelper
-	include HullAccessControlEnforcement
+module CatalogHelperExtra
+  # include ActionView::Helpers::TextHelper
+	#include HullAccessControlEnforcement
   #require_dependency "vendor/plugins/hydra_repository/app/helpers/catalog_helper.rb"
 
   def get_persons_from_roles(doc,roles,opts={})

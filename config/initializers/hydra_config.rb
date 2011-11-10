@@ -69,3 +69,6 @@ FileAsset.send(:include, FileAssetExtra)
 FileAssetsController.send(:include, FileAssetsControllerExtra)
 ### TODO ensure our copy of assets_controller_helper overrides the hydra one.
 AssetsController.send(:include, Hull::AssetsControllerHelper)
+CatalogHelper.send(:include, CatalogHelperExtra)
+CatalogHelper.send(:include, HullAccessControlEnforcement)
+CatalogHelper.send(:include, ActionView::Helpers::TextHelper)
