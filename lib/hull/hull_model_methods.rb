@@ -357,6 +357,10 @@ module HullModelMethods
       xml = Nokogiri.parse e.http_body
       logger.error "Unable to extract content:\nRequest: #{url}\nResponse: #{xml.css("pre").text}"
       return ""
+    rescue RestClient::ResourceNotFound => e
+      xml = Nokogiri.parse e.http_body
+      logger.error "Unable to extract content-- Resource not found:\nRequest: #{url}\nResponse: #{xml.css("pre").text}"
+      return ""
     rescue Exception => e
       logger.error "Unable to extract:\n#{e.inspect}"
       return ""

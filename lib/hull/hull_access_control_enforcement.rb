@@ -4,7 +4,7 @@ module HullAccessControlEnforcement
 		if has_create_permissions == false
 			session[:viewing_context] = "browse"
 			flash[:notice] = "You do not have sufficient privileges to create resources. You have been redirected to the Home page."
-		  redirect_to :controller => "catalog", :action => "index"
+		  redirect_to root_path
 		end
 	end
 
