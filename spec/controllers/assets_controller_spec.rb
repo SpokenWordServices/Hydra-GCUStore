@@ -101,7 +101,7 @@ describe AssetsController do
   describe "update" do
     
     it "should load the appropriate filters" do
-      expected_filters = [:search_session, :history_session, :sanitize_update_params, :require_solr, :check_embargo_date_format, :enforce_permissions, :update_set_membership, :validate_parameters]
+      expected_filters = [:load_document, :search_session, :history_session, :sanitize_update_params, :require_solr, :check_embargo_date_format, :enforce_permissions, :update_set_membership, :validate_parameters]
       filters = AssetsController._process_action_callbacks.map(&:filter)
       expected_filters.each do |filter|
         filters.should include filter 
