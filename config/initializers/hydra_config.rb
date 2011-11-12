@@ -64,12 +64,10 @@ if Hydra.respond_to?(:configure)
 end
 
 
+#These don't get reloaded and require a server restart
 ### Extend the Hydra defaults with our Hull methods
 FileAsset.send(:include, FileAssetExtra)
 FileAssetsController.send(:include, FileAssetsControllerExtra)
 ### TODO ensure our copy of assets_controller_helper overrides the hydra one.
 AssetsController.send(:include, Hull::AssetsControllerHelper)
-CatalogHelper.send(:include, CatalogHelperExtra)
-CatalogHelper.send(:include, ActionView::Helpers::TextHelper)
-CatalogHelper.send(:include, HullAccessControlEnforcement)
 
