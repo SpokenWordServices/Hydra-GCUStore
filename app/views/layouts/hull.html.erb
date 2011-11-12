@@ -64,7 +64,7 @@
 
 		<div class="yui-g">
 			<div class="yui-u first">
-				<h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>" : "" %></h1>
+				<h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
 			</div>
 		 	<!-- <div class="yui-u">
 				<%= render :partial=>'/user_util_links' %>
@@ -81,7 +81,7 @@
           </div>
         </div>
         
-        <div class="yui-b"><%= sidebar_items.join('') %></div>
+        <div class="yui-b"><%= sidebar_items.join('').html_safe %></div>
         
 	</div>
 	    
