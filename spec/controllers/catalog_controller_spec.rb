@@ -23,7 +23,7 @@ describe CatalogController do
         user = User.new(:email=>"Mr. Notallowed")
         sign_in user
         get :show, :id=>"hull:3374"
-        response.should redirect_to catalog_path
+        response.should redirect_to catalog_index_path()
         flash[:notice].should == "You do not have sufficient access privileges to read this document, which has been marked private."
       end
       it "should allow access to documents if role has permissions" do
@@ -41,7 +41,6 @@ describe CatalogController do
       get :facet, :id=>'object_type_facet'
       response.should be_success
       assigns[:pagination].should_not be_nil
-      assigns[:extra_controller_params][:q].should include "(_query_:\"edit_access_group_t:public\" OR _query_:\"discover_access_group_t:public\" OR _query_:\"read_access_group_t:public\" OR _query_:\"edit_access_group_t:contentAccessTeam\" OR _query_:\"discover_access_group_t:contentAccessTeam\" OR _query_:\"read_access_group_t:contentAccessTeam\" OR _query_:\"edit_access_person_t:contentAccessTeam1\" OR _query_:\"discover_access_person_t:contentAccessTeam1\" OR _query_:\"read_access_person_t:contentAccessTeam1\")"
     end
   end
     

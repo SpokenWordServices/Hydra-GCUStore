@@ -10,10 +10,8 @@ describe FileAssetsController do
         @test_container.add_relationship(:is_member_of, "info:fedora/foo:1")
         @test_container.add_relationship(:has_collection_member, "info:fedora/foo:2")
         @test_container.save
-        mock_user = mock("User")
-        mock_warden = mock("Warden")
-        mock_warden.stubs(:authenticate).returns(mock_user)
-        request.env['warden'] = mock_warden
+        sign_in FactoryGirl.find_or_create(:cat)
+        
         @test_file = fixture("small_file.txt")
         @filename = "My File Name"
         @test_file.expects(:original_filename).twice.returns("My File Name")

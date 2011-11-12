@@ -3,7 +3,6 @@ autoload :FileAssetsControllerExtra, 'hull/file_assets_controller_extra'
 autoload :HullAccessControlEnforcement, 'hull/hull_access_control_enforcement'
 autoload :HullModelMethods, 'hull/hull_model_methods'
 autoload :HullValidationMethods, 'hull/hull_validation_methods'
-autoload :CatalogHelperExtra, 'hull/catalog_helper_extra'
 	  	
 ### These files are in lib, but aren't being loaded yet. Do we need them?  Justin - 2011-11-10
 #lib/hull/block_mapper.rb

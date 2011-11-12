@@ -26,7 +26,7 @@ describe WorkFlowController do
       sign_in FactoryGirl.find_or_create(:student1) 
 
 			get :new
-			response.should redirect_to(:controller => 'catalog' ,:action => 'index')
+			response.should redirect_to root_path
 		end
   	it "should render normally if user has create permissions" do
       sign_in FactoryGirl.find_or_create(:cat) 
