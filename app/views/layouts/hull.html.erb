@@ -8,11 +8,10 @@
     
     <title><%= h(@page_title || "University of Hull Digital Repository") %></title>
     <link href="<%= url_for :controller=>'catalog',:action => 'opensearch', :format => 'xml', :only_path => false %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
-    <%= javascript_include_tag 'jquery-1.4.2.min.js', 'blacklight', 'application', 'accordion', :plugin=>:blacklight %>
-	<!--<%= javascript_include_tag 'searchworks' %>-->
+    <%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery-ui-1.8.1.custom.min', 'blacklight/blacklight', 'application' %>
 	<%= javascript_include_tag 'togglejquery' %>
 	<%= javascript_include_tag 'local' %>
-    <%= stylesheet_link_tag 'yui', 'application', :plugin=>:blacklight, :media=>'all' %>
+    <%= stylesheet_link_tag 'yui', 'blacklight/blacklight', :media=>'all' %>
     <%= stylesheet_link_tag 'application', :media=>'all' %>
     <%= stylesheet_link_tag 'local', :media=>'all' %>
 
