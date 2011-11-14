@@ -1,0 +1,43 @@
+<%# default partial to display solr document fields in catalog index view -%>
+
+<%#  This bit of code runs through all the items first to find objectType and pid %>
+
+<% objectType, pid = "false" %>
+<% document_show_fields.each do |solr_fname| -%>
+    <% if document[solr_fname] %>
+		 <%# 'Type of resource' not available here so fudge with 'Genre' %>
+         <% if document_show_field_labels[solr_fname] == 'Genre:' %>
+                <% objectType = document[solr_fname].to_s %>
+         <% end %>
+		 <% if document_show_field_labels[solr_fname] == 'Identifier:' %>
+                <% pid = document[solr_fname].to_s %>
+         <% end %>
+    <% end %>
+	<!-- <%= document_show_field_labels[solr_fname] %> <%= document[solr_fname] %><br> -->
+<% end -%>
+
+
+<br>
+<table class="index">
+  <% index_field_names.each do |solr_fname| -%>
+    <% if document.get solr_fname %>
+		<tr><td class="label" valign="top"><b><%= h index_field_labels[solr_fname]%></b></td>
+			<!--<td width="*"  valign="top"><%= h document.get(solr_fname) %></td>-->
+			<td width="*"  valign="top"><%= h document[solr_fname].respond_to?(:join) ? document[solr_fname].join('; ') : document[solr_fname] %></td>
+			<% if objectType == 'Photograph' && index_field_labels[solr_fname] == 'Title:' %>
+				<td rowspan="5" width="130" align="center"  valign="top"><img src="http://fedora-dev-vm.adir.hull.ac.uk:8080/fedora/objects/<%= pid %>/datastreams/thumbnail/content"></td>
+			<% elsif objectType == "Collection" && index_field_labels[solr_fname] == 'Title:' %>
+				<td rowspan="5" align="right"  valign="top"><img src="collection.png"></td>
+			<% elsif objectType == "Presentation" && index_field_labels[solr_fname] == 'Title:' %>
+				<td rowspan="5" align="right"  valign="top"><img src="presentation.png"></td>			
+			<% elsif objectType =~ /Journal/ && index_field_labels[solr_fname] == 'Title:' %>
+				<td rowspan="5" align="right"  valign="top"><img src="document.png"></td>
+			<% elsif objectType =~ /Thesis/ && index_field_labels[solr_fname] == 'Title:' %>
+				<td rowspan="5" align="right"  valign="top"><img src="document.png"></td>
+			<% else %>
+				<td width="5">&nbsp;</td>
+			<%end %>
+		</tr>
+    <% end -%>
+  <% end -%>
+</table>

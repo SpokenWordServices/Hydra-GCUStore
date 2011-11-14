@@ -1,0 +1,16 @@
+<!-- <h3><%=h facet_value if facet_value %> <em><%= grouped_result_count(@response, facet_name, facet_value) %></em></h3> -->
+
+	<% if params[:display_type] == 'table' %>
+  <tr>
+    <th class="title">Title</th>
+    <th class="creator">Creator</th>
+    <th class="deposited">Deposited</th>
+    <th class="type">Type</th>
+    <th class="files">files</th>
+    <th class="status">Status</th>
+  </tr>
+  <% end %>
+  <% docs.each_with_index do |document,counter| %>
+   <%= render_document_partial document, 'index', :counter => counter %>
+  <% end %>
+
