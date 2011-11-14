@@ -14,7 +14,7 @@
 
 <div>
   <% index_field_names.each do |solr_fname| -%>
-    <% if document.get solr_fname %>
+    <% if document[solr_fname] %>
 			<div class = "indexContainer">
 				<div class="indexCol1"><%= h index_field_labels[solr_fname] %></div>
 				<div class="indexCol2"><%= h document[solr_fname].respond_to?(:join) ? document[solr_fname].join('; ') : document[solr_fname] %></div>
