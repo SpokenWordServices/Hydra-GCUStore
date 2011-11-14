@@ -66,7 +66,6 @@ describe StructuralSet do
     it "should index only the rightsMetadata (not defaultObjectRights)" do
       @instance.defaultObjectRights.edit_access.machine.group.should == ["contentAccessTeam"]
       ## @instance.rightsMetadata should be copied from its governing structural set's defaultObjectRights
-debugger
       @instance.rightsMetadata.edit_access.machine.group.should == []
       @instance.to_solr["rightsMetadata_0_access_0_machine_0_group_t"].should == nil
     end

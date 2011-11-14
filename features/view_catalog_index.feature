@@ -29,7 +29,8 @@ Feature: Catalog Index
   Scenario: Executing a search
     Given I am on the catalog index page
     And I fill in "q" with "accounting"
-    And I press "search"
+    Then show me the page
+    And I press "Search"
     Then I should see "Sort by"
     And I should see "Show"
     And I should not see "Display as"
