@@ -1,20 +1,20 @@
 staff:
- - staff1
- - committeeSection1
- - engineering1
+ - staff1@example.com
+ - committeeSection1@example.com
+ - engineering1@example.com
 student:
- - student1
+ - student1@example.com
 committeeSection:
- - committeeSection1
+ - committeeSection1@example.com
 engineering:
- - engineering1
+ - engineering1@example.com
 archivist:
-  - archivist1
+  - archivist1@example.com
 donor:
-  - donor1
+  - donor1@example.com
 researcher:
-  - researcher1
+  - researcher1@example.com
 patron:
-  - patron1
+  - patron1@example.com
 contentAccessTeam:
-  - contentAccessTeam1
+  - contentAccessTeam1@example.com
