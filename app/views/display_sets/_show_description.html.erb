@@ -1,0 +1,21 @@
+<div id="description">
+ <dl>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
+    <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject","dd_text") %>
+    <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description","dd_text") %>
+ 
+    <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject,:temporal]).first.empty? %>
+ 		<dt>Coverage</dt>
+     <dd class="dd_text">
+            <%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject,:temporal]).join("; ") %><% unless get_values_from_datastream(@document_fedora,"descMetadata", [:subject,:geographic]).first.empty? %>;
+							<%= get_values_from_datastream(@document_fedora,"descMetadata", [:subject, :geographic]).join("; ") %>
+						<% end %>  
+     </dd>
+		<% end %>
+ </dl>
+</div>
+
+
+
+
+

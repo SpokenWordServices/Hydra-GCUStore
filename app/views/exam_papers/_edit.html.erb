@@ -1,0 +1,68 @@
+<% if files = params[:files] %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#accordion").accordion({active: 1});
+    });
+  </script>
+<% end %>
+<% stylesheet_links << "../plugin_assets/hydra_repository/javascripts/date-picker/css/datepicker" %>
+<% javascript_includes << infusion_javascripts(:default_no_jquery, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) %>
+<% javascript_includes << ["jquery.jeditable.mini.js", "date-picker/js/datepicker", "jquery.form.js", 'custom', "catalog/edit", "jquery.hydraMetadata.js", "jquery.notice.js", {:plugin=>:hydra_repository}] %>
+<% javascript_includes << "/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" %>
+
+<%# For DatePicker> %>
+<%- javascript_includes << ["jquery.ui.widget.js","jquery.ui.datepicker.js", "mediashelf.datepicker.js", {:plugin=>:hydra_repository }] %>
+
+<%# For Fancybox> %>
+<% javascript_includes << ["fancybox/jquery.fancybox-1.3.1.pack.js", {:plugin=>:hydra_repository}] %>
+<% stylesheet_links << "../plugin_assets/hydra_repository/javascripts/fancybox/jquery.fancybox-1.3.1.css" %>
+<%# For slider controls %>
+<% javascript_includes << ["select_to_ui_slider/selectToUISlider.jQuery.js", {:plugin=>:hydra_repository}] %>
+<% stylesheet_links << ["../plugin_assets/hydra_repository/javascripts/select_to_ui_slider/css/ui.slider.extras.css"] %>
+
+<% stylesheet_links << ["slider", {:plugin=>:hydra_repository}] %>
+<% extra_head_content << capture do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(document).catalogEdit();
+    });
+  </script>
+<% end %>
+<div class="document_viewer" id="cover_container">
+	<div class="deleteDocument">
+		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="exam_paper" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="exam_paper" />
+    <input type="hidden"  name="_method" value="delete"/>
+    <div>  
+      <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
+    </div>
+  	</form>
+	</div>
+  <div class="set-controls">
+    <!-- holder for create/move set controls -->
+	<div class="create">
+		<a href="">Create a new set</a>
+	</div>
+	<div class="move">
+		<a href="">Move to a new set</a>
+	</div>
+  </div>
+  <div class="content-type-header">
+    <h1>Edit an examination paper</h1>
+  </div>
+  <div class="multipleEdit">
+    <div id="loading" style="display:none;">
+      <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
+      </img>
+    </div>
+
+		<%= display_edit_form(@document_fedora, "exam_paper") %>
+    
+	  </div>
+</div>
+<% sidebar_items << capture do %>
+  <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
+  <%#= render :partial=>'facets' %>
+
+<% end %>
+<%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

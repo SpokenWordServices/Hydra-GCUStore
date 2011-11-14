@@ -1,0 +1,22 @@
+<div id="breadcrumb">
+	<%= breadcrumb_trail_for_set(@document_fedora.pid) %>
+</div>
+<div id="description">
+  <dl>
+      <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
+    	<%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description","dd_text") %>
+   </dl>
+</div>
+<div id="downloads">
+  <fieldset>
+     <legend>Resources</legend>
+		 <div style="padding-top:1em;">
+		   <%= link_to "Show set members", "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/#{@document_fedora.pid}&results_view=true" %>
+		 </div> 
+	</fieldset>
+</div>
+
+
+
+
+
