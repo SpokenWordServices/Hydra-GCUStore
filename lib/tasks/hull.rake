@@ -122,10 +122,12 @@ namespace :hull do
 end
 
 def fixture_files
+  Dir.glob(File.join("#{Rails.root}","spec","fixtures", "hull", Rails.env, "*.xml")) +
   Dir.glob(File.join("#{Rails.root}","spec","fixtures","hull","*.xml"))
 end
 
 def dependencies
+  Dir.glob(File.join("#{Rails.root}","spec","fixtures","hull", Rails.env, "dependencies","*.xml")) +
   Dir.glob(File.join("#{Rails.root}","spec","fixtures","hull","dependencies","*.xml"))
 end
 
