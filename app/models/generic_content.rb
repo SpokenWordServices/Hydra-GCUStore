@@ -19,6 +19,9 @@ class GenericContent < ActiveFedora::Base
 
   delegate :title, :to=>:descMetadata 
   delegate :coordinates, :to=>:descMetadata
+  delegate :topic_tag, :to=>:descMetadata
+  delegate :geographic_tag, :to=>:descMetadata
+  delegate :temporal_tag, :to=>:descMetadata
   delegate :rights, :to=>:descMetadata
   delegate :date_valid, :to=>:descMetadata
   delegate :description, :to=>:descMetadata
@@ -30,23 +33,6 @@ class GenericContent < ActiveFedora::Base
   delegate :lang_code, :to=>:descMetadata
   delegate :digital_origin, :to=>:descMetadata
   delegate :type_of_resource, :to=>:descMetadata
-
-  # :structural_set
-  # :display_set
-  
-  # has_nested_attributes :names, :subjects
-  
-  def attributes=(properties)
-    if (properties["subjects"])
-      self.descMetadata.subject.nodeset.remove  # wipe out existing values
-      properties["subjects"].each_with_index do |subject_hash, index|
-        self.descMetadata.subject(index).topic = subject_hash["topic"]
-        self.descMetadata.subject(index).category = subject_hash["category"]
-      end
-      properties.delete("subjects")
-    end
-    super
-  end
 
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
