@@ -64,10 +64,18 @@ describe StructuralSet do
     end
 
     it "should index only the rightsMetadata (not defaultObjectRights)" do
+      # A new structural set should always inherit the defaultObjectRights of
+      # its parent and have an isGovernedBy to hull-apo:structuralSet.  If it is
+      # a top level set it will inherit its defaultObjectRights from
+      # hull:rootSet
+      # 
+      # The rightsMetadata for *any* structural set is 'contentAccessTeam' only
+      # which is in the apo and what all the 'isGovernedBy' relationships
+      # ensure. - RightsMetadata always comes from an APO.
       @instance.defaultObjectRights.edit_access.machine.group.should == ["contentAccessTeam"]
       ## @instance.rightsMetadata should be copied from its governing structural set's defaultObjectRights
-      @instance.rightsMetadata.edit_access.machine.group.should == []
-      @instance.to_solr["rightsMetadata_0_access_0_machine_0_group_t"].should == nil
+      @instance.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
+      @instance.to_solr["rightsMetadata_0_access_0_machine_0_group_t"].should == 'contentAccessTeam' 
     end
 
     after do

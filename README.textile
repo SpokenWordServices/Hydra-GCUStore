@@ -4,20 +4,66 @@ h1. Hydrangea at Hull
 
 h2. Introduction and Installation Instructions
 
-Hydrangea at Hull is a Hydra project at the University of Hull.
-For general instructions on how to build and install Hydrangea, please see
-"Hydrangea project":http://github.com/projecthydra/hydrangea
+Hydra project at the University of Hull.
+
+<pre>
+git checkout git@github.com:uohull/hyhull.git
+</pre>
+
+change the current directory to "hyhull"
+
+Install hydra-jetty (this may take several minutes):
+<pre>
+git submodule init
+git submodule update
+<pre>
+
+Install the dependencies by running:
+<pre>
+bundle install
+</pre>
+
+Configure jetty:
+<pre>
+rake hydra:jetty:config:all
+</pre>
+
+Then start jetty:
+<pre>
+rake jetty:start
+</pre>
+
+Load some sample data:
+<pre>
+rake hull:default_fixtures:refresh
+</pre>
+
+Start the webserver
+<pre>
+rails server
+<pre>
+
+You should now be able to see the application at: http://localhost:3000/
 
 h2. Testing
 
+The quickest way to test is to run this task
 <pre>
   rake hull:hudson
 </pre>
 
-h2. Hull-specific installation notes
-
-To load the Hull-specific fixtures, use the following rake tasks:
+If you prefer a more manual approach, start by loading fixtures:
 <pre>
-rake hull:default_fixtures:load
+rake hull:default_fixtures:refresh RAILS_ENV=test
 </pre>
 
+Then you can run specs:
+
+<pre>
+rake spec
+</pre>
+
+And cucumber features:
+<pre>
+rake cucumber
+</pre>
