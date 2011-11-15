@@ -21,6 +21,9 @@ Install the dependencies by running:
 <pre>bundle install
 </pre>
 
+Migrate the database
+<pre>rake db:migrate</pre>
+
 Configure jetty:
 <pre>rake hydra:jetty:config:all
 </pre>
@@ -49,8 +52,10 @@ If you prefer a more manual approach, start by loading fixtures:
 <pre>rake hull:default_fixtures:refresh RAILS_ENV=test
 </pre>
 
-Then you can run specs:
+Migrate the database
+<pre>rake db:test:prepare</pre>
 
+Then you can run specs:
 <pre>rake spec
 </pre>
 
