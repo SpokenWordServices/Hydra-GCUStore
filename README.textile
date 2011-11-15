@@ -16,7 +16,7 @@ Install hydra-jetty (this may take several minutes):
 <pre>
 git submodule init
 git submodule update
-<pre>
+</pre>
 
 Install the dependencies by running:
 <pre>
