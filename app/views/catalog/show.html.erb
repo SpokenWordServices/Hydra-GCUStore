@@ -3,7 +3,7 @@
 <div id="showHead">
   <div id="shlowUtils">
   <div class="tools"><%= render :partial => 'show_tools' %></div>
-    <span class="back_to_cat"><%= link_back_to_catalog :label=>'&laquo; Back to Results' %></span>
+    <span class="back_to_cat"><%= link_back_to_catalog :label=>'&laquo; Back to Results'.html_safe %></span>
     <% if editor? %>
       <span class="edit-browse">
         <%= edit_and_browse_links %>

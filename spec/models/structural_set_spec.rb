@@ -75,7 +75,7 @@ describe StructuralSet do
       @instance.defaultObjectRights.edit_access.machine.group.should == ["contentAccessTeam"]
       ## @instance.rightsMetadata should be copied from its governing structural set's defaultObjectRights
       @instance.rightsMetadata.edit_access.machine.group.should == ['contentAccessTeam']
-      @instance.to_solr["rightsMetadata_0_access_0_machine_0_group_t"].should == 'contentAccessTeam' 
+      @instance.to_solr["rightsMetadata_0_access_0_machine_0_group_t"].should == ['contentAccessTeam']
     end
 
     after do

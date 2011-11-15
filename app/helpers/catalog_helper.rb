@@ -70,8 +70,8 @@ module CatalogHelper
         </div>
        </fieldset>
       EOS
-   end
-      resources 
+    end
+    resources.html_safe
   end
   
 	def display_edit_form(document_fedora, content_type)
@@ -109,7 +109,7 @@ module CatalogHelper
         </dd>
       EOS
     end
-    datastream_field
+    datastream_field.html_safe
   end
 
 	# This does exactly the same as display_datastream_field but uses display_friendly_date to display date content
@@ -131,7 +131,7 @@ module CatalogHelper
         </dd>
       EOS
     end
-    datastream_field
+    datastream_field.html_safe
   end
 
 	# This does exactly the same as display_datastream_field but uses simple format to display text area content
@@ -153,7 +153,7 @@ module CatalogHelper
         </dd>
       EOS
     end
-    datastream_text_area_field
+    datastream_text_area_field.html_safe
 	end
 
   def display_qr_code
@@ -164,7 +164,7 @@ module CatalogHelper
        <img id="qr-image" src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
-    qr_code
+    qr_code.html_safe
   end
 
   def download_image_class_by_mime_type(mime_type)    
