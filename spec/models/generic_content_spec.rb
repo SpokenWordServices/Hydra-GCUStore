@@ -44,6 +44,33 @@ describe GenericContent do
        @node.to_solr['top_level_collection_id_s'].should == 'info:fedora/hull:rootDisplaySet'
     end
   end
+  
+  describe "attributes=" do
+    before do
+      @node = GenericContent.new
+      @sample_post_params = {
+        "generic_content" => {
+          "subjects" =>[
+            {
+                "topic" => "Subject 1",
+                "category" => "topic"
+              },{
+                "topic" => "Subject 2",
+                "category" => "geographic"      
+            }
+            ]
+      }}
+      
+    end
+    it "with subjects" do
+      @node.attributes = @sample_post_params["generic_content"]
+      @node.descMetadata.subject.length.should == 2
+      @node.descMetadata.subject(0).topic.should == ["Subject 1"]
+      @node.descMetadata.subject(0).category.should == ["topic"]
+      @node.descMetadata.subject(1).topic.should == ["Subject 2"]
+      @node.descMetadata.subject(1).category.should == ["geographic"]
+    end
+  end
 
   describe "validations" do
     it "should fail if exam date is invalid" do

@@ -13,6 +13,7 @@ class ModsGenericContent < ObjectMods
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
      t.topic(:index_as=>[:facetable])
+     t.category
     }
 		t.location_subject(:path=>"subject") {
 			t.cartographics {
@@ -76,8 +77,17 @@ class ModsGenericContent < ObjectMods
       t.mime_type(:path=>"internetMediaType")
       t.digital_origin(:path=>"digitalOrigin")
     } 
+    
+    # Proxies
     t.date_valid(:proxy=>[:origin_info, :date_valid])
-
+    t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
+    t.related_item(:proxy=>[:web_related_item, :location, :primary_display])
+    t.extent(:proxy=>[:physical_description, :extent])
+    t.publisher(:proxy=>[:origin_info, :publisher])
+    
+    t.lang_text(:proxy=>[:language, :lang_text])
+    t.lang_code(:proxy=>[:language, :lang_code])
+    t.digital_origin(:proxy=>[:physical_description, :digital_origin])
   end
   
      # accessor :title, :term=>[:mods, :title_info, :main_title]
@@ -104,7 +114,7 @@ class ModsGenericContent < ObjectMods
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
              }
              xml.abstract
-             xml.subject {
+             xml.subject(:authority=>"UoH") {
                xml.topic
              }
              xml.identifier(:type=>"fedora")
