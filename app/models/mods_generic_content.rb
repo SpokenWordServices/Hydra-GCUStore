@@ -13,7 +13,8 @@ class ModsGenericContent < ObjectMods
    
     t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
      t.topic(:index_as=>[:facetable])
-     t.category
+     t.temporal
+     t.geographic
     }
 		t.location_subject(:path=>"subject") {
 			t.cartographics {
@@ -88,6 +89,9 @@ class ModsGenericContent < ObjectMods
     t.lang_text(:proxy=>[:language, :lang_text])
     t.lang_code(:proxy=>[:language, :lang_code])
     t.digital_origin(:proxy=>[:physical_description, :digital_origin])
+    t.topic_tag(:proxy=>[:subject, :topic])
+    t.geographic_tag(:proxy=>[:subject, :geographic])
+    t.temporal_tag(:proxy=>[:subject, :temporal])
   end
   
      # accessor :title, :term=>[:mods, :title_info, :main_title]
