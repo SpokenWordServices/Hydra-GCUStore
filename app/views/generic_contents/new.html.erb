@@ -1,0 +1,57 @@
+<div class="document_viewer" id="cover_container">
+
+  <div class="set-controls">
+    <!-- holder for create/move set controls -->
+  <div class="create">
+  	<a href="">Create a new set</a>
+  </div>
+  <div class="move">
+  	<a href="">Move to a new set</a>
+  </div>
+  </div>
+  <div class="content-type-header">
+    <h1>Create a Generic Simple Object</h1>
+  </div>
+  <div class="multipleEdit">
+    <div id="loading" style="display:none;">
+      <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
+      </img>
+    </div>
+	  
+    <%= form_for @generic_content do |f| %>
+      <dl>
+        <dt><%= f.label :title %></dt>
+        <dd><%= f.text_field :title%></dd>
+        <dt><%= f.label :topic_tag, "Subject (topic)" %></dt>
+        <dd><%= f.text_field :topic_tag %></dd>
+        <dt><%= f.label :geographic_tag, "Subject (geographic)" %></dt>
+        <dd><%= f.text_field :geographic_tag %></dd>
+        <dt><%= f.label :temporal_tag, "Subject (temporal)" %></dt>
+        <dd><%= f.text_field :temporal_tag %></dd>
+        <dt><%= f.label :coordinates %></dt>
+        <dd><%= f.text_field :coordinates %></dd>
+        <dt><%= f.label :rights %></dt>
+        <dd><%= f.text_area :rights %></dd>
+        <dt><%= f.label :date_valid, "Valid date yyyy or yyyy/yyyy" %></dt>
+        <dd><%= f.text_field :date_valid %></dd>
+        <dt><%= f.label :description, "Description/abstract" %></dt>
+        <dd><%= f.text_area :description %></dd>
+        <dt><%= f.label :related_item, "Related materials (web)" %></dt>
+        <dd><%= f.text_field :related_item %></dd>
+        <dt><%= f.label :see_also, "See also (non-web)" %></dt>
+        <dd><%= f.text_field :see_also %></dd>
+        <dt><%= f.label :publisher %></dt>
+        <dd><%= f.text_field :publisher %></dd>
+        <dt><%= f.label :lang_text, "Language" %></dt>
+        <dd><%= f.text_field :lang_text %></dd>
+        <dt><%= f.label :lang_code, "Language Code" %></dt>
+        <dd><%= f.text_field :lang_code %></dd>
+        <dt><%= f.label :digital_origin %></dt>
+        <dd><%= f.text_field :digital_origin %></dd>
+        <dt><%= f.label :type_of_resource  %></dt>
+        <dd><%= f.text_field :type_of_resource %></dd>
+      </dl>
+      <%= f.submit "Save" %>
+    <% end %>
+  </div>
+<div>

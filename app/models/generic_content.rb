@@ -25,7 +25,7 @@ class GenericContent < ActiveFedora::Base
   delegate :rights, :to=>:descMetadata
   delegate :date_valid, :to=>:descMetadata
   delegate :description, :to=>:descMetadata
-  delegate :related_material, :to=>:descMetadata
+  delegate :related_item, :to=>:descMetadata
   delegate :extent, :to=>:descMetadata
   delegate :see_also, :to=>:descMetadata
   delegate :publisher, :to=>:descMetadata

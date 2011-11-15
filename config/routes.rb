@@ -19,6 +19,8 @@ Hull::Application.routes.draw do
 
   resources :catalog, :path=>'resources', :as=>'resources'
   resources :grant_numbers
+  
+  resources :generic_contents
 
   # resources :catalog, :only=>[:index, :show, :update], :as=>'resources' do
   # end

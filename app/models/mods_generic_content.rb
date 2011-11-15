@@ -6,7 +6,6 @@ class ModsGenericContent < ObjectMods
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
     } 
-    t.title(:proxy=>[:title_info, :main_title]) 
    
     # Description is stored in the 'abstract' field 
     t.description(:path=>"abstract")   
@@ -80,6 +79,7 @@ class ModsGenericContent < ObjectMods
     } 
     
     # Proxies
+    t.title(:proxy=>[:title_info, :main_title]) 
     t.date_valid(:proxy=>[:origin_info, :date_valid])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
     t.related_item(:proxy=>[:web_related_item, :location, :primary_display])
