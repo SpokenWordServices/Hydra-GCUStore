@@ -10,7 +10,6 @@ class WorkFlowController < ApplicationController
   before_filter :enforce_permissions, :only=>[:new] 
 
   def new
-    render :text=>"HEY!"
   end
 
   def update

@@ -19,6 +19,21 @@ describe CatalogHelper do
       generated_html.should be_blank
     end
   end
+
+  describe "get_persons_from_roles" do
+    it "should get them" do
+      doc ={"person_1_namePart_t"=>["Awre, Christopher L."],  "person_0_namePart_t"=>["Green, Richard A."], "person_0_role_t"=>["creator"], "person_1_role_t"=>["creator"] }
+      helper.get_persons_from_roles(doc,['creator']).should ==  [{:affiliation=>nil,
+         :person_index=>"0",
+         :role=>["creator"],
+         :name=>["Green, Richard A."]},
+        {:affiliation=>nil,
+         :person_index=>"1",
+         :role=>["creator"],
+         :name=>["Awre, Christopher L."]}]
+
+    end
+  end
 end
 
 def get_values_from_datastream(doc,ds,fields)

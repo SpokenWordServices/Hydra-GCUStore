@@ -587,6 +587,8 @@ select#sort, select#per_page {
     border-radius: 0 0 0 0;
     margin-bottom: 0em;
     padding-left: 0;
+    width: 186px;
+    float: right;
 }
 
 .previous {

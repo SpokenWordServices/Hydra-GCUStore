@@ -8,7 +8,7 @@ gem "blacklight"
 gem 'jettywrapper', ">=1.0.2"
 gem 'solrizer', '>=1.0.4'
 gem 'solrizer-fedora', '>=1.1.3'
-gem 'hydra-head', '>=3.1.0'
+gem 'hydra-head', '>=3.1.1'
 gem 'active-fedora', '>=3.1.1'
 gem 'haml'
 gem "devise"

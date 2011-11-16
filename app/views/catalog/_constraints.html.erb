@@ -1,7 +1,7 @@
 <div id=searchIndicator title="This indicator highlights that any search performed at this point will search against the current result set">Result set:</div>
 <div id="appliedParams">
 
-	<h3>You searched for:<%= image_tag "magnifying_glass.gif", :alt=>"search icon", :plugin=>'blacklight' %></h3>
+	<h3>You searched for:<%= image_tag "blacklight/magnifying_glass.gif", :alt=>"search icon"  %></h3>
 
 	<span id="appliedQueries">
 		<% if ! localized_params[:q].blank? %>
@@ -15,7 +15,7 @@
 					:class=>'btnRemove imgReplace',
           :alt=>'x'
 				) %>
-				<%= image_tag "checkmark.gif", :alt=>"checkmark", :plugin=>'blacklight' %>
+				<%= image_tag "blacklight/checkmark.gif", :alt=>"checkmark"%>
 			</span>
 		<% else %>
 			<span class="appliedFilter"><span class="first"><span>No Keywords</span> </span></span>
@@ -45,7 +45,7 @@
 								:class=>'btnRemove imgReplace',
                 :alot=>'x'
 							) %>
-							<%= image_tag "checkmark.gif", :alt=>"checkmark", :plugin=>'blacklight' %>
+				      <%= image_tag "blacklight/checkmark.gif", :alt=>"checkmark"%>
 						</span>
 					<% end %>
 				<% end %>
@@ -55,11 +55,11 @@
 	
 	<div>
 		<% if params[:action] == 'index' %>
-			<%= page_entries_info @response.docs, :entry_name=>'resource' %>
+      <%= render_pagination_info @response, :entry_name=>'resource'%>
 		<% else %>
-			Showing <%= session[:search][:counter].to_i %> of <%= format_num(session[:search][:total]) %> resources from your search.
+      <%= item_page_entry_info %>
 		<% end %>
-		<%=link_to "Start&nbsp;again&thinsp;", catalog_index_path, :id=>"startOverLink" %>
+		<%=link_to "Start&nbsp;again&thinsp;".html_safe, catalog_index_path, :id=>"startOverLink" %>
 	</div>
 	
 </div>

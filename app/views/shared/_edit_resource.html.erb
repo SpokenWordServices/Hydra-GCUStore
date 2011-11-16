@@ -16,7 +16,7 @@
         <% ds_id = get_values_from_datastream(@document_fedora, "contentMetadata",[{:resource=>resource_counter}, :resource_ds_id])  %>
         <% file_name = get_values_from_datastream(@document_fedora, "contentMetadata", [{:resource=>resource_counter},:display_label]) %>
         <a href="/assets/<%= object_id%>/<%= ds_id%>" style="font-size:0.8em;"><%= file_name %></a>
-        <%= link_to image_tag("/images/remove.png"), asset_file_asset_path(:container_id=>@document_fedora.pid, :id => object_id, :index=>resource_counter), :method=>:delete, :confirm=>"Are you sure you want to delete the file?" %>
+        <%= link_to image_tag("/images/remove.png"), asset_file_asset_path(:asset_id=>@document_fedora.pid, :id => object_id, :index=>resource_counter), :method=>:delete, :confirm=>"Are you sure you want to delete the file?" %>
       </dd>
     </div>
   </div>

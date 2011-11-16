@@ -44,7 +44,7 @@ $(document).ready(function(){
         }
         
         $("span#additional_resources_span").click(function(){
-          /* $("div#resources").slideToggle("fast"); */
+          $("div#resources").slideToggle("fast"); 
           var text = $(this).text();
           if (text == "Show additional information") {
             $(this).text("Hide additional information");

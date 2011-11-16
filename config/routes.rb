@@ -21,6 +21,7 @@ Hull::Application.routes.draw do
   resources :grant_numbers
   
   resources :generic_contents
+  resources :subjects
 
   # resources :catalog, :only=>[:index, :show, :update], :as=>'resources' do
   # end
@@ -35,7 +36,6 @@ Hull::Application.routes.draw do
   #   :collection => {:map => :get, :opensearch=>:get, :citation=>:get, :email=>:get, :sms=>:get, :endnote=>:get, :send_email_record=>:post}
   # )
 
-  # map.resources :subjects
 
   
   # The priority is based upon order of creation:
