@@ -14,7 +14,7 @@
      <%= document[:genre_t] %>
    </dd>
    <% if document[:subject_topic_t]  %>
-     <dt><%= pluralize(document[:subject_topic_t].count + 1,"Subject")[2..-1] %></dt>
+     <dt><%= pluralize(document[:subject_topic_t].count,"Subject")[2..-1] %></dt>
        <dd>
          <%= document[:subject_topic_t].uniq.sort.join("; ") %>
        </dd>
