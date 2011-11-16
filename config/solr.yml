@@ -14,5 +14,7 @@ development:
   url: http://127.0.0.1:8983/solr/development
 test: &test
   url: http://127.0.0.1:8983/solr/test
+production:
+  url: http://127.0.0.1:8080/solr/
 cucumber:
   <<: *test

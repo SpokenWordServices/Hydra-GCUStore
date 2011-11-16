@@ -9,5 +9,3 @@ production:
     url: http://fedoraAdmin:fedoraAdmin@your.production.server:8080/fedora
 cucumber:
   <<: *TEST
-cucumber:
-  <<: *TEST
