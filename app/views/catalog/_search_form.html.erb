@@ -3,6 +3,6 @@
     <%= text_field_tag :q, params[:q], :class => "q" %>
     <%= label_tag(:search_field, "") %>
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
-    <%= submit_tag 'search', :class=>'submit' %>
+    <%= submit_tag 'Search', :class=>'submit', :id=>'submit' %>
   <% end %>
 </div>
