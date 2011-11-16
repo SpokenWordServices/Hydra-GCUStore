@@ -8,15 +8,15 @@
     </dd>
  <dt>Resource type</dt>
 	<dd>
-    <%= document.get(:genre_t) %>
+    <%= document[:genre_t] %>
 	</dd>
    <dt><%= pluralize(document[:subject_topic_t].count,"Subject")[2..-1] %></dt>
     <dd>
-       <%= document.get(:subject_topic_t, :sep=>'; ') %>
+       <%= document[:subject_topic_t] %>
     </dd>
   <dt>Language</dt>
     <dd>
-      <%= document.get(:language_lang_text_t) %>
+      <%= document[:language_lang_text_t] %>
     </dd>
   </dl>
 
