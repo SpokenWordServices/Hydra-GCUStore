@@ -5,7 +5,7 @@ Feature: QA edit a document
   wants [behaviour]
  
   Scenario: Visit Document Edit QA Page
-    Given I am logged in as "contentAccessTeam1" 
+    Given I am logged in as "contentAccessTeam1@example.com" 
     And I am on the edit document page for hull:756
     Then I should see an inline edit containing "An investigation of the factors which influence the degree"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link creator author uketd_object"
@@ -17,7 +17,7 @@ Feature: QA edit a document
 	
 
   Scenario: Viewing browse/edit buttons
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the edit document page for hydrangea:fixture_mods_article1
     Then I should see a "span" tag with a "class" attribute of "edit-browse"
     

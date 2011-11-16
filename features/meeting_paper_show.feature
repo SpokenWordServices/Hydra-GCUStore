@@ -20,7 +20,7 @@ Scenario: Staff visits Show Page for Restricted Document
     And I should see "You do not have sufficient access privileges to read this document, which has been marked private" within ".notice"
 
 Scenario: ContentAccessTeam visits Show Page for Restricted Document
-    Given I am logged in as "contentAccessTeam1" 
+    Given I am logged in as "contentAccessTeam1@example.com" 
     And I am on the show document page for hull:3777
     Then I should see "2010-11-23 Council minutes (Part A)"
     And I should see "Committee Section"

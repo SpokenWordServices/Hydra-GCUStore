@@ -22,7 +22,7 @@ Feature: Show a document
     Then I should see "Kuwait's tax reformation, its alternatives and impact on a developing accounting profession"
   
   Scenario: Archivist visits Show Page for Restricted Document
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the show document page for hull:3500
     Then I should see "The evolution of accounting in developing countries : the study of Jordan"
     And I should not see a link to "the edit document page for hull:3500"

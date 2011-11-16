@@ -6,7 +6,7 @@ Feature: Edit Article Contributors
   
   @overwritten @todo
   Scenario: Viewing contributors in edit mode
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the edit document page for hydrangea:fixture_mods_article1 
     Then the "First Name" field should contain "GIVEN NAMES"
     And the "Last Name" field should contain "FAMILY NAME"
@@ -35,7 +35,7 @@ Feature: Edit Article Contributors
     
   @overwritten @todo
   Scenario: Viewing contributors in browse mode
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the show document page for hydrangea:fixture_mods_article1 
     Then I should see "GIVEN NAMES" within ".name_first"
     And I should see "FAMILY NAME" within ".name_last"

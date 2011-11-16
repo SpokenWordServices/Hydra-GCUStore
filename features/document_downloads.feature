@@ -15,14 +15,14 @@ Feature: List downloads for a document
     And I should see only 1 download link
   
   Scenario: Donor Visits Document Downloads Page
-    Given I am logged in as "francis" on the list downloads page for druid:cm234kq4672 
+    Given I am logged in as "francis@example.com" on the list downloads page for druid:cm234kq4672 
     Then I should see a link to download "Feigenbaum_00011502.pdf" from "druid:cm234kq4672"
     And I should see a link to download "Feigenbaum_00011502_METS.xml" from "druid:cm234kq4672"
     And I should see a link to download "Feigenbaum_00011502_TEXT.xml" from "druid:cm234kq4672"
     And I should see 3 download links
     
   Scenario: Donor Visits Document Downloads Page, views all documents
-    Given I am logged in as "francis" on the list all downloads page for druid:cm234kq4672 
+    Given I am logged in as "francis@example.com" on the list all downloads page for druid:cm234kq4672 
     Then I should see a link to download "Feigenbaum_00011502.pdf" from "druid:cm234kq4672"
     And I should see a link to download "Feigenbaum_00011502_METS.xml" from "druid:cm234kq4672"
     And I should see a link to download "Feigenbaum_00011502_TEXT.xml" from "druid:cm234kq4672"

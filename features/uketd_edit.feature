@@ -4,7 +4,7 @@ Feature: ETD create and edit
   Needs to be able to fill out a form and submit some files
 
   Scenario: Create an etd and adding grant numnbers
-    Given I am logged in as "contentAccessTeam1"
+    Given I am logged in as "contentAccessTeam1@example.com"
     And I am on the base search page
     Then I should see "Create Resource"
     When I follow "Create Resource"
@@ -23,7 +23,7 @@ Feature: ETD create and edit
     Then I should see "grant-888" within "li#grant_number_1-container"
 
   Scenario: Create an etd and submit to QA
-    Given I am logged in as "contentAccessTeam1"
+    Given I am logged in as "contentAccessTeam1@example.com"
     And I am on the base search page
     Then I should see "Create Resource"
     When I follow "Create Resource"

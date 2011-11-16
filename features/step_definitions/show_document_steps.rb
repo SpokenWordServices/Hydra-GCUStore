@@ -23,7 +23,9 @@ Then /^I should see the "([^\"]*)" value$/ do |arg1|
 end
 
 Then /^I should see a link to "([^\"]*)"$/ do |arg1|
-  response.should have_selector("a", :href=>path_to(arg1))
+#  response.should have_selector("a", :href=>path_to(arg1))
+  page.should have_xpath(".//a[@href=\"#{path_to(arg1)}\"]")
+
 end
 
 Then /^I should see a link to the "([^\"]*)" page$/ do |arg1|

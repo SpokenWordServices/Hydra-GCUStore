@@ -11,14 +11,14 @@ Feature: Show a document
     And I should not see a link to "the edit document page for hull:2107" 
     
 Scenario: Staff visits Show Page for Restricted Document
-    Given I am logged in as "staff1" 
+    Given I am logged in as "staff1@example.com" 
     And I am on the show document page for hull:2107
     Then I should see "The Hydra initiative : Underpinning repository interaction for research support"
     And I should see "Awre, Christopher L"
     And I should not see a link to "the edit document page for hull:2107" 
 
 Scenario: Student visits Show Page for Restricted Document
-    Given I am logged in as "student1" 
+    Given I am logged in as "student1@example.com" 
     And I am on the show document page for hull:2107
     Then I should see "The Hydra initiative : Underpinning repository interaction for research support"
     And I should see "Awre, Christopher L"

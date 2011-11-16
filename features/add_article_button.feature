@@ -5,7 +5,7 @@ Feature: Create Asset or Dataset Split Button
   I want to see a button that will let me create a new Article or Dataset
   
   Scenario: Editor views the search results page and sees the add article button
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     Given I am on the base search page
     Then I should see "Add an article" within "div#create-asset-box"
     And I should see "Add a dataset" within "div#create-asset-box"

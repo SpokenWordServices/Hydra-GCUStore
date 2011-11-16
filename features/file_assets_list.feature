@@ -13,7 +13,7 @@ Feature: List files for a document
   # In the size column - total size of all uploaded files
   
   Scenario: Editor views the file list
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the file list page for hydrangea:fixture_mods_article1
     Then I should see a "th" element containing "Primary"
     And I should see a "th" element containing "File"
@@ -26,7 +26,7 @@ Feature: List files for a document
     And I should see a button to delete "the file asset hydrangea:fixture_uploaded_svg1" from "hydrangea:fixture_mods_article1"
     
   Scenario: Non-editor views the file list
-    Given I am logged in as "permissionlessdude" 
+    Given I am logged in as "permissionlessdude@example.com" 
     And I am on the file list page for hydrangea:fixture_mods_article1    
     Then I should see a "th" element containing "Primary"
     And I should see a "th" element containing "File"

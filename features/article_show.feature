@@ -26,7 +26,7 @@ Feature: Show a document
     Then I should see "Article for Archivist Eyes Only"
   
   Scenario: Archivist visits Show Page for Restricted Document
-    Given I am logged in as "archivist1" 
+    Given I am logged in as "archivist1@example.com" 
     And I am on the show document page for hydrangea:fixture_archivist_only_mods_article
     Then I should see "Article for Archivist Eyes Only"
     And I should see "Sally"
