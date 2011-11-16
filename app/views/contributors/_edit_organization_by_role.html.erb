@@ -1,0 +1,15 @@
+<% organization = edit_organization_by_role %>
+<% organization_counter = edit_organization_by_role_counter %>
+<% organization_name = organization[:name].first %>
+<% organization_index = organization[:org_index] %>
+
+<% base_id = "organization_#{organization_index}" %>
+  <dl class="organization contributor" id="<%= base_id %>">
+	  <dd>        
+  	  <%= fedora_text_field(@document_fedora,"descMetadata", [{:organization => organization_index}, :namePart], :multiple=>false) %>
+      <% if (params[:action] == "edit" && !organization_name.empty?) %>
+        <%= field_selectors_for("descMetadata", [{:organization=>organization_index}]) %>
+            <%= link_to( image_tag('/images/remove.png'), asset_contributor_path(@document_fedora.pid, "organization", organization_index), :method=>:delete, :class => "destructive destroy_contributor", :title=>"Delete #{organization_name}")  %>
+      <% end %>
+    </dd>
+  </dl>
