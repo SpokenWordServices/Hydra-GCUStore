@@ -644,17 +644,6 @@ select#sort, select#per_page {
 	font-weight: bold;
 }
 
-/*
-#facets h3 {
-    cursor: pointer;
-    background-position:left bottom;
-    background-repeat:no-repeat;
-    padding-left:15px;
-    background-image:url('/images/facet_closed.png');
-    color: #000000;
-    padding-top: 0.3em;
-}
-*/
 
 #facets h3 {
     background-position: left bottom;
@@ -1328,7 +1317,17 @@ span.edit-browse {
 }
 
 a.destructive {
+  background-image:url("../images/icons/delete-blue.png");
   display: block !important; 
+	background-position: 0 0;
+	background-repeat:no-repeat;
+	color: transparent;
+	overflow:hidden;
+	border-bottom: none;
+	top: 0px;
+	right: 0px;	
+	width: 20px;
+
 }
 
 .destructive field {

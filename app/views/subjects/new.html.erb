@@ -1,7 +1,8 @@
 <%# See code comments on ContributorsController.new to understand what this view does %>
   <%- new_topic_index = @document_fedora.datastreams["descMetadata"].find_by_terms(:subject,:topic).length %>
-  <form id="add_contributor" action="<%= subjects_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
+  <form id="add_contributor" action="<%= subjects_path(:asset_id=>params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
+  <%= form_for 'subject', :url=>subjects_path(:asset_id=>params[:asset_id],:content_type=>params[:content_type]), :id=>'add_contributor' do %>
       
       <%= render :partial=>"subjects/edit", :locals=>{:edit =>{}, :edit_counter => 0, :topic_counter => new_topic_index } %>
       <%= submit_tag "Add Subject", {:id => "addSubject"} %> 
-  </form>
+  <% end %>
