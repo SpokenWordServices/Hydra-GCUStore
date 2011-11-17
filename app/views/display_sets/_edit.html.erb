@@ -1,12 +1,6 @@
 <div class="document_viewer" id="cover_container">
 	<div class="deleteDocument">
-		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="display_set" accept-charset="utf-8" >
-    <input type="hidden" name="content_type" value="display_set" />
-    <input type="hidden"  name="_method" value="delete"/>
-    <div>  
-      <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
-    </div>
-  	</form>
+    <%= link_to "Delete resource", asset_path(params[:id]), :method=>:delete, :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
 	</div>
   <div class="set-controls">
     <!-- holder for create/move set controls -->
@@ -18,15 +12,6 @@
     <h1>Edit a display set</h1>
   </div>
   <div class="multipleEdit">
-    <div id="loading" style="display:none;">
-      <%= image_tag 'ajax-loader.gif', :alt=>'Saving...' %>
-    </div>
-    <% if flash[:notice] %>
-      <div class="notice">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-
     <%= render :partial => 'display_sets/edit_description' %>
    <div class="permissionsEdit">
 		<h1>Permissions edit</h1>   
@@ -34,8 +19,4 @@
    </div>
   </div>
 </div>
-<% sidebar_items << capture do %>
-  <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
-  <%#= render :partial=>'facets' %>
-<% end %>
 

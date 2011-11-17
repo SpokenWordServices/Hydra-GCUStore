@@ -246,11 +246,11 @@ module CatalogHelper
 				pid = set.content.slice(set.content.index('/')  + 1..set.content.length)
 				name = set.name
 				breadcrumb << link_to(name, "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/#{pid}&results_view=true") if parentage_sets.first == set
-				breadcrumb << link_to(name , :controller => 'catalog', :action => 'show', :id => pid) if parentage_sets.first != set
-				breadcrumb << " > " if parentage_sets.last != set
+				breadcrumb << link_to(name , resource_path(pid)) if parentage_sets.first != set
+				breadcrumb << " &gt; " if parentage_sets.last != set
 			end
 		end
-		breadcrumb
+		breadcrumb.html_safe
   end
 
 end

@@ -1,4 +1,4 @@
-<div id=searchIndicator title="This indicator highlights that any search performed at this point will search against the current result set">Result set:</div>
+<div id="searchIndicator" title="This indicator highlights that any search performed at this point will search against the current result set">Result set:</div>
 <div id="appliedParams">
 
 	<h3>You searched for:<%= image_tag "blacklight/magnifying_glass.gif", :alt=>"search icon"  %></h3>
@@ -59,7 +59,7 @@
 		<% else %>
       <%= item_page_entry_info %>
 		<% end %>
-		<%=link_to "Start&nbsp;again&thinsp;".html_safe, catalog_index_path, :id=>"startOverLink" %>
+		<%=link_to "Start&nbsp;again&thinsp;".html_safe, resources_path, :id=>"startOverLink" %>
 	</div>
 	
 </div>

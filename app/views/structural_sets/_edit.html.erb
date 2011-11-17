@@ -1,12 +1,6 @@
 <div class="document_viewer" id="cover_container">
 	<div class="deleteDocument">
-		<form id="delete" action="<%= url_for :action => 'destroy', :controller => 'assets', :id => params[:id], :method => 'delete' %>" method="post" data-resourceType="structural_set" accept-charset="utf-8" >
-    <input type="hidden" name="content_type" value="structural_set" />
-    <input type="hidden"  name="_method" value="delete"/>
-    <div>  
-      <%= submit_tag "Delete resource", :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
-    </div>
-  	</form>
+    <%= link_to "Delete resource", asset_path(params[:id]), :method=>:delete, :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
 	</div>
   <div class="set-controls">
     <!-- holder for create/move set controls -->
@@ -18,14 +12,6 @@
     <h1>Edit a structural set</h1>
   </div>
   <div class="multipleEdit">
-    <div id="loading" style="display:none;">
-      <%= image_tag 'ajax-loader.gif', :alt=>'Saving...' %>
-    </div>
-    <% if flash[:notice] %>
-      <div class="notice">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
 
     <%= render :partial => 'structural_sets/edit_description' %>
    <div class="permissionsEdit">

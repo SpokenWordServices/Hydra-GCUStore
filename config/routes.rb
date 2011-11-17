@@ -1,6 +1,4 @@
 Hull::Application.routes.draw do
-  Blacklight.add_routes(self)
-  HydraHead.add_routes(self)
 
   root :to => "catalog#index"
 
@@ -23,8 +21,12 @@ Hull::Application.routes.draw do
   resources :generic_contents
   resources :subjects
 
-  # resources :catalog, :only=>[:index, :show, :update], :as=>'resources' do
-  # end
+  resources :catalog, :only=>[:index, :edit, :show, :update], :as=>'resources' 
+
+  ## Write the Hull routes first so that they supercede the blacklight & hydra routes
+  Blacklight.add_routes(self)
+  HydraHead.add_routes(self)
+
   # map.resources(:catalog,
   #   :as => 'resources',
   #   :only => [:index, :show, :update],

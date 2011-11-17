@@ -15,8 +15,8 @@ end
 # simple way to check for elements in the dom (needed for per_page bug check)
 Then /^I (should not|should) see an? "([^\"]*)" tag with an? "([^\"]*)" attribute of "([^\"]*)"$/ do |bool,tag,attribute,value|
   if bool == "should not"
-    response.should_not have_tag("#{tag}[#{attribute}*=?]", /^.*#{value}.*$/)
+    response.should_not have_selector("#{tag}[#{attribute}*=#{value}]")
   else
-    response.should have_tag("#{tag}[#{attribute}*=?]", /^.*#{value}.*$/)
+    response.should have_selector("#{tag}[#{attribute}*=#{value}]")
   end
 end

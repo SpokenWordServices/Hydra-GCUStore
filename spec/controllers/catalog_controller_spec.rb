@@ -23,7 +23,7 @@ describe CatalogController do
         user = User.new(:email=>"Mr. Notallowed")
         sign_in user
         get :show, :id=>"hull:3374"
-        response.should redirect_to catalog_index_path()
+        response.should redirect_to root_path()
         flash[:notice].should == "You do not have sufficient access privileges to read this document, which has been marked private."
       end
       it "should allow access to documents if role has permissions" do

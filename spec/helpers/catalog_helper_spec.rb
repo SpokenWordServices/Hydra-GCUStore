@@ -6,6 +6,7 @@ describe CatalogHelper do
   describe "Display datatastream field content" do
     it "should generate valid html for one returned value" do
       generated_html = helper.display_datastream_field(@resource, "simple_ds",["first_name"],"FIRST","first_name")
+      generated_html.should be_html_safe
       generated_html.should have_selector 'dt', :text=> "FIRST"
       generated_html.should have_selector 'dd.first_name', :text=> "Bob"
     end
@@ -17,6 +18,14 @@ describe CatalogHelper do
     it "should generate an empty string for no returned values" do
       generated_html = helper.display_datastream_field(@resource, "simple_ds",["status"],"Status","enrollment_status")
       generated_html.should be_blank
+    end
+  end
+
+  describe "breadcrumb_trail_for_set" do
+
+    it "should be html safe" do
+      generated_html = helper.breadcrumb_trail_for_set('hull:3374')
+      generated_html.should be_html_safe
     end
   end
 

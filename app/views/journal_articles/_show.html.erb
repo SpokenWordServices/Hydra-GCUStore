@@ -4,7 +4,7 @@
   <%= render :partial => 'journal_articles/show_description' %>
   <%= render :partial => 'shared/show_downloads' %>
   <%= render :partial => 'shared/show_links' %>
-  <%= render :partial=>"journal_articles/show_journal", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:journal) %>
+  <%= render :partial=>"journal_articles/show_journal", :collection=>@document_fedora.descMetadata.find_by_terms(:journal) %>
   <%= render :partial => 'shared/show_resources' %>
 </div>
 

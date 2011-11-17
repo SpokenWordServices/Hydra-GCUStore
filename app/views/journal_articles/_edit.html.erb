@@ -6,15 +6,6 @@
     <h1>Edit a journal article</h1>
   </div>
   <div class="multipleEdit">
-    <div id="loading" style="display:none;">
-      <%= image_tag 'ajax-loader.gif', :alt=>'Saving...' %>
-    </div>
-    <% if flash[:notice] %>
-      <div class="notice">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-
     <%= render :partial => 'journal_articles/edit_description' %>
   
     <%#
@@ -33,9 +24,4 @@
     </form>
   </div>
 </div>
-<% sidebar_items << capture do %>
-  <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
-  <%#= render :partial=>'facets' %>
-
-<% end %>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>
