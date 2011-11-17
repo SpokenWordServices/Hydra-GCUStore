@@ -111,7 +111,7 @@ describe HullModelMethods do
       mock_node = mock("subject_node")
       mock_node.expects(:inner_text=).with("foobar")
       mock_desc_ds.expects(:insert_subject_topic).returns(mock_node,0)
-      @testclassone.stubs(:datastreams_in_memory).returns({"descMetadata"=>mock_desc_ds})
+      @testclassone.stubs(:descMetadata).returns(mock_desc_ds)
       node, index = @testclassone.insert_subject_topic(:value => "foobar") 
     end
   end

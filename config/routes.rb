@@ -7,7 +7,7 @@ Hull::Application.routes.draw do
   devise_for :users
 
   
-  match 'assets/:id/datastreams/:datastream' =>'file_assets#show', :as=>'datastream_content' 
+  match 'assets/:id/datastreams/:datastream' =>'file_assets#datastream', :as=>'datastream_content' 
   match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content'
 
   match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'

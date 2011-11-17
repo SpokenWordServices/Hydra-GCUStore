@@ -31,5 +31,17 @@ describe FileAssetsController do
       delete(:destroy, :id => "__PID__")
     end
   end
+
+  describe 'datastream' do
+    it "should show the datastream" do
+      mock_ds = mock("dc datastream", :content=>'DC content')
+      mock_obj = stub("asset", :datastreams=>{'DC' => mock_ds })
+      mock_obj.expects(:ids_for_outbound).with(:has_model).returns(["GenericContent"])
+      ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
+      GenericContent.expects(:load_instance).with("__PID__").returns(mock_obj)
+      get :datastream, :id =>'__PID__', :datastream=>'DC'
+      response.body.should == 'DC content'
+    end
+  end
   
 end
