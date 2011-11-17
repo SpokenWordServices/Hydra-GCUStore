@@ -1,11 +1,20 @@
 require "om"
 module Hull::AssetsControllerHelper
+  extend ActiveSupport::Concern
+  include Hydra::AccessControlsEnforcement
 
-  def self.included(base)
-    base.before_filter :enforce_permissions, :only =>:new
-    base.before_filter :update_set_membership, :only => :update
-    base.before_filter :validate_parameters, :only =>[:create,:update]
+
+  included do
+    before_filter :enforce_access_controls, :only =>:new
+    before_filter :update_set_membership, :only => :update
+    before_filter :validate_parameters, :only =>[:create,:update]
   end
+
+  ## proxies to enforce_edit_permssions. 
+  def enforce_new_permissions(opts={})
+    return true
+  end
+
 
   def update_set_membership
     structural = params["Structural Set"]

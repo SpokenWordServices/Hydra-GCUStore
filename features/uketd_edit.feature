@@ -22,6 +22,7 @@ Feature: ETD create and edit
     Then I should see "grant-999" within "li#grant_number_0-container"
     Then I should see "grant-888" within "li#grant_number_1-container"
 
+@announce
   Scenario: Create an etd and submit to QA
     Given I am logged in as "contentAccessTeam1@example.com"
     And I am on the base search page
@@ -35,6 +36,7 @@ Feature: ETD create and edit
     Then I fill in "Publisher (Department, Institution)" with "Test University"
     And I select "Doctoral" from "Qualification level"
     And I select "PhD" from "Qualification name"
+    Then show me the page
     And I press "Save Metadata"
     Then I should see "Your changes have been saved."
     When I press "Submit to QA"

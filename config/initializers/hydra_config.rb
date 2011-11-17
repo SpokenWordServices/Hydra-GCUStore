@@ -68,6 +68,6 @@ end
 ### Extend the Hydra defaults with our Hull methods
 FileAsset.send(:include, FileAssetExtra)
 FileAssetsController.send(:include, FileAssetsControllerExtra)
-### TODO ensure our copy of assets_controller_helper overrides the hydra one.
-AssetsController.send(:include, Hull::AssetsControllerHelper)
+# ### TODO ensure our copy of assets_controller_helper overrides the hydra one.
+# AssetsController.send(:include, Hull::AssetsControllerHelper)
 

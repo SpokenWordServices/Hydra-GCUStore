@@ -26,7 +26,7 @@ module HullModelMethods
 
   # call insert_grant number on the descMetadata datastream
   def insert_grant_number(opts={})
-    ds = self.datastreams_in_memory["descMetadata"]
+    ds = self.descMetadata
     node, index = ds.insert_grant_number(opts)
     if opts[:value]
       node.inner_text = opts[:value]
@@ -36,14 +36,14 @@ module HullModelMethods
   
   # call remove_grant number on the descMetadata datastream
   def remove_grant_number(index)
-    ds = self.datastreams_in_memory["descMetadata"]
+    ds = self.descMetadata
     result = ds.remove_grant_number(index)
     return result
   end
 
   # call insert_subject_topic on the descMetadata datastream
   def insert_subject_topic(opts={})
-    ds = self.datastreams_in_memory["descMetadata"]
+    ds = self.descMetadata
     node, index = ds.insert_subject_topic(opts)
     if opts[:value]
       node.inner_text = opts[:value]
@@ -53,14 +53,12 @@ module HullModelMethods
   
   # call remove_subject_topic on the descMetadata datastream
   def remove_subject_topic(index)
-    ds = self.datastreams_in_memory["descMetadata"]
-    result = ds.remove_subject_topic(index)
-    return result
+    self.descMetadata.remove_subject_topic(index)
   end
 	
 	# call insert_multi_field on datastream
 	def insert_multi_field(datastream_name, fields, opts={})
-	 	ds = self.datastreams_in_memory[datastream_name]
+	 	ds = self.datastreams[datastream_name]
     node, index = ds.insert_multi_field(fields, opts)
     if opts[:value]
       node.inner_text = opts[:value]
@@ -70,23 +68,20 @@ module HullModelMethods
 
 	# call remove_multi_field datastream
 	def remove_multi_field(datastream_name, fields, index)
-		ds = self.datastreams_in_memory[datastream_name]
+	 	ds = self.datastreams[datastream_name]
     result = ds.remove_multi_field(index, fields)
     return result
 	end
 
   # call insert_resource on the contentMetadata datastream
   def insert_resource(opts={})
-    ds = self.datastreams["contentMetadata"]
-    node, index = ds.insert_resource(opts)
+    node, index = self.contentMetadata.insert_resource(opts)
     return node, index
   end
   
   # call remove_resource on the contentMetadata datastream
   def remove_resource(index)
-    ds = self.datastreams_in_memory["contentMetadata"]
-    result = ds.remove_resource(index)
-    return result
+    self.contentMetadata.remove_resource(index)
   end
   
   # helper method to derive cmodel declaration from ruby model
@@ -94,18 +89,6 @@ module HullModelMethods
     model = self.class.to_s
     "info:fedora/hull-cModel:#{model[0,1].downcase + model[1..-1]}"
   end
-
-#  # overwriting to_solr to profide proper has_model_s and solrization of fedora_owner_id
-#  def to_solr(solr_doc=Hash.new,opts={})
-#    super(solr_doc,opts)
-#	  solr_doc << { "has_model_s" => cmodel }
-#    solr_doc << { "fedora_owner_id_s" => self.owner_id }
-#    solr_doc << { "fedora_owner_id_display" => self.owner_id }
-#		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
-#			solr_doc << { "is_member_of_queue_facet" => queue_membership.to_s }
-#		end
-#		solr_doc
-#  end
 
   def queue_membership
     self.set_membership.map{|val| HULL_QUEUES.fetch(val,nil) }.compact
@@ -149,9 +132,8 @@ module HullModelMethods
   # Adds hull base metadata to the asset
   #
   def apply_base_metadata
-		dc_ds = self.datastreams_in_memory["DC"]
-		desc_ds = self.datastreams_in_memory["descMetadata"]
-    #rights_ds = self.datastreams_in_memory["rightsMetadata"]
+		dc_ds = self.dc
+		desc_ds = self.descMetadata
   	
 		#Add the dc required elements
 		dc_ds.update_indexed_attributes([:dc_identifier]=> self.pid) unless dc_ds.nil?

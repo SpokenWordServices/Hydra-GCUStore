@@ -137,11 +137,6 @@ ul.tools li {display: inline; margin: 0 10px;}
 
 #login form {margin-bottom:1em;}
 
-.error, .notice, .errorExplanation {background-color:lightyellow; padding:1em; margin-bottom:1em; border:solid 1px #CDC;}
-.error, .notice {font-size: 1.5em;}
-.error, .errorExplanation {color: #C30;}
-.notice {color: #060;}
-
 /* IE 6 Adjustments */
 * html #hd .yui-g .yui-u {margin-top: -5em;}
 * html #hd .yui-g .first {margin-top: 2em;}
