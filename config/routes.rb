@@ -4,6 +4,9 @@ Hull::Application.routes.draw do
 
   devise_for :users
 
+  resources :assets do
+    resources :contributors
+  end
   
   match 'assets/:id/datastreams/:datastream' =>'file_assets#datastream', :as=>'datastream_content' 
   match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content'
@@ -20,7 +23,7 @@ Hull::Application.routes.draw do
   
   resources :generic_contents
   resources :subjects
-
+  match 'subjects/:content_type/:asset_id/:index' => 'contributors#show', :as=>'subject_topic', :via=>:get
   resources :catalog, :only=>[:index, :edit, :show, :update], :as=>'resources' 
 
   ## Write the Hull routes first so that they supercede the blacklight & hydra routes

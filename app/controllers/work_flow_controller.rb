@@ -2,7 +2,6 @@ class WorkFlowController < ApplicationController
   include Blacklight::SolrHelper
   include Hydra::RepositoryController
   include Hydra::AssetsControllerHelper
-#  include WhiteListHelper
   include ReleaseProcessHelper
 	include HullAccessControlEnforcement
     

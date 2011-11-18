@@ -4,20 +4,20 @@ describe WorkFlowController do
 
   it "should be restful" do
     { :get => '/work_flow/new' }.should route_to(:controller=>'work_flow', :action=>'new')
-    { :put => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
+    { :post => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
   end
  
 
 
   describe "update" do
     it "should move the object from one queue to another" do
-      pending
-      mock_document = mock("document")
+      mock_document = mock("document",  :pid=>'_PID_')
       mock_document.expects(:change_queue_membership).with(:qa).returns(true)
+      mock_document.expects :save
       controller.expects(:load_document_from_params).returns(mock_document)
       
       
-      put :update, :id=>"_PID_", :content_type=>"content",:workflow_step =>"qa",:method => :put
+      post :update, :id=>"_PID_", :content_type=>"content",:workflow_step =>"qa",:method => :put
     end
   end
 

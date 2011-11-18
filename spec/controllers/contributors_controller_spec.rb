@@ -9,6 +9,18 @@ require 'spec_helper'
 # rake cucumber
 
 describe ContributorsController do
+  describe 'routes' do
+    it "should route asset_contributors_path" do
+      {:post => '/assets/1/contributors'}.should route_to(:controller=>'contributors', :action=>'create', :asset_id=>'1')
+      asset_contributors_path(1).should == '/assets/1/contributors'
+    end
+
+    it "should route subject_topic_path" do
+      {:get => '/subjects/1/2/3'}.should route_to(:controller=>'contributors', :action=>'show', :content_type=>'1', :asset_id=>'2', :index=>'3')
+      subject_topic_path(:content_type=>'1', :asset_id=>'2', :index=>'3').should == '/subjects/1/2/3'
+
+    end
+  end
   
   describe "create" do
     it "should support adding new person / contributor / organization nodes" do

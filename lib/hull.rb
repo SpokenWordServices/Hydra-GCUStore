@@ -8,7 +8,6 @@ autoload :HullValidationMethods, 'hull/hull_validation_methods'
 #lib/hull/block_mapper.rb
 #lib/hull/ead_mapper.rb
 #lib/hull/field_maps.rb
-#lib/hull/hydra_fedora_metadata_helper.rb
 #lib/hull/jetty_cleaner.rb
 #lib/hull/marc_mapper.rb
 #lib/hull/marc_record_ext.rb

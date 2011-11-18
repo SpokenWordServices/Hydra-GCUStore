@@ -9,7 +9,6 @@ require 'spec_helper'
 # rake cucumber
 
 describe SubjectsController do
-  
   describe "create" do
     it "should support adding new subject topic nodes" do
       pending # TODO: fix route

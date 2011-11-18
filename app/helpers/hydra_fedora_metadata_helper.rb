@@ -1,8 +1,7 @@
 require "inline_editable_metadata_helper"
 require "block_helpers"
-#require "vendor/plugins/hydra_repository/app/helpers/hydra_fedora_metadata_helper.rb"
-
 module HydraFedoraMetadataHelper
+  include Hydra::HydraFedoraMetadataHelperBehavior
 
   def fedora_hidden_field(resource, datastream_name, field_key, opts={})
     field_name, field_values, container_tag_type = get_field_info_and_container_tag(resource, datastream_name, field_key, opts)
@@ -23,7 +22,8 @@ module HydraFedoraMetadataHelper
       body << hiddentag
     end
     result = field_selectors_for(datastream_name,field_key)
-    result << body
+    result << body.html_safe
+    result
   end
 
   # Overwritten to provide more flexibility in the output of text_fields
@@ -50,12 +50,12 @@ module HydraFedoraMetadataHelper
     end
     result = field_selectors_for(datastream_name, field_key)
     if opts.fetch(:multiple, true)
-      result << content_tag(:ol, body, :rel=>field_name)
+      result << content_tag(:ol, body.html_safe, :rel=>field_name)
     else
-      result << body
+      result << body.html_safe
     end
     
-    return result
+    result
   end
 
   # The following method is being altered in order to provide a progressively enhancable text area
@@ -77,27 +77,26 @@ module HydraFedoraMetadataHelper
     field_values.each_with_index do |current_value, z|
       base_id = generate_base_id(field_name, current_value, field_values, opts)
       name = "asset[#{datastream_name}][#{field_name}][#{z}]"
-      processed_field_value = white_list( RedCloth.new(current_value, [:sanitize_html]).to_html)
+      processed_field_value = sanitize( RedCloth.new(current_value, [:sanitize_html]).to_html)
       
       body << "<#{container_tag_type.to_s} class=\"field_value textile-container field\" id=\"#{base_id}-container\">"
         # Not sure why there is we're not allowing the for the first textile to be deleted, but this was in the original helper.
-        body << "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\">Delete</a>" unless z == 0
+        body << "<a href=\"\" title=\"Delete '#{sanitize(current_value)}'\" class=\"destructive field\">Delete</a>" unless z == 0
         body << "<div class=\"textile-text text\" id=\"#{base_id}-text\">#{processed_field_value}</div>"
-        body << "<input class=\"textile-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value)}\"/>"
-        body << "<textarea class=\"textarea-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\">#{h(current_value)}</textarea>"
+        body << "<input class=\"textile-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{sanitize(current_value)}\"/>"
+        body << "<textarea class=\"textarea-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\">#{sanitize(current_value)}</textarea>"
       body << "</#{container_tag_type}>"
     end
     
     result = field_selectors_for(datastream_name, field_key)
     
     if opts.fetch(:multiple, true)
-      result << content_tag(:ol, body, :rel=>field_name)
+      result << content_tag(:ol, body.html_safe, :rel=>field_name)
     else
-      result << body
+      result << body.html_safe
     end
     
-    return result
-    
+    result
   end
 
   # Expects :choices option.  Option tags for the select are generated from the :choices option using Rails "options_for_select":http://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select helper
@@ -120,9 +119,9 @@ module HydraFedoraMetadataHelper
       body << "</select>"
       
       result = field_selectors_for(datastream_name, field_key)
-      result << body
+      result << body.html_safe
     end
-    return result
+    result
   end
   
 
