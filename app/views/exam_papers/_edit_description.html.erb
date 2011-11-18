@@ -68,15 +68,4 @@
 
 <hr class="separator"/>
 
-<% if @document_fedora.queue_membership == [:proto] %>
-<div style="width:100%;height:2.2em;">
-  <form id="document_queue" action="<%= change_queue_path(:content_type=>"exam_paper", :workflow_step=>"qa", :id => @document_fedora.pid )%>" method="post" data-resourceType="uketd_object" accept-charset="utf-8" >
-    <input type="hidden" name="content_type" value="exam_paper" />
-    <input type="hidden"  name="_method" value="put"/>
-    <input type="hidden" name="workflow_step" value="qa" />
-    <div class="form-control">  
-      <%= submit_tag "Submit to QA", :confirm => "Are you sure you want to move this to the QA Queue?" %>
-    </div>
-  </form>
-</div>
-<% end %>
+<%= render :partial=>"shared/submit_to_qa" %>
