@@ -42,7 +42,7 @@ namespace :hydra do
 
     desc "Set up all configs & libraries to run hull"
     namespace :config do
-      task :all => ['hydra:jetty:config', 'hydra:jetty:config_full_text']
+      task :all => ['hydra:jetty:config', 'hydra:jetty:config_full_text', 'hydra:jetty:config_oai']
     end
 
   end
