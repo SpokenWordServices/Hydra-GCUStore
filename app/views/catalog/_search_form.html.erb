@@ -1,5 +1,5 @@
 <div id="search" class="search">
-  <%= form_tag catalog_index_path, :method => :get do %>
+  <%= form_tag resources_path, :method => :get do %>
     <%= text_field_tag :q, params[:q], :class => "q" %>
     <%= label_tag(:search_field, "") %>
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]) %>        
