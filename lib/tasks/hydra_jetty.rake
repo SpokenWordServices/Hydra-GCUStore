@@ -13,6 +13,12 @@ namespace :hydra do
 # 
 #     end
 # 
+
+    desc "Deploy files for OAI Provider service"
+    task :config_oai do
+      cp_r("fedora_conf/oai/oaiprovider", "jetty/webapps/", :verbose => true)
+    end
+
     desc "Copies the libraries necessary for full-text indexing with solr"
     task :config_full_text do
 #      rm_r('jetty/solr/contrib') if File.exist?('jetty/solr/contrib')
@@ -36,7 +42,7 @@ namespace :hydra do
 
     desc "Set up all configs & libraries to run hull"
     namespace :config do
-      task :all => ['hydra:jetty:config', 'hydra:jetty:config_full_text']
+      task :all => ['hydra:jetty:config', 'hydra:jetty:config_full_text', 'hydra:jetty:config_oai']
     end
 
   end
