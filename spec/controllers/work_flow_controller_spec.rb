@@ -4,7 +4,7 @@ describe WorkFlowController do
 
   it "should be restful" do
     { :get => '/work_flow/new' }.should route_to(:controller=>'work_flow', :action=>'new')
-    { :post => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
+    { :put => '/work_flow/article/3/qa' }.should route_to(:controller=>'work_flow', :action=>'update', :id=>"3", :content_type=>"article",:workflow_step=>"qa")
   end
  
 

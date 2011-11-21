@@ -12,7 +12,7 @@ Hull::Application.routes.draw do
   match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content'
 
   match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'
-  match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:post
+  match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:put
 
   resources :multi_field
 	match 'multi_field/:content_type/:asset_id/:index' =>'multi_field#destroy', :via => :delete

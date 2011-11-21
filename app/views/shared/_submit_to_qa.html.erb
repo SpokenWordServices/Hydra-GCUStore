@@ -1,6 +1,6 @@
 <% if @document_fedora.queue_membership == [:proto] %>
   <div style="width:100%;height:2.2em;">
-    <%=form_for :uketd_object, :url=>change_queue_path(:content_type=>"uketd_object", :workflow_step=>"qa", :id => @document_fedora.pid ), :id=>"document_queue" do %>
+    <%=form_for @document_fedora, :url=>change_queue_path(:content_type=>@document_fedora.class.to_s.underscore, :workflow_step=>"qa", :id => @document_fedora.pid ), :id=>"document_queue" do %>
       <div class="form-control">  
         <%= submit_tag "Submit to QA", :confirm => "Are you sure you want to move this to the QA Queue?" %>
       </div>
