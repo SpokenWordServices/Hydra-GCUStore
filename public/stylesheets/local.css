@@ -586,9 +586,9 @@ select#sort, select#per_page {
     border: 1px dotted #333333;
     border-radius: 0 0 0 0;
     margin-bottom: 0em;
+    margin-left: 697px;
+    margin-top: -24px;
     padding-left: 0;
-    width: 186px;
-    float: right;
 }
 
 .previous {
@@ -644,6 +644,17 @@ select#sort, select#per_page {
 	font-weight: bold;
 }
 
+/*
+#facets h3 {
+    cursor: pointer;
+    background-position:left bottom;
+    background-repeat:no-repeat;
+    padding-left:15px;
+    background-image:url('/images/facet_closed.png');
+    color: #000000;
+    padding-top: 0.3em;
+}
+*/
 
 #facets h3 {
     background-position: left bottom;
@@ -1031,6 +1042,7 @@ div.generic-download {
     border: 1px dotted #D21033;
     font-family: Georgia;
     margin-bottom: 2em;
+    padding: 2em;
 }
 
 /* Added temporarily to hide debug output from layout */
@@ -1317,17 +1329,7 @@ span.edit-browse {
 }
 
 a.destructive {
-  background-image:url("../images/icons/delete-blue.png");
   display: block !important; 
-	background-position: 0 0;
-	background-repeat:no-repeat;
-	color: transparent;
-	overflow:hidden;
-	border-bottom: none;
-	top: 0px;
-	right: 0px;	
-	width: 20px;
-
 }
 
 .destructive field {
