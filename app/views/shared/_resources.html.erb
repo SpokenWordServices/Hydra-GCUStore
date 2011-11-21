@@ -8,7 +8,17 @@
 
   <%# the following passes an :accept hash to the uploader file_field_tag which limits the type of file that can be uploaded %>
 
-  <%= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => ['application/pdf','image/jpeg','image/tiff','image/gif','application/vnd.ms-excel','application/zip','text/csv','audio/x-ms-wmv'] }, :container_content_type=>"uketd_object" } %>
+  <%#= render :partial=>"fluid_infusion/uploader", :locals => {:uploader_options => {:accept => ['application/pdf','image/jpeg','image/tiff','image/gif','application/vnd.ms-excel','application/zip','text/csv','audio/x-ms-wmv'] }, :container_content_type=>"uketd_object" } %>
+
+  <%= form_tag(upload_url,:method=>"post",:enctype=>"multipart/form-data", :class=>"uploader-form step") do -%>
+    <input type="hidden" name="container_id" value="<%=h container_id %>"/>
+    <%= hidden_field_tag("container_content_type", container_content_type, :id => "file_upload_content_type") if defined?(container_content_type) %>
+    <%= render :partial=>"file_assets/new"%>
+    <%= hidden_field_tag(:new_asset, true, :id => "files_new_asset") if params[:new_asset] %>
+    <%= hidden_field_tag("id",params[:id], :id => "file_upload_id") if params[:id] %>
+    <%= submit_tag("Upload File", :name=>"upload_file")%>
+  <%- end -%>
+
       
       
   <form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>@content_type)%>" method="post" data-resourceType="<%= @content_type%>" accept-charset="utf-8" >

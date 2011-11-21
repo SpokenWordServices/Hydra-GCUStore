@@ -1,4 +1,4 @@
-require 'mediashelf/active_fedora_helper'
+#require 'mediashelf/active_fedora_helper'
 class DownloadsController < ApplicationController
     include Hydra::RepositoryController
     helper :downloads

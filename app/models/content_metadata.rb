@@ -40,17 +40,18 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     # @option opts [String] :sequence the sequence number
     # @option opts [String] :id the resource id
     # @option opts [String] :display_label the dislpayLabel for the resource
-    # @option opts [String] :object_id the objectID for the resourc
+    # @option opts [String] :object_id the objectID for the resource
     # @option opts [String] :file_id the id for the file [default "content"]
     # @option opts [String] :file_size the size of the file
     # @option opts [String] :url the location url of the file
     # @option opts [String] :service_def the service definition
+    # @option opts [String] :ds_id the dsID for the datastream
     def self.resource_template(opts={})
-      options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>""}
+      options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>"", :ds_id=>'content'}
       options.merge!(opts)
       options.merge!({:id=>"Asset #{options[:display_label]}"})
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.resource(:sequence=>options[:sequence],:id=>'text',:type=>options[:display_label],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>"content",:serviceMethod=>"getContent") {
+        xml.resource(:sequence=>options[:sequence],:id=>'text',:type=>options[:display_label],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>options[:ds_id],:serviceMethod=>"getContent") {
           xml.file(:id=>options[:id], :format=>"pdf", :mimeType=>"application/pdf", :size=>options[:file_size]) {
             xml.location(options[:url], :type=>"url")
           }
@@ -63,8 +64,9 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     # @param [Hash] opts optional values passed in
     # @option opts [String] :sequence the sequence number
     # @option opts [String] :id the resource id
-    # @option opts [String] :display_label the dislpayLabel for the resource
-    # @option opts [String] :object_id the objectID for the resourc
+    # @option opts [String] :display_label the displayLabel for the resource
+    # @option opts [String] :object_id the objectID for the resource
+    # @option opts [String] :ds_id the dsId for the resource
     # @option opts [String] :file_id the id for the file [default "content"]
     # @option opts [String] :file_size the size of the file
     # @option opts [String] :url the location url of the file

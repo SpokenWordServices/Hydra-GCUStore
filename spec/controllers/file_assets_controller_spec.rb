@@ -1,8 +1,12 @@
 require 'spec_helper'
 
-#This file is testing FileAssetsController inside hydra, after FileAssetsControllerExtra has been mixed in by the hydra initializer.
 describe FileAssetsController do
 
+  describe 'routes' do
+    it "should have create" do
+      {:post => "/assets/hull:3856/file_assets"}.should route_to(:controller=>'file_assets', :asset_id=>'hull:3856', :action=>'create')
+    end
+  end 
   
   describe 'create' do
       before :each do
