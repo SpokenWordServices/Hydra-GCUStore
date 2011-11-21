@@ -24,6 +24,7 @@ Hull::Application.routes.draw do
   resources :generic_contents
   resources :subjects
   match 'subjects/:content_type/:asset_id/:index' => 'contributors#show', :as=>'subject_topic', :via=>:get
+  match 'subjects/:content_type/:asset_id/:index' => 'subjects#destroy', :via=>:delete
   resources :catalog, :only=>[:index, :edit, :show, :update], :as=>'resources' 
 
   ## Write the Hull routes first so that they supercede the blacklight & hydra routes

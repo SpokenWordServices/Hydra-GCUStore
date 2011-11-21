@@ -18,7 +18,6 @@ describe ContributorsController do
     it "should route subject_topic_path" do
       {:get => '/subjects/1/2/3'}.should route_to(:controller=>'contributors', :action=>'show', :content_type=>'1', :asset_id=>'2', :index=>'3')
       subject_topic_path(:content_type=>'1', :asset_id=>'2', :index=>'3').should == '/subjects/1/2/3'
-
     end
   end
   

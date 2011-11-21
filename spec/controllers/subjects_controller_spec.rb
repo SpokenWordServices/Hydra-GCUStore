@@ -9,9 +9,15 @@ require 'spec_helper'
 # rake cucumber
 
 describe SubjectsController do
+  describe 'routes' do
+    it "should route subject_topic_path" do
+      {:delete => '/subjects/1/2/3'}.should route_to(:controller=>'subjects', :action=>'destroy', :content_type=>'1', :asset_id=>'2', :index=>'3')
+    end
+  end
+
   describe "create" do
     it "should support adding new subject topic nodes" do
-      pending # TODO: fix route
+      pending "This routes to catalog controller"
       mock_document = mock("document")
       mock_document.expects(:insert_subject_topic).returns(["foo node","989"])
       mock_document.expects(:save)
@@ -23,7 +29,6 @@ describe SubjectsController do
   
   describe "destroy" do
     it "should delete the subject topic corresponding to index" do
-      pending # TODO: fix route
       mock_document = mock("JournalArticle")
       mock_document.expects(:remove_subject_topic).with("3")
       mock_document.expects(:save)
