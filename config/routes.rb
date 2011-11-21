@@ -27,6 +27,8 @@ Hull::Application.routes.draw do
   match 'subjects/:content_type/:asset_id/:index' => 'subjects#destroy', :via=>:delete
   resources :catalog, :only=>[:index, :edit, :show, :update], :as=>'resources' 
 
+  resources :version, :only=>:index
+
   ## Write the Hull routes first so that they supercede the blacklight & hydra routes
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
