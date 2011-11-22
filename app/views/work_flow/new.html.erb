@@ -5,23 +5,30 @@
 	</div>
 	<div class="create_resource">
   	<ul id="resource_list">
-      <li>Text</li>
+      <li>Text
 				<ul>
 					<li><%= link_to "Electronic Thesis or Dissertation", :action => "new", :controller => "assets", :content_type => "uketd_object" %></li>
 					<li><%= link_to "Examination Paper", :action => "new", :controller => "assets", :content_type => "exam_paper" %></li>
 					<li>Meeting Paper</li>
 					<li>Presentation</li>
 				</ul>
-			<li>Images</li>
+			</li>
+			<li>Images
 				<ul>
 					<li>Photograph</li>
 					<li>Diagram</li>
 				</ul>
-			<li>Sets</li>
+			</li>
+			<li>Sets
 				<ul>
 					<li><%= link_to "Structural set", :action => "new", :controller => "assets", :content_type => "structural_set" %></li>
 					<li><%= link_to "Display set", :action => "new", :controller => "assets", :content_type => "display_set" %></li>
 				</ul>
+			</li>
+			<li>Other
+			  <ul>
+			    <li><%= link_to "Generic Content", new_generic_content_path %></li>
+			  </ul>
 		</ul>
   </div>
 </div>

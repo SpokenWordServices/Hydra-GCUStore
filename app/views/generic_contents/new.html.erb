@@ -37,6 +37,18 @@
         <dt><%= f.label :see_also, "See also (non-web)" %></dt>
         <dd><%= f.text_field :see_also %></dd>
         <dt><%= f.label :publisher %></dt>
+        <dt>
+      		<%= f.label "Structural Set" %>
+    		</dt>
+    		<dd>
+      		<%= select "Structural Set", "", StructuralSet.tree.options_for_nested_select, :selected=>@generic_content.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
+    		</dd>
+        <dt>
+          <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
+        </dt>
+        <dd>
+          <%= select "Display Set", "", DisplaySet.tree.options_for_nested_select, :selected=>@generic_content.display_set, :include_blank => true, :class=>"display-set-select"  %>
+        </dd> 
         <dd><%= f.text_field :publisher %></dd>
         <dt><%= f.label :lang_text, "Language" %></dt>
         <dd><%= f.text_field :lang_text %></dd>
