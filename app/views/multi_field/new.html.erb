@@ -1,4 +1,4 @@
-<form id="add_multi_field" action="/multi_field?content_type=<%= params[:content_type]%>" method="post" accept-charset="utf-8">
+<%= form_for :multi_field, :url=>"/multi_field?content_type=#{params[:content_type]}", :id=>"add_multi_field" do%>
 
 <%= hidden_field_tag 'asset_id', params["asset_id"] %>
 <%= hidden_field_tag 'fields', @fields %>
@@ -28,4 +28,4 @@
 
 <div class="form-control"><%= submit_tag "Add Field", {:id => "addMultiField"} %></div>
 
-</form>
+<%end%>
