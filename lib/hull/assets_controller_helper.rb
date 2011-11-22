@@ -15,27 +15,28 @@ module Hull::AssetsControllerHelper
     return true
   end
 
-
-  def update_set_membership
+  # Handles updating display set & structural set associations for an object
+  # @param [ActiveFedora::Base] document to update membership for. Defaults to using @document
+  def update_set_membership(document=@document)
     structural = params["Structural Set"]
     structural = structural.first if structural.kind_of? Array
     if structural && structural.empty?
-      @document.change_queue_membership :proto
+      document.change_queue_membership :proto
       structural = nil
     end
     display = params["Display Set"].to_s
     display = nil if display.empty?
-    if @document.respond_to?(:apply_set_membership)
-      @document.apply_set_membership([display, structural].compact)
+    if document.respond_to?(:apply_set_membership)
+      document.apply_set_membership([display, structural].compact)
     end
     # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
     # otherwise, the structural set the governing apo
-    if @document.respond_to?(:apply_governed_by)
-      if @document.kind_of? StructuralSet
-        @document.apply_governed_by('hull-apo:structuralSet')
-        @document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
+    if document.respond_to?(:apply_governed_by)
+      if document.kind_of? StructuralSet
+        document.apply_governed_by('hull-apo:structuralSet')
+        document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
       elsif structural
-        @document.apply_governed_by(structural)
+        document.apply_governed_by(structural)
       end
     end
   end

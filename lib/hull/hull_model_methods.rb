@@ -196,6 +196,8 @@ module HullModelMethods
   #   return graph[ptr]
   # end
 
+  # Associate the given sets with the object, removing old associations first.
+  # @param [Array] sets to set associations with. Should be URIs.
 	def apply_set_membership(sets)
 		#We delete previous set memberships and move to new set
     old_sets = set_membership.dup
