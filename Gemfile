@@ -10,7 +10,7 @@ gem 'jettywrapper', ">=1.0.2"
 gem 'solrizer', '>=1.0.4'
 gem 'solrizer-fedora', '>=1.1.3'
 gem 'hydra-head', :git =>'git://github.com/projecthydra/hydra-head.git'
-gem 'active-fedora', '>=3.1.3'
+gem 'active-fedora', :git =>'git://github.com/mediashelf/active_fedora.git'
 gem 'haml'
 gem "devise"
 gem 'will_paginate'
