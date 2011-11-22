@@ -304,7 +304,7 @@ module HullModelMethods
   # Extract content from all child assets with a content datastream with a mime type of application/pdf
   def retrieve_child_asset_pdf_content
     content = parts.each.inject("") do |extracted_content, child|
-      if child.datastreams.keys.include?("content") and child.datastreams["content"].mime_type == 'application/pdf'
+      if child.datastreams.keys.include?("content") and child.datastreams["content"].mimeType == 'application/pdf'
         extracted_content << datastream_content(child.pid,child.datastreams["content"])
         extracted_content << " "
       end

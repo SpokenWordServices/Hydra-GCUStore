@@ -35,11 +35,11 @@ describe ActiveFedora::ContentModel do
   
   describe "#uri_to_ruby_class" do
     it "should correctly return the ruby class of a given uri" do
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:uketdObject").should eql(UketdObject)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:examPaper").should eql(ExamPaper)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:genericContent").should eql(GenericContent)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:structuralSet").should eql(StructuralSet)
-      ActiveFedora::ContentModel.uri_to_ruby_class("info:fedora/hull-cModel:journalArticle").should eql(JournalArticle)
+      ActiveFedora::ContentModel.uri_to_model_class("info:fedora/hull-cModel:uketdObject").should eql(UketdObject)
+      ActiveFedora::ContentModel.uri_to_model_class("info:fedora/hull-cModel:examPaper").should eql(ExamPaper)
+      ActiveFedora::ContentModel.uri_to_model_class("info:fedora/hull-cModel:genericContent").should eql(GenericContent)
+      ActiveFedora::ContentModel.uri_to_model_class("info:fedora/hull-cModel:structuralSet").should eql(StructuralSet)
+      ActiveFedora::ContentModel.uri_to_model_class("info:fedora/hull-cModel:journalArticle").should eql(JournalArticle)
     end
   end
 end

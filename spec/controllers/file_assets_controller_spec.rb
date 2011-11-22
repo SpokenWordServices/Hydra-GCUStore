@@ -30,9 +30,14 @@ describe FileAssetsController do
   describe 'destroy' do
     it "should delete the asset identified by pid" do
       mock_obj = mock("asset", :delete)
-      ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
-      controller.expects(:update_metadata) ## This is what we're really testing for hull
-      delete(:destroy, :id => "__PID__")
+      ActiveFedora::Base.stubs(:load_instance).with("__PID__").returns(mock_obj)
+      mock_metadata = mock('metadata', :serialize! => true)
+      mock_container = mock("container", :remove_resource)
+      mock_container.expects(:save)
+      mock_container.expects(:contentMetadata).returns(mock_metadata)
+      ActiveFedora::Base.stubs(:load_instance).with("__CONTAINER_ID__").returns(mock_container)
+      ActiveFedora::ContentModel.stubs(:known_models_for).with( mock_container ).returns([])
+      delete(:destroy, :id => "__PID__", :container_id=>"__CONTAINER_ID__")
     end
   end
 
@@ -40,7 +45,7 @@ describe FileAssetsController do
     it "should show the datastream" do
       mock_ds = mock("dc datastream", :content=>'DC content')
       mock_obj = stub("asset", :datastreams=>{'DC' => mock_ds })
-      mock_obj.expects(:ids_for_outbound).with(:has_model).returns(["GenericContent"])
+      mock_obj.expects(:relationships).with(:has_model).returns(["info:fedora/afmodel:GenericContent"])
       ActiveFedora::Base.expects(:load_instance).with("__PID__").returns(mock_obj)
       GenericContent.expects(:load_instance).with("__PID__").returns(mock_obj)
       get :datastream, :id =>'__PID__', :datastream=>'DC'

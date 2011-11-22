@@ -20,6 +20,7 @@ Hull::Application.routes.draw do
 
   resources :catalog, :path=>'resources', :as=>'resources'
   resources :grant_numbers
+  match 'grant_numbers/:content_type/:asset_id/:index' => 'grant_numbers#show', :as=>'grant_number',:via => :get 
   
   resources :generic_contents
   resources :subjects

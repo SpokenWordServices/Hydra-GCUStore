@@ -29,8 +29,7 @@ class FileAssetsController < ApplicationController
   def destroy_metadata
       container = find_container
       container.remove_resource(params[:index])
-      container.datastreams["contentMetadata"].serialize!
-      container.datastreams["contentMetadata"].save
+      container.contentMetadata.serialize!
       container.save
   end
 
@@ -46,7 +45,7 @@ class FileAssetsController < ApplicationController
     else
       container = afmodel.load_instance(params[:container_id])
     end
-
+    container
   end
 
   def update_content_metadata(container)

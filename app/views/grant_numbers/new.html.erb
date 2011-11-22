@@ -1,4 +1,4 @@
-<form id="add_grant_number" action="<%= grant_numbers_path(params[:asset_id],:content_type=>params[:content_type]) %>" method="post" accept-charset="utf-8">
+<%= form_for :grant_number, :url=>grant_numbers_path(:content_type=>params[:content_type]), :id=>"add_grant_number" do %>
 
 <%= hidden_field_tag 'asset_id', params["asset_id"] %>
 
@@ -13,4 +13,4 @@
 
 <div class="form-control"><%= submit_tag "Add Grant", {:id => "addGrantNumber"} %></div>
 
-</form>
+<% end %>

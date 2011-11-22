@@ -26,6 +26,7 @@ class TestClassTwo < UketdObject
 end
 
 describe HullModelMethods do
+   
   before(:each) do
     @testclassone = TestClassOne.new
   end

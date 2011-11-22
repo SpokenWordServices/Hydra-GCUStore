@@ -19,7 +19,7 @@ module FileAssetExtra
   end
 
   def solrize_parent
-    if datastreams.keys.include?("content") && datastreams['content'].mime_type == 'application/pdf'
+    if datastreams.keys.include?("content") && datastreams['content'].mimeType == 'application/pdf'
       s = Solrizer::Fedora::Solrizer.new
       parents = part_of
       parents.each do |parent|

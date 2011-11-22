@@ -46,7 +46,7 @@ describe FileAsset do
       mock_parent = mock("parent")
       mock_parent.stubs(:pid).returns("_PID_")
       mock_content_ds = mock("content_ds")
-      mock_content_ds.expects(:mime_type).returns("application/pdf")
+      mock_content_ds.expects(:mimeType).returns("application/pdf")
       @file_asset.stubs(:datastreams).returns({"content"=>mock_content_ds})
       @file_asset.expects(:part_of).at_least_once.returns([mock_parent])
       mock_solrizer = mock("solrizer")

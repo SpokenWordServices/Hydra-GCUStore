@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe GrantNumbersController do
+
+  it "should route to the controller" do
+    {:get=>"/grant_numbers/new"}.should route_to(:controller=>'grant_numbers', :action=>'new')
+    {:get=>"/grant_numbers/1/2/3"}.should route_to(:controller=>'grant_numbers', :action=>'show', :content_type=>'1', :asset_id=>'2', :index=>'3')
+    grant_number_path(:asset_id=>'2',:index=>'3',:content_type=>'1').should == '/grant_numbers/1/2/3'
+  end
   
   describe "create" do
     it "should support adding new grant number nodes" do
