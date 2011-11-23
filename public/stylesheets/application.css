@@ -41,6 +41,13 @@ a:hover {color: #029;}
 .yui-t2 .yui-b {float:left; width:180px;}
 .yui-t2 .yui-b p {padding-top: 2em;}
 
+/* Remove sidebar from some pages */
+.yui-t2 #yui-main .yui-b.edit,.yui-t2 #yui-main .yui-b.new,.yui-t2 #yui-main .yui-b.show { margin-left:10px;}
+
+.yui-t2 #yui-main .yui-b.edit #cover_container dl dd, .yui-t2 #yui-main .yui-b.new #cover_container dl dd, .yui-t2 #yui-main .yui-b.show #cover_container dl dd { width:53em; }
+.yui-t2 #yui-main .yui-b.edit div#search.search, .yui-t2 #yui-main .yui-b.new div#search.search, .yui-t2 #yui-main .yui-b.show div#search.search { margin-left:244px }
+
+
 /* Top Banner */
 h1.site_title {background: transparent url('../images/logo.png') no-repeat top left; margin: 2em 0px 0px 1em; height: 35px; width: 120px;} 
 .first h1 {margin: 0px; padding: 0px;}
