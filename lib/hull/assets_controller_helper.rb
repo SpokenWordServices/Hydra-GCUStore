@@ -17,7 +17,7 @@ module Hull::AssetsControllerHelper
 
   # Handles updating display set & structural set associations for an object
   # @param [ActiveFedora::Base] document to update membership for. Defaults to using @document
-  def update_set_membership(document=@document_fedora)
+  def update_set_membership(document=@document)
     structural = params["Structural Set"]
     structural = structural.first if structural.kind_of? Array
     if structural && structural.empty?
