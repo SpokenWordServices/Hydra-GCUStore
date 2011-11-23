@@ -3,8 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.10'
 gem 'jquery-rails'
 
-gem 'sqlite3'
-
 gem "blacklight"
 gem 'jettywrapper', ">=1.0.2"
 gem 'solrizer', '>=1.0.4'
@@ -19,7 +17,7 @@ gem 'rubytree'
 
 
 group :development, :test do
-  gem "sqlite3-ruby"
+  gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3'
   gem 'ruby-debug'
 # gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ruby-debug-base'
