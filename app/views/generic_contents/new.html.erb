@@ -1,3 +1,4 @@
+<div class="document">
 <div class="document_viewer" id="cover_container">
 
   <div class="set-controls">
@@ -15,15 +16,19 @@
   <div class="multipleEdit">
 	  
     <%= form_for @generic_content do |f| %>
+    <fieldset class="edit-standard">
       <dl>
+
+        <%#= render :partial => 'contributors/index', :locals=> {:document=>@generic_content.to_solr, :document_fedora=>@generic_content, :roles=>['creator','author'], :contributor_type=>:person} %>
+  	    
         <dt><%= f.label :title %></dt>
         <dd><%= f.text_field :title%></dd>
-        <dt><%= f.label :topic_tag, "Subject (topic)" %></dt>
+      </dl>
+    </fieldset>
+    <fieldset>
+      <dl>
+        <dt><%= f.label :topic_tag, "Subject" %></dt>
         <dd><%= f.text_field :topic_tag %></dd>
-        <dt><%= f.label :geographic_tag, "Subject (geographic)" %></dt>
-        <dd><%= f.text_field :geographic_tag %></dd>
-        <dt><%= f.label :temporal_tag, "Subject (temporal)" %></dt>
-        <dd><%= f.text_field :temporal_tag %></dd>
         <dt><%= f.label :coordinates %></dt>
         <dd><%= f.text_field :coordinates %></dd>
         <dt><%= f.label :rights %></dt>
@@ -32,34 +37,56 @@
         <dd><%= f.text_field :date_valid %></dd>
         <dt><%= f.label :description, "Description/abstract" %></dt>
         <dd><%= f.text_area :description %></dd>
+      </dl>
+  	</fieldset>
+    <fieldset class="two-column">
+      <dl>
         <dt><%= f.label :related_item, "Related materials (web)" %></dt>
         <dd><%= f.text_field :related_item %></dd>
-        <dt><%= f.label :see_also, "See also (non-web)" %></dt>
-        <dd><%= f.text_field :see_also %></dd>
-        <dt><%= f.label :publisher %></dt>
-        <dt>
-      		<%= f.label "Structural Set" %>
-    		</dt>
-    		<dd>
-      		<%= select "Structural Set", "", StructuralSet.tree.options_for_nested_select, :selected=>@generic_content.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
-    		</dd>
-        <dt>
-          <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
-        </dt>
-        <dd>
-          <%= select "Display Set", "", DisplaySet.tree.options_for_nested_select, :selected=>@generic_content.display_set, :include_blank => true, :class=>"display-set-select"  %>
-        </dd> 
-        <dd><%= f.text_field :publisher %></dd>
-        <dt><%= f.label :lang_text, "Language" %></dt>
-        <dd><%= f.text_field :lang_text %></dd>
-        <dt><%= f.label :lang_code, "Language Code" %></dt>
-        <dd><%= f.text_field :lang_code %></dd>
-        <dt><%= f.label :digital_origin %></dt>
-        <dd><%= f.text_field :digital_origin %></dd>
-        <dt><%= f.label :type_of_resource  %></dt>
-        <dd><%= f.text_field :type_of_resource %></dd>
       </dl>
+    </fieldset>
+    <fieldset class="edit-standard">
+     <dl>
+      <dt><%= f.label :see_also, "See also (non-web)" %></dt>
+      <dd><%= f.text_field :see_also %></dd>
+      <dt><%= f.label :publisher %></dt>
+      <dd><%= f.text_field :publisher %></dd>
+    </dl>
+ 	 </fieldset>
+  <fieldset class="two-column">
+    <dl>
+      <dt class="left"><%= f.label :lang_text, "Language" %></dt>
+      <dd class="left"><%= f.text_field :lang_text %></dd>
+      <dt class="right"><%= f.label :lang_code, "Language Code" %></dt>
+      <dd class="right"><%= f.text_field :lang_code %></dd>
+      <dt class="left"><%= f.label :digital_origin %></dt>
+      <dd class="left"><%= f.text_field :digital_origin %></dd>
+      <dt class="right"><%= f.label :type_of_resource  %></dt>
+      <dd class="right"><%= f.text_field :type_of_resource %></dd>
+    </dl>
+  </fieldset>
+   <fieldset>
+     <dl>
+      <dt>
+    		<%= f.label "Structural Set" %>
+  		</dt>
+  		<dd>
+    		<%= select "Structural Set", "", StructuralSet.tree.options_for_nested_select, :selected=>@generic_content.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
+  		</dd>
+      <dt>
+        <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
+      </dt>
+      <dd>
+        <%= select "Display Set", "", DisplaySet.tree.options_for_nested_select, :selected=>@generic_content.display_set, :include_blank => true, :class=>"display-set-select"  %>
+      </dd> 
+   </dl>
+	</fieldset>
+	<div>
+    <div class="form-control">
       <%= f.submit "Save" %>
-    <% end %>
+    </div>
+  </div>
+  <% end %>
   </div>
 <div>
+</div>
