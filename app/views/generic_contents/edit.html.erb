@@ -1,0 +1,94 @@
+<div class="document">
+<div class="document_viewer" id="cover_container">
+
+  <div class="set-controls">
+    <!-- holder for create/move set controls -->
+  <div class="create">
+  	<a href="">Create a new set</a>
+  </div>
+  <div class="move">
+  	<a href="">Move to a new set</a>
+  </div>
+  </div>
+  <div class="content-type-header">
+    <h1>Edit Generic Simple Object</h1>
+  </div>
+  <div class="multipleEdit">
+	  
+    <%= form_for @generic_content do |f| %>
+    <fieldset class="edit-standard">
+      <dl>
+
+        <%= render :partial => 'contributors/index', :locals=> {:document=>@generic_content.to_solr, :document_fedora=>@generic_content, :roles=>['creator','author'], :contributor_type=>:person} %>
+  	    
+        <dt><%= f.label :title %></dt>
+        <dd><%= f.text_field :title%></dd>
+      </dl>
+    </fieldset>
+    <fieldset id="subjects">
+      <legend>Subject(s)</legend>
+      <%= render :partial=>"subjects/editable_list", :locals=>{:document_fedora=>@generic_content}%>
+    </fieldset>
+    <fieldset>
+      <dl>
+        <dt><%= f.label :coordinates %></dt>
+        <dd><%= f.text_field :coordinates %></dd>
+        <dt><%= f.label :rights %></dt>
+        <dd><%= f.text_area :rights %></dd>
+        <dt><%= f.label :date_valid, "Valid date yyyy or yyyy/yyyy" %></dt>
+        <dd><%= f.text_field :date_valid %></dd>
+        <dt><%= f.label :description, "Description/abstract" %></dt>
+        <dd><%= f.text_area :description %></dd>
+      </dl>
+  	</fieldset>
+    <fieldset class="two-column">
+      <dl>
+        <dt><%= f.label :related_item, "Related materials (web)" %></dt>
+        <dd><%= f.text_field :related_item %></dd>
+      </dl>
+    </fieldset>
+    <fieldset class="edit-standard">
+     <dl>
+      <dt><%= f.label :see_also, "See also (non-web)" %></dt>
+      <dd><%= f.text_field :see_also %></dd>
+      <dt><%= f.label :publisher %></dt>
+      <dd><%= f.text_field :publisher %></dd>
+    </dl>
+ 	 </fieldset>
+  <fieldset class="two-column">
+    <dl>
+      <dt class="left"><%= f.label :lang_text, "Language" %></dt>
+      <dd class="left"><%= f.text_field :lang_text %></dd>
+      <dt class="right"><%= f.label :lang_code, "Language Code" %></dt>
+      <dd class="right"><%= f.text_field :lang_code %></dd>
+      <dt class="left"><%= f.label :digital_origin %></dt>
+      <dd class="left"><%= f.text_field :digital_origin %></dd>
+      <dt class="right"><%= f.label :type_of_resource  %></dt>
+      <dd class="right"><%= f.text_field :type_of_resource %></dd>
+    </dl>
+  </fieldset>
+   <fieldset>
+     <dl>
+      <dt>
+    		<%= f.label "Structural Set" %>
+  		</dt>
+  		<dd>
+    		<%= select "Structural Set", "", StructuralSet.tree.options_for_nested_select, :selected=>@generic_content.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
+  		</dd>
+      <dt>
+        <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
+      </dt>
+      <dd>
+        <%= select "Display Set", "", DisplaySet.tree.options_for_nested_select, :selected=>@generic_content.display_set, :include_blank => true, :class=>"display-set-select"  %>
+      </dd> 
+   </dl>
+	</fieldset>
+	<div>
+    <div class="form-control">
+      <%= f.submit "Save" %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+<div>
+</div>

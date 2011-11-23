@@ -1,0 +1,18 @@
+<!-- expects document_fedora to have Hull MODS terminology & behaviors -->
+<dl class="subject categorized multi-value">
+  <%- document_fedora.topic_tag.each_with_index do |value, index| %>
+    <dt><%= label "topic_tag_#{index}", "topic" %></dt>
+    <dd class="topic"><%= text_field_tag "generic_content[topic_tag][#{index}]", value %></dd>
+  <% end %>
+  <%- document_fedora.geographic_tag.each_with_index do |value, index| %>
+    <dt><%= label "geographic_tag_#{index}", "geographic" %></dt>
+    <dd class="geographic"><%= text_field_tag "generic_content[geographic_tag][#{index}]", value %></dd>
+  <% end %>
+  <%- document_fedora.temporal_tag.each_with_index do |value, index| %>
+    <dt><%= label "temporal_tag_#{index}", "temporal" %></dt>
+    <dd class="temporal"><%= text_field_tag "generic_content[temporal_tag][#{index}]", value %></dd>
+  <% end %>
+  <% unless(params[:action] == "new") %>
+    <%= link_to(image_tag("/images/add.png",:border=>0), new_subject_path(:asset_id=>params[:id], :content_type => document_fedora.class.to_s.underscore )) %>
+  <% end %>
+</dl>
