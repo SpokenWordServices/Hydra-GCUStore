@@ -19,13 +19,13 @@
     <fieldset class="edit-standard">
       <dl>
 
-        <%#= render :partial => 'contributors/index', :locals=> {:document=>@generic_content.to_solr, :document_fedora=>@generic_content, :roles=>['creator','author'], :contributor_type=>:person} %>
+        <%= render :partial => 'contributors/index', :locals=> {:document=>@generic_content.to_solr, :document_fedora=>@generic_content, :roles=>['creator','author'], :contributor_type=>:person} %>
   	    
         <dt><%= f.label :title %></dt>
         <dd><%= f.text_field :title%></dd>
       </dl>
     </fieldset>
-    <fieldset>
+    <fieldset class="edit-standard">
       <dl>
         <dt><%= f.label :topic_tag, "Subject" %></dt>
         <dd><%= f.text_field :topic_tag %></dd>
@@ -41,8 +41,10 @@
   	</fieldset>
     <fieldset class="two-column">
       <dl>
-        <dt><%= f.label :related_item, "Related materials (web)" %></dt>
-        <dd><%= f.text_field :related_item %></dd>
+        <dt class="left"><%= f.label :related_item, "Related materials (web)" %></dt>
+        <dd class="left"><%= f.text_field :related_item %></dd>
+        <dt class="right"><%= f.label :extent %></dt>
+        <dd class="right"><%= f.text_field :extent %></dd>
       </dl>
     </fieldset>
     <fieldset class="edit-standard">
