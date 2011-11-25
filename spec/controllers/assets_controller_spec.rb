@@ -34,18 +34,22 @@ describe AssetsController do
         
         controller.send :update_set_membership
         @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue","info:fedora/hull:3374"]
-        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
-        @document.rightsMetadata.edit_access.machine.group.should == ['researcher']
-
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
+     		
+			  #Change of logic, rights are not inherited from new StructuralSet when in Proto/QA queue, causes this test to fail
+        #@document.rightsMetadata.edit_access.machine.group.should == ['researcher']
+			
         controller.params = {'Structural Set' => "info:fedora/hull:3374", 'Display Set' => 'info:fedora/hull:9' }
         controller.send :update_set_membership
         @document.relationships(:is_member_of).should include("info:fedora/hull:protoQueue","info:fedora/hull:3374", "info:fedora/hull:9")
-        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
+				#Object is not goverened_by the structural set until it is out of the queues...        
+				@document.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
+							
 
         controller.params = {'Display Set' => ['info:fedora/hull:9'] }
         controller.send :update_set_membership
         @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue","info:fedora/hull:9"]
-        @document.relationships(:is_governed_by).should == ["info:fedora/hull:3374"]
+        @document.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
 
         ### Deleting
         controller.params = {'Display Set' => [''], 'Structural Set' => [""] }
@@ -53,7 +57,7 @@ describe AssetsController do
         @document.relationships(:is_member_of).should == ["info:fedora/hull:protoQueue"]
         @document.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
 
-      end
+      end	
     end
     it "Should update the relationships for a Structural Set" do
       @document = StructuralSet.new
@@ -166,7 +170,9 @@ describe AssetsController do
         put :update, {:id=>@obj.pid}.merge(simple_request_params)
         @updated = UketdObject.find(@obj.pid)
         @updated.relationships(:is_member_of).should include("info:fedora/hull:3375", "info:fedora/hull:700")
-        @updated.relationships(:is_governed_by).should == ["info:fedora/hull:3375"]
+        #@updated.relationships(:is_governed_by).should == ["info:fedora/hull:3375"]
+				#The object isn't governed_by the structural set until it's published
+				@updated.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
       end
       after do
         #@obj.delete

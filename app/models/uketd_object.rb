@@ -52,6 +52,19 @@ class UketdObject < ActiveFedora::Base
     is_valid?
   end
 
+  has_workflow_validation :publish do
+    validates_presence_of "descMetadata",[:title]
+    validates_presence_of("descMetadata",[:name,:namePart])
+    validates_presence_of("descMetadata",[:subject,:topic])
+    validates_presence_of("descMetadata",[:language,:lang_code])
+    validates_presence_of("descMetadata",[:origin_info,:publisher])
+    validates_presence_of("descMetadata",[:qualification_level])
+    validates_presence_of("descMetadata",[:qualification_name])
+    validates_format_of("descMetadata",[:origin_info,:date_issued], :with=> /^(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})/) #Checks date format for ETDS we are flexible
+		validates_datastream_date("descMetadata",[:origin_info,:date_issued]) #Checks that the actual date is valid
+    is_valid?
+  end
+
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
       errors << "descMetadata->title error: missing title" if @pending_attributes["descMetadata"][[:title_info,:main_title]]["0"].empty?

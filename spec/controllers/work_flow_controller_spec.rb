@@ -14,6 +14,7 @@ describe WorkFlowController do
       mock_document = mock("document",  :pid=>'_PID_')
       mock_document.expects(:change_queue_membership).with(:qa).returns(true)
       mock_document.expects :save
+
       controller.expects(:load_document_from_params).returns(mock_document)
       
       

@@ -21,8 +21,11 @@ module Hull::AssetsControllerHelper
     structural = params["Structural Set"]
     structural = structural.first if structural.kind_of? Array
     if structural && structural.empty?
-      document.change_queue_membership :proto
-      structural = nil
+			 #Only set the queue membership to :proto if it doesn't have set, or already belong to proto/qa queue
+			 unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
+      	document.change_queue_membership :proto
+      	structural = nil
+			 end
     end
     display = params["Display Set"].to_s
     display = nil if display.empty?
@@ -31,15 +34,18 @@ module Hull::AssetsControllerHelper
     end
     # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
     # otherwise, the structural set the governing apo
-    if document.respond_to?(:apply_governed_by)
-      if document.kind_of? StructuralSet
-        document.apply_governed_by('hull-apo:structuralSet')
-        document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
-      elsif structural
-        document.apply_governed_by(structural)
-      end
-    end
-  end
+    # unless the object is within queue, in which case the queue dictates the governedBy
+  	 unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
+      if document.respond_to?(:apply_governed_by)
+        if document.kind_of? StructuralSet
+          document.apply_governed_by('hull-apo:structuralSet')
+          document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
+        elsif structural
+        	document.apply_governed_by(structural)
+     	 end
+    	end
+ 		end
+	end
 
   def validate_parameters
     logger.debug("attributes submitted: #{@sanitized_params.inspect}")

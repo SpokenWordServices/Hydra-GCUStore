@@ -135,9 +135,13 @@
   
   <div>
     <div class="form-control">
-      <%= submit_tag "Save metadata" %> <%= submit_tag "Submit" %>
+      <%= submit_tag "Save metadata" %> <!-- <%= submit_tag "Submit" %> -->
     </div>
   </div>
 </form>
 
 <%= render :partial => "shared/resources" %>
+
+<hr class="separator"/>
+
+<%= render :partial=>"shared/submit_to_publish" %>

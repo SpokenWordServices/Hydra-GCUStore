@@ -15,7 +15,11 @@ class WorkFlowController < ApplicationController
     document = load_document_from_params
     if document.change_queue_membership params[:workflow_step].to_sym
       document.save
-      flash[:notice] = "Successfully added #{document.pid} to #{params[:workflow_step].to_s} queue."
+      if params[:workflow_step].to_sym == :publish
+				flash[:notice] = "Successfully published #{document.pid} to the Repository."
+			else      
+				flash[:notice] = "Successfully added #{document.pid} to #{params[:workflow_step].to_s} queue."
+			end
     else
       flash[:error] = "Errors encountered adding #{document.pid} to #{params[:workflow_step].to_s} queue: #{document.errors.join("; ")}."
     end

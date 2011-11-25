@@ -110,23 +110,43 @@ module HullModelMethods
 	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
     is_valid = self.respond_to?(validation_method) ? self.send(validation_method) : true
     
+    #All published objects should validate this step
+    if new_queue == :publish
+      is_valid = valid_for_publish
+    end     
+
     if is_valid
       queues =  self.queue_membership
       unless queues.empty?
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
         is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
       end
-      self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
-			self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
       
-      self.owner_id="fedoraAdmin" if new_queue == :qa
-
+			#We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
+      if new_queue == :publish
+         self.apply_governed_by(structural_set)
+			else
+      	self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+				self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
+     
+      	self.owner_id="fedoraAdmin" if new_queue == :qa
+			end
       return true
     else
       logger.warn "Could not change queue membership due to validation errors."
       return false
     end
   end
+
+  #Valid for publish checks for member of structural set
+  def valid_for_publish
+  	if structural_set.nil?
+   		errors << "Structural Set> Error: No set selected"
+			false
+   	else
+			true
+   	end
+ 	end
 
   #
   # Adds hull base metadata to the asset

@@ -28,7 +28,9 @@ describe GenericContentsController do
         post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", "generic_content"=>{"geographic_tag"=>"", "temporal_tag"=>"", "coordinates"=>"", "date_valid"=>"", "type_of_resource"=>"", "title"=>"Foo Test Generic Object", "topic_tag"=>"", "rights"=>"", "digital_origin"=>"", "publisher"=>"", "description"=>"", "lang_code"=>"", "related_item"=>"", "see_also"=>"", "lang_text"=>""}, "Display Set"=>["info:fedora/hull:domesdayDisplaySet"]}
         assigns[:generic_content].display_set.should == "info:fedora/hull:domesdayDisplaySet"
         # assigns[:generic_content].structural_set.should == "info:fedora/hull:3374"
-        assigns[:generic_content].is_governed_by.should == ["info:fedora/hull:3374"]
+        #assigns[:generic_content].is_governed_by.should == ["info:fedora/hull:3374"]
+				#All new objects are governed by the queue until it is published
+				assigns[:generic_content].is_governed_by.should == ["info:fedora/hull:protoQueue"]
         ["info:fedora/hull:domesdayDisplaySet", "info:fedora/hull:protoQueue", "info:fedora/hull:3374"].each do |set_uri| 
           assigns[:generic_content].set_membership.should include(set_uri)
         end

@@ -15,6 +15,17 @@ Feature: QA edit a document
     And I should see a "input" tag with a "id" attribute of "person_2_namePart"
     And I should see a "input" tag with a "id" attribute of "organization_0_namePart"
 	
+  Scenario: Publish a Object in the QA Queue
+    Given I am logged in as "contentAccessTeam1@example.com"
+    And I am on the edit document page for hull:3573
+    When I press "Publish"
+    Then I should see "Errors encountered adding"
+    Then I select "----Accounting" from "Structural Set"
+    And I press "Save Metadata"
+    Then I should see "Your changes have been saved."
+    When I press "Submit to QA"
+    Then I should see "Successfully published"
+
 
   Scenario: Viewing browse/edit buttons
     Given I am logged in as "archivist1@example.com" 
