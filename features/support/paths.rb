@@ -23,7 +23,7 @@ module NavigationHelpers
     when /the catalog index page/
       catalog_index_path
     when /the edit document page for (.*)$/i
-      edit_catalog_path($1)
+      edit_catalog_path($1, :viewing_context=>'edit')
     when /the show document page for (.*)$/i
       catalog_path($1)
     when /the file list page for (.*)$/i

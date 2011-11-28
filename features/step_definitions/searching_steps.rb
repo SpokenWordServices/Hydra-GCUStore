@@ -16,6 +16,9 @@ end
 Then /^I (should not|should) see an? "([^\"]*)" tag with an? "([^\"]*)" attribute of "([^\"]*)"$/ do |bool,tag,attribute,value|
   if bool == "should not"
     page.should_not have_selector("#{tag}[#{attribute}*=#{value}]")
+  elsif attribute == 'class'
+    value.gsub!(/\s/, ".")
+    page.should have_selector("#{tag}.#{value}")
   else
     page.should have_selector("#{tag}[#{attribute}*=#{value}]")
   end

@@ -6,34 +6,15 @@ Feature: Catalog Index
 
   Scenario: Viewing search results
     Given I am on the catalog index page
-    Then I should see "search"
-
-  @overwritten
-  Scenario: Executing a search
-    Given I am on the catalog index page
-    And I fill in "q" with "hydrangea"
-    And I press "search"
-    Then I should see "Display as"
-#    And I should see "Title"
-    And I should see "Creator"
-    And I should see "Type"
-    And I should see "files"
-    And I should see "Status"
-    When I select "list" from "display_type"
-    And I press "display_results"
-    Then I should see "Author"
-    And I should see "Researcher"
-    And I should see "Sample file description. 1 file."
+    Then I should see "Search"
 
   @local
   Scenario: Executing a search
     Given I am on the catalog index page
     And I fill in "q" with "accounting"
     And I press "submit"
-Then show me the page
     Then I should see "Sort by"
     And I should see "Show"
-    And I should not see "Display as"
     And I should see "Resource type"
     And I should see "Author"
     And I should see "Subject"

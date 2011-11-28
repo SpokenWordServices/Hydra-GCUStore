@@ -23,6 +23,7 @@ Feature: QA edit a document
     Then I select "----Accounting" from "Structural_Set_"
     And I press "Save metadata"
     Then I should see "Your changes have been saved."
+Then show me the page
     When I press "Submit to QA"
     Then I should see "Successfully published"
 
