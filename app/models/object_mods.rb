@@ -253,6 +253,17 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       }
     end
 
+    #Colour codes for Disseration mark categories 
+    def self.dissertation_category_terms
+      {
+        "" => "",
+        "Blue" => "Blue", 	#2:2
+				"Green" => "Green", #2:1
+				"Red" => "Red" #1st			
+      }
+    end
+
+
 	  def self.language_relator_terms
       {
         "eng" => "English",
