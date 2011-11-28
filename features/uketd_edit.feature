@@ -36,8 +36,7 @@ Feature: ETD create and edit
     Then I fill in "Publisher (Department, Institution)" with "Test University"
     And I select "Doctoral" from "Qualification level"
     And I select "PhD" from "Qualification name"
-    Then show me the page
-    And I press "Save Metadata"
+    And I press "Save metadata"
     Then I should see "Your changes have been saved."
     When I press "Submit to QA"
     Then I should see "Successfully added hull"

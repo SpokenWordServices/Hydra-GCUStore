@@ -77,7 +77,7 @@ class UketdObject < ActiveFedora::Base
   def apply_content_specific_additional_metadata
 
     if self.queue_membership.include? :proto
-      desc_ds = self.datastreams_in_memory["descMetadata"]
+      desc_ds = self.descMetadata
       module_date = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {}).to_s
       
       if module_date.empty?

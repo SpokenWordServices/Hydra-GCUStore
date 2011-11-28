@@ -132,5 +132,5 @@ def dependencies
 end
 
 def pid_from_path(path)
-  path.split("/")[-1].gsub(".xml","").gsub("_",":")
+  path.split("/")[-1].gsub(/(\.foxml)?\.xml/,"").sub("_",":")
 end

@@ -6,9 +6,8 @@ gem 'jquery-rails'
 gem "blacklight"
 gem 'jettywrapper', ">=1.0.2"
 gem 'solrizer', '>=1.0.4'
-gem 'solrizer-fedora', '>=1.1.3'
-gem 'hydra-head', :git =>'git://github.com/projecthydra/hydra-head.git'
-gem 'active-fedora', :git =>'git://github.com/mediashelf/active_fedora.git'
+gem 'solrizer-fedora', '>=1.2.0'
+gem 'hydra-head', '3.1.5'
 gem 'haml'
 gem "devise"
 gem 'will_paginate'

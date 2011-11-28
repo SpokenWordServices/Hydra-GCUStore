@@ -6,11 +6,11 @@ Given /^I am logged in as "([^\"]*)"$/ do |email|
   fill_in "Email", :with => email 
   fill_in "Password", :with => "password"
   click_button "Sign in"
-  And %{I should see a link to "logout"} 
+  step %{I should see a link to "logout"} 
 end
 
 Given /^I am a superuser$/ do
-  Given %{I am logged in as "bigwig@example.com"}
+  step %{I am logged in as "bigwig@example.com"}
   bigwig_id = User.find_by_email("bigwig@example.com").id
   superuser = Superuser.create(:id => 20, :user_id => bigwig_id)
   visit superuser_path

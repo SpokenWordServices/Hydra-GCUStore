@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
 Then /^I should see an inline edit containing "([^"]*)"$/ do |arg1|
-  response.should have_selector(".editable-text", :content=>arg1)
+  page.should have_selector(".editable-edit", :content=>arg1)
 end
 
 Then /^the "([^\"]*)" inline edit should contain "([^\"]*)"$/ do |arg1, arg2|
