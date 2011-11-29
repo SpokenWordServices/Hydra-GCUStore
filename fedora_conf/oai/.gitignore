@@ -1,0 +1,5 @@
+# Explicitly override any .gitignore (or .gitignore_global) that
+# ignores .class files because we want to include the exploded
+# oaiprovider webapp
+
+!*.class
