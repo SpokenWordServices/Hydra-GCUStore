@@ -86,37 +86,31 @@ namespace :hull do
 
   desc "Hudson/Jenkins CI build"
   task :hudson do
-    if (ENV['RAILS_ENV'] == "test")
-      workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
-      project_dir = workspace_dir ? workspace_dir : ENV['PWD']
-      #Rake::Task["db:test:clone_structure"].invoke
-      Rake::Task["hydra:jetty:config:all"].invoke
-      jetty_params = {
-        :jetty_home => "#{project_dir}/jetty",
-        :quiet => false,
-        :jetty_port => 8983,
-        :solr_home => "#{project_dir}/jetty/solr",
-        :fedora_home => "#{project_dir}/jetty/fedora/default",
-        :startup_wait => 30
-      }
-      jetty_params = Jettywrapper.load_config.merge(jetty_params)
+    ENV["RAILS_ENV"] ||= 'test'
+    workspace_dir = ENV['WORKSPACE'] # workspace should be set by Hudson
+    project_dir = workspace_dir ? workspace_dir : ENV['PWD']
+    Rake::Task["hydra:jetty:config:all"].invoke
+    jetty_params = {
+      :jetty_home => "#{project_dir}/jetty",
+      :quiet => false,
+      :jetty_port => 8983,
+      :solr_home => "#{project_dir}/jetty/solr",
+      :fedora_home => "#{project_dir}/jetty/fedora/default",
+      :startup_wait => 30
+    }
+    jetty_params = Jettywrapper.load_config.merge(jetty_params)
 
-      #Rake::Task["db:drop"].invoke
-      Rake::Task["db:migrate"].invoke
-      #Rake::Task["db:migrate:plugins"].invoke
-      error = Jettywrapper.wrap(jetty_params) do
-        puts "Refreshing fixtures in development fedora/solr (need these for the disseminators to work)"
-        puts %x[rake hull:default_fixtures:load RAILS_ENV=development]
-        puts "Refreshing fixtures in test fedora/solr"
-        Rake::Task["hull:default_fixtures:load"].invoke
-        # Rake::Task["spec_without_db"].invoke
-        Rake::Task["spec"].invoke
-        Rake::Task["cucumber"].invoke
-      end
-      raise "test failures: #{error}" if error
-    else
-      system("rake hull:hudson RAILS_ENV=test")
+    Rake::Task["db:migrate"].invoke
+    error = Jettywrapper.wrap(jetty_params) do
+      puts "Refreshing fixtures in development fedora/solr (need these for the disseminators to work)"
+      puts "Refreshing fixtures in test fedora/solr"
+      puts %x[rake hull:default_fixtures:load RAILS_ENV=test]  # must explicitly set RAILS_ENV to test
+      
+      Rake::Task["cucumber"].invoke  # running cucumber first because rspec is exiting with an odd error after running with 0 failures
+      Rake::Task["spec"].invoke
+        
     end
+    raise "test failures: #{error}" if error
   end
 
 end
