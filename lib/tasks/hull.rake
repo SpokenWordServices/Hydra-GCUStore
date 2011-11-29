@@ -96,13 +96,12 @@ namespace :hull do
       :jetty_port => 8983,
       :solr_home => "#{project_dir}/jetty/solr",
       :fedora_home => "#{project_dir}/jetty/fedora/default",
-      :startup_wait => 30
+      :startup_wait => 50
     }
     jetty_params = Jettywrapper.load_config.merge(jetty_params)
 
     Rake::Task["db:migrate"].invoke
     error = Jettywrapper.wrap(jetty_params) do
-      puts "Refreshing fixtures in development fedora/solr (need these for the disseminators to work)"
       puts "Refreshing fixtures in test fedora/solr"
       puts %x[rake hull:default_fixtures:load RAILS_ENV=test]  # must explicitly set RAILS_ENV to test
       
