@@ -9,9 +9,9 @@ class GenericContent < ActiveFedora::Base
  	#Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => Hydra::RightsMetadata 
  
-  has_metadata :name => "descMetadata", :label=>"MODS metadata", :type => ModsGenericContent
+  has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsGenericContent
   
-	has_metadata :name => "contentMetadata", :label=>"Content metadata", :type => ContentMetadata
+	has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => ContentMetadata
 
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
