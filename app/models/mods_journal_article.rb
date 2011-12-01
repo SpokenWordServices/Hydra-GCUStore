@@ -72,6 +72,7 @@ class ModsJournalArticle < ObjectMods
          t.end_page(:proxy=>[:pages, :end])
          t.publication_date(:path=>"date")
        }
+       t.note_restriction(:path=>'note', :attributes=>{:type=>'restriction'})
     }
     t.peer_reviewed(:path=>'note', :attributes=>{:type=>'peerReviewed'})
     t.physical_description(:path=>"physicalDescription") {

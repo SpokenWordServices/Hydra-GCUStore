@@ -152,6 +152,28 @@
           </div>
         </div>
       </div>
+       <div class="info-multiple">
+        <div class="left">
+          <div class="publisher">
+            <dt>
+              <%= fedora_field_label("descMetadata",[:journal,:origin_info,:publisher],"Publisher") %>
+            </dt>
+            <dd>
+              <%= fedora_text_field(@document_fedora,"descMetadata", [:journal,:origin_info,:publisher], :multiple=>false) %>
+            </dd>
+          </div>
+        </div>
+        <div class="right">
+          <div class="note_restriction">
+            <dt>
+              <%= fedora_field_label("descMetadata",[:journal, :note_restriction],"Restriction") %>
+            </dt>
+            <dd>
+              <%= fedora_text_field(@document_fedora,"descMetadata", [:journal, :note_restriction], :multiple=>false) %>
+            </dd>
+          </div>
+        </div>
+      </div>
     </dl>
   </fieldset>
   <input type="hidden"  name="_method" value="put"/>

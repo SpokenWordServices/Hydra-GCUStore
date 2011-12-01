@@ -30,6 +30,7 @@
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:origin_info, :publisher], "Publisher", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:part,:volume], "Volume", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:part,:issue], "Issue", "dd_text") %>
+  <%= display_datastream_field(@document_fedora,"descMetadata", [{:journal => journal_counter},:note_restriction], "Restriction", "dd_text") %>
 
  <% unless get_values_from_datastream(@document_fedora,"descMetadata", [{:journal => journal_counter},:part,:start_page]).first.empty? %>
    <dt>
