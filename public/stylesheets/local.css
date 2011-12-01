@@ -1238,7 +1238,7 @@ span#journal_origin_info_date_issued-container input.editable-edit.edit {
 
 div.info-multiple {
   width: 80em;
-  display:block;
+  display:table;
   /* margin-top: 1em; */
 }
 
