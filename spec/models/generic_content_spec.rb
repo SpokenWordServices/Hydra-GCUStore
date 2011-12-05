@@ -65,6 +65,22 @@ describe GenericContent do
     end
   end
 
+  describe "genre" do
+    it "should set the cModel, type and genre" do
+      @generic_content.genre = "Policy or procedure"
+      @generic_content.descMetadata.genre.should == ["Policy or procedure"]
+      @generic_content.descMetadata.type_of_resource.should == ["text"]
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
+    end
+    it "doing it more than once shouldn't give us more cModel" do
+      @generic_content.genre = "Policy or procedure"
+      @generic_content.genre = "Policy or procedure"
+      @generic_content.genre = "Policy or procedure"
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
+    end
+    
+  end
+
   
 end
 

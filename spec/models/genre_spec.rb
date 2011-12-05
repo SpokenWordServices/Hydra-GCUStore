@@ -9,7 +9,7 @@ describe Genre do
   end
 
   it "Should find all the genres" do
-    @g = Genre.find(:all)
+    @g = Genre.all
     @g.length.should be > 1
     @g.all? { |e| e.kind_of? Genre }.should be_true
   end

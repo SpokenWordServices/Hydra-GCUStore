@@ -20,11 +20,11 @@ class Genre
   end
 
   def self.find(name)
-    if name == :all
-      config.map { |key, value| row_to_obj(key, value) }
-    else 
-      row_to_obj(name, config[name])
-    end
+    row_to_obj(name, config[name])
+  end
+
+  def self.all
+    config.map { |key, value| row_to_obj(key, value) }
   end
 
   def self.row_to_obj(name, row)

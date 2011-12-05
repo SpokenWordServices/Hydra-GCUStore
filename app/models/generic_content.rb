@@ -47,4 +47,12 @@ class GenericContent < ActiveFedora::Base
 		end		
     is_valid?
   end
+
+
+  def genre=(val)
+    g = Genre.find(val)
+    descMetadata.genre = g.name
+    descMetadata.type_of_resource = g.type
+    add_relationship :has_model, "info:fedora/#{g.c_model}"
+  end
 end

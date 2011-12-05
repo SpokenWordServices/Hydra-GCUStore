@@ -112,6 +112,7 @@ class ModsGenericContent < ObjectMods
                  xml.roleTerm(:authority=>"marcrelator", :type=>"text")
                }
              }
+             xml.typeOfResource()
              xml.genre(:authority=>"marcgt")
              xml.language {
                xml.languageTerm(:type=>"text")
