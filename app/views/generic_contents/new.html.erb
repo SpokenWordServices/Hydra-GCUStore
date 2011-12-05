@@ -82,10 +82,10 @@
         <%= select "Display Set", "", DisplaySet.tree.options_for_nested_select, :selected=>@generic_content.display_set, :include_blank => true, :class=>"display-set-select"  %>
       </dd> 
       <dt>
-        <%= label_tag :genre %>
+        <%= f.label :genre %>
       </dt>
       <dd>
-        <%= select_tag :genre, options_from_collection_for_select(Genre.all, 'name', 'name')%>
+        <%= f.select :genre, options_from_collection_for_select(Genre.all, 'name', 'name')%>
       </dd> 
    </dl>
 	</fieldset>

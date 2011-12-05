@@ -7,7 +7,7 @@ describe GenericContentsController do
         sign_in FactoryGirl.find_or_create(:cat)
       end
       it "should apply posted attributes" do
-        post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", "generic_content"=>{"geographic_tag"=>"My Geo Tag", "temporal_tag"=>"My Temporal Tag", "coordinates"=>"My Coordinates", "date_valid"=>"2022", "type_of_resource"=>"Book", "title"=>"Foo Test Generic Object", "topic_tag"=>"My Topic Tag", "rights"=>"lorem ipsum rightso facto", "digital_origin"=>"My digital origin", "publisher"=>"Das Publisher", "description"=>"lorem ipsum descripto facto", "lang_code"=>"eng", "related_item"=>"http://google.com", "see_also"=>"http://bing.com", "lang_text"=>"English"}, "Display Set"=>["info:fedora/hull:domesdayDisplaySet"]}
+        post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", "generic_content"=>{"geographic_tag"=>"My Geo Tag", "temporal_tag"=>"My Temporal Tag", "coordinates"=>"My Coordinates", "date_valid"=>"2022", "type_of_resource"=>"Book", "title"=>"Foo Test Generic Object", "topic_tag"=>"My Topic Tag", "rights"=>"lorem ipsum rightso facto", "digital_origin"=>"My digital origin", "publisher"=>"Das Publisher", "description"=>"lorem ipsum descripto facto", "lang_code"=>"eng", "related_item"=>"http://google.com", "see_also"=>"http://bing.com", "lang_text"=>"English", 'genre'=>'Policy or procedure'}, "Display Set"=>["info:fedora/hull:domesdayDisplaySet"]}
         assigns[:generic_content].geographic_tag.should == ["My Geo Tag"]
         assigns[:generic_content].temporal_tag.should == ["My Temporal Tag"]
         assigns[:generic_content].topic_tag.should == ["My Topic Tag"]
@@ -23,9 +23,11 @@ describe GenericContentsController do
         assigns[:generic_content].related_item.should == ["http://google.com"]
         assigns[:generic_content].see_also.should == ["http://bing.com"]
         assigns[:generic_content].lang_text.should == ["English"]    
+        assigns[:generic_content].relationships(:has_model).should == ["policy"]    
+
       end
       it "should apply set memberships and queue" do 
-        post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", "generic_content"=>{"geographic_tag"=>"", "temporal_tag"=>"", "coordinates"=>"", "date_valid"=>"", "type_of_resource"=>"", "title"=>"Foo Test Generic Object", "topic_tag"=>"", "rights"=>"", "digital_origin"=>"", "publisher"=>"", "description"=>"", "lang_code"=>"", "related_item"=>"", "see_also"=>"", "lang_text"=>""}, "Display Set"=>["info:fedora/hull:domesdayDisplaySet"]}
+        post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", "generic_content"=>{"geographic_tag"=>"", "temporal_tag"=>"", "coordinates"=>"", "date_valid"=>"", "type_of_resource"=>"", "title"=>"Foo Test Generic Object", "topic_tag"=>"", "rights"=>"", "digital_origin"=>"", "publisher"=>"", "description"=>"", "lang_code"=>"", "related_item"=>"", "see_also"=>"", "lang_text"=>"", 'genre'=>'Generic content'}, "Display Set"=>["info:fedora/hull:domesdayDisplaySet"]}
         assigns[:generic_content].display_set.should == "info:fedora/hull:domesdayDisplaySet"
         # assigns[:generic_content].structural_set.should == "info:fedora/hull:3374"
         #assigns[:generic_content].is_governed_by.should == ["info:fedora/hull:3374"]

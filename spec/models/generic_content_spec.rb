@@ -72,15 +72,19 @@ describe GenericContent do
       @generic_content.descMetadata.type_of_resource.should == ["text"]
       @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
     end
-    it "doing it more than once shouldn't give us more cModel" do
-      @generic_content.genre = "Policy or procedure"
-      @generic_content.genre = "Policy or procedure"
-      @generic_content.genre = "Policy or procedure"
-      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
-    end
     
   end
 
+  describe "assert_content_model" do
+    it "should set the cModel" do
+      @generic_content.relationships(:has_model).should == []
+      @generic_content.genre = "Policy or procedure"
+      @generic_content.assert_content_model
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
+      @generic_content.assert_content_model ## Shouldn't add another row.
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]
+    end
+  end
   
 end
 

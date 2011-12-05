@@ -20,7 +20,9 @@ class Genre
   end
 
   def self.find(name)
-    row_to_obj(name, config[name])
+    row = config[name]
+    raise "unable to find genre for \"#{name}\".  Is it in the config/genres.yml file?" unless row
+    row_to_obj(name, row)
   end
 
   def self.all
