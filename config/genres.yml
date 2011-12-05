@@ -1,0 +1,6 @@
+Policy or procedure:
+  type: text
+  c_model: hull-cModel:policy
+Generic content:
+  type: other 
+  c_model: hull-cModel:genericContent
