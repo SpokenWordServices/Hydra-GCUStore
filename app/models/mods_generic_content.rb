@@ -79,7 +79,7 @@ class ModsGenericContent < ObjectMods
     } 
     
     # Proxies
-    t.title(:proxy=>[:title_info, :main_title]) 
+    t.title(:proxy=>[:mods, :title_info, :main_title]) 
     t.date_valid(:proxy=>[:origin_info, :date_valid])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
     t.related_item(:proxy=>[:web_related_item, :location, :primary_display])

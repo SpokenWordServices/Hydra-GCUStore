@@ -5,7 +5,7 @@ class ModsStructuralSet < ObjectMods
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title")
     } 
-    t.title(:proxy=>[:title_info, :main_title])
+    t.title(:proxy=>[:mods, :title_info, :main_title]) 
     t.genre(:path=>'genre')
     t.origin_info(:path=>'originInfo') {
 			t.publisher

@@ -7,7 +7,7 @@ class ModsExamPaper < ObjectMods
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable]) 
     } 
     
-    t.title(:proxy=>[:title_info, :main_title]) 
+    t.title(:proxy=>[:mods, :title_info, :main_title]) 
    
     # Exam paper description is stored in the 'abstract' field 
 

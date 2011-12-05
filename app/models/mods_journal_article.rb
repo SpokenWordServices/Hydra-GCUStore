@@ -7,7 +7,7 @@ class ModsJournalArticle < ObjectMods
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
       t.language(:index_as=>[:facetable],:path=>{:attribute=>"lang"})
     } 
-    t.title(:proxy=>[:title_info, :main_title]) 
+    t.title(:proxy=>[:mods, :title_info, :main_title]) 
     t.language{
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})

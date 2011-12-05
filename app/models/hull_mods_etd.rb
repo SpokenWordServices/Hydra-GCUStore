@@ -7,7 +7,7 @@ class ModsUketd < ObjectMods
       t.main_title(:path=>"title", :label=>"title")
       t.language(:index_as=>[:facetable],:path=>{:attribute=>"lang"})
     } 
-    t.title(:proxy=>[:title_info, :main_title]) 
+    t.title(:proxy=>[:mods, :title_info, :main_title]) 
 
     t.language(:path=>"language"){
       t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
