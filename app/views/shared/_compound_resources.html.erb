@@ -1,0 +1,44 @@
+<hr class="separator"/>
+
+<div id="file_assets">
+
+  <fieldset class="edit-standard">
+    <legend style="padding-bottom: 1em;">Assets</legend>
+  </fieldset>
+
+
+  <%= form_for :upload, :url=>compound_upload_path(params[:id]), :html=>{:multipart=>true} do -%>
+    <%= hidden_field_tag("content_type", 'generic_content', :id => "file_upload_content_type") %>
+    <%= render :partial=>"file_assets/new"%>
+    <%= submit_tag("Upload File", :name=>"upload_file")%>
+  <% end %>
+
+      
+      
+  <form id="content_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>@content_type)%>" method="post" data-resourceType="<%= @content_type%>" accept-charset="utf-8" >
+    <input type="hidden" name="content_type" value="<%= @content_type%>" />
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+    <fieldset class="edit-half">
+      <dl>
+      <div class="info-multiple">
+        <div class="left">
+          <dt><label>Sequence</label></dt>
+        </div>
+        <div class="right">
+	        <dt><%= fedora_field_label("descMetadata",[:qualification_name],"Qualification name") %></dt>
+        </div>
+      </div>
+      </dl>
+    </fieldset>
+    
+    <%= render :partial=>"shared/edit_resource", :collection => @document_fedora.contentMetadata.find_by_terms(:resource) %>
+
+    <input type="hidden"  name="_method" value="put"/>
+     <div>
+      <div class="form-control">
+        <%= submit_tag "Save assets" %>
+      </div>
+    </div>
+  </form>
+</div>

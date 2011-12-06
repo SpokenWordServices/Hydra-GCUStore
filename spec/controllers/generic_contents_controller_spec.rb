@@ -23,7 +23,7 @@ describe GenericContentsController do
         assigns[:generic_content].related_item.should == ["http://google.com"]
         assigns[:generic_content].see_also.should == ["http://bing.com"]
         assigns[:generic_content].lang_text.should == ["English"]    
-        assigns[:generic_content].relationships(:has_model).should == ["policy"]    
+        assigns[:generic_content].relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]    
 
       end
       it "should apply set memberships and queue" do 

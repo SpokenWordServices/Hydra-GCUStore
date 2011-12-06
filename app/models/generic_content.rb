@@ -51,7 +51,8 @@ class GenericContent < ActiveFedora::Base
   def genre=(val)
     g = Genre.find(val)
     descMetadata.genre = g.name
-    descMetadata.type_of_resource = g.type
+    # Richard Green said use the form field for type_of_resource on 2011-12-5  - jcoyne
+    #descMetadata.type_of_resource = g.type
     add_relationship :has_model, "info:fedora/#{g.c_model}"
   end
 
