@@ -50,7 +50,7 @@ class ModsExamPaper < ObjectMods
       t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
     t.additional_notes(:path=>"note", :attributes=>{:type=>"additionalNotes"})    
-
+    t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     # lookup :person, :first_name        
     #t.department(:ref=>:name, :attributes=>{:type=>"corporate"}, :index_as=>[:facetable])
     #t.conference(:ref=>:name, :attributes=>{:type=>"conference"}, :index_as=>[:facetable])
