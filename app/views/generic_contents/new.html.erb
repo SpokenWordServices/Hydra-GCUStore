@@ -18,8 +18,10 @@
     <%= form_for @generic_content do |f| %>
     <fieldset class="edit-standard">
       <dl>
-
-        <%= render :partial => 'contributors/index', :locals=> {:document=>@generic_content.to_solr, :document_fedora=>@generic_content, :roles=>['creator','author'], :contributor_type=>:person} %>
+        <dt><%= label_tag 'generic_content[person][0][namePart]', "Name"%></dt>
+        <dd><%= text_field_tag 'generic_content[person][0][namePart]'%></dd>
+        <dt><%= label_tag 'generic_content[person][0][role][text]', "Role"%></dt>
+        <dd><%= select_tag 'generic_content[person][0][role][text]', options_for_select(ObjectMods.person_relator_terms.values.sort) %></dd>
   	    
         <dt><%= f.label :title %></dt>
         <dd><%= f.text_field :title%></dd>

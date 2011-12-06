@@ -60,6 +60,14 @@ class GenericContent < ActiveFedora::Base
     descMetadata.genre
   end
 
+  def person=(attr)
+    attr.each do |key, value|
+      p = descMetadata.person(key.to_i)
+      p.namePart = value['namePart']
+      p.role.text = value['role']['text']
+    end
+  end
+
   # Overridden so that we can store a cmodel 
   def assert_content_model
     g = Genre.find(descMetadata.genre.first)
