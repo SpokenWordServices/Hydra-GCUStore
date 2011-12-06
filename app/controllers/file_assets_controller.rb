@@ -24,6 +24,7 @@ class FileAssetsController < ApplicationController
     container = find_container
     update_content_metadata(container)
     update_desc_metadata(container)
+    @file_asset.datastreams['rightsMetadata'].content = container.rightsMetadata.content
   end
 
   def destroy_metadata

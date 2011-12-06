@@ -20,6 +20,48 @@ GIT
       solrizer (> 1.0.0)
       xml-simple (>= 1.0.12)
 
+GIT
+  remote: git://github.com/projecthydra/hydra-head.git
+  revision: 57adbe5f1ecc901024d807ea483ee88c3f3b4d0d
+  ref: 57adbe5f1e
+  specs:
+    hydra-head (3.1.5)
+      RedCloth (= 4.2.3)
+      active-fedora (~> 3.1.4)
+      blacklight (= 3.0.0)
+      block_helpers
+      builder (= 2.1.2)
+      columnize
+      crack
+      curb (= 0.7.15)
+      database_cleaner
+      diff-lcs
+      facets (= 2.8.4)
+      haml
+      httparty
+      json_pure (> 1.4.3)
+      launchy
+      linecache
+      mediashelf-loggable (= 0.4.7)
+      mediashelf-loggable (>= 0.4.7)
+      mime-types
+      multipart-post
+      nokogiri
+      om (>= 1.2.3)
+      rack
+      rack-test
+      rails (~> 3.0.10)
+      rake
+      rsolr (= 1.0.2)
+      sanitize
+      solr-ruby
+      solrizer (>= 1.1.0)
+      solrizer-fedora (>= 1.2.0)
+      term-ansicolor
+      trollop
+      will_paginate
+      xml-simple
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -118,42 +160,6 @@ GEM
       multi_xml
     httpi (0.9.5)
       rack
-    hydra-head (3.1.5)
-      RedCloth (= 4.2.3)
-      active-fedora (~> 3.1.4)
-      blacklight (= 3.0.0)
-      block_helpers
-      builder (= 2.1.2)
-      columnize
-      crack
-      curb (= 0.7.15)
-      database_cleaner
-      diff-lcs
-      facets (= 2.8.4)
-      haml
-      httparty
-      json_pure (> 1.4.3)
-      launchy
-      linecache
-      mediashelf-loggable (= 0.4.7)
-      mediashelf-loggable (>= 0.4.7)
-      mime-types
-      multipart-post
-      nokogiri
-      om (>= 1.2.3)
-      rack
-      rack-test
-      rails (~> 3.0.10)
-      rake
-      rsolr (= 1.0.2)
-      sanitize
-      solr-ruby
-      solrizer (>= 1.1.0)
-      solrizer-fedora (>= 1.2.0)
-      term-ansicolor
-      trollop
-      will_paginate
-      xml-simple
     i18n (0.5.0)
     jettywrapper (1.1.0)
       activesupport (>= 3.0.0)
@@ -165,7 +171,7 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.2)
-    json_pure (1.6.2)
+    json_pure (1.6.3)
     kaminari (0.12.4)
       rails (>= 3.0.0)
     launchy (2.0.5)
@@ -319,7 +325,7 @@ DEPENDENCIES
   equivalent-xml
   factory_girl_rails
   haml
-  hydra-head (= 3.1.5)
+  hydra-head!
   jettywrapper (>= 1.0.2)
   jquery-rails
   mocha

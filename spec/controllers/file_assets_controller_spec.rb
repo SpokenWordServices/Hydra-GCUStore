@@ -10,9 +10,10 @@ describe FileAssetsController do
   
   describe 'create' do
       before :each do
-        @test_container = ActiveFedora::Base.new
+        @test_container = UketdObject.new
         @test_container.add_relationship(:is_member_of, "info:fedora/foo:1")
         @test_container.add_relationship(:has_collection_member, "info:fedora/foo:2")
+        @test_container.rightsMetadata.update_indexed_attributes([:edit_access, :person]=>'ralph')
         @test_container.save
         sign_in FactoryGirl.find_or_create(:cat)
         
@@ -21,9 +22,11 @@ describe FileAssetsController do
         @test_file.expects(:original_filename).twice.returns("My File Name")
       end
 
-      it "should set is_part_of relationship on the new File Asset pointing back at the container" do
-        controller.expects(:update_metadata) ## This is what we're really testing for hull
+      it "should update metadata" do
+        controller.expects(:update_content_metadata)
+        controller.expects(:update_desc_metadata)
         post :create, {:Filedata=>[@test_file], :Filename=>@filename, :container_id=>@test_container.pid}
+        assigns["file_asset"].datastreams['rightsMetadata'].edit_access.machine.person.should == ["ralph"]
       end
   end
 
