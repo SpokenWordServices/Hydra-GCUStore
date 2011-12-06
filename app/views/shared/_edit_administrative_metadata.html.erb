@@ -1,0 +1,11 @@
+<fieldset class="edit-standard">
+	 <legend>Administrative metadata</legend>
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:admin_note],"Resource status") %>
+      </dt>
+        <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:admin_note], :multiple=>false) %>
+      </dd>	
+    </dl>
+  </fieldset>

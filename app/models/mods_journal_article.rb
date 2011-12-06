@@ -81,6 +81,7 @@ class ModsJournalArticle < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }    
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
   end

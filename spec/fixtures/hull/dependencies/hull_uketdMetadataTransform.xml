@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="XSL stylesheet for transforming metadata from UKETD_DC  to MODS"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2009-07-13T16:01:36.845Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-05-16T16:30:40.744Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-12-06T10:59:27.038Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2009-07-13T16:01:36.845Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -206,6 +206,22 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-05-16T16:30:40.744Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC25">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>modsToUketddcXSL</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-12-06T10:59:27.038Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC26">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>modsToUketddcXSL</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-12-06T10:59:27.038Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -220,8 +236,8 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="modsToUketddcXSL" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="modsToUketddcXSL.0" LABEL="Mods to UKETD_DC XSL" CREATED="2011-05-16T16:09:30.974Z" MIMETYPE="text/xml" SIZE="4816">
+<foxml:datastream ID="modsToUketddcXSL" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="modsToUketddcXSL.0" LABEL="Mods to UKETD_DC XSL" CREATED="2011-12-06T10:59:27.038Z" MIMETYPE="text/xml" SIZE="5313">
 <foxml:xmlContent>
 <xsl:stylesheet xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="mods" version="1.0">
   <xsl:param name="pid"></xsl:param>
@@ -253,6 +269,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
             <xsl:value-of select="concat(./mods:namePart/text(), &apos; (Sponsor)&apos;)"></xsl:value-of>
           </uketdterms:sponsor>
         </xsl:if>
+        <xsl:if test="contains(./mods:role/mods:roleTerm/text(), &apos;sponsor&apos;)">
+          <uketdterms:sponsor>
+            <xsl:value-of select="concat(./mods:namePart/text(), &apos; (Sponsor)&apos;)"></xsl:value-of>
+          </uketdterms:sponsor>
+        </xsl:if>
       </xsl:for-each>
       <dcterms:issued>
         <xsl:value-of select="$descMetadata/mods:originInfo/mods:dateIssued/text()"></xsl:value-of>
@@ -263,9 +284,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
         </dc:subject>
       </xsl:for-each>
       <xsl:if test="$descMetadata/mods:identifier[@type=&apos;grantNumber&apos;]">
-        <uketdterms:grantnumber>
-          <xsl:value-of select="$descMetadata/mods:identifier[@type=&apos;grantNumber&apos;]/text()"></xsl:value-of>
-        </uketdterms:grantnumber>
+        <xsl:for-each select="$descMetadata/mods:identifier[@type=&apos;grantNumber&apos;]">
+          <uketdterms:grantnumber>
+            <xsl:value-of select="text()"></xsl:value-of>
+          </uketdterms:grantnumber>
+        </xsl:for-each>
       </xsl:if>
       <dcterms:abstract>
         <xsl:value-of select="$descMetadata/mods:abstract/text()"></xsl:value-of>
@@ -302,6 +325,9 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <dcterms:isReferencedBy xsi:type="dcterms:URI">
         <xsl:value-of select="$descMetadata/mods:location/mods:url[@access=&apos;object in context&apos;]/text()"></xsl:value-of>
       </dcterms:isReferencedBy>
+      <dc:identifier>
+        <xsl:value-of select="$descMetadata/mods:identifier[@type=&apos;fedora&apos;]/text()"></xsl:value-of>
+      </dc:identifier>
       <dc:identifier xsi:type="dcterms:URI">
         <xsl:value-of select="$descMetadata/mods:location/mods:url[@access=&apos;raw object&apos;]/text()"></xsl:value-of>
       </dc:identifier>

@@ -76,7 +76,8 @@ class ModsGenericContent < ObjectMods
       t.extent
       t.mime_type(:path=>"internetMediaType")
       t.digital_origin(:path=>"digitalOrigin")
-    } 
+    }
+    t.admin_note(:path=>"note", :attributes=>{:type=>"admin"}) 
     
     # Proxies
     t.title(:proxy=>[:mods, :title_info, :main_title]) 
