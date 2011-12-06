@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe GenericContentsController do
+  describe "new" do
+    it "should be successfull" do
+      get :new
+      response.should be_success
+    end
+  end
   describe "create" do
     describe "for content access team members" do
       before(:each) do

@@ -8,7 +8,7 @@ class GenericContentsController < ApplicationController
   before_filter :require_solr
   
   def new
-    @generic_content = GenericContent.new
+    @generic_content = GenericContent.new()
   end
   
   def create

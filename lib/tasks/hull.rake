@@ -103,7 +103,7 @@ namespace :hull do
     Rake::Task["db:migrate"].invoke
     error = Jettywrapper.wrap(jetty_params) do
       puts "Refreshing fixtures in test fedora/solr"
-      puts %x[rake hull:default_fixtures:load RAILS_ENV=test]  # must explicitly set RAILS_ENV to test
+      puts %x[rake hull:default_fixtures:refresh RAILS_ENV=test]  # must explicitly set RAILS_ENV to test
       
       Rake::Task["cucumber"].invoke  # running cucumber first because rspec is exiting with an odd error after running with 0 failures
       Rake::Task["spec"].invoke
