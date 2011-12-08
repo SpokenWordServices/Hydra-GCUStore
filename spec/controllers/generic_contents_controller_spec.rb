@@ -47,7 +47,7 @@ describe GenericContentsController do
         assigns[:generic_content].related_item.should == ["http://google.com"]
         assigns[:generic_content].see_also.should == ["http://bing.com"]
         assigns[:generic_content].lang_text.should == ["English"]    
-        assigns[:generic_content].relationships(:has_model).should == ["info:fedora/hull-cModel:policy"]    
+        assigns[:generic_content].relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hull-cModel:compoundContent"]    
         assigns[:generic_content].descMetadata.person(0).namePart.should == ['Joe']
         assigns[:generic_content].descMetadata.person(0).role.text.should == ['Author']
 

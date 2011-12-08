@@ -68,9 +68,19 @@ class GenericContent < ActiveFedora::Base
     end
   end
 
-  # Overridden so that we can store a cmodel 
+  # Overridden so that we can store a cmodel and "complex Object"
   def assert_content_model
     g = Genre.find(descMetadata.genre.first)
     add_relationship(:has_model, "info:fedora/#{g.c_model}")
+    add_relationship(:has_model, "info:fedora/hull-cModel:compoundContent")
   end
+
+  def generate_dsid(prefix="DS")
+    keys = datastreams.keys
+    return prefix unless keys.include?(prefix)
+    matches = keys.map {|d| data = /^#{prefix}(\d+)$/.match(d); data && data[1].to_i}.compact
+    val = matches.empty? ? 2 : matches.max + 1
+    sprintf("%s%02i", prefix,val)
+  end
+  
 end
