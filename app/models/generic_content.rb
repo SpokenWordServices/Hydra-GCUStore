@@ -48,6 +48,22 @@ class GenericContent < ActiveFedora::Base
     is_valid?
   end
 
+
+	has_workflow_validation :qa do
+    errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
+    validates_presence_of "descMetadata",[:title]
+    validates_presence_of("descMetadata",[:name,:namePart])
+    validates_presence_of("descMetadata",[:subject,:topic])
+    is_valid?
+  end
+
+ has_workflow_validation :publish do
+    validates_presence_of "descMetadata",[:title]
+    validates_presence_of("descMetadata",[:name,:namePart])
+    validates_presence_of("descMetadata",[:subject,:topic])
+    is_valid?
+  end
+
   def genre=(val)
     g = Genre.find(val)
     descMetadata.genre = g.name
