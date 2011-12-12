@@ -88,7 +88,8 @@ class GenericContent < ActiveFedora::Base
   def assert_content_model
     g = Genre.find(descMetadata.genre.first)
     add_relationship(:has_model, "info:fedora/#{g.c_model}")
-    add_relationship(:has_model, "info:fedora/hull-cModel:compoundContent")
+    add_relationship(:has_model, "info:fedora/hydra-cModel:compoundContent")
+    add_relationship(:has_model, "info:fedora/hydra-cModel:commonMetadata")
   end
 
   def generate_dsid(prefix="DS")

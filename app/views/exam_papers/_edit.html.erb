@@ -16,7 +16,10 @@
   </div>
   <div class="multipleEdit">
 		<%= display_edit_form(@document_fedora, "exam_paper") %>
-    
-	  </div>
+    <%= render :partial => "shared/compound_resources" %>
+    <hr class="separator"/>
+    <%= render :partial=>"shared/submit_to_qa" %>
+    <%= render :partial => "shared/submit_to_publish" %> 
+	</div>
 </div>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

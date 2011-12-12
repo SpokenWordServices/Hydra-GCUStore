@@ -70,5 +70,11 @@ class ExamPaper < ActiveFedora::Base
       
     end
   end
-  
+
+  # Overridden so that we can store a cmodel and "complex Object"
+  def assert_content_model
+    add_relationship(:has_model, "info:fedora/hull-cModel:examPaper")
+    add_relationship(:has_model, "info:fedora/hydra-cModel:compoundContent")
+    add_relationship(:has_model, "info:fedora/hydra-cModel:commonMetadata")
+  end  
 end
