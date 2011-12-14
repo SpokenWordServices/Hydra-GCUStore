@@ -110,11 +110,11 @@ class ModsGenericContent < ObjectMods
              xml.name(:type=>"personal") {
                xml.namePart
                xml.role {
-                 xml.roleTerm(:authority=>"marcrelator", :type=>"text")
+                 xml.roleTerm("creator", :type=>"text")
                }
              }
-             xml.typeOfResource()
-             xml.genre(:authority=>"marcgt")
+             xml.typeOfResource
+             xml.genre
              xml.language {
                xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
@@ -123,15 +123,28 @@ class ModsGenericContent < ObjectMods
              xml.subject(:authority=>"UoH") {
                xml.topic
              }
-             xml.identifier(:type=>"fedora")
              xml.originInfo {
                xml.publisher
-               xml.dateIssued
+               xml.dateValid(:encoding=>"iso8601")
              }
              xml.physicalDescription {
                xml.extent
                xml.internetMediaType
                xml.digitalOrigin 
+             }
+						 xml.identifier(:type=>"fedora")
+             xml.location {
+               xml.url(:usage=>"primary display", :access=>"object in context")
+               xml.url(:access=>"raw object")
+             }
+             xml.accessCondition(:type=>"useAndReproduction")
+             xml.recordInfo {
+               xml.recordContentSource "The University of Hull"
+               xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
+               xml.recordChangeDate(:encoding=>"w3cdtf")
+               xml.languageOfCataloging {
+                 xml.languageTerm("eng", :authority=>"iso639-2b")  
+               }
              }
         }
       end

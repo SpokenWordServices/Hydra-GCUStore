@@ -169,7 +169,7 @@ module HullModelMethods
   # Adds hull additional metadata to the asset
   #
   def apply_additional_metadata(depositor_id)
-		#Here's where we call specific additional metadata changes...
+    #Here's where we call specific additional metadata changes...
 		if self.respond_to?(:apply_content_specific_additional_metadata)
       self.apply_content_specific_additional_metadata
     end	
@@ -183,14 +183,39 @@ module HullModelMethods
 		dc_ds = self.dc
     unless dc_ds.nil?
       dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
-      begin
-        date_issued = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {})
-        dc_ds.update_indexed_attributes([:dc_dateIssued]=> date_issued.to_s) if date_issued.present?
-      rescue OM::XML::Terminology::BadPointerError => e
-        logger.error "ERROR when trying to copy date issued on #{self.class} #{self.pid}:\n\t#{e.message}"
-      end
     end
+
+		#Using correct accessor method for setting label (until the active-fedora code is updated)
+		self.inner_object.label = generate_object_label
 	  return true
+  end
+
+	#method to generate fedora object  in the form of 'TITLE - AUTHORS;'
+	def generate_object_label
+ 		label = ""
+    label_names = " - "
+		begin
+			names = self.get_values_from_datastream("descMetadata", [:name, :namePart], {})
+			roles = self.get_values_from_datastream("descMetadata", [:name, :role, :text], {}) 
+			#'zip' name into role array
+			role_name = roles.zip(names)
+	    role_name.each do |person|
+			  role = person[0].to_s.downcase
+			 	if role  == 'creator' || role == 'author'
+					label_names = label_names + person[1] + '; '
+				end		
+	    end
+		rescue OM::XML::Terminology::BadPointerError => e
+			#Assume that its an object without author (Set or alike)
+			label_names = ""
+		end
+		title = self.get_values_from_datastream("descMetadata", [:title], {}).to_s
+
+		#truncate the title if its too long
+		title = title.length > 40 ? title[0..40] <<'...': title unless title.nil?
+		label =  title + label_names
+	
+		return label
   end
 
   def structural_set

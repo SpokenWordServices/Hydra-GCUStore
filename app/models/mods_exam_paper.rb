@@ -112,7 +112,6 @@ class ModsExamPaper < ObjectMods
              xml.language {                
                xml.languageTerm(:type=>"text")
                xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
-            
              }
 						 xml.note(:type=>"examinationLevel")
 						 xml.note(:type=>"additionalNotes")

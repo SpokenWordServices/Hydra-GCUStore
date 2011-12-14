@@ -60,7 +60,7 @@ module Hull::AssetsControllerHelper
   
   ### Hull version calls apply_base_metadata
   def apply_depositor_metadata(asset)
-    apply_base_metadata(asset)
+	  apply_base_metadata(asset)
     if asset.respond_to?(:apply_depositor_metadata) && current_user.respond_to?(:login)
       asset.apply_depositor_metadata(current_user.login)
     end
@@ -169,11 +169,12 @@ module Hull::AssetsControllerHelper
   ## Hull version calls apply_additional_metadata
 
   def update_document(document, params)
-    # this will only work if there is only one datastream being updated.
+	  # this will only work if there is only one datastream being updated.
     # once ActiveFedora::MetadataDatastream supports .update_datastream_attributes, use that method instead (will also be able to pass through params["asset"] as-is without usin prep_updater_method_args!)
     # result = document.update_indexed_attributes(params[:params], params[:opts])
     
     result = document.update_datastream_attributes(params)
+    apply_base_metadata(document)
     apply_additional_metadata(document)       
   end
   

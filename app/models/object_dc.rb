@@ -22,7 +22,7 @@ class ObjectDc < ActiveFedora::NokogiriDatastream
 						xml['dc'].title
 						xml['dc'].type_
 						xml['dc'].identifier
-						xml['dc'].date
+						xml['dc'].date(Time.now.strftime("%Y-%m-%d"))
         }
       end
       return builder.doc
