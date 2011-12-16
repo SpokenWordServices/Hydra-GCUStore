@@ -44,6 +44,7 @@ class ModsJournalArticle < ObjectMods
     t.genre(:path=>'genre')
     t.origin_info(:path=>'originInfo') {
       t.date_issued(:path=>'dateIssued')
+      t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
       t.publisher
     }
     t.related_item_private_object(:path=>'relatedItem', :attributes=>{:ID=>'privateObject'}) {

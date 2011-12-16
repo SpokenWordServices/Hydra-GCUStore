@@ -52,6 +52,7 @@ class ModsUketd < ObjectMods
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     t.origin_info(:path=>'originInfo') {
       t.date_issued(:path=>'dateIssued')
+  	  t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
       t.publisher
     }
     t.physical_description(:path=>"physicalDescription") {

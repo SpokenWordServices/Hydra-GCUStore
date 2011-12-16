@@ -38,9 +38,9 @@ module HydraFedoraMetadataHelper
     
     field_values.each_with_index do |current_value, z|
       base_id = generate_base_id(field_name, current_value, field_values, opts)
-      
+ 
       body << "<#{container_tag_type.to_s} class=\"editable-container field\" id=\"#{base_id}-container\">"
-        delete_link= field_key_specific_delete_link(field_name,z,resource.pid,image_tag("/images/remove.png",:border=>0), current_value)
+				delete_link= field_key_specific_delete_link(field_name,z,resource.pid,image_tag("/images/remove.png",:border=>0), current_value)
         body << "<span class=\"editable-text text\" id=\"#{base_id}-text\">#{h(current_value)}</span>"
         html_options.merge!({:class=>"editable-edit edit", 'data-datastream-name' => datastream_name, :rel => field_name,:id=>base_id})
         inputtag = text_field_tag get_name(datastream_name, field_name, z), h(current_value), html_options
@@ -127,13 +127,13 @@ module HydraFedoraMetadataHelper
 
   private
   def field_key_specific_delete_link(field_key, index, asset_id, text, current_value)
-    if field_key.match /^subject_\d+_topic$/
+	   if field_key.match /^subject_\d+_topic$/
         delete_link = link_to text, subject_topic_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
     elsif field_key.match /^grant_number/
       delete_link = link_to text, grant_number_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
-		elsif field_key.match /^rights/
+		elsif field_key == 'rights'
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":rights", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
-		elsif field_key.match /^see_also/
+		elsif field_key == 'see_also'
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":see_also", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"
 	elsif field_key.match /^web_related_item_location_primary_display$/
      delete_link = link_to text, multi_field_path(:asset_id=>asset_id,:index=>index,:content_type=>@content_type, :fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata"), :method=>"delete", :class=>"destructive field", :title=>"Delete #{h(current_value)}"

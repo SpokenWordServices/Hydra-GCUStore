@@ -43,6 +43,7 @@ class ModsExamPaper < ObjectMods
     t.origin_info(:path=>"originInfo") {
       t.publisher
       t.date_issued(:path=>"dateIssued")
+      t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
     }
     
     t.language {

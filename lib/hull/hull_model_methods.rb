@@ -183,10 +183,21 @@ module HullModelMethods
 		dc_ds = self.dc
     unless dc_ds.nil?
       dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
+      begin
+        date_issued = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {})
+				date_valid = self.get_values_from_datastream("descMetadata", [:origin_info,:date_valid], {})
+       
+        if date_issued.to_s != ""
+        	dc_ds.update_indexed_attributes([:dc_date]=> date_issued.to_s) if date_issued.present?
+				else
+					dc_ds.update_indexed_attributes([:dc_date]=> date_valid.to_s) if date_valid.present?
+				end
+      rescue OM::XML::Terminology::BadPointerError => e
+        logger.error "ERROR when trying to copy date on #{self.class} #{self.pid}:\n\t#{e.message}"
+      end
     end
-
-		#Using correct accessor method for setting label (until the active-fedora code is updated)
-		self.inner_object.label = generate_object_label
+		self.label = generate_object_label
+		
 	  return true
   end
 
