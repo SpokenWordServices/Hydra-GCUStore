@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/mediashelf/active_fedora.git
-  revision: 0583c8c8b1fb3491d4106395248b89ca760ff605
-  ref: 0583c8c8b1
+  revision: 181f030449885cb3c50108eaa53c195d199a9302
+  ref: 181f030449
   specs:
-    active-fedora (3.1.4)
+    active-fedora (3.1.5)
       activeresource (~> 3.0.0)
       activesupport (~> 3.0.0)
       equivalent-xml
@@ -263,7 +263,7 @@ GEM
     rubytree (0.8.1)
     rubyzip (0.9.5)
     sanitize (2.0.3)
-      nokogiri (< 1.6, >= 1.4.4)
+      nokogiri (>= 1.4.4, < 1.6)
     savon (0.9.7)
       akami (~> 1.0)
       builder (>= 2.1.2)

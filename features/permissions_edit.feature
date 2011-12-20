@@ -15,5 +15,5 @@ Feature: Edit Permissions
     Given I am logged in as "contentAccessTeam1@example.com" 
     Given I am on the edit document page for hull:3375 
     Then the "Archivist" field should contain "none"
-    And the "Public" field should contain "none"
+    And the "Public" field should contain "discover"
     And the "Researcher" field should contain "none"

@@ -7,7 +7,7 @@ class ExamPaper < ActiveFedora::Base
   include HullValidationMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => Hydra::RightsMetadata 
+  has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => RightsMetadata 
 
   has_metadata :name => "descMetadata", :type => ModsExamPaper, :label=>"MODS metadata"
 

@@ -273,14 +273,27 @@ module HullModelMethods
 	end
 
   def copy_rights_metadata(apo)
-    rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
+		rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
     Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content, rights)
     defaultRights = NonindexingRightsMetadata.new(self.inner_object, 'defaultObjectRights')
     defaultRights.ng_xml = rights.ng_xml.dup
     datastreams["rightsMetadata"] = rights 
     datastreams["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
-  end
 
+		#If this is a UketdObject we need to copy the rights over for the children
+		if self.class == UketdObject
+			file_assets = parts_inbound_ids
+			#Loop through the file_assets and copy the new rights
+			file_assets.each do |file_asset_pid|
+				file_asset = ActiveFedora::Base.new(:pid=>file_asset_pid)
+				rights = Hydra::RightsMetadata.new(file_asset.inner_object, 'rightsMetadata')
+   			Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content, rights)
+    		file_asset.datastreams["rightsMetadata"] = rights
+				file_asset.save				
+			end
+		end
+  end
+ 
   def valid_for_save?(params)
     if self.respond_to?(:validate_parameters)
       @pending_attributes = params
