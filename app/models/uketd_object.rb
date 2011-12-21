@@ -17,6 +17,9 @@ class UketdObject < ActiveFedora::Base
     end
   end
 
+	#We want the RELS-EXT to be X and have label
+  self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}
+
   has_relationship "parts", :is_part_of, :inbound => true
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright

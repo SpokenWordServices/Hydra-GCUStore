@@ -6,16 +6,19 @@ class ExamPaper < ActiveFedora::Base
   include HullModelMethods
   include HullValidationMethods
 
+	#We want the RELS-EXT to be X and have label
+  self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}
+
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => RightsMetadata 
 
-  has_metadata :name => "descMetadata", :type => ModsExamPaper, :label=>"MODS metadata"
+  has_metadata :name => "descMetadata", :type => ModsExamPaper, :label=>"MODS metadata", :control_group=>"M"
 
-  has_metadata :name => "contentMetadata", :label=>"Content metadata", :type => ContentMetadata
+  has_metadata :name => "contentMetadata", :label=>"Content metadata", :type => ContentMetadata, :control_group=>"M"
 
   has_metadata :name => "DC", :label=>"DC admin metadata",  :type => ObjectDc
 
-  has_datastream :name=>"content", :label=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :controlGroup=>'M'
+  has_datastream :name=>"content", :label=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :control_group=>'M'
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
@@ -77,4 +80,5 @@ class ExamPaper < ActiveFedora::Base
     add_relationship(:has_model, "info:fedora/hydra-cModel:compoundContent")
     add_relationship(:has_model, "info:fedora/hydra-cModel:commonMetadata")
   end  
+
 end
