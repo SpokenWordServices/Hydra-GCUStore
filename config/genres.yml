@@ -40,6 +40,9 @@ Conference paper or abstract:
 Conference poster:
  type: text
  c_model: hull-cModel:conferencePoster
+Examination paper:
+ type: text
+ c_model: hull-cModel:examPaper
 Guidance:
  type: text
  c_model: hull-cModel:guidance

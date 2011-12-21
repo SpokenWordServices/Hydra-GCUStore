@@ -19,11 +19,15 @@ class FileAssetsController < ApplicationController
 
   private
   def update_metadata
-    return if @file_assets.nil?
+		return if @file_assets.nil?
     @file_asset = @file_assets.first
     container = find_container
     update_content_metadata(container)
-    update_desc_metadata(container)
+		
+		#Only add file information to descMetadata for the first fileAsset
+		if container.file_objects.size == 1			
+    	update_desc_metadata(container)
+		end
     @file_asset.datastreams['rightsMetadata'].content = container.rightsMetadata.content
   end
 
@@ -49,21 +53,29 @@ class FileAssetsController < ApplicationController
     container
   end
 
-  def update_content_metadata(container)
+ def update_content_metadata(container)
+		pid = @file_asset.pid
     size_attr = @file_asset.datastreams["content"].size
-    node, index = container.insert_resource(:object_id => @file_asset.pid, :ds_id=>"content", :file_size=>size_attr, :url => datastream_content_url(:id=>@file_asset.pid,:datastream=>"content"), :display_label=>get_default_display_label_for_content_type(params["container_content_type"])) if container.respond_to? :insert_resource
+		label = @file_asset.datastreams["content"].dsLabel
+		mime_type = @file_asset.datastreams["content"].mimeType
+    format =  mime_type[mime_type.index("/") + 1...mime_type.length]
+		service_def = "afmodel:FileAsset"
+		service_method = "getContent"		
+	
+  container.contentMetadata.insert_resource(:object_id => pid, :ds_id=> "content", :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/content", :display_label=>label, :id => label, :mime_type => mime_type, :format => format, :service_def => service_def, :service_method => service_method)
+ 
     container.datastreams["contentMetadata"].serialize!
     container.datastreams["contentMetadata"].save
   end
 
   def update_desc_metadata(container)
-    update_hash = {
-      [:physical_description,:extent]=>@file_asset.datastreams["content"].size,
-      [:physical_description,:mime_type]=>@file_asset.datastreams["content"].mimeType,
-      [:location,:raw_object]=>datastream_content_path(:id=>@file_asset.pid,:datastream=>"content")
-    }
-    container.datastreams["descMetadata"].update_values(update_hash)
-    container.datastreams["descMetadata"].save
+    update_hash = { "descMetadata"=> { [:physical_description,:extent]=> "Filesize: " + @file_asset.bits_to_human_readable(@file_asset.datastreams["content"].size.to_i),
+										[:physical_description,:mime_type]=>@file_asset.datastreams["content"].mimeType,
+							       [:location,:raw_object]=> "http://hydra.hull.ac.uk/assets/" + @file_asset.pid + "/content" }
+								  }		
+		container.update_datastream_attributes( update_hash )
+    #container.datastreams["descMetadata"].update_values(update_hash)
+    container.save
   end
   
 # Returns:
