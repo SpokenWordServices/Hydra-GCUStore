@@ -229,19 +229,18 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     
     def self.qualification_name_relator_terms
       {
-        "PhD" => "PhD",
-        "ClinPsyD" => "ClinPsyD",
-        "EdD" => "EdD",
-        "MD" => "MD",
-        "PsyD" => "PsyD",
-        "MA" => "MA",
-        "MEd" => "MEd",
-        "MSc" => "MSc",
-        "BA" => "BA",
-        "BSc" => "BSc",
-        "MPhil" => "MPhil",
-        "MTheol" => "MTheol",
-        "MRes" => "MRes"
+        "PhD" => [1,"PhD"],
+        "ClinPsyD" => [2,"ClinPsyD"],
+        "MD" => [4,"MD"],
+        "PsyD" => [5,"PsyD"],
+        "MA" => [6,"MA"],
+        "MEd" => [7,"MEd"],
+ 				"MPhil" => [8,"MPhil"],
+   			"MRes" => [9,"MRes"],
+        "MSc" => [10,"MSc"],
+   			"MTheol" => [11,"MTheol"],
+        "BA" => [12,"BA"],
+        "BSc" => [13,"BSc"]
       }
     end
 
