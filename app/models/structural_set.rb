@@ -96,6 +96,9 @@ class Tree::TreeNode
     end
 
     options <<  ["#{pad}#{name}", "#{content}"]
+		
+		#Sort the children - defaults on name sort
+	  children.sort! if !children.nil?	
 
     children { |child| child.options_for_nested_select(options,level + 1)}
 

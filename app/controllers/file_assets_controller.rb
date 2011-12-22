@@ -23,7 +23,7 @@ class FileAssetsController < ApplicationController
     @file_asset = @file_assets.first
     container = find_container
     update_content_metadata(container)
-		
+
 		#Only add file information to descMetadata for the first fileAsset
 		if container.file_objects.size == 1			
     	update_desc_metadata(container)

@@ -95,6 +95,9 @@ class Tree::TreeNode
 
     args[:options] <<  ["#{pad}#{name}", "#{content}"] unless content == args[:exclude]
 
+		#Sort the children - defaults on name sort
+	  children.sort! if !children.nil?	
+
     children { |child| child.options_for_nested_select(args,level + 1)}
 
     args[:options]
