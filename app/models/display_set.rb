@@ -59,6 +59,12 @@ class DisplaySet < ActiveFedora::Base
     end
   end
 
+ #Overridden so that we can store a cmodel and commonMetadata
+  def assert_content_model
+		add_relationship(:has_model, "info:fedora/hull-cModel:displaySet")
+    add_relationship(:has_model, "info:fedora/hull-cModel:commonMetadata")
+  end
+
   def self.display_sets
     fields = "has_model_s:info\\:fedora/hull-cModel\\:displaySet"
     options = {:field_list=>["id", "id_t", "title_t", "is_member_of_s"], :rows=>10000, :sort=>[{"system_create_dt"=>:ascending}]}

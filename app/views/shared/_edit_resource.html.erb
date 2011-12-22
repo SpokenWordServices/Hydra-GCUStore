@@ -14,7 +14,7 @@
         <%= fedora_text_field(@document_fedora,"contentMetadata",[{:resource=>resource_counter},:display_label],:multiple => false) %>
         <% object_id = get_values_from_datastream(@document_fedora, "contentMetadata",[{:resource=>resource_counter}, :resource_object_id]) %>
         <% ds_id = get_values_from_datastream(@document_fedora, "contentMetadata",[{:resource=>resource_counter}, :resource_ds_id])  %>
-        <% file_name = get_values_from_datastream(@document_fedora, "contentMetadata", [{:resource=>resource_counter},:display_label]) %>
+        <% file_name = get_values_from_datastream(@document_fedora, "contentMetadata", [{:resource=>resource_counter},:file, :file_id]) %>
         <a href="/assets/<%= object_id%>/<%= ds_id%>" style="font-size:0.8em;"><%= file_name %></a>
         <%= link_to image_tag("/images/remove.png"), file_asset_path(object_id, :container_id=>@document_fedora.pid, :index=>resource_counter), :method=>:delete, :confirm=>"Are you sure you want to delete the file?" %>
       </dd>

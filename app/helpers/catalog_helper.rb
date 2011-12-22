@@ -201,18 +201,26 @@ module CatalogHelper
  end
 
  def get_friendly_file_size(size_in_bytes_str)
-  text = "Size n/a"
+  text = ""
   if size_in_bytes_str.length > 0
-    size_in_bytes = Float(size_in_bytes_str)
-    if size_in_bytes > 1048575
-      friendly_file_size = size_in_bytes / 1024 / 1024
-      text = friendly_file_size.round(1).to_s + "MB"
-    else
-     friendly_file_size = size_in_bytes / 1024
-     text = friendly_file_size.round(1).to_s + "KB"
-    end
+		begin
+    	size_in_bytes = Float(size_in_bytes_str)
+			text = bits_to_human_readable(size_in_bytes).to_s
+		rescue ArgumentError
+			text = "Size n/a"
+		end
   end
   text  
+ end
+
+ def bits_to_human_readable(num)
+          ['bytes','KB','MB','GB','TB'].each do |x|
+            if num < 1024.0
+              return "#{num.to_i} #{x}"
+            else
+              num = num/1024.0
+            end
+          end
  end
 
 	#Quick utility method used to get long version of a date (YYYY-MM-DD) from short form (YYYY-MM) - Defaults 01 for unknowns - Exists in hull_model_methods too

@@ -43,13 +43,6 @@
         <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
       </div>
       <div id="grants">
-      <dt>
-        <%= fedora_field_label("descMetadata",[:name,:namePart], "Sponsor(s)") %>
-      </dt>
-      <div class="contributors">
-        <%= render :partial => 'contributors/index', :locals=> {:roles=>['sponsor'], :contributor_type=>:organization} %>
-      </div>
-      <div id="grants">
 	      <%= render :partial => 'grant_numbers/index' %>
 	    </div>  
 	    <dt>
