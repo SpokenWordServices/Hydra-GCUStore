@@ -110,14 +110,14 @@ class ModsGenericContent < ObjectMods
              xml.name(:type=>"personal") {
                xml.namePart
                xml.role {
-                 xml.roleTerm("creator", :type=>"text")
+                 xml.roleTerm("Creator", :type=>"text")
                }
              }
              xml.typeOfResource
              xml.genre
              xml.language {
-               xml.languageTerm(:type=>"text")
-               xml.languageTerm(:authority=>"iso639-2b", :type=>"code")
+               xml.languageTerm("English", :type=>"text")
+               xml.languageTerm("eng", :authority=>"iso639-2b", :type=>"code")
              }
              xml.abstract
              xml.subject(:authority=>"UoH") {
@@ -130,7 +130,7 @@ class ModsGenericContent < ObjectMods
              xml.physicalDescription {
                xml.extent
                xml.internetMediaType
-               xml.digitalOrigin 
+               xml.digitalOrigin "born digital"
              }
 						 xml.identifier(:type=>"fedora")
              xml.location {

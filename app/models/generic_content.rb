@@ -102,5 +102,19 @@ class GenericContent < ActiveFedora::Base
     val = matches.empty? ? 2 : matches.max + 1
     sprintf("%s%02i", prefix,val)
   end
+
+	def apply_specific_base_metadata
+		#Applying the following metadata after the Object is created
+   	type_of_resource = "text"		
+		dc_ds = self.dc
+		desc_ds = self.descMetadata
+
+		dc_ds.update_indexed_attributes([:dc_title]=>self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
+
+		#Set type_of_resource based upon genre
+		genre = self.get_values_from_datastream("descMetadata", [:genre], {}).to_s
+		type_of_resource =  Genre.find(genre).type if Genre.find(genre).type.class == String
+		desc_ds.update_indexed_attributes([:type_of_resource]=> type_of_resource)
+	end
   
 end

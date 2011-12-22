@@ -154,6 +154,11 @@ module HullModelMethods
   def apply_base_metadata
 		dc_ds = self.dc
 		desc_ds = self.descMetadata
+
+	 	#Here's where we call specific additional metadata changes...
+		if self.respond_to?(:apply_specific_base_metadata)
+      self.apply_specific_base_metadata
+    end	
   	
 		#Add the dc required elements
 		dc_ds.update_indexed_attributes([:dc_identifier]=> self.pid) unless dc_ds.nil?

@@ -201,16 +201,9 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     
     def self.person_relator_terms
       {"aut" => "Author",
-       "clb" => "Collaborator",
-       "com" => "Compiler",
        "cre" => "Creator",
-       "ctb" => "Contributor",
        "edt" => "Editor",
-       "ill" => "Illustrator",
-       "res" => "Researcher",
-       "rth" => "Research team head",
-       "rtm" => "Research team member",
-       "trl" => "Translator"
+       "phg" => "Photographer"       
        }
     end
     

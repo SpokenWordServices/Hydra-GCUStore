@@ -12,12 +12,13 @@ class GenericContentsController < ApplicationController
   end
   
   def create
-    @generic_content = GenericContent.new(params[:generic_content])
+	  @generic_content = GenericContent.new(params[:generic_content])
     update_set_membership(@generic_content)
     @generic_content.apply_depositor_metadata(current_user.login)
+		@generic_content.apply_base_metadata
     
     if @generic_content.save
-      flash[:notice] = "Created Generic Content object: #{@generic_content.title}"
+    	flash[:notice] = "Created #{@generic_content.title} with pid #{@generic_content.pid}.."
     else
       flash[:error] = "Failed to create a Generic Content object!"
     end
