@@ -16,7 +16,7 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
-    active-fedora (3.2.0.pre5)
+    active-fedora (3.2.0.pre6)
       activeresource (>= 3.0.0)
       activesupport (>= 3.0.0)
       equivalent-xml
@@ -306,6 +306,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active-fedora (= 3.2.0.pre6)
   blacklight
   capybara
   cucumber

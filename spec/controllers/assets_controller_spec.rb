@@ -143,6 +143,7 @@ describe AssetsController do
 
     describe "a ukedt object" do
       before do
+        ActiveFedora::RubydoraConnection.instance.connection
         @obj = UketdObject.new
         @obj.save
       end
