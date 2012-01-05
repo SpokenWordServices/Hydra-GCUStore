@@ -97,6 +97,15 @@ class UketdObject < ActiveFedora::Base
       # Need to create publisher from department and institution ie "Computer Science, The University of Hull"      
     end
   end
+
+	# Associate the given harvesting set with the object, removing old associations first.
+  # @param [Array] sets to set associations with. Should be URIs.
+	def apply_harvesting_set_membership(sets)
+		#We delete previous set memberships and move to new set
+    old_sets = harvesting_set_membership.dup
+    old_sets.each { |s| self.remove_relationship(:is_member_of_collection, s) }
+    sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of_collection, s }
+	end
   
   def file_objects_append(obj)
     super(obj)

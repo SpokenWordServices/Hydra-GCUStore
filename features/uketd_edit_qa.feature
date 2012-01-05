@@ -21,14 +21,15 @@ Feature: QA edit a document
     When I press "Publish"
     Then I should see "Errors encountered adding"
     Then I select "----Accounting" from "Structural_Set_"
+		Then I select "----Accounting" from "Harvesting_Set_"
     And I press "Save metadata"
     Then I should see "Your changes have been saved."
     When I press "Publish"
     Then I should see "Successfully published"
-
 
   Scenario: Viewing browse/edit buttons
     Given I am logged in as "contentaccessteam1@example.com" 
     And I am on the edit document page for hull:756
     Then I should see a "span" tag with a "class" attribute of "edit-browse"
     
+

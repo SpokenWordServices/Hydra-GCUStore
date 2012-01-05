@@ -106,6 +106,10 @@ module HullModelMethods
 		self.relationships(:is_member_of)
 	end
 
+	def harvesting_set_membership
+		self.relationships(:is_member_of_collection)
+	end
+
   def change_queue_membership(new_queue)
 	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
     is_valid = self.respond_to?(validation_method) ? self.send(validation_method) : true
@@ -114,14 +118,18 @@ module HullModelMethods
     if new_queue == :publish
       is_valid = valid_for_publish
     end     
-
-    if is_valid
+	
+	  if is_valid
       queues =  self.queue_membership
       unless queues.empty?
         self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
         is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
       end
-      
+
+			if self.respond_to?(:apply_harvesting_set_membership)
+				add_oai_item_id #Add the item id to objects that are harvested
+			end
+
 			#We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
       if new_queue == :publish
          self.apply_governed_by(structural_set)
@@ -140,12 +148,20 @@ module HullModelMethods
 
   #Valid for publish checks for member of structural set
   def valid_for_publish
+		valid = true
   	if structural_set.nil?
    		errors << "Structural Set> Error: No set selected"
-			false
-   	else
-			true
-   	end
+			valid = false
+  	end
+
+		#If the document allows the specify a harvesting set, we assume that it is mandatory
+		if self.respond_to?(:apply_harvesting_set_membership)
+			if harvesting_set.nil?
+   			errors << "Harvesting Set> Error: No set selected"
+				 valid = false
+   		end
+		end
+		valid
  	end
 
   #
@@ -243,6 +259,11 @@ module HullModelMethods
     ids = set_membership
     return unless ids.present?
     (ids & DisplaySet.display_set_pids).first
+  end
+  def harvesting_set
+    ids = harvesting_set_membership
+    return unless ids.present?
+    (ids & HarvestingSet.harvesting_set_pids).first
   end
 
   # def top_level_collection
@@ -374,6 +395,13 @@ module HullModelMethods
   def get_extracted_content
     retrieve_child_asset_pdf_content + retrieve_internal_datastream_pdf_content
   end
+
+	#Add OAI Item id to RELS-EXT eg.
+	#<oai:itemID>oai:hull.ac.uk:hull:4649</oai:itemID>
+	def add_oai_item_id
+		#literal specifies that it should be in the form of...<oai:itemID>...</oai:itemID>
+ 		self.add_relationship :oai_item_id, "oai:hull.ac.uk.uk:" + self.pid, :literal => true
+	end
 
   # Extract content from all child assets with a content datastream with a mime type of application/pdf
   def retrieve_child_asset_pdf_content

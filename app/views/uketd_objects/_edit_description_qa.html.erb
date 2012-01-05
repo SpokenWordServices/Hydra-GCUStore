@@ -9,9 +9,7 @@
     <%= render :partial => 'contributors/index', :locals=> {:roles=>['creator','author'], :contributor_type=>:person} %>
   </div>
   </fieldset>
-
   <fieldset class="edit-standard">
-
   <legend>Thesis or dissertation</legend>
   <!-- To do Advisors/Sponsors -->
   <dl>
@@ -68,6 +66,12 @@
     </dt>
     <dd>
       <%= select "Display Set","",  DisplaySet.tree.options_for_nested_select, :selected=>@document_fedora.display_set, :include_blank => true, :class=>"display-set-select"  %>
+    </dd>
+	  <dt>
+      <%= fedora_field_label("RELS-EXT",[:is_member_of], "Harvesting Set") %>
+    </dt>
+    <dd>
+      <%= select "Harvesting Set","",  HarvestingSet.tree.options_for_nested_select, :selected=>@document_fedora.harvesting_set, :include_blank => true, :class=>"harvesting-set-select"  %>
     </dd>
   </dl>
   </fieldset>

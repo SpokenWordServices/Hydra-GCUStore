@@ -32,6 +32,13 @@ module Hull::AssetsControllerHelper
     if document.respond_to?(:apply_set_membership)
       document.apply_set_membership([display, structural].compact)
     end
+
+		harvesting = params["Harvesting Set"].to_s
+		#if the document model allows setting of harvesting set....
+		if document.respond_to?(:apply_harvesting_set_membership)
+			document.apply_harvesting_set_membership([harvesting].compact)
+		end
+
     # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
     # otherwise, the structural set the governing apo
     # unless the object is within queue, in which case the queue dictates the governedBy
