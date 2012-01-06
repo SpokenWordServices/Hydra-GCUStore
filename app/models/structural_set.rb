@@ -25,12 +25,20 @@ class StructuralSet < ActiveFedora::Base
   end
 
   def self.tree
+
     hits = retrieve_structural_sets
 
     sets = build_array_of_parents_and_children(hits)
 
     root_node = build_children(Tree::TreeNode.new("Root set", "info:fedora/hull:rootSet"), sets)
   end
+
+  #Overridden so that we can store a cmodel and commonMetadata
+  def assert_content_model
+		add_relationship(:has_model, "info:fedora/hull-cModel:structuralSet")
+    add_relationship(:has_model, "info:fedora/hull-cModel:commonMetadata")
+  end
+
 
   def after_create
     apo = ActiveFedora::Base.find("hull-apo:structuralSet")
@@ -44,6 +52,20 @@ class StructuralSet < ActiveFedora::Base
     defaultRights = Hydra::RightsMetadata.new(self.inner_object, 'defaultObjectRights')
     Hydra::RightsMetadata.from_xml(parent.defaultObjectRights.content, defaultRights)
 	  datastreams["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
+  end
+
+  #
+  # Adds metadata about the depositor to the asset
+  # Most important behavior: if the asset has a rightsMetadata datastream, this method will add +depositor_id+ to its individual edit permissions.
+  #
+  def apply_depositor_metadata(depositor_id)
+    prop_ds = self.datastreams["properties"]
+    rights_ds = self.datastreams["rightsMetadata"]
+  
+    if !prop_ds.nil? && prop_ds.respond_to?(:depositor_values)
+      prop_ds.depositor_values = depositor_id unless prop_ds.nil?
+    end
+	  return true
   end
 
 
