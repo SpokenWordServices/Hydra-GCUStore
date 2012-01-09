@@ -223,10 +223,13 @@ Blacklight.configure(:shared) do |config|
   # except in the relevancy case).
   # label is key, solr field is value
   config[:sort_fields] ||= []
-  config[:sort_fields] << ['relevance', 'score desc, year_facet desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['relevance', 'score desc, sortable_date_dt desc, year_facet desc, month_facet asc, title_facet asc']
+  config[:sort_fields] << ['date (newest)', 'sortable_date_dt desc']
+  config[:sort_fields] << ['date (oldest)', 'sortable_date_dt asc']  
+	#config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
+  #config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
   config[:sort_fields] << ['title', 'title_facet asc']
+
   config[:sort_fields] << ['document type', 'object_type_facet asc, year_facet desc, month_facet asc, title_facet asc']
   #config[:sort_fields] << ['location', 'series_facet asc, box_facet asc, folder_facet asc, year_facet desc, month_facet asc, title_facet asc']
   

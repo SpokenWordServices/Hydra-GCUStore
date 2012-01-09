@@ -367,23 +367,48 @@ module HullModelMethods
   
   def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
+
 	  solr_doc["has_model_s"] = cmodel
     solr_doc["fedora_owner_id_s"] = self.owner_id
     solr_doc["fedora_owner_id_display"] = self.owner_id
 		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
 			solr_doc["is_member_of_queue_facet"] = queue_membership.to_s 
 		end
-    if descMetadata.origin_info && descMetadata.origin_info.date_issued 
-      begin
-        val = descMetadata.origin_info.date_issued.first
-        if val
-          date = Date.parse val
-          solr_doc.merge!({"year_facet" => date.year, "month_facet" => date.month})
-        end
-      rescue ArgumentError => e
+
+		#This section of code deals with selecting a 
+ #   if descMetadata.origin_info && (descMetadata.origin_info.date_issued || descMetadata.origin_info.date_valid)
+#			begin
+	#			date_valid = descMetadata.origin_info.date_valid.first.to_s
+		#		date_issued = descMetadata.origin_info.date_issued.first.to_s
+					
+			#	if date_valid.size > 0
+				#	date_valid = descMetadata.origin_info.date_valid.first
+					#if date_valid.include? "/"
+						#	val = to_long_date(date_valid[date_valid.index('/')+1..date_valid.size])
+					#else
+					#		val = to_long_date(date_valid) 
+					#end
+				#elsif	date_issued.size > 0
+				#	if date_issued.include? "/"
+				#			val = to_long_date(date_issued[date_issued.index('/')+1..date_issued.size])
+				#	else			
+				#		val = to_long_date(descMetadata.origin_info.date_issued.first)
+				#	end
+				#end
+				date = get_object_sortable_date
+				if !date.nil?
+ 					solr_doc.merge!({"year_facet" => date.year, "month_facet" => date.month, "sortable_date_dt" => date.iso8601.to_s + "Z"})
+				end
+
+       # if val
+			#		date = Time.parse val
+      #    solr_doc.merge!({"year_facet" => date.year, "month_facet" => date.month, "sortable_date_dt" => date.iso8601.to_s + "Z"})
+       # end
+
+#      rescue ArgumentError => e
         #nop
-      end
-    end
+ #     end
+   # end
     if display_set
       collection = display_set
       solr_doc["top_level_collection_id_s"] = collection if collection
@@ -395,6 +420,40 @@ module HullModelMethods
   def get_extracted_content
     retrieve_child_asset_pdf_content + retrieve_internal_datastream_pdf_content
   end
+
+	#This section of code deals with selecting a date from the descMetadata (either date_issued or date_valid)
+	# and reading it into a Ruby Time type. If both date_issued and date_valid exist, preference will be giving to the latter... 
+	#This method will deal with 2001/2002 type dates; it will select the latter date
+	def get_object_sortable_date
+		date = nil
+    if descMetadata.origin_info && (descMetadata.origin_info.date_issued || descMetadata.origin_info.date_valid)
+			begin
+				date_valid = descMetadata.origin_info.date_valid.first.to_s
+				date_issued = descMetadata.origin_info.date_issued.first.to_s
+					
+				if date_valid.size > 0
+					date_valid = descMetadata.origin_info.date_valid.first
+					if date_valid.include? "/"
+							val = to_long_date(date_valid[date_valid.index('/')+1..date_valid.size])
+					else
+							val = to_long_date(date_valid) 
+					end
+				elsif	date_issued.size > 0
+					if date_issued.include? "/"
+							val = to_long_date(date_issued[date_issued.index('/')+1..date_issued.size])
+					else			
+						val = to_long_date(descMetadata.origin_info.date_issued.first)
+					end
+				end
+ 				if val
+					date = Time.parse val
+				end
+			rescue ArgumentError => e
+        #nop
+      end
+		end
+	end
+
 
 	#Add OAI Item id to RELS-EXT eg.
 	#<oai:itemID>oai:hull.ac.uk:hull:4649</oai:itemID>

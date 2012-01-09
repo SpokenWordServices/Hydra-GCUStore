@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+	def display_text
+		email[0..email.index('@') -1]	
+	end
 end
