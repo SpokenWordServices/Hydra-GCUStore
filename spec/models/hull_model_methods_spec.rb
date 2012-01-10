@@ -96,7 +96,7 @@ describe HullModelMethods do
     end
     it "should copy the date from the descMetadata to the dc datastream if it is present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns('2011-10')
-      @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_dateIssued]=>'2011-10')
+      @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_date]=>'2011-10')
       @testclassone.apply_additional_metadata(123).should == true
     end
     it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
@@ -129,7 +129,10 @@ describe HullModelMethods do
   describe "to_solr" do
     it "should apply has_model_s and fedora_owner_id correctly" do
       @testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>nil))
+			@testclassone.update_indexed_attributes([:origin_info, :date_issued]=> "2011-01-01", :datastreams=>"descMetadata")
+			#@testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>{:date_issued=>"2010-01-01"}))
       solr_doc = @testclassone.to_solr
+			#debugger
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:testClassOne"
       solr_doc["fedora_owner_id_s"].should == "fooAdmin"
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"

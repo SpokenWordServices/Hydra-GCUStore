@@ -11,7 +11,7 @@ describe ObjectDc do
 
   it "should set the date value" do
     @ds = ObjectDc.new(@inner_obj, nil)
-    @ds.update_values({[:dc_dateIssued] => ['2012-12']})
+    @ds.update_values({[:dc_date] => ['2012-12']})
     @ds.to_xml.should match /<dc:date>2012-12<\/dc:date>/
 
   end

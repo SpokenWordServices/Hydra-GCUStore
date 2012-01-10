@@ -14,10 +14,13 @@ class CompoundController < ApplicationController
     if params.has_key?(:Filedata)
       file = params[:Filedata].first
       file_name = file.original_filename
+			mime_type = file.content_type
+
       options = {:label=>file_name, :prefix=>'content'}
       ds_id = @document_fedora.add_file_datastream(file, options)
 			service_def =  ""
 			service_method = ""
+			
 
       size_attr = file.size
       pid = @document_fedora.pid
@@ -31,12 +34,12 @@ class CompoundController < ApplicationController
 				service_method = "getContent?dsID=" + ds_id
 			end
 		
-      @document_fedora.contentMetadata.insert_resource(:object_id => pid, :ds_id=>ds_id, :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/" + ds_id , :display_label=>@document_fedora.datastreams[ds_id].dsLabel, :id => @document_fedora.datastreams[ds_id].dsLabel,  :mime_type => file.content_type, :format => file.content_type[file.content_type.index("/") + 1...file.content_type.length], :service_def => service_def, :service_method => service_method)
+      @document_fedora.contentMetadata.insert_resource(:object_id => pid, :ds_id=>ds_id, :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/" + ds_id , :display_label=>@document_fedora.datastreams[ds_id].dsLabel, :id => @document_fedora.datastreams[ds_id].dsLabel,  :mime_type => mime_type, :format => mime_type[mime_type.index("/") + 1...mime_type.length], :service_def => service_def, :service_method => service_method)
 
 			#Update the descMetadata for the primary content datastream
 			if ds_id == "content"
 	  	 update_hash = { "descMetadata"=> { [:physical_description,:extent]=> "Filesize: " + bits_to_human_readable(size_attr.to_i),
-										[:physical_description,:mime_type]=>file.content_type,
+										[:physical_description,:mime_type]=>mime_type,
 							       [:location,:raw_object]=> "http://hydra.hull.ac.uk/assets/" + pid + "/content" }
 				}
 				@document_fedora.update_datastream_attributes( update_hash )

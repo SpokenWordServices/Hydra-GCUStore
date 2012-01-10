@@ -18,7 +18,7 @@ describe GenericContentsController do
                               "temporal_tag"=>"My Temporal Tag",
                               "coordinates"=>"My Coordinates", 
                               "date_valid"=>"2022", 
-                              "type_of_resource"=>"Book", 
+                              "type_of_resource"=>"text", 
                               "title"=>"Foo Test Generic Object", 
                               "topic_tag"=>"My Topic Tag", 
                               "rights"=>"lorem ipsum rightso facto", 
@@ -37,7 +37,7 @@ describe GenericContentsController do
         assigns[:generic_content].topic_tag.should == ["My Topic Tag"]
         assigns[:generic_content].coordinates.should == ["My Coordinates"]
         assigns[:generic_content].date_valid.should == ["2022"]
-        assigns[:generic_content].type_of_resource.should == ["Book"]
+        assigns[:generic_content].type_of_resource.should == ["text"]
         assigns[:generic_content].title.should == ["Foo Test Generic Object"]
         assigns[:generic_content].rights.should == ["lorem ipsum rightso facto"]
         assigns[:generic_content].description.should == ["lorem ipsum descripto facto"]
@@ -47,7 +47,7 @@ describe GenericContentsController do
         assigns[:generic_content].related_item.should == ["http://google.com"]
         assigns[:generic_content].see_also.should == ["http://bing.com"]
         assigns[:generic_content].lang_text.should == ["English"]    
-        assigns[:generic_content].relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hull-cModel:compoundContent"]    
+        assigns[:generic_content].relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hydra-cModel:compoundContent","info:fedora/hydra-cModel:commonMetadata"]    
         assigns[:generic_content].descMetadata.person(0).namePart.should == ['Joe']
         assigns[:generic_content].descMetadata.person(0).role.text.should == ['Author']
 

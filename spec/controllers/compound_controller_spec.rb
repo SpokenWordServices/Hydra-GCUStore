@@ -29,8 +29,11 @@ describe CompoundController do
         sign_in FactoryGirl.find_or_create(:cat)
         @test_file = fixture("image.jp2")
         filename = "My File Name"
+				mime_type = "image/jp2"
         @test_file.expects(:original_filename).returns(filename)
+				@test_file.expects(:content_type).returns(mime_type)
         @test_file.expects(:size).returns(2340)
+
       end
       it "should save the first file as content" do
 

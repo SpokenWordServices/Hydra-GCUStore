@@ -61,7 +61,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     </role>
   </name>
   <typeOfResource>text</typeOfResource>
-  <genre>Generic item</genre>
+  <genre>Generic content</genre>
   <originInfo>
     <publisher>The University of Hull</publisher>
     <dateValid encoding="iso8601">1996/2000</dateValid>

@@ -25,12 +25,12 @@ describe JournalArticle do
     it "should copy the date from the descMetadata to the dc datastream if it is present" do
       @desc_ds.update_indexed_attributes({[:origin_info, :date_issued] => ['2011-10']})
       @journalArticle.apply_additional_metadata(123).should == true
-      @journalArticle.dc.dc_dateIssued.should == ['2011-10']
+      @journalArticle.dc.dc_date.should == ['2011-10']
       @journalArticle.dc.dc_title.should == ["My title"]
     end
     it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
       @journalArticle.apply_additional_metadata(123).should == true
-      @journalArticle.dc.dc_dateIssued.should == [""]
+      @journalArticle.dc.dc_date.should == [""]
       @journalArticle.dc.dc_title.should == ["My title"]
     end
   end

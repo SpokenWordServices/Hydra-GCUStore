@@ -80,9 +80,9 @@ describe GenericContent do
       @generic_content.relationships(:has_model).should == []
       @generic_content.genre = "Policy or procedure"
       @generic_content.assert_content_model
-      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hydra-cModel:compoundContent"]
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hydra-cModel:compoundContent", "info:fedora/hydra-cModel:commonMetadata"]
       @generic_content.assert_content_model ## Shouldn't add another row.
-      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hydra-cModel:compoundContent"]
+      @generic_content.relationships(:has_model).should == ["info:fedora/hull-cModel:policy", "info:fedora/hydra-cModel:compoundContent", "info:fedora/hydra-cModel:commonMetadata"]
     end
   end
   
