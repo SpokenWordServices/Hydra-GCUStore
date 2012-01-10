@@ -126,19 +126,23 @@ module HullModelMethods
         is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
       end
 
-			if self.respond_to?(:apply_harvesting_set_membership)
-				add_oai_item_id #Add the item id to objects that are harvested
-			end
-
-			#We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
+      #We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
       if new_queue == :publish
-         self.apply_governed_by(structural_set)
-			else
+        self.apply_governed_by(structural_set)
+	if self.respond_to?(:apply_harvesting_set_membership)
+	  add_oai_item_id #Add the item id to objects that are harvested
+	end
+      else
       	self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
-				self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
-     
-      	self.owner_id="fedoraAdmin" if new_queue == :qa
-			end
+
+	#if the object is going into the qa queue
+        if new_queue == :qa
+	  self.owner_id="fedoraAdmin"
+	  apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the QAQueue defaultObjectrights into object rightsMetadata
+     	else
+	  self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
+	end
+      end
       return true
     else
       logger.warn "Could not change queue membership due to validation errors."
@@ -288,6 +292,7 @@ module HullModelMethods
 	end
 
 	def apply_governed_by(set)
+	
     set = StructuralSet.find(set.gsub("info:fedora/", "")) if set.kind_of? String
 		#We delete previous is_governed_by relationships and add the new one
     old_governed_by = is_governed_by
@@ -299,7 +304,7 @@ module HullModelMethods
 	end
 
   def copy_rights_metadata(apo)
-		rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
+    rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
     Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content, rights)
     defaultRights = NonindexingRightsMetadata.new(self.inner_object, 'defaultObjectRights')
     defaultRights.ng_xml = rights.ng_xml.dup

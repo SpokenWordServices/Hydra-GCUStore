@@ -325,9 +325,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <dcterms:isReferencedBy xsi:type="dcterms:URI">
         <xsl:value-of select="$descMetadata/mods:location/mods:url[@access=&apos;object in context&apos;]/text()"></xsl:value-of>
       </dcterms:isReferencedBy>
-      <dc:identifier>
-        <xsl:value-of select="$descMetadata/mods:identifier[@type=&apos;fedora&apos;]/text()"></xsl:value-of>
-      </dc:identifier>
       <dc:identifier xsi:type="dcterms:URI">
         <xsl:value-of select="$descMetadata/mods:location/mods:url[@access=&apos;raw object&apos;]/text()"></xsl:value-of>
       </dc:identifier>
