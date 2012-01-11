@@ -1178,6 +1178,19 @@ fieldset.edit-standard dl dd {
 float:left;
 }
 
+fieldset.edit-permissions dl dt {
+ float:left;
+ width: 10em !important
+}
+
+fieldset.edit-permissions dl dd {
+ width: 53em !important;
+ font-size: 1.2em;
+ margin-left: 0px;
+ margin-top: .5em;
+ margin-bottom: .9em;
+}
+
 div#contributors dl dd span input {
   width: 50em;
   font-size: .8em;
@@ -1192,6 +1205,7 @@ fieldset.edit-standard dl dd ol input {
   width: 40em;
   font-size: .8em;
 }
+
 
 fieldset.edit-half dl dt {
   width: 20em !important;
