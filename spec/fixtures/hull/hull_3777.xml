@@ -6,9 +6,9 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:objectProperties>
 <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="2010-11-23 Council minutes (Part A) - Committee Section; "/>
-<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="contentaccessteam1@example.com"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-25T10:25:21.434Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-03-29T11:09:25.703Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-01-11T10:07:00.405Z"/>
 <foxml:extproperty NAME="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" VALUE="FedoraObject"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
@@ -47,6 +47,78 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-03-29T11:09:25.703Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T09:58:39.350Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>setDatastreamVersionable</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T09:58:39.350Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:15.611Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:15.697Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:15.773Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:15.850Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:15.924Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:04:16.059Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:00.405Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -71,8 +143,27 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </oai_dc:dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.1" LABEL="DC Metadata" CREATED="2012-01-11T10:04:15.924Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="932">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>2010-11-23 Council minutes (Part A)</dc:title>
+  <dc:creator>Committee Section</dc:creator>
+  <dc:subject>Council</dc:subject>
+  <dc:description>The minutes (Part A) for the meeting of Council held on 23 November 2010</dc:description>
+  <dc:publisher>The University of Hull</dc:publisher>
+  <dc:date>2010-11-23</dc:date>
+  <dc:type>Meeting papers or minutes</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:format>Filesize: 428KB</dc:format>
+  <dc:identifier>hull:3777</dc:identifier>
+  <dc:identifier>hull:3777</dc:identifier>
+  <dc:language>eng</dc:language>
+  <dc:rights>© 2010 The University of Hull</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="MODS metadata" CREATED="2011-03-25T10:25:21.908Z" MIMETYPE="text/xml" SIZE="2017">
 <foxml:binaryContent> 
               PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxtb2RzIHhzaTpzY2hlbWFMb2Nh
@@ -111,6 +202,45 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               Q2F0YWxvZ2luZz4NCiAgPC9yZWNvcmRJbmZvPg0KPC9tb2RzPg==
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.3" LABEL="MODS metadata" CREATED="2012-01-11T10:07:00.405Z" MIMETYPE="text/xml" SIZE="2064">
+<foxml:binaryContent> 
+              PG1vZHMgeG1sbnM9Imh0dHA6Ly93d3cubG9jLmdvdi9tb2RzL3YzIiB4bWxuczp4c2k9Imh0dHA6Ly93
+              d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6
+              Ly93d3cubG9jLmdvdi9tb2RzL3YzIGh0dHA6Ly93d3cubG9jLmdvdi9zdGFuZGFyZHMvbW9kcy92My9t
+              b2RzLTMtMy54c2QiPg0NICA8dGl0bGVJbmZvPg0NICAgIDx0aXRsZT4yMDEwLTExLTIzIENvdW5jaWwg
+              bWludXRlcyAoUGFydCBBKTwvdGl0bGU+DQ0gIDwvdGl0bGVJbmZvPg0NICA8bmFtZSB0eXBlPSJwZXJz
+              b25hbCI+DQ0gICAgPG5hbWVQYXJ0PkNvbW1pdHRlZSBTZWN0aW9uPC9uYW1lUGFydD4NDSAgICA8cm9s
+              ZT4NDSAgICAgIDxyb2xlVGVybSB0eXBlPSJ0ZXh0Ij5jcmVhdG9yPC9yb2xlVGVybT4NDSAgICA8L3Jv
+              bGU+DQ0gIDwvbmFtZT4NDSAgPHR5cGVPZlJlc291cmNlPnRleHQ8L3R5cGVPZlJlc291cmNlPg0NICA8
+              Z2VucmU+TWVldGluZyBwYXBlcnMgb3IgbWludXRlczwvZ2VucmU+DQ0gIDxvcmlnaW5JbmZvPg0NICAg
+              IDxwdWJsaXNoZXI+VGhlIFVuaXZlcnNpdHkgb2YgSHVsbDwvcHVibGlzaGVyPg0gICAgPGRhdGVWYWxp
+              ZCBlbmNvZGluZz0iaXNvODYwMSI+MjAxMC0xMS0yMzwvZGF0ZVZhbGlkPjwvb3JpZ2luSW5mbz4NDSAg
+              PGxhbmd1YWdlPg0NICAgIDxsYW5ndWFnZVRlcm0gdHlwZT0idGV4dCI+RW5nbGlzaDwvbGFuZ3VhZ2VU
+              ZXJtPg0NICAgIDxsYW5ndWFnZVRlcm0gdHlwZT0iY29kZSIgYXV0aG9yaXR5PSJpc282MzktMmIiPmVu
+              ZzwvbGFuZ3VhZ2VUZXJtPg0NICA8L2xhbmd1YWdlPg0NICA8cGh5c2ljYWxEZXNjcmlwdGlvbj4NDSAg
+              ICA8ZXh0ZW50PkZpbGVzaXplOiA0MjhLQjwvZXh0ZW50Pg0NICAgIDxpbnRlcm5ldE1lZGlhVHlwZT5h
+              cHBsaWNhdGlvbi9wZGY8L2ludGVybmV0TWVkaWFUeXBlPg0NICAgIDxkaWdpdGFsT3JpZ2luPmJvcm4g
+              ZGlnaXRhbDwvZGlnaXRhbE9yaWdpbj4NDSAgPC9waHlzaWNhbERlc2NyaXB0aW9uPg0NICA8YWJzdHJh
+              Y3Q+VGhlIG1pbnV0ZXMgKFBhcnQgQSkgZm9yIHRoZSBtZWV0aW5nIG9mIENvdW5jaWwgaGVsZCBvbiAy
+              MyBOb3ZlbWJlciAyMDEwPC9hYnN0cmFjdD4NDSAgPHN1YmplY3QgYXV0aG9yaXR5PSJVb0giPg0NICAg
+              IDx0b3BpYz5Db3VuY2lsPC90b3BpYz4NDSAgPGNhcnRvZ3JhcGhpY3M+PC9jYXJ0b2dyYXBoaWNzPjwv
+              c3ViamVjdD4NDSAgPGlkZW50aWZpZXIgdHlwZT0iZmVkb3JhIj5odWxsOjM3Nzc8L2lkZW50aWZpZXI+
+              DQ0gIDxyZWxhdGVkSXRlbSB0eXBlPSJwcml2YXRlT2JqZWN0Ij4NDSAgICA8aWRlbnRpZmllciB0eXBl
+              PSJmZWRvcmEiPmh1bGwtcHJpdmF0ZToyMzY3PC9pZGVudGlmaWVyPg0NICA8L3JlbGF0ZWRJdGVtPg0N
+              ICA8bG9jYXRpb24+DQ0gICAgPHVybCB1c2FnZT0icHJpbWFyeSBkaXNwbGF5IiBhY2Nlc3M9Im9iamVj
+              dCBpbiBjb250ZXh0Ij5odHRwOi8vaHlkcmEuaHVsbC5hYy51ay9yZXNvdXJjZXMvaHVsbDozNzc3PC91
+              cmw+DQ0gICAgPHVybCBhY2Nlc3M9InJhdyBvYmplY3QiPmh0dHA6Ly9oeWRyYS5odWxsLmFjLnVrL2Fz
+              c2V0cy9odWxsOjM3NzcvZ2VuZXJpY0NvbnRlbnQvY29udGVudDwvdXJsPg0NICA8L2xvY2F0aW9uPg0N
+              ICA8YWNjZXNzQ29uZGl0aW9uIHR5cGU9InVzZUFuZFJlcHJvZHVjdGlvbiI+wqkgMjAxMCBUaGUgVW5p
+              dmVyc2l0eSBvZiBIdWxsPC9hY2Nlc3NDb25kaXRpb24+DQ0gIDxyZWNvcmRJbmZvPg0NICAgIDxyZWNv
+              cmRDb250ZW50U291cmNlPlRoZSBVbml2ZXJzaXR5IG9mIEh1bGw8L3JlY29yZENvbnRlbnRTb3VyY2U+
+              DQ0gICAgPHJlY29yZENyZWF0aW9uRGF0ZSBlbmNvZGluZz0idzNjZHRmIj4yMDExLTAyLTI0PC9yZWNv
+              cmRDcmVhdGlvbkRhdGU+DQ0gICAgPHJlY29yZENoYW5nZURhdGUgZW5jb2Rpbmc9InczY2R0ZiIvPg0N
+              ICAgIDxsYW5ndWFnZU9mQ2F0YWxvZ2luZz4NDSAgICAgIDxsYW5ndWFnZVRlcm0gYXV0aG9yaXR5PSJp
+              c282MzktMmIiPmVuZzwvbGFuZ3VhZ2VUZXJtPg0NICAgIDwvbGFuZ3VhZ2VPZkNhdGFsb2dpbmc+DQ0g
+              IDwvcmVjb3JkSW5mbz4NDTwvbW9kcz4N
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2011-03-25T10:25:21.908Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="524">
@@ -121,6 +251,18 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
             <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
           </rdf:Description>
         </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-01-11T10:04:15.773Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="655">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="http://projecthydra.org/ns/relations#" xmlns:ns1="info:fedora/fedora-system:def/model#" xmlns:ns2="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/hull:3777">
+    <ns0:isGovernedBy rdf:resource="info:fedora/hull:protoQueue"></ns0:isGovernedBy>
+    <ns1:hasModel rdf:resource="info:fedora/hull-cModel:meetingPaper"></ns1:hasModel>
+    <ns1:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></ns1:hasModel>
+    <ns2:isMemberOf rdf:resource="info:fedora/hull:protoQueue"></ns2:isMemberOf>
+  </rdf:Description>
+</rdf:RDF>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
@@ -136,6 +278,18 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               Y2F0aW9uIHR5cGU9InVybCI+aHR0cDovL2h5ZHJhLmh1bGwuYWMudWsvYXNzZXRzL2h1bGw6Mzc3Ny9n
               ZW5lcmljQ29udGVudC9jb250ZW50PC9sb2NhdGlvbj4NDSAgICA8L2ZpbGU+DQ0gIDwvcmVzb3VyY2U+
               DQ08L2NvbnRlbnRNZXRhZGF0YT4=
+</foxml:binaryContent> 
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="contentMetadata.1" LABEL="Content metadata" CREATED="2012-01-11T10:04:16.059Z" MIMETYPE="text/xml" SIZE="461">
+<foxml:binaryContent> 
+              PGNvbnRlbnRNZXRhZGF0YSB4bWxucz0iaHR0cDovL2h5ZHJhLWNvbGxhYi5odWxsLmFjLnVrL3NjaGVt
+              YXMvY29udGVudE1ldGFkYXRhL3YxIiB0eXBlPSJ0ZXh0Ij4KCiAgPHJlc291cmNlIHNlcXVlbmNlPSIx
+              IiBpZD0iRG9jdW1lbnQiIGRpc3BsYXlMYWJlbD0iRG9jdW1lbnQiIG9iamVjdElEPSJodWxsOjM3Nzci
+              IGRzSUQ9ImNvbnRlbnQiIGRpc3NUeXBlPSJnZW5lcmljQ29udGVudC9jb250ZW50Ij4KCiAgICA8Zmls
+              ZSBpZD0iY29udGVudCIgZm9ybWF0PSJwZGYiIG1pbWVUeXBlPSJhcHBsaWNhdGlvbi9wZGYiIHNpemU9
+              IjQyNzU1MiI+CgogICAgICA8bG9jYXRpb24gdHlwZT0idXJsIj5odHRwOi8vaHlkcmEuaHVsbC5hYy51
+              ay9hc3NldHMvaHVsbDozNzc3L2dlbmVyaWNDb250ZW50L2NvbnRlbnQ8L2xvY2F0aW9uPgoKICAgIDwv
+              ZmlsZT4KCiAgPC9yZXNvdXJjZT4KCjwvY29udGVudE1ldGFkYXRhPgo=
 </foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
@@ -176,6 +330,44 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
             <machine></machine>
           </embargo>
         </rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.1" LABEL="Rights metadata" CREATED="2012-01-11T10:04:15.850Z" MIMETYPE="text/xml" SIZE="763">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+  <copyright>
+    <human>© 2010 The University of Hull</human>
+    <machine></machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine>
+      <group>staff</group>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>staff</group>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <use>
+    <human></human>
+    <machine></machine>
+  </use>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>

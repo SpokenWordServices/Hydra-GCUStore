@@ -5,10 +5,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
 <foxml:objectProperties>
 <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HiH fixture object for meeting papers"/>
-<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Quality and Standards Committee 9 Sep 200... - Committee Section; "/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="contentaccessteam1@example.com"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-07-21T11:10:00.190Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-07-25T12:51:56.377Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-01-11T10:07:56.285Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-07-21T11:10:00.190Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -150,6 +150,70 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-07-25T12:51:56.377Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC18">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T09:59:54.599Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC19">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.403Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC20">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.490Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC21">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.571Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC22">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.655Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC23">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.732Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC24">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>contentMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:30.809Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC25">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-01-11T10:07:56.285Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -168,6 +232,16 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>Quality and Standards Committee 9 Sep 2009</dc:title>
   <dc:date>2010-02-18</dc:date>
+  <dc:type>Meeting papers or minutes</dc:type>
+  <dc:identifier>hull:2268</dc:identifier>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.2" LABEL="Dublin Core Record for this object" CREATED="2012-01-11T10:07:30.732Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="492">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Quality and Standards Committee 9 Sep 2009         </dc:title>
+  <dc:date>2009-09-09</dc:date>
   <dc:type>Meeting papers or minutes</dc:type>
   <dc:identifier>hull:2268</dc:identifier>
 </oai_dc:dc>
@@ -305,6 +379,40 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </rightsMetadata>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.4" LABEL="Rights metadata" CREATED="2012-01-11T10:07:30.655Z" MIMETYPE="text/xml" SIZE="717">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1">
+  <copyright>
+    <human>(c) 2009 The University of Hull</human>
+    <machine></machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine>
+      <group>committeeSection</group>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>committeeSection</group>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <group>contentAccessTeam</group>
+    </machine>
+  </access>
+  <use>
+    <human></human>
+    <machine></machine>
+  </use>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Externals" CREATED="2011-07-21T11:20:50.510Z" MIMETYPE="text/xml" SIZE="695">
@@ -339,6 +447,19 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <hydra:isGovernedBy rdf:resource="info:fedora/hull:2300"></hydra:isGovernedBy>
     <fedora-model:hasModel rdf:resource="info:fedora/hull-cModel:meetingPaper"></fedora-model:hasModel>
     <fedora-model:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Externals" CREATED="2012-01-11T10:07:30.571Z" MIMETYPE="text/xml" SIZE="734">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="http://projecthydra.org/ns/relations#" xmlns:ns1="info:fedora/fedora-system:def/model#" xmlns:ns2="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/hull:2268">
+    <ns0:isGovernedBy rdf:resource="info:fedora/hull:2300"></ns0:isGovernedBy>
+    <ns0:isGovernedBy rdf:resource="info:fedora/hull:protoQueue"></ns0:isGovernedBy>
+    <ns1:hasModel rdf:resource="info:fedora/hull-cModel:meetingPaper"></ns1:hasModel>
+    <ns1:hasModel rdf:resource="info:fedora/hydra-cModel:commonMetadata"></ns1:hasModel>
+    <ns2:isMemberOf rdf:resource="info:fedora/hull:protoQueue"></ns2:isMemberOf>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
@@ -379,6 +500,17 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="contentMetadata.3" LABEL="Content metadata" CREATED="2011-07-25T12:51:56.377Z" MIMETYPE="text/xml" SIZE="499">
+<foxml:xmlContent>
+<contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1">
+  <resource contains="content" displayLabel="Document" dsId="content" id="minutes.pdf" objectID="hull:2268" sequence="1" serviceDef="hull-sDef:meetingPaper" serviceMethod="getContent">
+    <file format="pdf" id="minutes.pdf" mimeType="application/pdf" size="165545">
+      <location type="url">http://hydra.hull.ac.uk/assets/hull:2268/genericContent/content</location>
+    </file>
+  </resource>
+</contentMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="contentMetadata.4" LABEL="Content metadata" CREATED="2012-01-11T10:07:30.809Z" MIMETYPE="text/xml" SIZE="499">
 <foxml:xmlContent>
 <contentMetadata xmlns="http://hydra-collab.hull.ac.uk/schemas/contentMetadata/v1">
   <resource contains="content" displayLabel="Document" dsId="content" id="minutes.pdf" objectID="hull:2268" sequence="1" serviceDef="hull-sDef:meetingPaper" serviceMethod="getContent">
@@ -3662,6 +3794,515 @@ QSC/9 Sep 2009 agenda part a
   <accessCondition type="useAndReproduction">
         (c) 2009 The University of Hull
     </accessCondition>
+  <recordInfo>
+    <recordContentSource>The University of Hull</recordContentSource>
+    <recordCreationDate encoding="w3cdtf">2010-02-18</recordCreationDate>
+    <recordChangeDate encoding="w3cdtf">2011-07-21</recordChangeDate>
+  </recordInfo>
+</mods>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.3" LABEL="MODS metadata" CREATED="2012-01-11T09:59:54.599Z" MIMETYPE="text/xml" SIZE="6120">
+<foxml:xmlContent>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>
+            Quality and Standards Committee 9 Sep 2009
+        </title>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Committee Section</namePart>
+    <role>
+      <roleTerm type="text">creator</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>text</typeOfResource>
+  <genre>Meeting papers or minutes</genre>
+  <originInfo>
+    <publisher>The University of Hull</publisher>
+    <dateValid>2009-09-09</dateValid>
+  </originInfo>
+  <language>
+    <languageTerm type="text">English</languageTerm>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <physicalDescription>
+    <extent>162KB</extent>
+    <internetMediaType>application/pdf</internetMediaType>
+    <digitalOrigin>born digital</digitalOrigin>
+  </physicalDescription>
+  <abstract>
+Agenda and reports of the meeting of the Quality and Standards Committee held on 9 Sep 2009
+
+Quality and Standards Committee	9 Sep 09
+
+(A subcommittee of Academic Board)	
+
+Note: Items which are starred (*) will be taken as read. Members may request that items be unstarred under Chair&apos;s Unreserved Business.
+
+Agenda
+
+Part A: Unreserved Business
+
+1.	Apologies for Absence
+
+2.	Welcome
+To welcome new members
+
+3.	Terms of Reference and Membership	 (enclosed)
+To approve the Committee&apos;s Terms of Reference and Membership
+
+4.	Declaration of Reserved Business
+
+5.	Minutes	 (enclosed)
+To approve the minutes (Part A) of the meeting held on 
+10 June 2009
+
+*6.	Matters arising from the minutes
+(a)	To receive a report from Academic Board of its meeting 
+held on 2 July 2009
+(b)	Minute 108: Chair&apos;s action in respect of 2nd marking	
+To report that conditions have been met
+
+7.	Chair&apos;s Unreserved Business
+
+8.	To consider issues raised by students
+
+9.	Institutional Audit 2009
+(a)	To receive the Audit Report	 (enclosed)
+(b)	To consider an action plan arising from the Audit Report	(enclosed)
+
+10.	To consider revised University Programme Regulations	(enclosed)
+
+11.	University Codes of Practice
+(a)	Quality Enhancement Reports	 (enclosed)
+To report housekeeping changes
+(b)	Recognised Teacher Status	 (enclosed)
+To consider revisions which extend the code to on campus provision
+(c)	Assessment Procedures	 (enclosed)
+To consider recommendations recommended by ULTAC
+
+12.	Quality and Standards Programme of Work
+(a)	2008/09	 (enclosed)
+(b)	2009/10	 (enclosed)
+
+13.	Quality Enhancement Reports 2007/08
+(a)	QSC level action plans relating to	 (enclosed)
+(i)	Good practice identified for wider dissemination
+(ii)	Areas for further development
+
+(b)	Analysis of the following reports
+(i)	PGMI (including report of the Transitions Working Group)	(enclosed)
+(ii)	Faculty of Science	 (enclosed)
+(iii)	Faculty of Arts and Social Sciences	 (enclosed)
+(iv)	Institute for Learning	 (enclosed)
+
+14.	Periodic Reviews
+(a)	2008/09
+(i)	QSC Action Plan	 (enclosed)
+(ii)	Physics	 (enclosed)
+(iii)	Engineering	 (enclosed)
+
+(b)	Revised schedule 2009/10	 (enclosed)
+
+15.	Unfair Means appeals monitoring 2008/09	 (enclosed)
+
+16.	Faculty Quality Committees
+(a)	Institute for Learning	 (enclosed)
+To consider an application for a new postgraduate award of 
+Masters in Learning and Teaching (MLT)
+(b)	Arts and Social Sciences	 (enclosed)
+To consider progression and awards in respect of part time provision
+(c)	ScaLTAQC	 (enclosed)
+To provide an update on quality monitoring and reporting arrangements
+Relating to Departments at Scarborough which are under the 
+Scarborough Dean&apos;s Management Line
+
+17.	Committee Reports	
+(a)	To receive a report and minutes of the meeting of Programme Approvals
+Monitoring and Enhancement Committee held on 24 June 2009(enclosed)
+(b)	To receive a report and minutes of the meeting of Student 
+Progress Committee held on 29 June 2009	 (enclosed)
+
+For information
+
+*18.	To report that the Innovations, Universities, Science and Skills Committee report: Students and Universities can be found under Latest News at:http://www.parliament.uk/ius
+An initial summary of key recommendations within the report and UUK&apos;s response to these can be found at Annex I-2009-76(a)
+
+*19.	To report verification of the compatibility of the framework for higher education qualifications in England, Wales and Northern Ireland (FHEQ) with the framework for qualifications of the European higher education area (FQ-EHEA). QAA circular letter CL09/09 refers: http://www.qaa.ac.uk/news/circularLetters/CL0909.asp
+
+*20.	To note the University&apos;s response to the QAA, UUK and GuildHE 
+survey on implementation of the Higher Education credit framework 
+for England	 (enclosed)
+
+*21.	To receive the Annual report on new legislation 2008/09	(enclosed)
+
+*22.	Any other Unreserved Business
+
+*23.	Dates of meetings 2009/10
+(i)	Wednesday 11 November 2009 at 2.15 pm
+(ii)	Wednesday 17 February 2010 at 2.15 pm
+(iii)	Wednesday 28 April 2010 at 2.15 pm
+(iv)	Wednesday 9 June 2010 at 2.15 pm
+
+All meetings will be held via Video-Conference
+(Hull: University Committee Room, Venn Building
+Scarborough: Meeting Room 1)
+
+LJB/VB
+QSC/9 Sep 2009 agenda part a
+    </abstract>
+  <subject authority="UoH">
+    <topic>Quality and Standards Committee</topic>
+  </subject>
+  <identifier type="fedora">hull:2268</identifier>
+  <relatedItem ID="privateObject">
+    <identifier type="fedora">hull-private:812</identifier>
+  </relatedItem>
+  <location>
+    <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/resources/hull:2268</url>
+    <url access="raw object">http://hydra.hull.ac.uk/assets/hull:2268/genericContent/content</url>
+  </location>
+  <accessCondition type="useAndReproduction">
+        (c) 2009 The University of Hull
+    </accessCondition>
+  <recordInfo>
+    <recordContentSource>The University of Hull</recordContentSource>
+    <recordCreationDate encoding="w3cdtf">2010-02-18</recordCreationDate>
+    <recordChangeDate encoding="w3cdtf">2011-07-21</recordChangeDate>
+  </recordInfo>
+</mods>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.4" LABEL="MODS metadata" CREATED="2012-01-11T10:07:30.490Z" MIMETYPE="text/xml" SIZE="6190">
+<foxml:xmlContent>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>Quality and Standards Committee 9 Sep 2009         </title>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Committee Section</namePart>
+    <role>
+      <roleTerm type="text">creator</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>text</typeOfResource>
+  <genre>Meeting papers or minutes</genre>
+  <originInfo>
+    <publisher>The University of Hull</publisher>
+    <dateValid>2009-09-09</dateValid>
+    <dateValid encoding="iso8601">2009-09-09</dateValid>
+  </originInfo>
+  <language>
+    <languageTerm type="text">English</languageTerm>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <physicalDescription>
+    <extent>162KB</extent>
+    <internetMediaType>application/pdf</internetMediaType>
+    <digitalOrigin>born digital</digitalOrigin>
+  </physicalDescription>
+  <abstract>Agenda and reports of the meeting of the Quality and Standards Committee held on 9 Sep 2009
+
+Quality and Standards Committee	9 Sep 09
+
+(A subcommittee of Academic Board)	
+
+Note: Items which are starred (*) will be taken as read. Members may request that items be unstarred under Chair&apos;s Unreserved Business.
+
+Agenda
+
+Part A: Unreserved Business
+
+1.	Apologies for Absence
+
+2.	Welcome
+To welcome new members
+
+3.	Terms of Reference and Membership	 (enclosed)
+To approve the Committee&apos;s Terms of Reference and Membership
+
+4.	Declaration of Reserved Business
+
+5.	Minutes	 (enclosed)
+To approve the minutes (Part A) of the meeting held on 
+10 June 2009
+
+*6.	Matters arising from the minutes
+(a)	To receive a report from Academic Board of its meeting 
+held on 2 July 2009
+(b)	Minute 108: Chair&apos;s action in respect of 2nd marking	
+To report that conditions have been met
+
+7.	Chair&apos;s Unreserved Business
+
+8.	To consider issues raised by students
+
+9.	Institutional Audit 2009
+(a)	To receive the Audit Report	 (enclosed)
+(b)	To consider an action plan arising from the Audit Report	(enclosed)
+
+10.	To consider revised University Programme Regulations	(enclosed)
+
+11.	University Codes of Practice
+(a)	Quality Enhancement Reports	 (enclosed)
+To report housekeeping changes
+(b)	Recognised Teacher Status	 (enclosed)
+To consider revisions which extend the code to on campus provision
+(c)	Assessment Procedures	 (enclosed)
+To consider recommendations recommended by ULTAC
+
+12.	Quality and Standards Programme of Work
+(a)	2008/09	 (enclosed)
+(b)	2009/10	 (enclosed)
+
+13.	Quality Enhancement Reports 2007/08
+(a)	QSC level action plans relating to	 (enclosed)
+(i)	Good practice identified for wider dissemination
+(ii)	Areas for further development
+
+(b)	Analysis of the following reports
+(i)	PGMI (including report of the Transitions Working Group)	(enclosed)
+(ii)	Faculty of Science	 (enclosed)
+(iii)	Faculty of Arts and Social Sciences	 (enclosed)
+(iv)	Institute for Learning	 (enclosed)
+
+14.	Periodic Reviews
+(a)	2008/09
+(i)	QSC Action Plan	 (enclosed)
+(ii)	Physics	 (enclosed)
+(iii)	Engineering	 (enclosed)
+
+(b)	Revised schedule 2009/10	 (enclosed)
+
+15.	Unfair Means appeals monitoring 2008/09	 (enclosed)
+
+16.	Faculty Quality Committees
+(a)	Institute for Learning	 (enclosed)
+To consider an application for a new postgraduate award of 
+Masters in Learning and Teaching (MLT)
+(b)	Arts and Social Sciences	 (enclosed)
+To consider progression and awards in respect of part time provision
+(c)	ScaLTAQC	 (enclosed)
+To provide an update on quality monitoring and reporting arrangements
+Relating to Departments at Scarborough which are under the 
+Scarborough Dean&apos;s Management Line
+
+17.	Committee Reports	
+(a)	To receive a report and minutes of the meeting of Programme Approvals
+Monitoring and Enhancement Committee held on 24 June 2009(enclosed)
+(b)	To receive a report and minutes of the meeting of Student 
+Progress Committee held on 29 June 2009	 (enclosed)
+
+For information
+
+*18.	To report that the Innovations, Universities, Science and Skills Committee report: Students and Universities can be found under Latest News at:http://www.parliament.uk/ius
+An initial summary of key recommendations within the report and UUK&apos;s response to these can be found at Annex I-2009-76(a)
+
+*19.	To report verification of the compatibility of the framework for higher education qualifications in England, Wales and Northern Ireland (FHEQ) with the framework for qualifications of the European higher education area (FQ-EHEA). QAA circular letter CL09/09 refers: http://www.qaa.ac.uk/news/circularLetters/CL0909.asp
+
+*20.	To note the University&apos;s response to the QAA, UUK and GuildHE 
+survey on implementation of the Higher Education credit framework 
+for England	 (enclosed)
+
+*21.	To receive the Annual report on new legislation 2008/09	(enclosed)
+
+*22.	Any other Unreserved Business
+
+*23.	Dates of meetings 2009/10
+(i)	Wednesday 11 November 2009 at 2.15 pm
+(ii)	Wednesday 17 February 2010 at 2.15 pm
+(iii)	Wednesday 28 April 2010 at 2.15 pm
+(iv)	Wednesday 9 June 2010 at 2.15 pm
+
+All meetings will be held via Video-Conference
+(Hull: University Committee Room, Venn Building
+Scarborough: Meeting Room 1)
+
+LJB/VB
+QSC/9 Sep 2009 agenda part a
+    </abstract>
+  <subject authority="UoH">
+    <topic>Quality and Standards Committee</topic>
+    <cartographics></cartographics>
+  </subject>
+  <identifier type="fedora">hull:2268</identifier>
+  <relatedItem ID="privateObject">
+    <identifier type="fedora">hull-private:812</identifier>
+  </relatedItem>
+  <location>
+    <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/resources/hull:2268</url>
+    <url access="raw object">http://hydra.hull.ac.uk/assets/hull:2268/genericContent/content</url>
+  </location>
+  <accessCondition type="useAndReproduction">(c) 2009 The University of Hull     </accessCondition>
+  <recordInfo>
+    <recordContentSource>The University of Hull</recordContentSource>
+    <recordCreationDate encoding="w3cdtf">2010-02-18</recordCreationDate>
+    <recordChangeDate encoding="w3cdtf">2011-07-21</recordChangeDate>
+  </recordInfo>
+</mods>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.5" LABEL="MODS metadata" CREATED="2012-01-11T10:07:56.285Z" MIMETYPE="text/xml" SIZE="6152">
+<foxml:xmlContent>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>Quality and Standards Committee 9 Sep 2009         </title>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Committee Section</namePart>
+    <role>
+      <roleTerm type="text">creator</roleTerm>
+    </role>
+  </name>
+  <typeOfResource>text</typeOfResource>
+  <genre>Meeting papers or minutes</genre>
+  <originInfo>
+    <publisher>The University of Hull</publisher>
+    <dateValid encoding="iso8601">2009-09-09</dateValid>
+  </originInfo>
+  <language>
+    <languageTerm type="text">English</languageTerm>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <physicalDescription>
+    <extent>162KB</extent>
+    <internetMediaType>application/pdf</internetMediaType>
+    <digitalOrigin>born digital</digitalOrigin>
+  </physicalDescription>
+  <abstract>Agenda and reports of the meeting of the Quality and Standards Committee held on 9 Sep 2009
+
+Quality and Standards Committee	9 Sep 09
+
+(A subcommittee of Academic Board)	
+
+Note: Items which are starred (*) will be taken as read. Members may request that items be unstarred under Chair&apos;s Unreserved Business.
+
+Agenda
+
+Part A: Unreserved Business
+
+1.	Apologies for Absence
+
+2.	Welcome
+To welcome new members
+
+3.	Terms of Reference and Membership	 (enclosed)
+To approve the Committee&apos;s Terms of Reference and Membership
+
+4.	Declaration of Reserved Business
+
+5.	Minutes	 (enclosed)
+To approve the minutes (Part A) of the meeting held on 
+10 June 2009
+
+*6.	Matters arising from the minutes
+(a)	To receive a report from Academic Board of its meeting 
+held on 2 July 2009
+(b)	Minute 108: Chair&apos;s action in respect of 2nd marking	
+To report that conditions have been met
+
+7.	Chair&apos;s Unreserved Business
+
+8.	To consider issues raised by students
+
+9.	Institutional Audit 2009
+(a)	To receive the Audit Report	 (enclosed)
+(b)	To consider an action plan arising from the Audit Report	(enclosed)
+
+10.	To consider revised University Programme Regulations	(enclosed)
+
+11.	University Codes of Practice
+(a)	Quality Enhancement Reports	 (enclosed)
+To report housekeeping changes
+(b)	Recognised Teacher Status	 (enclosed)
+To consider revisions which extend the code to on campus provision
+(c)	Assessment Procedures	 (enclosed)
+To consider recommendations recommended by ULTAC
+
+12.	Quality and Standards Programme of Work
+(a)	2008/09	 (enclosed)
+(b)	2009/10	 (enclosed)
+
+13.	Quality Enhancement Reports 2007/08
+(a)	QSC level action plans relating to	 (enclosed)
+(i)	Good practice identified for wider dissemination
+(ii)	Areas for further development
+
+(b)	Analysis of the following reports
+(i)	PGMI (including report of the Transitions Working Group)	(enclosed)
+(ii)	Faculty of Science	 (enclosed)
+(iii)	Faculty of Arts and Social Sciences	 (enclosed)
+(iv)	Institute for Learning	 (enclosed)
+
+14.	Periodic Reviews
+(a)	2008/09
+(i)	QSC Action Plan	 (enclosed)
+(ii)	Physics	 (enclosed)
+(iii)	Engineering	 (enclosed)
+
+(b)	Revised schedule 2009/10	 (enclosed)
+
+15.	Unfair Means appeals monitoring 2008/09	 (enclosed)
+
+16.	Faculty Quality Committees
+(a)	Institute for Learning	 (enclosed)
+To consider an application for a new postgraduate award of 
+Masters in Learning and Teaching (MLT)
+(b)	Arts and Social Sciences	 (enclosed)
+To consider progression and awards in respect of part time provision
+(c)	ScaLTAQC	 (enclosed)
+To provide an update on quality monitoring and reporting arrangements
+Relating to Departments at Scarborough which are under the 
+Scarborough Dean&apos;s Management Line
+
+17.	Committee Reports	
+(a)	To receive a report and minutes of the meeting of Programme Approvals
+Monitoring and Enhancement Committee held on 24 June 2009(enclosed)
+(b)	To receive a report and minutes of the meeting of Student 
+Progress Committee held on 29 June 2009	 (enclosed)
+
+For information
+
+*18.	To report that the Innovations, Universities, Science and Skills Committee report: Students and Universities can be found under Latest News at:http://www.parliament.uk/ius
+An initial summary of key recommendations within the report and UUK&apos;s response to these can be found at Annex I-2009-76(a)
+
+*19.	To report verification of the compatibility of the framework for higher education qualifications in England, Wales and Northern Ireland (FHEQ) with the framework for qualifications of the European higher education area (FQ-EHEA). QAA circular letter CL09/09 refers: http://www.qaa.ac.uk/news/circularLetters/CL0909.asp
+
+*20.	To note the University&apos;s response to the QAA, UUK and GuildHE 
+survey on implementation of the Higher Education credit framework 
+for England	 (enclosed)
+
+*21.	To receive the Annual report on new legislation 2008/09	(enclosed)
+
+*22.	Any other Unreserved Business
+
+*23.	Dates of meetings 2009/10
+(i)	Wednesday 11 November 2009 at 2.15 pm
+(ii)	Wednesday 17 February 2010 at 2.15 pm
+(iii)	Wednesday 28 April 2010 at 2.15 pm
+(iv)	Wednesday 9 June 2010 at 2.15 pm
+
+All meetings will be held via Video-Conference
+(Hull: University Committee Room, Venn Building
+Scarborough: Meeting Room 1)
+
+LJB/VB
+QSC/9 Sep 2009 agenda part a
+    </abstract>
+  <subject authority="UoH">
+    <topic>Quality and Standards Committee</topic>
+    <cartographics></cartographics>
+  </subject>
+  <identifier type="fedora">hull:2268</identifier>
+  <relatedItem ID="privateObject">
+    <identifier type="fedora">hull-private:812</identifier>
+  </relatedItem>
+  <location>
+    <url access="object in context" usage="primary display">http://hydra.hull.ac.uk/resources/hull:2268</url>
+    <url access="raw object">http://hydra.hull.ac.uk/assets/hull:2268/genericContent/content</url>
+  </location>
+  <accessCondition type="useAndReproduction">(c) 2009 The University of Hull     </accessCondition>
   <recordInfo>
     <recordContentSource>The University of Hull</recordContentSource>
     <recordCreationDate encoding="w3cdtf">2010-02-18</recordCreationDate>
