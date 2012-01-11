@@ -73,6 +73,11 @@ class ModsUketd < ObjectMods
 	  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
   }
 	t.grant_number(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
+	t.record_info (:path=>"recordInfo") {
+    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
+      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
+   }
+
 
   end
   

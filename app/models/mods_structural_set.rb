@@ -23,6 +23,10 @@ class ModsStructuralSet < ObjectMods
 		t.location {
 			t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 		}
+		t.record_info (:path=>"recordInfo") {
+    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
+      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
+    }
 
   end
   

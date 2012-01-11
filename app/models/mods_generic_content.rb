@@ -93,6 +93,11 @@ class ModsGenericContent < ObjectMods
     t.topic_tag(:proxy=>[:subject, :topic])
     t.geographic_tag(:proxy=>[:subject, :geographic])
     t.temporal_tag(:proxy=>[:subject, :temporal])
+
+	 t.record_info (:path=>"recordInfo") {
+    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
+      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
+   }
   end
   
      # accessor :title, :term=>[:mods, :title_info, :main_title]

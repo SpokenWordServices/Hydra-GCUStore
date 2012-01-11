@@ -85,6 +85,11 @@ class ModsJournalArticle < ObjectMods
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
+	  t.record_info (:path=>"recordInfo") {
+    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
+      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
+    }
+
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]

@@ -206,6 +206,8 @@ module HullModelMethods
 		end
 			
 		dc_ds = self.dc
+		descMetadata_ds = self.descMetadata
+
     unless dc_ds.nil?
       dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
       begin
@@ -221,6 +223,11 @@ module HullModelMethods
         logger.error "ERROR when trying to copy date on #{self.class} #{self.pid}:\n\t#{e.message}"
       end
     end
+	
+		unless descMetadata_ds.nil?
+			descMetadata_ds.update_indexed_attributes ([:record_info, :record_change_date] => Time.now.strftime("%Y-%m-%d"))
+		end
+
 		self.label = generate_object_label
 		
 	  return true
