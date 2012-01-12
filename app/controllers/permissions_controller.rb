@@ -4,6 +4,8 @@ class PermissionsController < ApplicationController
   include Hydra::AssetsControllerHelper
   
   before_filter :require_solr
+  before_filter :check_for_children, :only => [:update]
+
   # need to include this after the :require_solr/fedora before filters because of the before filter that the workflow provides.
   include Hydra::SubmissionWorkflow
   
@@ -132,7 +134,7 @@ Removed from permissions/_new.html.erb
     #Solrizer::Fedora::Solrizer.new.solrize(pid)
     
     flash[:notice] = "The permissions have been updated."
- redirect_to :controller=>"catalog", :action=>"edit", :id => pid
+    redirect_to :controller=>"catalog", :action=>"edit", :id => pid
 
     #format.html { redirect_to :controller=>"catalog", :action=>"edit", :id=>params[:asset_id] }
 	#debugger
@@ -160,6 +162,31 @@ Removed from permissions/_new.html.erb
  #   end
     
   end
+
+
+ private 
+
+ #If the defaultObjectRights are being changed (structuralSet), then the permissions 
+ #should only be updated if the set is empty...
+ def check_for_children
+	if !params[:datastream].nil? && params[:datastream] == "defaultObjectRights"
+		if params[:id].nil?  
+      pid = params[:asset_id]
+    else
+      pid = params[:id]
+    end
+		
+		escaped_id = 'info\:fedora/' + pid.gsub(/(:)/, '\\:')
+	
+		hits  = ActiveFedora::SolrService.instance.conn.query('is_member_of_s:' + escaped_id).hits			
+
+		if hits.size > 0
+		 flash[:notice] = "You cannot change the default object permissions: There is already content in this set"
+    	redirect_to :controller=>"catalog", :action=>"edit", :id => pid
+		end
+	end
+
+ end 
      
 end
 
