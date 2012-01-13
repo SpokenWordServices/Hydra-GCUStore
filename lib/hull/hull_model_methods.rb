@@ -380,6 +380,9 @@ module HullModelMethods
   def to_solr(solr_doc=Hash.new, opts={})
     super(solr_doc,opts)
 
+	  #This makes sure that active_fedora_model_s gets set to correct class instead of just 'ActiveFedora::Base' 
+		solr_doc["active_fedora_model_s"] = self.class.to_s 
+
 	  solr_doc["has_model_s"] = cmodel
     solr_doc["fedora_owner_id_s"] = self.owner_id
     solr_doc["fedora_owner_id_display"] = self.owner_id

@@ -196,7 +196,7 @@ describe HullModelMethods do
       it "should solrizer appropriately" do
         s = Solrizer::Fedora::Solrizer.new
         s.solrize "hull:3108"
-        response = ActiveFedora::Base.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
+        response = UketdObject.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
         ids = response.hits.map{|hit| hit.values.first }
         ids.include?("hull:3108").should be_true
         ids.length.should > 0
@@ -212,7 +212,7 @@ describe HullModelMethods do
       it "should solizer appropriately" do
         s = Solrizer::Fedora::Solrizer.new
         s.solrize "hull:1765"
-        response = ActiveFedora::Base.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
+        response = ExamPaper.find_by_fields_by_solr({:text=>"mnesarchum"}, {:field_list => ["id"]})
         ids = response.hits.map{|hit| hit.values.first }
         ids.include?("hull:1765").should be_true
         ids.length.should > 0

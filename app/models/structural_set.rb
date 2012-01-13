@@ -6,6 +6,13 @@ class StructuralSet < ActiveFedora::Base
   include Hydra::ModelMethods
   include HullModelMethods
 
+  def initialize(attrs=nil)
+    super(attrs)
+    if new_object?
+      self.add_relationship(:has_model,"info:fedora/hydra-cModel:commonMetadata")
+    end
+  end
+
 	#We want the RELS-EXT to be X and have label
   self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}
 
@@ -32,13 +39,6 @@ class StructuralSet < ActiveFedora::Base
 
     root_node = build_children(Tree::TreeNode.new("Root set", "info:fedora/hull:rootSet"), sets)
   end
-
-  #Overridden so that we can store a cmodel and commonMetadata
-  def assert_content_model
-		add_relationship(:has_model, "info:fedora/hull-cModel:structuralSet")
-    add_relationship(:has_model, "info:fedora/hull-cModel:commonMetadata")
-  end
-
 
   def after_create
     apo = ActiveFedora::Base.find("hull-apo:structuralSet")
@@ -72,9 +72,9 @@ class StructuralSet < ActiveFedora::Base
   private
 
   def self.retrieve_structural_sets
-    fields = {:has_model_s=>"info\:fedora/hull-cModel\:structuralSet"}
-    options = {:rows=>10000, :field_list=> ["id","id_t","title_t","is_member_of_s"]}
-    ActiveFedora::Base.find_by_fields_by_solr(fields, options).hits
+    fields = "has_model_s:info\\:fedora/hull-cModel\\:structuralSet"
+    options = {:field_list=>["id", "id_t", "title_t", "is_member_of_s"], :rows=>10000, :sort=>[{"system_create_dt"=>:ascending}]}
+    ActiveFedora::SolrService.instance.conn.query(fields,options).hits
   end
 
   def self.structural_set_pids
