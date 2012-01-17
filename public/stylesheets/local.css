@@ -1192,7 +1192,7 @@ fieldset.edit-permissions dl dd {
 }
 
 div#contributors dl dd span input {
-  width: 50em;
+  /*width: 50em;*/
   font-size: .8em;
 }
 
@@ -1379,7 +1379,7 @@ div.contributors dd a {
 }
 
 .person.contributor dt label {
-  display:none;
+   display:none; 
 }
 div.add_contributor_link a {
   margin-left: -14em;

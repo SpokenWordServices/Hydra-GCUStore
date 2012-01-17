@@ -4,12 +4,16 @@
   <input type="hidden" name="content_type" value="generic_content" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
+  <fieldset class="edit-half">
+  <legend>Person(s)</legend>
+    <div id="contributors">
+	    <%= render :partial => 'contributors/index', :locals=> {:contributor_type=>:person} %>
+	  </div>
+  </fieldset>
+
   <fieldset class="edit-standard">
   <!-- To do Advisors/Sponsors -->
   <dl>
-    <div id="contributors">
-	    <%= render :partial => 'contributors/index', :locals=> {:roles=>['creator','author'], :contributor_type=>:person} %>
-	  </div>
     <dt>
       <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
     </dt>

@@ -19,12 +19,18 @@
   </div>
 <% else %>
   <% if contributor_type == :person %>
-    <% if defined?(roles) && roles.include?( "author") %>
+    <% if defined?(roles) && roles.include?( "author")  %>
       <%= render :partial=>"contributors/edit_#{contributor_type.to_s}",  :collection=>document_fedora.descMetadata.find_by_terms(contributor_type), :locals=>{:document=>document, :document_fedora=>document_fedora}  %>
-    <% end %>
+
+		<% elsif defined?(roles).nil? %>
+ <%= render :partial=>"contributors/edit_person", :collection=>document_fedora.descMetadata.find_by_terms(:person), :locals=>{:document=>document, :document_fedora=>document_fedora} %>
+    <%#= link_to "Add a Person", new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person") %>
+	    <% end %>
+		
   <% elsif contributor_type == :organization %>
      <%# do nothing %>
   <% else %>
+		<!-- When its a person and no roles specified -->	 
     <%= render :partial=>"contributors/edit_person", :collection=>document_fedora.descMetadata.find_by_terms(:person), :locals=>{:document=>document, :document_fedora=>document_fedora} %>
     <%#= link_to "Add a Person", new_asset_contributor_path(:asset_id=>params[:id], :contributor_type=>"person") %>
 
