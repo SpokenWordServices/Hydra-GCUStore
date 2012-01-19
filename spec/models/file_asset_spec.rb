@@ -29,10 +29,7 @@ describe FileAsset do
       mock_orphan.expects(:delete)
         
       FileAsset.expects(:load_instance).with("_non_orphan_pid_").returns(mock_non_orphan)
-      FileAsset.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan)
-      
-      FileAsset.garbage_collect("_non_orphan_pid_")
-      FileAsset.garbage_collect("_orphan_pid_")
+      FileAsset.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan)  
     end
   end
   

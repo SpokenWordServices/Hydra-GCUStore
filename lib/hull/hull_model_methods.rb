@@ -129,19 +129,18 @@ module HullModelMethods
       #We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
       if new_queue == :publish
         self.apply_governed_by(structural_set)
-	if self.respond_to?(:apply_harvesting_set_membership)
-	  add_oai_item_id #Add the item id to objects that are harvested
-	end
+				if self.respond_to?(:apply_harvesting_set_membership)
+	  			add_oai_item_id #Add the item id to objects that are harvested
+				end
       else
       	self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
-
-	#if the object is going into the qa queue
+				#if the object is going into the qa queue
         if new_queue == :qa
-	  self.owner_id="fedoraAdmin"
-	  apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the QAQueue defaultObjectrights into object rightsMetadata
-     	else
-	  self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
-	end
+	  			self.owner_id="fedoraAdmin"
+	  			apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the QAQueue defaultObjectrights into object rightsMetadata
+     		else
+	 				self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
+				end
       end
       return true
     else
@@ -320,12 +319,12 @@ module HullModelMethods
 
 		#If this is a UketdObject we need to copy the rights over for the children
 		if self.class == UketdObject
-			file_assets = parts_inbound_ids
+			file_assets = parts_ids
 			#Loop through the file_assets and copy the new rights
 			file_assets.each do |file_asset_pid|
-				file_asset = ActiveFedora::Base.new(:pid=>file_asset_pid)
+				file_asset = ActiveFedora::Base.load_instance(file_asset_pid)
 				rights = Hydra::RightsMetadata.new(file_asset.inner_object, 'rightsMetadata')
-   			Hydra::RightsMetadata.from_xml(apo.defaultObjectRights.content, rights)
+   			rights.ng_xml = apo.defaultObjectRights.content
     		file_asset.datastreams["rightsMetadata"] = rights
 				file_asset.save				
 			end

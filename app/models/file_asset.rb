@@ -4,9 +4,8 @@ class FileAsset < ActiveFedora::Base
 	#We want the RELS-EXT to be X and have label
   self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}
 
-  has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
-
+	has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream, :label=>"Qualified DC" 
+  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata, :label=>"Rights metadata" 
 
   #Overridden so that we can store a cmodel and commonMetadata
   def assert_content_model

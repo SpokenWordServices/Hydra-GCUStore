@@ -33,7 +33,7 @@
 	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":rights", :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
 	 	</div>
     <dt>
-      <%= fedora_field_label("descMetadata",[:date_valid],"Valid Date (YYYY) or (YYYY/YYYY)") %>
+      <%= fedora_field_label("descMetadata",[:date_valid],"Valid Date (YYYY-MM-DD, YYYY-MM, YYYY or YYYY/YYYY)") %>
     </dt>
     <dd style="width: 20em;">
       <%= fedora_text_field(@document_fedora,"descMetadata", [:date_valid], :multiple=>false) %>

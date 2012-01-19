@@ -33,7 +33,10 @@
       <%= select "Display Set","",  DisplaySet.tree.options_for_nested_select(:exclude=>"info:fedora/#{@document_fedora.pid}"), :selected=>@document_fedora.display_set, :class=>"display-set-select"  %>
     </dd>
 	<%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd-edit-publisher") %>
-	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "Identifier", "dd-edit-identifier") %>
+	 <dt>
+		<label for="identifier">Identifier</label>
+	 </dt>
+	 <dd><%= @document.id %></dd>
   </dl>
   </fieldset>
   <input type="hidden"  name="_method" value="put"/>

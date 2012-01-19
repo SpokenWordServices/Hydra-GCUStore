@@ -8,6 +8,7 @@ class UketdObject < ActiveFedora::Base
   include Hydra::ModelMethods
   include HullModelMethods
   include HullValidationMethods
+	include ActiveFedora::Relationships
 
   def initialize(attrs=nil)
     super(attrs)
