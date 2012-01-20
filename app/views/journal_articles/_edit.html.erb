@@ -1,7 +1,5 @@
 <div class="document_viewer" id="cover_container">
-  <div class="deleteDocument">
-    <%= delete_asset_link(params[:id], "article") %>
-  </div>
+ 	<%= render :partial => "shared/delete_asset_link", :locals => {:pid=>params[:id]} %>
   <div class="content-type-header">
     <h1>Edit a journal article</h1>
   </div>

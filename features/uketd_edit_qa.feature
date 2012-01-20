@@ -4,10 +4,11 @@ Feature: QA edit a document
   [stakeholder]
   wants [behaviour]
  
-  Scenario: Visit Document Edit QA Page
+  Scenario: Visit Document Edit Page
     Given I am logged in as "contentaccessteam1@example.com" 
     And I am on the edit document page for hull:756
     Then I should see an inline edit containing "An investigation of the factors which influence the degree"
+		And I should not see "Delete resource"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link creator author uketd_object"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link supervisor uketd_object"
     And I should see a "div" tag with a "class" attribute of "add_contributor_link sponsor uketd_object"
@@ -18,6 +19,7 @@ Feature: QA edit a document
   Scenario: Publish a Object in the QA Queue
     Given I am logged in as "contentaccessteam1@example.com"
     And I am on the edit document page for hull:3573
+		Then I should see "Delete resource"
     When I press "Publish"
     Then I should see "Errors encountered adding"
     Then I select "----Accounting" from "Structural_Set_"
