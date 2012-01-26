@@ -110,14 +110,14 @@
       MIMETYPE="text/xml" SIZE="840">
       <foxml:xmlContent>
         <fmm:MethodMap name="N/A" xmlns:fmm="http://fedora.comm.nsdlib.org/service/methodmap">
-          <fmm:method operationName="getDC"/>
-          <fmm:method operationName="getOAI_DC"/>
-          <fmm:method operationName="getDescMetadata"/>
-          <fmm:method operationName="getContentMetadata"/>
-          <fmm:method operationName="getTechnicalMetadata"/>
-          <fmm:method operationName="getProvenanceMetadata"/>
-          <fmm:method operationName="getSourceMetadata"/>
-          <fmm:method operationName="getMetadata">
+          <fmm:Method operationName="getDC"/>
+          <fmm:Method operationName="getOAI_DC"/>
+          <fmm:Method operationName="getDescMetadata"/>
+          <fmm:Method operationName="getContentMetadata"/>
+          <fmm:Method operationName="getTechnicalMetadata"/>
+          <fmm:Method operationName="getProvenanceMetadata"/>
+          <fmm:Method operationName="getSourceMetadata"/>
+          <fmm:Method operationName="getMetadata">
             <fmm:UserInputParm defaultValue="oai_dc" label="Metadata format" parmName="format" passBy="VALUE" required="true">
               <fmm:ValidParmValues>
                 <fmm:ValidParm value="oai_dc"/>

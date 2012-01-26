@@ -5,6 +5,8 @@ class GenericContent < ActiveFedora::Base
   include Hydra::ModelMethods
   include HullModelMethods
   include HullValidationMethods
+	include ActiveFedora::ServiceDefinitions
+	include CommonMetadataSdef
 
 	#We want the RELS-EXT to be X and have label
   self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}

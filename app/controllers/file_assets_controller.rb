@@ -9,10 +9,17 @@ class FileAssetsController < ApplicationController
       af_base = ActiveFedora::Base.load_instance(params[:id])
       the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
       @object = the_model.load_instance(params[:id])
-      if @object && @object.datastreams.keys.include?(params[:datastream])
-        render :xml => @object.datastreams[params[:datastream]].content
-        return
-      end
+
+			#This is temporary hack to enable oai_dc to be seen as a datastream (in reality its a dissem call) - SWL
+			if params[:datastream] == "oai_dc"
+				render :xml => @object.oai_dc
+				return
+			else
+      	if @object && @object.datastreams.keys.include?(params[:datastream])
+        	render :xml => @object.datastreams[params[:datastream]].content
+       	return
+	      end
+			end			
     end
     render :text => "Unable to load datastream"
   end

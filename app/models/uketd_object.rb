@@ -9,6 +9,8 @@ class UketdObject < ActiveFedora::Base
   include HullModelMethods
   include HullValidationMethods
 	include ActiveFedora::Relationships
+	include ActiveFedora::ServiceDefinitions
+	include CommonMetadataSdef
 
   def initialize(attrs=nil)
     super(attrs)
@@ -118,5 +120,6 @@ class UketdObject < ActiveFedora::Base
      "adv" => "Supervisor"
      }
   end
-
 end
+
+
