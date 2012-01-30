@@ -123,7 +123,7 @@
                 <fmm:ValidParm value="oai_dc"/>
               </fmm:ValidParmValues>
             </fmm:UserInputParm>
-          </fmm:method>
+          </fmm:Method>
         </fmm:MethodMap>
       </foxml:xmlContent>
     </foxml:datastreamVersion>

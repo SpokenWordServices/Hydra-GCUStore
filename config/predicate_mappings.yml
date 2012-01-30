@@ -41,8 +41,14 @@
     :has_description: hasDescription
     :has_part: hasPart
     :has_member: hasMember
+    :has_service: hasService
+    :is_deployment_of: isDeploymentOf
+    :is_contractor_of: isContractorOf
   info:fedora/fedora-system:def/model#:
     :has_model: hasModel
+    :has_service: hasService
+    :is_deployment_of: isDeploymentOf
+    :is_contractor_of: isContractorOf
   http://www.openarchives.org/OAI/2.0/: 
     :oai_item_id: itemID
     :oai_set_spec: setSpec
