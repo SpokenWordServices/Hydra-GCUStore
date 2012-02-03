@@ -13,7 +13,7 @@ gem 'haml'
 gem "devise"
 gem 'will_paginate'
 gem 'rubytree'
-
+gem 'devise_cas_authenticatable', '~>1.0.0'
 
 
 group :development, :test do

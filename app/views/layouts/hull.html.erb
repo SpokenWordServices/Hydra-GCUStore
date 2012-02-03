@@ -8,7 +8,7 @@
     <%=csrf_meta_tag%>
     
     <title><%= h(@page_title || "University of Hull Digital Repository") %></title>
-    <link href="<%= opensearch_catalog_url(:format => 'xml') %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+    <!-- <link href="<%= opensearch_catalog_url(:format => 'xml') %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/> -->
     <%= javascript_include_tag :defaults, 'blacklight/blacklight' %>
   	<%= javascript_include_tag 'togglejquery' %>
   	<%= javascript_include_tag 'local' %>

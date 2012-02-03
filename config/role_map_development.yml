@@ -2,8 +2,10 @@ staff:
  - staff1@example.com
  - committeesection1@example.com
  - engineering1@example.com
+ - contentaccessteam1@example.com
 student:
  - student1@example.com
+ - contentaccessteam1@example.com
 committeeSection:
  - committeesection1@example.com
 engineering:

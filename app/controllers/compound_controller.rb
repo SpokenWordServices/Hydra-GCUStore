@@ -16,7 +16,6 @@ class CompoundController < ApplicationController
       file_name = file.original_filename
 			mime_type = file.content_type
 
-			debugger
       options = {:label=>file_name, :prefix=>'content', :checksumType => 'MD5'}
       ds_id = @document_fedora.add_file_datastream(file, options)
 			service_def =  ""

@@ -9,8 +9,8 @@ module HullAccessControlEnforcement
 	end
 
 	def has_create_permissions
-		if current_user 
-			RoleMapper.roles(current_user.email).each do |user_group|
+		if current_user
+			RoleMapper.roles(current_user.username).each do |user_group|
 					if GROUP_PERMISSIONS["create_resources"].include? user_group
 						return true
 					end

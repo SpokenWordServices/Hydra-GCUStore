@@ -445,7 +445,7 @@ module HullModelMethods
 	#<oai:itemID>oai:hull.ac.uk:hull:4649</oai:itemID>
 	def add_oai_item_id
 		#literal specifies that it should be in the form of...<oai:itemID>...</oai:itemID>
- 		self.add_relationship :oai_item_id, "oai:hull.ac.uk.uk:" + self.pid, :literal => true
+ 		self.add_relationship :oai_item_id, "oai:hull.ac.uk:" + self.pid, :literal => true
 	end
 
   # Extract content from all child assets with a content datastream with a mime type of application/pdf
