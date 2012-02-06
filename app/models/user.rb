@@ -23,14 +23,13 @@ class User < ActiveRecord::Base
   end
 
   def display_text
-		debugger
-		email[0..email.index('@') -1]	
-  end
+		username + "(" + self.roles.first.name.to_s + " view)"
+	end
 
   private
 
   def get_user_attributes
-    person = ActiveRecord::Base.connection.select_one('SELECT * FROM person WHERE user_name=' + username )
+    person = ActiveRecord::Base.connection.select_one('SELECT * FROM person WHERE user_name="' + username.to_s + '"')
 	
 		if person.nil? 
       self.email = "guest@hih.com"
@@ -40,7 +39,7 @@ class User < ActiveRecord::Base
  		end
 
 		if person["type"].nil? then person_type =  "guest" else person_type =  person["type"] end
-		update_user_role(person_type)		
+		update_user_role(person_type)
   end
 
   def update_user_role (user_type)
@@ -50,7 +49,9 @@ class User < ActiveRecord::Base
 		
  		#Does this role exist in the current table...
 		if !self.roles.include?(role)
-	    delete_standard_roles_from_user			
+			#If the self has roles in it already delete older roles from self 	   
+      if !self.roles.empty? then delete_standard_roles_from_user end			
+
       self.roles << role 
 		end
 	end
@@ -58,8 +59,14 @@ class User < ActiveRecord::Base
 	#Use this method to remove all staff/student/guest roles from a user
 	def delete_standard_roles_from_user
 		standard_roles = []
-    ["staff", "student", "guest"].each {|r| standard_roles << find_or_initialize_by_name(r) } 		
-		self.roles.delete_if {|role| standard_roles.include?(role) }
+    ["staff", "student", "guest"].each {|r| standard_roles << Role.find_or_initialize_by_name(r) } 
+
+		self.roles.each do |role|
+				if standard_roles.include?(role)
+					#delete the role
+					self.roles.delete(role)
+				end
+		end		
 	end
 
 end

@@ -8,7 +8,7 @@ gem 'jettywrapper', ">=1.0.2"
 gem 'solrizer', '>=1.0.4'
 gem 'solrizer-fedora', '>=1.2.0'
 gem 'hydra-head',  '3.2.1'
-gem 'active-fedora', '3.2.2'
+gem 'active-fedora', '3.2.0'
 gem 'haml'
 gem "devise"
 gem 'will_paginate'
