@@ -334,4 +334,5 @@ DEPENDENCIES
   solrizer (>= 1.0.4)
   solrizer-fedora (>= 1.2.0)
   sqlite3-ruby (~> 1.2.5)
+  warden (~> 1.1.0)
   will_paginate

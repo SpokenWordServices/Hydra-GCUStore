@@ -29,7 +29,7 @@ group :development, :test do
   gem 'capybara'
   gem 'cucumber-rails', '~> 1.2.0'
   gem 'cucumber'
-
+  gem "warden", "~> 1.1.0"
 end
 
 

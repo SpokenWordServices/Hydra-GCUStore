@@ -22,51 +22,47 @@ class User < ActiveRecord::Base
     username  
   end
 
-  def display_text
-		username + "(" + self.roles.first.name.to_s + " view)"
-	end
-
   private
 
   def get_user_attributes
     person = ActiveRecord::Base.connection.select_one('SELECT * FROM person WHERE user_name="' + username.to_s + '"')
-	
-		if person.nil? 
-      self.email = "guest@hih.com"
-			update_user_role("guest")
-		else
-	    self.email = person["EmailAddress"]
- 		end
 
-		if person["type"].nil? then person_type =  "guest" else person_type =  person["type"] end
-		update_user_role(person_type)
+    user_type = "guest"
+    email = "guest@hydraathull.ac.uk"
+
+    if !person.nil? 
+     if !person["type"].nil? then user_type =  person["type"] end
+     if !person["EmailAddress"].nil? then email = person["EmailAddress"] end
+    end
+
+    self.email = email
+    update_user_role(user_type)
   end
 
   def update_user_role (user_type)
-		#If the role exists in the local database use it (staff/student/guest), otherwise turn to guest... 
-		#Later throw exception, log, and set to guest... 
-		if Role.find_or_initialize_by_name(user_type).persisted? then role =  Role.find_or_initialize_by_name(user_type) else role = Role.find_or_initialize_by_name("guest") end
+   #If the role exists in the local database use it (staff/student/guest), otherwise turn to guest... 
+   #Later throw exception, log, and set to guest... 
+   if Role.find_or_initialize_by_name(user_type).persisted? then role =  Role.find_or_initialize_by_name(user_type) else role = Role.find_or_initialize_by_name("guest") end
 		
- 		#Does this role exist in the current table...
-		if !self.roles.include?(role)
-			#If the self has roles in it already delete older roles from self 	   
-      if !self.roles.empty? then delete_standard_roles_from_user end			
+   #Does this role exist in the current table...
+   if !self.roles.include?(role)
+     #If the self has roles in it already delete older roles from self 	   
+     if !self.roles.empty? then delete_standard_roles_from_user end			
+     self.roles << role 
+   end
+  end
 
-      self.roles << role 
-		end
-	end
-
-	#Use this method to remove all staff/student/guest roles from a user
-	def delete_standard_roles_from_user
-		standard_roles = []
+  #Use this method to remove all staff/student/guest roles from a user
+  def delete_standard_roles_from_user
+    standard_roles = []
     ["staff", "student", "guest"].each {|r| standard_roles << Role.find_or_initialize_by_name(r) } 
 
-		self.roles.each do |role|
-				if standard_roles.include?(role)
-					#delete the role
-					self.roles.delete(role)
-				end
-		end		
-	end
+    self.roles.each do |role|
+      if standard_roles.include?(role)
+        #delete the role
+        self.roles.delete(role)
+      end
+    end		
+  end
 
 end
