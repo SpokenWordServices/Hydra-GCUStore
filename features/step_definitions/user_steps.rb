@@ -5,23 +5,41 @@ Given /^I am logged in as "([^\"]*)"$/ do |email|
   #Derive username from email - means we can leave tests 'as is'
   username = email[0..email.index('@')-1].to_s
 
+  #Insert the all the possible test users into DB
   ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('contentAccessTeam1', 'content', 'team', 'contentAccessTeam1@example.com', 'staff', 'Dep', 'SubDep')")
+  ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('staff1', 'staff', 'user', 'staff1@example.com', 'staff', 'Dep', 'SubDep')")
+  ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('student1', 'student', 'user', 'student1@example.com', 'student', 'Dep', 'SubDep')")
+  ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('archivist1', 'archivist', 'user', 'archivist1@example.com', 'archivist', 'Dep', 'SubDep')")
 
-  role = Role.find_or_initialize_by_name("contentAccessTeam")
-  roles = []
-  roles << role
-	  
-  
-  @current_user = User.create!(:username => username, :email => username + "@example.com", :roles => role)
+  #Insert all the roles into DB
+	ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('contentAccessTeam', 'contentAccessTeam')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('staff', 'staff')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('student', 'student')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('archivist', 'archivist')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('guest', 'guest')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('researcher', 'researcher')")
+
+  #Get the relevant reference to the role...
+  if username.include? "staff"
+ 		role = Role.find_or_initialize_by_name("staff")
+	elsif username.include? "student"
+		role = Role.find_or_initialize_by_name("student")
+	elsif username.include? "contentAccessTeam"
+		role = Role.find_or_initialize_by_name("contentAccessTeam")
+  elsif username.include? "archivist"
+		role = Role.find_or_initialize_by_name("archivist")
+	end
+	
+  #Create the user
+  @current_user = User.create!(:username => username, :email => username + "@example.com")
+  #Add the role
+  @current_user.roles = [role]
   User.find_by_email(email).should_not be_nil
 
+	#Uses the warden helper method to log a user in without needed to use a CAS login... 
+  login_as @current_user, :scope => :user
 
-  login_as @current_user, :scope => :users
-  get "/"
- # debugger
-  #session["warden.users.user.key"] = User.serialize_into_session(user) 
-  #login_as user, :scope => "users"
- 
+  visit resources_path
 
  #visit destroy_user_session_path
  #visit new_user_session_path

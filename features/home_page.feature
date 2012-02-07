@@ -18,4 +18,4 @@ Feature: Homepage
     Given I am logged in as "contentAccessTeam1@example.com"
 		Then I should see "search"
 		And I should see "Create Resource"
-		And I should see "contentaccessteam1"
+		And I should see "contentAccessTeam1"
