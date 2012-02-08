@@ -10,9 +10,10 @@ Given /^I am logged in as "([^\"]*)"$/ do |email|
   ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('staff1', 'staff', 'user', 'staff1@example.com', 'staff', 'Dep', 'SubDep')")
   ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('student1', 'student', 'user', 'student1@example.com', 'student', 'Dep', 'SubDep')")
   ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('archivist1', 'archivist', 'user', 'archivist1@example.com', 'archivist', 'Dep', 'SubDep')")
+ActiveRecord::Base.connection.execute("INSERT INTO person (User_name, Forename, Surname, EmailAddress, type, DepartmentOU, SubDepartmentCode) VALUES ('bigwig', 'bigwig', 'user', 'bigwig@example.com', 'staff', 'Dep', 'SubDep')")
 
   #Insert all the roles into DB
-	ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('contentAccessTeam', 'contentAccessTeam')")
+  ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('contentAccessTeam', 'contentAccessTeam')")
   ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('staff', 'staff')")
   ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('student', 'student')")
   ActiveRecord::Base.connection.execute("INSERT INTO roles (name, description) VALUES ('archivist', 'archivist')")
@@ -21,22 +22,24 @@ Given /^I am logged in as "([^\"]*)"$/ do |email|
 
   #Get the relevant reference to the role...
   if username.include? "staff"
- 		role = Role.find_or_initialize_by_name("staff")
-	elsif username.include? "student"
-		role = Role.find_or_initialize_by_name("student")
-	elsif username.include? "contentAccessTeam"
-		role = Role.find_or_initialize_by_name("contentAccessTeam")
+    role = Role.find_or_initialize_by_name("staff")
+  elsif username.include? "student"
+    role = Role.find_or_initialize_by_name("student")
+  elsif username.include? "contentAccessTeam"
+   role = Role.find_or_initialize_by_name("contentAccessTeam")
   elsif username.include? "archivist"
-		role = Role.find_or_initialize_by_name("archivist")
-	end
-	
+   role = Role.find_or_initialize_by_name("archivist")
+  else
+   role = Role.find_or_initialize_by_name("guest")
+  end
+
   #Create the user
-  @current_user = User.create!(:username => username, :email => username + "@example.com")
+  @current_user = User.create!(:username => username, :email => email)
   #Add the role
   @current_user.roles = [role]
   User.find_by_email(email).should_not be_nil
 
-	#Uses the warden helper method to log a user in without needed to use a CAS login... 
+  #Uses the warden helper method to log a user in without needed to use a CAS login... 
   login_as @current_user, :scope => :user
 
   visit resources_path
