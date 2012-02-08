@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'user_helper'
 
 describe CompoundController do
   it "should have routes" do
@@ -25,8 +26,11 @@ describe CompoundController do
     end
 
     describe "when signed in" do
+      include UserHelper
       before do
-        sign_in FactoryGirl.find_or_create(:cat)
+        #sign_in FactoryGirl.find_or_create(:cat)
+        cat_user_sign_in
+
         @test_file = fixture("image.jp2")
         filename = "My File Name"
 				mime_type = "image/jp2"

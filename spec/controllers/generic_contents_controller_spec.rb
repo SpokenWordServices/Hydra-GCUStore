@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'user_helper'
 
 describe GenericContentsController do
   describe "new" do
@@ -9,8 +10,10 @@ describe GenericContentsController do
   end
   describe "create" do
     describe "for content access team members" do
+      include UserHelper
       before(:each) do
-        sign_in FactoryGirl.find_or_create(:cat)
+        #sign_in FactoryGirl.find_or_create(:cat)
+        cat_user_sign_in
       end
       it "should apply posted attributes" do
         post :create, {:id=>"foo:pid", "Structural Set"=>["info:fedora/hull:3374"], "commit"=>"Save", 

@@ -8,9 +8,12 @@
 		<p>You have no search selected.  Create a search by adding a search term in the box above and/or by using the filters (facets) at the left of the screen.</p><br/>
 
 	<% if current_user %>
-
 		<% user_groups = RoleMapper.roles(current_user.login) %>
-	
+
+    <% if !user_groups.empty? %>
+       You are a member of the following groups: <%= user_groups.join(", ") %><br/>
+    <% end %>
+ 
 		<% if user_groups.include? 'contentAccessTeam' %>
 
 			<div class="iconContainer">

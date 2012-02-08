@@ -15,7 +15,8 @@ describe FileAssetsController do
         @test_container.add_relationship(:has_collection_member, "info:fedora/foo:2")
         @test_container.rightsMetadata.update_indexed_attributes([:edit_access, :person]=>'ralph')
         @test_container.save
-        sign_in FactoryGirl.find_or_create(:cat)
+
+				sign_in FactoryGirl.find_or_create(:cat)
         
         @test_file = fixture("small_file.txt")
         @filename = "My File Name"
