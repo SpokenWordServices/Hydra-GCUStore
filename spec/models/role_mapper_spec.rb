@@ -1,21 +1,25 @@
 require 'spec_helper'
+require 'user_helper'
 
 describe RoleMapper do
+  include UserHelper
  
  # overwritten for HULL with 6 roles
  it "should define the 4 roles" do
-   RoleMapper.role_names.sort.should == %w(archivist contentAccessTeam donor patron researcher staff student) 
+   load_roles
+   RoleMapper.role_names.sort.should == %w(committeeSection contentAccessTeam engineering staff student ) 
  end
  it "should quer[iy]able for roles for a given user" do
-   RoleMapper.roles('leland_himself@example.com').sort.should == ['archivist', 'donor', 'patron']
-   RoleMapper.roles('archivist2@example.com').should == ['archivist']
+   @user = User.create!(:username => "contentAccessTeam1", :email => "contentAccessTeam1@example.com")
+   @user.roles = [Role.find_or_initialize_by_name("contentAccessTeam")]
+   RoleMapper.roles('contentAccessTeam1').should == ['contentAccessTeam']
  end
 
  it "should return an empty array if there are no roles" do
    RoleMapper.roles('Marduk,_the sun_god@example.com').empty?.should == true
  end
  it "should know who is what" do
-   RoleMapper.whois('archivist').sort.should == %w(archivist1@example.com archivist2@example.com leland_himself@example.com)
+   RoleMapper.whois('contentAccessTeam').sort.should == %w(contentAccessTeam1)
    RoleMapper.whois('stimutax salesman').empty?.should == true
  end
 
