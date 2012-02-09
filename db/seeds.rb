@@ -7,4 +7,9 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Seed Data for the Roles table
-["contentAccessTeam", "staff", "student", "committeeSection", "engineering"].each {|r| Role.create(:name => r, :description => r) } 
+
+#Role data
+#Clear existing data
+Role.delete_all
+#Re-seed the data
+["contentAccessTeam", "staff", "student", "committeeSection", "engineering", "guest"].each {|r| Role.create(:name => r, :description => r) } 

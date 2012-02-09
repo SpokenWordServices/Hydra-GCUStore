@@ -6,12 +6,12 @@ describe RoleMapper do
  
  # overwritten for HULL with 6 roles
  it "should define the 4 roles" do
-   load_roles
-   RoleMapper.role_names.sort.should == %w(committeeSection contentAccessTeam engineering staff student ) 
+   #load_roles
+   RoleMapper.role_names.sort.should == %w(contentAccessTeam guest student) 
  end
  it "should quer[iy]able for roles for a given user" do
-   @user = User.create!(:username => "contentAccessTeam1", :email => "contentAccessTeam1@example.com")
-   @user.roles = [Role.find_or_initialize_by_name("contentAccessTeam")]
+   #@user = User.create!(:username => "contentAccessTeam1", :email => "contentAccessTeam1@example.com")
+   #@user.roles = [Role.find_or_initialize_by_name("contentAccessTeam")]
    RoleMapper.roles('contentAccessTeam1').should == ['contentAccessTeam']
  end
 
