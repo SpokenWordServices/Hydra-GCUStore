@@ -20,8 +20,6 @@ class GenericContent < ActiveFedora::Base
 
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
-  has_datastream :name=>"content", :label=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :control_group=>'M'
-
   delegate :title, :to=>:descMetadata 
   delegate :coordinates, :to=>:descMetadata
   delegate :topic_tag, :to=>:descMetadata

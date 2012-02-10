@@ -20,8 +20,6 @@ class ExamPaper < ActiveFedora::Base
 
   has_metadata :name => "DC", :label=>"DC admin metadata",  :type => ObjectDc
 
-  has_datastream :name=>"content", :label=>"content", :type=>ActiveFedora::Datastream, :mimeType=>"application/pdf", :control_group=>'M'
-
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string

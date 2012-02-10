@@ -9,7 +9,7 @@ module ActiveFedora
     end
 
     def self.default_model(obj)
-      if obj.datastreams['descMetadata'] && obj.datastreams['rightsMetadata'] && obj.datastreams['contentMetadata']
+      if obj.datastreams['descMetadata'] && obj.datastreams['rightsMetadata']
         if ActiveFedora::Model.send(:class_exists?, "GenericContent")
           m = Kernel.const_get("GenericContent")
           if m

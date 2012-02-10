@@ -224,7 +224,7 @@ module HullModelMethods
     end
 	
 		unless descMetadata_ds.nil?
-			descMetadata_ds.update_indexed_attributes ([:record_info, :record_change_date] => Time.now.strftime("%Y-%m-%d"))
+			descMetadata_ds.update_indexed_attributes ([:record_info,:record_change_date] => Time.now.strftime("%Y-%m-%d"))
 		end
 
 		self.label = generate_object_label

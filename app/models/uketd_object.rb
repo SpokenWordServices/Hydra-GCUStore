@@ -10,6 +10,7 @@ class UketdObject < ActiveFedora::Base
   include HullValidationMethods
 	include ActiveFedora::Relationships
 	include ActiveFedora::ServiceDefinitions
+  include ActiveFedora::FileManagement
 	include CommonMetadataSdef
 
   def initialize(attrs=nil)

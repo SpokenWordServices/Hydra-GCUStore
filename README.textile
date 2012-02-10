@@ -24,6 +24,9 @@ Install the dependencies by running:
 Migrate the database
 <pre>rake db:migrate</pre>
 
+Seed the database with the pre-defined Repo roles (contentAccessTeam, staff, student etc..)
+<pre>rake db:seed</pre>
+
 Configure jetty:
 <pre>rake hydra:jetty:config:all
 </pre>

@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
 
 	#Customised load_fedora_document to protect against users trying to access fileAsset objects
   def load_fedora_document
-    af_base = ActiveFedora::Base.load_instance(params[:id])
+	  af_base = ActiveFedora::Base.load_instance(params[:id])
     the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
     if the_model.nil?
       @document_fedora = af_base
