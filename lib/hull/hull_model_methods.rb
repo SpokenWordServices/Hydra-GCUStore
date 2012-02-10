@@ -129,9 +129,14 @@ module HullModelMethods
       #We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
       if new_queue == :publish
         self.apply_governed_by(structural_set)
+        
 				if self.respond_to?(:apply_harvesting_set_membership)
-	  			add_oai_item_id #Add the item id to objects that are harvested
-				end
+          #If a harvesting set is specified add an oai_item_id
+          harvesting_set = harvesting_set_membership.dup.first            
+	  		  if !harvesting_set.nil?
+            if !harvesting_set_membership.dup.first.empty? then add_oai_item_id end
+          end
+   			end
       else
       	self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
 				#if the object is going into the qa queue
@@ -156,14 +161,6 @@ module HullModelMethods
    		errors << "Structural Set> Error: No set selected"
 			valid = false
   	end
-
-		#If the document allows the specify a harvesting set, we assume that it is mandatory
-		if self.respond_to?(:apply_harvesting_set_membership)
-			if harvesting_set.nil?
-   			errors << "Harvesting Set> Error: No set selected"
-				 valid = false
-   		end
-		end
 		valid
  	end
 
