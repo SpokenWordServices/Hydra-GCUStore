@@ -979,7 +979,16 @@ div.presentation-genre {
   background-position:top left;
   background-repeat:no-repeat;
 }
-
+div.hidden-genre {
+  background-image:url('/images/icons/hidden-th.png');
+  background-position:top left;
+  background-repeat:no-repeat;
+}
+div.deleted-genre {
+  background-image:url('/images/icons/deleted-th.png');
+  background-position:top left;
+  background-repeat:no-repeat;
+}
 div.pdf-download {
   background-image:url('/images/icons/download_icons/pdf.gif');
   background-position:left center;

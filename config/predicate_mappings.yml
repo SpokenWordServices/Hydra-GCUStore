@@ -1,6 +1,12 @@
 # The default namespace maps to the default namespace for generating rels_ext from solr
 :default_namespace: info:fedora/fedora-system:def/relations-external#
 
+:predicate_namespaces:
+  fedora-model: info:fedora/fedora-system:def/model#
+  rel: info:fedora/fedora-system:def/relations-external#
+  oai: http://www.openarchives.org/OAI/2.0/
+  hydra: http://projecthydra.org/ns/relations#
+
 # namespace mappings--- 
 # you can add specific mappings for your institution by providing the following:
 #   namespace_uri:

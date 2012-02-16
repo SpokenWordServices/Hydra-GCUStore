@@ -31,7 +31,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         xml.name(:type=>"corporate") {
           xml.namePart
           xml.role {
-            xml.roleTerm(:authority=>"marcrelator", :type=>"text")
+            xml.roleTerm(:type=>"text")
           }                          
         }
       end
@@ -44,7 +44,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         xml.name(:type=>"conference") {
           xml.namePart
           xml.role {
-            xml.roleTerm(:authority=>"marcrelator", :type=>"text")
+            xml.roleTerm(:type=>"text")
           }                          
         }
       end
@@ -155,10 +155,10 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         node = ObjectMods.person_template
         nodeset = self.find_by_terms(:person)
       when :organization
-        node = Hydra::ModsArticle.organization_template
+        node = ObjectMods.organization_template
         nodeset = self.find_by_terms(:organization)
       when :conference
-        node = Hydra::ModsArticle.conference_template
+        node = ObjectMods.conference_template
         nodeset = self.find_by_terms(:conference)
       else
         ActiveFedora.logger.warn("#{type} is not a valid argument for Hydra::ModsArticle.insert_contributor")

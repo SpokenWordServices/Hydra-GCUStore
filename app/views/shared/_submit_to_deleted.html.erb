@@ -1,0 +1,11 @@
+<% if (@document_fedora.queue_membership != [:qa] && @document_fedora.queue_membership != [:deleted]) %>
+  <div style="width:100%;height:2.2em;">
+    <%=form_for @document_fedora, :url=>change_queue_path(:content_type=>@document_fedora.class.to_s.underscore, :workflow_step=>"deleted", :id => @document_fedora.pid ), :id=>"document_queue" do %>
+      <div class="form-control">  
+        <%= submit_tag "Delete resource", :confirm => "Are you sure you want to Delete this published resource?" %>
+      </div>
+    <%end%>
+  </div>
+<% end %>
+
+

@@ -67,6 +67,17 @@ class GenericContent < ActiveFedora::Base
     is_valid?
   end
 
+  has_workflow_validation :deleted do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
+
+  has_workflow_validation :hidden do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
+
+
   def genre=(val)
     g = Genre.find(val)
     descMetadata.genre = g.name

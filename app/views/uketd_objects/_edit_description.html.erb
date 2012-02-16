@@ -45,7 +45,13 @@
       </div>
       <div id="grants">
 	      <%= render :partial => 'grant_numbers/index' %>
-	    </div>  
+	    </div>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:ethos_identifier],"Ethos identifier") %>
+      </dt>
+      <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:ethos_identifier], :multiple=>false) %>
+      </dd>  
 	    <dt>
         <%= fedora_field_label("descMetadata",[:origin_info, :date_issued],"Date issued (YYYY-MM-DD or YYYY-MM or YYYY)") %>
       </dt>

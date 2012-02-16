@@ -4,10 +4,11 @@
     <h1>Edit content</h1>
   </div>
   <div class="multipleEdit">
-		<%= render :partial => 'shared/edit_generic_qa', :locals=>{:content_type=>'generic_content'} %>
-    <%= render :partial => "shared/compound_resources" %>
-    <%= render :partial => "shared/submit_to_qa" %>
-    <%= render :partial => "shared/submit_to_publish" %>
+   	<% if @document_fedora.queue_membership.include?(:proto) %>
+			<%= render :partial => 'generic_contents/edit_generic', :locals=>{:content_type=>'generic_content'} %>
+		<% else %>
+			<%= render :partial => 'generic_contents/edit_generic_qa', :locals=>{:content_type=>'generic_content'} %>
+		<% end %>		
   </div>
 </div>
 

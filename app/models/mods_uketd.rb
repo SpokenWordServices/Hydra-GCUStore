@@ -63,23 +63,22 @@ class ModsUketd < ObjectMods
     }
     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
 
-	t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
+	   t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
 
-	t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
-	  t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
-    }
-  t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
-	t.location {
-	  t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
-	  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
-  }
-	t.grant_number(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
-	t.record_info (:path=>"recordInfo") {
+	   t.related_private_object(:path=>"relatedItem", :attributes=>{:type=>"privateObject"}) {
+	     t.private_object_id(:path=>"identifier", :attributes=>{:type=>"fedora"})
+     }
+     t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+	   t.location {
+	     t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+	     t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
+     }
+	   t.grant_number(:path=>"identifier", :attributes=>{:type=>"grantNumber"})
+     t.ethos_identifier(:path=>"identifier", :attributes=>{:type=>"ethos"})
+	   t.record_info (:path=>"recordInfo") {
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
       t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
-   }
-
-
+     }
   end
   
     # accessor :title, :term=>[:mods, :title_info, :main_title]

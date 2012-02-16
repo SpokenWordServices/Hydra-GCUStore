@@ -4,6 +4,7 @@ class JournalArticle < ActiveFedora::Base
   
   include Hydra::ModelMethods
   include HullModelMethods
+  include HullValidationMethods
 	include ActiveFedora::ServiceDefinitions
 	include CommonMetadataSdef
 
@@ -18,6 +19,16 @@ class JournalArticle < ActiveFedora::Base
   has_metadata :name => "contentMetadata", :label=>"Content metadata", :type => ContentMetadata, :control_group=>'M'
 
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
+
+  has_workflow_validation :deleted do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
+
+  has_workflow_validation :hidden do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|

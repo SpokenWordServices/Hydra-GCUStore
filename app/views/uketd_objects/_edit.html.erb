@@ -1,14 +1,10 @@
 <div class="document_viewer" id="cover_container">
 	<%= render :partial => "shared/delete_asset_link", :locals => {:pid=>params[:id]} %>
-	</div>
   <div class="content-type-header">
     <h1>Edit a thesis or dissertation</h1>
   </div>
   <div class="multipleEdit">
-
 		<%= display_edit_form(@document_fedora, "uketd_object") %>
-		
-   </div>
-
+	</div>
 </div>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

@@ -50,6 +50,17 @@ class ExamPaper < ActiveFedora::Base
     is_valid?
   end
 
+  has_workflow_validation :deleted do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
+
+  has_workflow_validation :hidden do
+    validates_presence_of ("descMetadata",[:admin_note])
+    is_valid?
+  end
+
+
   def apply_content_specific_additional_metadata
 
     if self.queue_membership.include? :proto

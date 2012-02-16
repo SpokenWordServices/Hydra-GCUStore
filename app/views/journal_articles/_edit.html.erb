@@ -4,8 +4,7 @@
     <h1>Edit a journal article</h1>
   </div>
   <div class="multipleEdit">
-    <%= render :partial => 'journal_articles/edit_description' %>
-  	<%= render :partial => "shared/compound_resources" %>
-  </div>
+  	<%= display_edit_form(@document_fedora, "journal_article") %>
+   </div>
 </div>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

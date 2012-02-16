@@ -1,0 +1,135 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8" >
+  <% @content_type = "generic_content" %>
+  <% choices = ObjectMods.language_relator_terms %>
+  <input type="hidden" name="content_type" value="generic_content" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+  <fieldset class="edit-half">
+  <legend>Person(s)</legend>
+    <div id="contributors">
+	    <%= render :partial => 'contributors/index', :locals=> {:contributor_type=>:person} %>
+	  </div>
+  </fieldset>
+
+  <fieldset class="edit-standard">
+  <!-- To do Advisors/Sponsors -->
+  <dl>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora, "descMetadata", [:title_info,:main_title], :multiple=>false) %>
+    </dd>
+    <div id="subjects">
+	    <%= render :partial => 'subjects/index' %>
+	  </div>
+		<dt>
+ 			<%= fedora_field_label("descMetadata",[:location_subject, :cartographics, :coordinates],"Coordinates") %>
+		</dt>
+		<dd>
+ 			<%= fedora_text_field(@document_fedora,"descMetadata",[:location_subject, :cartographics, :coordinates], :multiple=>false) %>
+		</dd>
+		<div class="multi-field" id="rights">
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":rights", :datastream_name=>"descMetadata", :field_label=>"Rights"} %>
+	 	</div>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:date_valid],"Valid Date (YYYY-MM-DD, YYYY-MM, YYYY or YYYY/YYYY)") %>
+    </dt>
+    <dd style="width: 20em;">
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:date_valid], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:description],"Description") %>
+    </dt>
+    <dd>
+      <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
+    </dd>
+	</dl>
+	</fieldset>
+  <fieldset class="edit-half">
+  	<dl>
+			<div class="info-multiple">
+	  		<div class="left">
+					<div class="multi-field" id="related-web-materials">
+	    			<%= render :partial => 'multi_field/index', :locals=> {:fields=>":web_related_item, :location, :primary_display", :datastream_name=>"descMetadata", :field_label=>"Related materials (web)"} %>
+	 				</div>					
+			</div>
+	  	<div class="right">
+				<div class="multi-field"  id="extent">
+	    			<%= render :partial => 'multi_field/index', :locals=>{:fields=>":physical_description, :extent", :datastream_name=>"descMetadata", :field_label=>"Extent"} %>
+ 				</div>					
+  		</div>
+	</div>
+  </dl>
+  </fieldset>
+  <fieldset class="edit-standard">
+   <dl>
+		<div class="multi-field" id="see-also">
+	    	<%= render :partial => 'multi_field/index', :locals=> {:fields=>":see_also", :datastream_name=>"descMetadata", :field_label=>"See also (non-web)"} %>
+	 	</div>	
+		<dt>
+       <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
+    </dd>	
+	 </dl>
+	 </fieldset>
+   <fieldset class="edit-half">
+    <dl>
+	  <div class="info-multiple">
+	    <div class="left">
+	      <dt>
+      	     <%= fedora_field_label("descMetadata",[:language, :lang_text], "Language") %>
+    	  </dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_text], :multiple=>false) %>
+        </dd>
+	    </div>
+	    <div class="right">
+		  <dt>
+            <%= fedora_field_label("descMetadata",[:language, :lang_code], "Language code") %>
+          </dt>
+          <dd style="width: 20em;"> 
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_code], :multiple=>false) %>
+          </dd>
+	    </div>
+	  </div>
+    </dl>
+   </fieldset>
+ 	 <fieldset class="edit-half">
+    <dl>
+	  <div class="info-multiple">
+	    <div class="left">
+	      <dt>
+      	     <%= fedora_field_label("descMetadata",[:physical_description, :digital_origin], "Digital origin") %>
+    	  </dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_text_field(@document_fedora,"descMetadata", [:physical_description, :digital_origin], :multiple=>false) %>
+          </dd>
+	    </div>
+	    <div class="right">
+		  		<dt>
+            <%= fedora_field_label("descMetadata",[:type_of_resource], "Type of resource") %>
+          </dt>
+          <dd style="width: 20em;"> 
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:type_of_resource], :multiple=>false) %>
+          </dd>
+	    </div>
+	  </div>
+    </dl>
+   </fieldset>
+  <input type="hidden"  name="_method" value="put"/>  
+  <div>
+    <div class="form-control">
+      <%= submit_tag "Save metadata" %>
+    </div>
+  </div>
+</form>
+
+<%= render :partial => "shared/compound_resources" %>
+
+<hr class="separator"/>
+
+<%= render :partial => "shared/submit_to_qa" %>
+

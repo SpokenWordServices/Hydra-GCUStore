@@ -15,9 +15,14 @@ class WorkFlowController < ApplicationController
     document = load_document_from_params
     if document.change_queue_membership params[:workflow_step].to_sym
       document.save
-      if params[:workflow_step].to_sym == :publish
-				flash[:notice] = "Successfully published #{document.pid} to the Repository."
-			else      
+      case params[:workflow_step].to_sym
+      when :publish
+        flash[:notice] = "Successfully published #{document.pid} to the Repository."
+      when :hidden
+        flash[:notice] = "Resource #{document.pid} has now been moved to the Hidden queue."
+      when :deleted
+        flash[:notice] = "Resource #{document.pid} has now been deleted."
+      else      
 				flash[:notice] = "Successfully added #{document.pid} to #{params[:workflow_step].to_s} queue."
 			end
     else

@@ -187,7 +187,7 @@ module Hull::AssetsControllerHelper
   
 	def apply_base_metadata(asset)
 		if asset.respond_to?(:apply_base_metadata)
-      asset.apply_base_metadata
+       asset.apply_base_metadata
     end
   end
 

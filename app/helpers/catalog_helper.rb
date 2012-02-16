@@ -261,5 +261,43 @@ module CatalogHelper
 		breadcrumb.html_safe
   end
 
+  #Helper for displaying a relevant icon for a resource index page
+  def display_resource_icon(document)
+
+   #Set the queue_name if it isn't nil
+   if !(document["is_member_of_queue_facet"].nil?) then queue_name = document["is_member_of_queue_facet"].first else queue_name = "" end
+ 
+   #We set a different img_class genre if its in hidden or deleted queue
+   if ((queue_name.include? "Deleted") || (queue_name.include? "Hidden"))
+    case queue_name
+    when "Deleted"
+      img_class = "deleted-genre"
+    when "Hidden"
+      img_class = "hidden-genre" 
+    end
+   else
+     #standard icons
+     genre = document["genre_t"].to_s.downcase
+     case genre
+     when "structural set", "display set"
+      img_class = "collection-genre"
+     when "presentation"
+      img_class = "presentation-genre"
+     when "photograph", "artwork"
+      img_class = "image-genre"
+     when "meeting papers or minutes"
+      img_class = "event-genre"
+     else
+      img_class = "text-genre"
+     end
+   end
+
+   resource_icon = <<-EOS
+     <div id="genre_image" class="#{img_class}"></div>
+   EOS
+
+   resource_icon.html_safe
+  end
+
 end
 

@@ -1,15 +1,10 @@
 <div class="document_viewer" id="cover_container">
 	<%= render :partial => "shared/delete_asset_link", :locals => {:pid=>params[:id]} %>
-	</div>
   <div class="content-type-header">
     <h1>Edit an examination paper</h1>
   </div>
   <div class="multipleEdit">
 		<%= display_edit_form(@document_fedora, "exam_paper") %>
-    <%= render :partial => "shared/compound_resources" %>
-    <hr class="separator"/>
-    <%= render :partial=>"shared/submit_to_qa" %>
-    <%= render :partial => "shared/submit_to_publish" %> 
 	</div>
 </div>
 <%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

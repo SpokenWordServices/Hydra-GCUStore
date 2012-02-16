@@ -6,7 +6,6 @@ module HullModelMethods
     def pid_namespace
       "hull-cModel"
     end
-     
   end
 
   # def self.included(klass)
@@ -119,34 +118,43 @@ module HullModelMethods
       is_valid = valid_for_publish
     end     
 	
+    #If the object is_valid for the next stage of queue
 	  if is_valid
+
       queues =  self.queue_membership
       unless queues.empty?
-        self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
-        is_governed_by.each { |g| self.remove_relationship :is_governed_by, g }
+       #If currently in a queue... Remove the queue relationnship 
+       self.remove_relationship :is_member_of, HULL_QUEUES.invert[queues.first]
       end
 
-      #We don't set a queue for published object (should be within a structural set - determined valid_for_publish)
-      if new_queue == :publish
+      #Depending on the queue there is some different logic
+      case new_queue
+      when :publish
+        #Published objects are governed by structural set
         self.apply_governed_by(structural_set)
-        
-				if self.respond_to?(:apply_harvesting_set_membership)
+       	if self.respond_to?(:apply_harvesting_set_membership)
           #If a harvesting set is specified add an oai_item_id
           harvesting_set = harvesting_set_membership.dup.first            
 	  		  if !harvesting_set.nil?
             if !harvesting_set_membership.dup.first.empty? then add_oai_item_id end
           end
    			end
+        #If the object is currently in the hidden or deleted queue, we need to change its state back to 'A' - Active
+        if queues.include?(:hidden) || queues.include?(:deleted) then self.inner_object.state = "A" end    
+      when :qa
+        #When objects are moved into the QA queue owner_id, and governed by changes to contentAccessTeam... No longer 'owned' by creator
+        self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+ 	      self.owner_id="fedoraAdmin"
+        apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the QAQueue defaultObjectrights into object rightsMetadata
+      when :hidden, :deleted
+        #When objects are moved to the hidden, or deleted queue, we change the object state to 'D' - Deleted
+        self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+        self.apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the hidden/deleted defaultObjectrights into object rightsMetadata
+        self.inner_object.state = "D"         
       else
-      	self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
-				#if the object is going into the qa queue
-        if new_queue == :qa
-	  			self.owner_id="fedoraAdmin"
-	  			apply_governed_by(HULL_QUEUES.invert[new_queue]) #We want to load the QAQueue defaultObjectrights into object rightsMetadata
-     		else
-	 				self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
-				end
-      end
+          self.add_relationship :is_member_of, HULL_QUEUES.invert[new_queue]
+          self.add_relationship :is_governed_by, HULL_QUEUES.invert[new_queue]
+      end      
       return true
     else
       logger.warn "Could not change queue membership due to validation errors."
@@ -175,8 +183,8 @@ module HullModelMethods
 		if self.respond_to?(:apply_specific_base_metadata)
       self.apply_specific_base_metadata
     end	
-  	
-		#Add the dc required elements
+
+    #Add the dc required elements
 		dc_ds.update_indexed_attributes([:dc_identifier]=> self.pid) unless dc_ds.nil?
 		dc_ds.update_indexed_attributes([:dc_genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
 	
@@ -382,8 +390,10 @@ module HullModelMethods
 	  solr_doc["has_model_s"] = cmodel
     solr_doc["fedora_owner_id_s"] = self.owner_id
     solr_doc["fedora_owner_id_display"] = self.owner_id
-		if ((queue_membership.include? :qa) || (queue_membership.include? :proto))
-			solr_doc["is_member_of_queue_facet"] = queue_membership.to_s 
+		if ((queue_membership.include? :qa) || (queue_membership.include? :proto) || (queue_membership.include? :hidden) || (queue_membership.include? :deleted))
+      #Set the is_member_of_queue_facet solr field if it is in a 'queue'... 
+      if queue_membership.include? :qa then queue_facet = "QA" else queue_facet = queue_membership.to_s.capitalize end
+			solr_doc["is_member_of_queue_facet"] = queue_facet
 		end
 
 		#get Time object representation of the date information in object (to enable sort)
