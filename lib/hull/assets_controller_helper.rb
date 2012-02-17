@@ -69,7 +69,7 @@ module Hull::AssetsControllerHelper
   def apply_depositor_metadata(asset)
 	  apply_base_metadata(asset)
     if asset.respond_to?(:apply_depositor_metadata) && current_user.respond_to?(:login)
-      asset.apply_depositor_metadata(current_user.login)
+      asset.apply_depositor_metadata(current_user.login, current_user.email)
     end
   end
 

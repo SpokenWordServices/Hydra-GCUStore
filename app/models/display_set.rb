@@ -17,8 +17,9 @@ class DisplaySet < ActiveFedora::Base
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
   # A place to put extra metadata values
-  has_metadata :name => "properties", :label=>" Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
+  has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
+    m.field 'depositorEmail', :string  
     m.field 'depositor', :string
   end
 

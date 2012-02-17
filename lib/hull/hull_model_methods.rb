@@ -314,6 +314,22 @@ module HullModelMethods
     end
 	end
 
+  #
+  # Adds metadata about the depositor to the asset
+  # Most important behavior: if the asset has a rightsMetadata datastream, this method will add +depositor_id+ to its individual edit permissions.
+  #
+  def apply_depositor_metadata(depositor_id, depositor_email)
+    prop_ds = self.datastreams["properties"]
+    rights_ds = self.datastreams["rightsMetadata"]
+  
+    if !prop_ds.nil? && prop_ds.respond_to?(:depositor_values)
+     prop_ds.depositorEmail_values = depositor_email unless prop_ds.nil?
+     prop_ds.depositor_values = depositor_id unless prop_ds.nil?
+    end
+    rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id) unless rights_ds.nil?
+    return true
+  end
+
   def copy_rights_metadata(apo)
 		rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
     rights.ng_xml = apo.defaultObjectRights.content

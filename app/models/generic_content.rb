@@ -37,6 +37,14 @@ class GenericContent < ActiveFedora::Base
   delegate :digital_origin, :to=>:descMetadata
   delegate :type_of_resource, :to=>:descMetadata
 
+  # A place to put extra metadata values
+  has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
+    m.field 'collection', :string
+    m.field 'depositorEmail', :string  
+    m.field 'depositor', :string
+  end
+
+
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
 			date_valid = @pending_attributes["descMetadata"][[:date_valid]]["0"] 

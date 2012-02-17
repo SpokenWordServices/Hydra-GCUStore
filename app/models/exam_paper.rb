@@ -23,9 +23,9 @@ class ExamPaper < ActiveFedora::Base
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
+    m.field 'depositorEmail', :string  
     m.field 'depositor', :string
   end
-
     
   has_workflow_validation :qa do
     errors << "#{pid} is already in qa queue" if queue_membership.include? :qa

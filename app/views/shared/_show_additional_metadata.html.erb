@@ -1,12 +1,44 @@
 <fieldset class="edit-standard">
 	<legend>Additional metadata</legend>
-      <dl>
-	    <%= display_datastream_field(@document_fedora,"descMetadata", [:type_of_resource], "typeOfResource", "display") %>
-		<%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "genre", "display") %>
+   <dl>
+      <div class="info-multiple">
+        <div class="left">
+          <div class="typeOfResource">
+            <%= display_datastream_field(@document_fedora,"descMetadata", [:type_of_resource], "typeOfResource", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="genre">
+             	<%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "genre", "display") %>
+          </div>
+        </div>
+       </div>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :mime_type], "internetMediaType", "display") %>
-		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :digital_origin], "digitalOrigin", "display") %>
-		<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "identifier", "display") %>
+    <div class="info-multiple">
+        <div class="left">
+          <div class="digitalOrigin">
+           <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :digital_origin], "digitalOrigin", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="identifier">
+             	<%= display_datastream_field(@document_fedora,"descMetadata", [:identifier], "identifier", "display") %>
+          </div>
+        </div>
+    </div>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:location, :primary_display], "Splash URL", "display") %>
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:location, :raw_object], "Download URL", "display") %>
-      </dl>
+    <div class="info-multiple">
+        <div class="left">
+          <div class="depositor">
+            <%= display_datastream_field(@document_fedora,"properties", [:depositor], "Depositor", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="email">
+             <%= display_datastream_field(@document_fedora,"properties", [:depositorEmail], "E-mail address", "display") %>
+          </div>
+        </div>
+     </div>
+    </dl>
   </fieldset>

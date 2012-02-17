@@ -30,9 +30,10 @@ class JournalArticle < ActiveFedora::Base
     is_valid?
   end
 
-  # A place to put extra metadata values
+ # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
+    m.field 'depositorEmail', :string  
     m.field 'depositor', :string
   end
 

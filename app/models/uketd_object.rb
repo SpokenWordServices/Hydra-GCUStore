@@ -42,6 +42,7 @@ class UketdObject < ActiveFedora::Base
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
+    m.field 'depositorEmail', :string  
     m.field 'depositor', :string
   end
 

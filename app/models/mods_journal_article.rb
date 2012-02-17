@@ -42,6 +42,7 @@ class ModsJournalArticle < ObjectMods
       t.affiliation(:index_as=>[:facetable])
     }
     t.genre(:path=>'genre')
+    t.type_of_resource(:path=>"typeOfResource")
     t.origin_info(:path=>'originInfo') {
       t.date_issued(:path=>'dateIssued')
       t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
@@ -85,6 +86,10 @@ class ModsJournalArticle < ObjectMods
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     
     t.identifier(:path => 'identifier',:attributes=>{:type=>"fedora"})
+	  t.location {
+		  t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
+		  t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
+	  }
 	  t.record_info (:path=>"recordInfo") {
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
       t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
