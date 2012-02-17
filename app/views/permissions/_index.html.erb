@@ -8,7 +8,10 @@
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" /> 
 
   <fieldset class="edit-permissions">
-    <% choices = [{"No Access"=>"none"},{"Discover" => "discover"}, {"Read &amp; Download" => "read"}, {"Edit &amp; Upload" => "edit"}] %>
+    <% extended_choices = [{"No Access"=>"none"},{"Discover" => "discover"}, {"Read &amp; Download" => "read"}, {"Edit &amp; Upload" => "edit"}] %>
+    <% standard_choices = [{"No Access"=>"none"},{"Discover" => "discover"}, {"Read &amp; Download" => "read"}] %>
+    <% choices = [{"No Access"=>"none"},{"Discover" => "discover"}, {"Read &amp; Download" => "read"}] %>
+
     <% roles = RoleMapper.role_names.sort %>
     <%# This next line should be conditional uon a person having Publish permissions on the object's collection %>
     <% roles << "public" %>
@@ -18,8 +21,13 @@
       <% field_name = "#{role}_group_access" %>
        <dt><label for="<%=h field_name %>"><%= role.capitalize %></label></dt>
 			 <dd>			       
-				 <select id="<%=h field_name %>" name="permission[group][<%=h role %>]">
-          <% choices.each do |choice| %>
+			   <% if role.include? "contentAccessTeam" %>
+            <% choices = extended_choices %>
+         <% else %>
+            <% choices = standard_choices %>
+         <% end %>
+         <select id="<%=h field_name %>" name="permission[group][<%=h role %>]">
+            <% choices.each do |choice| %>
             <% choice_label = choice.keys.first %>
             <% choice_name = choice.values.first %>
             <% if role_permissions == choice_name %>
@@ -33,6 +41,7 @@
             <% end %>
           <% end %>
         </select>
+
 			</dd>
     <% end %>
 	 </dl> 

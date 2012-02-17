@@ -89,7 +89,9 @@ class RightsMetadata < ActiveFedora::NokogiriDatastream
       if nodeset.empty?
         return "none"
       else
-        return nodeset.first.ancestors("access").first.attributes["type"].text
+        #Return the last of the nodeset - this is highest type a user can have (discover/read&download/edit)
+        #return nodeset.first.ancestors("access").first.attributes["type"].text
+        return nodeset.last.ancestors("access").first.attributes["type"].text
       end
     else
       remove_all_permissions(selector)

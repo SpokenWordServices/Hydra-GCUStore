@@ -318,7 +318,7 @@ module HullModelMethods
   # Adds metadata about the depositor to the asset
   # Most important behavior: if the asset has a rightsMetadata datastream, this method will add +depositor_id+ to its individual edit permissions.
   #
-  def apply_depositor_metadata(depositor_id, depositor_email)
+  def apply_depositor_metadata_properties(depositor_id, depositor_email)
     prop_ds = self.datastreams["properties"]
     rights_ds = self.datastreams["rightsMetadata"]
   
@@ -326,7 +326,12 @@ module HullModelMethods
      prop_ds.depositorEmail_values = depositor_email unless prop_ds.nil?
      prop_ds.depositor_values = depositor_id unless prop_ds.nil?
     end
-    rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id) unless rights_ds.nil?
+
+    #We don't add the depositor_id to rights metadata on sets
+    unless self.class == StructuralSet && self.class == DisplaySet
+      rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id) unless rights_ds.nil?
+    end
+
     return true
   end
 

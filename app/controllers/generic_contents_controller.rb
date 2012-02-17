@@ -14,7 +14,7 @@ class GenericContentsController < ApplicationController
   def create
 	  @generic_content = GenericContent.new(params[:generic_content])
     update_set_membership(@generic_content)
-    @generic_content.apply_depositor_metadata(current_user.login, current_user.email)
+    @generic_content.apply_depositor_metadata_properties(current_user.login, current_user.email)
 		@generic_content.apply_base_metadata
     
     if @generic_content.save

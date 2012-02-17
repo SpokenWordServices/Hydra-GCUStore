@@ -1,4 +1,4 @@
-class NonindexingRightsMetadata < Hydra::RightsMetadata
+class NonindexingRightsMetadata < RightsMetadata
   #TODO it would be nice to inherit this from Hydra::RightsMetadata
   set_terminology do |t|
     t.root(:path=>"rightsMetadata", :xmlns=>"http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1", :schema=>"http://github.com/projecthydra/schemas/tree/v1/rightsMetadata.xsd") 
