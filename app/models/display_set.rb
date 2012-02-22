@@ -5,6 +5,14 @@ class DisplaySet < ActiveFedora::Base
   
   include Hydra::ModelMethods
   include HullModelMethods
+  include ActiveFedora::Relationships
+
+  def initialize(attrs=nil)
+    super(attrs)
+    if new_object?
+      self.add_relationship(:has_model,"info:fedora/hydra-cModel:commonMetadata")
+    end
+  end
 
 	#We want the RELS-EXT to be X and have label
   self.ds_specs = {'RELS-EXT'=> {:type=> ActiveFedora::RelsExtDatastream, :label=>"Fedora Object-to-Object Relationship Metadata", :control_group=>'X', :block=>nil}}
@@ -38,6 +46,12 @@ class DisplaySet < ActiveFedora::Base
     Hash[*(set.map {|s| ["info:fedora/#{s['id']}", {:parent=>parent_pid(s, pids), :pid=>s["id"], :title=>s["title_t"]}]}).flatten]
   end
 
+  #We use this to define a default rightsMetadata of contentAccessteam
+  def after_create
+    apo = ActiveFedora::Base.find("hull-apo:displaySet")
+    raise "Unable to find hull-apo:displaySet" unless apo
+    copy_rights_metadata(apo)
+  end
 
   private
 
@@ -58,12 +72,6 @@ class DisplaySet < ActiveFedora::Base
       end
       hash
     end
-  end
-
- #Overridden so that we can store a cmodel and commonMetadata
-  def assert_content_model
-		add_relationship(:has_model, "info:fedora/hull-cModel:displaySet")
-    add_relationship(:has_model, "info:fedora/hull-cModel:commonMetadata")
   end
 
   def self.display_sets

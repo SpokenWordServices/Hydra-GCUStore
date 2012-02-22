@@ -328,7 +328,7 @@ module HullModelMethods
     end
 
     #We don't add the depositor_id to rights metadata on sets
-    unless self.class == StructuralSet && self.class == DisplaySet
+    unless self.class == StructuralSet || self.class == DisplaySet
       rights_ds.update_indexed_attributes([:edit_access, :person]=>depositor_id) unless rights_ds.nil?
     end
 
@@ -336,9 +336,9 @@ module HullModelMethods
   end
 
   def copy_rights_metadata(apo)
-		rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata')
+   	rights = Hydra::RightsMetadata.new(self.inner_object, 'rightsMetadata', {:dsLabel => "Rights metadata"})
     rights.ng_xml = apo.defaultObjectRights.content
-    defaultRights = NonindexingRightsMetadata.new(self.inner_object, 'defaultObjectRights')
+    defaultRights = NonindexingRightsMetadata.new(self.inner_object, 'defaultObjectRights',  {:dsLabel => "Default object rights metadata"})
     defaultRights.ng_xml = rights.ng_xml.dup
     datastreams["rightsMetadata"] = rights 
     datastreams["defaultObjectRights"] = defaultRights if datastreams.has_key? "defaultObjectRights"
@@ -349,7 +349,7 @@ module HullModelMethods
 			#Loop through the file_assets and copy the new rights
 			file_assets.each do |file_asset_pid|
 				file_asset = ActiveFedora::Base.load_instance(file_asset_pid)
-				rights = Hydra::RightsMetadata.new(file_asset.inner_object, 'rightsMetadata')
+				rights = Hydra::RightsMetadata.new(file_asset.inner_object, 'rightsMetadata', {:dsLabel => "Rights metadata"})
    			rights.ng_xml = apo.defaultObjectRights.content
     		file_asset.datastreams["rightsMetadata"] = rights
 				file_asset.save				
@@ -427,6 +427,10 @@ module HullModelMethods
       collection = display_set
       solr_doc["top_level_collection_id_s"] = collection if collection
     end
+    if self.id.include? "hull:rootDisplaySet"
+      solr_doc["root_display_set_facet"] = "true"
+    end
+
     solr_doc["text"] = get_extracted_content
 		solr_doc
   end

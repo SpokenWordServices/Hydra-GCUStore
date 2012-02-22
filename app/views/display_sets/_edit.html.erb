@@ -8,8 +8,10 @@
   </div>
   <div class="multipleEdit">
     <%= render :partial => 'display_sets/edit_description' %>
+    <hr class="separator"/>
    <div class="permissionsEdit">
-		<h1>Permissions edit</h1>   
+		<h1>Permissions edit</h1>
+      <p><strong>Note:</strong> Setting the Public rights will be inherited by all other user types (i.e. Public 'Read & Download' will result in Read and Download for staff, student...etc).</p>   
     	<%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id], :resource_type => 'structural_set', :datastream => 'rightsMetadata'} %>
    </div>
   </div>

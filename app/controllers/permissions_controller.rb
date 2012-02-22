@@ -104,8 +104,7 @@ Removed from permissions/_new.html.erb
   # Updates the permissions for all actors in a hash.  Can specify as many groups and persons as you want
   # ie. :permission => {"group"=>{"group1"=>"discover","group2"=>"edit"}, {"person"=>{"person1"=>"read"}}}
   def update
-		#debugger
-    if params[:id].nil?  
+	  if params[:id].nil?  
       pid = params[:asset_id]
     else
       pid = params[:id]
@@ -131,7 +130,7 @@ Removed from permissions/_new.html.erb
     ds.save
     
     # Re-index the object
-    #Solrizer::Fedora::Solrizer.new.solrize(pid)
+    Solrizer::Fedora::Solrizer.new.solrize(pid)
     
     flash[:notice] = "The permissions have been updated."
     redirect_to :controller=>"catalog", :action=>"edit", :id => pid
