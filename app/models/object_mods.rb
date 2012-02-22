@@ -203,7 +203,10 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
       {"aut" => "Author",
        "cre" => "Creator",
        "edt" => "Editor",
-       "phg" => "Photographer"       
+       "phg" => "Photographer",  
+       "mdl" => "Module leader",
+       "spr" => "Sponsor",
+       "sup" => "Supervisor"     
        }
     end
     

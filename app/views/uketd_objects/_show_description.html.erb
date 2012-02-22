@@ -9,7 +9,7 @@
         <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(authors.count,"Author")[2..-1]) %>
       </dt>
       <dd class="dd_text">
-        <%= authors.join(", ") %>
+        <%= authors.join("; ") %>
       </dd>
     <% end %>
     <%= display_datastream_field(@document_fedora,"descMetadata", [:subject,:topic],"Subject","dd_text") %>
@@ -22,7 +22,7 @@
         <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(contributors.count,"Contributor")[2..-1]) %>
       </dt>
       <dd class="dd_text">
-        <%= contributors.join(", ") %>
+        <%= contributors.join("; ") %>
       </dd>
     <% end %>
     <% orgs = get_organizations_from_roles(@document, ['sponsor']).map {|organization| organization[:name]}  %>
@@ -31,7 +31,7 @@
         <%= fedora_field_label("descMetadata", [:organization, :namePart], pluralize(orgs.count,"Sponsor")[2..-1]) %>
       </dt>
       <dd class="dd_text">
-        <%= orgs.join(", ") %>
+        <%= orgs.join("; ") %>
       </dd>
     <% end %>
     <%= display_datastream_date_field(@document_fedora,"descMetadata", [:origin_info, :date_issued], "Date","dd_text") %>
