@@ -32,6 +32,10 @@ module CatalogHelper
     return orgs
   end 
 
+  #This helper method will create a list of downloadable assets for a 
+  #resource.
+  #It also adds a google event tracker call to the link, in the form of:-
+  #onClick="_gaq.push(['_trackEvent','Downloads', 'Resource title', 'PID/DsID'])
   def display_resources(document)
 
    resources_count = get_values_from_datastream(document, "contentMetadata", [:resource]).length
@@ -46,6 +50,7 @@ module CatalogHelper
         <div id="downloads-list">
      EOS
 
+     resource_title = get_values_from_datastream(document, "descMetadata",[:title])
      display_label = get_values_from_datastream(document, "contentMetadata",[:resource, :display_label])
      object_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_object_id])
      ds_id = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_ds_id])  
@@ -57,12 +62,12 @@ module CatalogHelper
 
      sequence_hash = {}
      sequence.each_with_index{|v,i| sequence_hash[v.to_i] = i }
-
+  
      sequence_hash.keys.sort.each do |seq| 
         i = sequence_hash[seq]
       resources << <<-EOS 
 	       <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
-           <a href="/assets/#{object_id[i]}/#{ds_id[i]}">#{display_label[i]}</a> 
+           <a href="/assets/#{object_id[i]}/#{ds_id[i]}" onClick="_gaq.push(['_trackEvent','Downloads', '#{resource_title}', '#{object_id[i]}/#{ds_id[i]}']);">#{display_label[i]}</a> 
            <div id="file-size">(#{get_friendly_file_size(file_size[i])}, #{format[i]})</div>
       EOS
      end
