@@ -1,13 +1,15 @@
 class CreatePerson < ActiveRecord::Migration
   def self.up
-    create_table :person do |t|
-     t.string :User_name
-     t.string :Forename
-     t.string :Surname
-     t.string :EmailAddress
-     t.string :type
-     t.string :DepartmentOU
-     t.string :SubDepartmentCode
+    if !Rails.env.production? 
+      create_table :person do |t|
+       t.string :User_name
+       t.string :Forename
+       t.string :Surname
+       t.string :EmailAddress
+       t.string :type
+       t.string :DepartmentOU
+       t.string :SubDepartmentCode
+      end
     end
 
 		if Rails.env.test?
@@ -16,6 +18,8 @@ class CreatePerson < ActiveRecord::Migration
    end
 
   def self.down
-    drop table :person
+    if !Rails.env.production?
+     drop table :person
+    end
   end
 end
