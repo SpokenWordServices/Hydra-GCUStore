@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
   private
 
   def get_user_attributes
-    person = ActiveRecord::Base.connection.select_one('SELECT * FROM person WHERE user_name="' + username.to_s + '"')
-
+    person = ActiveRecord::Base.connection.select_one("SELECT * FROM person WHERE person.user_name='" + username.to_s + "'")
+    
     user_type = "guest"
     email = "guest@hydraathull.ac.uk"
 

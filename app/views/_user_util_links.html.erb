@@ -3,11 +3,7 @@
 		<%= create_resource_link %>
 	  <%= link_to "Log Out", destroy_user_session_path %> <%= current_user %>
 	<% else %>
-		<% if Rails.env != 'production' %>
   		<%= link_to 'Login', new_user_session_path %>
-  	<% else %>
-		  <%= link_to '-', new_user_session_path %>
-		<% end %>
 	<% end %>
 	 
 	<%= link_to "Search History", search_history_path %>
