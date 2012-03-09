@@ -212,6 +212,6 @@ Devise.setup do |config|
   # end
   
   #We are using the devise_cas_authenticable gem, so we need to add the CAS server we intend to use
-  config.cas_base_url = 'https://cas.hull.ac.uk/csus.cas'
+#cjn  config.cas_base_url = 'https://cas.hull.ac.uk/csus.cas'
 
 end
