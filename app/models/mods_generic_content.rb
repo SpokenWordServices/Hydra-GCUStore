@@ -78,6 +78,7 @@ class ModsGenericContent < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"}) 
+    t.additional_notes(:path=>"note", :attributes=>{:type=>"additionalNotes"})    
     
     # Proxies
     t.title(:proxy=>[:mods, :title_info, :main_title]) 

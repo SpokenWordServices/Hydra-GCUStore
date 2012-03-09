@@ -13,7 +13,8 @@ class CatalogController < ApplicationController
   before_filter :load_fedora_document, :only=>[:show, :edit]
   # # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
-
+  # # This filters out objects that you want to exclude from search results, like FileAssets
+  CatalogController.solr_search_params_logic << :exclude_unwanted_models
 
 	#Customised load_fedora_document to protect against users trying to access fileAsset objects
   def load_fedora_document
