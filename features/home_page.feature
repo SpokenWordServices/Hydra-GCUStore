@@ -18,4 +18,9 @@ Feature: Homepage
     Given I am logged in as "contentAccessTeam1@example.com"
 		Then I should see "search"
 		And I should see "Create Resource"
-		And I should see "contentAccessTeam1"
+
+  Scenario: Staff visiting home page should not see create resources link 
+    Given I am logged in as "staff1@example.com"
+    Then I should see "search"
+		And I should not see "Create Resource"
+

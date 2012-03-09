@@ -1,0 +1,19 @@
+staff1:
+  user_name: staff1
+  userType:  staff
+  emailAddress: staff1@example.com
+
+student1: 
+  user_name: student1
+  userType: student 
+  emailAddress: student1@example.com
+
+contentAccessTeam1:
+  user_name: contentAccessTeam1
+  userType: contentAccessTeam
+  emailAddress: contentaccessteam1@example.com
+
+committeesection1:
+  user_name:  committeesection1
+  userType: committeeSection
+  emailAddress: committeesection1@example.com

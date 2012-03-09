@@ -1,0 +1,16 @@
+contentAccessTeam:
+  name: contentAccessTeam
+  description: contentAccessTeam
+
+staff:
+  name: staff
+  description: staff
+
+student:
+  name: student
+  description: student
+
+guest:
+  name: guest
+  description: guest
+
