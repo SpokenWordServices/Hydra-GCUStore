@@ -219,13 +219,13 @@ module CatalogHelper
  end
 
  def bits_to_human_readable(num)
-          ['bytes','KB','MB','GB','TB'].each do |x|
-            if num < 1024.0
-              return "#{num.to_i} #{x}"
-            else
-              num = num/1024.0
-            end
-          end
+   ['bytes','KB','MB','GB','TB'].each do |x|
+    if num < 1024.0
+     return "#{num.to_i} #{x}"
+    else
+     num = num/1024.0
+     end
+    end
  end
 
 	#Quick utility method used to get long version of a date (YYYY-MM-DD) from short form (YYYY-MM) - Defaults 01 for unknowns - Exists in hull_model_methods too

@@ -5,6 +5,7 @@ class ModsDataset < ObjectMods
 
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
+      t.part_name(:path=>"partName")
     } 
    
     # Description is stored in the 'abstract' field 
@@ -15,7 +16,7 @@ class ModsDataset < ObjectMods
      t.temporal
      t.geographic
     }
-		t.location_subject(:path=>"subject", :attributes=>{:ID=>"geographical"}) {
+		t.location_subject(:path=>"subject", :attributes=>{:ID=>"location"}) {
 			t.cartographics {
 				t.coordinates
 			}
@@ -80,9 +81,11 @@ class ModsDataset < ObjectMods
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
     t.citation(:path=>"note", :attributes=>{:type=>"citation"})
+    t.software(:path=>"note", :attributes=>{:type=>"software"})
     
     # Proxies
-    t.title(:proxy=>[:mods, :title_info, :main_title]) 
+    t.title(:proxy=>[:mods, :title_info, :main_title])
+    t.version(:proxy=>[:mods, :title_info, :part_name])
     t.date_issued(:proxy=>[:origin_info, :date_issued])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
     t.related_item(:proxy=>[:web_related_item, :location, :primary_display])
@@ -95,11 +98,12 @@ class ModsDataset < ObjectMods
     t.topic_tag(:proxy=>[:subject, :topic])
     t.geographic_tag(:proxy=>[:subject, :geographic])
     t.temporal_tag(:proxy=>[:subject, :temporal])
+    t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
 
 	  t.record_info(:path=>"recordInfo") {
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
       t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
-   }
+    }
   end
   
      # accessor :title, :term=>[:mods, :title_info, :main_title]
