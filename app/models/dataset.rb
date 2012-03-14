@@ -20,7 +20,8 @@ class Dataset < ActiveFedora::Base
 
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
-  delegate :title, :to=>:descMetadata 
+  delegate :title, :to=>:descMetadata
+  delegate :version, :to=>:descMetadata 
   delegate :coordinates, :to=>:descMetadata
   delegate :topic_tag, :to=>:descMetadata
   delegate :geographic_tag, :to=>:descMetadata
@@ -36,6 +37,7 @@ class Dataset < ActiveFedora::Base
   delegate :lang_code, :to=>:descMetadata
   delegate :digital_origin, :to=>:descMetadata
   delegate :type_of_resource, :to=>:descMetadata
+  delegate :coordinates, :to=>:descMetadata
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
