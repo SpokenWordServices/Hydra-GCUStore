@@ -1,3 +1,5 @@
+
+
 <div id="description">
 	<dl>
 	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
@@ -34,9 +36,9 @@
 	</dl>
 </div>
 <div id="map">
-   <img src="http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=256x256&maptype=roadmap
+  <!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=256x256&maptype=roadmap
 &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
 &markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false"/>
-  </div>
+  </div> -->
 
 <%= include_google_static_map(@document_fedora) %>

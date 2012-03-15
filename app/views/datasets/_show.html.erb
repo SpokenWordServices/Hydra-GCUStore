@@ -1,3 +1,7 @@
+<% content_for :google_maps do %>
+ <%= javascript_include_tag 'google_maps' %>
+<% end %>
+
 <div class="document_viewer" id="cover_container">
   <div class="content-type-header"><h1><%= @document["genre_t"] %></h1></div>
   <%= render :partial => 'datasets/show_description' %>

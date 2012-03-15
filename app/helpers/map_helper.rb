@@ -4,46 +4,57 @@ module MapHelper
   #This is will use the coordinates fields...
   def include_google_static_map(document_fedora)
     if !document_fedora.nil?
-       get_coordinate_list( get_coordinates_from_document_fedora(document_fedora) )
+       encoded_polyline =  create_polyline(get_coordinate_list( get_coordinates_from_document_fedora(document_fedora) ) )    
+       display_map(encoded_polyline)       
     end
   end
 
   def get_coordinates_from_document_fedora(document_fedora)
    #standard place for coordinates is delagated to coordinates variable
-   return document_fedora.coordinates
+   return document_fedora.coordinates.to_s
   end   
 
+  def display_map(encoded_polyline)
+          
+      map_size = "300x300"
+      fillcolor = "0xAA000033"
+      color = "0xFFFFFF00"
 
-  def display_map(coordinates)
-    
+      debugger
+      
+      google_maps_url = "https://maps.googleapis.com/maps/api/staticmap?sensor=false&size=" + map_size + "&path=fillcolor:" + fillcolor + "%7Ccolor:" + color + "%7Cenc:" + encoded_polyline[:points] + "" 
+
+      map = <<-EOS
+        <img src="#{google_maps_url}" alt="Map">
+      EOS
+
+     map.html_safe
  
   end
   
   def create_polyline( coordinate_list )
     
-      Role.find_by_name(r).users.map { |user| user.username }
-
-
-    #coordinate_list.each {    } 
-    #gmap_location_array = coordinate_list.map { |long,lat|   }
-
+    data = []
+    coordinate_list.each { |coord|  data << [coord.latitude, coord.longitude]  } 
+   
     encoder = Hull::GMapPolylineEncoder.new()
-    encoder.encode([[-0.451126,53.847057]])
+    encoder.encode(data)
   end
 
 
-  def get_coordinate_list(coordinate_list)
+  def get_coordinate_list(coordinates)
+
    #This gets us an array of coords
-   coords = coordinate_list.split(" ")
+   coords = coordinates.split(" ")
 
    #Holding array for our array of coordinates
    coordinate_list = []
   
    coords.each do |coordinate|
      values = coordinate.split(",")     
-     long = values[0]
-     lat = values[1]
-     if values.size == 3 then alt = values[2] end
+     long = values[0].to_f
+     lat = values[1].to_f
+     if values.size == 3 then alt = values[2].to_f end
      coordinate_list << Coordinate.new(long, lat, alt)
    end
 

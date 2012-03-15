@@ -12,10 +12,12 @@
     <%= javascript_include_tag :defaults, 'blacklight/blacklight' %>
   	<%= javascript_include_tag 'togglejquery' %>
   	<%= javascript_include_tag 'local' %>
+    <%= yield :google_maps %>
     <%= stylesheet_link_tag 'jquery/ui-lightness/jquery-ui-1.8.1.custom'%>
     <%= stylesheet_link_tag 'yui', 'blacklight/blacklight', :media=>'all' %>
     <%= stylesheet_link_tag 'application', :media=>'all' %>
     <%= stylesheet_link_tag 'local', :media=>'all' %>
+    
 
 	<!-- Google analytics
 	<script type="text/javascript">
