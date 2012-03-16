@@ -19,39 +19,54 @@ module Hull::AssetsControllerHelper
   # @param [ActiveFedora::Base] document to update membership for. Defaults to using @document
   def update_set_membership(document=@document)
     structural = params["Structural Set"]
-    structural = structural.first if structural.kind_of? Array
-    if structural && structural.empty?
-			 #Only set the queue membership to :proto if it doesn't have set, or already belong to proto/qa queue
-			 unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
-      	document.change_queue_membership :proto
-      	structural = nil
-			 end
-    end
-    display = params["Display Set"].to_s
-    display = nil if display.empty?
-    if document.respond_to?(:apply_set_membership)
-      document.apply_set_membership([display, structural].compact)
+    display = params["Display Set"]
+    harvesting = params["Harvesting Set"]
+  
+    #when the structural form field is nil we don't do any 
+    #structural/display set (isMemberOf) changes 
+    unless structural.nil?
+      structural = structural.first if structural.kind_of? Array
+      if structural && structural.empty?
+        #Only set the queue membership to :proto if it doesn't have set, or already belong to proto/qa queue
+			     unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
+       	  document.change_queue_membership :proto
+      	   structural = nil
+			     end
+      end
+
+      unless display.nil?
+        display = display.first if display.kind_of? Array
+        display = nil if display.empty?
+      end
+     
+      if document.respond_to?(:apply_set_membership)
+        document.apply_set_membership([display, structural].compact)
+      end
+		  
+      # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
+      # otherwise, the structural set the governing apo
+      # unless the object is within queue, in which case the queue dictates the governedBy
+  	   unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
+        if document.respond_to?(:apply_governed_by)
+          if document.kind_of? StructuralSet
+            document.apply_governed_by('hull-apo:structuralSet')
+            document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
+          elsif structural
+        	  document.apply_governed_by(structural)
+     	   end
+    	  end
+ 		   end
     end
 
-		harvesting = params["Harvesting Set"].to_s
-		#if the document model allows setting of harvesting set....
-		if document.respond_to?(:apply_harvesting_set_membership)
-			document.apply_harvesting_set_membership([harvesting].compact)
-		end
+    #unless the harvesting field is nil...  
+    unless harvesting.nil?
+      harvesting = harvesting.first if harvesting.kind_of? Array
+      #if the document model allows setting of harvesting set....
+		    if document.respond_to?(:apply_harvesting_set_membership)
+			    document.apply_harvesting_set_membership([harvesting].compact)
+		    end
+    end
 
-    # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
-    # otherwise, the structural set the governing apo
-    # unless the object is within queue, in which case the queue dictates the governedBy
-  	 unless document.queue_membership.to_s == "proto" || document.queue_membership.to_s == "qa"
-      if document.respond_to?(:apply_governed_by)
-        if document.kind_of? StructuralSet
-          document.apply_governed_by('hull-apo:structuralSet')
-          document.copy_default_object_rights(structural.gsub("info:fedora/", '')) if structural
-        elsif structural
-        	document.apply_governed_by(structural)
-     	 end
-    	end
- 		end
 	end
 
   def validate_parameters
