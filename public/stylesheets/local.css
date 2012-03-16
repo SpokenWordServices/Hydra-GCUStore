@@ -1,4 +1,4 @@
-/* Stylesheet for Hull Hydra  
+/* Stylesheet for GCU-Store  
 
 RG  090818
 
@@ -102,8 +102,9 @@ hr {
   padding-top: 10px;
   height: 35px;
   /* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
-  background-color: #91A23D;
+  background-color: #0065bd;
 }
+/* light grey #ededed */
 /* nav link image is 25px, 26px to give separation */
 /* nav link image is now 20px, 21px to give separation */
 
@@ -178,17 +179,17 @@ div#links-right a {
     font-weight: bold;
     padding-left: 15px;
     padding-top: 26px;
-	height: 34px;
-	background-color: #000;
+	height: 50px;
+	/*background: url(/images/gcal-logo.gif) top right;*/
 }
 
 #logo {
     margin-top: 0px;
     margin-left: 0px;
     height: 0px;
-    background: url(/images/new-bw-logo.gif) top right no-repeat #000000;
+    background: url(/images/gacl-header-bg.gif) top right repeat-x #0065bd;
     background-position: top right;
-    padding-bottom:60px;
+    padding-bottom:80px;
  }
  /*logo image is 51px, 55px to give margin */
 
@@ -378,6 +379,7 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
 #yui-main {
 		position: static;
     width: 930px;
+    
 }
 
 /* Overriding to remove the bottom border from asset view */
