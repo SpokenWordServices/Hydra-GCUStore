@@ -116,6 +116,9 @@ describe AssetsController do
       mock_document = mock("document")
       mock_document.stubs(:update_from_computing_id).returns(nil)
       mock_document.stubs(:respond_to?).with(:apply_governed_by).returns(true)
+      mock_document.stubs(:respond_to?).with(:apply_base_metadata).returns(true)
+      mock_document.expects(:apply_base_metadata)
+
       controller.expects(:check_embargo_date_format).returns(nil)
 
       ModsAsset.expects(:find).with("_PID_").returns(mock_document)
@@ -145,6 +148,7 @@ describe AssetsController do
       before do
         ActiveFedora::RubydoraConnection.instance.connection
         @obj = UketdObject.new
+        @obj.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata") #we need this or else we don't get a descMetadata ds (causes uketd_dc dissem error)
         @obj.save
       end
       it "should add the object to structural and display sets" do
