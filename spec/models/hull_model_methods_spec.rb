@@ -92,15 +92,20 @@ describe HullModelMethods do
       @mock_desc_ds.expects(:get_values).with([:title], {}).returns('My title')
       @mock_dc_ds = mock("DCDatastream")
       @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_title]=>'My title')
+      @testclassone.expects(:generate_object_label).returns("My title - John Smith;")
       @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds, "DC"=>@mock_dc_ds})
     end
     it "should copy the date from the descMetadata to the dc datastream if it is present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns('2011-10')
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_valid], {}).returns('')
       @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_date]=>'2011-10')
+      @mock_desc_ds.expects(:update_indexed_attributes).with([:record_info,:record_change_date]=> Time.now.strftime("%Y-%m-%d"))
       @testclassone.apply_additional_metadata(123).should == true
     end
     it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns([])
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_valid], {}).returns([])
+      @mock_desc_ds.expects(:update_indexed_attributes).with([:record_info,:record_change_date]=> Time.now.strftime("%Y-%m-%d")) #update date still gets set
       @testclassone.apply_additional_metadata(123).should == true
     end
 

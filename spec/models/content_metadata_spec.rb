@@ -9,6 +9,7 @@ describe ContentMetadata do
 
   describe ".new" do
     it "should initialize a new content metadata template if no xml is provided" do
+      @inner_obj.repository.expects(:config)
       content_metadata_ds = ContentMetadata.new(@inner_obj, nil)
       content_metadata_ds.ng_xml.to_xml.should == ContentMetadata.xml_template.to_xml
     end
@@ -29,6 +30,7 @@ describe ContentMetadata do
   end
   describe "insert_resource" do
     it "should generate a new contributor of type (type) into the current xml, treating strings and symbols equally to indicate type and mark the datastream as dirty" do
+      @inner_obj.repository.expects(:config)   
       @content_metadata_ds.find_by_terms(:resource).length.should == 0
       @content_metadata_ds.dirty?.should be_false
       node, index = @content_metadata_ds.insert_resource()
@@ -46,6 +48,7 @@ describe ContentMetadata do
   
   describe "remove_resource" do
     it "should remove the corresponding resource from the xml and then mark the datastream as dirty" do
+      @inner_obj.repository.expects(:config)
       @content_metadata_ds.insert_resource
       @content_metadata_ds.save
       @content_metadata_ds.find_by_terms(:resource).length.should == 1

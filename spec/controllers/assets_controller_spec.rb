@@ -149,6 +149,7 @@ describe AssetsController do
         ActiveFedora::RubydoraConnection.instance.connection
         @obj = UketdObject.new
         @obj.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata") #we need this or else we don't get a descMetadata ds (causes uketd_dc dissem error)
+        @obj.dc.update_indexed_attributes([:dc_genre]=>"Thesis or Dissertation")
         @obj.save
       end
       it "should add the object to structural and display sets" do
@@ -171,29 +172,28 @@ describe AssetsController do
           "Structural Set" => ["info:fedora/hull:3375"],
           "Display Set" => ["info:fedora/hull:700"]
         }
-
         put :update, {:id=>@obj.pid}.merge(simple_request_params)
         @updated = UketdObject.find(@obj.pid)
         @updated.relationships(:is_member_of).should include("info:fedora/hull:3375", "info:fedora/hull:700")
         #@updated.relationships(:is_governed_by).should == ["info:fedora/hull:3375"]
-				#The object isn't governed_by the structural set until it's published
-				@updated.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
+				    #The object isn't governed_by the structural set until it's published
+				    @updated.relationships(:is_governed_by).should == ["info:fedora/hull:protoQueue"]
       end
       after do
-        #@obj.delete
+        @obj.delete
       end
     end
   end
   
   describe "destroy" do
+    before do
+    	ActiveFedora::RubydoraConnection.instance.connection
+     @obj = UketdObject.new
+     @obj.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata") #we need this or else we don't get a descMetadata ds (causes uketd_dc dissem error)
+     @obj.save
+    end
     it "should delete the asset identified by pid" do
-      mock_obj = mock("asset", :delete)
-      mock_obj.expects(:destroy_child_assets).returns([])
-      #TODO  Look into why the next two expectations are happening twice
-      ActiveFedora::Base.expects(:load_instance_from_solr).with("__PID__").returns(mock_obj).twice
-      ActiveFedora::ContentModel.expects(:known_models_for).with(mock_obj).returns([UketdObject]).twice
-      UketdObject.expects(:load_instance_from_solr).with("__PID__").returns(mock_obj)
-      delete(:destroy, :id => "__PID__")
+       delete(:destroy, :id => @obj.pid)
     end
   end
   
