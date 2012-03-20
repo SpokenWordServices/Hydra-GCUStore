@@ -1,35 +1,42 @@
 require 'lib/hull/gmap_polyline_encoder'
 module MapHelper
 
-  #This is will use the coordinates fields...
-  def include_google_static_map(document_fedora)
-    if !document_fedora.nil?
-       encoded_polyline =  create_polyline(get_coordinate_list( get_coordinates_from_document_fedora(document_fedora) ) )    
-       display_map(encoded_polyline)       
+  def display_google_js_map(coordinates, dt_title)
+    unless coordinates.nil?
+      coordinates = coordinates.first if coordinates.kind_of? Array
+       map = <<-EOS
+        <dt>#{dt_title}</dt>
+        <dd>
+          <div id="map_canvas" style="width:500px; height:281px"></div>
+        </dd>
+       #{hidden_field(:document_fedora, :coordinates, :value => coordinates )}
+      EOS
+      map.html_safe
     end
   end
 
-  def get_coordinates_from_document_fedora(document_fedora)
-   #standard place for coordinates is delagated to coordinates variable
-   return document_fedora.coordinates.to_s
-  end   
-
-  def display_map(encoded_polyline)
-          
-      map_size = "300x300"
-      fillcolor = "0xAA000033"
-      color = "0xFFFFFF00"
-
-      debugger
-      
-      google_maps_url = "https://maps.googleapis.com/maps/api/staticmap?sensor=false&size=" + map_size + "&path=fillcolor:" + fillcolor + "%7Ccolor:" + color + "%7Cenc:" + encoded_polyline[:points] + "" 
+  
+  def display_google_static_map(coordinates, dt_title)
+    unless coordinates.nil?
+      coordinates = coordinates.first if coordinates.kind_of? Array    
+      encoded_polyline =  create_polyline(get_coordinate_list( coordinates ) )
 
       map = <<-EOS
-        <img src="#{google_maps_url}" alt="Map">
+        <dt>#{dt_title}</dt>
+        <dd>
+         <img src="#{get_static_google_map_url(encoded_polyline)}" alt="Map">
+        </dd>
       EOS
-
-     map.html_safe
- 
+      map.html_safe
+    end
+  end
+  
+  def get_static_google_map_url(encoded_polyline)
+      map_size = "500x281"
+      fillcolor = "0xAA000033"
+      color = "0xFFFFFF00"
+      
+      google_maps_url = "https://maps.googleapis.com/maps/api/staticmap?sensor=false&size=" + map_size + "&path=fillcolor:" + fillcolor + "%7Ccolor:" + color + "%7Cenc:" + encoded_polyline[:points] + ""  
   end
   
   def create_polyline( coordinate_list )

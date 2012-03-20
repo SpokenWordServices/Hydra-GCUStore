@@ -1,5 +1,3 @@
-
-
 <div id="description">
 	<dl>
 	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
@@ -24,7 +22,6 @@
       </dd>
     <% end %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:location_subject, :cartographics, :coordinates], "Coordinates", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "Rights", "dd_text") %>
 	 <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:web_related_item, :location, :primary_display], "Related web materials", "dd_text") %>
@@ -33,12 +30,10 @@
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre", "dd_text") %>
+   <%= display_google_js_map(@document_fedora.coordinates, "Map") %>
 	</dl>
 </div>
-<div id="map">
-  <!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=256x256&maptype=roadmap
-&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-&markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false"/>
-  </div> -->
 
-<%= include_google_static_map(@document_fedora) %>
+
+
+
