@@ -107,4 +107,8 @@ Hull::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  # Allow static pages to be routed within the app - this must be the last line in this file
+
+  match ':action' => 'static#:action'
 end
