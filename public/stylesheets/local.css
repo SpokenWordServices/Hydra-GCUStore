@@ -102,7 +102,8 @@ hr {
   padding-top: 10px;
   height: 35px;
   /* background: url(/images/top_nav_bg_h_new.gif) repeat-x; */
-  background-color: #0065bd;
+  /* background-color: #0065bd; cally-blue*/
+  background-color: #001F5C; 
 }
 /* light grey #ededed */
 /* nav link image is 25px, 26px to give separation */
@@ -183,11 +184,18 @@ div#links-right a {
 	/*background: url(/images/gcal-logo.gif) top right;*/
 }
 
+#logobg {
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 0px;
+    background: url(/images/gacl-header-bg.gif) top right repeat-x ;
+    padding-bottom:80px;
+ }
 #logo {
     margin-top: 0px;
     margin-left: 0px;
     height: 0px;
-    background: url(/images/gacl-header-bg.gif) top right repeat-x #0065bd;
+    background: url(/images/gcal-logo.gif) top right no-repeat;
     background-position: top right;
     padding-bottom:80px;
  }
