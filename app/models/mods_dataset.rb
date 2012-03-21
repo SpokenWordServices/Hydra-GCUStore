@@ -1,7 +1,7 @@
 class ModsDataset < ObjectMods
 
   set_terminology do |t|
-    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
+    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-4.xsd")
 
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
@@ -17,6 +17,8 @@ class ModsDataset < ObjectMods
      t.geographic
     }
 		t.location_subject(:path=>"subject", :attributes=>{:ID=>"location"}) {
+      t.display_label(:path=>{:attribute=>"displayLabel"}, :namespace_prefix => nil)
+      t.coordinates_type(:path=>"topic")
 			t.cartographics {
 				t.coordinates
 			}
@@ -99,6 +101,8 @@ class ModsDataset < ObjectMods
     t.geographic_tag(:proxy=>[:subject, :geographic])
     t.temporal_tag(:proxy=>[:subject, :temporal])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
+    t.coordinates_type(:proxy=>[:location_subject, :coordinates_type])
+    t.coordinates_title(:proxy=>[:location_subject, :display_label])
 
 	  t.record_info(:path=>"recordInfo") {
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
@@ -111,10 +115,10 @@ class ModsDataset < ObjectMods
     # Generates an empty Mods Article (used when you call ModsArticle.new without passing in existing xml)
     def self.xml_template
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.mods(:version=>"3.3", "xmlns:xlink"=>"http://www.w3.org/1999/xlink",
+        xml.mods(:version=>"3.4", "xmlns:xlink"=>"http://www.w3.org/1999/xlink",
            "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
            "xmlns"=>"http://www.loc.gov/mods/v3",
-           "xsi:schemaLocation"=>"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd") {
+           "xsi:schemaLocation"=>"http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd") {
              xml.titleInfo(:lang=>"") {
                xml.title
              }

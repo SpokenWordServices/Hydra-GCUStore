@@ -284,6 +284,16 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "swe" => "Swedish"    
       }
     end
+
+    def self.coordinates_type 
+      {
+        "" => "",
+        "LineString" => "Path",
+		    "Polygon" => "Polygon",
+        "Point" => "Point"
+      }
+    end
+
     
     def self.dc_relator_terms
        {"acp" => "Art copyist",

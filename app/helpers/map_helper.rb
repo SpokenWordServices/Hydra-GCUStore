@@ -1,8 +1,8 @@
 require 'lib/hull/gmap_polyline_encoder'
 module MapHelper
 
-  def display_google_js_map(coordinates, dt_title)
-    unless coordinates.nil?
+  def display_google_js_map(coordinates, coordinates_type, coordinates_title, dt_title)
+    unless coordinates.nil? || coordinates.empty? 
       coordinates = coordinates.first if coordinates.kind_of? Array
        map = <<-EOS
         <dt>#{dt_title}</dt>
@@ -10,6 +10,8 @@ module MapHelper
           <div id="map_canvas" style="width:500px; height:281px"></div>
         </dd>
        #{hidden_field(:document_fedora, :coordinates, :value => coordinates )}
+       #{hidden_field(:document_fedora, :coordinates_type, :value => coordinates_type )}
+       #{hidden_field(:document_fedora, :coordinates_title, :value => coordinates_title )}
       EOS
       map.html_safe
     end

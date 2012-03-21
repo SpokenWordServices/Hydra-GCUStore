@@ -38,7 +38,8 @@ class Dataset < ActiveFedora::Base
   delegate :digital_origin, :to=>:descMetadata
   delegate :type_of_resource, :to=>:descMetadata
   delegate :coordinates, :to=>:descMetadata
-
+  delegate :coordinates_title, :to=>:descMetadata
+  delegate :coordinates_type, :to=>:descMetadata
   # A place to put extra metadata values
   has_metadata :name => "properties", :label=>"Workflow properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string

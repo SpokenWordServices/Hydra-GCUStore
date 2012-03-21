@@ -8,21 +8,25 @@ function initialize() {
 
 
 function displayMap() {
+
  coords = getCoordinates();
+ coords_type = getCoordinatesType();
+ coords_title = getCoordinatesTitle();
  coords_count = coords.length
 
+ alert(coords_type);
+ 
  if (coords_count == 1) {
-  singlePlacemark(coords[0].longitude, coords[0].latitude)
-
+  singlePlacemark(coords[0].longitude, coords[0].latitude, coords_title)
  }
  else if (coords_count > 1) {
-   polygonPlacemarks(coords)
+   polygonPlacemarks(coords, coords_title)
  }
 
 }
 
 
-function singlePlacemark(longitude, latitude) {
+function singlePlacemark(longitude, latitude, coords_title) {
 
   var myLatlng = new google.maps.LatLng( latitude, longitude);
 
@@ -35,16 +39,15 @@ function singlePlacemark(longitude, latitude) {
 
   var marker = new google.maps.Marker({
       position: myLatlng,
-      title:"Dataset marker"
+      title: coords_title
   });
 
-  // To add the marker to the map, call setMap();
-  marker.setMap(map);
+  addInfoWindowTextMarkerToMap(marker, map, coords_title); 
 }
 
 
 
-function polygonPlacemarks(coords) {
+function polygonPlacemarks(coords, coords_title) {
 
  var myLatLng = new google.maps.LatLng(coords[0].latitude, coords[0].longitude);
 
@@ -83,36 +86,90 @@ function polygonPlacemarks(coords) {
     fillOpacity: 0.35
   });
 
+  var marker = new google.maps.Marker({
+      position: latlngbounds.getCenter(),
+      title: coords_title
+   });
+ 
+  addInfoWindowTextMarkerToMap(marker, map, coords_title);
+
   polygon_area.setMap(map);
 }
+
+function addInfoWindowTextMarkerToMap(marker, map, text) {
+
+ if (text.length > 0) {
+   info_text = '<div id="content"><h2>Description</h2><p>' + text + '</p></div>';
+
+   var infowindow = new google.maps.InfoWindow({
+    content: info_text
+   });  
+
+   google.maps.event.addListener(marker, 'mouseover', function() {
+   infowindow.open(map,marker);
+   });
+  }
+
+  marker.setMap(map);
+}
+
 
 
 function getCoordinates() {
 
-  var coordinates = $("#document_fedora_coordinates").val();
-  var coordinates_array = coordinates.split(" ");
-  var count = coordinates_array.length
- 
   var array_of_coord_objs = [];
 
-  for(var i=0; i<count; i++) {
-    
-    var coords = coordinates_array[i].split(",")
+  //Check that field containing coordinates exists....
+  if ($("#document_fedora_coordinates").val() != undefined)
+  {
+    var coordinates = $("#document_fedora_coordinates").val();
+    var coordinates_array = coordinates.split(" ");
+    var count = coordinates_array.length
 
-    if (coords.length == 2) 
-    {
-      //var coord = new coordinate(coords[0], coords[1], "");
-      array_of_coord_objs.push( new coordinate(coords[0], coords[1], "") );
-    }
-    else if (coords.length == 3)
-    {
-       array_of_coord_objs.push( new coordinate(coords[0], coords[1], coords[2]) );
-    }
+    for(var i=0; i<count; i++) {
+      
+      var coords = coordinates_array[i].split(",")
+
+      if (coords.length == 2) 
+      {
+        //var coord = new coordinate(coords[0], coords[1], "");
+        array_of_coord_objs.push( new coordinate(coords[0], coords[1], "") );
+      }
+      else if (coords.length == 3)
+      {
+         array_of_coord_objs.push( new coordinate(coords[0], coords[1], coords[2]) );
+      }
+     }    
   }
   return array_of_coord_objs;
 }
 
+function getCoordinatesTitle() {
+  var coordinates_title = "";
 
+  if ($("#document_fedora_coordinates_title").val() != undefined)
+  {
+    coordinates_title = $("#document_fedora_coordinates_title").val();
+  }
+
+  return coordinates_title;
+}
+
+function getCoordinatesType() {
+  var coordinates_type = "";
+
+  if ($("#document_fedora_coordinates_type").val() != undefined)
+  {
+    coordinates_type = $("#document_fedora_coordinates_type").val();
+  }
+
+  return coordinates_type;
+}
+
+
+/*
+  coordinate object (simply longitude,latitude,altitude) 
+*/
  function coordinate(longitude, latitude, altitude)
  {
   this.longitude=longitude;
