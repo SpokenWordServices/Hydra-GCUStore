@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%=csrf_meta_tag%>
+    
+    <title><%= h(@page_title || "GCU Digital Repository") %></title>
+    <!-- <link href="<%= opensearch_catalog_url(:format => 'xml') %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/> -->
+    <%= javascript_include_tag :defaults, 'blacklight/blacklight' %>
+  	<%= javascript_include_tag 'togglejquery' %>
+  	<%= javascript_include_tag 'local' %>
+    <%= stylesheet_link_tag 'jquery/ui-lightness/jquery-ui-1.8.1.custom'%>
+    <%= stylesheet_link_tag 'yui', 'blacklight/blacklight', :media=>'all' %>
+    <%= stylesheet_link_tag 'application', :media=>'all' %>
+    <%= stylesheet_link_tag 'local', :media=>'all' %>
+
+	<!-- Google analytics
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-1210636-5']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script> -->
+
+<!-- Google analytics  Dev/Test account -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29412570-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- -->
+
+  </head>
+  
+  <body>
+
+	<div id="doc4" class="yui-t2">
+
+	<div id="site-title">Spoken Word Services</div>	    
+	<div id="logobg"><a href="http://www.gcu.ac.uk/"><div id="logo"></div></a></div>
+
+	<div id="uni-nav-links">
+		<ul>
+			<li>
+      <%= link_to 'Home', root_path %>
+			<!--	<a href="http://www.gcu.ac.uk/" target="_blank">Home</a> -->
+			</li>
+			<li>
+				<a href="http://www.gcu.ac.uk/library"  target="_blank">Library</a>
+			</li>
+			<li>
+				<a href="about">About</a>
+			</li>
+			<li>
+				<a href="contact">Contact</a>
+			</li>
+		</ul>
+
+		 <div id="blacklight-user-links" align="right">
+		    <%= render :partial=>'/user_util_links' %>
+		 </div>
+	</div>
+
+	<div id="hd">
+		<div class="yui-g">
+			<div class="yui-u first">
+				<h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
+			</div>
+		 	<!-- <div class="yui-u">
+				<%= render :partial=>'/user_util_links' %>
+			</div> -->
+		</div>
+	</div>
+	    
+	<div id="bd">
+      	
+      	<div id="yui-main">
+          <div class="yui-b <%= params[:action] %>">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        </div>
+        
+        <div class="yui-b"><%= sidebar_items.join('').html_safe %></div>
+        
+	</div>
+	    
+	<div id="ft"><%= @footer %></div>
+
+		<div id="hullFooter">  	
+			<table class="tableNoBorder" width="100%"  border="0">
+				<tr>
+					<td align="left" valign="top" width="20%" >
+						&copy; 2008 - <%= Time.now.year %><br/>
+						<a href="http://www.gcu.ac.uk" target="_blank">GCU</a>, <a href="http://www.hull.ac.uk" target="_blank">The University of Hull</a><br>and the <a href="https://projecthydra.org" target="_blank">Hydra Project</a>
+					</td>
+					<td align="center" valign="top" width="65%" >
+          <a href="http://www.gcu.ac.uk" title="Glasgow Caledonian University"><img src="/images/GCU_logo_crop.jpg" alt="GCU Home" class="footerlogo" width="42" height="42"></a>
+
+          <a href="http://www.bbc.co.uk" title="BBC Information & Archives"><img src="/images/bbc.gif" alt="BBC Information & Archives" class="footerlogo" width="65" height="22"></a>
+
+          <a href="http://matrix.msu.edu" title="MATRIX at Michigan State University"><img src="/images/msu.gif" alt="MATRIX at Michigan State University" class="footerlogo" width="95" height="23"></a>
+
+          <a href="http://www.at.northwestern.edu/spoken/index.html" title="Academic Technologies at Northwestern University"><img src="/images/nu.gif" alt="Academic Technologies at Northwestern University" class="footerlogo" width="67" height="42"></a>
+
+          <a href="http://www.jisc.ac.uk" title="JISC - Joint Information Systems Committee"><img src="/images/jisc.gif" alt="JISC - Joint Information Systems Committee" class="footerlogo" width="57" height="31"></a>
+
+          <a href="http://www.nsf.gov" title="National Science Foundation"><img src="/images/nsf.gif" alt="National Science Foundation" class="footerlogo" width="44" height="45"></a>
+
+
+					</td>
+					<td align="right" valign="top" width="15%" >
+						Version 2.0
+					</td>
+				</tr>
+			</table>
+		</div>  
+
+	</div>
+
+    <div id="lightboxContainer" style="display:none;">
+    </div>
+
+  </body>
+  
+</html>

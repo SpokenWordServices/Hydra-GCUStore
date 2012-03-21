@@ -210,7 +210,7 @@ div#links-right a {
  }
  
 #hullFooter {
-	background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #D9E2E8;
+	background: url("/images/shadowbottom.gif") repeat-x scroll left bottom #FFFFFF;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 4px;
@@ -218,6 +218,12 @@ div#links-right a {
     width: 940px;
 	float: left;
 	margin-top: -56px;
+}
+
+img.footerlogo {
+ padding-left: 7px;
+ padding-right: 7px;
+ vertical-align: middle;
 }
 
 #document h1 {
@@ -249,7 +255,10 @@ div#links-right a {
  /* INDEX & CATALOG DISPLAY */
 
 h1.site_title {
- background:url(/images/hydra_logo_h50_transparent_bg.png) no-repeat scroll left top transparent;
+ /*background:url(/images/hydra_logo_h50_transparent_bg.png) no-repeat scroll left top transparent;*/
+background: no-repeat url(/images/bertsmall.png) 0px 0px;
+    width: 144px;
+    height: 75px;
 }
 
  
@@ -390,6 +399,12 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
     
 }
 
+/* Overriding to search bar */
+.yui-g
+{
+
+}
+
 /* Overriding to remove the bottom border from asset view */
 .document 
 {
@@ -398,14 +413,18 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
 
 #hd
 {
+ background: #E6EDF2 repeat-y url(/images/gradient.png) 144px 0px;
     margin:0px;
-    background-color: #D9E2E8;
+/*    background-color: #D9E2E8;*/
     border-bottom:0px;
-    padding: 1.5em 0;
+    padding: 0 0;
 }
 
+
 #hd .yui-g .first {
-    padding-left: 25px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 #search {
@@ -461,6 +480,7 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
     margin-top: -78px;
     padding: 7px 1px 5px 10px;
 	border-top: 1px solid #EBEFD0;
+
 	border-right: 1px solid #B6C462;
 	border-bottom: 1px solid #B6C462;
 	border-left: 1px solid #EBEFD0;
