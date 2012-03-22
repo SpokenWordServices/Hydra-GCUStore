@@ -288,7 +288,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     def self.coordinates_type 
       {
         "" => "",
-        "LineString" => "Path",
+        "Path" => "LineString",
 		    "Polygon" => "Polygon",
         "Point" => "Point"
       }

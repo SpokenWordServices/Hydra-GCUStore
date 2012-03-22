@@ -29,7 +29,7 @@ class Dataset < ActiveFedora::Base
   delegate :rights, :to=>:descMetadata
   delegate :date_issued, :to=>:descMetadata
   delegate :description, :to=>:descMetadata
-  delegate :related_item, :to=>:descMetadata
+  delegate :related_web_item, :to=>:descMetadata
   delegate :extent, :to=>:descMetadata
   delegate :see_also, :to=>:descMetadata
   delegate :publisher, :to=>:descMetadata
@@ -58,7 +58,12 @@ class Dataset < ActiveFedora::Base
     			errors << "descMetadata error: invalid date"
         end
       end
-		end		
+
+      coordinates = @pending_attributes["descMetadata"][[:location_subject, :cartographics, :coordinates]]["0"]
+      if !coordinates.empty? 
+        errors << "descMetadata error: a valid coordinates type has not been specified" if @pending_attributes["descMetadata"][[:location_subject, :coordinates_type]]["0"].empty?
+      end
+		end	
     is_valid?
   end
 

@@ -90,7 +90,7 @@ class ModsDataset < ObjectMods
     t.version(:proxy=>[:mods, :title_info, :part_name])
     t.date_issued(:proxy=>[:origin_info, :date_issued])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
-    t.related_item(:proxy=>[:web_related_item, :location, :primary_display])
+    t.related_web_item(:proxy=>[:web_related_item, :location, :primary_display])
     t.extent(:proxy=>[:physical_description, :extent])
     t.publisher(:proxy=>[:origin_info, :publisher])
   

@@ -1,7 +1,8 @@
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>'dataset')%>" method="post" data-resourceType="dataset" accept-charset="utf-8" >
   <% @content_type = "dataset" %>
   <% choices = ObjectMods.language_relator_terms %>
-  <% coordinates_type = ObjectMods.coordinates_type %>
+  <% coordinates_type = [] %>
+  <% ObjectMods.coordinates_type.each_pair{|key, value| coordinates_type << [key,value] }  %>
   <input type="hidden" name="content_type" value="dataset" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
@@ -64,7 +65,7 @@
          <%= fedora_field_label("descMetadata",[:location_subject, :coordinates_type],"Coordinates type") %>
         </dt>
         <dd>
-          <%= fedora_select(@document_fedora,"descMetadata", [:location_subject, :coordinates_type], :choices=>coordinates_type.values) %>
+          <%= fedora_select(@document_fedora,"descMetadata", [:location_subject, :coordinates_type], :choices=>coordinates_type) %>
         </dd>
       </div>
      </div>
@@ -208,6 +209,7 @@
 	  </div>
     </dl>
    </fieldset>
+
   <input type="hidden"  name="_method" value="put"/>  
   <div>
     <div class="form-control">

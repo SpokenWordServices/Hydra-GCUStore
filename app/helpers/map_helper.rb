@@ -4,8 +4,15 @@ module MapHelper
   def display_google_js_map(coordinates, coordinates_type, coordinates_title, dt_title)
     unless coordinates.nil? || coordinates.empty? 
       coordinates = coordinates.first if coordinates.kind_of? Array
+
+      #We first add the javascripts to the includes (local google_maps.js and Googles API code)   
+      content_for :google_maps do
+        javascript_include_tag ('google_maps','http://maps.googleapis.com/maps/api/js?key=AIzaSyBon_Xir10TbJNA0vzYJ1cJFZvChVS-dcI&sensor=false')
+      end 
+
+       #Add coordinates/coordinates_type/coordinates_title to hidden fields to be read by google_maps.js
        map = <<-EOS
-        <dt>#{dt_title}</dt>
+       <dt>#{dt_title}</dt>
         <dd>
           <div id="map_canvas" style="width:500px; height:281px"></div>
         </dd>

@@ -9,18 +9,29 @@ function initialize() {
 
 function displayMap() {
 
+ var LINE_STRING_CONST = "LineString";
+ var POLYGON_CONST = "Polygon";
+ var POINT_CONST = "Point";
+
  coords = getCoordinates();
  coords_type = getCoordinatesType();
  coords_title = getCoordinatesTitle();
- coords_count = coords.length
+ coords_count = coords.length;
 
- alert(coords_type);
- 
+ //Primarily we check the coords_count for display purposes (a single coordinate polygon/polyline is still a singlePlacemark)
  if (coords_count == 1) {
   singlePlacemark(coords[0].longitude, coords[0].latitude, coords_title)
  }
  else if (coords_count > 1) {
-   polygonPlacemarks(coords, coords_title)
+   //If over 1 coords, we then test if its a LINE_STRING_CONST, otherwise default to Polygon...
+   if (coords_type == LINE_STRING_CONST)
+   {
+     polylinePlacemarks(coords, coords_title)
+   }
+   else
+   {
+     polygonPlacemarks(coords, coords_title)
+   }
  }
 
 }
@@ -46,6 +57,51 @@ function singlePlacemark(longitude, latitude, coords_title) {
 }
 
 
+function polylinePlacemarks(coords, coords_title) {
+
+ var firstPoint = new google.maps.LatLng(coords[0].latitude, coords[0].longitude);
+
+ var myOptions = {
+   zoom: 5,
+   center: firstPoint,
+   mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+ var polyline;
+ var polyline_coords = [];
+ var latlngbounds =  new google.maps.LatLngBounds();
+
+ var map = new google.maps.Map(document.getElementById("map_canvas"),
+      myOptions);
+
+  coords_count = coords.length;
+
+  //Add the coords to the polygone object...
+  for(var i=0; i<coords_count; i++) {   
+     polyline_coords.push(new google.maps.LatLng(coords[i].latitude, coords[i].longitude));
+     latlngbounds.extend(new google.maps.LatLng(coords[i].latitude, coords[i].longitude));     
+  }
+
+  map.setCenter(latlngbounds.getCenter());
+  map.fitBounds(latlngbounds);
+
+  polyline = new google.maps.Polyline({
+    path: polyline_coords,
+    strokeColor: "#3300CC",
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  var marker = new google.maps.Marker({
+      position: firstPoint,
+      title: coords_title
+   });
+ 
+  addInfoWindowTextMarkerToMap(marker, map, coords_title);
+  polyline.setMap(map);
+}
+
+
 
 function polygonPlacemarks(coords, coords_title) {
 
@@ -65,7 +121,7 @@ function polygonPlacemarks(coords, coords_title) {
  var map = new google.maps.Map(document.getElementById("map_canvas"),
       myOptions);
 
-  coords_count = coords.length
+  coords_count = coords.length;
 
   
   //Add the coords to the polygone object...
@@ -79,10 +135,10 @@ function polygonPlacemarks(coords, coords_title) {
 
   polygon_area = new google.maps.Polygon({
     paths: polygon_coords,
-    strokeColor: "#FF0000",
+    strokeColor: "#0000FF",
     strokeOpacity: 0.8,
-    strokeWeight: 3,
-    fillColor: "#FF0000",
+    strokeWeight: 2,
+    fillColor: "#0000FF",
     fillOpacity: 0.35
   });
 
@@ -112,7 +168,6 @@ function addInfoWindowTextMarkerToMap(marker, map, text) {
 
   marker.setMap(map);
 }
-
 
 
 function getCoordinates() {
