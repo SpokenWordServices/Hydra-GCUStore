@@ -129,7 +129,7 @@ class ModsDataset < ObjectMods
                }
              }
              xml.typeOfResource
-             xml.genre
+             xml.genre "Dataset"
              xml.language {
                xml.languageTerm("English", :type=>"text")
                xml.languageTerm("eng", :authority=>"iso639-2b", :type=>"code")
@@ -167,16 +167,9 @@ class ModsDataset < ObjectMods
     end      
 	
 	def to_solr(solr_doc=Hash.new)
-        super(solr_doc)
-				facet_text = ""
-				begin
-					#If the field doesn't exist, it throws an exception...
-					facet_text = self.get_values(:genre)[0].to_s.length > 0 ? self.get_values(:genre)[0].to_s : "Generic content"
-				rescue
-					facet_text = "Generic content"
-				end				
-				solr_doc.merge!("object_type_facet"=> facet_text)
-        solr_doc
+   super(solr_doc)
+   solr_doc.merge!("object_type_facet"=> "Dataset")
+   solr_doc
 	end
 
 end

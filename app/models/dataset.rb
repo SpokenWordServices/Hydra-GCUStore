@@ -2,9 +2,9 @@ require 'hydra'
 
 class Dataset < ActiveFedora::Base
  
-  include Hydra::ModelMethods
-  include HullModelMethods
-  include HullValidationMethods
+	include Hydra::ModelMethods
+	include HullModelMethods
+	include HullValidationMethods
 	include ActiveFedora::ServiceDefinitions
 	include CommonMetadataSdef
 
@@ -16,7 +16,7 @@ class Dataset < ActiveFedora::Base
  
   has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsDataset
   
-	has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => ContentMetadata
+	 has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => ContentMetadata
 
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
 
@@ -52,18 +52,21 @@ class Dataset < ActiveFedora::Base
 
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
-			date_issued = @pending_attributes["descMetadata"][[:date_issued]]["0"] 
-      if date_issued.present?
+					date_issued = @pending_attributes["descMetadata"][[:date_issued]]["0"] 
+     if date_issued.present?
         begin
           Hull::Iso8601.parse(date_issued) 
         rescue ArgumentError
-    			errors << "descMetadata error: invalid date"
+    						errors << "descMetadata error: invalid date"
         end
       end
-
       coordinates = @pending_attributes["descMetadata"][[:location_subject, :cartographics, :coordinates]]["0"]
-      if !coordinates.empty? 
-        errors << "descMetadata error: a valid coordinates type has not been specified" if @pending_attributes["descMetadata"][[:location_subject, :coordinates_type]]["0"].empty?
+      if coordinates.present?
+        if !coordinates.empty?
+          if @pending_attributes["descMetadata"][[:location_subject, :coordinates_type]]["0"].empty?
+           errors << "descMetadata error: a valid coordinates type has not been specified" 
+          end
+        end
       end
 		end	
     is_valid?
@@ -86,12 +89,12 @@ class Dataset < ActiveFedora::Base
   end
 
   has_workflow_validation :deleted do
-    validates_presence_of ("descMetadata",[:admin_note])
+    validates_presence_of("descMetadata",[:admin_note])
     is_valid?
   end
 
   has_workflow_validation :hidden do
-    validates_presence_of ("descMetadata",[:admin_note])
+    validates_presence_of("descMetadata",[:admin_note])
     is_valid?
   end
 
