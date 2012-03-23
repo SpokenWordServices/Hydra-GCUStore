@@ -30,7 +30,7 @@
 	 
 		<%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "Rights", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:citation], "Citation(s)", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:citation], "Citation", "dd_text") %>
 	 <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [:geographic_tag], "Coverage", "dd_text") %>
   <%= display_datastream_field(@document_fedora,"descMetadata", [:temporal_tag], "Temporal", "dd_text") %>
