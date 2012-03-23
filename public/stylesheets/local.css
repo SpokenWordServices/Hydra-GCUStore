@@ -586,7 +586,7 @@ select#sort, select#per_page {
     border: 1px dotted #333333;
     border-radius: 0 0 0 0;
     margin-bottom: 0em;
-    margin-left: 697px;
+    margin-left: 687px;
     margin-top: -24px;
     padding-left: 0;
 }
@@ -875,12 +875,21 @@ div#downloads {
   padding-top:0.5em;
   padding-bottom:1.7em;
   padding-left:0.5em;
-  width:190px;
+  width:200px;
   background-color:#D9E2E8;
 }
 
 div#downloads-list {
   padding-top:1em;
+  padding-right:0.5em;
+}
+
+div#download {
+  padding-top:0.5em;
+}
+
+div#view-map-link {
+ padding-top:1px;
 }
 
 div#qr_code {
@@ -916,7 +925,7 @@ div#download_image {
   float:left;
   width:16px;
   height:16px;
-  margin-right:5px;
+  margin-right:3px;
 }
 
 div#file_size {
@@ -1032,6 +1041,11 @@ div.zip-download {
 }
 div.generic-download {
   background-image:url('/images/icons/download_icons/generic.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.kmlz-download {
+  background-image:url('/images/icons/download_icons/kmlz.gif');
   background-position:left center;
   background-repeat:no-repeat;
 }

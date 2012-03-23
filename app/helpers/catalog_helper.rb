@@ -65,19 +65,27 @@ module CatalogHelper
   
      sequence_hash.keys.sort.each do |seq| 
         i = sequence_hash[seq]
-      resources << <<-EOS 
-	       <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
+      resources << <<-EOS
+         <div id="download"> 
+	         <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
            <a href="/assets/#{object_id[i]}/#{ds_id[i]}" onClick="_gaq.push(['_trackEvent','Downloads', '#{object_id[i]}/#{ds_id[i]}', '#{resource_title}']);">#{display_label[i]}</a> 
 EOS
-    if (mime_type[i].eql?("application/vnd.google-earth.kmz") || mime_type[i].eql?("application/vnd.google-earth.kml+xml")) then
+   
        resources << <<-EOS
-         <a href="/google_map.html?map_file_url=http://localhost:3000/assets/#{object_id[i]}/#{ds_id[i]}">View as map<a>
+           <div id="file-size">(#{get_friendly_file_size(file_size[i])} #{format[i]})
+      EOS
+
+ if (mime_type[i].eql?("application/vnd.google-earth.kmz") || mime_type[i].eql?("application/vnd.google-earth.kml+xml")) then
+       resources << <<-EOS
+         <div id="view-map-link"><a href="/google_map.html?map_file_url=#{request.host}/assets/#{object_id[i]}/#{ds_id[i]}">View as map<a></div>
        EOS
      end
 
-       resources << <<-EOS
-           <div id="file-size">(#{get_friendly_file_size(file_size[i])} #{format[i]})</div>
-      EOS
+     resources << <<-EOS
+        </div>
+       </div>
+     EOS
+
      end
       resources << <<-EOS
         </div>
@@ -198,6 +206,8 @@ EOS
       "spreadsheet-download"
     when "application/zip"
       "zip-download"
+    when "application/vnd.google-earth.kmz", "application/vnd.google-earth.kml+xml"
+      "kmlz-download"
     else
       "generic-download"
     end
