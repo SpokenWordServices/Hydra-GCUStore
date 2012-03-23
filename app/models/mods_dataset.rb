@@ -82,6 +82,7 @@ class ModsDataset < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
+    t.additional_notes(:path=>"note", :attributes=>{:type=>"additionalNotes"})    
     t.citation(:path=>"note", :attributes=>{:type=>"citation"})
     t.software(:path=>"note", :attributes=>{:type=>"software"})
     
