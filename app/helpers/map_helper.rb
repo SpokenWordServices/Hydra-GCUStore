@@ -7,7 +7,7 @@ module MapHelper
 
       #We first add the javascripts to the includes (local google_maps.js and Googles API code)   
       content_for :google_maps do
-        javascript_include_tag ('google_maps','http://maps.googleapis.com/maps/api/js?key=AIzaSyBon_Xir10TbJNA0vzYJ1cJFZvChVS-dcI&sensor=false')
+        javascript_include_tag ('google_maps','https://maps.googleapis.com/maps/api/js?key=AIzaSyBon_Xir10TbJNA0vzYJ1cJFZvChVS-dcI&sensor=false')
       end 
 
        #Add coordinates/coordinates_type/coordinates_title to hidden fields to be read by google_maps.js
