@@ -75,11 +75,18 @@ EOS
            <div id="file-size">(#{get_friendly_file_size(file_size[i])} #{format[i]})
       EOS
 
- if (mime_type[i].eql?("application/vnd.google-earth.kmz") || mime_type[i].eql?("application/vnd.google-earth.kml+xml")) then
-       resources << <<-EOS
-         <div id="view-map-link"><a href="/google_map.html?map_file_url=#{request.host}/assets/#{object_id[i]}/#{ds_id[i]}">View as map<a></div>
-       EOS
-     end
+      #If the content is a KMZ or a KML file and less then 3MB...
+      if (mime_type[i].eql?("application/vnd.google-earth.kmz") || mime_type[i].eql?("application/vnd.google-earth.kml+xml"))
+        if file_size[i].to_i > 0 && file_size[i].to_i < 3145728
+          # And if the document is public readable... We display a link to the Google maps View of the map - Google maps need the KML/KMZ to be public accessible...
+          if is_public_readable(document)
+            resources << <<-EOS
+              <div id="view-map-link">
+              <a href="/google_map.html?object_id=#{object_id[i]}&ds_id=#{ds_id[i]}" target="_blank">View as map<a></div>
+            EOS
+          end
+        end
+      end
 
      resources << <<-EOS
         </div>
@@ -321,6 +328,23 @@ EOS
 
    resource_icon.html_safe
   end
+
+ def is_public_readable(document)
+    
+  public_readable = false
+
+  public_permissions = document.rightsMetadata.groups["public"]  
+  #Check what public permissions contain...
+  if !public_permissions.nil? 
+    if public_permissions.include? "read"
+      public_readable = true
+    end
+  end 
+
+  return public_readable 
+
+ end
+
 
 end
 

@@ -10,10 +10,11 @@ function initialize() {
 
 function displayMap() {
 
-  var map_file_url  = getUrlVars()["map_file_url"];
-  alert(map_file_url);
+  var object_id = getUrlVars()["object_id"];
+  var ds_id  = getUrlVars()["ds_id"];
+  var map_file_url = window.location.protocol + "//" + window.location.host + "/assets/" + object_id + "/" + ds_id;
 
-  var myLatlng = new google.maps.LatLng(49.496675,-102.65625);
+  var myLatlng = new google.maps.LatLng(53.771152,0.368149);
   var myOptions = {
     zoom: 1,
     center: myLatlng,
@@ -24,7 +25,6 @@ function displayMap() {
 
   var georssLayer = new google.maps.KmlLayer(map_file_url);
   georssLayer.setMap(map);
-
 }
 
 
