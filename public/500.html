@@ -1,26 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+  <title>University of Hull Digital Repository - Server error</title>
+  <link href="/stylesheets/yui.css?1320686898" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/application.css?1321066937" media="all" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/local.css?1321069518" media="all" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+	<div id="doc4" class="yui-t2">
+	<div id="site-title">Digital Repository</div>	    
+	<div id="logo"></div>
+  <div id="uni-nav-links">
+		<ul>
+			<li>
+				<a href="http://www.hull.ac.uk/" target="_blank">UoH Home</a>
+			</li>
+			<li>
+				<a href="http://library.hull.ac.uk/"  target="_blank">Library</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="contact.html">Contact</a>
+			</li>
+		</ul>
+		<div id="blacklight-user-links" align="right">
+		  <div id="links-right">
+        <a href="/search_history">Search History</a>
+      </div>
+    </div>
+	</div>
+	<div id="hd">
+		<div class="yui-g">
+			<div class="yui-u first">
+				<h1 class="site_title"><a href="/">Hydra at Hull</a><span id='results_text'>Search Results</span></h1>
+			</div>
+		</div>
+	</div>	    
+	<div id="bd">
+    <div id="yui-main">
+      <div class="yui-b">
+        <div id="search" class="search">
+          <form action="/resources" method="get">
+            <input class="q" id="q" name="q" type="text" />
+            <label for="search_field"></label>
+            <input class="submit" name="commit" type="submit" value="search" />
+          </form>
+        </div>
+      <div class="homeContainer">
+	      <div class="homeCol1">
+          <h1>We're sorry, but something went wrong</h1>
+          <p>&nbsp;</p>
+          <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+          <p>&nbsp;</p>
+          <p>If you find the issue persists, help is available via the Library Service Desk at <a href="mailto:libhelp@hull.ac.uk">libhelp@hull.ac.uk</a> or via x5250.<p>
+          <p>&nbsp;</p>
+          <p>Alternatively you can contact the ICT Service Desk at <a href="mailto:help@hull.ac.uk">help@hull.ac.uk</a> or via x2010.</p>
+     </div>
+
+	    <div class="homeCol2">
+		    <h3>Further information</h3>
+			    <p>&nbsp;</p>
+
+			    <p><a href="takedown.html">Take down policy</a></p>
+		        <p>&nbsp;</p>
+			    <p><a href="contact.html">Contact details</a></p>
+	    </div>
+    </div>
+   </div>  
   </div>
+  <div class="yui-b">
+      <div id="facets" class="facets">
+      <div class="hydra-logo-large"></div>
+   </div>
+ </div>
+ </div>
+	<div id="ft"></div>
+		<div id="hullFooter">  	
+			<table class="tableNoBorder" width="100%"  border="0">
+				<tr>
+					<td align="left" valign="top" width="36%" >
+						&copy; 2008 - 2011<br/>
+						<a href="http://www.hull.ac.uk" target="_blank">The University of Hull</a><br>and the <a href="http://projecthydra.org/" target="_blank">Hydra Project</a>
+					</td>
+					<td align="center" valign="top" width="20%" >
+						<a href="http://projecthydra.org/" target="_blank"><img src="/images/powered_by_hydra.png" /></a>
+					</td>
+					<td align="right" valign="top" width="40%" >
+            Version 2.0
+					</td>
+				</tr>
+			</table>
+		</div> 
+	</div>
+  <div id="lightboxContainer" style="display:none;">
 </body>
 </html>

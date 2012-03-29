@@ -111,6 +111,28 @@ describe HullModelMethods do
 
   end
 
+  describe "#generate_object_label" do
+    before do
+      @mock_desc_ds = mock("descMetadataDS")
+    end
+    it "should return an object label based upon the descMetadata title and, names and roles" do
+      @mock_desc_ds.expects(:get_values).with([:title], {}).returns('The old-age way of letting go')
+      @mock_desc_ds.expects(:get_values).with([:name, :namePart], {}).returns(["Smith, John.", "Jones, Mike."])
+      @mock_desc_ds.expects(:get_values).with([:name, :role, :text], {}).returns(["Author", "Author"])
+      @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds})
+      @testclassone.generate_object_label.should == "The old-age way of letting go - Smith, John.; Jones, Mike.;"
+    end  
+    it "should return an object label that is limited to 200 characters" do
+      @mock_desc_ds.expects(:get_values).with([:title], {}).returns('This is the dataset of all datasets, actually this is a rather large dataset with a title that is likely to be too long for a fedora-label')
+      @mock_desc_ds.expects(:get_values).with([:name, :namePart], {}).returns(["Lamb, Simon.", "Green, Richard.", "Scott, John.", "Garbutt, Richard.", "Jones, Peter.", "Bradfield, James.", "Jones, Nick."])
+      @mock_desc_ds.expects(:get_values).with([:name, :role, :text], {}).returns(["Author", "Author", "Author", "Author", "Author", "Author", "Author"])
+      @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds})
+      @testclassone.generate_object_label.should == "This is the dataset of all datasets, actually this is a rather large dataset with a title that is lik... - Lamb, Simon.; Green, Richard.; Scott, John.; Garbutt, Richard.; Jones, Peter.; Bradfield, J..."
+    end
+  end
+ 
+
+
   describe "#insert_subject_topic" do
     it "should wrap the insert_subject_topic of the underlying datastream" do
       mock_desc_ds = mock("Datastream")
@@ -135,9 +157,7 @@ describe HullModelMethods do
     it "should apply has_model_s and fedora_owner_id correctly" do
       @testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>nil))
 			@testclassone.update_indexed_attributes([:origin_info, :date_issued]=> "2011-01-01", :datastreams=>"descMetadata")
-			#@testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>{:date_issued=>"2010-01-01"}))
-      solr_doc = @testclassone.to_solr
-			#debugger
+		  solr_doc = @testclassone.to_solr
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:testClassOne"
       solr_doc["fedora_owner_id_s"].should == "fooAdmin"
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"

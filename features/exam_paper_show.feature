@@ -7,7 +7,7 @@ Feature: Show a document
  Scenario: Public visit Publicly Viewable Document
     Given I am on the show document page for hull:1765
     Then I should be on the search page
-    And I should see "You do not have sufficient access privileges to read this document, which has been marked private" within ".notice"
+    And I should see "This material is unavailable. It may have been temporarily or permanently withdrawn, or it may have restricted access. Are you logged in?".notice"
     
 Scenario: Staff visits Show Page for Restricted Document
     Given I am logged in as "staff1@example.com" 

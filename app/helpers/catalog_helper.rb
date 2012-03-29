@@ -189,7 +189,7 @@ EOS
     #Possibly insert, once we have changed the styles <div class="link-title">QR code</div>
     qr_code << <<-EOS
       <div id="qr_code">
-       <img id="qr-image" src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
+       <img id="qr-image" src="https://chart.googleapis.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
     qr_code.html_safe

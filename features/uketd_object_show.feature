@@ -14,7 +14,7 @@ Feature: Show a document
   Scenario: Public visit Document Show Page for a private document  
     Given I am on the show document page for hull:3573
     Then I should be on the search page
-    And I should see "You do not have sufficient access privileges to read this document, which has been marked private" within ".notice"
+    And I should see "This material is unavailable. It may have been temporarily or permanently withdrawn, or it may have restricted access. Are you logged in?" within ".notice"
   
   Scenario: Superuser visits Document Show Page for a private document
     Given I am a superuser
