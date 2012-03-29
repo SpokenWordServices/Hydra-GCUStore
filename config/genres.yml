@@ -82,3 +82,6 @@ Regulation:
 Report:
  type: text
  c_model: hull-cModel:report
+Audio:
+ type: audio
+ c_model: gcu:swaudio
