@@ -7,6 +7,8 @@ class CatalogController < ApplicationController
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Catalog
 
+  # # This applies a require login check for the show and index methods
+  before_filter :require_login, :only=>[:show, :index]
   # # These before_filters apply the hydra access controls
   before_filter :enforce_access_controls, :except=>[:update, :facet]
   # #before_filter :enforce_viewing_context_for_show_requests, :only=>:show
@@ -40,6 +42,14 @@ class CatalogController < ApplicationController
     @document_fedora = the_model.load_instance(params[:id])
 		@file_assets = @document_fedora.file_objects(:response_format=>:solr)
    
+  end
+
+  #Method to determine whether a login is required before continuing to action....
+  def require_login
+   unless params["login"].nil?
+      #Call the devise helper to authenticate the user (returns back to orig dest)
+      authenticate_user! if params["login"] == "true"
+    end
   end
 
 end 
