@@ -543,4 +543,24 @@ module HullModelMethods
     ele.inner_html
   end
 
+
+  def update_object_permissions(permission_params, ds_id)
+  
+    xml_content = self.datastreams[ds_id].content
+    
+    ds = Hydra::RightsMetadata.new(self.inner_object, ds_id)
+    Hydra::RightsMetadata.from_xml(xml_content, ds)
+    self.datastreams[ds_id] = ds
+
+    # update the datastream's values
+    result = ds.update_permissions(permission_params)
+    
+    ds.serialize!
+    ds.save
+    
+    # Re-index the object
+    Solrizer::Fedora::Solrizer.new.solrize(self.pid) 
+
+  end
+
 end
