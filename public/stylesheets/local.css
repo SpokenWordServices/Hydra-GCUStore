@@ -942,6 +942,14 @@ div#description {
   width:52em;
 }
 
+div#mediaPlayer {
+  float:left;
+  padding-bottom:1.7em;
+  margin-left: 20px;
+  width:52em;
+
+}
+
 div#download_image {
   float:left;
   width:16px;

@@ -1,19 +1,22 @@
 <div id="mediaPlayer">
-		<div>This media player attempts to use html5 or flash.  If you cannot see the player please make sure your browser is up to date.  If you still have problems please contact <a href="mailto:info@spokenword.ac.uk?subject=Media%20player%20not%20displayed.">info@spokenword.ac.uk</a> 
-    </div> 
+<div id="player">
+		This media player attempts to use html5 or flash.  If you cannot see the player please make sure your browser is up to date.  If you still have problems please contact <a href="mailto:info@spokenword.ac.uk?subject=Media%20player%20not%20displayed.">info@spokenword.ac.uk</a> 
+    
 </div>
-<script type="text/javascript"> 
-		jwplayer('mediaPlayer').setup({
+<%# Better version of jwplayer for html5 playback but - need to fudge file url so has .mp4 extension %>
+ <script type="text/javascript"> 
+		jwplayer('player').setup({
 				'width':"250",
 				'height':"24",
 				'controlbar.position' : "bottom",
-				'file': "/audio.mp4",
         'bufferlength': "6",
-				'modes': [{type: "html5"},
-					  {type: "flash", src: "/player.swf"},
+        'file': "<%= datastream_disseminator_url(params[:id], "content")+"?dummy=/file.mp4" =%>",
+				'modes': [
+					{type: "html5"},
+          {type: "flash", src: "/player.swf", config:{ provider: "video"}},          
 					 ]
 		});
 </script>
 
-<div>
-Check the link: <a href="<%= datastream_disseminator_url(params[:id], "content") =%>"><%=datastream_disseminator_url(params[:id], "content") =%></a>
+</div>
+
