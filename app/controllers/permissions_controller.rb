@@ -10,7 +10,6 @@ class PermissionsController < ApplicationController
   include Hydra::SubmissionWorkflow
   
   def index
-		debugger
     @document_fedora=ActiveFedora::Base.load_instance(params[:asset_id])
     pid = params[:asset_id]
     dsid = "rightsMetadata"
@@ -19,7 +18,7 @@ class PermissionsController < ApplicationController
     ds.pid = pid
     ds.dsid = dsid
     @document_fedora.datastreams_in_memory[dsid] = ds
-    
+
     respond_to do |format|
       format.html 
       format.inline { render :partial=>"permissions/index.html", :format=>"html" }
@@ -47,7 +46,7 @@ Removed from permissions/_new.html.erb
     ds.pid = pid
     ds.dsid = dsid
     @document_fedora.datastreams_in_memory[dsid] = ds
-    
+
     respond_to do |format|
       format.html 
       format.inline {render :action=>"edit", :layout=>false}
@@ -142,38 +141,42 @@ Removed from permissions/_new.html.erb
   def check_for_children
     unless params[:datastream].nil?
       if params[:datastream] == "defaultObjectRights"
-        if params[:id].nil?  
-          pid = params[:asset_id]
-        else
-          pid = params[:id]
-        end
+        unless params[:skip_warning] == "true"
+          if params[:id].nil?  
+            pid = params[:asset_id]
+          else
+            pid = params[:id]
+          end
 
-        af = ActiveFedora::Base.load_instance(pid)
-        the_model = ActiveFedora::ContentModel.known_models_for( af ).first
-        unless the_model.nil?
-          af = the_model.load_instance(pid) 
-        end
-    
-        if the_model == StructuralSet 
-          children = af.children_match_parent_default_object_rights
-          children_dont_match =  children[:dont_match]
-         
-          if children_dont_match.count > 0
-            id_list = ""
+          af = ActiveFedora::Base.load_instance(pid)
+          the_model = ActiveFedora::ContentModel.known_models_for( af ).first
+          unless the_model.nil?
+            af = the_model.load_instance(pid) 
+          end
+      
+          if the_model == StructuralSet 
+            children = af.children_match_parent_default_object_rights
+            children_dont_match =  children[:dont_match]
+           
+            if children_dont_match.count > 0
+              id_list = ""
 
-            list_of_ids = children[:dont_match].map {|child| child[:id]}     
-            list_of_ids.each { |id| id_list << "<li>" + id + "</li>" }
-            
-            message = <<-EOS
-              <p>The following objects do not match the original rights metadata for this set:</p>
-              <ul>
-               #{id_list}
-              </ul>
-              <p>If you intend to proceed you should print this page for your records.</p>          
-            EOS
+              list_of_ids = children[:dont_match].map {|child| child[:id]}     
+              list_of_ids.each { |id| id_list << "<li>" + id + "</li>" }
+              
+              message = <<-EOS
+                <p>The following objects do not match the original rights metadata for this set:</p>
+                <ul>
+                 #{id_list}
+                </ul>
+                <p>If you intend to proceed please select the appropiate rights again, and click <strong>Save</strong>.</p><br/>
 
-            flash[:notice] =  message.html_safe
-    	      redirect_to :controller=>"catalog", :action=>"edit", :id => pid
+                <p><strong>Note:</strong> Non-matching sets permissions will not be changed, therefore its recommended that you print this page for your records.</p>          
+              EOS
+
+              flash[:notice] =  message.html_safe
+      	      redirect_to :controller=>"catalog", :action=>"edit", :id => pid, :warn => "true"
+            end
           end
         end
     end

@@ -76,7 +76,6 @@ class StructuralSet < ActiveFedora::Base
 
 
   def update_set_permissions(permission_params, ds_id)
-      debugger
 
     #If changing defaultObjectRights we need to change the children...
     if ds_id == "defaultObjectRights"

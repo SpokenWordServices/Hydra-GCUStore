@@ -4,6 +4,10 @@
 
 <form id="document_metadata" action="<%= url_for(:asset_id=>@document_fedora.pid,:action=>"update", :controller=>"permissions", :datastream=>datastream) %>" method="post" data-resourceType="<%= resource_type %>" accept-charset="utf-8">
 
+  <% if params[:warn] == "true" %>
+    <input type="hidden" id="skip_warning" name="skip_warning" value="true" />
+  <% end %>
+
   <input type="hidden" name="_method" value="put"/>
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" /> 
 

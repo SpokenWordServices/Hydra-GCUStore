@@ -2,11 +2,18 @@
 	<%= breadcrumb_trail_for_set(@document_fedora.pid) %>
 </div>
 <div id="description">
-  <dl>
+  <fieldset>
+    <dl>
       <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
     	<%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description","dd_text") %>
-   </dl>
+    
+     </dl>
+  </fieldset>
+ <%= display_object_group_permissions(@document_fedora, "defaultObjectRights") %>
 </div>
+
+ 
+
 <div id="downloads">
   <fieldset>
      <legend>Resources</legend>

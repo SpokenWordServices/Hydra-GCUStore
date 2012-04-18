@@ -120,6 +120,14 @@ EOS
 		end
 	end
 
+  def browse_structural_sets_link
+    if current_user
+      if RoleMapper.roles(current_user.login).include? 'contentAccessTeam'
+        link_to "Browse sets", "?f%5Bis_member_of_s%5D%5B%5D=info:fedora/hull:rootSet&results_view=true" 
+      end
+    end
+  end
+
   def display_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
     label = ""
     dd_class = "class=\"#{dd_class}\"" if dd_class
@@ -183,6 +191,47 @@ EOS
     end
     datastream_text_area_field.html_safe
 	end
+
+
+  def display_object_group_permissions(document, permission_ds)
+    groups = document.datastreams[permission_ds].groups
+
+    unless groups.nil?
+      permissions = <<-EOS
+         <fieldset>
+           <dl>
+           <dt><strong>Default permissions</strong></dt><dd></dd>
+      EOS
+      groups.each do |group|
+        group_permission = group[1].to_s
+      
+        case group_permission
+        when "read"
+          group_display = "Read and download"
+        when "edit"
+          group_display = "Edit"
+        when "discover"
+          group_display = "Search and discover" 
+        else
+          group_display = group_permission       
+        end
+
+        permissions << <<-EOS
+            <dt>
+             #{group[0]}
+            </dt>
+            <dd class="dd_text">
+              #{group_display}
+            </dd>
+        EOS
+      end 
+    end
+    permissions << <<-EOS
+          </dl>
+         </fieldset>
+     EOS
+    permissions.html_safe
+  end
 
   def display_qr_code
     qr_code=""
