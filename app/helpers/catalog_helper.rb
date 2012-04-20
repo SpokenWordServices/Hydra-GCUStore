@@ -9,8 +9,8 @@ module CatalogHelper
     persons =[]
     while i < 10
       persons_roles = [] # reset the array
-      persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["person_#{i}_role_t"].nil?
-      if persons_roles and (persons_roles & roles.map{|x|x.downcase}).length > 0  #lower_cased roles for examples such as Supervisor
+      persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase.split} unless doc["person_#{i}_role_t"].nil?
+      if persons_roles and (persons_roles.flatten & roles.map{|x|x.downcase}).length > 0  #lower_cased roles for examples such as Supervisor
         persons << {:name => doc["person_#{i}_namePart_t"],:role => doc["person_#{i}_role_t"], :affiliation => doc["person_#{i}_affiliation_t"], :person_index=>"#{i}" }
       end
       i += 1
@@ -292,6 +292,8 @@ module CatalogHelper
       img_class = "image-genre"
      when "meeting papers or minutes"
       img_class = "event-genre"
+     when "audio"
+      img_class = "sound-genre"
      else
       img_class = "text-genre"
      end

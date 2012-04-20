@@ -1,4 +1,2 @@
-<% display_type = params[:display_type].nil? ? 'list' : params[:display_type] %>
-
-<%= render :partial => "shared/index_#{display_type}", :locals => {:document => document, :counter => counter } %>
+<%= render :partial => "shared/index_audio", :locals => {:document => document, :counter => counter } %>
 <%= display_resource_icon(document) %>

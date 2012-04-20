@@ -10,7 +10,8 @@ class ModsGenericContent < ObjectMods
     # Description is stored in the 'abstract' field 
     t.description(:path=>"abstract")   
    
-    t.subject(:path=>"subject", :attributes=>{:authority=>"UoH"}) {
+    # Take all subjects here - can split them later adding eg  :attributes=>{:authority=>"lcsh"}
+    t.subject(:path=>"subject") {
      t.topic(:index_as=>[:facetable])
      t.temporal
      t.geographic
