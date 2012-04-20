@@ -1,36 +1,36 @@
 <div id="description">
 	<dl>
 	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
-	  <% authors = get_persons_from_roles(@document, ['creator','author', 'editor', 'photographer', 'module leader', 'sponsor', 'supervisor']).map {|person| person[:name] + person[:role]}  %>
-	    <% unless authors.empty? %>
-				 <% authors.collect! {|person|   person[0] + " (" + person[1].to_s + ")"} %>
-	      <dt>
-		<%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(authors.count,"Person")[2..-1]) %>
-	      </dt>
-	      <dd class="dd_text">
-		<%= authors.join("; ") %>
-	      </dd>
-	    <% end %>
 
-   <% orgs = get_organizations_from_roles(@document, ['sponsor']).map {|organization| organization[:name]}  %>
-    <% unless orgs.empty? %>
-      <dt>
-        <%= fedora_field_label("descMetadata", [:organization, :namePart], pluralize(orgs.count,"Sponsor")[2..-1]) %>
-      </dt>
-      <dd class="dd_text">
-        <%= orgs.join(", ") %>
-      </dd>
-    <% end %>
+	  <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
+
+
+	  <% hosts = get_persons_from_roles(@document, ['host']).map {|person| person[:name]}  %>
+	  <% unless hosts.empty? %>
+	  <dt>
+		  <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(hosts.count,"Host")[2..-1]) %>
+	  </dt>
+	  <dd class="dd_text">
+		  <%= hosts.join("; ") %>
+	  </dd>
+	  <% end %>
+	  <% speakers = get_persons_from_roles(@document, ['contributor']).map {|person| person[:name] }  %>
+	  <% unless speakers.empty? %>
+	  <dt>
+		  <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(speakers.count,"Speaker")[2..-1]) %>
+	  </dt>
+	  <dd class="dd_text">
+		  <%= speakers.join("; ") %>
+	  </dd>
+	  <% end %>
+
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:location_subject, :cartographics, :coordinates], "Coordinates", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "Rights", "dd_text") %>
-	 <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:web_related_item, :location, :primary_display], "Related web materials", "dd_text") %>
-   <%= display_datastream_field(@document_fedora,"descMetadata", [:see_also], "See also", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Extent", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre", "dd_text") %>
-   <%= display_datastream_field @document_fedora, "descMetadata", [:date_valid], "Valid date", "dd_text" %>
-	</dl>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
+	  <%= display_datastream_field(@document_fedora, "descMetadata", [:origin_info, :date_issued], "Publication date", "dd_text" )%>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Extent", "dd_text") %>
+
+   <%= display_datastream_field_as_link(@document_fedora,"descMetadata", [:rights_label], [:rights_url],"Rights", "dd_link") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "", "dd_text") %>
+ 	</dl>
 </div>

@@ -139,6 +139,26 @@ module CatalogHelper
     datastream_field.html_safe
   end
 
+# This does exactly the same as display_datastream_field but takes in additional field which should contain the link	
+	def display_datastream_field_as_link(document,datastream_name,fields=[],link=[],label_text='',dd_class=nil)
+    label = ""
+    dd_class = "class=\"#{dd_class}\"" if dd_class
+    datastream_field = ""
+	 	unless get_values_from_datastream(document,datastream_name, fields).first.empty?
+      if label_text.length > 0
+        label = pluralize(get_values_from_datastream(document,datastream_name, fields).count,label_text)[2..-1]
+      end
+      datastream_field = <<-EOS
+        <dt>
+          #{fedora_field_label(datastream_name,fields,label)}
+        </dt>
+        <dd #{dd_class}>
+            <a href="#{get_values_from_datastream(document,datastream_name, link).first}">#{get_values_from_datastream(document,datastream_name, fields).join("; ")}</a>
+        </dd>
+      EOS
+    end
+    datastream_field.html_safe
+  end
 	# This does exactly the same as display_datastream_field but uses simple format to display text area content
   # more appropriately
 	def display_datastream_text_area_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
@@ -180,9 +200,9 @@ module CatalogHelper
       "doc-download"
     when "image/gif", "image/jpg", "image/jpeg", "image/bmp"
       "img-download"
-    when "video/avi", "video/mpeg", "video/quicktime", "video/x-ms-wmv"
+    when "video/avi", "video/mpeg", "video/quicktime", "video/x-ms-wmv", "video/mp4"
       "vid-download"
-    when "audio/aiff", "audio/midi", "audio/mpeg", "audio/x-pn-realaudio", "audio/wav"
+    when "audio/aiff", "audio/midi", "audio/mpeg", "audio/x-pn-realaudio", "audio/wav", "audio/mp4"
       "sound-download"
     when "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/vnd.ms-powerpoint"
       "presentation-download"
@@ -320,5 +340,12 @@ module CatalogHelper
     "<a class=\"fbImage\" href=\"#{ datastream_disseminator_url(pid, datastream_name) }\">view</a>"
   end 
 
+ # Get content mime-type - used for sending info to jwplayer
+
+  def get_content_mime_type(document)
+ 
+    # mime_type = get_values_from_datastream(document, "contentMetadata",["resource[@dsID='content']", :file, :mime_type])
+   
+  end
 end
 

@@ -43,6 +43,8 @@ class GenericAudio < ActiveFedora::Base
   delegate :geographic_tag, :to=>:descMetadata
   delegate :temporal_tag, :to=>:descMetadata
   delegate :rights, :to=>:descMetadata
+  delegate :rights_label, :to=>:descMetadata
+  delegate :rights_url, :to=>:descMetadata
   delegate :date_valid, :to=>:descMetadata
   delegate :description, :to=>:descMetadata
   delegate :related_item, :to=>:descMetadata

@@ -769,6 +769,14 @@ div#description dl dt {
    width: 41em !important;
 }
 
+.dd_link {
+   width: 41em !important;
+   font-weight: normal;
+}
+
+.dd_link a {
+   color: #1E90FF;
+}
 dd.display {
 	font-size: 1em !important;
 }
@@ -1318,6 +1326,7 @@ div.volume_issue {
   float:left;
 }
 
+
 div.volume_issue dt,dd {
   width: 5em !important;
 }
@@ -1473,6 +1482,7 @@ fieldset.edit-half dl li span input {
 .dd_text p {
   margin-bottom:1em;
 }
+
 #border {
   border-width: 0.1em;
   border-style: solid;

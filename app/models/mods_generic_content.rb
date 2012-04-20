@@ -68,7 +68,9 @@ class ModsGenericContent < ObjectMods
 		}
 		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
     t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
-    t.rights(:path=>"accessCondition", :attributes=>{:type=>"useAndReproduction"})
+    t.rights_label(:path=>"accessCondition/@displayLabel")
+    t.rights_url(:path=>"accessCondition/@xlink:href")
+   t.rights(:path=>"accessCondition", :attributes=>{:type=>"use and reproduction"})
 		t.location {
 	  	t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
