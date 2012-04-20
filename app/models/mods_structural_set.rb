@@ -27,6 +27,7 @@ class ModsStructuralSet < ObjectMods
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
       t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
     }
+    t.admin_note(:path=>"note", :attributes=>{:type=>"admin"})
 
   end
   

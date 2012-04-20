@@ -948,6 +948,14 @@ div.collection-genre {
   background-repeat:no-repeat;
 }
 
+div.structural-set-genre {
+  margin-top: -20px; 
+  height: 60px !important;
+  background-image:url('/images/icons/folder-th.png');
+  background-position:top left;
+  background-repeat:no-repeat;
+}
+
 div.dataset-genre {
   background-image:url('/images/icons/x-office-spreadsheet-th.png');
   background-position:top left;

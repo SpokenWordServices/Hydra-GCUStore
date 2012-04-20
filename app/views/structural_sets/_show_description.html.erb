@@ -6,7 +6,7 @@
     <dl>
       <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
     	<%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description","dd_text") %>
-    
+      <%= display_datastream_field(@document_fedora,"descMetadata", [:admin_note], "Resource status", "dd_text") %>
      </dl>
   </fieldset>
  <%= display_object_group_permissions(@document_fedora, "defaultObjectRights") %>
