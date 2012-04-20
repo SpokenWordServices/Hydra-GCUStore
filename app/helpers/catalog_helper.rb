@@ -358,7 +358,7 @@ EOS
      #standard icons
      genre = document["genre_t"].to_s.downcase
      case genre
-     when "structural set"
+     when "structural set", "structuralSet"
       img_class = "structural-set-genre"
      when "display set"
       img_class = "collection-genre"
