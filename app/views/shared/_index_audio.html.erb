@@ -1,0 +1,36 @@
+<div id="title_div" style="float:left;width:600px;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
+<div id="content_div">
+	<dl id="index_list">
+    <dt>Resource type</dt>
+   <dd>
+     <%= document[:genre_t] %>
+   </dd>
+   <% if document[:subject_topic_t]  %>
+     <dt><%= pluralize(document[:subject_topic_t].count,"Subject")[2..-1] %></dt>
+       <dd>
+         <%= document[:subject_topic_t].uniq.sort.join("; ") %>
+       </dd>
+    <%end%>
+  <% participants = get_persons_from_roles(document, ['host','contributor']).map {|person| person[:name]}  %>
+  
+   <% if participants.present? %>
+     <dt><%= pluralize(participants.count,"Participant")[2..-1] %></dt>
+        <dd>
+          <%= participants.join("; ") %>
+        </dd>
+   <% end %>
+   <% if document[:language_lang_text_t]  %>
+     <dt>Language</dt>
+       <dd>
+         <%= document[:language_lang_text_t] %>
+       </dd>
+   <% end %>
+   <% if document[:origin_info_date_issued_t]  %>
+     <dt>Date</dt>
+       <dd>
+         <%= document[:origin_info_date_issued_t] %>
+       </dd>
+   <% end %>
+  </dl>
+</div>
+
