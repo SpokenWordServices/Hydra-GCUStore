@@ -5,8 +5,10 @@
     <dl>
       <dt>MODS metadata</dt>
       <dd><%= link_to "view", datastream_content_path(params[:id], "descMetadata"), :target=>"_blank" %></dd>
-      <dt>DataCite metadata</dt>
-      <dd><%= link_to "view", datastream_content_path(params[:id], "datacite"), :target=>"_blank" %></dd>
+      <% unless @document["doi_t"].nil? %>
+        <dt>DataCite metadata</dt>
+        <dd><%= link_to "view", datastream_content_path(params[:id], "datacite"), :target=>"_blank" %></dd>
+      <% end %>
       <dt>DC metadata</dt>
       <dd><%= link_to "view", datastream_content_path(params[:id], "oai_dc"), :target=>"_blank" %></dd>
     </dl>
