@@ -6,4 +6,6 @@
    :dc_view: viewDublinCore
  "hydra-sDef:commonMetadata":
    :oai_dc: getOAI_DC
+ "hull-sDef:dataset":
+   :datacite_metadata: getDataCiteMetadata
 

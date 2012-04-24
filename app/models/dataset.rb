@@ -49,7 +49,6 @@ class Dataset < ActiveFedora::Base
     m.field 'depositor', :string
   end
 
-
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
 					date_issued = @pending_attributes["descMetadata"][[:date_issued]]["0"] 
@@ -134,5 +133,10 @@ class Dataset < ActiveFedora::Base
 		type_of_resource =  Genre.find(genre).type if Genre.find(genre).type.class == String
 		desc_ds.update_indexed_attributes([:type_of_resource]=> type_of_resource)
 	end
+
+  def self.included(mod)		  
+    #Add the disseminator method for the DataCite metadata
+    mod.add_method! "hull-sDef:dataset", "getDataCiteMetadata"
+  end
   
 end
