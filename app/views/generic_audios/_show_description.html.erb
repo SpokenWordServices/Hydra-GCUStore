@@ -27,10 +27,11 @@
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
-	  <%= display_datastream_field(@document_fedora, "descMetadata", [:origin_info, :date_issued], "Publication date", "dd_text" )%>
-	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Extent", "dd_text") %>
-
+   <%= display_datastream_field(@document_fedora, "descMetadata", [:origin_info, :date_issued], "Publication date", "dd_text" )%>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Duration", "dd_text") %>
    <%= display_datastream_field_as_link(@document_fedora,"descMetadata", [:rights_label], [:rights_url],"Rights", "dd_link") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "", "dd_text") %>
+
+
  	</dl>
 </div>
