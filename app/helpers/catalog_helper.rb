@@ -340,12 +340,14 @@ module CatalogHelper
     "<a class=\"fbImage\" href=\"#{ datastream_disseminator_url(pid, datastream_name) }\">view</a>"
   end 
 
- # Get content mime-type - used for sending info to jwplayer
+ # Get content mime-type (or rather just the file format) - used for sending info to jwplayer
 
-  def get_content_mime_type(document)
+  def get_content_format(document)
  
-    # mime_type = get_values_from_datastream(document, "contentMetadata",["resource[@dsID='content']", :file, :mime_type])
-   
+     ds_ids = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_ds_id])  
+     formats = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :format])
+     formats[ds_ids.index('content')]
+  
   end
 end
 
