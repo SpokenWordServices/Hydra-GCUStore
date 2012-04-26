@@ -1,4 +1,6 @@
 <div id="mediaPlayer">
+<% display_res=get_video_display_resolution(@document_fedora,"contentMetadata","content") %>
+
 <div id="player">
 		This media player attempts to use html5 or flash.  If you cannot see the player please make sure your browser is up to date.  If you still have problems please contact <a href="mailto:info@spokenword.ac.uk?subject=Media%20player%20not%20displayed.">info@spokenword.ac.uk</a> 
     
@@ -6,11 +8,12 @@
 <%# Better version of jwplayer for html5 playback but - need to fudge file url so has .mp4 extension %>
  <script type="text/javascript"> 
 		jwplayer('player').setup({
-				'width':"250",
-				'height':"24",
+				'width':"<%= display_res[:width] %>",
+				'height':"<%=display_res[:height].to_i+12 %>",
+        'image':"/images/player_gcal640x480.jpg",
 				'controlbar.position' : "bottom",
         'bufferlength': "6",
-        'file': "<%= datastream_disseminator_url(params[:id], "content")+"?dummy=/file."+get_content_format(@document_fedora) =%>",
+        'file': "<%= datastream_disseminator_url(params[:id], 'content')+"?dummy=/file."+get_content_format(@document_fedora,'contentMetadata','content' ) =%>",
 				'modes': [
 					{type: "html5"},
           {type: "flash", src: "/player.swf", config:{ provider: "video"}},          

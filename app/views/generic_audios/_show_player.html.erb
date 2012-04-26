@@ -10,7 +10,7 @@
 				'height':"24",
 				'controlbar.position' : "bottom",
         'bufferlength': "6",
-        'file': "<%= datastream_disseminator_url(params[:id], "content")+"?dummy=/file."+get_content_format(@document_fedora) =%>",
+        'file': "<%= datastream_disseminator_url(params[:id], 'content')+"?dummy=/file."+get_content_format(@document_fedora,'contentMetadata','content' ) =%>",
 				'modes': [
 					{type: "html5"},
           {type: "flash", src: "/player.swf", config:{ provider: "video"}},          

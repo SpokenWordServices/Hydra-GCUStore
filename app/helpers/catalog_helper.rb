@@ -344,14 +344,22 @@ module CatalogHelper
 
  # Get content mime-type (or rather just the file format) - used for sending info to jwplayer
 
-  def get_content_format(document)
+  def get_content_format(document, datastream_name, dsid)
  
-     ds_ids = get_values_from_datastream(document, "contentMetadata",[:resource, :resource_ds_id])  
-     formats = get_values_from_datastream(document, "contentMetadata",[:resource, :file, :format])
-     formats[ds_ids.index('content')]
+     ds_ids = get_values_from_datastream(document, datastream_name,[:resource, :resource_ds_id])  
+     formats = get_values_from_datastream(document, datastream_name ,[:resource, :file, :format])
+     formats[ds_ids.index(dsid)]
   
   end
 
+ # Get display resolution for jwplayer
+  def get_video_display_resolution(document,datastream_name, dsid)
+
+    ds_ids = get_values_from_datastream(document, datastream_name,[:resource, :resource_ds_id])  
+    {:height => get_values_from_datastream(document,datastream_name, [:content_display_height])[ds_ids.index(dsid)],
+     :width => get_values_from_datastream(document,datastream_name, [:content_display_width])[ds_ids.index(dsid)]}
+
+  end
 
 end
 
