@@ -8,7 +8,9 @@ class ModsGenericContent < ObjectMods
     } 
    
     # Description is stored in the 'abstract' field 
-    t.description(:path=>"abstract")   
+    t.description(:path=>"abstract")  
+    t.description_note (:path=>"note", :attributes=>{:type=>"description"})
+ 
    
     # Take all subjects here - can split them later adding eg  :attributes=>{:authority=>"lcsh"}
     t.subject(:path=>"subject") {
@@ -81,6 +83,7 @@ class ModsGenericContent < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"}) 
+    t.description_note (:path=>"note", :attributes=>{:type=>"content"})
     
     # Proxies
     t.title(:proxy=>[:mods, :title_info, :main_title]) 

@@ -48,5 +48,22 @@ $(document).ready(function(){
             $(this).css("background-image","url('/images/facet_closed.png')");
           }
         });
-});
+}
+);
 
+// More/Less view for metadata
+
+$(document).ready(function(){
+        $("span#additional_description_span").click(function(){
+          $("div#description_note").toggle(); 
+          var text = $(this).text();
+          if (text == "More") {
+            $(this).text("Less");
+            $(this).css("background-image","url('/images/facet_open.png')");
+          } else {
+            $(this).text("More");
+            $(this).css("background-image","url('/images/facet_closed.png')");
+          }
+        });
+}
+);

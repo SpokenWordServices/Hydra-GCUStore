@@ -799,6 +799,23 @@ label {
     width: 40.25em;
 }
 
+span#additional_description_span {
+  margin-top: 0em;
+  cursor: pointer;
+  background-image:url('/images/facet_closed.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:15px;
+
+ 
+}
+span#additional_description_span a:hover {
+	text-decoration: underline;
+}
+div#description_note {
+  display:none;
+}
+
 div#show_hide_resources {
     cursor: pointer;
     float: left;
@@ -1480,7 +1497,7 @@ fieldset.edit-half dl li span input {
 }
 /* For object description display, abstract/descriptions can contain paragraph breaks, this targets such <p></p> to display the paragraphs properly */
 .dd_text p {
-  margin-bottom:1em;
+  margin-bottom:0.5em;
 }
 
 #border {

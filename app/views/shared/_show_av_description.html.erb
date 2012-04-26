@@ -1,0 +1,52 @@
+<div id="description">
+	<dl>
+	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
+
+	  <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
+
+    <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:description_note]).first.empty? %>
+    <dt></dt>
+
+    <div id="show_hide_additional_description">
+    <dd class="dd_text">
+      <span id="additional_description_span">More</span>
+    </dd>
+      <div id="description_note">
+        <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description_note], "", "dd_text") %>
+      </div>
+    </div>
+	  <% end %>
+
+	  <% hosts = get_persons_from_roles(@document, ['host']).map {|person| person[:name]}  %>
+	  <% unless hosts.empty? %>
+	  <dt>
+		  <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(hosts.count,"Host")[2..-1]) %>
+	  </dt>
+	  <dd class="dd_text">
+		  <%= hosts.join("; ") %>
+	  </dd>
+	  <% end %>
+
+	  <% speakers = get_persons_from_roles(@document, ['contributor']).map {|person| person[:name] }  %>
+	  <% unless speakers.empty? %>
+	  <dt>
+		  <%= fedora_field_label("descMetadata", [:person, :namePart], pluralize(speakers.count,"Speaker")[2..-1]) %>
+	  </dt>
+	  <dd class="dd_text">
+		  <%= speakers.join("; ") %>
+	  </dd>
+	  <% end %>
+
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:subject, :topic], "Subject", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
+   <%= display_datastream_field(@document_fedora, "descMetadata", [:origin_info, :date_issued], "Publication date", "dd_text" )%>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Duration", "dd_text") %>
+   <%= display_datastream_field_as_link(@document_fedora,"descMetadata", [:rights_label], [:rights_url],"Rights", "dd_link") %>
+	 <%= display_datastream_field(@document_fedora,"descMetadata", [:rights], "", "dd_text") %>
+
+
+ 	</dl>
+</div>
+
+

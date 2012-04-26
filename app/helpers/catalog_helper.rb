@@ -314,6 +314,8 @@ module CatalogHelper
       img_class = "event-genre"
      when "audio"
       img_class = "sound-genre"
+     when "video"
+      img_class = "video-genre"
      else
       img_class = "text-genre"
      end
