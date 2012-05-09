@@ -7,7 +7,7 @@ module CatalogHelper
   def get_persons_from_roles(doc,roles,opts={})
     i = 0
     persons =[]
-    while i < 10
+    while i < 20
       persons_roles = [] # reset the array
       persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase} unless doc["person_#{i}_role_t"].nil?
       if persons_roles and (persons_roles & roles.map{|x|x.downcase}).length > 0  #lower_cased roles for examples such as Supervisor

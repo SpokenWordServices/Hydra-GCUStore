@@ -250,8 +250,9 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
    			"MRes" => [9,"MRes"],
         "MSc" => [10,"MSc"],
    			"MTheol" => [11,"MTheol"],
-        "BA" => [12,"BA"],
-        "BSc" => [13,"BSc"]
+        "EdD" => [12, "EdD"],
+        "BA" => [13,"BA"],
+        "BSc" => [14,"BSc"]
       }
     end
 
