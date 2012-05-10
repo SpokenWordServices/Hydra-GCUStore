@@ -329,18 +329,16 @@ module CatalogHelper
   end
 
   # Helpers copied from Graeme's work - might need tweeking
-  def datastream_disseminator_url pid, datastream_name
+  def fedora_content_url pid, datastream_name
     begin
-      base_url = Fedora::Repository.instance.send(:connection).site.to_s
+      base_url = ActiveFedora.fedora().connection.config[:url]
     rescue
       base_url = "http://localhost:8983/fedora"
     end
     "#{base_url}/get/#{pid}/#{datastream_name}"
   end
   
-  def disseminator_link pid, datastream_name
-    "<a class=\"fbImage\" href=\"#{ datastream_disseminator_url(pid, datastream_name) }\">view</a>"
-  end 
+  
 
  # Get content mime-type (or rather just the file format) - used for sending info to jwplayer
 
