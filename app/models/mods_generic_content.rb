@@ -1,7 +1,7 @@
 class ModsGenericContent < ObjectMods
 
   set_terminology do |t|
-    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
+    t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", "xmlns:xlink"=>"http://www.w3.org/1999/xlink", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-2.xsd")
 
     t.title_info(:path=>"titleInfo") {
       t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
@@ -71,8 +71,12 @@ class ModsGenericContent < ObjectMods
 		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
     t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
     t.rights_label(:path=>"accessCondition/@displayLabel")
+
+    # Catch missing namespace
     t.rights_url(:path=>"accessCondition/@xlink:href")
-   t.rights(:path=>"accessCondition", :attributes=>{:type=>"use and reproduction"})
+
+
+    t.rights(:path=>"accessCondition", :attributes=>{:type=>"use and reproduction"})
 		t.location {
 	  	t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
