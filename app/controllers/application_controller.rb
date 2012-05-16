@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::AssetTagHelper
   def layout_name
-   'sws'
+   'gcu'
   end
 
 
