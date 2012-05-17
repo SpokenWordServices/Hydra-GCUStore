@@ -1,6 +1,10 @@
 <div id="title_div" style="float:left;width:600px;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
 <div id="content_div">
 	<dl id="index_list">
+    <% if document[:sub_title_t] %>
+      <dt>Item title</dt>
+      <dd><%=document[:sub_title_t] %> </dd>
+    <% end %>
     <dt>Resource type</dt>
    <dd>
      <%= document[:genre_t] %>

@@ -38,6 +38,7 @@ class GenericAudio < ActiveFedora::Base
   # For ease of reference
 
   delegate :title, :to=>:descMetadata 
+  delegate :sub_title, :to=>:descMetadata 
   delegate :coordinates, :to=>:descMetadata
   delegate :topic_tag, :to=>:descMetadata
   delegate :geographic_tag, :to=>:descMetadata

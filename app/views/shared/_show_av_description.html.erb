@@ -1,7 +1,11 @@
+<div id="description_title">
+  <dl>
+  	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %> 
+      <%= display_datastream_field(@document_fedora,"descMetadata", [:sub_title], "", "dd_subtitle") %>
+  </dl>
+</div>
 <div id="description">
-	<dl>
-	  <%= display_datastream_field(@document_fedora,"descMetadata", [:title], "", "dd_title") %>
-
+  <dl>
 	  <%= display_datastream_text_area_field(@document_fedora,"descMetadata", [:description], "Description", "dd_text") %>
 
     <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:description_note]).first.empty? %>
