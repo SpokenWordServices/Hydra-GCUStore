@@ -735,7 +735,37 @@ a:link, a:visited, a:active {
 	font-weight: normal;
 	font-size: 1.5em !important;
 }
+div#description_title  {
+ margin-bottom: 2em;
+}
 
+div#description_title dl dt {
+    clear: left;
+    float: left;
+    width: 10em;
+    text-align: right;
+    font-size: 1em;
+    margin-top: 0em;
+    line-height: 1.4em;
+    color: #898989;
+    padding-bottom: 0em;
+	font-family: Georgia, Arial;
+	font-weight: normal;
+	width: 28em !important;
+
+}
+div#description_title dl dd {
+	float: left;
+	/* width: 39em !important; */
+	margin-top: 0em;
+	margin-right: 0px;
+	margin-left: 1em;
+	line-height: 1.4em;
+	padding-bottom: 0.5em;
+	font-family: Georgia, Arial;
+	font-weight: normal;
+	width: 28em !important;
+}
 div#description dl dd {
 	float: left;
 	/* width: 39em !important; */
@@ -745,7 +775,6 @@ div#description dl dd {
 	line-height: 1.4em;
 	padding-bottom: 0.5em;
 }
-
 div#description dl dt {
     clear: left;
     float: left;
@@ -765,6 +794,15 @@ div#description dl dt {
 	width: 28em !important;
 }
 
+
+div#description_title .dd_title {
+	font-size: 1.7em;	
+}
+div#description_title .dd_subtitle {
+  font-style:italic;
+	font-size: 1.5em;	
+  padding-bottom: 0.8em;
+}
 .dd_text {
    width: 41em !important;
 }
