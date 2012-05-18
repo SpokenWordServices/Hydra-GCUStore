@@ -1,0 +1,86 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"generic_audio")%>" method="post" data-resourceType="generic_audio" accept-charset="utf-8" >
+  <% @content_type = "generic_audio" %>
+  <input type="hidden" name="content_type" value="generic_audio" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <% choices = ObjectMods.language_relator_terms %>
+
+  <fieldset class="edit-standard">
+  <legend>Content Description</legend>
+  <dl>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:title_info,:main_title],"Title") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:title_info,:sub_title],"Item Title") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :sub_title], :multiple=>false) %>
+    </dd>
+    <dt>
+      <%= fedora_field_label("descMetadata",[:description],"Description") %>
+    </dt>
+    <dd>
+      <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
+    </dd>
+    <!-- Need to add option for extra descriptions -->
+    <dt>
+      <%= fedora_field_label("descMetadata",[:extent],"Duration (HH:MM:SS)") %>
+    </dt>
+    <dd style="width: 20em;">
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:extent], :multiple=>false) %>
+    </dd>
+  </dl>
+  </fieldset>
+  <fieldset class="edit-half">
+    <dl>
+	  <div class="info-multiple">
+	    <div class="left">
+	      <dt>
+      	     <%= fedora_field_label("descMetadata",[:language, :lang_text], "Language") %>
+    	  </dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_text], :multiple=>false) %>
+        </dd>
+	    </div>
+	    <div class="right">
+		  <dt>
+            <%= fedora_field_label("descMetadata",[:language, :lang_code], "Language code") %>
+          </dt>
+          <dd style="width: 20em;"> 
+            <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_code], :multiple=>false) %>
+          </dd>
+	    </div>
+	  </div>
+    </dl>
+   </fieldset>
+
+
+  <fieldset class="edit-standard">
+  <legend>Publication and Rights</legend>
+  <dl>
+    <dt>
+       <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
+    </dd>	
+    <dt>
+      <%= fedora_field_label("descMetadata",[:date_issued],"Date (YYYY-MM-DD, YYYY-MM, YYYY or YYYY/YYYY)") %>
+    </dt>
+    <dd style="width: 20em;">
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:date_issued], :multiple=>false) %>
+    </dd>
+  </dl>
+  </filedset>
+
+
+  <input type="hidden"  name="_method" value="put"/>
+  <div>
+    <div class="form-control">
+      <%= submit_tag "Save" %>
+    </div>
+  </div>
+</form>

@@ -94,6 +94,7 @@ class ModsGenericContent < ObjectMods
     t.title(:proxy=>[:mods, :title_info, :main_title]) 
     t.sub_title(:proxy=>[:mods, :title_info, :sub_title])
     t.date_valid(:proxy=>[:origin_info, :date_valid])
+    t.date_issued(:proxy=>[:origin_info, :date_issued])
     t.coordinates(:proxy=>[:location_subject, :cartographics, :coordinates])
     t.related_item(:proxy=>[:web_related_item, :location, :primary_display])
     t.extent(:proxy=>[:physical_description, :extent])
@@ -137,7 +138,7 @@ class ModsGenericContent < ObjectMods
                xml.languageTerm("eng", :authority=>"iso639-2b", :type=>"code")
              }
              xml.abstract
-             xml.subject(:authority=>"UoH") {
+             xml.subject(:authority=>"") {
                xml.topic
              }
              xml.originInfo {

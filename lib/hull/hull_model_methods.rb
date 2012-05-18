@@ -186,11 +186,12 @@ module HullModelMethods
 
     #Add the dc required elements
 		dc_ds.update_indexed_attributes([:dc_identifier]=> self.pid) unless dc_ds.nil?
-		dc_ds.update_indexed_attributes([:dc_genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
+# not sure of the siginificance of storing the genre in dc will not update for now 
+#		dc_ds.update_indexed_attributes([:dc_genre]=>self.get_values_from_datastream("descMetadata", [:genre], {}).to_s) unless dc_ds.nil?
 	
 		#Add the descMetadata required elements
 		desc_ds.update_indexed_attributes([:identifier]=> self.pid) unless desc_ds.nil?
-		desc_ds.update_indexed_attributes([:location, :primary_display]=> "http://hydra.hull.ac.uk/resources/" + self.pid) unless desc_ds.nil?
+		desc_ds.update_indexed_attributes([:location, :primary_display]=> "http://catalogue.spokenword.ac.uk/resources/" + self.pid) unless desc_ds.nil?
 	  return true
   end
 
@@ -214,18 +215,19 @@ module HullModelMethods
 
     unless dc_ds.nil?
       dc_ds.update_indexed_attributes([:dc_title]=> self.get_values_from_datastream("descMetadata", [:title], {}).to_s)
-      begin
-        date_issued = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {})
-				date_valid = self.get_values_from_datastream("descMetadata", [:origin_info,:date_valid], {})
-       
-        if date_issued.to_s != ""
-        	dc_ds.update_indexed_attributes([:dc_date]=> date_issued.to_s) if date_issued.present?
-				else
-					dc_ds.update_indexed_attributes([:dc_date]=> date_valid.to_s) if date_valid.present?
-				end
-      rescue OM::XML::Terminology::BadPointerError => e
-        logger.error "ERROR when trying to copy date on #{self.class} #{self.pid}:\n\t#{e.message}"
-      end
+    # Again, not sure we want to kepp data in dc  - comment out dc date updates - though we may find they are needed elsewhere
+    #  begin
+    #    date_issued = self.get_values_from_datastream("descMetadata", [:origin_info,:date_issued], {})
+		#		date_valid = self.get_values_from_datastream("descMetadata", [:origin_info,:date_valid], {})
+    #   
+    #    if date_issued.to_s != ""
+    #    	dc_ds.update_indexed_attributes([:dc_date]=> date_issued.to_s) if date_issued.present?
+		#		else
+		#			dc_ds.update_indexed_attributes([:dc_date]=> date_valid.to_s) if date_valid.present?
+		#		end
+    #  rescue OM::XML::Terminology::BadPointerError => e
+    #    logger.error "ERROR when trying to copy date on #{self.class} #{self.pid}:\n\t#{e.message}"
+    #  end
     end
 	
 		unless descMetadata_ds.nil?
