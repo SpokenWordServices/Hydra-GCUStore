@@ -481,6 +481,8 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
     padding: 7px 1px 5px 10px;
 	border-top: 1px solid #EBEFD0;
 
+
+
 	border-right: 1px solid #B6C462;
 	border-bottom: 1px solid #B6C462;
 	border-left: 1px solid #EBEFD0;
@@ -1197,6 +1199,7 @@ fieldset.edit-standard legend, fieldset.edit-half legend {
 }
 
 .edit-standard dl dt label {
+  color: #0000B8;
 	font-size: 165%;
 }
 
@@ -1322,8 +1325,11 @@ fieldset.edit-half dl dt {
   text-align: left;
   font-size: .6em;
   padding-bottom: 0.6em;
+  color: #0000B8;
 }
-
+fieldset.edit-half dl label {
+  color: #0000B8;
+}
 fieldset.edit-half dl dd {
   width: 50em !important;
   font-size: 1.2em;
