@@ -67,3 +67,18 @@ $(document).ready(function(){
         });
 }
 );
+
+// When Editing metadata, use to set the language text to match the selected code. 
+function setLanguageText()
+{
+ try{ 
+   var lang_code_block=document.getElementById("language_lang_code");
+   var lang_text=lang_code_block.options[lang_code_block.selectedIndex].text;
+   var lang_text_block=document.getElementById("language_lang_text");
+   lang_text_block.value=lang_text;}
+ catch(err)
+   { txt="The language metadata cannot be set due to a javascript fault.\nPlease contact the system administrator.";
+     alert(txt);
+     return false;
+   }
+}
