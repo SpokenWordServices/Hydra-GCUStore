@@ -1,8 +1,11 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"generic_audio")%>" method="post" data-resourceType="generic_audio" accept-charset="utf-8" >
+
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"generic_audio")%>" method="post" data-resourceType="generic_audio" accept-charset="utf-8" onsubmit="return setLanguageText()" >
   <% @content_type = "generic_audio" %>
   <input type="hidden" name="content_type" value="generic_audio" />
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <% choices = ObjectMods.language_relator_terms %>
+  <% choices = ObjectMods.language_relator_terms.invert %>
+
+  <%= fedora_hidden_field(@document_fedora, "descMetadata", [:language, :lang_text], :multiple=>false, :forced_values=>[""]) %>
 
   <fieldset class="edit-standard">
   <legend>Content Description</legend>
@@ -38,20 +41,20 @@
     <dl>
 	  <div class="info-multiple">
 	    <div class="left">
-	      <dt>
-      	     <%= fedora_field_label("descMetadata",[:language, :lang_text], "Language") %>
-    	  </dt>
-	      <dd style="width: 20em;">
-	        <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_text], :multiple=>false) %>
-        </dd>
-	    </div>
-	    <div class="right">
 		  <dt>
             <%= fedora_field_label("descMetadata",[:language, :lang_code], "Language code") %>
           </dt>
           <dd style="width: 20em;"> 
-            <%= fedora_text_field(@document_fedora,"descMetadata", [:language, :lang_code], :multiple=>false) %>
+            <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_code], {:multiple=>false, :choices=>choices}) %>
           </dd>
+	     <!-- <dt>
+      	     <%= fedora_field_label("descMetadata",[:language, :lang_text], "Language") %>
+    	  </dt>
+	      <dd style="width: 20em;">
+	        <%= fedora_select(@document_fedora,"descMetadata", [:language, :lang_text], {:multiple=>false, :choices=>choices}) %>
+        </dd> -->
+	    </div>
+	    <div class="right">
 	    </div>
 	  </div>
     </dl>
