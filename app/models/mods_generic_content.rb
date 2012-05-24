@@ -138,7 +138,7 @@ class ModsGenericContent < ObjectMods
                xml.languageTerm("eng", :authority=>"iso639-2b", :type=>"code")
              }
              xml.abstract
-             xml.subject(:authority=>"") {
+             xml.subject(:authority=>"gcu") {
                xml.topic
              }
              xml.originInfo {
