@@ -16,12 +16,18 @@
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false) %>
     </dd>
+
     <dt>
       <%= fedora_field_label("descMetadata",[:title_info,:sub_title],"Item Title") %>
     </dt>
     <dd>
       <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :sub_title], :multiple=>false) %>
     </dd>
+
+    <div id="subjects">
+	    <%= render :partial => 'subjects/index' %>
+	  </div>
+
     <dt>
       <%= fedora_field_label("descMetadata",[:description],"Description") %>
     </dt>
@@ -29,6 +35,7 @@
       <%= fedora_text_area(@document_fedora,"descMetadata", [:description], :multiple=>false) %>
     </dd>
     <!-- Need to add option for extra descriptions -->
+
     <dt>
       <%= fedora_field_label("descMetadata",[:extent],"Duration (HH:MM:SS)") %>
     </dt>
@@ -37,6 +44,7 @@
     </dd>
   </dl>
   </fieldset>
+
   <fieldset class="edit-half">
     <dl>
 	  <div class="info-multiple">
@@ -59,6 +67,14 @@
 	  </div>
     </dl>
    </fieldset>
+
+   <fieldset class="edit-half">
+    <legend>Contributors</legend>
+      <div id="contributors">
+	     <%= render :partial => 'contributors/index', :locals=> {:contributor_type=>:person} %>
+	    </div>
+   </fieldset>
+
 
 
   <fieldset class="edit-standard">
