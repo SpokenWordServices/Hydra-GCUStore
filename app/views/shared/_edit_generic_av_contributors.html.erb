@@ -1,0 +1,10 @@
+  <fieldset class="edit-half">
+    <legend><span id="contributors_span">Contributors</span></legend>
+  <div id="contributors_form" style="display: none">
+   <fieldset class="edit-half">
+      <div id="contributors">
+	     <%= render :partial => 'contributors/index', :locals=> {:contributor_type=>:person} %>
+	    </div>
+   </fieldset>
+  </div>
+  </fieldset>

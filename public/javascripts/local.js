@@ -68,6 +68,47 @@ $(document).ready(function(){
 }
 );
 
+// More/Less views for edit pages
+$(document).ready(function(){
+        $("span#content_description_span").click(function(){
+          $("div#content_description_form").toggle(); 
+          var text=$("div#content_description_form").css("display");
+          if (text == "none") {
+             $(this).css("background-image","url('/images/facet_closed.png')");
+
+          } else {
+             $(this).css("background-image","url('/images/facet_open.png')");
+          }
+        });
+}
+);
+$(document).ready(function(){
+        $("span#contributors_span").click(function(){
+          $("div#contributors_form").toggle(); 
+          var text=$("div#contributors_form").css("display");
+          if (text == "none") {
+             $(this).css("background-image","url('/images/facet_closed.png')");
+
+          } else {
+             $(this).css("background-image","url('/images/facet_open.png')");
+          }
+        });
+}
+); 
+$(document).ready(function(){
+        $("span#rights_span").click(function(){
+          $("div#rights_form").toggle(); 
+          var text=$("div#rights_form").css("display");
+          if (text == "none") {
+             $(this).css("background-image","url('/images/facet_closed.png')");
+
+          } else {
+             $(this).css("background-image","url('/images/facet_open.png')");
+          }
+        });
+}
+); 
+
 // When Editing metadata, use to set the language text to match the selected code. 
 function setLanguageText()
 {

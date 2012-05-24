@@ -483,6 +483,7 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
 
 
 
+
 	border-right: 1px solid #B6C462;
 	border-bottom: 1px solid #B6C462;
 	border-left: 1px solid #EBEFD0;
@@ -855,6 +856,16 @@ span#additional_description_span a:hover {
 div#description_note {
   display:none;
 }
+
+legend span {
+  margin-top: 0em;
+  cursor: pointer;
+  background-image:url('/images/facet_closed.png');
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:15px;
+}
+
 
 div#show_hide_resources {
     cursor: pointer;
@@ -1240,7 +1251,7 @@ fieldset.edit-half dd a.field {
 }
 
 form#document_metadata legend {
-  margin-top: .5em;
+  margin-top: 1em;
  /* margin-bottom: .8em !important;*/
 }
 
