@@ -72,6 +72,9 @@ module HydraFedoraMetadataHelper
       field_values = [field_values.first]
       container_tag_type = :span
     end
+    
+    height_text = opts[:height].nil? ? "" : "height: #{opts[:height]}"
+    
     body = ""
 
     field_values.each_with_index do |current_value, z|
@@ -84,7 +87,7 @@ module HydraFedoraMetadataHelper
         body << "<a href=\"\" title=\"Delete '#{sanitize(current_value)}'\" class=\"destructive field\">Delete</a>" unless z == 0
         body << "<div class=\"textile-text text\" id=\"#{base_id}-text\">#{processed_field_value}</div>"
         body << "<input class=\"textile-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{sanitize(current_value)}\"/>"
-        body << "<textarea class=\"textarea-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\">#{sanitize(current_value)}</textarea>"
+        body << "<textarea class=\"textarea-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" style=\"#{height_text}\">#{sanitize(current_value)}</textarea>"
       body << "</#{container_tag_type}>"
     end
     

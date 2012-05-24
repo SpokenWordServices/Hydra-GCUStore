@@ -1,0 +1,39 @@
+  <fieldset class="edit-standard">
+  <legend><span id="rights_span">Publication and Rights</span></legend>
+   <div id="rights_form" style="display: none">
+  <dl>
+    <dt>
+       <%= fedora_field_label("descMetadata",[:origin_info, :publisher],"Publisher") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
+    </dd>	
+    <dt>
+      <%= fedora_field_label("descMetadata",[:date_issued],"Date (YYYY-MM-DD, YYYY-MM, YYYY or YYYY/YYYY)") %>
+    </dt>
+    <dd style="width: 20em;">
+      <%= fedora_text_field(@document_fedora,"descMetadata", [:date_issued], :multiple=>false) %>
+    </dd>
+    <dt>
+       <%= fedora_field_label("descMetadata",[:rights],"Rights Statement") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_area(@document_fedora,"descMetadata", [:rights], {:multiple=>false, :height=>"4em"} ) %>
+    </dd>	
+    <dt>
+       <%= fedora_field_label("descMetadata",[:rights_label],"Rights Label") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:rights_label], :multiple=>false) %>
+    </dd>	
+    <dt>
+       <%= fedora_field_label("descMetadata",[:rights_url],"Rights Link (url)") %>
+    </dt>
+    <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:rights_url], :multiple=>false) %>
+    </dd>	
+  </dl>
+  </div>
+ </fieldset>
+ 
+
