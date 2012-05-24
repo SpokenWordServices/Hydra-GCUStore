@@ -1,0 +1,21 @@
+
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"generic_video")%>" method="post" data-resourceType="generic_video" accept-charset="utf-8" onsubmit="return setLanguageText()" >
+  <% @content_type = "generic_video" %>
+  <input type="hidden" name="content_type" value="generic_video" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+  <%= fedora_hidden_field(@document_fedora, "descMetadata", [:language, :lang_text], :multiple=>false, :forced_values=>[""]) %>
+
+  <%= render :partial=> 'shared/edit_generic_av_content_description' %>
+
+  <%= render :partial=> 'shared/edit_generic_av_contributors' %>
+
+  <%= render :partial=> 'shared/edit_generic_av_publication' %>
+
+  <input type="hidden"  name="_method" value="put"/>
+  <div>
+    <div class="form-control">
+      <%= submit_tag "Save" %>
+    </div>
+  </div>
+</form>
