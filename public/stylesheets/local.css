@@ -866,6 +866,10 @@ legend span {
   padding-left:15px;
 }
 
+legend span.open_form {
+  background-image:url('/images/facet_open.png');
+
+}
 
 div#show_hide_resources {
     cursor: pointer;
