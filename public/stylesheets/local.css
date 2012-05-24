@@ -1462,3 +1462,43 @@ fieldset.edit-half dl li span input {
   border-style: solid;
   border-color: #000
 }
+
+
+
+.cookies table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 0 1em;
+    padding: 0;
+    width: 100%;
+}
+.cookies table caption {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+.cookies th, article td {
+    line-height: 1.3em;
+    vertical-align: top;
+}
+.cookies tr:nth-child(2n) td {
+    background-color: #C1CACB;
+}
+.cookies th {
+    line-height: 1.25em;
+    padding: 0.6em 0.5em;
+}
+.cookies td {
+    padding: 0.6em 0.5em;
+}
+.cookies th {
+    background-color: #91A23D;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: left;
+}
+.cookies td {
+    background: none repeat scroll 0 0 #E1E8E8;
+    border: 2px solid #FFFFFF;
+}
