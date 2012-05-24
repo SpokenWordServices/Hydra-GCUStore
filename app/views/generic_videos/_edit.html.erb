@@ -1,0 +1,11 @@
+<div class="document_viewer" id="cover_container">
+	<%= render :partial => "shared/delete_asset_link", :locals => {:pid=>params[:id]} %>
+  <div class="content-type-header">
+    <h1>Edit Video Object</h1>
+  </div>
+  <div class="multipleEdit">
+		<%= display_edit_form(@document_fedora, "generic_video") %>
+	</div>
+</div>
+
+<%= async_load_tag(asset_file_assets_path(params[:id], :layout=>"false"), 'uploads') %>

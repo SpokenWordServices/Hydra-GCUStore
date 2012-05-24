@@ -57,7 +57,25 @@ class GenericVideo < ActiveFedora::Base
   delegate :digital_origin, :to=>:descMetadata
   delegate :type_of_resource, :to=>:descMetadata
 
+  # Not sure where this is used 
 
+  def person=(attr)
+    attr.each do |key, value|
+      p = descMetadata.person(key.to_i)
+      p.namePart = value['namePart']
+      p.role.text = value['role']['text']
+    end
+  end
+
+  # Supply person roles specific to audio objects to be used when editing mods
+
+    def self.person_relator_terms
+      {"hst" => "Host",
+       "ctb" => "Contributor",
+       "col" => "Collector",
+       "cre" => "Creator",
+       }
+    end
 
   # Validations  - leave these out for the moment for simplicity 
 =begin
