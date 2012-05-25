@@ -37,8 +37,10 @@ class CompoundController < ApplicationController
       @document_fedora.contentMetadata.insert_resource(:object_id => pid, :ds_id=>ds_id, :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/" + ds_id , :display_label=>@document_fedora.datastreams[ds_id].dsLabel, :id => @document_fedora.datastreams[ds_id].dsLabel,  :mime_type => mime_type, :format => mime_type[mime_type.index("/") + 1...mime_type.length], :service_def => service_def, :service_method => service_method)
 
 			#Update the descMetadata for the primary content datastream
+      # remove addition of filesize in extent as we suse this to store duration of a/v files and anyway don't think it's appropriate.  
+      # [:physical_description,:extent]=> "Filesize: " + bits_to_human_readable(size_attr.to_i),
 			if ds_id == "content"
-	  	 update_hash = { "descMetadata"=> { [:physical_description,:extent]=> "Filesize: " + bits_to_human_readable(size_attr.to_i),
+	  	 update_hash = { "descMetadata"=> { 
 										[:physical_description,:mime_type]=>mime_type,
 							       [:location,:raw_object]=> "http://hydra.hull.ac.uk/assets/" + pid + "/content" }
 				}
