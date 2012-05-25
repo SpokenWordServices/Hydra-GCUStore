@@ -1,0 +1,56 @@
+<fieldset class="edit-standard">
+	<legend><span id="admin_metadata_span">Administrative Metadata</span></legend>
+  <div id="admin_metadata_form" style="display: none">
+   <dl>
+      <div class="info-multiple">
+        <div class="left">
+          <div class="typeOfResource">
+            <%= display_datastream_field(@document_fedora,"descMetadata", [:type_of_resource], "Type Of Resource", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="genre">
+             	<%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre", "display") %>
+          </div>
+        </div>
+       </div>
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :mime_type], "Internet Media Type", "display") %>
+    <div class="info-multiple">
+        <div class="left">
+          <div class="digitalOrigin">
+           <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :digital_origin], "Digital Origin", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="identifier">
+             	<%= display_datastream_field(@document_fedora,"descMetadata", [:all_identifiers], "Identifiers", "display") %>
+          </div>
+        </div>
+    </div>
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:location, :primary_display], "Splash URL", "display") %>
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:location, :raw_object], "Download URL", "display") %>
+    <div class="info-multiple">
+        <div class="left">
+          <div class="depositor">
+            <%= display_datastream_field(@document_fedora,"properties", [:depositor], "Depositor", "display") %>
+          </div>
+        </div>
+        <div class="right">
+          <div class="email">
+             <%= display_datastream_field(@document_fedora,"properties", [:depositorEmail], "E-mail address", "display") %>
+          </div>
+        </div>
+     </div>
+		<%= display_datastream_field(@document_fedora,"descMetadata", [:record_info, :record_change_date], "Last Modified", "display") %>
+
+    </dl>
+    <dl>
+      <dt>
+        <%= fedora_field_label("descMetadata",[:admin_note],"Resource status") %>
+      </dt>
+        <dd> 
+        <%= fedora_text_field(@document_fedora,"descMetadata", [:admin_note], :multiple=>false) %>
+      </dd>	
+    </dl>
+ </div>
+  </fieldset>

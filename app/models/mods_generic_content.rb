@@ -70,6 +70,7 @@ class ModsGenericContent < ObjectMods
 	  	}
 		}
 		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
+		t.all_identifiers(:path=>"identifier")
     t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
     t.rights_label(:path=>"accessCondition/@displayLabel")
 
@@ -89,6 +90,10 @@ class ModsGenericContent < ObjectMods
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"}) 
     t.description_note (:path=>"note", :attributes=>{:type=>"content"})
+	  t.record_info(:path=>"recordInfo") {
+    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
+      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
+   }
     
     # Proxies
     t.title(:proxy=>[:mods, :title_info, :main_title]) 
@@ -107,10 +112,6 @@ class ModsGenericContent < ObjectMods
     t.geographic_tag(:proxy=>[:subject, :geographic])
     t.temporal_tag(:proxy=>[:subject, :temporal])
 
-	  t.record_info(:path=>"recordInfo") {
-    	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
-      t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
-   }
   end
   
      # accessor :title, :term=>[:mods, :title_info, :main_title]

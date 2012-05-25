@@ -108,7 +108,19 @@ $(document).ready(function(){
         });
 }
 ); 
+$(document).ready(function(){
+        $("span#admin_metadata_span").click(function(){
+          $("div#admin_metadata_form").toggle(); 
+          var text=$("div#admin_metadata_form").css("display");
+          if (text == "none") {
+             $(this).css("background-image","url('/images/facet_closed.png')");
 
+          } else {
+             $(this).css("background-image","url('/images/facet_open.png')");
+          }
+        });
+}
+); 
 // When Editing metadata, use to set the language text to match the selected code. 
 function setLanguageText()
 {
