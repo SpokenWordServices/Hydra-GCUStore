@@ -1,4 +1,18 @@
 
+<div class="object_control">
+  <%= render :partial => "shared/submit_to_publish" %>
+</div>
+<div class="object_control">
+  <%= render :partial => "shared/submit_to_hidden" %>
+</div>
+<div class="object_control">
+  <%= render :partial => "shared/submit_to_deleted" %>
+</div>
+
+
+<hr class="separator"/>
+
+
 <form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"generic_video")%>" method="post" data-resourceType="generic_video" accept-charset="utf-8" onsubmit="return setLanguageText()" >
   <% @content_type = "generic_video" %>
   <input type="hidden" name="content_type" value="generic_video" />
@@ -25,4 +39,4 @@
 
 <%= render :partial => "shared/compound_resources" %>
 
-<hr class="separator"/>
+
