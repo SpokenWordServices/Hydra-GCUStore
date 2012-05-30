@@ -88,8 +88,9 @@ hr {
 
 .separator {
   border-top: 1px dotted #333333;
-  margin: 2em 0 1.75em 0;
+  margin: 20px 0 1.75em 0;
   width: 53em;
+  clear: both;
 }
 
 /* HEADER & FOOTER */
@@ -461,6 +462,7 @@ html body div#doc4.yui-t2 div#bd div#yui-main div.yui-b div.homeContainer div.ho
     margin-top: -78px;
     padding: 7px 1px 5px 10px;
 	border-top: 1px solid #EBEFD0;
+
 
 
 
@@ -1212,11 +1214,11 @@ fieldset.edit-standard legend, fieldset.edit-half legend {
   border-width: 0 1px 1px;
   cursor: pointer;
   height: 30px;
-  margin: 0 0;
   padding: 0 0.75em;
   vertical-align: top;
 	/*float: left;*/
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 /* hide inline edit spans, etc. */
@@ -1545,3 +1547,9 @@ fieldset.edit-half dl li span input {
   border-style: solid;
   border-color: #000
 }
+/* GCU Extras */
+.object_control {
+float:left; 
+margin-bottom:20px;
+}
+
