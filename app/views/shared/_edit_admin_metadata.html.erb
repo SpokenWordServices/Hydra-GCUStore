@@ -52,5 +52,22 @@
         <%= fedora_text_field(@document_fedora,"descMetadata", [:admin_note], :multiple=>false) %>
       </dd>	
     </dl>
+   <fieldset class="edit-standard">
+		<dl>
+	   		<dt>
+      		<%= fedora_field_label("RELS-EXT",[:is_member_of], "Structural Set") %>
+    		</dt>
+    		<dd>
+      		<%= select "Structural Set","",  StructuralSet.tree.options_for_nested_select, :selected=>@document_fedora.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
+    		</dd>
+        <dt>
+          <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
+        </dt>
+        <dd>
+          <%= select "Display Set","",  DisplaySet.tree.options_for_nested_select, :selected=>@document_fedora.display_set, :include_blank => true, :class=>"display-set-select"  %>
+        </dd>
+  	</dl>
+  </fieldset>
+
  </div>
   </fieldset>
