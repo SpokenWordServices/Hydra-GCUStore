@@ -5,13 +5,16 @@
 	</div>
 	<div class="create_resource">
   	<ul id="resource_list">
-      <li>Text
+      <li>Resources 
 				<ul>
 					<li><%= link_to "Electronic Thesis or Dissertation", :action => "new", :controller => "assets", :content_type => "uketd_object" %></li>
 					<li><%= link_to "Examination Paper", :action => "new", :controller => "assets", :content_type => "exam_paper" %></li>
+					<li><%= link_to "Audio Object", :action => "new", :controller => "assets", :content_type => "generic_audio" %></li>
+					<li><%= link_to "Video Object", :action => "new", :controller => "assets", :content_type => "generic_video" %></li>
+			    <li><%= link_to "Generic Content", new_generic_content_path %></li>
 				</ul>
 			</li>
-			<li>Sets
+			<li>Administrative Resources
 				<ul>
 					<li><%= link_to "Structural set", :action => "new", :controller => "assets", :content_type => "structural_set" %></li>
 					<li><%= link_to "Display set", :action => "new", :controller => "assets", :content_type => "display_set" %></li>
@@ -19,7 +22,6 @@
 			</li>
 			<li>Other
 			  <ul>
-			    <li><%= link_to "Generic Content", new_generic_content_path %></li>
 			  </ul>
 		</ul>
   </div>

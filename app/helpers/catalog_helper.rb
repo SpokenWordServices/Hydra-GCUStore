@@ -354,8 +354,12 @@ module CatalogHelper
   def get_video_display_resolution(document,datastream_name, dsid)
 
     ds_ids = get_values_from_datastream(document, datastream_name,[:resource, :resource_ds_id])  
-    {:height => get_values_from_datastream(document,datastream_name, [:content_display_height])[ds_ids.index(dsid)],
-     :width => get_values_from_datastream(document,datastream_name, [:content_display_width])[ds_ids.index(dsid)]}
+    height = get_values_from_datastream(document,datastream_name, [:content_display_height])[ds_ids.index(dsid)]
+    height = "288"  if height.nil?
+    width =get_values_from_datastream(document,datastream_name, [:content_display_width])[ds_ids.index(dsid)]
+    width="522" if width.nil?
+    {:height => height,
+     :width => width }
 
   end
 
