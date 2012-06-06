@@ -158,7 +158,7 @@ class ModsGenericContent < ObjectMods
              }
              xml.accessCondition(:type=>"useAndReproduction")
              xml.recordInfo {
-               xml.recordContentSource "The University of Hull"
+               xml.recordContentSource "Glasgow Caledonian University"
                xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
                xml.recordChangeDate(:encoding=>"w3cdtf")
                xml.languageOfCataloging {

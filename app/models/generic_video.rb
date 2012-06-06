@@ -20,7 +20,9 @@ class GenericVideo < ActiveFedora::Base
   has_metadata :name => "rightsMetadata", :label=>"Rights metadata", :type => RightsMetadata 
  
   #Uses Hydra descMetadata to hold MODS
-  has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsGenericContent
+  has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsGenericContent do |m|
+    m.genre ="Video"
+  end
   
   # Might use this later - enables download links 
 	has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => VideoContentMetadata
@@ -121,7 +123,6 @@ class GenericVideo < ActiveFedora::Base
   end
 =end
 
-=begin  Leave out more specifics - will deal with on object creation
   # Set Genre
 
   def genre=(val)
@@ -160,20 +161,19 @@ class GenericVideo < ActiveFedora::Base
     sprintf("%s%02i", prefix,val)
   end
 
-	def apply_specific_base_metadata
-		#Applying the following metadata after the Object is created
-   	type_of_resource = "text"		
-		dc_ds = self.dc
-		desc_ds = self.descMetadata
-
-		dc_ds.update_indexed_attributes([:dc_title]=>self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
-
-		#Set type_of_resource based upon genre
-		genre = self.get_values_from_datastream("descMetadata", [:genre], {}).to_s
-		type_of_resource =  Genre.find(genre).type if Genre.find(genre).type.class == String
-		desc_ds.update_indexed_attributes([:type_of_resource]=> type_of_resource)
-	end
+#	def apply_specific_base_metadata
+#		#Applying the following metadata after the Object is created
+#   	type_of_resource = "text"		
+#		dc_ds = self.dc
+#		desc_ds = self.descMetadata
+#
+#		dc_ds.update_indexed_attributes([:dc_title]=>self.get_values_from_datastream("descMetadata", [:title], {}).to_s) unless dc_ds.nil?
+#
+#		#Set type_of_resource based upon genre
+#		genre = self.get_values_from_datastream("descMetadata", [:genre], {}).to_s
+#		type_of_resource =  Genre.find(genre).type if Genre.find(genre).type.class == String
+#		desc_ds.update_indexed_attributes([:type_of_resource]=> type_of_resource)
+#	end
   
-=end
 
 end
