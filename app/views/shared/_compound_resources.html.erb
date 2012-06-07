@@ -8,7 +8,7 @@
 
 
   <%= form_for :upload, :url=>compound_upload_path(params[:id]), :html=>{:multipart=>true} do -%>
-    <%= hidden_field_tag("content_type", 'generic_content', :id => "file_upload_content_type") %>
+    <%= hidden_field_tag("content_type", @content_type, :id => "file_upload_content_type") %>
     <%= render :partial=>"file_assets/new"%>
     <%= submit_tag("Upload File", :name=>"upload_file")%>
   <% end %>
