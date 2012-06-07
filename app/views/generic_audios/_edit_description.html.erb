@@ -3,7 +3,7 @@
   <%= render :partial=>"shared/submit_to_qa" %>
 </div>
 <div class="object_control">
-  <%= render :partial => "shared/submit_to_deleted" %>
+	<%= render :partial => "shared/delete_asset_link", :locals => {:pid=>params[:id]} %>
 </div>
 
 
