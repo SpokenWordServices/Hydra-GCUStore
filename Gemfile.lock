@@ -109,6 +109,9 @@ GEM
     gyoku (0.4.4)
       builder (>= 2.1.2)
     haml (3.1.4)
+    hoe (2.3.3)
+      rake (>= 0.8.7)
+      rubyforge (>= 1.0.4)
     httparty (0.8.1)
       multi_json
       multi_xml
@@ -179,6 +182,7 @@ GEM
     marc (0.4.3)
     mediashelf-loggable (0.4.7)
     metaclass (0.0.1)
+    mhs-rvideo (0.9.7)
     mime-types (1.17.2)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
@@ -254,6 +258,8 @@ GEM
       nokogiri
       rest-client
       savon
+    rubyforge (2.0.4)
+      json_pure (>= 1.1.7)
     rubytree (0.8.2)
     rubyzip (0.9.5)
     sanitize (2.0.3)
@@ -320,9 +326,11 @@ DEPENDENCIES
   equivalent-xml
   factory_girl_rails
   haml
+  hoe (~> 2.3.3)
   hydra-head (= 3.2.1)
   jettywrapper (>= 1.0.2)
   jquery-rails
+  mhs-rvideo (~> 0.9.7)
   mocha
   rails (= 3.0.10)
   rspec

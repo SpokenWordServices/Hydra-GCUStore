@@ -15,6 +15,10 @@ gem 'will_paginate'
 gem 'rubytree'
 gem 'devise_cas_authenticatable', '~>1.0.0'
 
+# For use with ffmpeg
+gem 'mhs-rvideo', "~> 0.9.7"
+gem 'hoe', '~>2.3.3'
+
 
 group :development, :test do
   gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3'

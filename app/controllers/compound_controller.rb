@@ -1,3 +1,6 @@
+require 'rvideo'
+
+
 class CompoundController < ApplicationController
 
   include Hydra::AccessControlsEnforcement
@@ -24,6 +27,23 @@ class CompoundController < ApplicationController
 
       size_attr = file.size
       pid = @document_fedora.pid
+
+
+      #Attempt to get dimesions of video if appropriate
+      height=""
+      width=""
+      if mime_type.include?('video')
+         vid_file= RVideo::Inspector.new(:file => file.path)
+         if vid_file.unreadable_file?
+              logger.warn 'ffmpeg can\'t read the uploaded file'
+         else 
+              logger.info "width: #{vid_file.width}"
+              logger.info "height: #{vid_file.height})"
+              height=vid_file.height
+              width=vid_file.width              
+         end
+      end 
+        
      
 			#For the first content datastream add the following to contentMetadata... 
       if ds_id == "content"
@@ -34,7 +54,7 @@ class CompoundController < ApplicationController
 				service_method = "getContent?dsID=" + ds_id
 			end
 		
-      @document_fedora.contentMetadata.insert_resource(:object_id => pid, :ds_id=>ds_id, :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/" + ds_id , :display_label=>@document_fedora.datastreams[ds_id].dsLabel, :id => @document_fedora.datastreams[ds_id].dsLabel,  :mime_type => mime_type, :format => mime_type[mime_type.index("/") + 1...mime_type.length], :service_def => service_def, :service_method => service_method)
+      @document_fedora.contentMetadata.insert_resource(:object_id => pid, :ds_id=>ds_id, :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/" + ds_id , :display_label=>@document_fedora.datastreams[ds_id].dsLabel, :id => @document_fedora.datastreams[ds_id].dsLabel,  :mime_type => mime_type, :format => mime_type[mime_type.index("/") + 1...mime_type.length], :service_def => service_def, :service_method => service_method, :height=> height, :width=> width)
 
 			#Update the descMetadata for the primary content datastream
       # remove addition of filesize in extent as we suse this to store duration of a/v files and anyway don't think it's appropriate.  
@@ -50,6 +70,9 @@ class CompoundController < ApplicationController
       @document_fedora.save
       
       flash[:notice] = notice.join("<br/>".html_safe) unless notice.blank?
+
+
+
     else
       flash[:notice] = "You must specify a file to upload."
     end

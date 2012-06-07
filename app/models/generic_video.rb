@@ -25,7 +25,7 @@ class GenericVideo < ActiveFedora::Base
   end
   
   # Might use this later - enables download links 
-	has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => VideoContentMetadata
+	has_metadata :name => "contentMetadata", :label=>"Content metadata", :control_group=>"M", :type => ContentMetadata
 
   # Basic DC
   has_metadata :name => "DC", :label=>"DC admin metadata", :type => ObjectDc
