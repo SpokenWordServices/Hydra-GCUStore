@@ -1,5 +1,9 @@
 <% if (@document_fedora.queue_membership == [:qa] || @document_fedora.queue_membership == [:proto])  %>
-	<div class="deleteDocument">
-           <%= link_to "Delete resource", asset_path(params[:id]), :method=>:delete, :confirm => "Are you sure you want to delete the resource and its content?", :class => "submitLink"%>
-	</div>
+ <div style="width:100%;height:2.2em;">
+    <%=form_tag  asset_path(params[:id]), :method=>:delete  do %>
+      <div class="form-control">  
+        <%= submit_tag "Delete resource", :confirm => "Are you sure you want to Delete this resource?" %>
+      </div>
+    <%end%>
+  </div>  
 <% end %>
