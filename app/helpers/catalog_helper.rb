@@ -355,9 +355,9 @@ module CatalogHelper
 
     ds_ids = get_values_from_datastream(document, datastream_name,[:resource, :resource_ds_id])  
     height = get_values_from_datastream(document,datastream_name, [:content_display_height])[ds_ids.index(dsid)]
-    height = "288"  if height.nil?
+    height = "288"  if height.empty?
     width =get_values_from_datastream(document,datastream_name, [:content_display_width])[ds_ids.index(dsid)]
-    width="522" if width.nil?
+    width="522" if width.empty?
     {:height => height,
      :width => width }
 
