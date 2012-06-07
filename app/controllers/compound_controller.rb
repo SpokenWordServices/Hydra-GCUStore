@@ -32,15 +32,17 @@ class CompoundController < ApplicationController
       #Attempt to get dimesions of video if appropriate
       height=""
       width=""
-      if mime_type.include?('video')
+      duration=""
+      if mime_type.include?('video') || mime_type.include?('audio')
          vid_file= RVideo::Inspector.new(:file => file.path)
          if vid_file.unreadable_file?
               logger.warn 'ffmpeg can\'t read the uploaded file'
          else 
-              logger.info "width: #{vid_file.width}"
-              logger.info "height: #{vid_file.height})"
-              height=vid_file.height
-              width=vid_file.width              
+             if mime_type.include?('video')
+               height=vid_file.height
+               width=vid_file.width
+             end
+             duration=vid_file.raw_duration              
          end
       end 
         
@@ -61,6 +63,7 @@ class CompoundController < ApplicationController
       # [:physical_description,:extent]=> "Filesize: " + bits_to_human_readable(size_attr.to_i),
 			if ds_id == "content"
 	  	 update_hash = { "descMetadata"=> { 
+                    [:physical_description,:extent]=> duration,
 										[:physical_description,:mime_type]=>mime_type,
 							       [:location,:raw_object]=> "http://hydra.hull.ac.uk/assets/" + pid + "/content" }
 				}
