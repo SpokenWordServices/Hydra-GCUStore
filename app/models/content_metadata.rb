@@ -16,12 +16,16 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
         t.mime_type(:path=>{:attribute=>"mimeType"})
         t.size(:path=>{:attribute=>"size"})
         t.location
+        t.video_height(:path=>"videoData/@height")
+        t.video_width(:path=>"videoData/@width")
       }
     }
     t.content_url(:proxy=>[:resource,:file,:location])
     t.content_format(:proxy=>[:resource,:file,:format])
     t.content_mime_type(:proxy=>[:resource,:file,:mime_type])
     t.content_size(:proxy=>[:resource,:file,:size])
+    t.content_display_height(:proxy=>[:resource,:file,:video_height])
+    t.content_display_width(:proxy=>[:resource,:file,:video_width])  
   
   end
   
@@ -35,7 +39,7 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
       return builder.doc
     end
     
-    # generates a resource template, with the option of filling it out
+    # generates a resource template based on the mime-type, with the option of filling it out
     # @param [Hash] opts optional values passed in
     # @option opts [String] :sequence the sequence number
     # @option opts [String] :id the resource id
@@ -47,15 +51,26 @@ class ContentMetadata < ActiveFedora::NokogiriDatastream
     # @option opts [String] :service_def the service definition
     # @option opts [String] :ds_id the dsID for the datastream
     def self.resource_template(opts={})
-      options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>"", :ds_id=>'content'}
+      options = {:sequence=>"",:id=>"",:display_label=>"",:object_id=>"",:file_id=>"content",:file_size=>"",:url=>"", :ds_id=>'content',:height=>"", :width=>""}
       options.merge!(opts)
-      #options.merge!({:id=>"Asset #{options[:display_label]}"})
-      builder = Nokogiri::XML::Builder.new do |xml|
-        xml.resource(:sequence=>options[:sequence],:id=>options[:ds_id],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>options[:ds_id],:serviceMethod=>options[:service_method]) {
-          xml.file(:id=>options[:id], :format=>options[:format], :mimeType=>options[:mime_type], :size=>options[:file_size]) {
-            xml.location(options[:url], :type=>"url")
+ 
+     if opts[:mime_type].include?("video") 
+       builder = Nokogiri::XML::Builder.new do |xml|
+          xml.resource(:sequence=>options[:sequence],:id=>options[:ds_id],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>options[:ds_id],:serviceMethod=>options[:service_method]) {
+            xml.file(:id=>options[:id], :format=>options[:format], :mimeType=>options[:mime_type], :size=>options[:file_size]) {
+              xml.location(options[:url], :type=>"url")
+              xml.videoData(:height=>options[:height], :width=>options[:width])
+            }
           }
-        }
+        end
+      else 
+       builder = Nokogiri::XML::Builder.new do |xml|
+          xml.resource(:sequence=>options[:sequence],:id=>options[:ds_id],:contains=>"content", :displayLabel=>options[:display_label],:objectID=>options[:object_id],:serviceDef=>options[:service_def], :dsID=>options[:ds_id],:serviceMethod=>options[:service_method]) {
+            xml.file(:id=>options[:id], :format=>options[:format], :mimeType=>options[:mime_type], :size=>options[:file_size]) {
+              xml.location(options[:url], :type=>"url")
+            }
+          }
+        end
       end
       return builder.doc.root
     end
