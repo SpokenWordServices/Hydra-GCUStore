@@ -79,9 +79,9 @@ class GenericVideo < ActiveFedora::Base
        }
     end
 
-  # Validations  - leave these out for the moment for simplicity 
-=begin
 
+  # This fails because pending_attributes is nil - can't work out why so just removung for now as don't use a valid date anyway.
+=begin
   has_validation :validate_parameters do
     if @pending_attributes.fetch("descMetadata",nil)
 			date_valid = @pending_attributes["descMetadata"][[:date_valid]]["0"] 
@@ -95,13 +95,14 @@ class GenericVideo < ActiveFedora::Base
 		end		
     is_valid?
   end
-
+=end
 
 	has_workflow_validation :qa do
     errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
     validates_presence_of "descMetadata",[:title]
     validates_presence_of("descMetadata",[:name,:namePart])
     validates_presence_of("descMetadata",[:subject,:topic])
+    validates_presence_of("contentMetadata",[:resource,:file],{:message=>"Video content missing"})
     is_valid?
   end
 
@@ -109,6 +110,7 @@ class GenericVideo < ActiveFedora::Base
     validates_presence_of "descMetadata",[:title]
     validates_presence_of("descMetadata",[:name,:namePart])
     validates_presence_of("descMetadata",[:subject,:topic])
+    validates_presence_of("contentMetadata",[:resource,:file],{:message=>"Video content missing"})
     is_valid?
   end
 
@@ -121,7 +123,6 @@ class GenericVideo < ActiveFedora::Base
     validates_presence_of ("descMetadata",[:admin_note])
     is_valid?
   end
-=end
 
   # Set Genre
 
