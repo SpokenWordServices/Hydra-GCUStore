@@ -80,7 +80,7 @@ class GenericAudio < ActiveFedora::Base
     end
 
 
-  # Validations  - leave these out for the moment for simplicity 
+  # This fails because pending_attributes is nil - can't work out why so just removing for now as don't use a valid date anyway.
 =begin
 
   has_validation :validate_parameters do
@@ -96,13 +96,14 @@ class GenericAudio < ActiveFedora::Base
 		end		
     is_valid?
   end
-
+=end
 
 	has_workflow_validation :qa do
     errors << "#{pid} is already in qa queue" if queue_membership.include? :qa
     validates_presence_of "descMetadata",[:title]
     validates_presence_of("descMetadata",[:name,:namePart])
     validates_presence_of("descMetadata",[:subject,:topic])
+    validates_presence_of("contentMetadata",[:resource,:file],{:message=>"Audio content missing"})
     is_valid?
   end
 
@@ -110,6 +111,7 @@ class GenericAudio < ActiveFedora::Base
     validates_presence_of "descMetadata",[:title]
     validates_presence_of("descMetadata",[:name,:namePart])
     validates_presence_of("descMetadata",[:subject,:topic])
+    validates_presence_of("contentMetadata",[:resource,:file],{:message=>"Audio content missing"})
     is_valid?
   end
 
@@ -122,7 +124,7 @@ class GenericAudio < ActiveFedora::Base
     validates_presence_of ("descMetadata",[:admin_note])
     is_valid?
   end
-=end
+#=end
 
   # Overridden so that we can store a cmodel and "complex Object"
   def assert_content_model
