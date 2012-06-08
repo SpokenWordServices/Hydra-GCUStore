@@ -5,8 +5,12 @@
 <div class="object_control">
   <%= render :partial => "shared/submit_to_hidden" %>
 </div>
+<!-- Only one of the following buttons will render depending on which queue the object is in -->
 <div class="object_control">
   <%= render :partial => "shared/submit_to_deleted" %>
+</div>
+<div class="object_control">
+  <%= render :partial => "shared/delete_asset_link" %>
 </div>
 
 
