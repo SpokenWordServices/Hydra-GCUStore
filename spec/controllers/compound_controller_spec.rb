@@ -33,19 +33,19 @@ describe CompoundController do
 
         @test_file = fixture("image.jp2")
         filename = "My File Name"
-				mime_type = "image/jp2"
+		    mime_type = "image/jp2"
+        
         @test_file.expects(:original_filename).returns(filename)
-				@test_file.expects(:content_type).returns(mime_type)
+				@test_file.expects(:content_type).returns(mime_type).at_least(2)
         @test_file.expects(:size).returns(2340)
 
       end
       it "should save the first file as content" do
-
         post :create, :id=>@obj.id, :Filedata=>[@test_file], :content_type=>'generic_content'
         response.should redirect_to edit_resource_path(@obj.id)
         assigns[:document_fedora].datastreams['content'].dsLabel.should == 'My File Name'
-        assigns[:document_fedora].datastreams['content'].mimeType.should == 'application/octet-stream'
-        assigns[:document_fedora].datastreams['contentMetadata'].content_url.should == ["http://test.host/assets/#{@obj.id}/datastreams/content"]
+        assigns[:document_fedora].datastreams['content'].mimeType.should == 'image/jp2'
+        assigns[:document_fedora].datastreams['contentMetadata'].content_url.should == ["http://hydra.hull.ac.uk/assets/#{@obj.id}/content"]
       end
       it "should save the second file as content02" do
         @obj.add_datastream(@obj.create_datastream(ActiveFedora::Datastream, 'content', :blob=>"hey"))
@@ -53,8 +53,8 @@ describe CompoundController do
         post :create, :id=>@obj.id, :Filedata=>[@test_file], :content_type=>'generic_content'
         response.should redirect_to edit_resource_path(@obj.id)
         assigns[:document_fedora].datastreams['content02'].dsLabel.should == 'My File Name'
-        assigns[:document_fedora].datastreams['content02'].mimeType.should == 'application/octet-stream'
-        assigns[:document_fedora].datastreams['contentMetadata'].content_url.should == ["http://test.host/assets/#{@obj.id}/datastreams/content02"]
+        assigns[:document_fedora].datastreams['content02'].mimeType.should == 'image/jp2'
+        assigns[:document_fedora].datastreams['contentMetadata'].content_url.should == ["http://hydra.hull.ac.uk/assets/#{@obj.id}/content02"]
       end
     end
   end

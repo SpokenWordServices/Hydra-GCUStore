@@ -89,11 +89,14 @@ class ModsGenericContent < ObjectMods
       t.digital_origin(:path=>"digitalOrigin")
     }
     t.admin_note(:path=>"note", :attributes=>{:type=>"admin"}) 
+
     t.description_note (:path=>"note", :attributes=>{:type=>"content"})
 	  t.record_info(:path=>"recordInfo") {
     	t.record_creation_date(:path=>"recordCreationDate", :attributes=>{:encoding=>"w3cdtf"})
       t.record_change_date(:path=>"recordChangeDate", :attributes=>{:encoding=>"w3cdtf"})
    }
+
+    t.additional_notes(:path=>"note", :attributes=>{:type=>"additionalNotes"})    
     
     # Proxies
     t.title(:proxy=>[:mods, :title_info, :main_title]) 

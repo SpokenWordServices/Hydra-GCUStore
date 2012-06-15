@@ -29,6 +29,7 @@
    <%= display_datastream_field(@document_fedora,"descMetadata", [:see_also], "See also", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:physical_description, :extent], "Extent", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:origin_info, :publisher], "Publisher", "dd_text") %>
+   <%= display_datastream_field(@document_fedora,"descMetadata", [:additional_notes], "Additional notes", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:language, :lang_text], "Language", "dd_text") %>
 	 <%= display_datastream_field(@document_fedora,"descMetadata", [:genre], "Genre", "dd_text") %>
    <%= display_datastream_field @document_fedora, "descMetadata", [:date_valid], "Valid date", "dd_text" %>

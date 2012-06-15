@@ -10,7 +10,6 @@ class PermissionsController < ApplicationController
   include Hydra::SubmissionWorkflow
   
   def index
-		debugger
     @document_fedora=ActiveFedora::Base.load_instance(params[:asset_id])
     pid = params[:asset_id]
     dsid = "rightsMetadata"
@@ -19,7 +18,7 @@ class PermissionsController < ApplicationController
     ds.pid = pid
     ds.dsid = dsid
     @document_fedora.datastreams_in_memory[dsid] = ds
-    
+
     respond_to do |format|
       format.html 
       format.inline { render :partial=>"permissions/index.html", :format=>"html" }
@@ -47,7 +46,7 @@ Removed from permissions/_new.html.erb
     ds.pid = pid
     ds.dsid = dsid
     @document_fedora.datastreams_in_memory[dsid] = ds
-    
+
     respond_to do |format|
       format.html 
       format.inline {render :action=>"edit", :layout=>false}
@@ -104,6 +103,7 @@ Removed from permissions/_new.html.erb
   # Updates the permissions for all actors in a hash.  Can specify as many groups and persons as you want
   # ie. :permission => {"group"=>{"group1"=>"discover","group2"=>"edit"}, {"person"=>{"person1"=>"read"}}}
   def update
+
 	  if params[:id].nil?  
       pid = params[:asset_id]
     else
@@ -115,51 +115,22 @@ Removed from permissions/_new.html.erb
 		else
 			dsid = params[:datastream]
 	  end
-    
-    @document_fedora=ActiveFedora::Base.load_instance(pid)
-    xml_content = @document_fedora.datastreams[dsid].content
-    ds = Hydra::RightsMetadata.new(@document_fedora.inner_object, dsid)
-    Hydra::RightsMetadata.from_xml(xml_content, ds)
-    @document_fedora.datastreams[dsid] = ds
 
-     
-    # update the datastream's values
-    result = ds.update_permissions(params[:permission])
+    af = ActiveFedora::Base.load_instance(pid)
+    the_model = ActiveFedora::ContentModel.known_models_for( af ).first
+    unless the_model.nil?
+      af = the_model.load_instance(pid) 
+    end
     
-    ds.serialize!
-    ds.save
-    
-    # Re-index the object
-    Solrizer::Fedora::Solrizer.new.solrize(pid)
+    if the_model == StructuralSet 
+      af.update_set_permissions(params[:permission], dsid)  
+    else
+      af.update_object_permissions(params[:permission], "rightsMetadata")
+    end        
     
     flash[:notice] = "The permissions have been updated."
     redirect_to :controller=>"catalog", :action=>"edit", :id => pid
 
-    #format.html { redirect_to :controller=>"catalog", :action=>"edit", :id=>params[:asset_id] }
-	#debugger
-#redirect_to( url_for(:controller=>"catalog", :action=>"show", :id=>params[:asset_id] ) )    
-    
-#    respond_to do |format|
-      #format.html { redirect_to :controller=>"catalog", :action=>"edit", :id=>params[:asset_id] }
-#      format.html do
-#        if params.has_key?(:add_permission)
-#          redirect_to :controller=>"catalog", :action=>"edit", :id => pid, :wf_step => :permissions, :add_permission => true
-#        else
-#          redirect_to( {:controller => "catalog", :action => "edit", :id => pid}.merge(params_for_next_step_in_wokflow) )
-#        end
-#      end
-#      format.inline do
-        # This should be replaced ...
-#        if params[:permission].has_key?(:group)
-#          access_actor_type = "group"
-#        else
- #         access_actor_type = "person"
- #       end
- #       actor_id = params["permission"][access_actor_type].first[0]
- #       render :partial=>"permissions/edit_person_permissions", :locals=>{:person_id=>actor_id} 
- #     end
- #   end
-    
   end
 
 
@@ -167,25 +138,49 @@ Removed from permissions/_new.html.erb
 
  #If the defaultObjectRights are being changed (structuralSet), then the permissions 
  #should only be updated if the set is empty...
- def check_for_children
-	if !params[:datastream].nil? && params[:datastream] == "defaultObjectRights"
-		if params[:id].nil?  
-      pid = params[:asset_id]
-    else
-      pid = params[:id]
+  def check_for_children
+    unless params[:datastream].nil?
+      if params[:datastream] == "defaultObjectRights"
+        unless params[:skip_warning] == "true"
+          if params[:id].nil?  
+            pid = params[:asset_id]
+          else
+            pid = params[:id]
+          end
+
+          af = ActiveFedora::Base.load_instance(pid)
+          the_model = ActiveFedora::ContentModel.known_models_for( af ).first
+          unless the_model.nil?
+            af = the_model.load_instance(pid) 
+          end
+      
+          if the_model == StructuralSet 
+            children = af.children_match_parent_default_object_rights
+            children_dont_match =  children[:dont_match]
+           
+            if children_dont_match.count > 0
+              id_list = ""
+
+              list_of_ids = children[:dont_match].map {|child| child[:id]}     
+              list_of_ids.each { |id| id_list << "<li>" + id + "</li>" }
+              
+              message = <<-EOS
+                <p>The following objects do not match the original rights metadata for this set:</p>
+                <ul>
+                 #{id_list}
+                </ul>
+                <p>If you intend to proceed please select the appropiate rights again, and click <strong>Save</strong>.</p><br/>
+
+                <p><strong>Note:</strong> Non-matching sets permissions will not be changed, therefore its recommended that you print this page for your records.</p>          
+              EOS
+
+              flash[:notice] =  message.html_safe
+      	      redirect_to :controller=>"catalog", :action=>"edit", :id => pid, :warn => "true"
+            end
+          end
+        end
     end
-		
-		escaped_id = 'info\:fedora/' + pid.gsub(/(:)/, '\\:')
-	
-		hits  = ActiveFedora::SolrService.instance.conn.query('is_member_of_s:' + escaped_id).hits			
-
-		if hits.size > 0
-		 flash[:notice] = "You cannot change the default object permissions: There is already content in this set"
-    	redirect_to :controller=>"catalog", :action=>"edit", :id => pid
-		end
-	end
-
- end 
-     
+    end
+  end   
 end
 

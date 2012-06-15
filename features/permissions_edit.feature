@@ -10,7 +10,10 @@ Feature: Edit Permissions
 		Then I select "Discover" from "student_group_access"
 		Then I select "Read & Download" from "staff_group_access"
 		And I press "Save permissions"
-    Then I should see "You cannot change the default object permissions: There is already content in this set"
+    Then I should see "The following objects do not match the original rights metadata for this set"
+    And I should see "hull:3375"
+    And I should see "hull:3112"
+    And I should see "hull:3500"
    
  Scenario: Changing the defaultObjectRights of a structural set without children
     Given I am logged in as "contentAccessTeam1@example.com" 

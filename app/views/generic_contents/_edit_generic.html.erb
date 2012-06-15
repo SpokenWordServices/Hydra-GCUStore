@@ -73,6 +73,12 @@
     <dd> 
         <%= fedora_text_field(@document_fedora,"descMetadata", [:origin_info, :publisher], :multiple=>false) %>
     </dd>	
+    <dt>
+      <%= fedora_field_label("descMetadata",[:additional_notes],"Additional notes") %>
+    </dt>
+    <dd>
+      <%= fedora_text_field(@document_fedora,"descMetadata",[:additional_notes], :multiple=>false) %>
+    </dd>
 	 </dl>
 	 </fieldset>
    <fieldset class="edit-half">

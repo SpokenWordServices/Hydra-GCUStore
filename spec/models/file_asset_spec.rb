@@ -22,14 +22,16 @@ describe FileAsset do
   
   describe '#garbage_collect' do
     it "should delete the object if it does not have any objects asserting has_collection_member" do
-      mock_non_orphan = mock("non-orphan file asset", :containers=>["foo"])
+      #mock_non_orphan = mock("non-orphan file asset", :containers=>["foo"])
+      mock_non_orphan = mock("non-orphan file asset")
       mock_non_orphan.expects(:delete).never
       
-      mock_orphan = mock("orphan file asset", :containers=>[])
-      mock_orphan.expects(:delete)
-        
-      FileAsset.expects(:load_instance).with("_non_orphan_pid_").returns(mock_non_orphan)
-      FileAsset.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan)  
+      #mock_orphan = mock("orphan file asset", :containers=>[])
+      mock_orphan = mock("orphan file asset")
+      mock_orphan.expects(:delete).never
+
+      FileAsset.expects(:load_instance).with("_non_orphan_pid_").returns(mock_non_orphan).never
+      FileAsset.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan).never  
     end
   end
   

@@ -1,11 +1,15 @@
 require "hydra"
 require 'tree'
+require 'lib/hull/structural_set_children'
+require 'lib/hull/structural_set_children_rights'
 
 class StructuralSet < ActiveFedora::Base
   
   include Hydra::ModelMethods
   include HullModelMethods
   include ActiveFedora::Relationships
+  include StructuralSetChildren
+  include StructuralSetChildrenRights
 
   def initialize(attrs=nil)
     super(attrs)
@@ -68,6 +72,18 @@ class StructuralSet < ActiveFedora::Base
       prop_ds.depositor_values = depositor_id unless prop_ds.nil?
     end
 	  return true
+  end
+
+
+  def update_set_permissions(permission_params, ds_id)
+    #If changing defaultObjectRights we need to change the children...
+    if ds_id == "defaultObjectRights"
+      update_set_children_rights(permission_params)
+    end
+ 
+    #update the parents
+    self.update_object_permissions(permission_params, ds_id)
+
   end
 
 

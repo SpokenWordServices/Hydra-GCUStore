@@ -1,10 +1,16 @@
-<div id="title_div" style="float:left;width:600px;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
+<div id="title_div" style="float:left;width:540px;height:40px;"><h2><%= link_to_document(document, :label => Blacklight.config[:show][:heading].to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %></h2></div>
 <div id="content_div">
 	<dl id="index_list">
-  	<dt>Resource type</dt>
+  <dt>Resource type</dt>
 	<dd>
     <%= document[:genre_t] %>
 	</dd>
+  <% unless document[:admin_note_t].nil? %>
+   <dt>Status</dt>
+	  <dd>
+      <%= document[:admin_note_t] %>
+	  </dd>
+  <% end %>
   </dl>
 </div>
 

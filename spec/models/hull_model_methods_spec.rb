@@ -92,19 +92,46 @@ describe HullModelMethods do
       @mock_desc_ds.expects(:get_values).with([:title], {}).returns('My title')
       @mock_dc_ds = mock("DCDatastream")
       @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_title]=>'My title')
+      @testclassone.expects(:generate_object_label).returns("My title - John Smith;")
       @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds, "DC"=>@mock_dc_ds})
     end
     it "should copy the date from the descMetadata to the dc datastream if it is present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns('2011-10')
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_valid], {}).returns('')
       @mock_dc_ds.expects(:update_indexed_attributes).with([:dc_date]=>'2011-10')
+      @mock_desc_ds.expects(:update_indexed_attributes).with([:record_info,:record_change_date]=> Time.now.strftime("%Y-%m-%d"))
       @testclassone.apply_additional_metadata(123).should == true
     end
     it "should not copy the date from the descMetadata to the dc datastream if it isn't present" do
       @mock_desc_ds.expects(:get_values).with([:origin_info, :date_issued], {}).returns([])
+      @mock_desc_ds.expects(:get_values).with([:origin_info, :date_valid], {}).returns([])
+      @mock_desc_ds.expects(:update_indexed_attributes).with([:record_info,:record_change_date]=> Time.now.strftime("%Y-%m-%d")) #update date still gets set
       @testclassone.apply_additional_metadata(123).should == true
     end
 
   end
+
+  describe "#generate_object_label" do
+    before do
+      @mock_desc_ds = mock("descMetadataDS")
+    end
+    it "should return an object label based upon the descMetadata title and, names and roles" do
+      @mock_desc_ds.expects(:get_values).with([:title], {}).returns('The old-age way of letting go')
+      @mock_desc_ds.expects(:get_values).with([:name, :namePart], {}).returns(["Smith, John.", "Jones, Mike."])
+      @mock_desc_ds.expects(:get_values).with([:name, :role, :text], {}).returns(["Author", "Author"])
+      @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds})
+      @testclassone.generate_object_label.should == "The old-age way of letting go - Smith, John.; Jones, Mike.;"
+    end  
+    it "should return an object label that is limited to 200 characters" do
+      @mock_desc_ds.expects(:get_values).with([:title], {}).returns('This is the dataset of all datasets, actually this is a rather large dataset with a title that is likely to be too long for a fedora-label')
+      @mock_desc_ds.expects(:get_values).with([:name, :namePart], {}).returns(["Lamb, Simon.", "Green, Richard.", "Scott, John.", "Garbutt, Richard.", "Jones, Peter.", "Bradfield, James.", "Jones, Nick."])
+      @mock_desc_ds.expects(:get_values).with([:name, :role, :text], {}).returns(["Author", "Author", "Author", "Author", "Author", "Author", "Author"])
+      @testclassone.stubs(:datastreams).returns({"descMetadata"=>@mock_desc_ds})
+      @testclassone.generate_object_label.should == "This is the dataset of all datasets, actually this is a rather large dataset with a title that is lik... - Lamb, Simon.; Green, Richard.; Scott, John.; Garbutt, Richard.; Jones, Peter.; Bradfield, J..."
+    end
+  end
+ 
+
 
   describe "#insert_subject_topic" do
     it "should wrap the insert_subject_topic of the underlying datastream" do
@@ -130,9 +157,7 @@ describe HullModelMethods do
     it "should apply has_model_s and fedora_owner_id correctly" do
       @testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>nil))
 			@testclassone.update_indexed_attributes([:origin_info, :date_issued]=> "2011-01-01", :datastreams=>"descMetadata")
-			#@testclassone.stubs(:descMetadata).returns(mock('Description Metadata', :origin_info=>{:date_issued=>"2010-01-01"}))
-      solr_doc = @testclassone.to_solr
-			#debugger
+		  solr_doc = @testclassone.to_solr
       solr_doc["has_model_s"].should == "info:fedora/hull-cModel:testClassOne"
       solr_doc["fedora_owner_id_s"].should == "fooAdmin"
       solr_doc["fedora_owner_id_display"].should == "fooAdmin"

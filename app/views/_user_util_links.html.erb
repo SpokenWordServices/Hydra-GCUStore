@@ -1,6 +1,7 @@
 <div id="links-right">
-	<% if current_user %> 
+	<% if current_user %>     
 		<%= create_resource_link %>
+    <%= browse_structural_sets_link %>
 	  <%= link_to "Log Out", destroy_user_session_path %> <%= current_user %>
 	<% else %>
   		<%= link_to 'Login', new_user_session_path %>

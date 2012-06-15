@@ -26,6 +26,7 @@ Hull::Application.routes.draw do
   match 'grant_numbers/:content_type/:asset_id/:index' => 'grant_numbers#show', :as=>'grant_number',:via => :get 
   match 'grant_numbers/:content_type/:asset_id/:index' => 'grant_numbers#destroy', :via=>:delete  
 
+  resources :datasets
   resources :generic_contents
   resources :subjects
   match 'subjects/:content_type/:asset_id/:index' => 'contributors#show', :as=>'subject_topic', :via=>:get
