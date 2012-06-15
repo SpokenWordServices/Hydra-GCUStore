@@ -82,7 +82,7 @@ class StructuralSet < ActiveFedora::Base
     end
  
     #update the parents
-    self.update_object_permissions(permission_params, ds_id)
+    update_object_permissions(permission_params, ds_id)
 
   end
 
