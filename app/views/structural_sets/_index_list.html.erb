@@ -11,6 +11,10 @@
       <%= document[:admin_note_t] %>
 	  </dd>
   <% end %>
+  	<dt>Members</dt>
+	<dd>
+    <%= link_to "View set members", "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/#{document[:id_t]}&results_view=true" %>
+	</dd>
   </dl>
 </div>
 
