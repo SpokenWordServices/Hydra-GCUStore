@@ -7,7 +7,7 @@ module CatalogHelper
   def get_persons_from_roles(doc,roles,opts={})
     i = 0
     persons =[]
-    while i < 10
+    while i < 20
       persons_roles = [] # reset the array
       persons_roles = doc["person_#{i}_role_t"].map{|w|w.strip.downcase.split} unless doc["person_#{i}_role_t"].nil?
       if persons_roles and (persons_roles.flatten & roles.map{|x|x.downcase}).length > 0  #lower_cased roles for examples such as Supervisor
@@ -65,11 +65,34 @@ module CatalogHelper
   
      sequence_hash.keys.sort.each do |seq| 
         i = sequence_hash[seq]
-      resources << <<-EOS 
-	       <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
+      resources << <<-EOS
+         <div id="download"> 
+	         <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
            <a href="/assets/#{object_id[i]}/#{ds_id[i]}" onClick="_gaq.push(['_trackEvent','Downloads', '#{object_id[i]}/#{ds_id[i]}', '#{resource_title}']);">#{display_label[i]}</a> 
-           <div id="file-size">(#{get_friendly_file_size(file_size[i])} #{format[i]})</div>
+EOS
+   
+       resources << <<-EOS
+           <div id="file-size">(#{get_friendly_file_size(file_size[i])} #{format[i]})
       EOS
+
+      #If the content is a KMZ or a KML file and less then 3MB...
+      if (mime_type[i].eql?("application/vnd.google-earth.kmz") || mime_type[i].eql?("application/vnd.google-earth.kml+xml"))
+        if file_size[i].to_i > 0 && file_size[i].to_i < 3145728
+          # And if the document is public readable... We display a link to the Google maps View of the map - Google maps need the KML/KMZ to be public accessible...
+          if is_public_readable(document)
+            resources << <<-EOS
+              <div id="view-map-link">
+              <a href="/google_map.html?object_id=#{object_id[i]}&ds_id=#{ds_id[i]}" target="_blank">View as map<a></div>
+            EOS
+          end
+        end
+      end
+
+     resources << <<-EOS
+        </div>
+       </div>
+     EOS
+
      end
       resources << <<-EOS
         </div>
@@ -96,6 +119,14 @@ module CatalogHelper
 			  link_to "Create Resource", :controller => "work_flow", :action => "new"
 		end
 	end
+
+  def browse_structural_sets_link
+    if current_user
+      if RoleMapper.roles(current_user.login).include? 'contentAccessTeam'
+        link_to "Browse sets", "?f%5Bis_member_of_s%5D%5B%5D=info:fedora/hull:rootSet&results_view=true" 
+      end
+    end
+  end
 
   def display_datastream_field(document,datastream_name,fields=[],label_text='',dd_class=nil)
     label = ""
@@ -181,12 +212,53 @@ module CatalogHelper
     datastream_text_area_field.html_safe
 	end
 
+
+  def display_object_group_permissions(document, permission_ds)
+    groups = document.datastreams[permission_ds].groups
+
+    unless groups.nil?
+      permissions = <<-EOS
+         <fieldset>
+           <dl>
+           <dt><strong>Default permissions</strong></dt><dd></dd>
+      EOS
+      groups.each do |group|
+        group_permission = group[1].to_s
+      
+        case group_permission
+        when "read"
+          group_display = "Read and download"
+        when "edit"
+          group_display = "Edit"
+        when "discover"
+          group_display = "Search and discover" 
+        else
+          group_display = group_permission       
+        end
+
+        permissions << <<-EOS
+            <dt>
+             #{group[0]}
+            </dt>
+            <dd class="dd_text">
+              #{group_display}
+            </dd>
+        EOS
+      end 
+    end
+    permissions << <<-EOS
+          </dl>
+         </fieldset>
+     EOS
+    permissions.html_safe
+  end
+
   def display_qr_code
     qr_code=""
     #Possibly insert, once we have changed the styles <div class="link-title">QR code</div>
     qr_code << <<-EOS
       <div id="qr_code">
-       <img id="qr-image" src="http://chart.apis.google.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
+       <img id="qr-image" src="https://chart.googleapis.com/chart?cht=qr&chl=#{request.url}&chs=120x120" alt="QR Code" title="QR Code"/>
       </div>
     EOS
     qr_code.html_safe
@@ -210,6 +282,8 @@ module CatalogHelper
       "spreadsheet-download"
     when "application/zip"
       "zip-download"
+    when "application/vnd.google-earth.kmz", "application/vnd.google-earth.kml+xml"
+      "kmlz-download"
     else
       "generic-download"
     end
@@ -239,13 +313,13 @@ module CatalogHelper
  end
 
  def bits_to_human_readable(num)
-          ['bytes','KB','MB','GB','TB'].each do |x|
-            if num < 1024.0
-              return "#{num.to_i} #{x}"
-            else
-              num = num/1024.0
-            end
-          end
+   ['bytes','KB','MB','GB','TB'].each do |x|
+    if num < 1024.0
+     return "#{num.to_i} #{x}"
+    else
+     num = num/1024.0
+     end
+    end
  end
 
 	#Quick utility method used to get long version of a date (YYYY-MM-DD) from short form (YYYY-MM) - Defaults 01 for unknowns - Exists in hull_model_methods too
@@ -304,7 +378,9 @@ module CatalogHelper
      #standard icons
      genre = document["genre_t"].to_s.downcase
      case genre
-     when "structural set", "display set"
+     when "structural set", "structuralset" 
+      img_class = "structural-set-genre"
+     when "display set"
       img_class = "collection-genre"
      when "presentation"
       img_class = "presentation-genre"
@@ -327,6 +403,7 @@ module CatalogHelper
 
    resource_icon.html_safe
   end
+
 
   # Helpers copied from Graeme's work - might need tweeking
   def fedora_content_url pid, datastream_name
@@ -362,6 +439,23 @@ module CatalogHelper
      :width => width }
 
   end
+
+ def is_public_readable(document)
+    
+  public_readable = false
+
+  public_permissions = document.rightsMetadata.groups["public"]  
+  #Check what public permissions contain...
+  if !public_permissions.nil? 
+    if public_permissions.include? "read"
+      public_readable = true
+    end
+  end 
+
+  return public_readable 
+
+ end
+
 
 end
 

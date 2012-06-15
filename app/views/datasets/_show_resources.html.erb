@@ -1,0 +1,17 @@
+<div id="show_hide_resources" >
+<span id="additional_resources_span">Show additional information</span>
+<div id="resources">
+	<div id="resources-list">
+    <dl>
+      <dt>MODS metadata</dt>
+      <dd><%= link_to "view", datastream_content_path(params[:id], "descMetadata"), :target=>"_blank" %></dd>
+      <% unless @document["doi_t"].nil? %>
+        <dt>DataCite metadata</dt>
+        <dd><%= link_to "view", datastream_content_path(params[:id], "datacite"), :target=>"_blank" %></dd>
+      <% end %>
+      <dt>DC metadata</dt>
+      <dd><%= link_to "view", datastream_content_path(params[:id], "oai_dc"), :target=>"_blank" %></dd>
+    </dl>
+  </div>
+</div>
+</div>

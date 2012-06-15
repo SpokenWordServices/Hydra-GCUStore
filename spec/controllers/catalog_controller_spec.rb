@@ -27,7 +27,7 @@ describe CatalogController do
         sign_in user
         get :show, :id=>"hull:3374"
         response.should redirect_to root_path()
-        flash[:notice].should == "You do not have sufficient access privileges to read this document, which has been marked private."
+        flash[:notice].should == "This material is unavailable. It may have been temporarily or permanently withdrawn, or it may have restricted access. Are you logged in?"
       end
       it "should allow access to documents if role has permissions" do
         #sign_in FactoryGirl.find_or_create(:cat)

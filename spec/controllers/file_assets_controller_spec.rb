@@ -14,6 +14,7 @@ describe FileAssetsController do
         @test_container.add_relationship(:is_member_of, "info:fedora/foo:1")
         @test_container.add_relationship(:has_collection_member, "info:fedora/foo:2")
         @test_container.rightsMetadata.update_indexed_attributes([:edit_access, :person]=>'ralph')
+        @test_container.update_indexed_attributes({[{:person=>0}, :institution]=>"my org"}, :datastreams=>"descMetadata")
         @test_container.save
 
 				sign_in FactoryGirl.find_or_create(:cat)

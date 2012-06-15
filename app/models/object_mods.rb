@@ -108,9 +108,24 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
 	 def self.subject_geographic_template
 			builder = Nokogiri::XML::Builder.new {|xml| xml.geographic }
       return builder.doc.root
-		end
+	 end
 
-    def insert_multi_field(fields, opts={})
+   def self.location_subject_cartographics_coordinates_template
+     builder =  Nokogiri::XML::Builder.new {|xml| xml.coordinates }
+     return builder.doc.root
+   end
+
+   def self.citation_template
+     builder =  Nokogiri::XML::Builder.new {|xml| xml.note(:type=>"citation") }
+     return builder.doc.root
+   end
+
+   def self.software_template
+     builder =  Nokogiri::XML::Builder.new {|xml| xml.note(:type=>"software") }
+     return builder.doc.root
+   end
+
+   def insert_multi_field(fields, opts={})
 			method_name = fields.gsub(":", "").gsub(",", "_").gsub(" ", "")
 			node = eval 'ObjectMods.' + method_name + '_template'
 			nodeset = eval 'self.find_by_terms(' + fields + ')'
@@ -235,8 +250,9 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
    			"MRes" => [9,"MRes"],
         "MSc" => [10,"MSc"],
    			"MTheol" => [11,"MTheol"],
-        "BA" => [12,"BA"],
-        "BSc" => [13,"BSc"]
+        "EdD" => [12, "EdD"],
+        "BA" => [13,"BA"],
+        "BSc" => [14,"BSc"]
       }
     end
 
@@ -269,6 +285,16 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
         "swe" => "Swedish"    
       }
     end
+
+    def self.coordinates_type 
+      {
+        "" => "",
+        "Path" => "LineString",
+		    "Polygon" => "Polygon",
+        "Point" => "Point"
+      }
+    end
+
     
     def self.dc_relator_terms
        {"acp" => "Art copyist",

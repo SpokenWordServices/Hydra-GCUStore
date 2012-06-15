@@ -260,11 +260,17 @@ module HullModelMethods
 		end
 		title = self.get_values_from_datastream("descMetadata", [:title], {}).to_s
 
-		#truncate the title if its too long
-		title = title.length > 40 ? title[0..40] <<'...': title unless title.nil?
+		#truncate the title if its too long (over 100 chars)
+		title = title.length > 100 ? title[0..100] <<'...': title unless title.nil?
 		label =  title + label_names
-	
+    
+    #255 character limit for labels, we'll limit to 200 to be on the safe-side...
+    label = label.length > 200 ? label[0..197] << '...' : label	
+
+    #When the label has any leading/trailing spaces strip them off...
+    label = label.strip!.nil? ? label : label.strip
 		return label
+
   end
 
   def structural_set
@@ -537,6 +543,26 @@ module HullModelMethods
       return ""
     end
     ele.inner_html
+  end
+
+
+  def update_object_permissions(permission_params, ds_id)
+  
+    xml_content = self.datastreams[ds_id].content
+    
+    ds = Hydra::RightsMetadata.new(self.inner_object, ds_id)
+    Hydra::RightsMetadata.from_xml(xml_content, ds)
+    self.datastreams[ds_id] = ds
+
+    # update the datastream's values
+    result = ds.update_permissions(permission_params)
+    
+    ds.serialize!
+    ds.save
+    
+    # Re-index the object
+    Solrizer::Fedora::Solrizer.new.solrize(self.pid) 
+
   end
 
 end

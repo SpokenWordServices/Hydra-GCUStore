@@ -12,7 +12,7 @@ html {
 
 body {
   background: #BCC4CA;
-  font: 0.8em Lucida Sans, Arial, Georgia;
+  font: 0.8em Lucida Sans, Lucida Sans Unicode, Arial, Georgia;
   color:#000;
   margin: 0px;
   padding: 15px;
@@ -621,7 +621,7 @@ select#sort, select#per_page {
     border: 1px dotted #333333;
     border-radius: 0 0 0 0;
     margin-bottom: 0em;
-    margin-left: 697px;
+    margin-left: 687px;
     margin-top: -24px;
     padding-left: 0;
 }
@@ -987,12 +987,21 @@ div#downloads {
   padding-top:0.5em;
   padding-bottom:1.7em;
   padding-left:0.5em;
-  width:190px;
+  width:200px;
   background-color:#D9E2E8;
 }
 
 div#downloads-list {
   padding-top:1em;
+  padding-right:0.5em;
+}
+
+div#download {
+  padding-top:0.5em;
+}
+
+div#view-map-link {
+ padding-top:1px;
 }
 
 div#qr_code {
@@ -1036,7 +1045,7 @@ div#download_image {
   float:left;
   width:16px;
   height:16px;
-  margin-right:5px;
+  margin-right:3px;
 }
 
 div#file_size {
@@ -1054,6 +1063,14 @@ div.text-genre {
 }
 
 div.collection-genre {
+  background-image:url('/images/icons/folder-th.png');
+  background-position:top left;
+  background-repeat:no-repeat;
+}
+
+div.structural-set-genre {
+  margin-top: -20px; 
+  height: 60px !important;
   background-image:url('/images/icons/folder-th.png');
   background-position:top left;
   background-repeat:no-repeat;
@@ -1152,6 +1169,11 @@ div.zip-download {
 }
 div.generic-download {
   background-image:url('/images/icons/download_icons/generic.gif');
+  background-position:left center;
+  background-repeat:no-repeat;
+}
+div.kmlz-download {
+  background-image:url('/images/icons/download_icons/kmlz.gif');
   background-position:left center;
   background-repeat:no-repeat;
 }
@@ -1566,9 +1588,52 @@ fieldset.edit-half dl li span input {
   border-style: solid;
   border-color: #000
 }
+
 /* GCU Extras */
 .object_control {
 float:left; 
 margin-bottom:20px;
+}
+
+
+
+
+
+.cookies table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 0 1em;
+    padding: 0;
+    width: 100%;
+}
+.cookies table caption {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+.cookies th, article td {
+    line-height: 1.3em;
+    vertical-align: top;
+}
+.cookies tr:nth-child(2n) td {
+    background-color: #C1CACB;
+}
+.cookies th {
+    line-height: 1.25em;
+    padding: 0.6em 0.5em;
+}
+.cookies td {
+    padding: 0.6em 0.5em;
+}
+.cookies th {
+    background-color: #91A23D;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: left;
+}
+.cookies td {
+    background: none repeat scroll 0 0 #E1E8E8;
+    border: 2px solid #FFFFFF;
 }
 
