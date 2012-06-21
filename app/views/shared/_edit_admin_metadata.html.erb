@@ -61,10 +61,10 @@
       		<%= select "Structural Set","",  StructuralSet.tree.options_for_nested_select, :selected=>@document_fedora.structural_set, :include_blank=>true, :class=>"structural-set-select"  %>
     		</dd>
         <dt>
-          <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set") %>
+          <%= fedora_field_label("RELS-EXT",[:is_member_of], "Display Set(s)") %>
         </dt>
         <dd>
-          <%= select "Display Set","",  DisplaySet.tree.options_for_nested_select, :selected=>@document_fedora.display_set, :include_blank => true, :class=>"display-set-select"  %>
+          <%= select_tag "Display Set",  options_for_select(DisplaySet.tree.options_for_nested_select, @document_fedora.display_sets), :include_blank => true, :multiple=>true, :size=>5, :class=>"display-set-select"  %>
         </dd>
   	</dl>
   </fieldset>

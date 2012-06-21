@@ -278,10 +278,17 @@ module HullModelMethods
     return unless ids.present?
     (ids & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
   end
+  # Return first set only
   def display_set
     ids = set_membership
     return unless ids.present?
     (ids & DisplaySet.display_set_pids).first
+  end
+  #Allow for multiple display sets
+  def display_sets
+    ids = set_membership
+    return unless ids.present?
+    (ids & DisplaySet.display_set_pids)
   end
   def harvesting_set
     ids = harvesting_set_membership
