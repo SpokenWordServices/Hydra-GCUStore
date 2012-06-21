@@ -24,10 +24,11 @@ module Hull::AssetsControllerHelper
 
     #if a display set value is being passed but not a structural set...
     if structural.nil? && !display.nil?
-      display = display.first if display.kind_of? Array
-      display = nil if display.empty?
+      #allow multiple display sets
+      display = display.to_ary unless display.kind_of? Array
+      sets = display.compact.reject {|a| a.empty?}
        if document.respond_to?(:apply_set_membership)
-        document.apply_set_membership([display].compact)
+        document.apply_set_membership(sets) unless sets.empty?
       end
     else #all other cases... 
       #when the structural form field is nil we don't do any 
@@ -41,13 +42,14 @@ module Hull::AssetsControllerHelper
       	     structural = nil
 			    end
         end
-        unless display.nil?
-          display = display.first if display.kind_of? Array
-          display = nil if display.empty?
-        end
-     
+
+        display = [display] if display.nil?
+        display = display.to_ary unless display.kind_of? Array
+        sets = display + [structural]       
+        sets = sets.compact.reject {|a| a.empty?}
+
         if document.respond_to?(:apply_set_membership)
-          document.apply_set_membership([display, structural].compact)
+          document.apply_set_membership(sets) unless sets.empty?
         end
 		  
         # when the document is a structural set, we apply the hull-apo:structuralSet as the governing apo
