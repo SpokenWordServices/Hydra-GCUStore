@@ -53,6 +53,13 @@ class DisplaySet < ActiveFedora::Base
     copy_rights_metadata(apo)
   end
 
+  #Get display name of a set by PID
+  def self.name_of_set(pid)
+    set = DisplaySet.display_sets
+    set.each { |s| return s["title_t"]  if s["id"] == pid  }               
+    nil    
+  end
+ 
   private
 
   def self.parent_pid(node, pids)

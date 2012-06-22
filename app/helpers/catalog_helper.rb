@@ -32,10 +32,50 @@ module CatalogHelper
     return orgs
   end 
 
-  #This helper method will create a list of downloadable assets for a 
+  
+  #Method to display parent collections as links
+
+  def display_parent_collections(document)
+
+    text=""
+    parents = document.display_sets
+    if parents.count > 0
+      text = <<-EOS
+      <div id="collections" >
+        <fieldset id="collection-fields">
+        <legend>#{pluralize(parents.count,"In Collection")[2..-1]}</legend>
+        <div id="collections-list">
+          <dl>
+      EOS
+
+      parents.each { |id| 
+         
+        pid=id.partition("/")[2]
+        text << <<-EOS
+            <dt>
+        EOS
+        text << link_to(DisplaySet.name_of_set(pid), resource_path(pid)) 
+        text << <<-EOS
+            </dt>
+        EOS
+
+      }
+      text << <<-EOS
+          </dl>
+        </div>
+       </fieldset>
+      </div>
+      EOS
+    end 
+    
+    text.html_safe
+  end 
+
+
+#This helper method will create a list of downloadable assets for a 
   #resource.
   #It also adds a google event tracker call to the link, in the form of:-
-  #onClick="_gaq.push(['_trackEvent','Downloads', 'Resource title', 'PID/DsID'])
+  #onClick="_gaq.push(['_trackEvent','Downloads', 'Resource title', 'PID/DsID'])  
   def display_resources(document)
 
    resources_count = get_values_from_datastream(document, "contentMetadata", [:resource]).length
