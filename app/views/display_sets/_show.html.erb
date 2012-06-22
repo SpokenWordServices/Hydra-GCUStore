@@ -1,11 +1,15 @@
 <div class="document_viewer" id="cover_container">  
   <div class="content-type-header">
   <h1>Collection</h1></div>
-  <%= render :partial => 'display_sets/show_description' %>
-  <%= render :partial => 'display_sets/show_downloads' %>
-  <%= render :partial => 'shared/show_links' %>
-  <%= render :partial => 'shared/show_resources' %>
-
+  <div id="lhs-display" >
+    <%= render :partial => 'display_sets/show_description' %>
+    <%= render :partial => 'shared/show_resources' %>
+  </div>
+  <div id="rhs-display">
+    <%= render :partial => 'display_sets/show_downloads' %>
+    <%= render :partial => 'shared/show_parent_collections' %>
+    <%= render :partial => 'shared/show_links' %>
+  </div>
 </div>
 
 

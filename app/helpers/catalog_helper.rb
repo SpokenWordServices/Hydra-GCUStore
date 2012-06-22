@@ -40,32 +40,31 @@ module CatalogHelper
     text=""
     parents = document.display_sets
     if parents.count > 0
-      text = <<-EOS
-      <div id="collections" >
-        <fieldset id="collection-fields">
-        <legend>#{pluralize(parents.count,"In Collection")[2..-1]}</legend>
-        <div id="collections-list">
-          <dl>
-      EOS
-
-      parents.each { |id| 
-         
-        pid=id.partition("/")[2]
-        text << <<-EOS
-            <dt>
+      unless parents.count == 1 && parents.first == "info:fedora/hull:rootDisplaySet"
+        text = <<-EOS
+        <div id="collections" >
+          <fieldset id="collection-fields">
+          <legend>#{pluralize(parents.count,"In Collection")[2..-1]}</legend>
+          <div id="collections-list">
+            <dl>
         EOS
-        text << link_to(DisplaySet.name_of_set(pid), resource_path(pid)) 
+        parents.each { |id| 
+          pid=id.partition("/")[2]
+          text << <<-EOS
+              <dt>
+          EOS
+          text << link_to(DisplaySet.name_of_set(pid), resource_path(pid)) 
+          text << <<-EOS
+              </dt>
+          EOS
+        }
         text << <<-EOS
-            </dt>
-        EOS
-
-      }
-      text << <<-EOS
-          </dl>
+            </dl>
+          </div>
+         </fieldset>
         </div>
-       </fieldset>
-      </div>
-      EOS
+        EOS
+      end
     end 
     
     text.html_safe
