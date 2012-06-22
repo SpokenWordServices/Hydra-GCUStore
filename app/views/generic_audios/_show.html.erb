@@ -1,8 +1,13 @@
 <div class="document_viewer" id="cover_container">
   <div class="content-type-header"><h1><%= @document["genre_t"] %></h1></div>
+<div id="lhs-display" >
   <%= render :partial => 'generic_audios/show_player' %>
   <%= render :partial => 'shared/show_av_description' %>
-  <%= render :partial => 'shared/show_downloads' %>
-  <%= render :partial => 'shared/show_links' %>
   <%= render :partial => 'shared/show_resources' %>
+</div>
+<div id="rhs-display" >
+  <%= render :partial => 'shared/show_downloads' %>
+  <%= render :partial => 'shared/show_parent_collections' %>
+  <%= render :partial => 'shared/show_links' %>
+</div>
 </div>
