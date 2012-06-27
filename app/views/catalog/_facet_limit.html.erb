@@ -16,14 +16,10 @@
           %>
           <% paginator.items.each do |item| -%>
             <li>
-            <% if facet_in_params?( solr_field, item.value ) %>              
-                <%= render_selected_facet_value(solr_field, item) %>              
-              <% else %>
-                  <% if solr_field == 'root_display_set_facet' %>
-                    <%=  link_to "Collections", "/?f%5Bis_member_of_s%5D%5B%5D=info:fedora/hull:rootDisplaySet&results_view=true" %>
-                  <% else %>         
+            <% if facet_in_params?( solr_field, item.value ) %>      
+                     <%= render_selected_facet_value(solr_field, item) %>             
+               <% else %>
                     <%= render_facet_value(solr_field, item) %> 
-                  <% end %>             
             <% end -%>
             </li>
           <% end %>
