@@ -1,9 +1,9 @@
 	<div class="homeCol1">
 		<h1>Welcome to Spoken Word Services </h1>
 	  <br/>
-    <p>Create a search by adding a search term in the box above and/or by using the filters (facets) at the left of the screen.</p><br/>
-    
-		
+    <p>Create a search by adding a search term in the box above and/or by using the filters (facets) at the left of the screen.  Alternatively you can browse our collections using the link below</p><br/>
+    <a href="/?f[is_member_of_s][]=info%3Afedora%2Fhull%3ArootDisplaySet&results_view=true&per_page=20&sort=title_facet+asc">Browse Collections<br/><br/><img src="/images/theses.jpg"></a>
+		<p>
 	<% if current_user %>
 		<% user_groups = RoleMapper.roles(current_user.login) %>
 

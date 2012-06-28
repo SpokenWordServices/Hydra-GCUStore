@@ -3,7 +3,7 @@ class ModsDisplaySet < ObjectMods
   set_terminology do |t|
     t.root(:path=>"mods", :xmlns=>"http://www.loc.gov/mods/v3", :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-4.xsd")
     t.title_info(:path=>"titleInfo") {
-      t.main_title(:path=>"title", :label=>"title")
+      t.main_title(:path=>"title", :label=>"title", :index_as=>[:facetable])
     } 
     t.title(:proxy=>[:mods, :title_info, :main_title]) 
     t.genre(:path=>'genre')
