@@ -58,8 +58,8 @@ Blacklight.configure(:shared) do |config|
       "subject_topic_facet",
       "personal_name_part_facet",
       "language_lang_code_facet",
-			"is_member_of_queue_facet",
-      "is_member_of_s"
+      "is_member_of_s",
+			"is_member_of_queue_facet"
       #"top_level_collection_id_s", 
       #"mods_journal_title_info_facet",
       #"gps_facet",
@@ -75,8 +75,8 @@ Blacklight.configure(:shared) do |config|
       #"topic_tag_facet"=>"Subject",
       "personal_name_part_facet" => "Name",
       "language_lang_code_facet"=>"Language",
-			"is_member_of_queue_facet"=>"Queue",
-      "is_member_of_s"=>"Collection"
+      "is_member_of_s"=>"Collection",
+			"is_member_of_queue_facet"=>"Queue"
       #"top_level_collection_id_s" => "Collection"
       #"mods_journal_title_info_facet"=>"Journal",
       #"gps_facet"=>"GPS Coordinates",
@@ -121,11 +121,11 @@ Blacklight.configure(:shared) do |config|
    config[:index_fields] = {
      :field_names => [
        "date_t",
-       "title_t",
+       "title_facet",
        "location_t"],
      :labels => {
        "date_t"=>"Date",
-       "title_t"=>"Title",
+       "title_facet"=>"Title",
        "location_t"=>"Location"
      }
    }
@@ -230,7 +230,8 @@ Blacklight.configure(:shared) do |config|
   config[:sort_fields] << ['date (oldest)', 'sortable_date_dt asc']  
 	#config[:sort_fields] << ['date -', 'year_facet desc, month_facet asc, title_facet asc']
   #config[:sort_fields] << ['date +', 'year_facet asc, month_facet asc, title_facet asc']
-  config[:sort_fields] << ['title', 'title_facet asc']
+  config[:sort_fields] << ['title A-Z', 'title_facet asc']
+  config[:sort_fields] << ['title Z-A', 'title_facet desc']
 
   config[:sort_fields] << ['document type', 'object_type_facet asc, year_facet desc, month_facet asc, title_facet asc']
   #config[:sort_fields] << ['location', 'series_facet asc, box_facet asc, folder_facet asc, year_facet desc, month_facet asc, title_facet asc']
