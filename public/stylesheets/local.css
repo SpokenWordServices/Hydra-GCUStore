@@ -999,6 +999,26 @@ div#collections-list dt {
   padding-bottom:0.7em;  
   padding-left:0.25em;
 }
+
+div#collectors {
+  float:right;
+  margin-top:20px;
+  padding-top:0.5em;
+  padding-bottom:1.7em;
+  padding-left:0.5em;
+  width:200px;
+  background-color:#D9E2E8;
+}
+div#collectors-list {
+  padding-top:1em;
+  padding-right:0.5em;
+}
+
+div#collectors-list dt {
+  padding-bottom:0.7em;  
+  padding-left:0.25em;
+}
+
 div#view-map-link {
  padding-top:1px;
 }

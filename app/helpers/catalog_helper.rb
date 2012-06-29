@@ -39,7 +39,7 @@ module CatalogHelper
 
     text=""
     parents = document.display_sets
-    if parents.count > 0
+    if parents.kind_of?(Array) and parents.count > 0
       unless parents.count == 1 && parents.first == "info:fedora/hull:rootDisplaySet"
         text = <<-EOS
         <div id="collections" >
