@@ -1,0 +1,18 @@
+<% collectors = get_persons_from_roles(@document, ['collector']).map {|person| person[:name]}  %>
+<% unless collectors.empty? %>
+<div id="collectors" >
+  <fieldset id="collector-fields">
+  <legend>Collected By</legend>
+  <div id="collectors-list">
+    <dl>
+    <% collectors.each { |c|%>
+	  <dt>
+		  <%= link_to c, "/?f%5Bpersonal_name_part_facet%5D%5B%5D=#{c}&results_view=true"  %>
+	  </dt>
+    <% } %>
+    </dl>
+  </div>
+ </fieldset>
+</div>
+<% end %>
+
