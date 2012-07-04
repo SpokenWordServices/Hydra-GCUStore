@@ -2,7 +2,7 @@
 		<h1>Welcome to Spoken Word Services </h1>
 	  <br/>
     <p>Create a search by adding a search term in the box above and/or by using the filters (facets) at the left of the screen.  Alternatively you can browse our collections using the link below</p><br/>
-    <a href="/?f[is_member_of_s][]=info%3Afedora%2Fhull%3ArootDisplaySet&results_view=true&per_page=20&sort=title_facet+asc">Browse Collections<br/><br/><img src="/images/theses.jpg"></a>
+    <h2><a href="/?f[is_member_of_s][]=info%3Afedora%2Fhull%3ArootDisplaySet&results_view=true&per_page=20&sort=title_facet+asc">Browse Collections<br/><br/><img src="/images/theses.jpg"></a></h2>
 		<p>
 	<% if current_user %>
 		<% user_groups = RoleMapper.roles(current_user.login) %>
@@ -11,74 +11,11 @@
        You are logged in and you are a member of <%= user_groups.join(", ") %><br/></br/>
     <% end %>
  
-		<% if user_groups.include? 'contentAccessTeam' %>
-  
-			<div class="iconContainer">
-				<h2>Popular searches</h2>
-				<br/>
-				<div class="iconCol1">
-					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
-				</div>
-				<div class="iconCol2">
-					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">Electronic theses<br/><br/><img src="/images/theses.jpg"></a>
-				</div>
-				<div class="iconCol3">
-					<a href="/?f[object_type_facet][]=Handbook&results_view=true">Student handbooks<br/><br/><img src="/images/handbook.jpg"></a>
-				</div>
-			</div>
-
-		<% elsif user_groups.include? 'staff' %>
-
-			<div class="iconContainer">
-				<h2>Popular searches</h2>
-				<br/>
-				<div class="iconCol1">
-					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
-				</div>
-				<div class="iconCol2">
-					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">Electronic theses<br/><br/><img src="/images/theses.jpg"></a>
-				</div>
-				<div class="iconCol3">
-					<a href="/?f[object_type_facet][]=Handbook&results_view=true">Student handbooks<br/><br/><img src="/images/handbook.jpg"></a>
-				</div>
-			</div>
-
-		<% elsif user_groups.include? 'student' %>
-
-			<div class="iconContainer">
-				<h2>Popular searches</h2>
-				<br/>
-				<div class="iconCol1">
-					<a href="/?f[object_type_facet][]=Examination+paper&results_view=true">Examination papers<br/><br/><img src="/images/exampapers.jpg"></a>
-				</div>
-				<div class="iconCol2">
-					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">Electronic theses<br/><br/><img src="/images/theses.jpg"></a>
-				</div>
-				<div class="iconCol3">
-					<a href="/?f[object_type_facet][]=Handbook&results_view=true">Student handbooks<br/><br/><img src="/images/handbook.jpg"></a>
-				</div>
-			</div>
-
-		<% end %>
 	
 	<% else %>
 		<!-- Public searches/content here -->  
 		<div id="border"><div style="padding:0.75em"><strong>If you are a GCU student or member of staff</strong> and have not yet logged in during this browser session you should do so using the link on the green bar above so that you will have access to 'University only' content.</div></div>
     <br/>
-
-		<div class="iconContainer">
-				<h2>Popular searches</h2>
-				<br/>
-				<div class="iconCol1">
-					<a href="/?f[object_type_facet][]=Thesis+or+dissertation&results_view=true">Electronic theses<br/><br/><img src="/images/theses.jpg"></a>
-				</div>
-				<div class="iconCol2">
-					<a href="/?f[object_type_facet][]=Policy+or+procedure&results_view=true">University policies<br/><br/><img src="/images/policy.jpg"></a>
-				</div>
-				<div class="iconCol3">
-					<a href="/resources/hull:domesdayDisplaySet">Domesday dataset<br/><br/><img src="/images/domesday.jpg"></a>
-				</div>
-			</div>
 	<% end %>
 
 	
