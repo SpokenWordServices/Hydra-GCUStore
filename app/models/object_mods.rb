@@ -81,7 +81,7 @@ class ObjectMods < ActiveFedora::NokogiriDatastream
     end
 
 		def self.rights_template
-  		builder = Nokogiri::XML::Builder.new {|xml| xml.accessCondition(:type=>"useAndReproduction") }
+  		builder = Nokogiri::XML::Builder.new {|xml| xml.accessCondition(:type=>"use and reproduction", :displayLabel=>"", "xlink:href"=>"") }
       return builder.doc.root
 		end
 

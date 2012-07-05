@@ -72,13 +72,15 @@ class ModsGenericContent < ObjectMods
 		t.identifier(:path=>"identifier", :attributes=>{:type=>"fedora"})
 		t.all_identifiers(:path=>"identifier")
     t.see_also(:path=>"note", :attributes=>{:type=>"seeAlso"})
-    t.rights_label(:path=>"accessCondition/@displayLabel")
-
-    # Catch missing namespace
-    t.rights_url(:path=>"accessCondition/@xlink:href")
 
 
-    t.rights(:path=>"accessCondition", :attributes=>{:type=>"use and reproduction"})
+    t.rights(:path=>"accessCondition", :attributes=>{:type=>"use and reproduction"}){
+      t.label(:path=>{:attribute=>"displayLabel"})
+      t.url(:path=>{:attribute=>"xlink:href"}, :xmlns=>"http://www.w3.org/1999/xlink") #not quite right as only adds 'xlink' attribute if doesn't already exist, does find it if it's there though
+    }
+    t.rights_label(:proxy=>[:rights, :label])
+    t.rights_url(:proxy=>[:rights, :url])
+
 		t.location {
 	  	t.primary_display(:path=>"url", :attributes=>{:access=>"object in context", :usage=>"primary display" })
 	  	t.raw_object(:path=>"url", :attributes=>{:access=>"raw object"})
@@ -160,7 +162,7 @@ class ModsGenericContent < ObjectMods
                xml.url(:usage=>"primary display", :access=>"object in context")
                xml.url(:access=>"raw object")
              }
-             xml.accessCondition(:type=>"useAndReproduction")
+             xml.accessCondition(:type=>"use and reproduction", :displayLabel=>"", "xlink:href"=>"")
              xml.recordInfo {
                xml.recordContentSource "Glasgow Caledonian University"
                xml.recordCreationDate(Time.now.strftime("%Y-%m-%d"), :encoding=>"w3cdtf")
