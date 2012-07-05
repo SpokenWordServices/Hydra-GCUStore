@@ -57,7 +57,7 @@ Blacklight.configure(:shared) do |config|
       #"topic_tag_facet",
       "subject_topic_facet",
       "personal_name_part_facet",
-      "language_lang_code_facet",
+      "language_lang_text_facet",
       "is_member_of_s",
 			"is_member_of_queue_facet"
       #"top_level_collection_id_s", 
@@ -74,7 +74,7 @@ Blacklight.configure(:shared) do |config|
       "subject_topic_facet"=>"Subject",
       #"topic_tag_facet"=>"Subject",
       "personal_name_part_facet" => "Name",
-      "language_lang_code_facet"=>"Language",
+      "language_lang_text_facet"=>"Language",
       "is_member_of_s"=>"Collection",
 			"is_member_of_queue_facet"=>"Queue"
       #"top_level_collection_id_s" => "Collection"
@@ -103,7 +103,7 @@ Blacklight.configure(:shared) do |config|
       "object_type_facet"=>10,
       "subject_topic_facet"=>10,
       "personal_name_part_facet"=>10,
-      "language_lang_code_facet"=>10
+      "language_lang_text_facet"=>10
     }
   }
   

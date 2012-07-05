@@ -55,8 +55,8 @@ class ModsGenericContent < ObjectMods
       t.date_valid(:path=>"dateValid", :attributes=>{:encoding=>'iso8601'})
     } 
     t.language {
-      t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"})
-      t.lang_code(:index_as=>[:facetable], :path=>"languageTerm", :attributes=>{:type=>"code"})
+      t.lang_text(:path=>"languageTerm", :attributes=>{:type=>"text"},:index_as=>[:facetable])
+      t.lang_code( :path=>"languageTerm", :attributes=>{:type=>"code"})
     }
     t.role {
       t.text(:path=>"roleTerm",:attributes=>{:type=>"text"})
