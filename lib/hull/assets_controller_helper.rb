@@ -2,17 +2,19 @@ require "om"
 module Hull::AssetsControllerHelper
   extend ActiveSupport::Concern
   include Hydra::AccessControlsEnforcement
-
+  include HullAccessControlEnforcement
 
   included do
-    before_filter :enforce_access_controls, :only =>:new
+    before_filter :enforce_access_controls, :only =>  [:new, :update, :destroy]
     before_filter :update_set_membership, :only => :update
+    before_filter :check_valid_for_delete, :only => :destroy
     before_filter :validate_parameters, :only =>[:create,:update]
   end
 
   ## proxies to enforce_edit_permssions. 
   def enforce_new_permissions(opts={})
-    return true
+    #Call the HullAccessControlsEnforcement method for checking create/new permissions
+    enforce_create_permissions
   end
 
   # Handles updating display set & structural set associations for an object
@@ -218,6 +220,24 @@ module Hull::AssetsControllerHelper
       asset.apply_additional_metadata(current_user.login)
     end
 	end
+
+
+  def check_valid_for_delete
+    af = ActiveFedora::Base.load_instance_from_solr(params[:id])
+    the_model = ActiveFedora::ContentModel.known_models_for( af ).first
+    unless the_model.nil?
+        af = the_model.load_instance_from_solr(params[:id])
+			  if !(af.queue_membership == [:qa] || af.queue_membership == [:proto])
+				  msg = "#{params[:id]} cannot be deleted because is has been published.  Please contact the Repository adminstrator."
+				  flash[:notice]= msg
+          debugger
+				  redirect_to url_for(:action => 'show', :controller => "catalog", id => params[:id])
+			  end      
+    end
+  end
+
+
+
 
   # moved destringify into OM gem. 
   # ie.  OM.destringify( params )quit
