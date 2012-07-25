@@ -13,6 +13,7 @@ Hull::Application.routes.draw do
 
   match 'compound/:id' => 'compound#show', :via=>:get, :as=>'compound'
   match 'compound/:id' => 'compound#create', :as=>'compound_upload', :via=>:post
+  match 'compound/:id' => 'compound#destroy', :as=>'compound_delete', :via=>:delete
 
   match 'work_flow/new' => 'work_flow#new', :as=>'workflow_new'
   match 'work_flow/:content_type/:id/:workflow_step' => 'work_flow#update', :as=>'change_queue', :via=>:put
