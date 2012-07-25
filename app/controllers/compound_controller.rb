@@ -82,6 +82,27 @@ class CompoundController < ApplicationController
     redirect_to edit_resource_path(@document_fedora)
   end
 
+  # Delete the appropriate datastream and update the content metadata
+  def destroy
+
+    @document_fedora = load_document_from_params
+    #get datastreamID and delete
+    ds_id = @document_fedora.get_values_from_datastream("contentMetadata",[{:resource=>params[:index]}, :resource_ds_id])[0]
+    file_id = @document_fedora.get_values_from_datastream("contentMetadata",[{:resource=>params[:index]}, :file, :file_id])[0]
+    @document_fedora.datastreams[ds_id].delete
+    
+    #remove contentMetadata
+    @document_fedora.contentMetadata.remove_resource(params[:index])
+    @document_fedora.contentMetadata.serialize!
+    @document_fedora.save
+
+    
+    flash[:notice] = "Deleted #{ds_id}: #{file_id}."
+    redirect_to edit_resource_path(@document_fedora)
+ 
+
+  end
+ 
  private
   		# Returns a human readable filesize appropriate for the given number of bytes (ie. automatically chooses 'bytes','KB','MB','GB','TB')
       # Based on a bit of python code posted here: http://blogmag.net/blog/read/38/Print_human_readable_file_size

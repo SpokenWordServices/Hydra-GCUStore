@@ -32,7 +32,7 @@
       </dl>
     </fieldset>
     
-    <%= render :partial=>"shared/edit_resource", :collection => @document_fedora.contentMetadata.find_by_terms(:resource) %>
+    <%= render :partial=>"shared/edit_compound_resource", :collection => @document_fedora.contentMetadata.find_by_terms(:resource) %>
 
     <input type="hidden"  name="_method" value="put"/>
      <div>
