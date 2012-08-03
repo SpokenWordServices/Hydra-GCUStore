@@ -6,6 +6,10 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Catalog
+  # Override access enforcements 
+  include HullAccessControlEnforcement
+
+ 
 
   # # This applies a require login check for the show and index methods
   before_filter :require_login, :only=>[:show, :index]
