@@ -1,8 +1,10 @@
 class FileAssetsController < ApplicationController
   include Hydra::FileAssets
+  include Hydra::AccessControlsEnforcement
 
   after_filter :update_metadata, :only => [:create]
   after_filter :destroy_metadata, :only => [:destroy]
+  before_filter :enforce_show_permissions, :only => :datastream
 
   def datastream
     if params[:datastream] 
@@ -10,19 +12,19 @@ class FileAssetsController < ApplicationController
       the_model = ActiveFedora::ContentModel.known_models_for( af_base ).first
       @object = the_model.load_instance(params[:id])
 
-			#This is temporary hack to enable oai_dc/datacite_metadata to be seen as a datastream (in reality its a dissem call) - SWL
-			if params[:datastream] == "oai_dc"
-				render :xml => @object.oai_dc
-				return
+			   #This is temporary hack to enable oai_dc/datacite_metadata to be seen as a datastream (in reality its a dissem call) - SWL
+			   if params[:datastream] == "oai_dc"
+				    render :xml => @object.oai_dc
+				    return
       elsif params[:datastream] == "datacite"
         render :xml => @object.datacite_metadata
-				return
-			else
-      	if @object && @object.datastreams.keys.include?(params[:datastream])
-        	render :xml => @object.datastreams[params[:datastream]].content
-       	return
-	      end
-			end			
+				    return
+			   else
+       	if @object && @object.datastreams.keys.include?(params[:datastream])
+         	render :xml => @object.datastreams[params[:datastream]].content
+       	  return
+	       end
+			   end			
     end
     render :text => "Unable to load datastream"
   end
@@ -64,13 +66,13 @@ class FileAssetsController < ApplicationController
   end
 
  def update_content_metadata(container)
-		pid = @file_asset.pid
-    size_attr = @file_asset.datastreams["content"].size
-		label = @file_asset.datastreams["content"].dsLabel
-		mime_type = @file_asset.datastreams["content"].mimeType
-    format =  mime_type[mime_type.index("/") + 1...mime_type.length]
-		service_def = "afmodel:FileAsset"
-		service_method = "getContent"		
+		 pid = @file_asset.pid
+   size_attr = @file_asset.datastreams["content"].size
+		 label = @file_asset.datastreams["content"].dsLabel
+		 mime_type = @file_asset.datastreams["content"].mimeType
+   format =  mime_type[mime_type.index("/") + 1...mime_type.length]
+		 service_def = "afmodel:FileAsset"
+		 service_method = "getContent"		
 	
   container.contentMetadata.insert_resource(:object_id => pid, :ds_id=> "content", :file_size=>size_attr, :url => "http://hydra.hull.ac.uk/assets/" + pid + "/content", :display_label=>label, :id => label, :mime_type => mime_type, :format => format, :service_def => service_def, :service_method => service_method)
  
@@ -83,7 +85,7 @@ class FileAssetsController < ApplicationController
 										[:physical_description,:mime_type]=>@file_asset.datastreams["content"].mimeType,
 							       [:location,:raw_object]=> "http://hydra.hull.ac.uk/assets/" + @file_asset.pid + "/content" }
 								  }		
-		container.update_datastream_attributes( update_hash )
+		  container.update_datastream_attributes( update_hash )
     #container.datastreams["descMetadata"].update_values(update_hash)
     container.save
   end
