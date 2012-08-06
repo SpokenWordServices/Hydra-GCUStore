@@ -21,7 +21,7 @@ module Hydra::AccessControlsEnforcement
       end
       unless reader?
         flash[:notice]= "This material is unavailable. It may have been temporarily or permanently withdrawn, or it may have restricted access. Are you logged in?"
-        redirect_to(:action => 'index', :q => nil , :f => nil) and return false
+        redirect_to(:controller => 'catalog', :action => 'index', :q => nil , :f => nil) and return false
       end
     end
   end  
