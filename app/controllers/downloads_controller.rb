@@ -1,14 +1,17 @@
 #require 'mediashelf/active_fedora_helper'
 class DownloadsController < ApplicationController
     include Hydra::RepositoryController
+    include Hydra::AccessControlsEnforcement
     helper :downloads
     
+    #Enforces permissions on the downloads by using enforce_show_permissions method
+    before_filter :enforce_show_permissions, :only =>  :index
     
     # Note: Actual downloads are handled by the index method insead of the show method
     # in order to avoid ActionController being clever with the filenames/extensions/formats.
     # To download a datastream, pass the datastream id as ?document_id=#{dsid} in the url
     def index
-      fedora_object = ActiveFedora::Base.load_instance(params[:asset_id])
+      fedora_object = ActiveFedora::Base.load_instance(params[:id])
       if params[:download_id]
         @datastream = fedora_object.datastreams[params[:download_id]]
         send_data @datastream.content, :filename=>filename_from_datastream_name_and_mime_type(fedora_object.pid, params[:download_id], @datastream.mimeType), :type=>@datastream.mimeType

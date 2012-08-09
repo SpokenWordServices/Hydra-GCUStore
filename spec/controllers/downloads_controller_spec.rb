@@ -12,7 +12,7 @@ describe DownloadsController do
   end
   
   it "should be restful" do
-    {:get=> '/assets/_PID_/content'}.should route_to(:controller=>'downloads', :action=>'index', :asset_id=>"_PID_", :download_id=>"content")
+    {:get=> '/assets/_PID_/content'}.should route_to(:controller=>'downloads', :action=>'index', :id=>"_PID_", :download_id=>"content")
   end
  
   describe "index" do
@@ -24,7 +24,8 @@ describe DownloadsController do
       ActiveFedora::Base.expects(:load_instance).returns(result_object)
      
       controller.expects(:send_data).with("pdf content",:filename=>"content-foo_pid.pdf", :type=>"application/pdf")
-      get :index, :asset_id=>"foo:pid", :download_id=>"content"
+      controller.expects(:enforce_show_permissions).returns(true)
+      get :index, :id=>"foo:pid", :download_id=>"content"
     end
 
   end
