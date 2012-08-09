@@ -9,7 +9,7 @@ Hull::Application.routes.draw do
   end
   
   match 'assets/:id/datastreams/:datastream' =>'file_assets#datastream', :as=>'datastream_content' 
-  match 'assets/:asset_id/:download_id' => 'downloads#index', :as=>'download_datastream_content', :via=>:get
+  match 'assets/:id/:download_id' => 'downloads#index', :as=>'download_datastream_content', :via=>:get
 
   match 'compound/:id' => 'compound#show', :via=>:get, :as=>'compound'
   match 'compound/:id' => 'compound#create', :as=>'compound_upload', :via=>:post
