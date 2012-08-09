@@ -5,9 +5,13 @@ module Hydra::AccessControlsEnforcement
   
   # Controller "before" filter for enforcing access controls on show actions
   # @param [Hash] opts (optional, not currently used)
+
+  # Redefine enforce_show_permissions as the hydra-head version seems to wrongly allow public through when should only be discovering not reading
+
   def enforce_show_permissions(opts={})
     load_permissions_from_solr
-    unless @permissions_solr_document['access_t'] && (@permissions_solr_document['access_t'].first == "public" || @permissions_solr_document['access_t'].first == "Public")
+#    unless @permissions_solr_document['access_t'] && (@permissions_solr_document['access_t'].first == "public" || @permissions_solr_document['access_t'].first == "Public")
+    unless @permissions_solr_document['access_t'] && (@permissions_solr_document['access_t'][1] =~ /\b(?i)public\b/ )
       if @permissions_solr_document["embargo_release_date_dt"] 
         embargo_date = Date.parse(@permissions_solr_document["embargo_release_date_dt"].split(/T/)[0])
         if embargo_date > Date.parse(Time.now.to_s)
