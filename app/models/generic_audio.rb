@@ -9,7 +9,7 @@ class GenericAudio < ActiveFedora::Base
   include HullValidationMethods
 	include ActiveFedora::ServiceDefinitions
 	include CommonMetadataSdef
-
+  include Gcu::Harvestable
 
   # Datastreams
 

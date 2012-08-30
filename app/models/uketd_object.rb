@@ -12,6 +12,7 @@ class UketdObject < ActiveFedora::Base
 	include ActiveFedora::ServiceDefinitions
   include ActiveFedora::FileManagement
 	include CommonMetadataSdef
+  include Gcu::Harvestable
 
   def initialize(attrs=nil)
     super(attrs)
@@ -113,14 +114,15 @@ class UketdObject < ActiveFedora::Base
     end
   end
 
+  # Moved to Harvestable module
 	# Associate the given harvesting set with the object, removing old associations first.
   # @param [Array] sets to set associations with. Should be URIs.
-	def apply_harvesting_set_membership(sets)
+	#def apply_harvesting_set_membership(sets)
 		#We delete previous set memberships and move to new set
-    old_sets = harvesting_set_membership.dup
-    old_sets.each { |s| self.remove_relationship(:is_member_of_collection, s) }
-    sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of_collection, s }
-	end
+  #  old_sets = harvesting_set_membership.dup
+  #  old_sets.each { |s| self.remove_relationship(:is_member_of_collection, s) }
+  #  sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of_collection, s }
+	#end
   
   def file_objects_append(obj)
     super(obj)
