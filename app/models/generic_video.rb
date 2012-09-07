@@ -9,6 +9,7 @@ class GenericVideo < ActiveFedora::Base
   include HullValidationMethods
 	include ActiveFedora::ServiceDefinitions
 	include CommonMetadataSdef
+  include Gcu::Harvestable
 
 
   # Datastreams
@@ -152,6 +153,7 @@ class GenericVideo < ActiveFedora::Base
     add_relationship(:has_model, "info:fedora/#{g.c_model}")
     add_relationship(:has_model, "info:fedora/hydra-cModel:compoundContent")
     add_relationship(:has_model, "info:fedora/hydra-cModel:commonMetadata")
+    add_relationship(:has_model, "info:fedora/gcu-cModel:commonMetadata")
   end
 
   def generate_dsid(prefix="DS")

@@ -105,9 +105,10 @@ module HullModelMethods
 		self.relationships(:is_member_of)
 	end
 
-	def harvesting_set_membership
-		self.relationships(:is_member_of_collection)
-	end
+  # Moved to GCUHarvestable module
+	#def harvesting_set_membership
+	#	self.relationships(:is_member_of_collection)
+	#end
 
   def change_queue_membership(new_queue)
 	  validation_method = "ready_for_#{new_queue.to_s}?".to_sym
@@ -278,7 +279,7 @@ module HullModelMethods
     return unless ids.present?
     (ids & StructuralSet.structural_set_pids - HULL_QUEUES.keys).first
   end
-  # Return first set only
+  # Return first set only 
   def display_set
     ids = set_membership
     return unless ids.present?
@@ -291,11 +292,12 @@ module HullModelMethods
     (ids & DisplaySet.display_set_pids)
   end
 
-  def harvesting_set
-    ids = harvesting_set_membership
-    return unless ids.present?
-    (ids & HarvestingSet.harvesting_set_pids).first
-  end
+  # Moved to GCUHarvestable
+  #def harvesting_set
+  #  ids = harvesting_set_membership
+  #  return unless ids.present?
+  #  (ids & HarvestingSet.harvesting_set_pids).first
+  #end
 
   # def top_level_collection
   #   return unless relationships[:self][:is_member_of]
@@ -488,13 +490,13 @@ module HullModelMethods
 		end
 	end
 
-
+  # Moved to Gcu::Harvestable module
 	#Add OAI Item id to RELS-EXT eg.
 	#<oai:itemID>oai:hull.ac.uk:hull:4649</oai:itemID>
-	def add_oai_item_id
+	#def add_oai_item_id
 		#literal specifies that it should be in the form of...<oai:itemID>...</oai:itemID>
- 		self.add_relationship :oai_item_id, "oai:hull.ac.uk:" + self.pid, :literal => true
-	end
+ 	#	self.add_relationship :oai_item_id, "oai:hull.ac.uk:" + self.pid, :literal => true
+	#end
 
   # Extract content from all child assets with a content datastream with a mime type of application/pdf
   def retrieve_child_asset_pdf_content

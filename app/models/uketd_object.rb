@@ -12,11 +12,13 @@ class UketdObject < ActiveFedora::Base
 	include ActiveFedora::ServiceDefinitions
   include ActiveFedora::FileManagement
 	include CommonMetadataSdef
+  include Gcu::Harvestable
 
   def initialize(attrs=nil)
     super(attrs)
     if new_object?
       self.add_relationship(:has_model,"info:fedora/hydra-cModel:genericParent")
+      self.add_relationship(:has_model,"info:fedora/gcu-cModel:commonMetadata")
       self.add_relationship(:has_model,"info:fedora/hydra-cModel:commonMetadata")
     end
   end
@@ -33,7 +35,8 @@ class UketdObject < ActiveFedora::Base
   # TODO: define terminology for ETD
   has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsUketd
 
-  has_metadata :name => "UKETD_DC", :label=>"UKETD_DC metadata", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
+  # temporarily removing because fails to index into solr whenthe object is hidden.
+  #has_metadata :name => "UKETD_DC", :label=>"UKETD_DC metadata", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
 
   has_metadata :name => "DC", :type => ObjectDc, :label=>"DC admin metadata"
 
@@ -113,14 +116,15 @@ class UketdObject < ActiveFedora::Base
     end
   end
 
+  # Moved to Harvestable module
 	# Associate the given harvesting set with the object, removing old associations first.
   # @param [Array] sets to set associations with. Should be URIs.
-	def apply_harvesting_set_membership(sets)
+	#def apply_harvesting_set_membership(sets)
 		#We delete previous set memberships and move to new set
-    old_sets = harvesting_set_membership.dup
-    old_sets.each { |s| self.remove_relationship(:is_member_of_collection, s) }
-    sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of_collection, s }
-	end
+  #  old_sets = harvesting_set_membership.dup
+  #  old_sets.each { |s| self.remove_relationship(:is_member_of_collection, s) }
+  #  sets.delete_if { |s| s == ""}.each { |s| self.add_relationship :is_member_of_collection, s }
+	#end
   
   def file_objects_append(obj)
     super(obj)

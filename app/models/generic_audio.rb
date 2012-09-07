@@ -9,7 +9,7 @@ class GenericAudio < ActiveFedora::Base
   include HullValidationMethods
 	include ActiveFedora::ServiceDefinitions
 	include CommonMetadataSdef
-
+  include Gcu::Harvestable
 
   # Datastreams
 
@@ -131,6 +131,7 @@ class GenericAudio < ActiveFedora::Base
     g = Genre.find(descMetadata.genre.first)
     add_relationship(:has_model, "info:fedora/#{g.c_model}")
     add_relationship(:has_model, "info:fedora/hydra-cModel:compoundContent")
+    add_relationship(:has_model, "info:fedora/gcu-cModel:commonMetadata")
     add_relationship(:has_model, "info:fedora/hydra-cModel:commonMetadata")
   end
 

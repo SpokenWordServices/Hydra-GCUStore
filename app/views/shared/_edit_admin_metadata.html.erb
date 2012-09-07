@@ -66,6 +66,12 @@
         <dd>
           <%= select_tag "Display Set",  options_for_select(DisplaySet.tree.options_for_nested_select, @document_fedora.display_sets), :include_blank => true, :multiple=>true, :size=>5, :class=>"display-set-select"  %>
         </dd>
+	  <dt>
+      <%= fedora_field_label("RELS-EXT",[:is_member_of], "Harvesting Set") %>
+    </dt>
+    <dd>
+      <%= select "Harvesting Set","",  HarvestingSet.tree.options_for_nested_select, :selected=>@document_fedora.harvesting_set, :include_blank => true, :class=>"harvesting-set-select"  %>
+    </dd>
   	</dl>
   </fieldset>
 
