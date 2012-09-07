@@ -111,7 +111,7 @@ class ModsUketd < ObjectMods
              }
  						 xml.physicalDescription {
                xml.extent
-               xml.mediaType
+               xml.internetMediaType
                xml.digitalOrigin "born digital"
              }
              xml.abstract
