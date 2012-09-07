@@ -84,7 +84,7 @@ Report:
  c_model: hull-cModel:report
 Audio:
  type: audio
- c_model: gcu:genericAudio
+ c_model: gcu-cModel:genericAudio
 Video:
  type: video
- c_model: gcu:genericVideo
+ c_model: gcu-cModel:genericVideo

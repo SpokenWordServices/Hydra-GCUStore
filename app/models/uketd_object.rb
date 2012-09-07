@@ -18,6 +18,7 @@ class UketdObject < ActiveFedora::Base
     super(attrs)
     if new_object?
       self.add_relationship(:has_model,"info:fedora/hydra-cModel:genericParent")
+      self.add_relationship(:has_model,"info:fedora/gcu-cModel:commonMetadata")
       self.add_relationship(:has_model,"info:fedora/hydra-cModel:commonMetadata")
     end
   end
