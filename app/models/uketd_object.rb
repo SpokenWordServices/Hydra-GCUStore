@@ -35,7 +35,8 @@ class UketdObject < ActiveFedora::Base
   # TODO: define terminology for ETD
   has_metadata :name => "descMetadata", :label=>"MODS metadata", :control_group=>"M", :type => ModsUketd
 
-  has_metadata :name => "UKETD_DC", :label=>"UKETD_DC metadata", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
+  # temporarily removing because fails to index into solr whenthe object is hidden.
+  #has_metadata :name => "UKETD_DC", :label=>"UKETD_DC metadata", :control_group => "E", :disseminator=>"hull-sDef:uketdObject/getUKETDMetadata", :type => ActiveFedora::NokogiriDatastream
 
   has_metadata :name => "DC", :type => ObjectDc, :label=>"DC admin metadata"
 
