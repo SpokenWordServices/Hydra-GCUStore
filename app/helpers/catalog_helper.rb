@@ -446,12 +446,15 @@ EOS
 
   # Helpers copied from Graeme's work - might need tweeking
   def fedora_content_url pid, datastream_name
-    begin
-      base_url = ActiveFedora.fedora().connection.config[:url]
-    rescue
-      base_url = "http://localhost:8983/fedora"
-    end
-    "#{base_url}/get/#{pid}/#{datastream_name}"
+
+    return serve_datastream_content_url :id=>pid, :datastream_id=>datastream_name    
+
+#    begin
+#      base_url = ActiveFedora.fedora().connection.config[:url]
+#    rescue
+#      base_url = "http://localhost:8983/fedora"
+#    end
+#    "#{base_url}/get/#{pid}/#{datastream_name}"
   end
   
   

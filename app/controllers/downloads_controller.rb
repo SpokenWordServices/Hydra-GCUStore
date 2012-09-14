@@ -5,7 +5,7 @@ class DownloadsController < ApplicationController
     helper :downloads
     
     #Enforces permissions on the downloads by using enforce_show_permissions method
-    before_filter :enforce_show_permissions, :only =>  :index
+    before_filter :enforce_show_permissions, :only =>  [:index, :serve]
     
     # Note: Actual downloads are handled by the index method insead of the show method
     # in order to avoid ActionController being clever with the filenames/extensions/formats.
@@ -19,6 +19,12 @@ class DownloadsController < ApplicationController
         @datastreams = downloadables( fedora_object )
       end
     end
+
+    def serve          
+      @datastream_file=datastream_file_location(params[:id],params[:datastream_id])
+      send_file @datastream_file, :type => 'video/mp4', :disposition => 'inline'
+    end
+
     
     private
 
@@ -27,5 +33,8 @@ class DownloadsController < ApplicationController
       extension = MIME::Types[mime_type].length > 0 ? ".#{MIME::Types[mime_type].first.extensions.first}" : ""
       "#{datastream_name}-#{pid.gsub(/:/,'_')}#{extension}"
     end
-    
+
+    def datastream_file_location(pid,datastream_id)
+        return GCU_CONFIG[:fedora_data_store]+"my_video.mp4"
+    end 
 end

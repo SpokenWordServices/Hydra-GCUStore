@@ -11,8 +11,13 @@ describe DownloadsController do
     controller.should be_an_instance_of(DownloadsController)
   end
   
-  it "should be restful" do
-    {:get=> '/assets/_PID_/content'}.should route_to(:controller=>'downloads', :action=>'index', :id=>"_PID_", :download_id=>"content")
+  describe "routes" do
+    it "should be restful" do
+      {:get=> '/assets/_PID_/content'}.should route_to(:controller=>'downloads', :action=>'index', :id=>"_PID_", :download_id=>"content") 
+    end
+    it "should serve media" do
+      {:get => "/assets/_PID_/media/content"}.should route_to(:controller=>'downloads', :id=>'_PID_', :datastream_id=>'content', :action=>'serve')
+    end  
   end
  
   describe "index" do
@@ -39,6 +44,27 @@ describe DownloadsController do
       controller.send(:filename_from_datastream_name_and_mime_type,"foo:pid","bar","image/tiff").should == "bar-foo_pid.tiff"
     end
   end
+
+  describe "serve" do 
+
+    it "should check authorisation" do 
+      controller.expects :enforce_show_permissions
+      get :serve, :id=>"foo:pid", :datastream_id =>"content"
+    end 
+    it "should find the datastream location" do 
+      controller.expects(:enforce_show_permissions).returns(true)
+      controller.expects(:datastream_file_location).returns("/home/cno2/fedora/my_video.mp4")
+      controller.expects(:send_file).with("/home/cno2/fedora/my_video.mp4",:type=>'video/mp4',:disposition=>'inline')
+      get :serve, :id=>"foo:pid", :datastream_id =>"content"
+    end
+  end
+
+  describe "datastream_file_loaction" do
+    it "should use the gcu config path" do
+      controller.send(:datastream_file_location,"foo:pid","content").should == "/home/cno2/fedora/my_video.mp4"
+    end
+  end
+        
 
 #  describe "show" do
 #    it "should return the content of the first PDF datastream for the object identified by download_id" do
