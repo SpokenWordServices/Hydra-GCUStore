@@ -1,0 +1,8 @@
+development:
+    :fedora_data_store: /home/cno2/fedora/
+test: &TEST  
+    :fedora_data_store: /home/cno2/fedora/
+production:
+    :fedora_data_store: /fedora_dev_san/
+cucumber:
+  <<: *TEST

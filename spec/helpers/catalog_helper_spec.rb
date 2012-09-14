@@ -47,6 +47,12 @@ describe CatalogHelper do
 
     end
   end
+
+  describe "fedora_content_url" do 
+    it "should return the media path" do 
+      helper.fedora_content_url("gcu:foo","bar").should == "http://test.host/assets/gcu:foo/media/bar"
+    end
+  end
 end
 
 # def get_values_from_datastream(doc,ds,fields)
