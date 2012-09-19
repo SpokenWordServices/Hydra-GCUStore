@@ -1,8 +1,8 @@
 development:
-    :fedora_data_store: /home/cno2/fedora/
+    :fedora_datastream_store: /home/cno2/Hydra-GCUStore/jetty/fedora/default/data/datastreamStore
 test: &TEST  
-    :fedora_data_store: /home/cno2/fedora/
+    :fedora_datastream_store: /home/cno2/fedora/
 production:
-    :fedora_data_store: /fedora_dev_san/
+    :fedora_datastream_store: /fedora_dev_san/
 cucumber:
   <<: *TEST
