@@ -1,4 +1,7 @@
 #require 'mediashelf/active_fedora_helper'
+require 'digest/md5'
+require 'uri'
+
 class DownloadsController < ApplicationController
     include Hydra::RepositoryController
     include Hydra::AccessControlsEnforcement
@@ -20,9 +23,20 @@ class DownloadsController < ApplicationController
       end
     end
 
-    def serve          
-      @datastream_file=datastream_file_location(params[:id],params[:datastream_id])
-      send_file @datastream_file, :type => 'video/mp4', :disposition => 'inline'
+    # serve up datastream content direct fromt the file-system.  Useful for audio/video or large files.
+
+    def serve    
+      fedora_object = ActiveFedora::Base.load_instance(params[:id])
+      @datastream = fedora_object.datastreams[params[:datastream_id]]
+      if @datastream.nil?
+        return redirect_to resources_url, :notice => "This content does not exist" 
+      end
+      if @datastream.controlGroup == "M"
+        datastream_file=datastream_file_location(params[:id],params[:datastream_id], @datastream.dsVersionID)
+        send_file datastream_file, :type => @datastream.mimeType, :disposition => 'inline'
+      else
+        redirect_to resources_url, :notice => "This content cannot be served directly. Try using #{download_datastream_content_url :id=>params[:id], :download_id=>params[:datastream_id]}" 
+      end
     end
 
     
@@ -34,7 +48,11 @@ class DownloadsController < ApplicationController
       "#{datastream_name}-#{pid.gsub(/:/,'_')}#{extension}"
     end
 
-    def datastream_file_location(pid,datastream_id)
-        return GCU_CONFIG[:fedora_data_store]+"my_video.mp4"
+    #Determine file location based on akubra default filepath alogorithm
+    def datastream_file_location(pid,datastream_id,datastream_version)
+        uri="info:fedora/#{pid}/#{datastream_id}/#{datastream_version}"
+        digest= Digest::MD5.hexdigest(uri) 
+        filename=URI.escape(uri, ":/")
+        return GCU_CONFIG[:fedora_datastream_store]+digest[0,2]+'/'+filename
     end 
 end

@@ -47,21 +47,48 @@ describe DownloadsController do
 
   describe "serve" do 
 
-    it "should check authorisation" do 
-      controller.expects :enforce_show_permissions
-      get :serve, :id=>"foo:pid", :datastream_id =>"content"
-    end 
-    it "should find the datastream location" do 
+    it "should check authorisation, find the datastream location and send the file" do 
+
+      mock_ds = mock("media datastream")
+      mock_ds.expects(:controlGroup => "M", :dsVersionID => "content.0", :mimeType => "video/mp4")
+      result_object = mock("result_object")
+      result_object.stubs(:datastreams).returns({"content"=>mock_ds})
+      ActiveFedora::Base.expects(:load_instance).returns(result_object)
+
       controller.expects(:enforce_show_permissions).returns(true)
-      controller.expects(:datastream_file_location).returns("/home/cno2/fedora/my_video.mp4")
+      controller.expects(:datastream_file_location).with("foo:pid","content", "content.0").returns("/home/cno2/fedora/my_video.mp4")
       controller.expects(:send_file).with("/home/cno2/fedora/my_video.mp4",:type=>'video/mp4',:disposition=>'inline')
       get :serve, :id=>"foo:pid", :datastream_id =>"content"
     end
+
+    it "should handle missing datastreams" do 
+      result_object = mock("result_object")
+      result_object.stubs(:datastreams).returns({})
+      ActiveFedora::Base.expects(:load_instance).returns(result_object)
+
+      controller.expects(:enforce_show_permissions).returns(true)
+      get :serve, :id=>"foo:pid", :datastream_id =>"content"
+      response.should redirect_to(resources_url)
+      flash[:notice].should_not be_nil
+    end
+
+    it "should handle non-managed content" do
+      mock_ds = mock("media datastream")
+      mock_ds.expects(:controlGroup => "E")
+      result_object = mock("result_object")
+      result_object.stubs(:datastreams).returns({"content"=>mock_ds})
+      ActiveFedora::Base.expects(:load_instance).returns(result_object)
+
+      controller.expects(:enforce_show_permissions).returns(true)
+      get :serve, :id=>"foo:pid", :datastream_id =>"content"
+      response.should redirect_to(resources_url)
+      flash[:notice].should_not be_nil
+    end
   end
 
-  describe "datastream_file_loaction" do
-    it "should use the gcu config path" do
-      controller.send(:datastream_file_location,"foo:pid","content").should == "/home/cno2/fedora/my_video.mp4"
+  describe "datastream_file_location" do
+    it "should use the gcu config path and uri_escape the file name" do
+      controller.send(:datastream_file_location,"foo:pid","content","content.0").should == GCU_CONFIG[:fedora_datastream_store]+"e5/info%3Afedora%2Ffoo%3Apid%2Fcontent%2Fcontent.0"
     end
   end
         
