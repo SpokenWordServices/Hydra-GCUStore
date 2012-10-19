@@ -53,6 +53,46 @@ describe CatalogHelper do
       helper.fedora_content_url("gcu:foo","bar").should == "http://test.host/assets/gcu:foo/media/bar"
     end
   end
+
+  describe "get_video_display_resolution" do 
+    it " should default to widescreen if ContentMetadata missing" do
+      @resource=GenericVideo.new
+      @resource.expects(:datastreams).returns({})
+      helper.get_video_display_resolution(@resource,"contentMetadata","content").should == {:height=>"288", :width=>"512"} 
+    end
+    it " should default to widescreen if videoData missing" do
+      @resource=GenericVideo.new
+      @datastream.expects(:kind_of?).returns(true)
+      @datastream.expects(:find_by_xpath).returns("").times(2)
+      @resource.expects(:datastreams).returns({"contentMetadata"=>@datastream})
+      helper.get_video_display_resolution(@resource,"contentMetadata","content").should == {:height=>"288", :width=>"512"} 
+    end
+    it " should scale widescreen display to within maximum size" do
+      @resource=GenericVideo.new
+      @datastream.expects(:kind_of?).returns(true)
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@width").returns("1280")
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@height").returns("720")
+      @resource.expects(:datastreams).returns({"contentMetadata"=>@datastream})
+      helper.get_video_display_resolution(@resource,"contentMetadata","content").should == {:height=>"288", :width=>"512"} 
+    end
+    it " should scale 4:3 display to within maximum size" do
+      @resource=GenericVideo.new
+      @datastream.expects(:kind_of?).returns(true)
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@width").returns("768")
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@height").returns("576")
+      @resource.expects(:datastreams).returns({"contentMetadata"=>@datastream})
+      helper.get_video_display_resolution(@resource,"contentMetadata","content").should == {:height=>"288", :width=>"384"} 
+    end
+    it " should scale non-standard display to within maximum size" do
+      @resource=GenericVideo.new
+      @datastream.expects(:kind_of?).returns(true)
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@width").returns("840")
+      @datastream.expects(:find_by_xpath).with("//xmlns:resource[@dsID='content']/xmlns:file/xmlns:videoData/@height").returns("524")
+      @resource.expects(:datastreams).returns({"contentMetadata"=>@datastream})
+      helper.get_video_display_resolution(@resource,"contentMetadata","content").should == {:height=>"320", :width=>"512"} 
+    end
+  end
+
 end
 
 # def get_values_from_datastream(doc,ds,fields)

@@ -3,6 +3,6 @@ development:
 test: &TEST  
     :fedora_datastream_store: /home/cno2/fedora/
 production:
-    :fedora_datastream_store: /fedora_dev_san/
+    :fedora_datastream_store: /path/to/datastreamStore
 cucumber:
   <<: *TEST

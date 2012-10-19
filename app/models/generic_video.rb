@@ -116,12 +116,12 @@ class GenericVideo < ActiveFedora::Base
   end
 
   has_workflow_validation :deleted do
-    validates_presence_of ("descMetadata",[:admin_note])
+    validates_presence_of("descMetadata",[:admin_note])
     is_valid?
   end
 
   has_workflow_validation :hidden do
-    validates_presence_of ("descMetadata",[:admin_note])
+    validates_presence_of("descMetadata",[:admin_note])
     is_valid?
   end
 

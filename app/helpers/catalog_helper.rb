@@ -472,14 +472,32 @@ EOS
  # Get display resolution for jwplayer
   def get_video_display_resolution(document,datastream_name, dsid)
 
-    ds_ids = get_values_from_datastream(document, datastream_name,[:resource, :resource_ds_id])  
-    height = get_values_from_datastream(document,datastream_name, [:content_display_height])[ds_ids.index(dsid)]
-    height = "288"  if height.empty?
-    width =get_values_from_datastream(document,datastream_name, [:content_display_width])[ds_ids.index(dsid)]
-    width="522" if width.empty?
-    {:height => height,
-     :width => width }
+  #default values
+    height="288"
+    width="512"
 
+    metadata = document.datastreams[datastream_name]
+
+    if metadata.kind_of?(ActiveFedora::NokogiriDatastream)   
+      xpath_to_file="//xmlns:resource[@dsID='#{dsid}']/xmlns:file/xmlns:videoData/"
+      video_height=metadata.find_by_xpath(xpath_to_file+"@height").to_s
+      video_width=metadata.find_by_xpath(xpath_to_file+"@width").to_s
+
+      if  !video_height.empty? and  !video_width.empty? 
+      #scale display to fit within limits
+        aspect_ratio=video_height.to_f/video_width.to_f
+        if (aspect_ratio - 0.5625).abs < 0.0001
+          #leave as default
+        elsif (aspect_ratio - 0.75).abs < 0.0001
+          #4:3
+          width="384"
+        else
+          #scale to max width
+          height=(512*aspect_ratio).ceil.to_s
+        end
+      end
+    end
+    return {:height=>height, :width=>width}
   end
 
  def is_public_readable(document)
