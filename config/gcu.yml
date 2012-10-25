@@ -1,8 +1,0 @@
-development:
-    :fedora_datastream_store: /home/cno2/Hydra-GCUStore/jetty/fedora/default/data/datastreamStore/
-test: &TEST  
-    :fedora_datastream_store: /home/cno2/fedora/
-production:
-    :fedora_datastream_store: /path/to/datastreamStore/
-cucumber:
-  <<: *TEST

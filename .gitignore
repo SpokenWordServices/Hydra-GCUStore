@@ -29,3 +29,6 @@ db/schema.rb
 /.bundle
 /.yardoc
 /doc
+
+config/gcu.yml
+
