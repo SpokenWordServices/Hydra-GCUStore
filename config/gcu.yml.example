@@ -1,0 +1,8 @@
+development:
+    :fedora_datastream_store: /path/to/datastreamStore/
+test: &TEST  
+    :fedora_datastream_store: /path/to/datastreamStore/
+production:
+    :fedora_datastream_store: /path/to/datastreamStore/
+cucumber:
+  <<: *TEST
