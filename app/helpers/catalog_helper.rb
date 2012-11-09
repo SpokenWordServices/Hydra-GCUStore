@@ -107,7 +107,7 @@ module CatalogHelper
       resources << <<-EOS
          <div id="download"> 
 	         <div id="download_image" class="#{download_image_class_by_mime_type(mime_type[i])}" ></div>
-           <a href="/assets/#{object_id[i]}/#{ds_id[i]}" onClick="_gaq.push(['_trackEvent','Downloads', '#{object_id[i]}/#{ds_id[i]}', '#{resource_title}']);">#{display_label[i]}</a> 
+           <a href="/assets/#{object_id[i]}/#{ds_id[i]}" onClick="return confirm('Have you read the licence agreement?');_gaq.push(['_trackEvent','Downloads', '#{object_id[i]}/#{ds_id[i]}', '#{resource_title}']);">#{display_label[i]}</a> 
 EOS
    
        resources << <<-EOS
