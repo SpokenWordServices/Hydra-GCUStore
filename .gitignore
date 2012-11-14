@@ -31,4 +31,5 @@ db/schema.rb
 /doc
 
 config/gcu.yml
+db/seeds.rb
 
