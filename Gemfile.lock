@@ -321,6 +321,7 @@ DEPENDENCIES
   capybara
   cucumber
   cucumber-rails (~> 1.2.0)
+  database_cleaner
   devise
   devise_cas_authenticatable (~> 1.0.0)
   equivalent-xml

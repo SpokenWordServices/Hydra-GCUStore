@@ -10,7 +10,7 @@ module UserHelper
   def student_user_sign_in 
     delete_all_users 
     #Create the user
-    @user = User.create!(:username => "student1", :email => "student1@example.com")
+    @user = User.create!(:username => "student1", :email => "student1@example.com", :password =>"password")
     #Add the role
     @user.roles = [Role.find_or_initialize_by_name("student")]
     sign_in :user, @user

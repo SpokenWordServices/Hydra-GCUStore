@@ -36,6 +36,7 @@ Hull::Application.routes.draw do
   resources :catalog, :only=>[:index, :edit, :show, :update], :as=>'resources' 
 
   resources :version, :only=>:index
+  resources :licences
 
   ## Write the Hull routes first so that they supercede the blacklight & hydra routes
   Blacklight.add_routes(self)
