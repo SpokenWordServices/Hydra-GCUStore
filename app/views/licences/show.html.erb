@@ -1,0 +1,11 @@
+<p>Licence:</p> <%=@licence.name =%>
+
+<p>Description:</p> <%=@licence.description =%>
+
+<p>Link:</p> <%= @licence.link %>
+
+<p>Allow Downloads</p> <%=@licence.download %>
+
+<%= link_to 'Edit', edit_licence_path(@licence) %>
+
+<%= link_to 'Delete', licence_path(@licence), :method =>:delete %> 
