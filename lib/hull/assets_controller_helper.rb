@@ -8,6 +8,8 @@ module Hull::AssetsControllerHelper
     before_filter :enforce_access_controls, :only =>  [:new, :update, :destroy]
     before_filter :update_set_membership, :only => :update
     before_filter :check_valid_for_delete, :only => :destroy
+  ## GCU filter to add metadata implied from form input to the @sanatized_params so will be included when object updated
+    before_filter :add_implied_params, :only => :update 
     before_filter :validate_parameters, :only =>[:create,:update]
   end
 
@@ -16,6 +18,20 @@ module Hull::AssetsControllerHelper
     #Call the HullAccessControlsEnforcement method for checking create/new permissions
     enforce_create_permissions
   end
+
+  ## Adds any metadata that is implied by selections in the form eg, adds the licence url and description for the chosen licence
+  def add_implied_params
+ #   debugger
+    if @sanitized_params["descMetadata"].has_key?([:rights_label])
+      chosen_licence=Licence.find_by_name(@sanitized_params["descMetadata"][[:rights_label]]["0"])
+      if !chosen_licence.nil? 
+        @sanitized_params["descMetadata"].update({[:rights_url]=>{"0"=>chosen_licence.link}, [:rights]=>{"0"=>chosen_licence.description}})
+      end
+    end
+  end
+
+
+
 
   # Handles updating display set & structural set associations for an object
   # @param [ActiveFedora::Base] document to update membership for. Defaults to using @document

@@ -1,3 +1,5 @@
+ <%  licence_choices = Licence.all.map{ |a| a.name} %>
+
   <fieldset class="edit-standard">
   <legend><span id="rights_span">Publication and Rights</span></legend>
    <div id="rights_form" style="display: none">
@@ -14,6 +16,14 @@
     <dd style="width: 20em;">
       <%= fedora_text_field(@document_fedora,"descMetadata", [:date_issued], :multiple=>false) %>
     </dd>
+
+    <dt>
+       <%= fedora_field_label("descMetadata",[:rights_label],"Use and Reproduction") %>
+    </dt>
+    <dd> 
+      <%= fedora_select(@document_fedora,"descMetadata",[:rights_label], {:multiple=>false, :choices=>licence_choices}) %>
+    </dd>
+<!--
     <dt>
        <%= fedora_field_label("descMetadata",[:rights],"Rights Statement") %>
     </dt>
@@ -31,7 +41,8 @@
     </dt>
     <dd> 
         <%= fedora_text_field(@document_fedora,"descMetadata", [:rights_url], :multiple=>false) %>
-    </dd>	
+    </dd>
+-->	
   </dl>
   </div>
  </fieldset>

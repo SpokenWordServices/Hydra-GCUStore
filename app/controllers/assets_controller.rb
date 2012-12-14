@@ -1,6 +1,7 @@
 class AssetsController < ApplicationController
   include Hydra::Assets
   include Hull::AssetsControllerHelper
+
  
  def destroy
     af = ActiveFedora::Base.load_instance(params[:id])
@@ -15,5 +16,7 @@ class AssetsController < ApplicationController
     flash[:notice]= msg
     redirect_to url_for(:action => 'index', :controller => "catalog", :q => nil , :f => nil)
   end
+
+
 end
 

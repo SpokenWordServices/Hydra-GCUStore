@@ -196,6 +196,8 @@ describe AssetsController do
        delete(:destroy, :id => @obj.pid)
     end
   end
+
+
   
 #  # withdraw is a conditional destroy, with the conditions dependant on the project requirements.
 #  # Currently, the widthdraw method is an alias for destroy, should behave as such
