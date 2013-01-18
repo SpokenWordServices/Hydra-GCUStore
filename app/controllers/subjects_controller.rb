@@ -3,7 +3,11 @@ require 'mediashelf/active_fedora_helper'
 class SubjectsController < ApplicationController
   
   include MediaShelf::ActiveFedoraHelper
+  include Hydra::AccessControlsEnforcement
+  include HullAccessControlEnforcement
+
   before_filter :require_solr
+  before_filter :enforce_access_controls, :only =>  [:create, :new, :update, :destroy]
   
   # Display form for adding a new Subject
   # If format is .inline, this renders without layout so you can embed it in a page
@@ -45,6 +49,14 @@ class SubjectsController < ApplicationController
     end
   end
 
+  # TODO load_permissions_from_solr is duplicated in SubjectsController, ContributorsController, MultiFieldController & GrantNumbersController - Move to module
+  # Over-ride the access_controls_enforcement method load_permissions_from_solr to use asset_id instead of 'id'
+  def load_permissions_from_solr(id=params[:asset_id], extra_controller_params={})
+    unless !@permissions_solr_document.nil? && !@permissions_solr_response.nil?
+      @permissions_solr_response, @permissions_solr_document = get_permissions_solr_response_for_doc_id(id, extra_controller_params)
+    end
+  end
+
   private
   
    def load_document_from_id(asset_id)
@@ -59,4 +71,12 @@ class SubjectsController < ApplicationController
       return nil
     end
   end
+
+  # TODO enforce_new_permissions is duplicated in SubjectsController, ContributorsController, MultiFieldController & GrantNumbersController - Move to module
+  ## proxies to enforce_edit_permssions. 
+  def enforce_new_permissions(opts={})
+    #Call the HullAccessControlsEnforcement method for checking create/new permissions
+    enforce_create_permissions
+  end
+
 end
